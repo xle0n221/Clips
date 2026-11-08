@@ -62,6 +62,12 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   Alternativen: **Bella** `af_bella` (A-), **Finn** `am_fenrir`, **Max** `am_puck` (C+).
   Zentrale Liste `scripts/voices.json`, Hörproben `assets/stimmproben/` (aus dem Dashboard übernommen).
 - Ziel-Sprechtempo **3,3–3,6 Wörter/s** (gemessen in Referenz 2: 216 Wörter / 59,5 s = 3,63).
+- **Sprechweise lebendig** (Messung in [`docs/stimme-casting.md`](stimme-casting.md)): Erzählstimme mit
+  Tonhöhen-Streuung wie die englische Referenz R3 (F0-Interquartil ≈ 6–7 Halbtöne; flache Stimmen wie
+  `am_michael`, `bm_george`, `af_heart` liegen bei 3–4). Lautheitsschwankung mit `voiceStyle.post: "lively"`
+  bändigen (Präsenz 2–5 kHz + Kompressor), Pausen kurz halten (R3: kaum Pausen ≥ 0,3 s); Kunstpausen
+  vor Pointen mit „…“ (einzige Satzzeichen-Variante mit messbarer Pause: 0,16 s in einer Probe), Tempo-Akzente über `voiceStyle.sceneSpeed` (0,9–1,1).
+  Jede neue Stimme/Mischung per Whisper-Gegenprobe auf Verständlichkeit prüfen.
 - **Alle Fakten** aus Primärquellen, wörtlich zitiert in `docs/quellen-<thema>.md`; Abweichungen von
   gängigen Angaben werden vermerkt und nicht verwendet.
 

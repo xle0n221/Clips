@@ -112,7 +112,9 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     base_speed = ep.get("speed", 1.0)
     # --voice auf der Kommandozeile hat Vorrang vor einer Mischung im Drehbuch
     spec = ep["voice"] if voice_name or "blend" not in style else style["blend"]
-    voice = Voice(spec if isinstance(spec, dict) else resolve_voice(spec), base_speed)
+    if isinstance(spec, dict):  # {"am_fenrir": 0.6, "Max": 0.4} -> "am_fenrir:0.6+Max:0.4"
+        spec = "+".join(f"{k}:{w}" for k, w in spec.items())
+    voice = Voice(resolve_voice(spec), base_speed)
     scene_speed = style.get("sceneSpeed", {})
     gap = np.zeros(int(SAMPLE_RATE * ep.get("sceneGapMs", 150) / 1000), np.float32)
     lead = np.zeros(int(SAMPLE_RATE * 0.15), np.float32)  # kurzer Vorlauf
