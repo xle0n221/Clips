@@ -31,13 +31,22 @@ VOICES = [v["id"] for v in VOICE_INFO["voices"]]
 VOICE_NAMES = {v["name"].lower(): v["id"] for v in VOICE_INFO["voices"]}
 
 
+# Weitere Kokoro-Stimmen (nicht in voices.json, daher ohne Dashboard-Namen) dürfen per ID genutzt
+# werden, z. B. am_echo, bm_fable. Format laut Modell-Repo: <Sprache><Geschlecht>_<name>.
+KOKORO_ID = re.compile(r"^[abefhijpz][fm]_[a-z]+$")
+
+
 def resolve_voice(name_or_id: str) -> str:
-    """'Lily' oder 'af_heart' -> 'af_heart'."""
+    """'Lily' oder 'af_heart' -> 'af_heart'. Mischung: 'Finn:0.7+Max:0.3' -> 'am_fenrir:0.7+am_puck:0.3'."""
     key = name_or_id.strip()
+    if "+" in key or ":" in key:
+        return "+".join(f"{resolve_voice(v)}:{w:g}" for v, w in parse_blend(key).items())
     if key in VOICES:
         return key
     if key.lower() in VOICE_NAMES:
         return VOICE_NAMES[key.lower()]
+    if KOKORO_ID.match(key):
+        return key
     raise ValueError(f"Unbekannte Stimme {name_or_id!r}. Erlaubt: " + ", ".join(f"{v['name']} ({v['id']})" for v in VOICE_INFO["voices"]))
 
 
@@ -51,6 +60,70 @@ def setup(voices: list[str] = VOICES) -> None:
         if not target.exists():
             print(f"Lade {name} ...")
             subprocess.run(["curl", "-fsSL", "-o", str(target), url], check=True)
+
+
+def parse_blend(spec: str | dict) -> dict[str, float]:
+    """'am_fenrir:0.7+am_puck:0.3' oder {"am_fenrir": 0.7, "am_puck": 0.3} -> normierte Gewichte.
+    Ohne Gewicht zählt eine Stimme 1 ('am_fenrir+am_puck' = 50/50)."""
+    if isinstance(spec, dict):
+        items = [(str(k), float(v)) for k, v in spec.items()]
+    else:
+        items = []
+        for part in spec.split("+"):
+            name, _, w = part.strip().partition(":")
+            items.append((name.strip(), float(w) if w else 1.0))
+    total = sum(w for _, w in items)
+    if total <= 0 or any(w < 0 for _, w in items):
+        raise ValueError(f"Ungültige Stimmen-Mischung {spec!r}")
+    return {n: w / total for n, w in items}
+
+
+def load_style(spec: str | dict) -> np.ndarray:
+    """Stil-Vektoren laden; bei Mischung gewichteter Mittelwert (Kokoro: ein 256er-Vektor pro
+    Token-Länge, Form (510, 1, 256)). Fehlende Stimmen werden geladen."""
+    weights = parse_blend(spec)
+    style = None
+    for name, w in weights.items():
+        path = KOKORO_DIR / f"{name}.bin"
+        if not path.exists():
+            setup([name])
+        vec = np.fromfile(path, dtype=np.float32).reshape(-1, 1, 256) * w
+        style = vec if style is None else style + vec
+    return style.astype(np.float32)
+
+
+# Nachbearbeitung der Stimme (ffmpeg-Filter). Länge bleibt gleich (keine Tempo-/Hall-Fahne).
+# Gemessen/begründet in docs/stimme-casting.md.
+POST_PRESETS = {
+    # Präsenz +3 dB um 3,5 kHz, Schlamm −2 dB um 300 Hz, sanfter Kompressor 3:1
+    "lively": "highpass=f=80,equalizer=f=300:t=q:w=1:g=-2,equalizer=f=3500:t=q:w=1.2:g=3,"
+              "acompressor=threshold=-20dB:ratio=3:attack=5:release=80:makeup=2",
+    # wie lively + leichter kurzer Raum (frühe Reflexionen 23/41 ms, leise)
+    "lively-room": "highpass=f=80,equalizer=f=300:t=q:w=1:g=-2,equalizer=f=3500:t=q:w=1.2:g=3,"
+                   "acompressor=threshold=-20dB:ratio=3:attack=5:release=80:makeup=2,"
+                   "aecho=0.9:0.9:23|41:0.12|0.07",
+}
+
+
+def post_process(audio: np.ndarray, post: str) -> np.ndarray:
+    """Audio durch einen ffmpeg-Filter schicken: Preset-Name aus POST_PRESETS oder roher -af-String.
+    Ergebnis wird auf die Eingangslänge gebracht (Timing der Untertitel bleibt gültig)."""
+    import tempfile
+
+    filt = POST_PRESETS.get(post, post)
+    with tempfile.TemporaryDirectory() as tmp:
+        src, dst = Path(tmp) / "in.wav", Path(tmp) / "out.wav"
+        write_wav(src, audio)
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-af", filt,
+                        "-ar", str(SAMPLE_RATE), "-ac", "1", str(dst)], check=True)
+        import soundfile as sf
+
+        out, _ = sf.read(str(dst), dtype="float32")
+    out = out[: len(audio)]
+    if len(out) < len(audio):
+        out = np.pad(out, (0, len(audio) - len(out)))
+    peak = float(np.max(np.abs(out))) if len(out) else 0.0
+    return out / peak * 0.97 if peak > 0.97 else out
 
 
 _ONES = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
@@ -117,28 +190,27 @@ class Voice:
         import onnxruntime as ort
         from kokoro_onnx.tokenizer import Tokenizer
 
-        path = KOKORO_DIR / f"{name}.bin"
-        if not path.exists():
-            setup([name])
         # Format: float32, (510, 1, 256) – ein Stil-Vektor pro Token-Länge.
-        self.style = np.fromfile(path, dtype=np.float32).reshape(-1, 1, 256)
-        self.lang = "en-gb" if name.startswith("b") else "en-us"
+        # `name` darf eine Mischung sein: "am_fenrir:0.7+am_puck:0.3" oder ein dict.
+        self.style = load_style(name)
+        first = next(iter(parse_blend(name)))
+        self.lang = "en-gb" if first.startswith("b") else "en-us"
         self.speed = speed
         self.gap = gap
         self.tok = Tokenizer()
         self.sess = ort.InferenceSession(str(KOKORO_DIR / "model.onnx"))
 
-    def _chunk(self, phonemes: str) -> np.ndarray:
+    def _chunk(self, phonemes: str, speed: float | None = None) -> np.ndarray:
         tokens = self.tok.tokenize(phonemes)
         inputs = {
             "input_ids": np.array([[0, *tokens, 0]], dtype=np.int64),
             "style": self.style[len(tokens)],
-            "speed": np.array([self.speed], dtype=np.float32),
+            "speed": np.array([speed or self.speed], dtype=np.float32),
         }
         return self.sess.run(None, inputs)[0].reshape(-1)
 
-    def synth(self, text: str) -> np.ndarray:
-        """Text -> Audio (24 kHz, float32).
+    def synth(self, text: str, speed: float | None = None) -> np.ndarray:
+        """Text -> Audio (24 kHz, float32). `speed` überschreibt das Tempo nur für diesen Aufruf.
 
         Laut VOICES.md des Modells klingen Stimmen bei 100–200 Tokens am besten und
         schwächeln bei sehr kurzen Äußerungen. Deshalb werden Sätze zu Blöcken bis
@@ -157,7 +229,7 @@ class Voice:
                 chunks.append(ph)
         parts = []
         for ph in chunks:
-            audio, _ = trim_audio(self._chunk(ph))
+            audio, _ = trim_audio(self._chunk(ph, speed))
             parts.append(audio)
             parts.append(np.zeros(int(SAMPLE_RATE * self.gap), dtype=np.float32))
         return np.concatenate(parts[:-1]) if parts else np.zeros(0, dtype=np.float32)
@@ -173,8 +245,10 @@ def write_wav(path: Path, audio: np.ndarray, sr: int = SAMPLE_RATE) -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--setup", action="store_true")
-    ap.add_argument("--voice", default=VOICE_INFO["default"], help="Name oder ID, z. B. Lily / af_heart")
+    ap.add_argument("--voice", default=VOICE_INFO["default"],
+                    help="Name oder ID, z. B. Lily / af_heart; Mischung: 'am_fenrir:0.7+am_puck:0.3'")
     ap.add_argument("--speed", type=float, default=1.0)
+    ap.add_argument("--post", help="Nachbearbeitung: " + ", ".join(POST_PRESETS) + " oder ffmpeg -af-String")
     ap.add_argument("--text")
     ap.add_argument("--out", type=Path)
     a = ap.parse_args()
@@ -182,5 +256,7 @@ if __name__ == "__main__":
         setup()
     if a.text and a.out:
         audio = Voice(resolve_voice(a.voice), a.speed).synth(a.text)
+        if a.post:
+            audio = post_process(audio, a.post)
         write_wav(a.out, audio)
         print(f"{a.out}: {len(audio) / SAMPLE_RATE:.2f} s")
