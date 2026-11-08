@@ -54,6 +54,10 @@ Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
 
 ## 5. Entscheidung umsetzen
 - `decision.value == "ok"` → `review: null`, `decision: null`, nächster Schritt.
+  **Ohne Rückfrage** (Vorgabe des Nutzers, 08.11.2026): Nach „ok“ arbeitet die Sitzung sofort und
+  automatisch bis zur nächsten Freigabe bzw. bis „fertig“ weiter. Die Sitzung erfährt eine Entscheidung
+  nicht in Echtzeit, sondern beim nächsten Lesen: stündlicher Abholer (Minute 17, rund um die Uhr) und
+  zusätzlich nach jedem Arbeitsschritt, solange eine Freigabe offen ist.
 - `"not_ok"` → `decision.feedback` (und `decision.scene`, falls gesetzt) umsetzen, dieselbe Stufe neu
   vorlegen (neues `review`, `decision: null`). Feedback nie stillschweigend übergehen.
 - Die Seite schreibt `decision` – die Sitzung setzt es nur auf `null` zurück.
