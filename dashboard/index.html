@@ -157,6 +157,15 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 .thumbs a { display: block; aspect-ratio: 1; max-width: 100%; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); color: var(--accent); font-size: 0.75rem; text-decoration: none; }
 .thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .thumbs a.file { display: grid; place-items: center; padding: 6px; text-align: center; overflow-wrap: anywhere; }
+.pub { border-top: 1px solid var(--line); padding-top: 10px; }
+.pub > summary { color: var(--accent); }
+.plat { display: grid; gap: 6px; margin-top: 10px; padding: 10px 12px; background: var(--bg); border-radius: 8px; min-width: 0; }
+.plat h4 { margin: 0; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.plat .txt { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.875rem; }
+.plat .tags { margin: 0; color: var(--accent); font-size: 0.875rem; overflow-wrap: anywhere; }
+.plat .lbl { font-size: 0.75rem; color: var(--muted); margin: 0; }
+.plat .warn { font-size: 0.75rem; color: var(--warn); margin: 0; }
+.copyrow { display: flex; gap: 6px; flex-wrap: wrap; }
 .empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
@@ -459,6 +468,69 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     return box;
   }
 
+  // Plattform-Grenzen (Quellen siehe dashboard/README.md, Abschnitt „Veröffentlichen“)
+  const YT_TITLE_MAX = 100, YT_TAGS_MAX = 60, TT_TAGS_MAX = 5, TT_CAPTION_SAFE = 2200;
+  const tagList = (a) => (Array.isArray(a) ? a : []).map((t) => String(t).trim()).filter(Boolean).map((t) => t.startsWith("#") ? t : "#" + t);
+
+  function copyBtn(label, getText) {
+    const b = el("button", { class: "btn-quiet", type: "button", text: label });
+    b.addEventListener("click", () => {
+      const text = getText();
+      const done = () => { b.textContent = "Kopiert ✓"; setTimeout(() => { b.textContent = label; }, 1500); };
+      const fallback = () => {
+        const ta = el("textarea", { readonly: true, style: "position:fixed;opacity:0" }); ta.value = text;
+        document.body.append(ta); ta.select();
+        try { document.execCommand("copy"); done(); } catch { b.textContent = "Bitte manuell kopieren"; }
+        ta.remove();
+      };
+      try { navigator.clipboard.writeText(text).then(done, fallback); } catch { fallback(); }
+    });
+    return b;
+  }
+
+  function publishBlock(v) {
+    const p = v.publish;
+    if (!p || typeof p !== "object") return null;
+    const box = el("details", { class: "pub", open: v.stage === "done" ? true : null },
+      el("summary", { text: "Veröffentlichen: Titel, Texte, Hashtags" }));
+    const yt = p.youtube, tt = p.tiktok;
+    if (yt && typeof yt === "object") {
+      const tags = tagList(yt.hashtags);
+      const title = String(yt.title || ""), desc = String(yt.description || "");
+      const full = [desc, tags.join(" ")].filter(Boolean).join("\n\n");
+      const warns = [];
+      if (title.length > YT_TITLE_MAX) warns.push(`Titel hat ${title.length} Zeichen (YouTube erlaubt ${YT_TITLE_MAX}).`);
+      if (tags.length > YT_TAGS_MAX) warns.push(`${tags.length} Hashtags: über ${YT_TAGS_MAX} ignoriert YouTube alle.`);
+      box.append(el("div", { class: "plat" },
+        el("h4", { text: "YouTube Shorts" }),
+        el("p", { class: "lbl", text: `Titel (${title.length}/${YT_TITLE_MAX})` }),
+        el("p", { class: "txt", text: title || "–" }),
+        desc ? el("p", { class: "lbl", text: "Beschreibung" }) : null,
+        desc ? el("p", { class: "txt", text: desc }) : null,
+        tags.length ? el("p", { class: "tags", text: tags.join(" ") }) : null,
+        tags.length ? el("p", { class: "lbl", text: "Bis zu 3 Hashtags zeigt YouTube über dem Titel an." }) : null,
+        warns.map((w) => el("p", { class: "warn", text: w })),
+        el("div", { class: "copyrow" }, copyBtn("Titel kopieren", () => title), copyBtn("Beschreibung + Hashtags kopieren", () => full))));
+    }
+    if (tt && typeof tt === "object") {
+      const tags = tagList(tt.hashtags);
+      const cap = String(tt.caption || "");
+      const full = [cap, tags.join(" ")].filter(Boolean).join(" ");
+      const warns = [];
+      if (tags.length > TT_TAGS_MAX) warns.push(`${tags.length} Hashtags: TikTok erlaubt laut Berichten nur ${TT_TAGS_MAX} pro Post.`);
+      if (full.length > TT_CAPTION_SAFE) warns.push(`Text hat ${full.length} Zeichen; sicher sind ${TT_CAPTION_SAFE}.`);
+      box.append(el("div", { class: "plat" },
+        el("h4", { text: "TikTok" }),
+        el("p", { class: "lbl", text: `Caption (${full.length} Zeichen mit Hashtags)` }),
+        el("p", { class: "txt", text: cap || "–" }),
+        tags.length ? el("p", { class: "tags", text: tags.join(" ") }) : null,
+        warns.map((w) => el("p", { class: "warn", text: w })),
+        el("div", { class: "copyrow" }, copyBtn("Caption + Hashtags kopieren", () => full))));
+    }
+    if (p.note) box.append(el("p", { class: "hint", style: "margin-top:8px", text: String(p.note) }));
+    return box;
+  }
+
   function card(v) {
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
@@ -481,6 +553,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 
     if (v.review && v.stage !== "done") c.append(reviewBlock(v));
     if (v.stage === "done") c.append(doneBlock(v));
+    const pub = publishBlock(v); if (pub) c.append(pub);
 
     if (canWrite && v.stage === "queued") {
       const armed = confirmDel[v.id];

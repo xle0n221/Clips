@@ -37,6 +37,7 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `renderEta` | string (optional) | Sitzung | z. B. `"noch ca. 23 Min."` |
 | `actionNeeded` | string \| null (optional) | Sitzung | auffälliges rotes Banner, z. B. `"Freigabe in der Claude-App nötig (Netzwerk)"`; Karte wird oben einsortiert |
 | `fileSizeBytes` | number (optional) | Sitzung | Dateigröße auf der Fertig-Karte |
+| `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
 
 Zusätzliche optionale Felder in `review`:
 - `review.corrections`: Liste `{ claim, note }` – Aussagen, die von gängigen Angaben abweichen; immer sichtbar hervorgehoben
@@ -66,6 +67,39 @@ Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, 
 3. Zur Freigabe: `update` mit `review: {…}`, `decision: null`, `statusText`, `updatedAt`.
 4. Antwort abholen: Dokument lesen; ist `decision` gesetzt → umsetzen, danach `review: null`, `decision: null` und nächster `stage`.
 5. Fertig: `stage: "done"`, `review: null`, optional `previewUrl`.
+
+### Veröffentlichen: Titel, Texte, Hashtags (Regeln für die Sitzung)
+Recherche-Stand 2026-11-08, per Websuche (die Seiten selbst sind aus dieser Umgebung gesperrt, daher Wiedergabe laut Suchergebnis).
+
+**Belegt (offizielle Quellen):**
+- YouTube: Über 60 Hashtags ignoriert YouTube alle Hashtags des Videos; irrelevante oder zu viele Hashtags können zur Entfernung führen.
+  Bis zu 3 Hashtags aus der Beschreibung zeigt YouTube über dem Titel (welche, entscheidet YouTube).
+  Quelle: YouTube-Hilfe „Find playlists & videos using hashtags“, https://support.google.com/youtube/answer/6390658
+- YouTube Shorts: quadratisch oder hochkant, bis 3 Minuten (Uploads ab 15.10.2024). Quelle: https://support.google.com/youtube/answer/15424877
+- TikTok Creator Academy: Mehr Hashtags verbessern das Ranking nicht; nur relevante Begriffe verwenden. Aktuelle Vorschläge liefert
+  „Creator Search Insights“ in der TikTok-App. Quelle: https://www.tiktok.com/creator-academy/article/Getting-discovered-with-Search
+
+**Berichtet, nicht offiziell bestätigt:**
+- TikTok begrenzt seit etwa Juli/August 2025 auf 5 Hashtags pro Post (Hinweis in der App, keine offizielle Mitteilung).
+  Quelle: https://searchengineland.com/tiktok-limits-hashtags-460894
+- YouTube-Titel max. 100 Zeichen (übereinstimmend in Drittquellen); in Suche/Mobil sind ca. 60–70 sichtbar (Schätzung von Drittanbietern).
+- TikTok-Caption: Angaben schwanken zwischen 2.200 und 4.000 Zeichen; das Dashboard warnt vorsichtshalber ab 2.200.
+
+**„Welche Hashtags bringen die meiste Reichweite?“** Dafür gibt es keine belastbare, öffentliche Antwort:
+- Eine Auswertung der TikTok-Research-API fand mehr Aufrufe bei Videos mit „viralen“ Hashtags, der Effekt nimmt aber in neueren Jahren ab
+  (https://arxiv.org/pdf/2402.13855). Eine Studie fand höhere Viralität, wenn ein Hashtag *während* seines Trends genutzt wird
+  (https://arxiv.org/pdf/2111.02452). Beides belegt keinen festen „besten“ Hashtag.
+- Trend-Listen sind tagesaktuell und regional (z. B. Creator Search Insights / TikTok Creative Center) und aus dieser Umgebung nicht abrufbar.
+- Allgemeine Tags wie #fyp: kein Beleg in offiziellen Quellen, weder dafür noch dagegen. Nicht verwenden, bis Daten vorliegen.
+
+**Regel für die bearbeitende Sitzung** (folgt aus den belegten Punkten, eigene Ableitung):
+- Texte auf Englisch (die Videos sind englisch).
+- TikTok: höchstens 5 Hashtags. 1 breites Thema (z. B. `#science`, `#space`), 2–3 themenspezifische, die zur gesprochenen Aussage passen.
+  Caption: der stärkste Fakt aus dem Video als Frage oder Aussage, kurz.
+- YouTube Shorts: Titel unter 70 Zeichen mit dem Kern-Fakt vorne; Beschreibung 1–3 Sätze inkl. „Facts checked against …“ mit der Hauptquelle;
+  3–5 Hashtags, die relevantesten zuerst; `#Shorts` optional (YouTube nennt ihn in seinem Shorts-Leitfaden als gängigen Hashtag).
+- Keine Hashtags ohne Bezug zum Inhalt (YouTube-Richtlinie).
+- In `publish.note` vermerken: „Hashtags vor dem Posten in Creator Search Insights / YouTube-Suche gegenprüfen“.
 
 ### Hörproben der Stimmen
 `dashboard/voices/voice-<stimme>.mp3`, mit der Seite unter `voices/…` veröffentlicht (Knopf „▶ Anhören“ neben der Stimmen-Auswahl).
