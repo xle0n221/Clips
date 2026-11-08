@@ -415,25 +415,25 @@ export const Uranus: React.FC = () => {
       <Lights sun={[0, 6, 0]} intensity={1.6} />
       <pointLight position={[0, 0, 0]} intensity={80} color="#FFE082" />
       <Planet kind="sun" radius={1.6} spin={frame * 0.01} />
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
+      <mesh rotation={[Math.PI / 2, 0, 0]} scale={[0.46, 1, 1]}>
         <torusGeometry args={[7, 0.03, 8, 128]} />
         <meshBasicMaterial color="#FFFFFF" transparent opacity={0.5} />
       </mesh>
       <group
-        position={[Math.cos(a) * 7, 0, Math.sin(a) * 7]}
+        position={[Math.cos(a) * 3.2, 0, Math.sin(a) * 7]}
         rotation={[0, -a, 0]}
       >
         <group rotation={[0, 0, tilt]}>
           <group rotation={[0, f * 0.25, 0]}>
-            <Planet kind="uranus" radius={1.1} />
+            <Planet kind="uranus" radius={1.3} />
           </group>
         </group>
       </group>
       <Shot
         frame={f}
         duration={duration - roll}
-        from={[0, 9, 13]}
-        to={[0, 7, 11]}
+        from={[0, 21, 6]}
+        to={[0, 18, 5]}
         look={[0, 0, 0]}
         fov={46}
       />
