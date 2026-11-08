@@ -58,8 +58,9 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Clips sind **auf Englisch**, mit einer **angenehmen Stimme**.
 - **Zeitgemäßer, lockerer Slang**, aber so, dass **jede Altersgruppe** sich abgeholt fühlt
   (z. B. „Wait, what?“, „Nope.“, „real talk“, „basically“) – kein Cringe, keine Insider-Wörter.
-- Standardstimme: Kokoro `af_heart` (laut `VOICES.md` des Modells einzige englische Stimme mit Note A).
-  Alternativen mit Hörproben: `af_bella` (A-), `am_fenrir`, `am_puck` (C+).
+- Standardstimme: **Lily** = Kokoro `af_heart` (laut `VOICES.md` des Modells einzige englische Stimme mit Note A).
+  Alternativen: **Bella** `af_bella` (A-), **Finn** `am_fenrir`, **Max** `am_puck` (C+).
+  Zentrale Liste `scripts/voices.json`, Hörproben `assets/stimmproben/` (aus dem Dashboard übernommen).
 - Ziel-Sprechtempo **3,3–3,6 Wörter/s** (gemessen in Referenz 2: 216 Wörter / 59,5 s = 3,63).
 - **Alle Fakten** aus Primärquellen, wörtlich zitiert in `docs/quellen-<thema>.md`; Abweichungen von
   gängigen Angaben werden vermerkt und nicht verwendet.

@@ -4,13 +4,14 @@ Modell + Stimmen: https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX
 Phonemizer/Tokenizer: Paket `kokoro-onnx` (nur dessen Tokenizer wird genutzt; dessen
 `create()` übergibt bei dieser Modellversion `speed` fälschlich als int32).
 
-  python scripts/tts.py --voice am_michael --text "Hello there" --out out/hello.wav
+  python scripts/tts.py --voice Lily --text "Hello there" --out out/hello.wav
   python scripts/tts.py --setup     # Modell + Stimmen nach voices/kokoro laden
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import subprocess
 from pathlib import Path
@@ -24,7 +25,20 @@ HF = "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main"
 SAMPLE_RATE = 24000
 MAX_PHONEMES = 510
 CHUNK_PHONEMES = 380
-VOICES = ["af_heart", "af_bella", "am_michael", "am_fenrir", "am_puck", "bm_george"]
+# Zentrale Stimmenliste mit Namen (Lily, Bella, Finn, Max) – geteilt mit dem Dashboard
+VOICE_INFO = json.loads((Path(__file__).resolve().parent / "voices.json").read_text())
+VOICES = [v["id"] for v in VOICE_INFO["voices"]]
+VOICE_NAMES = {v["name"].lower(): v["id"] for v in VOICE_INFO["voices"]}
+
+
+def resolve_voice(name_or_id: str) -> str:
+    """'Lily' oder 'af_heart' -> 'af_heart'."""
+    key = name_or_id.strip()
+    if key in VOICES:
+        return key
+    if key.lower() in VOICE_NAMES:
+        return VOICE_NAMES[key.lower()]
+    raise ValueError(f"Unbekannte Stimme {name_or_id!r}. Erlaubt: " + ", ".join(f"{v['name']} ({v['id']})" for v in VOICE_INFO["voices"]))
 
 
 def setup(voices: list[str] = VOICES) -> None:
@@ -136,7 +150,7 @@ def write_wav(path: Path, audio: np.ndarray, sr: int = SAMPLE_RATE) -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--setup", action="store_true")
-    ap.add_argument("--voice", default="am_michael")
+    ap.add_argument("--voice", default=VOICE_INFO["default"], help="Name oder ID, z. B. Lily / af_heart")
     ap.add_argument("--speed", type=float, default=1.0)
     ap.add_argument("--text")
     ap.add_argument("--out", type=Path)
@@ -144,6 +158,6 @@ if __name__ == "__main__":
     if a.setup:
         setup()
     if a.text and a.out:
-        audio = Voice(a.voice, a.speed).synth(a.text)
+        audio = Voice(resolve_voice(a.voice), a.speed).synth(a.text)
         write_wav(a.out, audio)
         print(f"{a.out}: {len(audio) / SAMPLE_RATE:.2f} s")

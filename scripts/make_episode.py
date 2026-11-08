@@ -25,7 +25,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
-from tts import SAMPLE_RATE, Voice, write_wav  # noqa: E402
+from tts import SAMPLE_RATE, VOICE_INFO, Voice, resolve_voice, write_wav  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -78,8 +78,18 @@ def align(script_words: list[str], whisper: list[dict]) -> list[dict]:
     return out
 
 
-def main(path: Path) -> None:
+def main(path: Path, voice_name: str | None = None, speed: float | None = None, save: bool = False) -> None:
     ep = json.loads(path.read_text())
+    # Stimme/Tempo können per Kommandozeile (z. B. vom Dashboard) überschrieben werden
+    if voice_name:
+        try:
+            ep["voice"] = resolve_voice(voice_name)
+        except ValueError as e:
+            raise SystemExit(str(e))
+    if speed:
+        ep["speed"] = speed
+    if save and (voice_name or speed):
+        path.write_text(json.dumps(ep, indent=2, ensure_ascii=False) + "\n")
     out_dir = ROOT / "public" / "episodes" / ep["id"]
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -149,4 +159,13 @@ def main(path: Path) -> None:
 
 
 if __name__ == "__main__":
-    main(Path(sys.argv[1]))
+    import argparse
+
+    ap = argparse.ArgumentParser(description="Voiceover, Captions und Zeitplan für eine Episode erzeugen")
+    ap.add_argument("episode", type=Path, help="z. B. episodes/solar-system.json")
+    names = ", ".join(f"{v['name']} ({v['id']})" for v in VOICE_INFO["voices"])
+    ap.add_argument("--voice", help=f"Stimme überschreiben, Name oder ID: {names}")
+    ap.add_argument("--speed", type=float, help="Sprechtempo überschreiben (Kokoro, 0.5–2.0)")
+    ap.add_argument("--save", action="store_true", help="Stimme/Tempo zusätzlich ins Drehbuch schreiben")
+    a = ap.parse_args()
+    main(a.episode, a.voice, a.speed, a.save)

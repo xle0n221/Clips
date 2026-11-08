@@ -1,0 +1,10 @@
+{
+  "_info": "Zentrale Stimmenliste. Namen aus dem Dashboard 'Clips Studio' (frei vergeben, nur für die Bedienung). Noten laut VOICES.md von hexgrad/Kokoro-82M. Hörproben: assets/stimmproben/voice-<id>.mp3 (Satz: \"Hi, I'm <Name>. I could be the voice of your next video.\", Kokoro, Tempo 1.0).",
+  "default": "af_heart",
+  "voices": [
+    { "id": "af_heart", "name": "Lily", "gender": "Frau", "accent": "American English", "grade": "A", "recommended": true, "sample": "assets/stimmproben/voice-af_heart.mp3" },
+    { "id": "af_bella", "name": "Bella", "gender": "Frau", "accent": "American English", "grade": "A-", "sample": "assets/stimmproben/voice-af_bella.mp3" },
+    { "id": "am_fenrir", "name": "Finn", "gender": "Mann", "accent": "American English", "grade": "C+", "sample": "assets/stimmproben/voice-am_fenrir.mp3" },
+    { "id": "am_puck", "name": "Max", "gender": "Mann", "accent": "American English", "grade": "C+", "sample": "assets/stimmproben/voice-am_puck.mp3" }
+  ]
+}
