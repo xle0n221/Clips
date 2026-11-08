@@ -59,6 +59,9 @@ npm run render:episode                    # -> out/solar-system.mp4
 **Fertiges Ergebnis (v2, gemessen mit ffprobe/ebur128):** 87,3 s, 1080×1920, 30 fps, H.264 + AAC 48 kHz,
 integrierte Lautheit −14,0 LUFS (nach `scripts/finalize.sh`), Render ~40 Min ohne GPU (`--gl=swangle`).
 Das Video selbst (`out/`) wird nicht committet.
+Nach dieser Endkontrolle wurden drei Randfehler im Code behoben (Tafel bei ~9 s, Milo in der
+Uranus-Einstellung, Sticker „1 YEAR = 165 YEARS“) und per Standbild geprüft; sie sind ab dem
+nächsten Render im Video, das vorhandene v2-Video enthält sie noch nicht.
 
 Fakten-Belege für das Sonnensystem-Video: `docs/quellen-sonnensystem.md` (NASA-Faktenseiten, wörtlich zitiert).
 

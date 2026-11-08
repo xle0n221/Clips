@@ -160,10 +160,10 @@ export const Launch: React.FC = () => {
           <Shot
             frame={f}
             duration={bet - c1}
-            from={[1.6, 3.6, 6.5]}
-            to={[0.8, 3.7, 5]}
-            look={[-1.8, 3.6, -2.6]}
-            fov={44}
+            from={[-1.0, 3.8, 8.2]}
+            to={[-1.3, 3.8, 7]}
+            look={[-2.6, 3.9, -3]}
+            fov={50}
           />
         </>
       );

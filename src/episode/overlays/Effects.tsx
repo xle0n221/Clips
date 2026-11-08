@@ -6,6 +6,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { fitText } from "@remotion/layout-utils";
 import { CAPTION_FONT } from "./fonts";
 import { seeded } from "../kit/toon";
 
@@ -24,6 +25,13 @@ export const Sticker: React.FC<{
     extrapolateRight: "clamp",
   });
   const wobble = Math.sin(frame * 0.18) * 1.5;
+  // Lange Texte (z. B. "1 YEAR = 165 YEARS") passen bei 96 px nicht ins 1080 px breite Bild:
+  // Schrift auf die nutzbare Breite verkleinern (1080 − 2×80 Rand − 2×40 Innenabstand − 2×10 Rahmen
+  // = 720 px), mit Reserve für das Überschwingen der Feder beim Hereinploppen und die Neigung.
+  const fontSize = Math.min(
+    96,
+    fitText({ text, withinWidth: 620, fontFamily: CAPTION_FONT, fontWeight: 900, letterSpacing: "-2px" }).fontSize,
+  );
   const dark =
     color === "#FFFFFF" || color.startsWith("#FF") || color.startsWith("#FFE");
   return (
@@ -38,7 +46,7 @@ export const Sticker: React.FC<{
           boxShadow: "0 14px 0 #111",
           fontFamily: CAPTION_FONT,
           fontWeight: 900,
-          fontSize: 96,
+          fontSize,
           color: dark ? "#111" : "#FFF",
           whiteSpace: "nowrap",
           letterSpacing: -2,

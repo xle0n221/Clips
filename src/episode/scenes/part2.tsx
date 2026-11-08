@@ -379,12 +379,12 @@ export const Uranus: React.FC = () => {
         <Planet
           kind="uranus"
           radius={2.3}
-          position={[2, 3.4, -3]}
+          position={[1.6, 4.8, -4]}
           tilt={tilt}
           spin={frame * 0.03}
         />
         <group
-          position={[-1.8, 2.2, 0]}
+          position={[-0.9, 2.2, 0]}
           rotation={[0, 0.3, ease(frame, 10, 40) * -1.1]}
         >
           <Milo
@@ -399,9 +399,9 @@ export const Uranus: React.FC = () => {
         <Shot
           frame={frame}
           duration={roll}
-          from={[0, 3, 11]}
-          to={[0, 3, 9.5]}
-          look={[0, 2.8, 0]}
+          from={[0, 3.2, 14]}
+          to={[0, 3.2, 12.5]}
+          look={[0, 3, 0]}
           fov={46}
         />
       </>
