@@ -160,10 +160,10 @@ export const Launch: React.FC = () => {
           <Shot
             frame={f}
             duration={bet - c1}
-            from={[1.6, 3.6, 6.5]}
-            to={[0.8, 3.7, 5]}
-            look={[-1.8, 3.6, -2.6]}
-            fov={44}
+            from={[-1.0, 3.8, 8.2]}
+            to={[-1.3, 3.8, 7]}
+            look={[-2.6, 3.9, -3]}
+            fov={50}
           />
         </>
       );
@@ -334,8 +334,8 @@ export const Sun: React.FC = () => {
       <Lights sun={[-4, 2, 8]} intensity={2} />
       <Planet
         kind="sun"
-        radius={6}
-        position={[-3.5, 0, 0]}
+        radius={4.6}
+        position={[0, 3.4, 0]}
         spin={frame * 0.004}
       />
       {(
@@ -346,9 +346,9 @@ export const Sun: React.FC = () => {
           kind={k}
           radius={0.18 + (k === "jupiter" || k === "saturn" ? 0.22 : 0.06)}
           position={[
-            4 + i * 0.75,
-            2.5 - f * 0.05 * (1 + i * 0.15),
-            Math.sin(i) * 0.6,
+            -2.3 + i * 0.92,
+            -2.4 - f * 0.05 * (1 + i * 0.15),
+            1.5 + Math.sin(i) * 0.6,
           ]}
           spin={frame * 0.05}
         />
@@ -356,9 +356,9 @@ export const Sun: React.FC = () => {
       <Shot
         frame={f}
         duration={duration - crumbs}
-        from={[1, 0.5, 20]}
-        to={[2, 0.2, 17]}
-        look={[1, 0, 0]}
+        from={[0, 0, 21]}
+        to={[0, -0.4, 18]}
+        look={[0, -0.4, 0]}
         fov={45}
         punch={0}
       />
@@ -378,7 +378,7 @@ export const Mercury: React.FC = () => {
         <Lights sun={[0, 10, 0]} intensity={1.5} />
         <pointLight position={[0, 0, 0]} intensity={60} color="#FFE082" />
         <Planet kind="sun" radius={2} spin={frame * 0.01} />
-        <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <mesh rotation={[Math.PI / 2, 0, 0]} scale={[0.5, 1, 1]}>
           <torusGeometry args={[6, 0.035, 8, 128]} />
           <meshBasicMaterial color="#FFFFFF" transparent opacity={0.6} />
         </mesh>
@@ -386,7 +386,7 @@ export const Mercury: React.FC = () => {
           <mesh
             key={k}
             position={[
-              Math.cos(a - k * 0.09) * 6,
+              Math.cos(a - k * 0.09) * 3,
               0,
               Math.sin(a - k * 0.09) * 6,
             ]}
@@ -402,14 +402,14 @@ export const Mercury: React.FC = () => {
         <Planet
           kind="mercury"
           radius={0.6}
-          position={[Math.cos(a) * 6, 0, Math.sin(a) * 6]}
+          position={[Math.cos(a) * 3, 0, Math.sin(a) * 6]}
           spin={frame * 0.05}
         />
         <Shot
           frame={frame}
           duration={party}
-          from={[0, 15, 9]}
-          to={[0, 12, 7]}
+          from={[0, 17, 5]}
+          to={[0, 15, 4]}
           look={[0, 0, 0]}
           fov={45}
         />
@@ -687,17 +687,17 @@ export const Earth: React.FC = () => {
     return (
       <>
         <Space />
-        <Lights sun={[-10, 2, 4]} intensity={2.2} />
+        <Lights sun={[0, 10, 4]} intensity={2.2} />
         <Planet
           kind="sun"
           radius={3.2}
-          position={[-14, 0, -4]}
+          position={[0, 9, -4]}
           spin={frame * 0.01}
         />
         <Planet
           kind="earth"
           radius={1.3}
-          position={[9, 0, 0]}
+          position={[0, -4, 0]}
           spin={frame * 0.02}
           tilt={0.4}
         />
@@ -705,9 +705,9 @@ export const Earth: React.FC = () => {
         <Shot
           frame={f}
           duration={c2 - beamAt}
-          from={[-2, 3, 22]}
-          to={[0, 2, 19]}
-          look={[-2, 0, 0]}
+          from={[0.5, 0, 27]}
+          to={[0.3, -0.5, 24]}
+          look={[0, 0, 0]}
           fov={45}
         />
       </>
@@ -746,28 +746,25 @@ export const Earth: React.FC = () => {
 };
 
 const BeamLine: React.FC<{ readonly progress: number }> = ({ progress }) => {
-  const from: [number, number, number] = [-10.8, 0, -3];
-  const to: [number, number, number] = [7.7, 0, 0];
+  // Vertikaler Strahl von der Sonne (oben) zur Erde (unten) – passt ins Hochformat
+  const from: [number, number, number] = [0, 5.8, -3];
+  const to: [number, number, number] = [0, -2.7, 0];
   const p = Math.max(0.001, progress);
-  const x = lerp(from[0], to[0], p);
+  const y = lerp(from[1], to[1], p);
   const z = lerp(from[2], to[2], p);
+  const len = Math.hypot(y - from[1], z - from[2]);
+  const angle = Math.atan2(to[2] - from[2], to[1] - from[1]);
   return (
     <group>
       <mesh
-        position={[(from[0] + x) / 2, 0, (from[2] + z) / 2]}
-        rotation={[
-          0,
-          -Math.atan2(to[2] - from[2], to[0] - from[0]),
-          Math.PI / 2,
-        ]}
+        position={[0, (from[1] + y) / 2, (from[2] + z) / 2]}
+        rotation={[angle, 0, 0]}
       >
-        <cylinderGeometry
-          args={[0.16, 0.16, Math.hypot(x - from[0], z - from[2]), 10]}
-        />
+        <cylinderGeometry args={[0.16, 0.16, len, 10]} />
         <meshBasicMaterial color="#FFF59D" />
       </mesh>
       <Glow
-        position={[x, 0, z]}
+        position={[0, y, z]}
         radius={0.45}
         color="#FFEE58"
         intensity={1.2}

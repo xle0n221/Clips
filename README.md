@@ -10,6 +10,10 @@
 Grundlage sind die offiziellen Remotion-Templates **`--three`** und **`--tiktok`**
 (`npx create-video@4.0.541`), zusammengeführt in einem Projekt.
 
+> **Verbindliche Regeln für jeden Clip:** [`docs/clip-regeln.md`](docs/clip-regeln.md) –
+> roter Faden, „süchtig machend“, Themen-Treue, Sprache/Stimme, gemessene Referenzwerte,
+> technische Fallstricke. Vor jedem neuen Video lesen.
+
 ## Voraussetzungen
 
 - Node.js `^20.19.0 || ^22.13.0 || >=24` (Vorgabe aus `package.json` des Templates)
@@ -51,6 +55,13 @@ curl -L -o whisper.cpp/ggml-medium.bin https://huggingface.co/ggerganov/whisper.
 npm run episode -- episodes/solar-system.json
 npm run render:episode                    # -> out/solar-system.mp4
 ```
+
+**Fertiges Ergebnis (v2, gemessen mit ffprobe/ebur128):** 87,3 s, 1080×1920, 30 fps, H.264 + AAC 48 kHz,
+integrierte Lautheit −14,0 LUFS (nach `scripts/finalize.sh`), Render ~40 Min ohne GPU (`--gl=swangle`).
+Das Video selbst (`out/`) wird nicht committet.
+Nach dieser Endkontrolle wurden drei Randfehler im Code behoben (Tafel bei ~9 s, Milo in der
+Uranus-Einstellung, Sticker „1 YEAR = 165 YEARS“) und per Standbild geprüft; sie sind ab dem
+nächsten Render im Video, das vorhandene v2-Video enthält sie noch nicht.
 
 Fakten-Belege für das Sonnensystem-Video: `docs/quellen-sonnensystem.md` (NASA-Faktenseiten, wörtlich zitiert).
 
