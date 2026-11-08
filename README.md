@@ -56,6 +56,10 @@ npm run episode -- episodes/solar-system.json
 npm run render:episode                    # -> out/solar-system.mp4
 ```
 
+**Fertiges Ergebnis (v2, gemessen mit ffprobe/ebur128):** 87,3 s, 1080×1920, 30 fps, H.264 + AAC 48 kHz,
+integrierte Lautheit −14,0 LUFS (nach `scripts/finalize.sh`), Render ~40 Min ohne GPU (`--gl=swangle`).
+Das Video selbst (`out/`) wird nicht committet.
+
 Fakten-Belege für das Sonnensystem-Video: `docs/quellen-sonnensystem.md` (NASA-Faktenseiten, wörtlich zitiert).
 
 **Neue Episode:** Drehbuch-JSON schreiben und für jede Szenen-`id` eine Komponente in
