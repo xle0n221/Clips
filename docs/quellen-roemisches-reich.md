@@ -52,7 +52,7 @@ Abweichungen (nicht im Video verwenden, nur „476“ sagen):
 
 ## 2. Story-Fakten (belegt, mit Humor-Potenzial)
 
-### F1 – Der Kaiser und seinen Hahn namens „Rom“ (410)
+### F1 – Der Kaiser und sein Hahn namens „Rom“ (410)
 Laut Prokop erfuhr Kaiser Honorius in Ravenna, „Rom sei untergegangen“, und dachte an seinen Hahn namens Rom.
 > “At that time they say that the Emperor Honorius in Ravenna received the message from one of the eunuchs, evidently a keeper of the poultry, that Rome had perished. And he cried out and said, "And yet it has just eaten from my hands!" For he had a very large cock, Rome by name; and the eunuch comprehending his words said that it was the city of Rome which had perished at the hands of Alaric, and the emperor with a sigh of relief answered quickly: "But I, my good fellow, thought that my fowl Rome had perished." So great, they say, was the folly with which this emperor was possessed.”
 

@@ -2009,16 +2009,18 @@ export const Pavement: React.FC<{ readonly size?: number; readonly color?: strin
 };
 
 /** Licht wie Mittagssonne über Rom: warmes Führungslicht, himmelblaue Aufhellung, harte Schatten. */
-export const RomeLights: React.FC<{ readonly sun?: P3; readonly intensity?: number }> = ({
-  sun = [-7, 12, 9],
-  intensity = 2.5,
-}) => (
+export const RomeLights: React.FC<{
+  readonly sun?: P3;
+  readonly intensity?: number;
+  /** Key-Light-Farbe: Mittag #FFF1D8, Niedergang/Abend #FFC98A */
+  readonly color?: string;
+}> = ({ sun = [-7, 12, 9], intensity = 2.5, color = "#FFF1D8" }) => (
   <>
     <hemisphereLight args={["#CFEFFF", "#C9965A", 1.0]} />
     <directionalLight
       position={sun}
       intensity={intensity}
-      color="#FFF1D8"
+      color={color}
       castShadow
       shadow-mapSize-width={2048}
       shadow-mapSize-height={2048}
