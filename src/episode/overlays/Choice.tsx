@@ -102,7 +102,7 @@ export const Choice: React.FC<{
   const cardH = n <= 2 ? 176 : n === 3 ? 138 : 124;
   const gap = n <= 2 ? 40 : 24;
   const titleH = spec.title ? 110 : 0;
-  const askH = ask ? 160 : 0;
+  const askH = ask ? 170 : 0;
   const block = titleH + n * cardH + (n - 1) * gap + askH;
   const ASK_LIMIT = 1380;
   const top0 = Math.max(440, Math.min(930 - block / 2, ASK_LIMIT - block));
@@ -219,7 +219,7 @@ export const Choice: React.FC<{
             textAlign: "center",
             fontSize: Math.min(
               72,
-              fitText({ text: spec.title, withinWidth: 940, fontFamily: CAPTION_FONT, fontWeight: 900 }).fontSize,
+              fitText({ text: spec.title, withinWidth: 860, fontFamily: CAPTION_FONT, fontWeight: 900 }).fontSize,
             ),
             lineHeight: 1.05,
             whiteSpace: "nowrap",
@@ -318,7 +318,7 @@ export const Choice: React.FC<{
               <div
                 style={{
                   position: "absolute",
-                  top: cardY(n - 1) + cardH + 40,
+                  top: cardY(n - 1) + cardH + 50,
                   left: 0,
                   right: 0,
                   display: "flex",
