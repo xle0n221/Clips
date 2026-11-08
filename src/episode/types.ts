@@ -8,6 +8,42 @@ export type Cue = {
   color?: string;
   sfx?: "boom" | "pop" | "whoosh" | "ding";
   beat?: string;
+  /** Overlays (siehe docs/schnittstelle.md, Abschnitt „Overlays“) */
+  hud?: { id: string; value: number };
+  choice?: ChoiceSpec;
+  label?: LabelSpec;
+  /** Wort in den Untertiteln hervorheben: true = Akzentgelb, oder eigene Farbe */
+  emph?: boolean | string;
+};
+
+export type HudSpec = {
+  title?: string;
+  counters?: {
+    id: string;
+    label: string;
+    value: number;
+    prefix?: string;
+    suffix?: string;
+  }[];
+  bars?: { id: string; label: string; value: number; color?: string }[];
+};
+
+export type ChoiceSpec = {
+  options: string[];
+  /** Index der Karte, die der Mauszeiger „klickt“; ohne pick zögert der Zeiger */
+  pick?: number;
+  /** Frage über den Karten, z. B. "WHAT WOULD YOU DO?" */
+  title?: string;
+  /** Hinweis unter den Karten; Standard ohne pick: "COMMENT A OR B"; false = keiner */
+  ask?: string | boolean;
+};
+
+export type LabelSpec = {
+  text: string;
+  color?: string;
+  /** Position der Pill-Spitze in Bildanteilen (0–1) */
+  x: number;
+  y: number;
 };
 
 export type Timeline = {
@@ -16,6 +52,8 @@ export type Timeline = {
   durationMs: number;
   scenes: { id: string; startMs: number; endMs: number }[];
   cues: Cue[];
+  /** Einsatz-Anzeige oben (optional, aus dem Drehbuch-Feld `hud`) */
+  hud?: HudSpec;
 };
 
 export type EpisodeData = {

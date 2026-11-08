@@ -34,3 +34,42 @@ scripts/finalize.sh out/<id>-raw.mp4 out/<id>.mp4
 | `out/<id>.mp4` | fertiges Video (wird nicht ins Repo committet) |
 
 Dauer: Neue Tonspur ~2 Min, Render ~40 Min für 87 s auf 4 CPU-Kernen ohne GPU (gemessen in dieser Umgebung).
+
+## Overlays (HUD, Auswahl, Pills, Akzentwörter)
+Alle Felder sind optional; ohne sie sieht ein Clip aus wie bisher (Sonnensystem per Standbild-Vergleich
+geprüft). Code: `src/episode/overlays/` (`Hud.tsx`, `Choice.tsx`, `Pill.tsx`, `Captions.tsx`,
+Verdrahtung `Overlays.tsx`). Vorführung: Komposition `OverlayDemo` (6,7 s, ohne Ton).
+Cues hängen wie Sticker an einem Wort der Szene (erstes Vorkommen) und landen mit `atMs` in `timeline.json`.
+
+```jsonc
+{
+  "hud": {                                   // Einsatz-Anzeige oben, ab ~150 px (darüber Plattform-UI)
+    "title": "THE LAST EMPEROR · PART 1",    // Serien-Titel-Pill (optional)
+    "counters": [{ "id": "year", "label": "YEAR", "value": 395, "suffix": " AD" }], // auch "prefix"
+    "bars": [{ "id": "empire", "label": "EMPIRE", "value": 0.8, "color": "#FFB627" }] // 0–1, max. 2
+  },
+  "scenes": [{
+    "id": "fall",
+    "text": "In 410, the *Goths* march into *Rome*. What do you do?",
+    "cues": [
+      { "word": "410",   "hud": { "id": "year", "value": 410 } },     // Zähler zählt hoch (~0,9 s)
+      { "word": "march", "hud": { "id": "empire", "value": 0.45 } },  // Balken ruckt, zeigt −35 %
+      { "word": "Goths", "label": { "text": "Goths", "color": "#FF5A5A", "x": 0.84, "y": 0.6 } },
+      { "word": "What",  "choice": { "title": "WHAT DO YOU DO?",
+                                     "options": ["Pay the Goths", "Raise an army"], "pick": 1 } },
+      { "word": "do",    "emph": true }                               // oder "emph": "#FF5A5A"
+    ]
+  }]
+}
+```
+
+| Element | Verhalten |
+| --- | --- |
+| `hud` (Drehbuch-Feld) | wird von `make_episode.py` nach `timeline.json` übernommen; bleibt das ganze Video sichtbar. Sticker rutschen dann unter das HUD (y ≈ 430 statt 300). |
+| Cue `hud: {id, value}` | Zähler zählen animiert (ganzzahlig, sonst 1 Nachkommastelle); Balken: Ruck/Schütteln bei Verlust, Aufpumpen bei Gewinn, heller Rest schrumpft nach, Änderung in % ersetzt kurz die Prozentzahl; unter 0,3 pulsiert der Balken rot. |
+| Cue `choice: {options, pick?, title?, ask?}` | 2–4 Karten A–D gleiten nacheinander herein; mit `pick` (Index ab 0) fährt der Mauszeiger hin und klickt (Karte wird gelb, andere grau). Ohne `pick` pendelt der Zeiger, darunter „COMMENT A OR B“ (bei 3/4 Karten „A, B OR C“ …). `ask`: eigener Text, `true` erzwingt den Hinweis auch mit `pick`, `false` blendet ihn aus. Endet mit der Szene oder der nächsten Auswahl derselben Szene. |
+| Cue `label: {text, color?, x, y}` | Pill mit Zipfel; (x, y) = Spitze des Zipfels in Bildanteilen (0–1), Pill sitzt darüber; Standardfarbe Akzentgelb, Schrift automatisch schwarz/weiß; endet mit der Szene. |
+| `*Wort*` im Text / Cue `emph` | Untertitel zeigen das Wort in Akzentgelb `#FFD23F` (oder Cue-Farbe), ohne Sternchen. Mehrere Wörter: `*Western Empire*`. Die Sprachausgabe bekommt den Text ohne Sternchen, der Whisper-Abgleich bleibt gleich. |
+
+Platz im Hochformat: HUD 150–400 px, Auswahlkarten um die Bildmitte (ab y ≈ 470), unteres Drittel
+bleibt den Untertiteln. Alle Animationen werden aus dem Frame berechnet (kein `useEffect`).

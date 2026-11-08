@@ -78,6 +78,19 @@ def align(script_words: list[str], whisper: list[dict]) -> list[dict]:
     return out
 
 
+def split_words(scene: str, text: str) -> list[dict]:
+    """Text -> Wörter ohne Sternchen; "*Rome*" bzw. "*Western Empire*" markieren Akzentwörter."""
+    out, inside = [], False
+    for raw in text.split():
+        stars = raw.count("*")
+        word = raw.replace("*", "")
+        emph = inside or stars > 0
+        inside = inside ^ (stars % 2 == 1)
+        if word:
+            out.append({"scene": scene, "word": word, "emph": emph})
+    return out
+
+
 def main(path: Path, voice_name: str | None = None, speed: float | None = None, save: bool = False) -> None:
     ep = json.loads(path.read_text())
     # Stimme/Tempo können per Kommandozeile (z. B. vom Dashboard) überschrieben werden
@@ -99,13 +112,13 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
 
     parts, scenes, words, cursor = [lead], [], [], len(lead)
     for sc in ep["scenes"]:
-        audio = voice.synth(sc["text"])
+        # Sternchen markieren Akzentwörter ("*Rome*") – nur für die Untertitel, nicht vorlesen
+        audio = voice.synth(sc["text"].replace("*", ""))
         start = cursor / SAMPLE_RATE * 1000
         parts += [audio, gap]
         cursor += len(audio) + len(gap)
         scenes.append({"id": sc["id"], "startMs": round(start), "endMs": round(cursor / SAMPLE_RATE * 1000)})
-        for w in sc["text"].split():
-            words.append({"scene": sc["id"], "word": w})
+        words += split_words(sc["id"], sc["text"])
         print(f"  {sc['id']:<8} {len(audio) / SAMPLE_RATE:5.2f} s")
     track = np.concatenate(parts)
     write_wav(out_dir / "voice.wav", track)
@@ -143,6 +156,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
             entry = {k: v for k, v in cue.items() if k != "word"}
             entry.update({"scene": sc["id"], "atMs": captions[hit]["startMs"]})
             cues.append(entry)
+        # Akzentwörter aus dem Text (*Wort*) als emph-Cues
+        cues += [{"emph": True, "scene": sc["id"], "atMs": captions[i]["startMs"]} for i in idx if words[i]["emph"]]
 
     timeline = {
         "id": ep["id"],
@@ -151,6 +166,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         "scenes": scenes,
         "cues": cues,
     }
+    if "hud" in ep:  # Einsatz-Anzeige (src/episode/overlays/Hud.tsx)
+        timeline["hud"] = ep["hud"]
     (out_dir / "timeline.json").write_text(json.dumps(timeline, indent=1) + "\n")
 
     make_music(out_dir / "music.wav", seconds=timeline["durationMs"] / 1000 + 1)

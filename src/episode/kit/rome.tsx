@@ -258,11 +258,18 @@ export const LegionaryHelmet: React.FC<{
   metal = ROME.iron,
   trim = ROME.bronze,
 }) => {
-  const bristle = useCanvasTexture(`crest-${crest}`, [64, 128], (c, w, h) => {
+  const bristle = useCanvasTexture(`crest-fan-${crest}`, [256, 256], (c, w, h) => {
     c.fillStyle = "#FFFFFF";
     c.fillRect(0, 0, w, h);
-    c.fillStyle = "rgba(0,0,0,0.16)";
-    for (let i = 0; i < 9; i++) c.fillRect((i * w) / 9, 0, 2, h);
+    c.strokeStyle = "rgba(0,0,0,0.2)";
+    c.lineWidth = 4;
+    for (let i = 0; i <= 14; i++) {
+      const ang = (i / 14) * Math.PI * 2;
+      c.beginPath();
+      c.moveTo(w / 2 + Math.cos(ang) * 30, h / 2 + Math.sin(ang) * 30);
+      c.lineTo(w / 2 + Math.cos(ang) * w, h / 2 + Math.sin(ang) * h);
+      c.stroke();
+    }
   });
   return (
     <group>
@@ -275,8 +282,8 @@ export const LegionaryHelmet: React.FC<{
         <torusGeometry args={[0.95, 0.07, 8, 40]} />
       </Part>
       {/* Stirnschild (Visierkante) */}
-      <Part color={trim} position={[0, 0.55, 0.86]} rotation={[0.35, 0, 0]} ink={0.06}>
-        <boxGeometry args={[0.9, 0.08, 0.22]} />
+      <Part color={trim} position={[0, 0.5, 0]} rotation={[0, 0, 0]} scale={[1, 0.18, 1]} ink={0.05} double>
+        <cylinderGeometry args={[0.98, 1.12, 0.5, 32, 1, true, -Math.PI * 0.28, Math.PI * 0.56]} />
       </Part>
       {/* Nackenschutz */}
       <Part color={metal} position={[0, 0.36, 0]} ink={0.03} double>
@@ -301,9 +308,16 @@ export const LegionaryHelmet: React.FC<{
         <cylinderGeometry args={[0.1, 0.14, 0.16, 12]} />
       </Part>
       {crest ? (
-        <group position={[0, 1.24, 0]} rotation={[0, transverse ? Math.PI / 2 : 0, 0]}>
-          <Part color={crest} scale={[0.2, 0.42, 0.95]} ink={0.045} map={bristle}>
-            <sphereGeometry args={[1, 24, 16, 0, Math.PI * 2, 0, Math.PI * 0.55]} />
+        <group position={[0, 1.2, 0]} rotation={[0, transverse ? 0 : Math.PI / 2, 0]}>
+          {/* Fächer: Halbscheibe, quer = zur Kamera hin breit */}
+          <Part
+            color={crest}
+            rotation={[Math.PI / 2, 0, 0]}
+            scale={transverse ? [0.82, 1, 0.78] : [0.95, 1, 0.72]}
+            ink={0.045}
+            map={bristle}
+          >
+            <cylinderGeometry args={[1, 1, 0.2, 32, 1, false, Math.PI / 2, Math.PI]} />
           </Part>
         </group>
       ) : null}
@@ -325,16 +339,20 @@ export const LaurelWreath: React.FC<{
       const a = side * (Math.PI - (i / (n - 1)) * (Math.PI - 0.2));
       const up = i % 2 === 0 ? 0.07 : -0.05;
       leaves.push(
-        <Part
+        <group
           key={`${side}-${i}`}
-          color={color}
           position={[Math.sin(a) * r, y + up, Math.cos(a) * r]}
-          rotation={[0, a + side * 0.5, side * (i % 2 === 0 ? 0.5 : -0.4)]}
-          scale={[0.07, 0.045, 0.17]}
-          ink={0.12}
+          rotation={[0, a + Math.PI / 2, 0]}
         >
-          <sphereGeometry args={[1, 12, 8]} />
-        </Part>,
+          <Part
+            color={color}
+            rotation={[side * (i % 2 === 0 ? -0.55 : 0.45), 0, 0]}
+            scale={[0.035, 0.075, 0.19]}
+            ink={0.14}
+          >
+            <sphereGeometry args={[1, 12, 8]} />
+          </Part>
+        </group>,
       );
     }
   }
@@ -818,8 +836,8 @@ export const RoundShield: React.FC<{
       <Part color="#FFFFFF" map={tex} rotation={[Math.PI / 2, Math.PI / 2, 0]} ink={0.035}>
         <cylinderGeometry args={[0.62, 0.62, 0.07, 32]} />
       </Part>
-      <Part color={ROME.ironDark} position={[0, 0, 0.6]} rotation={[Math.PI / 2, 0, 0]} scale={[1, 1, 1]} ink={0}>
-        <torusGeometry args={[0.62, 0.04, 6, 40]} />
+      <Part color={ROME.ironDark} ink={0}>
+        <torusGeometry args={[0.62, 0.045, 6, 40]} />
       </Part>
       <Part color={ROME.ironDark} position={[0, 0, 0.04]} ink={0.08}>
         <sphereGeometry args={[0.15, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2]} />
@@ -852,12 +870,22 @@ const armComp = (arms: [number, number] | undefined, i: number) =>
 
 /** Legionär: rote Tunika, Schienenpanzer, Helm mit Busch, Gladius + Scutum. */
 export const Legionary: React.FC<
-  ToonieProps & { readonly transverse?: boolean; readonly shield?: boolean }
-> = ({ transverse = false, shield = true, ...p }) => (
+  ToonieProps & {
+    readonly transverse?: boolean;
+    readonly shield?: boolean;
+    /** Hauptfigur: Querbusch + gelbes Halstuch (Erkennungsmerkmal in jeder Einstellung). */
+    readonly hero?: boolean;
+  }
+> = ({ transverse, shield = true, hero = false, ...p }) => (
   <Toonie
     suit={ROME.legionRed}
-    head={<LegionaryHelmet transverse={transverse} />}
-    body={<Lorica />}
+    head={<LegionaryHelmet transverse={transverse ?? hero} />}
+    body={
+      <>
+        <Lorica />
+        {hero ? <Focale frame={p.frame} /> : null}
+      </>
+    }
     hands={[
       <group key="r" rotation={[0, 0, armComp(p.arms, 0)]}>
         <Gladius />
@@ -960,7 +988,7 @@ export const RomeSky: React.FC<{
 }> = ({
   top = ROME.skyTop,
   bottom = ROME.skyBottom,
-  sun = [-40, 55, -120],
+  sun = [-30, 60, -150],
   clouds = true,
   frame = 0,
 }) => {
@@ -994,14 +1022,25 @@ export const RomeSky: React.FC<{
 /** Weiche Cartoon-Sonne: Scheibe + Lichthof (ohne Kontur). */
 export const SoftSun: React.FC<{ readonly position: P3; readonly radius?: number }> = ({
   position,
-  radius = 9,
+  radius = 7,
 }) => (
   <group position={position}>
     <mesh>
       <circleGeometry args={[radius, 48]} />
       <meshBasicMaterial color={ROME.sun} fog={false} />
     </mesh>
-    <Glow position={[0, 0, -1]} radius={radius * 1.15} color="#FFE7A0" intensity={0.8} />
+    {[1.35, 1.8, 2.5].map((k, i) => (
+      <mesh key={k} position={[0, 0, -1 - i]}>
+        <circleGeometry args={[radius * k, 48]} />
+        <meshBasicMaterial
+          color="#FFF6D0"
+          transparent
+          opacity={0.32 - i * 0.09}
+          depthWrite={false}
+          fog={false}
+        />
+      </mesh>
+    ))}
   </group>
 );
 
@@ -1083,7 +1122,7 @@ export const Colosseum: React.FC<{
   rotation = [0, 0, 0],
   scale = 1,
   ruin = 0,
-  ruinAt = Math.PI * 0.62,
+  ruinAt = Math.PI * 0.22,
   color = ROME.sandstone,
   segments = 32,
 }) => {
@@ -1354,7 +1393,7 @@ export const Temple: React.FC<{
       </Part>
       <mesh position={[0, podium + 1.1, -1.6 + (D - 2.6) / 2 + 0.01]}>
         <planeGeometry args={[1.1, 2.2]} />
-        <meshBasicMaterial color={ROME.shadowWarm ?? "#5B3A22"} />
+        <meshBasicMaterial color={"#5B3A22"} />
       </mesh>
       {/* Säulen vorn + an den Seiten */}
       {Array.from({ length: columns }, (_, i) => {
@@ -1770,7 +1809,7 @@ export const SpqrBanner: React.FC<{
     c.arc(w / 2, h * 0.5, 82, Math.PI * 0.62, Math.PI * 2.38);
     c.stroke();
     c.fillStyle = ROME.gold;
-    c.font = "bold 78px 'DejaVu Serif', 'Times New Roman', serif";
+    c.font = "bold 58px 'DejaVu Serif', 'Times New Roman', serif";
     c.textAlign = "center";
     c.textBaseline = "middle";
     c.fillText(text, w / 2, h * 0.5 + 4);
@@ -1789,7 +1828,7 @@ export const SpqrBanner: React.FC<{
           <sphereGeometry args={[0.07, 10, 8]} />
         </Part>
       ))}
-      <group position={[0, 3.52, 0.05]} rotation={[sway, sway * 0.6, 0]}>
+      <group position={[0, 3.52, 0.12]} rotation={[sway, sway * 0.6, 0]}>
         <Part color="#FFFFFF" map={tex} position={[0, -0.85, 0]} ink={0.025}>
           <boxGeometry args={[1.3, 1.62, 0.04]} />
         </Part>
@@ -1991,3 +2030,302 @@ export const RomeLights: React.FC<{ readonly sun?: P3; readonly intensity?: numb
     />
   </>
 );
+
+/* ------------------------------------------------------------------ */
+/* Erkennungsmerkmal, Licht-Akzente, Tiefe                              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Halstuch (focale) – Erkennungsmerkmal der Hauptfigur: in jeder Einstellung gleich,
+ * gelb, damit es sich vom Legionärsrot und vom Sandstein abhebt.
+ */
+export const Focale: React.FC<{ readonly color?: string; readonly frame?: number }> = ({
+  color = "#FFC928",
+  frame = 0,
+}) => (
+  <group>
+    <Part color={color} position={[0, 2.47, 0]} rotation={[Math.PI / 2, 0, 0]} ink={0.05}>
+      <torusGeometry args={[0.42, 0.11, 10, 28]} />
+    </Part>
+    <Part color={color} position={[0.16, 2.38, 0.5]} ink={0.08}>
+      <sphereGeometry args={[0.11, 12, 10]} />
+    </Part>
+    {[-1, 1].map((sd) => (
+      <Part
+        key={sd}
+        color={color}
+        position={[0.16 + sd * 0.08, 2.15, 0.56]}
+        rotation={[0.15, 0, sd * 0.25 + Math.sin(frame * 0.15 + sd) * 0.06]}
+        ink={0.06}
+      >
+        <boxGeometry args={[0.13, 0.42, 0.04]} />
+      </Part>
+    ))}
+  </group>
+);
+
+/** Tiefenstaffelung: warmer, heller Dunst – Hintergrund wird weicher und zurückgenommen. */
+export const RomeFog: React.FC<{ readonly near?: number; readonly far?: number; readonly color?: string }> = ({
+  near = 22,
+  far = 110,
+  color = ROME.fog,
+}) => <fog attach="fog" args={[color, near, far]} />;
+
+/**
+ * Rotes Gefahren-Akzentlicht (Brand, Plünderung, Alarm): pulsierendes Punktlicht +
+ * sichtbarer Lichthof. Nur für Gefahr verwenden – Rot ist sonst Legion/Rom.
+ */
+export const DangerLight: React.FC<{
+  readonly frame: number;
+  readonly position: P3;
+  readonly intensity?: number;
+  readonly glow?: boolean;
+}> = ({ frame, position, intensity = 1, glow = true }) => {
+  const pulse = 0.75 + Math.sin(frame * 0.35) * 0.15 + Math.sin(frame * 1.3) * 0.1;
+  return (
+    <group position={position}>
+      <pointLight color="#FF3B1F" intensity={14 * intensity * pulse} distance={12} decay={1.8} />
+      {glow ? <Glow position={[0, 0, 0]} radius={0.6} color="#FF4A1C" intensity={pulse * intensity} /> : null}
+    </group>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* Info-Grafik-Bausteine (Cel-Stil)                                     */
+/* ------------------------------------------------------------------ */
+
+const ringHalf = (
+  rx: number,
+  ry: number,
+  ix: number,
+  iy: number,
+  side: -1 | 1,
+  gap: number,
+  depth: number,
+) => {
+  // halber elliptischer Ring um das „Mittelmeer“; side −1 = West (links), +1 = Ost
+  const s = new Shape();
+  const steps = 28;
+  const pts: [number, number][] = [];
+  for (let i = 0; i <= steps; i++) {
+    const a = Math.PI / 2 - (i / steps) * Math.PI;
+    pts.push([side * (Math.cos(a) * rx + gap), Math.sin(a) * ry]);
+  }
+  for (let i = steps; i >= 0; i--) {
+    const a = Math.PI / 2 - (i / steps) * Math.PI;
+    pts.push([side * (Math.cos(a) * ix + gap), Math.sin(a) * iy]);
+  }
+  s.moveTo(pts[0][0], pts[0][1]);
+  pts.slice(1).forEach(([x, y]) => s.lineTo(x, y));
+  const g = new ExtrudeGeometry(s, { depth, bevelEnabled: false });
+  g.translate(-side * (rx + ix) * 0.25, 0, -depth / 2);
+  return g;
+};
+
+const mixHex = (a: string, b: string, t: number) => {
+  const pa = parseInt(a.slice(1), 16);
+  const pb = parseInt(b.slice(1), 16);
+  const ch = (sh: number) =>
+    Math.round(((pa >> sh) & 255) * (1 - t) + ((pb >> sh) & 255) * t);
+  return `#${((ch(16) << 16) | (ch(8) << 8) | ch(0)).toString(16).replace(/^/, "000000").slice(-6)}`;
+};
+
+/**
+ * Schematische Reichskarte als Tischmodell: Reich = Ring ums Mittelmeer,
+ * West (rot, mit Italien-Stiefel und ROMA) und Ost (purpur, mit CONSTANTINOPOLIS).
+ * `split` 0..1 rückt die Hälften auseinander (395 n. Chr.), `westFall` 0..1 lässt den
+ * Westen grau werden und absinken (476 n. Chr.). Liegt flach; Kamera schräg von oben.
+ * Bewusst schematisch – keine echte Küstenlinie.
+ */
+export const EmpireMap: React.FC<{
+  readonly frame?: number;
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly split?: number;
+  readonly westFall?: number;
+  readonly labels?: boolean;
+}> = ({
+  frame = 0,
+  position = [0, 0, 0],
+  rotation,
+  scale = 1,
+  split = 0,
+  westFall = 0,
+  labels = true,
+}) => {
+  const geos = useMemo(
+    () => ({
+      west: ringHalf(3.4, 2.0, 2.3, 1.05, -1, 0.04, 0.3),
+      east: ringHalf(3.4, 2.0, 2.3, 1.05, 1, 0.04, 0.3),
+      italy: landShape(ITALY, 0.3),
+      sicily: landShape(SICILY, 0.3),
+      greece: landShape(GREECE, 0.3),
+    }),
+    [],
+  );
+  const label = (t: string) => (c: CanvasRenderingContext2D, w: number, h: number) => {
+    c.clearRect(0, 0, w, h);
+    c.font = "900 64px 'DejaVu Sans', sans-serif";
+    c.textAlign = "center";
+    c.textBaseline = "middle";
+    c.lineWidth = 14;
+    c.strokeStyle = INK;
+    c.strokeText(t, w / 2, h / 2);
+    c.fillStyle = "#FFFFFF";
+    c.fillText(t, w / 2, h / 2);
+  };
+  const tWest = useCanvasTexture("map-west", [512, 96], label("WEST"));
+  const tEast = useCanvasTexture("map-east", [512, 96], label("EAST"));
+  const gap = split * 0.9;
+  const westCol = mixHex(ROME.legionRed, "#8A8A8A", westFall);
+  const sink = -westFall * 0.25;
+  const wobble = westFall > 0 ? Math.sin(frame * 0.6) * 0.02 * (1 - westFall) : 0;
+  // Ring-Mitte liegt in lokalen Koordinaten nach translate bei ±(rx+ix)/4
+  const half = (3.4 + 2.3) * 0.25;
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      {/* Tischplatte (Pergament) */}
+      <Part color={ROME.parchment} position={[0, -0.12, 0]} ink={0.015}>
+        <boxGeometry args={[9.2, 0.24, 5.6]} />
+      </Part>
+      {/* Meer */}
+      <mesh position={[0, 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[2.9, 1.55, 1]}>
+        <circleGeometry args={[1, 48]} />
+        <meshToonMaterial color="#5DB7E3" gradientMap={toonGradient()} />
+      </mesh>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        {/* West */}
+        <group position={[-half - gap, 0, 0.15 + sink]} rotation={[0, 0, wobble]}>
+          <GeoPart geo={geos.west} color={westCol} ink={0.02} />
+          {/* Italien + Sizilien (Kartenkoordinaten, daher +half) */}
+          <GeoPart geo={geos.italy} color={westCol} position={[half, 0, 0]} ink={0.02} />
+          <GeoPart geo={geos.sicily} color={westCol} position={[half, 0, 0]} ink={0.03} />
+          <Pin position={[half + 0.02, 0.55, 0.15]} color={ROME.gold} />
+          {labels ? (
+            <mesh position={[half - 1.3, -1.55, 0.17]}>
+              <planeGeometry args={[2.1, 0.4]} />
+              <meshBasicMaterial map={tWest} transparent depthWrite={false} />
+            </mesh>
+          ) : null}
+        </group>
+        {/* Ost */}
+        <group position={[half + gap, 0, 0.15]}>
+          <GeoPart geo={geos.east} color={ROME.purple} ink={0.02} />
+          <GeoPart geo={geos.greece} color={ROME.purple} position={[-half, 0, 0]} ink={0.02} />
+          <Pin position={[-half + 1.45, 1.3, 0.15]} color={ROME.gold} />
+          {labels ? (
+            <mesh position={[-half + 1.3, -1.55, 0.17]}>
+              <planeGeometry args={[2.1, 0.4]} />
+              <meshBasicMaterial map={tEast} transparent depthWrite={false} />
+            </mesh>
+          ) : null}
+        </group>
+      </group>
+    </group>
+  );
+};
+
+// Schematische Landformen in Kartenkoordinaten (Mitte Mittelmeer = 0,0; Norden = +y)
+const ITALY: [number, number][] = [
+  [-0.6, 1.2], [-0.1, 1.2], [0.15, 0.85], [0.45, 0.45], [0.8, 0.15], [0.95, -0.15],
+  [0.75, -0.12], [0.62, -0.38], [0.48, -0.32], [0.42, -0.02], [0.12, 0.3], [-0.2, 0.6], [-0.5, 0.95],
+];
+const SICILY: [number, number][] = [[0.15, -0.45], [0.6, -0.42], [0.45, -0.72]];
+const GREECE: [number, number][] = [
+  [1.1, 1.2], [1.55, 1.15], [1.45, 0.75], [1.6, 0.35], [1.35, 0.15], [1.25, 0.45], [1.05, 0.3], [1.1, 0.8],
+];
+const landShape = (pts: [number, number][], depth: number) => {
+  const s = new Shape();
+  s.moveTo(pts[0][0], pts[0][1]);
+  pts.slice(1).forEach(([x, y]) => s.lineTo(x, y));
+  const g = new ExtrudeGeometry(s, { depth, bevelEnabled: false });
+  g.translate(0, 0, -depth / 2);
+  return g;
+};
+
+/** Stecknadel für Städte auf der Karte (stehend in lokaler z-Richtung). */
+const Pin: React.FC<{ readonly position: P3; readonly color: string }> = ({ position, color }) => (
+  <group position={position} rotation={[Math.PI / 2, 0, 0]}>
+    <Part color={INK} position={[0, 0.25, 0]} ink={0}>
+      <cylinderGeometry args={[0.03, 0.03, 0.5, 6]} />
+    </Part>
+    <Part color={color} position={[0, 0.55, 0]} ink={0.1}>
+      <sphereGeometry args={[0.16, 16, 12]} />
+    </Part>
+  </group>
+);
+
+/**
+ * Zeitleisten-Stele: hohe Marmorstele mit eingemeißelten Jahreszahlen (oben alt, unten neu),
+ * goldener Marker gleitet zu `at` (Index, auch Zwischenwerte). Hochformat-tauglich.
+ */
+export const TimelineStele: React.FC<{
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly years?: readonly string[];
+  readonly at?: number;
+  readonly frame?: number;
+}> = ({
+  position = [0, 0, 0],
+  rotation,
+  scale = 1,
+  years = ["27 BC", "117 AD", "285 AD", "395 AD", "410 AD", "476 AD"],
+  at = 0,
+  frame = 0,
+}) => {
+  const H = 5.2;
+  const cap = useMemo(() => gable(2.0, 0.6, 0.5), []);
+  const tex = useCanvasTexture(`stele-${years.join("|")}`, [256, 640], (c, w, h) => {
+    c.fillStyle = ROME.marble;
+    c.fillRect(0, 0, w, h);
+    c.fillStyle = "rgba(120,100,70,0.12)";
+    for (let i = 0; i < 30; i++) c.fillRect(0, i * 22, w, 2);
+    c.strokeStyle = ROME.marbleShade;
+    c.lineWidth = 10;
+    c.beginPath();
+    c.moveTo(60, 40);
+    c.lineTo(60, h - 40);
+    c.stroke();
+    c.fillStyle = "#6B5235";
+    c.font = "bold 40px 'DejaVu Serif', 'Times New Roman', serif";
+    c.textBaseline = "middle";
+    years.forEach((y, i) => {
+      const yy = 60 + (i * (h - 120)) / Math.max(1, years.length - 1);
+      c.fillRect(48, yy - 3, 26, 6);
+      c.fillText(y, 90, yy);
+    });
+  });
+  const n = Math.max(1, years.length - 1);
+  const k = Math.min(Math.max(at, 0), n) / n;
+  // Textur 640 px ↔ Höhe H; Marken von 60 px bis 580 px
+  const markerY = H / 2 - (60 / 640) * H - k * ((520 / 640) * H);
+  const bob = Math.sin(frame * 0.2) * 0.03;
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      <Part color={ROME.marbleShade} position={[0, 0.2, 0]} ink={0.03}>
+        <boxGeometry args={[2.2, 0.4, 1.0]} />
+      </Part>
+      <group position={[0, 0.4 + H / 2, 0]}>
+        <Part color="#FFFFFF" map={tex} ink={0.025}>
+          <boxGeometry args={[1.8, H, 0.5]} />
+        </Part>
+        <Part color={ROME.marble} position={[0, H / 2 + 0.12, 0]} ink={0.04}>
+          <boxGeometry args={[2.0, 0.24, 0.6]} />
+        </Part>
+        <GeoPart
+          geo={cap}
+          color={ROME.marble}
+          position={[0, H / 2 + 0.24 + 0.2, 0]}
+          ink={0.04}
+        />
+        <group position={[-0.95 + bob, markerY, 0.3]}>
+          <Part color={ROME.gold} rotation={[0, 0, -Math.PI / 2]} ink={0.08}>
+            <coneGeometry args={[0.2, 0.42, 3]} />
+          </Part>
+        </group>
+      </group>
+    </group>
+  );
+};

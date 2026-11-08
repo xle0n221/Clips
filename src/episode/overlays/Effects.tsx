@@ -16,7 +16,9 @@ export const Sticker: React.FC<{
   readonly color: string;
   readonly duration: number;
   readonly tilt: number;
-}> = ({ text, color, duration, tilt }) => {
+  /** Abstand von oben; mit Einsatz-Anzeige (HUD) rutscht der Sticker darunter */
+  readonly top?: number;
+}> = ({ text, color, duration, tilt, top = 300 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 9, stiffness: 180 } });
@@ -35,7 +37,7 @@ export const Sticker: React.FC<{
   const dark =
     color === "#FFFFFF" || color.startsWith("#FF") || color.startsWith("#FFE");
   return (
-    <AbsoluteFill style={{ alignItems: "center", paddingTop: 300 }}>
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: top }}>
       <div
         style={{
           transform: `scale(${enter * exit}) rotate(${tilt + wobble}deg)`,
