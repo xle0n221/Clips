@@ -1,0 +1,429 @@
+<title>Clips Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: eine schmale Spalte, oben Eingabe, darunter Karten nach Dringlichkeit (Freigabe zuerst). */
+:root {
+  --bg: #f3f4f7;
+  --surface: #ffffff;
+  --fg: #171a24;
+  --muted: #5d6273;
+  --line: #dfe2ea;
+  --accent: #3442c9;
+  --accent-fg: #ffffff;
+  --accent-soft: #e6e8fa;
+  --ok: #1d7a46;
+  --ok-soft: #e1f2e8;
+  --warn: #9a5a00;
+  --warn-soft: #fff1d9;
+  --bad: #b3261e;
+  --bad-soft: #fbe5e3;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12141b; --surface: #1b1e28; --fg: #e9ebf2; --muted: #9ba0b2; --line: #2d3140;
+    --accent: #8f9bff; --accent-fg: #10132a; --accent-soft: #262b4d;
+    --ok: #6fd39a; --ok-soft: #173424; --warn: #f2b65a; --warn-soft: #3a2b12;
+    --bad: #ff8a80; --bad-soft: #3e1d1b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12141b; --surface: #1b1e28; --fg: #e9ebf2; --muted: #9ba0b2; --line: #2d3140;
+  --accent: #8f9bff; --accent-fg: #10132a; --accent-soft: #262b4d;
+  --ok: #6fd39a; --ok-soft: #173424; --warn: #f2b65a; --warn-soft: #3a2b12;
+  --bad: #ff8a80; --bad-soft: #3e1d1b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 20px; }
+header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+h1 { font-family: var(--font-display); font-size: 1.75rem; margin: 0; letter-spacing: -0.01em; }
+.summary { color: var(--muted); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+.summary b { color: var(--warn); font-weight: 600; }
+
+/* Eingabe */
+form.add { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 10px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.row > * { min-width: 0; }
+label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+input, textarea {
+  font: inherit; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%;
+}
+textarea { resize: vertical; min-height: 72px; }
+input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#topic { flex: 1 1 260px; font-size: 1rem; }
+#len { flex: 0 0 120px; }
+#note { flex: 1 1 200px; }
+button {
+  font: inherit; font-weight: 600; cursor: pointer; border-radius: 8px; padding: 10px 16px;
+  border: 1px solid transparent; min-height: 44px;
+}
+button:disabled { opacity: .55; cursor: default; }
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+.btn-ok { background: var(--ok); color: var(--surface); }
+.btn-bad { background: var(--surface); color: var(--bad); border-color: var(--bad); }
+.btn-quiet { background: transparent; color: var(--muted); border-color: var(--line); font-weight: 500; padding: 6px 12px; min-height: 36px; }
+.hint { color: var(--muted); font-size: 0.8125rem; margin: 0; }
+.msg { font-size: 0.875rem; margin: 0; }
+.msg.err { color: var(--bad); }
+
+/* Karten */
+#list { display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.card.attn { border-color: var(--warn); box-shadow: 0 0 0 1px var(--warn) inset; }
+.card-head { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.card-head > div { min-width: 0; }
+h2 { font-family: var(--font-display); font-size: 1.2rem; margin: 0; text-wrap: balance; overflow-wrap: anywhere; }
+.meta { color: var(--muted); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.meta span + span::before { content: " · "; }
+.pill { flex: none; font-size: 0.75rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.idle { background: var(--bg); color: var(--muted); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.steps li { font-size: 0.75rem; color: var(--muted); display: grid; gap: 5px; min-width: 0; }
+.steps li::before { content: ""; height: 6px; border-radius: 3px; background: var(--line); }
+.steps li.past::before { background: var(--ok); }
+.steps li.now::before { background: var(--accent); }
+.steps li.now { color: var(--fg); font-weight: 600; }
+.steps li.fail::before { background: var(--bad); }
+.steps li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.status { margin: 0; overflow-wrap: anywhere; }
+.status.err { color: var(--bad); }
+.note { margin: 0; color: var(--muted); font-size: 0.875rem; overflow-wrap: anywhere; }
+
+.review { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 10px; min-width: 0; }
+.review h3 { margin: 0; font-size: 0.8125rem; text-transform: uppercase; letter-spacing: .05em; color: var(--warn); }
+.review .rtitle { font-weight: 600; margin: 0; }
+.script { font-family: var(--font-body); white-space: pre-wrap; font-size: 0.9375rem; background: var(--bg); border-radius: 8px; padding: 12px; margin: 0; max-height: 360px; overflow: auto; overflow-wrap: anywhere; }
+.review img { width: 100%; border-radius: 8px; border: 1px solid var(--line); display: block; }
+details { font-size: 0.875rem; }
+summary { cursor: pointer; font-weight: 600; padding-block: 4px; }
+.sources { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 10px; }
+.sources li { overflow-wrap: anywhere; }
+.sources q { color: var(--muted); display: block; font-style: italic; }
+a { color: var(--accent); }
+.decide { display: grid; gap: 8px; }
+.decide .row button { flex: 1 1 140px; }
+.saved { background: var(--bg); border-radius: 8px; padding: 10px 12px; display: grid; gap: 6px; }
+.saved p { margin: 0; overflow-wrap: anywhere; }
+.saved .who { font-weight: 600; }
+.saved .who.ok { color: var(--ok); }
+.saved .who.bad { color: var(--bad); }
+.done-box { display: grid; gap: 8px; }
+.done-box video { width: 100%; max-width: 360px; border-radius: 8px; background: var(--bg); }
+.tc { font-family: var(--font-mono); font-size: 0.8125rem; }
+.foot { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
+@media (max-width: 480px) {
+  .steps li span { font-size: 0.6875rem; }
+  #len { flex: 1 1 120px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: border-color .2s; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Clips Studio</h1>
+    <div class="summary" id="summary">Lade …</div>
+  </header>
+
+  <form class="add" id="addForm" autocomplete="off">
+    <div class="row">
+      <label class="sr" for="topic">Thema</label>
+      <input id="topic" name="topic" placeholder="Neues Thema, z. B. Wie Haie schlafen" maxlength="140" required>
+    </div>
+    <div class="row">
+      <label class="sr" for="len">Wunschlänge in Sekunden</label>
+      <input id="len" name="len" type="number" inputmode="numeric" min="10" max="900" step="5" placeholder="Länge (s)">
+      <label class="sr" for="note">Notiz</label>
+      <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
+      <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
+    </div>
+    <p class="msg" id="addMsg" role="status"></p>
+  </form>
+
+  <section id="list" aria-live="polite">
+    <p class="empty" id="empty">Noch keine Videos. Trage oben ein Thema ein – eine Claude-Sitzung übernimmt es dann.</p>
+  </section>
+</div>
+
+<script>
+(() => {
+  const STEPS = [
+    ["research", "Recherche"], ["script", "Drehbuch"], ["scenes", "Szenen"], ["render", "Render"], ["done", "Fertig"]
+  ];
+  const STAGE_LABEL = { queued: "Wartet", research: "Recherche", script: "Drehbuch", scenes: "Szenen", render: "Render", done: "Fertig", error: "Fehler" };
+  const REPO = "https://github.com/xle0n221/clips/tree/";
+
+  const $ = (id) => document.getElementById(id);
+  const listEl = $("list"), emptyEl = $("empty"), summaryEl = $("summary");
+  let db = null, canWrite = true, docs = [], loaded = false;
+  const drafts = {};      // Feedback-Entwürfe je Video, überleben Neuzeichnen
+  const busy = {};        // laufende Schreibvorgänge je Video
+  const confirmDel = {};  // zweistufiges Entfernen
+
+  function el(tag, attrs, ...kids) {
+    const n = document.createElement(tag);
+    if (attrs) for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k === "class") n.className = v;
+      else if (k === "text") n.textContent = v;
+      else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+      else n.setAttribute(k, v === true ? "" : v);
+    }
+    for (const c of kids.flat()) if (c != null && c !== false) n.append(c.nodeType ? c : document.createTextNode(String(c)));
+    return n;
+  }
+  const safeUrl = (u) => {
+    if (typeof u !== "string" || !u) return null;
+    if (u.startsWith("/_blob/") || u.startsWith("data:image/")) return u;
+    try { const p = new URL(u); return (p.protocol === "https:" || p.protocol === "http:") ? p.href : null; } catch { return null; }
+  };
+  function ago(iso) {
+    const t = Date.parse(iso); if (!t) return "–";
+    const s = Math.round((Date.now() - t) / 1000);
+    if (s < 60) return "gerade eben";
+    const m = Math.round(s / 60); if (m < 60) return `vor ${m} Min.`;
+    const h = Math.round(m / 60); if (h < 24) return `vor ${h} Std.`;
+    return new Date(t).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  }
+  const absTime = (iso) => { const t = Date.parse(iso); return t ? new Date(t).toLocaleString("de-DE") : ""; };
+  const tc = (sec) => { sec = Math.round(sec); return `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`; };
+  const waiting = (v) => v.review && !v.decision && v.stage !== "done";
+  function rank(v) {
+    if (waiting(v)) return 0;
+    if (v.stage === "error") return 1;
+    if (["research", "script", "scenes", "render"].includes(v.stage)) return 2;
+    if (v.stage === "queued") return 3;
+    return 4;
+  }
+  function slugify(s) {
+    const map = { "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" };
+    let x = s.toLowerCase().replace(/[äöüß]/g, (c) => map[c]).normalize("NFKD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/-+$/, "");
+    if (!x) x = "video";
+    const ids = new Set(docs.map((d) => d.id));
+    let id = x, i = 2;
+    while (ids.has(id)) id = `${x}-${i++}`;
+    return id;
+  }
+
+  function steps(stage) {
+    const idx = STEPS.findIndex(([k]) => k === stage);
+    return el("ol", { class: "steps", "aria-label": "Fortschritt" },
+      STEPS.map(([k, label], i) => {
+        let cls = "";
+        if (stage === "done") cls = "past";
+        else if (stage === "error") cls = "";
+        else if (idx >= 0 && i < idx) cls = "past";
+        else if (i === idx) cls = "now";
+        return el("li", { class: cls, "aria-current": i === idx && stage !== "done" ? "step" : null }, el("span", { text: label }));
+      }));
+  }
+
+  function pill(v) {
+    if (waiting(v)) return el("span", { class: "pill warn", text: "Freigabe nötig" });
+    if (v.review && v.decision && v.stage !== "done") return el("span", { class: "pill", text: "Wartet auf Claude" });
+    const cls = v.stage === "done" ? "ok" : v.stage === "error" ? "bad" : v.stage === "queued" ? "idle" : "";
+    return el("span", { class: "pill " + cls, text: STAGE_LABEL[v.stage] || v.stage || "?" });
+  }
+
+  function reviewBlock(v) {
+    const r = v.review;
+    const box = el("div", { class: "review" });
+    box.append(el("h3", { text: r.kind === "contactsheet" ? "Kontaktabzug prüfen" : "Drehbuch prüfen" }));
+    if (r.title) box.append(el("p", { class: "rtitle", text: r.title }));
+    const img = safeUrl(r.imageUrl);
+    if (img) box.append(el("a", { href: img, target: "_blank", rel: "noopener" }, el("img", { src: img, alt: r.title || "Kontaktabzug", loading: "lazy" })));
+    if (r.text) box.append(el("pre", { class: "script", text: r.text }));
+    if (Array.isArray(r.sources) && r.sources.length) {
+      box.append(el("details", null,
+        el("summary", { text: `Quellen (${r.sources.length})` }),
+        el("ol", { class: "sources" }, r.sources.map((s) => {
+          const u = safeUrl(s && s.url);
+          return el("li", null,
+            el("span", { text: (s && s.claim) || "" }),
+            s && s.quote ? el("q", { text: s.quote }) : null,
+            u ? el("a", { href: u, target: "_blank", rel: "noopener noreferrer", text: u.replace(/^https?:\/\//, "") }) : null);
+        }))));
+    }
+
+    if (v.decision) {
+      const ok = v.decision.value === "ok";
+      box.append(el("div", { class: "saved" },
+        el("p", { class: "who " + (ok ? "ok" : "bad"), text: (ok ? "OK" : "Nicht OK") + " – Entscheidung gespeichert, wartet auf Claude" }),
+        v.decision.feedback ? el("p", { text: "Feedback: " + v.decision.feedback }) : null,
+        el("p", { class: "meta", text: absTime(v.decision.at) }),
+        canWrite ? el("div", null, el("button", { class: "btn-quiet", type: "button", disabled: busy[v.id], onclick: () => decide(v, null) , text: "Entscheidung zurücknehmen" })) : null));
+    } else if (canWrite) {
+      const fbId = "fb-" + v.id;
+      const ta = el("textarea", { id: fbId, placeholder: "Feedback (bei „Nicht OK“ bitte angeben, was geändert werden soll)", maxlength: "4000",
+        oninput: (e) => { drafts[v.id] = e.target.value; } });
+      ta.value = drafts[v.id] || "";
+      const msg = el("p", { class: "msg err", role: "status" });
+      const send = (value) => {
+        const fb = ta.value.trim();
+        if (value === "not_ok" && !fb) { msg.textContent = "Bitte kurz schreiben, was nicht passt."; ta.focus(); return; }
+        decide(v, { value, feedback: fb, at: new Date().toISOString() }, msg);
+      };
+      box.append(el("div", { class: "decide" },
+        el("label", { class: "sr", for: fbId, text: "Feedback" }), ta,
+        el("div", { class: "row" },
+          el("button", { class: "btn-ok", type: "button", disabled: busy[v.id], onclick: () => send("ok"), text: "OK" }),
+          el("button", { class: "btn-bad", type: "button", disabled: busy[v.id], onclick: () => send("not_ok"), text: "Nicht OK" })),
+        msg));
+    } else {
+      box.append(el("p", { class: "hint", text: "Nur Lesezugriff – Entscheidungen kann hier nur der Besitzer treffen." }));
+    }
+    return box;
+  }
+
+  function doneBlock(v) {
+    const box = el("div", { class: "done-box" });
+    const prev = safeUrl(v.previewUrl);
+    if (prev) box.append(/\.(png|jpe?g|webp|gif)(\?|$)/i.test(prev) || prev.startsWith("data:image/")
+      ? el("img", { src: prev, alt: "Vorschau", loading: "lazy" })
+      : el("video", { src: prev, controls: true, preload: "metadata", playsinline: true }));
+    box.append(el("p", { class: "status", text: "Das fertige Video liegt in der Claude-App (Sitzung des Bearbeiters)." }));
+    if (v.branch) box.append(el("p", { class: "status" }, "Branch: ", el("a", { href: REPO + encodeURIComponent(v.branch).replace(/%2F/g, "/"), target: "_blank", rel: "noopener", text: v.branch })));
+    return box;
+  }
+
+  function card(v) {
+    const metaParts = [];
+    if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
+    metaParts.push(el("span", { title: absTime(v.updatedAt), text: "geändert " + ago(v.updatedAt) }));
+    if (v.branch && v.stage !== "done") metaParts.push(el("span", { text: v.branch }));
+
+    const c = el("article", { class: "card" + (waiting(v) ? " attn" : ""), id: "v-" + v.id },
+      el("div", { class: "card-head" },
+        el("div", null, el("h2", { text: v.topic || v.id }), el("div", { class: "meta" }, metaParts)),
+        pill(v)),
+      steps(v.stage),
+      v.statusText ? el("p", { class: "status" + (v.stage === "error" ? " err" : ""), text: v.statusText })
+        : el("p", { class: "status hint", text: v.stage === "queued" ? "Wartet darauf, dass eine Claude-Sitzung das Thema übernimmt." : "" }),
+      v.note ? el("p", { class: "note", text: "Notiz: " + v.note }) : null);
+
+    if (v.review && v.stage !== "done") c.append(reviewBlock(v));
+    if (v.stage === "done") c.append(doneBlock(v));
+
+    if (canWrite && v.stage === "queued") {
+      const armed = confirmDel[v.id];
+      c.append(el("div", { class: "foot" },
+        el("button", { class: "btn-quiet", type: "button", disabled: busy[v.id],
+          onclick: () => { if (!armed) { confirmDel[v.id] = true; render(); setTimeout(() => { confirmDel[v.id] = false; render(); }, 5000); } else remove(v); },
+          text: armed ? "Wirklich entfernen?" : "Entfernen" })));
+    }
+    return c;
+  }
+
+  function render() {
+    const focusId = document.activeElement && document.activeElement.id;
+    const sorted = docs.slice().sort((a, b) => rank(a) - rank(b) || String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
+    listEl.replaceChildren(...(sorted.length ? sorted.map(card) : [emptyEl]));
+    if (focusId && $(focusId) && $(focusId).tagName === "TEXTAREA") { const t = $(focusId); t.focus(); t.setSelectionRange(t.value.length, t.value.length); }
+    if (!loaded) return;
+    const nWait = docs.filter(waiting).length;
+    const nRun = docs.filter((v) => ["research", "script", "scenes", "render"].includes(v.stage)).length;
+    const nDone = docs.filter((v) => v.stage === "done").length;
+    const parts = [];
+    if (nWait) parts.push(`<b>${nWait} zur Freigabe</b>`);
+    parts.push(`${nRun} in Arbeit`, `${docs.filter((v) => v.stage === "queued").length} wartend`, `${nDone} fertig`);
+    summaryEl.innerHTML = parts.join(" · ");
+  }
+
+  async function decide(v, decision, msgEl) {
+    if (!db || busy[v.id]) return;
+    busy[v.id] = true; render();
+    try {
+      await db.collection("videos").doc(v.id).update({ decision, updatedAt: new Date().toISOString() });
+      if (decision) delete drafts[v.id];
+    } catch (e) {
+      if (msgEl) msgEl.textContent = "Speichern fehlgeschlagen (" + (e && e.code || "Fehler") + "). Bitte erneut versuchen.";
+      if (e && e.code === "invalid_argument") canWrite = false;
+    } finally { busy[v.id] = false; render(); }
+  }
+
+  async function remove(v) {
+    if (!db) return;
+    busy[v.id] = true; render();
+    try { await db.collection("videos").doc(v.id).delete(); } catch {}
+    busy[v.id] = false; confirmDel[v.id] = false; render();
+  }
+
+  $("addForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = $("addMsg"); msg.className = "msg"; msg.textContent = "";
+    const topic = $("topic").value.trim();
+    if (!topic) return;
+    if (!db) { msg.className = "msg err"; msg.textContent = "Keine Verbindung zur Datenbank. Seite in der Claude-App angemeldet öffnen."; return; }
+    const lenRaw = $("len").value.trim();
+    const lengthSec = lenRaw ? Math.round(Number(lenRaw)) : null;
+    const id = slugify(topic);
+    const btn = $("addBtn"); btn.disabled = true;
+    try {
+      await db.collection("videos").doc(id).set({
+        topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
+        stage: "queued", statusText: "", review: null, decision: null,
+        branch: null, sessionId: null, updatedAt: new Date().toISOString()
+      });
+      $("topic").value = ""; $("len").value = ""; $("note").value = "";
+      msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
+    } catch (err) {
+      msg.className = "msg err";
+      msg.textContent = err && err.code === "invalid_argument"
+        ? "Keine Schreibrechte für diese Seite."
+        : "Speichern fehlgeschlagen (" + (err && err.code || "Fehler") + "). Bitte erneut versuchen.";
+    } finally { btn.disabled = false; }
+  });
+
+  async function start() {
+    if (!window.claude || typeof window.claude.use !== "function") {
+      summaryEl.textContent = "Nur in claude.ai nutzbar";
+      emptyEl.textContent = "Diese Seite braucht die gemeinsame Datenbank von claude.ai. Bitte dort angemeldet öffnen.";
+      return;
+    }
+    const [dbNs, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    db = dbNs;
+    if (!db) {
+      summaryEl.textContent = "Keine Datenbank";
+      emptyEl.textContent = "Die Datenbank ist in dieser Ansicht nicht verfügbar. Bitte in claude.ai angemeldet öffnen.";
+      $("addBtn").disabled = true;
+      return;
+    }
+    if (user) { try { const w = await user.can("data.write"); if (w === false) canWrite = false; } catch {} }
+    if (!canWrite) { $("addForm").hidden = true; }
+    const timer = setTimeout(() => { if (!loaded) summaryEl.textContent = "Daten noch nicht erreichbar …"; }, 10000);
+    db.collection("videos").onSnapshot((snap) => {
+      docs = snap.docs.filter((d) => d.exists).map((d) => ({ id: d.id, ...d.data() }));
+      if (!snap.metadata.fromCache) { loaded = true; clearTimeout(timer); }
+      if (!loaded && !docs.length) return;
+      loaded = true; render();
+    }, (err) => {
+      clearTimeout(timer);
+      summaryEl.textContent = "Verbindung verloren (" + (err && err.code) + ")";
+    });
+    setInterval(render, 60000); // nur relative Zeitangaben auffrischen, kein Schreiben
+  }
+  start();
+})();
+</script>
