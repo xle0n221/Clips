@@ -73,3 +73,12 @@ Cues hängen wie Sticker an einem Wort der Szene (erstes Vorkommen) und landen m
 
 Platz im Hochformat: HUD 150–400 px, Auswahlkarten um die Bildmitte (ab y ≈ 470), unteres Drittel
 bleibt den Untertiteln. Alle Animationen werden aus dem Frame berechnet (kein `useEffect`).
+
+## Aussprache nur für die Stimme (pro Episode)
+| Feld | Bedeutung | Beispiel |
+| --- | --- | --- |
+| `years` | Diese Zahlen als Jahr sprechen; Mengen mit Tausenderkomma bleiben Mengen | `[193, 476, 1453]` → „one ninety-three“, „four seventy-six“, „fourteen fifty-three“ |
+| `say` | Aussprache-Tabelle (ganze Wörter, Groß/klein genau) | `{"Odoacer": "Odo-acer"}` |
+
+Die Untertitel zeigen weiterhin den Drehbuch-Text. Ersatz-Schreibweisen vorher an den Kokoro-Phonemen
+oder per Hörprobe prüfen (`scripts/tts.py --text ... --out ...`). Umsetzung: `apply_say()` in `scripts/tts.py`.

@@ -25,7 +25,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
-from tts import SAMPLE_RATE, VOICE_INFO, Voice, resolve_voice, write_wav  # noqa: E402
+from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, resolve_voice, write_wav  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -113,7 +113,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     parts, scenes, words, cursor = [lead], [], [], len(lead)
     for sc in ep["scenes"]:
         # Sternchen markieren Akzentwörter ("*Rome*") – nur für die Untertitel, nicht vorlesen
-        audio = voice.synth(sc["text"].replace("*", ""))
+        spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
+        audio = voice.synth(spoken)
         start = cursor / SAMPLE_RATE * 1000
         parts += [audio, gap]
         cursor += len(audio) + len(gap)
