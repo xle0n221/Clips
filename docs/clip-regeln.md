@@ -66,6 +66,10 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   gängigen Angaben werden vermerkt und nicht verwendet.
 
 ## Gemessene Merkmale der Referenzvideos des Nutzers
+
+Zweite Referenzrunde (HUD mit Einsatz, Auswahlkarten, Akzentwort-Untertitel, Info-Grafiken, Licht):
+[`docs/referenz-analyse-2.md`](referenz-analyse-2.md).
+
 | Merkmal | Referenz 1 (5,3 s) | Referenz 2 (59,5 s) |
 | --- | --- | --- |
 | Sprechtempo | 18 Wörter / ~5,0 s ≈ 3,6 W/s | 216 Wörter / 59,5 s = 3,63 W/s |

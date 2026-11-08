@@ -25,6 +25,21 @@ export type ToonieProps = {
   readonly walk?: number; // Laufgeschwindigkeit (0 = steht)
   readonly bounce?: number; // Hüpfen beim Sprechen/Freuen
   readonly look?: number; // Kopfdrehung (rad)
+  /**
+   * Kostüm-Steckplätze (optional, ohne sie ändert sich nichts):
+   * `head`  – in der Kopfgruppe: Ursprung = Kopfmitte, Radius 1, Gesicht zeigt nach +z.
+   * `body`  – in der Figurengruppe: Ursprung = Boden zwischen den Füßen, Körpermitte y = 1.75
+   *           (Kapsel r = 0.55, Höhe 0.925–2.575), Schultern y ≈ 2.15.
+   * `hands` – [Hand bei −x, Hand bei +x] (Figur blickt zur Kamera: [Bild links, Bild rechts]
+   *           = [rechte, linke Hand der Figur]). Ursprung = Handmitte, dreht mit dem Arm.
+   * `sit`   – 0..1 Sitzen (z. B. auf dem Thron): Oberschenkel nach vorn, Unterschenkel hängt
+   *           am Knie. Sitzfläche auf Hüfthöhe y ≈ 1.15 (Figur also um Sitzhöhe − 1.15 anheben).
+   *           Bei 0 exakt die bisherigen Stehbeine.
+   */
+  readonly head?: React.ReactNode;
+  readonly body?: React.ReactNode;
+  readonly hands?: readonly [React.ReactNode?, React.ReactNode?];
+  readonly sit?: number;
 };
 
 const R = 1; // Kopfradius
@@ -81,6 +96,10 @@ export const Toonie: React.FC<ToonieProps> = ({
   walk = 0,
   bounce = 0,
   look = 0,
+  head,
+  body,
+  hands,
+  sit = 0,
 }) => {
   // Blinzeln alle ~3 s für 3 Frames (nur bei offenen Augen)
   const blinking = (eyes === "dot" || eyes === "angry") && frame % 95 < 3;
@@ -102,19 +121,44 @@ export const Toonie: React.FC<ToonieProps> = ({
       scale={scale}
     >
       {/* Beine */}
-      {[-0.22, 0.22].map((x, i) => (
-        <group
-          key={x}
-          position={[x, 1.15, 0]}
-          rotation={[(i ? -1 : 1) * step * 0.5, 0, 0]}
-        >
-          <mesh position={[0, -0.55, 0]}>
-            <cylinderGeometry args={[0.045, 0.045, 1.1, 8]} />
-            <meshBasicMaterial color={INK} />
-          </mesh>
-          <Blob pos={[0, -1.1, 0.08]} s={[0.12, 0.07, 0.18]} />
-        </group>
-      ))}
+      {[-0.22, 0.22].map((x, i) =>
+        sit > 0 ? (
+          // Sitzen: Oberschenkel nach vorn, Unterschenkel hängt am Knie (leicht gespreizt)
+          <group
+            key={x}
+            position={[x, 1.15, 0]}
+            rotation={[-sit * (Math.PI / 2), 0, (i ? -1 : 1) * sit * 0.12]}
+          >
+            <mesh position={[0, -0.3, 0]}>
+              <cylinderGeometry args={[0.045, 0.045, 0.6, 8]} />
+              <meshBasicMaterial color={INK} />
+            </mesh>
+            <Blob pos={[0, -0.6, 0]} s={[0.05, 0.05, 0.05]} />
+            <group
+              position={[0, -0.6, 0]}
+              rotation={[sit * (Math.PI / 2 - 0.12) + (i ? -1 : 1) * step * 0.3, 0, 0]}
+            >
+              <mesh position={[0, -0.25, 0]}>
+                <cylinderGeometry args={[0.045, 0.045, 0.5, 8]} />
+                <meshBasicMaterial color={INK} />
+              </mesh>
+              <Blob pos={[0, -0.5, 0.08]} s={[0.12, 0.07, 0.18]} />
+            </group>
+          </group>
+        ) : (
+          <group
+            key={x}
+            position={[x, 1.15, 0]}
+            rotation={[(i ? -1 : 1) * step * 0.5, 0, 0]}
+          >
+            <mesh position={[0, -0.55, 0]}>
+              <cylinderGeometry args={[0.045, 0.045, 1.1, 8]} />
+              <meshBasicMaterial color={INK} />
+            </mesh>
+            <Blob pos={[0, -1.1, 0.08]} s={[0.12, 0.07, 0.18]} />
+          </group>
+        ),
+      )}
       {/* Körper */}
       <mesh position={[0, 1.75, 0]} scale={[breathe, 1, breathe]}>
         <capsuleGeometry args={[0.55, 0.55, 8, 20]} />
@@ -149,8 +193,12 @@ export const Toonie: React.FC<ToonieProps> = ({
             <meshBasicMaterial color={INK} />
           </mesh>
           <Blob pos={[0, -0.97, 0]} s={[0.1, 0.1, 0.1]} />
+          {hands?.[i] ? (
+            <group position={[0, -0.97, 0]}>{hands[i]}</group>
+          ) : null}
         </group>
       ))}
+      {body}
       {/* Kopf */}
       <group position={[0, HEAD_Y, 0]} rotation={[0, look, 0]}>
         <mesh>
@@ -318,6 +366,7 @@ export const Toonie: React.FC<ToonieProps> = ({
             </Ink>
           </mesh>
         )}
+        {head}
       </group>
     </group>
   );

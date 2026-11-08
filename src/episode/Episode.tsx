@@ -15,6 +15,8 @@ import { z } from "zod";
 import { Captions } from "./overlays/Captions";
 import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
+import { hudBottom } from "./overlays/Hud";
+import { EpisodeOverlays, emphMap } from "./overlays/Overlays";
 import { SCENES } from "./scenes";
 import { EpisodeData, SceneContext, Timeline } from "./types";
 
@@ -97,6 +99,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
       : interpolate(local, [0, 5], [10, 0], { extrapolateRight: "clamp" });
 
   const stickers = timeline.cues.filter((c) => c.sticker);
+  const emph = emphMap(timeline);
   const base = `episodes/${episode}`;
 
   return (
@@ -132,6 +135,8 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
         </Sequence>
       ))}
 
+      <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="below" />
+
       {stickers.map((c, i) => {
         const from = toF(c.atMs);
         const next = stickers[i + 1] ? toF(stickers[i + 1].atMs) : Infinity;
@@ -151,12 +156,14 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
               color={c.color ?? "#FFD23F"}
               duration={dur}
               tilt={i % 2 ? 3 : -3}
+              top={timeline.hud ? hudBottom(timeline.hud) + 30 : undefined}
             />
           </Sequence>
         );
       })}
 
-      <Captions captions={captions} />
+      <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="above" />
+      <Captions captions={captions} emph={emph.size ? emph : undefined} />
       <Grade />
 
       {/* Ton: Stimme, Musikbett, Effekte */}

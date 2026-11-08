@@ -7,7 +7,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { fitText } from "@remotion/layout-utils";
-import { CAPTION_FONT } from "./fonts";
+import { CAPTION_FONT, useCaptionFontReady } from "./fonts";
 import { seeded } from "../kit/toon";
 
 /** Großer Zahlen-/Text-Sticker, ploppt herein (Federanimation) und fällt wieder weg. */
@@ -16,9 +16,13 @@ export const Sticker: React.FC<{
   readonly color: string;
   readonly duration: number;
   readonly tilt: number;
-}> = ({ text, color, duration, tilt }) => {
+  /** Abstand von oben; mit Einsatz-Anzeige (HUD) rutscht der Sticker darunter */
+  readonly top?: number;
+}> = ({ text, color, duration, tilt, top = 300 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const fontReady = useCaptionFontReady();
+  if (!fontReady) return null;
   const enter = spring({ frame, fps, config: { damping: 9, stiffness: 180 } });
   const exit = interpolate(frame, [duration - 6, duration], [1, 0], {
     extrapolateLeft: "clamp",
@@ -35,7 +39,7 @@ export const Sticker: React.FC<{
   const dark =
     color === "#FFFFFF" || color.startsWith("#FF") || color.startsWith("#FFE");
   return (
-    <AbsoluteFill style={{ alignItems: "center", paddingTop: 300 }}>
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: top }}>
       <div
         style={{
           transform: `scale(${enter * exit}) rotate(${tilt + wobble}deg)`,

@@ -12,10 +12,13 @@ Claude macht nur den Feinschliff, wenn der Nutzer ihn direkt anspricht.
   `docs/clip-regeln.md`. Dieses Dokument legt nur fest, **wann was ins Dashboard geschrieben wird**.
 
 ## Wer arbeitet?
-Die geplante Aufgabe **„Clips Dashboard-Abholer“** startet stündlich eine neue Cloud-Sitzung
-(Umgebung „Clips“). Jede Sitzung erledigt **einen** Schritt für **ein** Video bis zur nächsten
-Freigabe (oder bis „fertig“) und endet dann. Der Zwischenstand liegt auf dem Git-Branch des Videos,
-damit die nächste Sitzung weitermachen kann.
+Seit 08.11.2026 (Wunsch des Nutzers): die Sitzung **„CLIPS“** (session_01UNp77RB3vBiMZfvMTegJPC).
+Die geplante Aufgabe **„Clips Dashboard-Abholer (Sitzung CLIPS)“** weckt diese Sitzung stündlich
+(7–23 Uhr Berlin, Minute 17). Sie wählt nach Abschnitt 1 ein Video, arbeitet bis zur nächsten
+Freigabe bzw. bis „fertig“ und wird beim nächsten Durchlauf für Entscheidungen erneut geweckt.
+Gearbeitet wird auf dem Branch der Sitzung (`claude/friendly-dijkstra-1slqt3`), Episoden-Daten
+getrennt je Video unter `episodes/<slug>.json` und `public/episodes/<slug>/`; das Feld `branch` nennt ihn.
+Der frühere Abholer, der jedes Mal eine neue Sitzung startete, ist deaktiviert (nicht gelöscht).
 
 ## 1. Auswahl (in dieser Reihenfolge, genau ein Video)
 1. `review` gesetzt **und** `decision` gesetzt **und** nicht `busy` → Entscheidung umsetzen.

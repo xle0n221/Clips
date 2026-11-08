@@ -12,7 +12,12 @@ import { CAPTION_FONT } from "./fonts";
 // Referenzvideos: 1–3 kurze Wörter pro Einblendung, Wechsel ca. alle 0,15–0,55 s.
 const COMBINE_MS = 320;
 
-const Word: React.FC<{ readonly text: string }> = ({ text }) => {
+type Part = { text: string; color?: string };
+
+const Word: React.FC<{ readonly text: string; readonly parts?: Part[] }> = ({
+  text,
+  parts,
+}) => {
   const frame = useCurrentFrame();
   const pop = interpolate(frame, [0, 2, 4], [0.86, 1.06, 1], {
     extrapolateRight: "clamp",
@@ -41,15 +46,30 @@ const Word: React.FC<{ readonly text: string }> = ({ text }) => {
           letterSpacing: -1,
         }}
       >
-        {text}
+        {parts
+          ? parts.map((p, i) =>
+              p.color ? (
+                <span key={i} style={{ color: p.color }}>
+                  {p.text}
+                </span>
+              ) : (
+                p.text
+              ),
+            )
+          : text}
       </div>
     </AbsoluteFill>
   );
 };
 
-export const Captions: React.FC<{ readonly captions: Caption[] }> = ({
-  captions,
-}) => {
+/**
+ * emph: Startzeit (ms) eines Untertitel-Worts -> Akzentfarbe. Kommt aus `emph`-Cues bzw. aus
+ * "*Wort*" im Drehbuch (make_episode.py). Seiten ohne Akzentwort werden unverändert gezeichnet.
+ */
+export const Captions: React.FC<{
+  readonly captions: Caption[];
+  readonly emph?: Map<number, string>;
+}> = ({ captions, emph }) => {
   const { fps } = useVideoConfig();
   const { pages } = useMemo(
     () =>
@@ -70,7 +90,17 @@ export const Captions: React.FC<{ readonly captions: Caption[] }> = ({
         const dur = Math.max(1, Math.round((endMs / 1000) * fps) - from);
         return (
           <Sequence key={i} from={from} durationInFrames={dur} layout="none">
-            <Word text={page.text.trim()} />
+            <Word
+              text={page.text.trim()}
+              parts={
+                emph && page.tokens.some((t) => emph.has(t.fromMs))
+                  ? page.tokens.map((t, k) => ({
+                      text: k === 0 ? t.text.replace(/^\s+/, "") : t.text,
+                      color: emph.get(t.fromMs),
+                    }))
+                  : undefined
+              }
+            />
           </Sequence>
         );
       })}

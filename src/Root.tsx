@@ -11,8 +11,15 @@ import {
   episodeSchema,
   FPS as EPISODE_FPS,
 } from "./episode/Episode";
+import {
+  OVERLAY_DEMO_FRAMES,
+  OVERLAY_EDGE_FRAMES,
+  OverlayDemo,
+  OverlayEdgeCases,
+} from "./episode/overlays/OverlayDemo";
 import { getMediaMetadata } from "./phone-demo/helpers/get-media-metadata";
 import { myCompSchema, Scene } from "./phone-demo/Scene";
+import { ROME_TEST_FRAMES, RomeKitTest } from "./RomeKitTest";
 
 // Jede <Composition> erscheint als Eintrag in der Seitenleiste von Remotion Studio.
 // Docs: https://remotion.dev/docs  ·  https://remotion.dev/docs/three
@@ -30,6 +37,35 @@ export const RemotionRoot: React.FC = () => {
         schema={episodeSchema}
         defaultProps={{ episode: "solar-system" }}
         calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* Prüf-Komposition des Rom-Bau-Kits (src/episode/kit/rome.tsx) */}
+      <Composition
+        id="RomeKitTest"
+        component={RomeKitTest}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={ROME_TEST_FRAMES}
+      />
+
+      {/* Overlays (HUD, Auswahlkarten, Pills, Akzentwörter) – Vorführung ohne Ton */}
+      <Composition
+        id="OverlayDemo"
+        component={OverlayDemo}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={OVERLAY_DEMO_FRAMES}
+      />
+      {/* Randfälle der Overlays (lange Texte, 4 Karten, Pills am Rand, Balken 0/1) */}
+      <Composition
+        id="OverlayEdgeCases"
+        component={OverlayEdgeCases}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={OVERLAY_EDGE_FRAMES}
       />
 
       {/* Eigene 3D-Szene im Hochformat (TikTok/Reels/Shorts) mit Audio + Captions */}

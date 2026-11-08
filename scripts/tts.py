@@ -73,6 +73,29 @@ def number_words(n: int) -> str:
     raise ValueError(n)
 
 
+def year_words(n: int) -> str:
+    """Jahreszahl wie gesprochen: 1453 -> "fourteen fifty-three", 476 -> "four seventy-six",
+    410 -> "four ten", 1900 -> "nineteen hundred", 2009 -> "two thousand nine"."""
+    if n < 100 or n % 1000 < 10 and n >= 1000:
+        return number_words(n)
+    hi, lo = divmod(n, 100)
+    if lo == 0:
+        return number_words(hi) + " hundred"
+    return number_words(hi) + " " + (("oh " + _ONES[lo]) if lo < 10 else number_words(lo))
+
+
+def apply_say(text: str, years: list[int] | None = None, say: dict[str, str] | None = None) -> str:
+    """Nur für die Sprachausgabe einer Episode (Drehbuch-Felder `years` und `say`):
+    - `years`: diese Zahlen als Jahr lesen ("1453" -> "fourteen fifty-three"); "1,453" bleibt eine Menge.
+    - `say`: Aussprache-Tabelle, z. B. {"Odoacer": "Odo-acer"} (ganze Wörter, Groß/klein genau).
+    Untertitel zeigen weiterhin den Drehbuch-Text."""
+    for y in years or []:
+        text = re.sub(rf"(?<!\d)(?<!\d[,.]){y}(?!\d|[,.]\d)", year_words(int(y)), text)
+    for word, spoken in (say or {}).items():
+        text = re.sub(rf"\b{re.escape(word)}\b", spoken, text)
+    return text
+
+
 def speakable(text: str) -> str:
     """Zahlen für die Sprachausgabe ausschreiben.
 
