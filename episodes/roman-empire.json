@@ -1,0 +1,193 @@
+{
+  "id": "roman-empire",
+  "title": "You bought Rome. Worst job ever.",
+  "voice": "am_fenrir",
+  "speed": 1.25,
+  "sceneGapMs": 120,
+  "sources": "docs/quellen-roemisches-reich.md",
+  "factcheck": "docs/faktencheck-roemisches-reich.md",
+  "note": "Story: YOU (one Toonie, purple ImperialCloak + LaurelWreath, same figure all video) keeps 'respawning' into the job of emperor: 193 Julianus -> 395 Honorius -> 476 Augustulus; the job gets worse until it is deleted. HUD: YEAR climbs, EMPIRE bar sinks, pumps back up at the East twist. Loop: last words '...It went downhill the day' lead straight into the first line 'the Roman Empire got auctioned off.' Speed assumption: Finn not calibrated. Kokoro samples at speed 1.0 (same sentence): Finn 2.98 s vs Lily 3.29 s, i.e. Finn ~10 % faster. Lily at 1.3 measured 284 words / 87.2 s = 3.26 W/s incl. gaps, so Finn 1.2 ~3.3 W/s and Finn 1.25 ~3.45 W/s; 309 words -> ~90 s at 1.25. Re-measure after the first TTS run (target 3.3-3.6 W/s, 88-92 s).",
+  "hud": {
+    "title": "WORST JOB IN ROME",
+    "counters": [{ "id": "year", "label": "YEAR", "value": 193, "suffix": " AD" }],
+    "bars": [{ "id": "empire", "label": "EMPIRE", "value": 0.95, "color": "#FFB627" }]
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "text": "the Roman Empire got *auctioned* off. An actual auction. And you won it. Congrats, Emperor! So how long do you last?",
+      "visual": "Night, Praetorian camp outside Rome: a bid board and the Throne on a stage, RomanSkyline behind; YOU (Toonie in ImperialCloak + LaurelWreath) jumps up as Legionary guards point at him. Close-up of YOU grinning on the Throne, then a slow push-in on his worried face at the question.",
+      "facts": ["F2"],
+      "cues": [
+        { "word": "auctioned", "sticker": "EMPIRE FOR SALE", "color": "#FFD23F", "sfx": "boom" },
+        { "word": "actual", "beat": "auctionWide", "sfx": "whoosh" },
+        { "word": "won", "beat": "youWin", "sfx": "ding", "label": { "text": "YOU", "color": "#9B5DE5", "x": 0.5, "y": 0.42 } },
+        { "word": "Congrats", "beat": "throneClose", "sfx": "pop" },
+        { "word": "long", "beat": "worriedPush" }
+      ]
+    },
+    {
+      "id": "auction",
+      "text": "Rewind: 193. The last emperor lasted 87 days, so the guards sell the throne. Your rival bids inside their camp, you shout from the gates. Bids hit 20,000 sesterces per soldier. Then you jump by 5,000, showing it with your fingers. *25,000*. Sold!",
+      "visual": "Camp wall with gate: rival in Toga (Senator) bidding from inside, YOU outside the gate shouting, Legionary guards with Scutum on the wall between them; Coin stacks grow beside each bidder. Detail shot: YOU holding up his fingers to show the raise, then the guards cheer.",
+      "facts": ["Z2", "F4", "F2"],
+      "cues": [
+        { "word": "Rewind", "beat": "rewind", "sfx": "whoosh" },
+        { "word": "193", "hud": { "id": "year", "value": 193 } },
+        { "word": "87", "sticker": "87 DAYS", "color": "#B0BEC5", "sfx": "pop" },
+        { "word": "guards", "beat": "guardsWall", "label": { "text": "GUARDS", "color": "#FF5A5A", "x": 0.5, "y": 0.3 } },
+        { "word": "rival", "beat": "rivalInside", "label": { "text": "RIVAL", "color": "#B0BEC5", "x": 0.32, "y": 0.45 } },
+        { "word": "shout", "beat": "youOutside", "sfx": "pop" },
+        { "word": "20,000", "sticker": "20,000 SESTERCES", "color": "#FFB300", "sfx": "pop" },
+        { "word": "fingers", "beat": "fingers", "sfx": "ding" },
+        { "word": "25,000", "sticker": "25,000 PER SOLDIER", "color": "#FFD23F", "sfx": "boom" },
+        { "word": "Sold", "beat": "sold", "hud": { "id": "empire", "value": 0.85 } }
+      ]
+    },
+    {
+      "id": "stones",
+      "text": "But Rome hates you. People curse you and throw stones. After 66 days, it's over. Last words? \"Whom have I killed?\" Buddy. You *bought* an empire.",
+      "visual": "Forum with Temple and Columns: a crowd of Senators/citizens boos YOU, small stones fly, YOU ducks with raised hand. Then a 66-days sticker, DangerLight goes red, and a close-up of YOU looking innocently into the camera for the last words.",
+      "facts": ["F5", "F3"],
+      "cues": [
+        { "word": "hates", "beat": "crowdBoo", "sfx": "boom", "label": { "text": "JULIANUS", "color": "#9B5DE5", "x": 0.5, "y": 0.42 } },
+        { "word": "stones", "beat": "stonesFly", "sfx": "pop", "hud": { "id": "empire", "value": 0.8 } },
+        { "word": "66", "sticker": "66 DAYS", "color": "#FF5A5A", "sfx": "boom" },
+        { "word": "Whom", "beat": "lastWords" },
+        { "word": "Buddy", "beat": "deadpan", "sfx": "ding" }
+      ]
+    },
+    {
+      "id": "chaos",
+      "text": "And 193 is called the Year of the Five Emperors. Respawn in 238? Six rulers killed in a few months. *Nope*.",
+      "visual": "Five Emperor Toonies on a fast-spinning Throne carousel (each pops off), then the TimelineStele flicks forward to 238 with six small wreaths falling; YOU waves 'nope' and the stele fast-forwards again.",
+      "facts": ["Z2", "F6"],
+      "cues": [
+        { "word": "Five", "sticker": "5 EMPERORS · 1 YEAR", "color": "#FFAB40", "sfx": "pop", "beat": "throneCarousel" },
+        { "word": "238", "hud": { "id": "year", "value": 238 }, "beat": "stele238", "sfx": "whoosh" },
+        { "word": "Six", "sticker": "6 RULERS · FEW MONTHS", "color": "#FF5A5A", "sfx": "boom", "hud": { "id": "empire", "value": 0.7 } },
+        { "word": "Nope", "beat": "nopeSkip", "sfx": "whoosh" }
+      ]
+    },
+    {
+      "id": "split",
+      "text": "Respawn: 395. The empire splits for good. Your brother gets the East. You're *Honorius*, Emperor of the West. Legend says you keep a huge rooster named Rome.",
+      "visual": "EmpireMap seen from above cracks in two (split), brother Emperor walks off to the right/East, YOU stays on the West half. Cut to the Ravenna palace: YOU on the Throne cuddling a very large rooster (rooster prop still needed in rome.tsx) with a name tag 'ROME'.",
+      "facts": ["Z3", "F1"],
+      "cues": [
+        { "word": "Respawn", "beat": "respawn", "sfx": "whoosh" },
+        { "word": "395", "hud": { "id": "year", "value": 395 } },
+        { "word": "splits", "beat": "mapSplit", "sfx": "boom", "hud": { "id": "empire", "value": 0.5 } },
+        { "word": "brother", "label": { "text": "EAST", "color": "#4FC3F7", "x": 0.72, "y": 0.45 } },
+        { "word": "Honorius", "beat": "honoriusThrone", "label": { "text": "HONORIUS", "color": "#9B5DE5", "x": 0.4, "y": 0.42 } },
+        { "word": "Legend", "sticker": "LEGEND SAYS…", "color": "#FFFFFF", "sfx": "pop" },
+        { "word": "rooster", "beat": "rooster", "sfx": "ding" },
+        { "word": "named", "label": { "text": "ROME (ROOSTER)", "color": "#FFD23F", "x": 0.6, "y": 0.5 } }
+      ]
+    },
+    {
+      "id": "goths",
+      "text": "But in 410, Goths plunder the city. One story says 300 young men, posing as gift slaves, opened the gate at noon.",
+      "visual": "Rome's city gate at bright noon with a SoftSun overhead: a line of young Goths (GothCap, BarbarianTunic) disguised as servants slips inside and swings the gate open; the Goth army with RoundShields and Spears floods in, Rubble flies.",
+      "facts": ["Z4", "F11"],
+      "cues": [
+        { "word": "410", "hud": { "id": "year", "value": 410 }, "sfx": "boom" },
+        { "word": "Goths", "beat": "gothsMarch", "label": { "text": "GOTHS", "color": "#FF5A5A", "x": 0.7, "y": 0.5 } },
+        { "word": "plunder", "beat": "plunder", "sfx": "boom", "hud": { "id": "empire", "value": 0.35 } },
+        { "word": "story", "sticker": "ONE STORY SAYS…", "color": "#FFFFFF", "sfx": "pop" },
+        { "word": "300", "beat": "fakeSlaves", "sticker": "300 \"GIFTS\"", "color": "#FFAB40" },
+        { "word": "noon", "beat": "gateOpens", "sfx": "whoosh" }
+      ]
+    },
+    {
+      "id": "perished",
+      "text": "Your poultry keeper reports: \"Rome has perished!\" You cry: \"But it just ate from my hands!\" He means the city. You? *Relieved*.",
+      "visual": "Back in the Ravenna palace: a nervous servant in a simple tunic bursts in; YOU clutches the rooster in horror, then the rooster pecks seeds from YOU's hand. Two-shot as the servant points at a map of Rome; YOU exhales with a relieved smile.",
+      "facts": ["F1"],
+      "cues": [
+        { "word": "keeper", "beat": "servantIn", "sfx": "whoosh" },
+        { "word": "perished", "sticker": "ROME HAS PERISHED!", "color": "#FF5A5A", "sfx": "boom" },
+        { "word": "cry", "beat": "horror" },
+        { "word": "hands", "beat": "roosterEats", "sfx": "pop" },
+        { "word": "city", "beat": "pointMap" },
+        { "word": "Relieved", "beat": "phew", "sfx": "ding" }
+      ]
+    },
+    {
+      "id": "vandals",
+      "text": "In 455, the Vandals plunder Rome for 14 days and rip off half the gilded roof of Jupiter's temple. Thanks to Roman writers, *vandal* now means wrecking stuff.",
+      "visual": "Temple on the Capitol: Vandals (Goth-style, FurCloak, RoundShield) pry golden roof plates off and carry them toward ships; the right half of the Temple roof is gone. Wide shot of the city with red DangerLight, then a dictionary-card sticker.",
+      "facts": ["Z5", "F12", "M5"],
+      "cues": [
+        { "word": "455", "hud": { "id": "year", "value": 455 }, "beat": "templeWide", "sfx": "whoosh" },
+        { "word": "Vandals", "beat": "vandals", "label": { "text": "VANDALS", "color": "#FF5A5A", "x": 0.65, "y": 0.5 } },
+        { "word": "14", "sticker": "14 DAYS", "color": "#FF5A5A", "sfx": "boom", "hud": { "id": "empire", "value": 0.2 } },
+        { "word": "roof", "beat": "roofOff", "sfx": "pop" },
+        { "word": "writers", "beat": "dictionary", "sticker": "VANDAL = WRECKER", "color": "#FFFFFF", "sfx": "ding" }
+      ]
+    },
+    {
+      "id": "kid",
+      "text": "Final respawn: 476. You're a kid named Romulus Augustus. So Romans call you *Augustulus*. Little Augustus.",
+      "visual": "Same YOU Toonie, now scaled down as a kid, drowning in the oversized ImperialCloak, LaurelWreath sliding over his eyes, feet dangling from the huge Throne. Close-up on the slipping wreath at 'Little'.",
+      "facts": ["Z6", "F8"],
+      "cues": [
+        { "word": "respawn", "beat": "respawnKid", "sfx": "whoosh" },
+        { "word": "476", "hud": { "id": "year", "value": 476 }, "sfx": "boom" },
+        { "word": "kid", "beat": "kidThrone", "sfx": "pop", "label": { "text": "STILL A KID", "color": "#9B5DE5", "x": 0.5, "y": 0.45 } },
+        { "word": "Augustulus", "beat": "wreathSlips" },
+        { "word": "Little", "sticker": "\"LITTLE AUGUSTUS\"", "color": "#FFD23F", "sfx": "ding" }
+      ]
+    },
+    {
+      "id": "fired",
+      "text": "Then Odoacer takes your throne. You're a kid, so he spares you. Because you're pretty, he pays you 6,000 gold pieces. Fired, with a *pension*.",
+      "visual": "A tall Goth Toonie (Odoacer: FurCloak, Beard) lifts kid-YOU off the Throne by the cloak and sets him down, then hands him a bag while Coins rain. Kid-YOU walks off toward a sunny Campania villa (RomanHouse, UmbrellaPine).",
+      "facts": ["Z6", "F9"],
+      "cues": [
+        { "word": "Odoacer", "beat": "odoacerLift", "sfx": "boom", "label": { "text": "ODOACER", "color": "#FF5A5A", "x": 0.62, "y": 0.32 } },
+        { "word": "spares", "beat": "setDown", "sfx": "pop" },
+        { "word": "pretty", "beat": "prettyFace", "sfx": "ding" },
+        { "word": "6,000", "sticker": "6,000 GOLD PIECES", "color": "#FFD23F", "sfx": "pop", "hud": { "id": "empire", "value": 0.05 } },
+        { "word": "Fired", "beat": "villaWalk", "sfx": "whoosh" }
+      ]
+    },
+    {
+      "id": "deleted",
+      "text": "Your job? The Senate tells Constantinople: one emperor is enough. Emperor of the West? *Deleted*.",
+      "visual": "Senate hall: Senators in white Togas sign a Scroll and send it east together with the imperial cloak and wreath. Empty Throne in the West; a big DELETED stamp slams onto a job-ad Scroll 'EMPEROR OF THE WEST'.",
+      "facts": ["F10"],
+      "cues": [
+        { "word": "job", "beat": "emptyThrone" },
+        { "word": "Senate", "beat": "senateScroll", "sfx": "whoosh", "label": { "text": "SENATE", "color": "#FFFFFF", "x": 0.5, "y": 0.42 } },
+        { "word": "enough", "sticker": "1 EMPEROR IS ENOUGH", "color": "#4FC3F7", "sfx": "pop" },
+        { "word": "Deleted", "beat": "stamp", "sfx": "boom", "hud": { "id": "empire", "value": 0.0 } }
+      ]
+    },
+    {
+      "id": "twist",
+      "text": "Plot twist: Rome didn't fall in a day. The East keeps going 977 more years, until 1453, still calling itself *Roman*.",
+      "visual": "Camera flies east over the EmpireMap (westFall dark, east half glowing) to Constantinople; an Emperor of the East on a Throne under an SpqrBanner, TimelineStele racing up to 1453 while the HUD bar pumps back up.",
+      "facts": ["M1", "F13", "Z8"],
+      "cues": [
+        { "word": "twist", "beat": "flyEast", "sfx": "whoosh" },
+        { "word": "day", "beat": "eastGlow", "hud": { "id": "empire", "value": 0.5 } },
+        { "word": "977", "sticker": "+977 YEARS", "color": "#4FC3F7", "sfx": "boom" },
+        { "word": "1453", "hud": { "id": "year", "value": 1453 }, "beat": "steleRace" },
+        { "word": "Roman", "beat": "eastEmperor", "sfx": "ding", "label": { "text": "STILL \"ROMANS\"", "color": "#4FC3F7", "x": 0.5, "y": 0.42 } }
+      ]
+    },
+    {
+      "id": "vote",
+      "text": "So when did Rome fall? A, 476, or B, 1453? Comment A or B. Historians still argue. My vote? It went downhill the day",
+      "visual": "YOU (adult again, purple cloak) sits on the steps of the Colosseum facing the camera while the A/B cards slide in; at 'My vote' he leans in and the camera rushes back toward the auction stage from the first shot (loop).",
+      "facts": ["Z6", "Z8", "M1", "M2"],
+      "cues": [
+        { "word": "when", "beat": "youSteps", "sfx": "whoosh", "choice": { "title": "WHEN DID ROME FALL?", "options": ["476", "1453"] } },
+        { "word": "Comment", "beat": "cardsClose" },
+        { "word": "argue", "beat": "shrug", "sticker": "HISTORIANS STILL ARGUE", "color": "#FFFFFF", "sfx": "pop" },
+        { "word": "vote", "beat": "loopRush", "sfx": "whoosh" }
+      ]
+    }
+  ]
+}
