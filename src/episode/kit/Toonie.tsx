@@ -32,7 +32,9 @@ export type ToonieProps = {
    *           (Kapsel r = 0.55, Höhe 0.925–2.575), Schultern y ≈ 2.15.
    * `hands` – [Hand bei −x, Hand bei +x] (Figur blickt zur Kamera: [Bild links, Bild rechts]
    *           = [rechte, linke Hand der Figur]). Ursprung = Handmitte, dreht mit dem Arm.
-   * `sit`   – 0..1 Beine nach vorn (Sitzen, z. B. auf dem Thron).
+   * `sit`   – 0..1 Sitzen (z. B. auf dem Thron): Oberschenkel nach vorn, Unterschenkel hängt
+   *           am Knie. Sitzfläche auf Hüfthöhe y ≈ 1.15 (Figur also um Sitzhöhe − 1.15 anheben).
+   *           Bei 0 exakt die bisherigen Stehbeine.
    */
   readonly head?: React.ReactNode;
   readonly body?: React.ReactNode;
@@ -119,19 +121,44 @@ export const Toonie: React.FC<ToonieProps> = ({
       scale={scale}
     >
       {/* Beine */}
-      {[-0.22, 0.22].map((x, i) => (
-        <group
-          key={x}
-          position={[x, 1.15, 0]}
-          rotation={[(i ? -1 : 1) * step * 0.5 - sit * (Math.PI / 2), 0, 0]}
-        >
-          <mesh position={[0, -0.55, 0]}>
-            <cylinderGeometry args={[0.045, 0.045, 1.1, 8]} />
-            <meshBasicMaterial color={INK} />
-          </mesh>
-          <Blob pos={[0, -1.1, 0.08]} s={[0.12, 0.07, 0.18]} />
-        </group>
-      ))}
+      {[-0.22, 0.22].map((x, i) =>
+        sit > 0 ? (
+          // Sitzen: Oberschenkel nach vorn, Unterschenkel hängt am Knie (leicht gespreizt)
+          <group
+            key={x}
+            position={[x, 1.15, 0]}
+            rotation={[-sit * (Math.PI / 2), 0, (i ? -1 : 1) * sit * 0.12]}
+          >
+            <mesh position={[0, -0.3, 0]}>
+              <cylinderGeometry args={[0.045, 0.045, 0.6, 8]} />
+              <meshBasicMaterial color={INK} />
+            </mesh>
+            <Blob pos={[0, -0.6, 0]} s={[0.05, 0.05, 0.05]} />
+            <group
+              position={[0, -0.6, 0]}
+              rotation={[sit * (Math.PI / 2 - 0.12) + (i ? -1 : 1) * step * 0.3, 0, 0]}
+            >
+              <mesh position={[0, -0.25, 0]}>
+                <cylinderGeometry args={[0.045, 0.045, 0.5, 8]} />
+                <meshBasicMaterial color={INK} />
+              </mesh>
+              <Blob pos={[0, -0.5, 0.08]} s={[0.12, 0.07, 0.18]} />
+            </group>
+          </group>
+        ) : (
+          <group
+            key={x}
+            position={[x, 1.15, 0]}
+            rotation={[(i ? -1 : 1) * step * 0.5, 0, 0]}
+          >
+            <mesh position={[0, -0.55, 0]}>
+              <cylinderGeometry args={[0.045, 0.045, 1.1, 8]} />
+              <meshBasicMaterial color={INK} />
+            </mesh>
+            <Blob pos={[0, -1.1, 0.08]} s={[0.12, 0.07, 0.18]} />
+          </group>
+        ),
+      )}
       {/* Körper */}
       <mesh position={[0, 1.75, 0]} scale={[breathe, 1, breathe]}>
         <capsuleGeometry args={[0.55, 0.55, 8, 20]} />

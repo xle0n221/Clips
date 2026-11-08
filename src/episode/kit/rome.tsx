@@ -37,6 +37,8 @@ export const ROME = {
   ochre: "#C9873F",
   ochreDark: "#9A5F2E",
   interior: "#A86A3A",
+  /** Gewölbegänge hinter den Kolosseum-Bögen: dunkel, damit die Arkade auch klein liest */
+  vault: "#5E331C",
   ground: "#E8C990",
   groundSpots: "#D6AD70",
   marble: "#F6F0E4",
@@ -57,7 +59,8 @@ export const ROME = {
   parchment: "#F2E2B6",
   fur: "#7B5235",
   furLight: "#B08657",
-  hair: "#D9A54A",
+  /** Kupfer/rotblond – bewusst nicht gelb (Gelb gehört nur dem Halstuch der Hauptfigur) */
+  hair: "#C46A2B",
   gothWool: "#4F6E5A",
   gothCheck: "#2F4A3A",
   cypress: "#2F5D3A",
@@ -434,28 +437,95 @@ export const Braids: React.FC<{ readonly color?: string; readonly length?: numbe
   </group>
 );
 
-/** Vollbart mit Schnurrbart (Mund bleibt frei, sitzt darüber). */
-export const Beard: React.FC<{ readonly color?: string }> = ({
+/**
+ * Vollbart: liegt als Schale am Kiefer an (Mund bleibt frei), Koteletten bis zur Kappe,
+ * unten in Zotteln auslaufend, Strähnen-Textur; dazu ein hängender Schnurrbart.
+ * Silhouette: Kinn wird zur Spitze statt zur Kugel.
+ */
+export const Beard: React.FC<{ readonly color?: string; readonly frame?: number }> = ({
   color = ROME.hair,
-}) => (
-  <group>
-    <Part color={color} position={[0, -0.86, 0.6]} scale={[0.6, 0.48, 0.38]} ink={0.05}>
-      <sphereGeometry args={[1, 24, 16]} />
-    </Part>
-    {[-1, 1].map((sd) => (
-      <Part
-        key={sd}
-        color={color}
-        position={[sd * 0.16, -0.18, 0.99]}
-        rotation={[0, 0, sd * -0.35]}
-        scale={[0.17, 0.06, 0.06]}
-        ink={0.12}
-      >
-        <sphereGeometry args={[1, 12, 8]} />
+  frame = 0,
+}) => {
+  const strands = useCanvasTexture(`beard-${color}`, [128, 128], (c, w, h) => {
+    c.fillStyle = color;
+    c.fillRect(0, 0, w, h);
+    const r = seeded(23);
+    c.strokeStyle = "rgba(60,25,5,0.28)";
+    c.lineWidth = 3;
+    for (let i = 0; i < 26; i++) {
+      const x = r() * w;
+      c.beginPath();
+      c.moveTo(x, 0);
+      c.quadraticCurveTo(x + (r() - 0.5) * 18, h * 0.5, x + (r() - 0.5) * 10, h);
+      c.stroke();
+    }
+  });
+  // Zotteln unten: [x, Länge, Neigung]; die mittlere am längsten
+  const tufts: [number, number, number][] = [
+    [-0.5, 0.34, 0.35],
+    [-0.25, 0.46, 0.15],
+    [0, 0.58, 0],
+    [0.25, 0.46, -0.15],
+    [0.5, 0.34, -0.35],
+  ];
+  const sway = Math.sin(frame * 0.1) * 0.04;
+  return (
+    <group>
+      {/* Schale um Kinn und Kiefer (Ausschnitt einer Kugel, vorn unter dem Mund) */}
+      <Part color="#FFFFFF" map={strands} ink={0.035} double>
+        <sphereGeometry
+          args={[1.09, 32, 12, Math.PI / 2 - 1.35, 2.7, 2.12, Math.PI - 2.12 - 0.12]}
+        />
       </Part>
-    ))}
-  </group>
-);
+      {/* Füllung, damit der Bart Volumen hat (sitzt unter dem Kinn) */}
+      <Part color="#FFFFFF" map={strands} position={[0, -0.92, 0.32]} scale={[0.66, 0.34, 0.62]} ink={0.04}>
+        <sphereGeometry args={[1, 24, 14]} />
+      </Part>
+      {/* Koteletten bis unter die Kappe */}
+      {[-1, 1].map((sd) => (
+        <Part
+          key={`sb${sd}`}
+          color="#FFFFFF"
+          map={strands}
+          position={[sd * 0.9, -0.3, 0.32]}
+          rotation={[0, sd * 0.5, sd * 0.12]}
+          scale={[0.13, 0.42, 0.24]}
+          ink={0.08}
+        >
+          <sphereGeometry args={[1, 14, 10]} />
+        </Part>
+      ))}
+      {/* Zotteln */}
+      <group position={[0, -1.08, 0.42]} rotation={[0.25 + sway, 0, 0]}>
+        {tufts.map(([x, len, tilt]) => (
+          <Part
+            key={x}
+            color="#FFFFFF"
+            map={strands}
+            position={[x, -len / 2 + 0.08, -Math.abs(x) * 0.35]}
+            rotation={[0, 0, Math.PI + tilt]}
+            ink={0.07}
+          >
+            <coneGeometry args={[0.17, len, 10]} />
+          </Part>
+        ))}
+      </group>
+      {/* Schnurrbart: hängt seitlich am Mund vorbei */}
+      {[-1, 1].map((sd) => (
+        <Part
+          key={sd}
+          color={color}
+          position={[sd * 0.22, -0.24, 0.97]}
+          rotation={[0, sd * 0.25, sd * -0.6]}
+          scale={[0.24, 0.075, 0.08]}
+          ink={0.1}
+        >
+          <sphereGeometry args={[1, 12, 8]} />
+        </Part>
+      ))}
+    </group>
+  );
+};
 
 /* ------------------------------------------------------------------ */
 /* Kostüme – Körper (Steckplatz `body`, Ursprung Boden, Mitte y 1.75)   */
@@ -948,7 +1018,7 @@ export const Goth: React.FC<
     head={
       <>
         <Braids color={hairColor} />
-        <Beard color={hairColor} />
+        <Beard color={hairColor} frame={p.frame} />
         {cap ? <GothCap /> : null}
       </>
     }
@@ -1105,9 +1175,15 @@ export const Hills: React.FC<{ readonly z?: number; readonly color?: string }> =
 
 /**
  * Kolosseum: elliptischer Bau, 3 Arkadenreihen + Attika mit Fenstern, Halbsäulen,
- * Gesimse, Innenwand, Zuschauerränge und Arena. `ruin` 0..1 lässt die oberen
- * Ringe auf einer Seite einstürzen (wie heute; animierbar), `ruinAt` = Winkel der Lücke.
- * Außenmaß ca. 15 × 12 Einheiten, Höhe 6.9.
+ * Gesimse, dunkle Gewölbegänge hinter jedem Bogen, Zuschauerränge und Arena.
+ * `ruin` 0..1 lässt die oberen Ringe auf einer Seite einstürzen (wie heute; animierbar),
+ * `ruinAt` = Winkel der Lücke. Außenmaß bei scale 1 ca. 15 × 12, Höhe 6.9.
+ *
+ * Monumental wirkt er nur groß: in der Totale `scale` 2.4–3 und weit hinten (z −30 … −40),
+ * Kamera tief (y ≈ 2) und leicht nach oben – dann überragt er die Figuren 3–4-fach.
+ * Leistung: Der Bogen-Baum wird nur bei Änderung von Form/`ruin` neu aufgebaut (memo).
+ * `detail="far"` (ab ~30 Einheiten Abstand) lässt Fensterbänke, Masten und feine
+ * Konturen weg (≈ 40 % weniger Meshes); `segments` 24 statt 32 spart weitere 25 %.
  */
 export const Colosseum: React.FC<{
   readonly position?: P3;
@@ -1117,6 +1193,7 @@ export const Colosseum: React.FC<{
   readonly ruinAt?: number;
   readonly color?: string;
   readonly segments?: number;
+  readonly detail?: "full" | "far";
 }> = ({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
@@ -1125,28 +1202,27 @@ export const Colosseum: React.FC<{
   ruinAt = Math.PI * 0.22,
   color = ROME.sandstone,
   segments = 32,
+  detail = "full",
 }) => {
   const N = segments;
   const a = 6; // Apothem Mitte Wand
   const d = 0.5;
   const w = 2 * (a + d / 2) * Math.tan(Math.PI / N);
-  const tiers = [
-    { h: 1.95, aw: w * 0.62, spring: 1.15 },
-    { h: 1.75, aw: w * 0.58, spring: 1.0 },
-    { h: 1.75, aw: w * 0.58, spring: 1.0 },
-  ];
-  const atticH = 1.25;
-  const geos = useMemo(
-    () => ({
+  const far = detail === "far";
+  const geos = useMemo(() => {
+    const tiers = [
+      { h: 1.95, aw: w * 0.62, spring: 1.15 },
+      { h: 1.75, aw: w * 0.58, spring: 1.0 },
+      { h: 1.75, aw: w * 0.58, spring: 1.0 },
+    ];
+    return {
+      tiers,
+      atticH: 1.25,
       bays: tiers.map((t) => archBay(w, t.h, d, t.aw, t.spring)),
       lines: tiers.map((t) => archLine(t.h, t.aw, t.spring, 0.05)),
-      attic: windowBay(w, atticH, d, w * 0.22, 0.34),
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [w],
-  );
-  const rnd = seeded(91);
-  const jag = Array.from({ length: N }, () => rnd());
+      attic: windowBay(w, 1.25, d, w * 0.22, 0.34),
+    };
+  }, [w]);
   const seats = useCanvasTexture("colosseum-seats", [64, 256], (c, wd, h) => {
     c.fillStyle = ROME.sandLight;
     c.fillRect(0, 0, wd, h);
@@ -1155,82 +1231,108 @@ export const Colosseum: React.FC<{
   });
   seats.repeat.set(24, 1);
 
-  const keptTiers = (theta: number) => {
-    if (ruin <= 0) return 4;
-    let dt = Math.abs(theta - ruinAt) % (Math.PI * 2);
-    if (dt > Math.PI) dt = Math.PI * 2 - dt;
-    const half = ruin * Math.PI * 0.42;
-    if (dt > half) return 4;
-    const edge = dt / Math.max(0.001, half); // 0 Mitte … 1 Rand
-    return edge > 0.8 ? 3 : 2;
-  };
-
-  const bays = [];
-  for (let i = 0; i < N; i++) {
-    const th = (i / N) * Math.PI * 2;
-    let keep = keptTiers(th);
-    if (keep < 4 && jag[i] > 0.6) keep = Math.min(4, keep + 1);
-    let y = 0;
-    const parts = [];
-    for (let t = 0; t < 3 && t < keep; t++) {
-      const T = tiers[t];
-      parts.push(
-        <group key={t} position={[0, y + T.h / 2, 0]}>
-          <GeoPart geo={geos.bays[t]} color={color} ink={0.025} />
-          <Flat geo={geos.lines[t]} position={[0, 0, d / 2 + 0.006]} />
-          {t > 0 ? (
-            <Part color={ROME.sandLight} position={[0, -T.h / 2 + 0.14, d / 2 - 0.08]} ink={0.06}>
-              <boxGeometry args={[T.aw + 0.04, 0.28, 0.14]} />
+  // Der ganze Bogen-Ring hängt nur an Form und Ruine – nicht am Frame.
+  const bays = useMemo(() => {
+    const { tiers, atticH } = geos;
+    const rnd = seeded(91);
+    const jag = Array.from({ length: N }, () => rnd());
+    const keptTiers = (theta: number) => {
+      if (ruin <= 0) return 4;
+      let dt = Math.abs(theta - ruinAt) % (Math.PI * 2);
+      if (dt > Math.PI) dt = Math.PI * 2 - dt;
+      const half = ruin * Math.PI * 0.42;
+      if (dt > half) return 4;
+      const edge = dt / Math.max(0.001, half); // 0 Mitte … 1 Rand
+      return edge > 0.8 ? 3 : 2;
+    };
+    // Gewölbegang: dunkle Rückwand hinter den Bögen (liest sich als Tiefe, auch klein)
+    const backZ = -d / 2 - 0.45;
+    const backW = w * ((a + backZ) / a) + 0.02;
+    const out = [];
+    for (let i = 0; i < N; i++) {
+      const th = (i / N) * Math.PI * 2;
+      let keep = keptTiers(th);
+      if (keep < 4 && jag[i] > 0.6) keep = Math.min(4, keep + 1);
+      let y = 0;
+      const parts = [];
+      for (let t = 0; t < 3 && t < keep; t++) {
+        const T = tiers[t];
+        parts.push(
+          <group key={t} position={[0, y + T.h / 2, 0]}>
+            <GeoPart geo={geos.bays[t]} color={color} ink={0.025} />
+            <Flat geo={geos.lines[t]} position={[0, 0, d / 2 + 0.006]} />
+            {t > 0 && !far ? (
+              <Part color={ROME.sandLight} position={[0, -T.h / 2 + 0.14, d / 2 - 0.08]} ink={0.06}>
+                <boxGeometry args={[T.aw + 0.04, 0.28, 0.14]} />
+              </Part>
+            ) : null}
+            {/* Halbsäule an der Kante */}
+            <Part color={ROME.sandLight} position={[w / 2, 0, d / 2 + 0.03]} ink={far ? 0 : 0.05}>
+              <boxGeometry args={[0.2, T.h, 0.12]} />
             </Part>
-          ) : null}
-          {/* Halbsäule an der Kante */}
-          <Part color={ROME.sandLight} position={[w / 2, 0, d / 2 + 0.03]} ink={0.05}>
-            <boxGeometry args={[0.2, T.h, 0.12]} />
-          </Part>
-          {/* Gesims */}
-          <Part color={ROME.sandLight} position={[0, T.h / 2 - 0.08, 0.08]} ink={0.04}>
-            <boxGeometry args={[w * 1.06, 0.17, d + 0.26]} />
-          </Part>
-        </group>,
-      );
-      y += T.h;
-    }
-    if (keep >= 4) {
+            {/* Gesims */}
+            <Part color={ROME.sandLight} position={[0, T.h / 2 - 0.08, 0.08]} ink={0.04}>
+              <boxGeometry args={[w * 1.06, 0.17, d + 0.26]} />
+            </Part>
+          </group>,
+        );
+        y += T.h;
+      }
+      if (keep >= 4) {
+        parts.push(
+          <group key="attic" position={[0, y + atticH / 2, 0]}>
+            <GeoPart geo={geos.attic} color={color} ink={0.025} />
+            <Part color={ROME.sandLight} position={[w / 2, 0, d / 2 + 0.03]} ink={far ? 0 : 0.05}>
+              <boxGeometry args={[0.16, atticH, 0.1]} />
+            </Part>
+            <Part color={ROME.sandLight} position={[0, atticH / 2 - 0.07, 0.06]} ink={0.04}>
+              <boxGeometry args={[w * 1.06, 0.15, d + 0.2]} />
+            </Part>
+            {/* Mast für das Sonnensegel (velarium) – gibt der Krone Maßstab */}
+            {!far && i % 2 === 0 ? (
+              <Part color={ROME.wood} position={[w / 2, atticH / 2 + 0.3, d / 2 - 0.05]} ink={0.1}>
+                <boxGeometry args={[0.07, 0.6, 0.07]} />
+              </Part>
+            ) : null}
+          </group>,
+        );
+        y += atticH;
+      }
       parts.push(
-        <group key="attic" position={[0, y + atticH / 2, 0]}>
-          <GeoPart geo={geos.attic} color={color} ink={0.025} />
-          <Part color={ROME.sandLight} position={[w / 2, 0, d / 2 + 0.03]} ink={0.05}>
-            <boxGeometry args={[0.16, atticH, 0.1]} />
-          </Part>
-          <Part color={ROME.sandLight} position={[0, atticH / 2 - 0.07, 0.06]} ink={0.04}>
-            <boxGeometry args={[w * 1.06, 0.15, d + 0.2]} />
-          </Part>
+        <mesh key="vault" position={[0, y / 2, backZ]}>
+          <planeGeometry args={[backW, y]} />
+          <meshBasicMaterial color={ROME.vault} side={DoubleSide} />
+        </mesh>,
+      );
+      out.push(
+        <group
+          key={i}
+          position={[Math.sin(th) * a, 0, Math.cos(th) * a]}
+          rotation={[0, th, 0]}
+        >
+          {parts}
         </group>,
       );
     }
-    bays.push(
-      <group
-        key={i}
-        position={[Math.sin(th) * a, 0, Math.cos(th) * a]}
-        rotation={[0, th, 0]}
-      >
-        {parts}
-      </group>,
-    );
-  }
-  const inner = a - 1.5;
+    return out;
+  }, [geos, N, a, w, ruin, ruinAt, color, far]);
+
   const arena = a * 0.42;
+  // Ränge: von der Oberkante der Gänge (bei Ruine tiefer) zur Arena
+  const seatTop = ruin > 0 ? 3.7 : 5.45;
+  const seatR = a - d / 2 - 0.5;
   return (
     <group position={position} rotation={rotation} scale={scale}>
       <group scale={[1.22, 1, 1]}>
         {bays}
-        {/* innerer Ring (dunkel – liest sich durch die Bögen als Gewölbegang) */}
-        <Part color={ROME.interior} position={[0, 1.85, 0]} double ink={0}>
-          <cylinderGeometry args={[inner, inner, 3.7, N, 1, true]} />
-        </Part>
-        {/* Ränge */}
-        <Part color="#FFFFFF" map={seats} position={[0, 2.3, 0]} double ink={0}>
-          <cylinderGeometry args={[inner, arena, 3.4, N, 1, true]} />
+        <Part
+          color="#FFFFFF"
+          map={seats}
+          position={[0, (seatTop + 0.6) / 2, 0]}
+          double
+          ink={0}
+        >
+          <cylinderGeometry args={[seatR, arena, seatTop - 0.6, N, 1, true]} />
         </Part>
         <mesh position={[0, 0.6, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <circleGeometry args={[arena, N]} />
@@ -1694,51 +1796,82 @@ export const RomanSkyline: React.FC<{
   );
 };
 
-/** Kaiserthron: Marmorstufen, goldener Sitz mit hoher Lehne, Purpurkissen, Löwenfüße. Sitzhöhe ≈ 1.45. */
+/** y-Position einer sitzenden Figur (`sit={1}`) relativ zum Thron: Körper ruht auf dem Kissen. */
+export const THRONE_SIT_Y = 0.66;
+
+/**
+ * Kaiserthron: Marmorstufen, goldener Sitz, Purpurkissen, Armlehnen mit Knäufen.
+ * Die Lehne ist breiter (2,9) und höher (5,8) als ein Toonie-Kopf, dazu Seitenpfosten
+ * mit Knäufen und ein Adler obenauf – so rahmt sie den Kopf und bleibt in der
+ * Frontalen sichtbar. Figur: `position={[x, y + THRONE_SIT_Y, z + 0.3]}`, `sit={1}`.
+ */
 export const Throne: React.FC<{
   readonly position?: P3;
   readonly rotation?: P3;
   readonly scale?: number;
   readonly cushion?: string;
-}> = ({ position = [0, 0, 0], rotation, scale = 1, cushion = ROME.purple }) => (
+  readonly eagle?: boolean;
+}> = ({ position = [0, 0, 0], rotation, scale = 1, cushion = ROME.purple, eagle = true }) => (
   <group position={position} rotation={rotation} scale={scale}>
     {/* Stufen */}
-    <Part color={ROME.marble} position={[0, 0.15, 0.2]} ink={0.02}>
-      <boxGeometry args={[3.4, 0.3, 2.8]} />
+    <Part color={ROME.marble} position={[0, 0.15, 0.25]} ink={0.02}>
+      <boxGeometry args={[4.0, 0.3, 3.0]} />
     </Part>
     <Part color={ROME.marbleShade} position={[0, 0.42, 0]} ink={0.025}>
-      <boxGeometry args={[2.8, 0.24, 2.2]} />
+      <boxGeometry args={[3.3, 0.24, 2.3]} />
     </Part>
     {/* Sitz */}
     <Part color={ROME.gold} position={[0, 0.9, -0.1]} ink={0.03}>
-      <boxGeometry args={[2.0, 0.7, 1.4]} />
+      <boxGeometry args={[2.4, 0.7, 1.4]} />
     </Part>
-    <Part color={cushion} position={[0, 1.33, 0]} scale={[1, 0.3, 1]} ink={0.04}>
+    <Part color={ROME.goldDark} position={[0, 0.9, 0.61]} ink={0}>
+      <boxGeometry args={[1.9, 0.36, 0.02]} />
+    </Part>
+    <Part color={cushion} position={[0, 1.33, 0]} scale={[1.15, 0.3, 1]} ink={0.04}>
       <capsuleGeometry args={[0.55, 0.6, 6, 16]} />
     </Part>
-    {/* Lehne */}
-    <Part color={ROME.gold} position={[0, 2.5, -0.72]} ink={0.03}>
-      <boxGeometry args={[2.0, 2.6, 0.28]} />
+    {/* Lehne: Tafel + Rundbogen, deutlich größer als der Kopf */}
+    <Part color={ROME.gold} position={[0, 2.8, -0.72]} ink={0.03}>
+      <boxGeometry args={[2.9, 3.0, 0.28]} />
     </Part>
-    <Part color={ROME.gold} position={[0, 3.8, -0.72]} rotation={[Math.PI / 2, 0, 0]} ink={0.04}>
-      <cylinderGeometry args={[1.0, 1.0, 0.28, 28, 1, false, -Math.PI / 2, Math.PI]} />
+    <Part color={ROME.gold} position={[0, 4.3, -0.72]} rotation={[Math.PI / 2, 0, 0]} ink={0.035}>
+      <cylinderGeometry args={[1.45, 1.45, 0.28, 32, 1, false, -Math.PI / 2, Math.PI]} />
     </Part>
-    <Part color={cushion} position={[0, 2.5, -0.55]} ink={0.04}>
-      <boxGeometry args={[1.5, 2.1, 0.08]} />
+    {/* Purpurbespannung (Tafel + Bogen) */}
+    <Part color={cushion} position={[0, 2.85, -0.55]} ink={0.03}>
+      <boxGeometry args={[2.3, 2.9, 0.08]} />
     </Part>
-    <Part color={ROME.gold} position={[0, 4.3, -0.62]} ink={0.06}>
-      <sphereGeometry args={[0.2, 16, 12]} />
+    <Part color={cushion} position={[0, 4.3, -0.55]} rotation={[Math.PI / 2, 0, 0]} ink={0.03}>
+      <cylinderGeometry args={[1.15, 1.15, 0.08, 28, 1, false, -Math.PI / 2, Math.PI]} />
     </Part>
-    {/* Armlehnen + Löwenköpfe */}
+    {/* Seitenpfosten mit Knäufen – stehen links und rechts neben dem Kopf */}
+    {[-1, 1].map((sd) => (
+      <group key={`p${sd}`}>
+        <Part color={ROME.goldDark} position={[sd * 1.55, 2.95, -0.62]} ink={0.04}>
+          <cylinderGeometry args={[0.12, 0.15, 3.3, 12]} />
+        </Part>
+        <Part color={ROME.gold} position={[sd * 1.55, 4.75, -0.62]} ink={0.06}>
+          <sphereGeometry args={[0.24, 16, 12]} />
+        </Part>
+      </group>
+    ))}
+    {eagle ? (
+      <Eagle position={[0, 5.62, -0.7]} scale={0.75} />
+    ) : (
+      <Part color={ROME.gold} position={[0, 5.85, -0.72]} ink={0.06}>
+        <sphereGeometry args={[0.22, 16, 12]} />
+      </Part>
+    )}
+    {/* Armlehnen + Knäufe */}
     {[-1, 1].map((sd) => (
       <group key={sd}>
-        <Part color={ROME.goldDark} position={[sd * 1.08, 1.6, -0.1]} ink={0.04}>
+        <Part color={ROME.goldDark} position={[sd * 1.28, 1.6, -0.1]} ink={0.04}>
           <boxGeometry args={[0.26, 0.24, 1.4]} />
         </Part>
-        <Part color={ROME.gold} position={[sd * 1.08, 1.68, 0.66]} ink={0.06}>
+        <Part color={ROME.gold} position={[sd * 1.28, 1.68, 0.66]} ink={0.06}>
           <sphereGeometry args={[0.22, 16, 12]} />
         </Part>
-        <Part color={ROME.goldDark} position={[sd * 1.08, 1.0, 0.55]} ink={0.04}>
+        <Part color={ROME.goldDark} position={[sd * 1.28, 1.0, 0.55]} ink={0.04}>
           <boxGeometry args={[0.22, 1.1, 0.22]} />
         </Part>
       </group>
