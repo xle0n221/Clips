@@ -179,6 +179,22 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 .ht .combo { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
 .ht .combo code { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent); overflow-wrap: anywhere; }
 .ht ul.notes { margin: 6px 0 0; padding-left: 18px; font-size: 0.8125rem; color: var(--muted); display: grid; gap: 4px; }
+.tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font: inherit; font-size: 0.8125rem; font-weight: 500; min-height: 34px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); font-weight: 600; }
+.lenhint { font-size: 0.8125rem; color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
+.dup { font-size: 0.8125rem; color: var(--warn); margin: 0; }
+.runbox { background: var(--accent-soft); border-radius: 12px; padding: 10px 14px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.runbox p { margin: 0; flex: 1 1 220px; font-size: 0.875rem; }
+.ideas { border-top: 1px solid var(--line); padding-top: 10px; display: grid; gap: 8px; }
+.ideas .row input { flex: 1 1 200px; }
+.idea { text-align: left; display: grid; gap: 2px; width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; cursor: pointer; font: inherit; color: var(--fg); min-height: 44px; }
+.idea b { font-weight: 600; }
+.idea span { color: var(--muted); font-size: 0.8125rem; overflow-wrap: anywhere; }
+.idea:hover { border-color: var(--accent); }
+.stuck { font-size: 0.8125rem; color: var(--warn); margin: 0; }
+.prio { font-size: 0.75rem; font-weight: 600; color: var(--accent); }
 .empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
@@ -196,11 +212,17 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     <div class="summary" id="summary">Lade …</div>
   </header>
 
+  <div class="runbox" id="runBox" hidden>
+    <p id="runText">Es wartet Arbeit auf Claude.</p>
+    <button class="btn-primary" id="runBtn" type="button">Jetzt starten</button>
+  </div>
+
   <form class="add" id="addForm" autocomplete="off">
     <div class="row">
       <label class="sr" for="topic">Thema</label>
       <input id="topic" name="topic" placeholder="Neues Thema, z. B. Wie Haie schlafen" maxlength="140" required>
     </div>
+    <p class="dup" id="dupHint" hidden></p>
     <div class="row">
       <label class="sr" for="len">Wunschlänge in Sekunden</label>
       <input id="len" name="len" type="number" inputmode="numeric" min="10" max="900" step="5" placeholder="Länge (s)">
@@ -216,20 +238,44 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
     </div>
+    <div class="tools">
+      <span class="hint">Länge:</span>
+      <div class="chips" id="lenChips">
+        <button class="chip" type="button" data-len="30">30 s</button>
+        <button class="chip" type="button" data-len="60">60 s</button>
+        <button class="chip" type="button" data-len="90">90 s</button>
+      </div>
+      <p class="lenhint" id="lenHint"></p>
+    </div>
     <div class="insp-pick" id="inspPick" hidden>
       <label class="filebtn" for="inspFiles">Bilder zur Inspiration anhängen</label>
       <input id="inspFiles" type="file" accept="image/*,video/*,application/pdf" multiple>
       <span class="hint" id="inspCount">optional – Bilder, kurze Videos oder PDFs</span>
     </div>
-    <p class="hint">Claude schaut stündlich (7–23 Uhr) nach neuen Themen und Entscheidungen. Stil wie das Sonnensystem-Video.</p>
+    <p class="hint" id="nextRun">Claude holt neue Themen und Entscheidungen ab (stündlich 7–23 Uhr, wenn der Abholer eingeschaltet ist). Stil wie das Sonnensystem-Video.</p>
+    <div class="ideas" id="ideasBox" hidden>
+      <div class="row">
+        <label class="sr" for="ideaDir">Richtung für Ideen</label>
+        <input id="ideaDir" placeholder="Richtung für Ideen (optional), z. B. Tiere, Geschichte" maxlength="120">
+        <button class="btn-quiet" id="ideasBtn" type="button">Themen-Ideen vorschlagen</button>
+      </div>
+      <div id="ideasOut" aria-live="polite"></div>
+    </div>
     <p class="msg" id="addMsg" role="status"></p>
     <p class="wake" id="wakeMsg" role="status" hidden></p>
   </form>
+
+  <details class="ht" id="repoBox" hidden>
+    <summary id="repoSum">Repo-Stand</summary>
+    <div id="repoBody"></div>
+  </details>
 
   <details class="ht" id="htBox" hidden>
     <summary id="htSum">Hashtags</summary>
     <div id="htBody"></div>
   </details>
+
+  <div class="chips" id="filters" role="group" aria-label="Filter" hidden></div>
 
   <section id="list" aria-live="polite">
     <p class="empty" id="empty">Noch keine Videos. Trage oben ein Thema ein – eine Claude-Sitzung übernimmt es dann.</p>
@@ -243,6 +289,13 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   ];
   const STAGE_LABEL = { queued: "Wartet", research: "Recherche", script: "Drehbuch", scenes: "Szenen", render: "Render", done: "Fertig", error: "Fehler" };
   const REPO = "https://github.com/xle0n221/clips/tree/";
+  const PICKUP_TRIGGER = "trig_01GPmrJycLUKEASvHqbaG4hz"; // geplante Aufgabe „Clips Dashboard-Abholer“
+  const CCR = "Claude Code Remote";
+  const STUCK_MS = 3 * 3600 * 1000;
+  let mcp = null, sampleFn = null, canFire = false;
+  let pickup = null; // { enabled, next } aus get_trigger, sonst unbekannt
+  const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+  let filter = store.get("clips.filter") || "all";
 
   const $ = (id) => document.getElementById(id);
   const listEl = $("list"), emptyEl = $("empty"), summaryEl = $("summary");
@@ -292,6 +345,35 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (["research", "script", "scenes", "render"].includes(v.stage)) return 2;
     if (v.stage === "queued") return 3;
     return 4;
+  }
+  const stuck = (v) => v.busy === true && Date.parse(v.updatedAt) && Date.now() - Date.parse(v.updatedAt) > STUCK_MS;
+  const pendingForClaude = (v) => !v.busy && (v.stage === "queued" || (v.review && v.decision) || v.resume === true);
+  const FILTERS = [
+    ["all", "Alle", () => true],
+    ["todo", "Zu erledigen", (v) => waiting(v) || blocked(v) || v.stage === "error"],
+    ["work", "In Arbeit", (v) => ["research", "script", "scenes", "render"].includes(v.stage) && !waiting(v) && !blocked(v)],
+    ["queued", "Wartend", (v) => v.stage === "queued"],
+    ["done", "Fertig", (v) => v.stage === "done"],
+  ];
+  const norm = (s) => String(s || "").toLowerCase().replace(/[äöüß]/g, (c) => ({ "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" })[c]).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+
+  // Nächster stündlicher Durchlauf (geplante Aufgabe: jeweils :17, 7–23 Uhr deutscher Zeit)
+  function nextRunText() {
+    let h, m;
+    try {
+      const parts = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+      h = Number(parts.find((x) => x.type === "hour").value); m = Number(parts.find((x) => x.type === "minute").value);
+    } catch { return null; }
+    let nh = h < 7 ? 7 : (m < 17 ? h : h + 1);
+    return nh > 23 ? "morgen ca. 7:17 Uhr" : "ca. " + nh + ":17 Uhr";
+  }
+  function nr() {
+    const el2 = $("nextRun"); if (!el2) return;
+    if (pickup && pickup.enabled === false) { el2.textContent = "Der stündliche Abholer ist ausgeschaltet – neue Themen und Entscheidungen startest du mit „Jetzt starten“ oben. Stil wie das Sonnensystem-Video."; return; }
+    const t = nextRunText();
+    el2.textContent = pickup && pickup.enabled
+      ? "Claude schaut stündlich (7–23 Uhr) nach neuen Themen und Entscheidungen – nächster Durchlauf " + (t || "bald") + ". Stil wie das Sonnensystem-Video."
+      : "Claude holt neue Themen und Entscheidungen ab, sobald der Abholer läuft (stündlich 7–23 Uhr, wenn eingeschaltet) oder über „Jetzt starten“. Stil wie das Sonnensystem-Video.";
   }
   function slugify(s) {
     const map = { "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" };
@@ -583,6 +665,26 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (Array.isArray(h.notes) && h.notes.length) body.append(el("ul", { class: "notes" }, h.notes.map((n) => el("li", { text: String(n) }))));
   }
 
+  // Repo-Stand: wird nach jedem Push von der Sitzung „CLIPS“ in meta/repo geschrieben
+  function renderRepo(r) {
+    const box = $("repoBox");
+    if (!r || typeof r !== "object") { box.hidden = true; return; }
+    box.hidden = false;
+    const t = Date.parse(r.updatedAt);
+    $("repoSum").replaceChildren("Repo-Stand ", el("span", { class: "sub",
+      text: (r.commit ? "· " + String(r.commit).slice(0, 7) : "") + (t ? " · " + new Date(t).toLocaleString("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "") }));
+    const body = $("repoBody"); body.replaceChildren();
+    if (r.branch) body.append(el("p", { class: "status" }, "Branch: ", el("a", { href: REPO + encodeURIComponent(r.branch).replace(/%2F/g, "/"), target: "_blank", rel: "noopener", text: r.branch })));
+    if (r.summary) body.append(el("p", { class: "status", text: String(r.summary) }));
+    const ch = Array.isArray(r.changes) ? r.changes : [];
+    if (ch.length) {
+      body.append(el("h3", { text: "Letzte Verbesserungen" }));
+      body.append(el("ul", { class: "notes" }, ch.slice(0, 12).map((c) => el("li", null,
+        c && c.date ? el("span", { class: "tc", text: String(c.date).slice(0, 10) + " " }) : null,
+        String((c && c.text) || c)))));
+    }
+  }
+
   function card(v) {
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
@@ -592,13 +694,16 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 
     const c = el("article", { class: "card" + (waiting(v) || blocked(v) ? " attn" : ""), id: "v-" + v.id },
       el("div", { class: "card-head" },
-        el("div", null, el("h2", { text: v.topic || v.id }), el("div", { class: "meta" }, metaParts)),
+        el("div", null, el("h2", { text: v.topic || v.id }), el("div", { class: "meta" }, metaParts),
+          v.stage === "queued" && v.priority === true ? el("span", { class: "prio", text: "★ Als Nächstes" }) : null),
         pill(v)),
       blocked(v) ? el("p", { class: "banner", role: "alert", text: "Aktion nötig: " + v.actionNeeded }) : null,
       steps(v.stage),
       progressBlock(v),
       v.statusText ? el("p", { class: "status" + (v.stage === "error" ? " err" : ""), text: v.statusText })
         : el("p", { class: "status hint", text: v.stage === "queued" ? "Wartet darauf, dass eine Claude-Sitzung das Thema übernimmt." : "" }),
+      stuck(v) ? el("p", { class: "stuck", text: "Keine Rückmeldung seit " + ago(v.updatedAt).replace(/^vor /, "") + " – der nächste Durchlauf macht dort weiter." }) : null,
+      v.resume === true && !v.busy ? el("p", { class: "hint", text: "Wird beim nächsten Durchlauf fortgesetzt." }) : null,
       metricsLine(v.metrics),
       v.note ? el("p", { class: "note", text: "Notiz: " + v.note }) : null,
       inspBlock(v));
@@ -607,9 +712,17 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (v.stage === "done") c.append(doneBlock(v));
     const pub = publishBlock(v); if (pub) c.append(pub);
 
+    if (canWrite && (v.stage === "error" || blocked(v)) && v.resume !== true) {
+      c.append(el("div", { class: "foot" },
+        el("button", { class: "btn-quiet", type: "button", disabled: busy[v.id], onclick: () => patch(v, { actionNeeded: null, resume: true }),
+          text: blocked(v) ? "Erledigt – weitermachen" : "Erneut versuchen" })));
+    }
     if (canWrite && v.stage === "queued") {
       const armed = confirmDel[v.id];
       c.append(el("div", { class: "foot" },
+        el("button", { class: "btn-quiet", type: "button", disabled: busy[v.id], "aria-pressed": v.priority === true ? "true" : "false",
+          onclick: () => patch(v, { priority: v.priority === true ? null : true }),
+          text: v.priority === true ? "★ Als Nächstes (aufheben)" : "☆ Als Nächstes" }),
         el("button", { class: "btn-quiet", type: "button", disabled: busy[v.id],
           onclick: () => { if (!armed) { confirmDel[v.id] = true; render(); setTimeout(() => { confirmDel[v.id] = false; render(); }, 5000); } else remove(v); },
           text: armed ? "Wirklich entfernen?" : "Entfernen" })));
@@ -619,8 +732,11 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 
   function render() {
     const focusId = document.activeElement && document.activeElement.id;
-    const sorted = docs.slice().sort((a, b) => rank(a) - rank(b) || String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
-    listEl.replaceChildren(...(sorted.length ? sorted.map(card) : [emptyEl]));
+    const f = FILTERS.find((x) => x[0] === filter) || FILTERS[0];
+    const sorted = docs.filter(f[2]).sort((a, b) => rank(a) - rank(b) || (b.priority === true) - (a.priority === true) || String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
+    renderFilters(); renderRunBox();
+    listEl.replaceChildren(...(sorted.length ? sorted.map(card)
+      : [docs.length ? el("p", { class: "empty", text: "Keine Videos in „" + f[1] + "“." }) : emptyEl]));
     if (focusId && $(focusId) && $(focusId).tagName === "TEXTAREA") { const t = $(focusId); t.focus(); t.setSelectionRange(t.value.length, t.value.length); }
     if (!loaded) return;
     const nWait = docs.filter((v) => waiting(v) || blocked(v)).length;
@@ -639,18 +755,123 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     const hint = (why) => {
       w.hidden = false; w.className = "wake warn";
       w.textContent = "Claude wird nicht automatisch geweckt" + (why ? " (" + why + ")" : "") +
-        ". Gespeichert ist es trotzdem – Claude holt es beim nächsten stündlichen Durchlauf ab.";
+        ". Gespeichert ist es trotzdem – Claude holt es beim nächsten Durchlauf ab.";
     };
     if (!art) { hint("Funktion hier nicht verfügbar"); return; }
     try {
       await art.publish({ "last-action.json": JSON.stringify({ action, id, at: new Date().toISOString() }) });
       w.hidden = false; w.className = "wake ok";
-      w.textContent = "Gespeichert (" + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + "). Claude holt es beim nächsten stündlichen Durchlauf ab.";
+      w.textContent = "Gespeichert (" + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + "). Claude holt es beim nächsten Durchlauf ab.";
     } catch (e) {
       if (e && e.code === "conflict") return; // Seite lädt ohnehin die neueste Version
       hint(e && e.code);
     }
   }
+
+  function renderFilters() {
+    const box = $("filters");
+    box.hidden = docs.length < 4;
+    if (box.hidden) return;
+    box.replaceChildren(...FILTERS.map(([k, label, fn]) => el("button", { class: "chip", type: "button", "aria-pressed": filter === k ? "true" : "false",
+      onclick: () => { filter = k; store.set("clips.filter", k); render(); }, text: label + " " + docs.filter(fn).length })));
+  }
+
+  // „Jetzt starten“: löst die geplante Aufgabe sofort aus (Connector „Claude Code Remote“, als der Betrachter)
+  let firing = false;
+  function renderRunBox() {
+    const n = docs.filter(pendingForClaude).length;
+    const box = $("runBox");
+    const last = Number(store.get("clips.lastFire") || 0);
+    const recent = Date.now() - last < 10 * 60 * 1000;
+    box.hidden = !(canFire && canWrite && (n > 0 || recent));
+    if (box.hidden) return;
+    if (!firing && !$("runText").dataset.msg) $("runText").textContent = recent
+      ? "Vor " + Math.max(1, Math.round((Date.now() - last) / 60000)) + " Min. gestartet – Claude arbeitet daran. Erneut starten ist 10 Min. gesperrt."
+      : (n === 1 ? "1 Video wartet auf Claude." : n + " Videos warten auf Claude.") + (pickup && pickup.enabled === false ? " Der stündliche Abholer ist aus." : pickup && pickup.enabled ? " Nächster automatischer Durchlauf " + (nextRunText() || "stündlich") + "." : "");
+    $("runBtn").disabled = firing || recent || n === 0;
+  }
+  $("runBtn").addEventListener("click", async () => {
+    if (!mcp || firing) return;
+    firing = true; renderRunBox();
+    const t = $("runText");
+    t.textContent = "Starte …";
+    const say = (msg) => { t.dataset.msg = "1"; t.textContent = msg; setTimeout(() => { delete t.dataset.msg; renderRunBox(); }, 15000); };
+    try {
+      await mcp.callTool(CCR, "fire_trigger", { trigger_id: PICKUP_TRIGGER });
+      store.set("clips.lastFire", String(Date.now()));
+      say("Gestartet. Eine Claude-Sitzung übernimmt jetzt das nächste Video; die Karte zeigt gleich den Fortschritt.");
+    } catch (e) {
+      const c = e && e.code;
+      if (c === "server_not_connected") say("Der Connector „" + CCR + "“ ist nicht verbunden (claude.ai → Einstellungen → Connectors). Der stündliche Durchlauf läuft trotzdem.");
+      else if (c === "needs_reauth") say("„" + CCR + "“ muss neu verbunden werden (claude.ai → Einstellungen → Connectors).");
+      else if (c === "not_in_manifest" || c === "approval_required" || c === "not_granted") say("Starten wurde nicht erlaubt. Beim nächsten Klick fragt claude.ai erneut; sonst übernimmt der stündliche Durchlauf.");
+      else if (c === "blocked_by_policy") say("Starten ist für dieses Konto gesperrt. Der stündliche Durchlauf übernimmt.");
+      else if (c === "tool_error") say("Die geplante Aufgabe ließ sich nicht starten (" + ((e && e.message) || "Fehler").slice(0, 160) + ").");
+      else { store.set("clips.lastFire", String(Date.now())); say("Unklar, ob der Start geklappt hat. Bitte nicht doppelt klicken – in ein paar Minuten zeigt die Karte es."); }
+    } finally { firing = false; renderRunBox(); }
+  });
+
+  async function patch(v, fields) {
+    if (!db || busy[v.id]) return;
+    busy[v.id] = true; render();
+    try { await db.collection("videos").doc(v.id).update({ ...fields, updatedAt: new Date().toISOString() }); wake("update", v.id); }
+    catch {} finally { busy[v.id] = false; render(); }
+  }
+
+  // Länge → Wortzahl (3,3–3,6 Wörter/s)
+  function updateLenHint() {
+    const n = Number($("len").value);
+    $("lenHint").textContent = n > 0 ? `≈ ${Math.round(n * WPS_MIN)}–${Math.round(n * WPS_MAX)} Wörter Sprechtext` : "";
+    for (const b of $("lenChips").children) b.setAttribute("aria-pressed", String(Number(b.dataset.len) === n));
+  }
+  $("len").addEventListener("input", updateLenHint);
+  $("lenChips").addEventListener("click", (e) => { const b = e.target.closest("[data-len]"); if (!b) return; $("len").value = b.dataset.len; updateLenHint(); });
+
+  // Doppelte Themen erkennen
+  function updateDup() {
+    const q = norm($("topic").value), hint = $("dupHint");
+    const hit = q.length >= 4 ? docs.find((d) => { const t = norm(d.topic); return t && (t === q || (q.length >= 6 && (t.includes(q) || q.includes(t)))); }) : null;
+    hint.hidden = !hit;
+    if (hit) hint.textContent = "Ähnliches Thema gibt es schon: „" + hit.topic + "“ (" + (STAGE_LABEL[hit.stage] || hit.stage) + ").";
+  }
+  $("topic").addEventListener("input", updateDup);
+
+  // Themen-Ideen (fragt Claude auf dem Konto des Betrachters)
+  let ideaCtl = null;
+  $("ideasBtn").addEventListener("click", async () => {
+    if (!sampleFn) return;
+    const out = $("ideasOut"), btn = $("ideasBtn");
+    if (ideaCtl) { ideaCtl.abort(); return; }
+    ideaCtl = new AbortController();
+    btn.textContent = "Stopp"; out.replaceChildren(el("p", { class: "hint", text: "Claude denkt nach …" }));
+    const existing = docs.map((d) => d.topic).filter(Boolean).slice(0, 60);
+    const dir = $("ideaDir").value.trim();
+    const prompt = [
+      "Schlage 5 Themen für kurze englische 3D-Cartoon-Erklärvideos (TikTok/YouTube Shorts, 60–90 s) vor.",
+      "Regeln: Jedes Thema hat eine zentrale überraschende Frage, die erst am Ende aufgelöst wird; eine Hauptfigur mit Einsatz; im Standbild sofort erkennbar (Kostüm, Ort, Requisiten).",
+      "Nur Themen, deren Kernaussage sich mit Primärquellen (z. B. NASA, Museen, Fachstellen) belegen lässt; keine Gerüchte.",
+      dir ? "Richtung: " + dir.slice(0, 120) : "Richtung: frei (Wissen, Natur, Weltraum, Geschichte, Technik).",
+      existing.length ? "Nicht wiederholen: " + existing.join("; ") : "",
+      'Antworte nur mit einem JSON-Array: [{"topic": "Thema auf Deutsch, max. 60 Zeichen", "hook": "englischer erster Satz, max. 15 Wörter", "why": "1 kurzer deutscher Satz, warum man dranbleibt"}]'
+    ].filter(Boolean).join("\n");
+    try {
+      const list = await sampleFn.json(prompt, { signal: ideaCtl.signal, cache: false });
+      const items = (Array.isArray(list) ? list : []).filter((x) => x && x.topic).slice(0, 5);
+      if (!items.length) { out.replaceChildren(el("p", { class: "msg err", text: "Keine verwertbaren Vorschläge – bitte erneut versuchen." })); return; }
+      out.replaceChildren(
+        ...items.map((x) => el("button", { class: "idea", type: "button",
+          onclick: () => { $("topic").value = String(x.topic).slice(0, 140); $("note").value = x.hook ? ("Hook: " + String(x.hook)).slice(0, 500) : $("note").value; updateDup(); $("topic").focus(); },
+          title: "Übernehmen" },
+          el("b", { text: String(x.topic) }), x.hook ? el("span", { text: "„" + String(x.hook) + "“" }) : null, x.why ? el("span", { text: String(x.why) }) : null)),
+        el("p", { class: "hint", text: "Antippen übernimmt das Thema. Vorschläge sind ungeprüft – die Fakten prüft Claude bei der Recherche mit Primärquellen." }));
+    } catch (e) {
+      const c = e && e.code;
+      if (c === "cancelled") out.replaceChildren();
+      else if (c === "not_granted" || c === "sampling_disabled" || c === "capability_disabled" || c === "not_declared") { $("ideasBox").hidden = true; }
+      else if (c === "rate_limited") out.replaceChildren(el("p", { class: "msg err", text: "Gerade zu viele Anfragen oder Nutzungslimit erreicht – später erneut versuchen." }));
+      else out.replaceChildren(el("p", { class: "msg err", text: "Hat nicht geklappt (" + (c || "Fehler") + ") – bitte erneut versuchen." }));
+    } finally { ideaCtl = null; btn.textContent = "Themen-Ideen vorschlagen"; }
+  });
 
   async function decide(v, decision, msgEl) {
     if (!db || busy[v.id]) return;
@@ -711,8 +932,9 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
         topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
         voice: $("voice").value || "af_heart",
         stage: "queued", statusText: "", review: null, decision: null,
-        branch: null, sessionId: null, updatedAt: new Date().toISOString()
+        branch: null, sessionId: null, busy: false, updatedAt: new Date().toISOString()
       });
+      $("dupHint").hidden = true; $("lenHint").textContent = "";
       $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "af_heart";
       $("inspFiles").value = ""; $("inspCount").textContent = "optional – Bilder, kurze Videos oder PDFs";
       msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
@@ -733,6 +955,20 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     }
     const [dbNs, user, artNs, assetsNs] = await Promise.all([window.claude.use("db"), window.claude.use("user"), window.claude.use("artifact"), window.claude.use("assets")]);
     db = dbNs; art = artNs; assets = assetsNs;
+    Promise.all([window.claude.use("mcp"), window.claude.use("sample")]).then(async ([m, smp]) => {
+      sampleFn = smp; if (smp && canWrite) $("ideasBox").hidden = false;
+      mcp = m;
+      if (m) { try { const r = await m.listTools(CCR); const srv = r && r.servers && r.servers.find((x) => x.server === CCR);
+        canFire = !!(srv && srv.tools.some((t) => t.name === "fire_trigger"));
+        if (srv && srv.tools.some((t) => t.name === "get_trigger")) {
+          m.watchTool(CCR, "get_trigger", { trigger_id: PICKUP_TRIGGER }, (ev) => {
+            if (ev.type !== "data") return;
+            const pl = ev.result && ev.result.payload; const tr = pl && (pl.trigger || pl);
+            if (tr && typeof tr.enabled === "boolean") { pickup = { enabled: tr.enabled, next: tr.next_run_at || null }; nr(); render(); }
+          }, { refetchInterval: 15 * 60 * 1000 });
+        } } catch { canFire = false; } }
+      render();
+    });
     if (assets) $("inspPick").hidden = false;
     if (!db) {
       summaryEl.textContent = "Keine Datenbank";
@@ -753,7 +989,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       summaryEl.textContent = "Verbindung verloren (" + (err && err.code) + ")";
     });
     db.doc("hashtags/current").onSnapshot((d) => renderHashtags(d.exists ? d.data() : null), () => {});
-    setInterval(render, 60000); // nur relative Zeitangaben auffrischen, kein Schreiben
+    db.doc("meta/repo").onSnapshot((d) => renderRepo(d.exists ? d.data() : null), () => {});
+    nr(); setInterval(() => { nr(); render(); }, 60000); // nur Zeitangaben auffrischen, kein Schreiben
   }
   start();
 })();

@@ -5,7 +5,7 @@ Drehbücher / Kontaktabzüge mit **OK** / **Nicht OK** + Feedback freigeben.
 
 - **Live-Seite (privat):** https://claude.ai/artifact/5hB3B36zzQuaX5e78LEr8H
 - **Quelle:** `dashboard/index.html` (wird so, wie sie ist, per Artifact-Tool veröffentlicht)
-- **Capabilities:** `db` (gemeinsame Datenbank), `user` (Schreibrecht prüfen), `assets` (Bilder/Videos für Kontaktabzug und Vorschau), `artifact` (Seite speichert bei jeder Aktion eine neue Version → weckt beobachtende Sitzungen, siehe unten)
+- **Capabilities:** `db` (gemeinsame Datenbank), `user` (Schreibrecht prüfen), `assets` (Bilder/Videos für Kontaktabzug und Vorschau), `artifact` (Seite speichert bei jeder Aktion eine neue Version → weckt beobachtende Sitzungen, siehe unten), `mcp` (Connector „Claude Code Remote“, nur `fire_trigger` für „Jetzt starten“), `sample` (Themen-Ideen)
 
 Erneut veröffentlichen aus einer anderen Sitzung: Artifact-Tool, `action: "read"` mit obiger URL,
 dann `publish` mit `url` = obige URL und `file_path` = `dashboard/index.html`.
@@ -38,6 +38,8 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `actionNeeded` | string \| null (optional) | Sitzung | auffälliges rotes Banner, z. B. `"Freigabe in der Claude-App nötig (Netzwerk)"`; Karte wird oben einsortiert |
 | `fileSizeBytes` | number (optional) | Sitzung | Dateigröße auf der Fertig-Karte |
 | `busy` | boolean (optional) | Sitzung | `true`, solange eine Sitzung am Video arbeitet (Sperre für den stündlichen Abholer); bei Freigabe, Fertig oder Fehler `false` |
+| `resume` | true \| null (optional) | Seite / Nutzer | Knopf „Erneut versuchen“ (bei `error`) bzw. „Erledigt – weitermachen“ (bei `actionNeeded`): der nächste Durchlauf setzt das Video fort; die Sitzung setzt es beim Übernehmen auf `null` |
+| `priority` | true \| null (optional) | Seite / Nutzer | Knopf „Als Nächstes“ auf wartenden Karten: wird vor älteren Themen übernommen |
 | `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
 
 Zusätzliche optionale Felder in `review`:
@@ -52,6 +54,19 @@ Die Ziel-Werte 3,3–3,6 Wörter/s und die Stimmenliste stammen aus der Video-Pr
 (Vorgabe der Orchestrator-Sitzung, hier nicht unabhängig nachgeprüft).
 
 Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, `branch: null`, `sessionId: null`.
+
+### Werkzeuge auf der Seite (ab Version 9)
+- **Jetzt starten:** löst die geplante Aufgabe „Clips Dashboard-Abholer“ (`trig_01GPmrJycLUKEASvHqbaG4hz`) sofort aus,
+  über den Connector „Claude Code Remote“ (`mcp`-Capability, Werkzeug `fire_trigger`, als der Betrachter). Sichtbar nur, wenn Arbeit
+  wartet und der Connector das Werkzeug anbietet; danach 10 Min. gesperrt (gegen Doppelstarts; die Sperre `busy` schützt zusätzlich).
+- **Themen-Ideen:** `sample`-Capability (fragt Claude auf dem Konto des Betrachters, verbraucht dessen Nutzung); 5 Vorschläge mit
+  englischem Hook, Antippen übernimmt Thema + Hook als Notiz. Vorschläge sind ungeprüft.
+- **Länge:** Knöpfe 30/60/90 s und Wortzahl-Rechner (3,3–3,6 Wörter/s).
+- **Doppelte Themen:** Hinweis, wenn ein ähnliches Thema schon existiert.
+- **Filter** (ab 4 Videos): Alle / Zu erledigen / In Arbeit / Wartend / Fertig; Auswahl wird im Browser gemerkt.
+- **Hänger:** `busy` und seit über 3 Std. keine Änderung → Hinweis auf der Karte.
+- **Erneut versuchen / Erledigt – weitermachen / Als Nächstes:** setzen `resume` bzw. `priority`.
+- **Nächster Durchlauf:** aus dem Zeitplan berechnet (jeweils :17 Uhr, 7–23 Uhr deutscher Zeit); geplante Läufe können sich verzögern.
 
 ### Anzeige-Logik der Seite
 - **Freigabe nötig** (orange Rahmen, oben einsortiert): `review` gesetzt, `decision` null, `stage` ≠ `done`.

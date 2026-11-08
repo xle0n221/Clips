@@ -19,9 +19,13 @@ damit die nächste Sitzung weitermachen kann.
 
 ## 1. Auswahl (in dieser Reihenfolge, genau ein Video)
 1. `review` gesetzt **und** `decision` gesetzt **und** nicht `busy` → Entscheidung umsetzen.
-2. `busy: true`, aber `updatedAt` älter als 3 Stunden → abgebrochene Arbeit, dort weitermachen.
-3. Ältestes Dokument mit `stage: "queued"` → neu beginnen.
-4. Sonst: nichts tun, keine Schreibaktion, Sitzung beenden.
+2. `resume: true` und nicht `busy` → der Nutzer hat nach Fehler/Blocker „Erneut versuchen“ bzw.
+   „Erledigt – weitermachen“ gedrückt: auf dem Branch des Videos dort weitermachen, wo es stand.
+3. `busy: true`, aber `updatedAt` älter als 3 Stunden → abgebrochene Arbeit, dort weitermachen.
+4. `stage: "queued"`: zuerst die mit `priority: true` (Knopf „Als Nächstes“), sonst das älteste → neu beginnen.
+5. Sonst: nichts tun, keine Schreibaktion, Sitzung beenden.
+
+Beim Übernehmen `resume` und `priority` auf `null` setzen, `actionNeeded` auf `null`.
 
 ## 2. Übernehmen (Sperre)
 `update` mit `if_version`: `busy: true`, `sessionId` (eigene Sitzungs-ID), `statusText`, `updatedAt`.
