@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "@fontsource/montserrat": "5.3.0",
     "@react-three/drei": "10.7.9",
     "@react-three/fiber": "9.2.0",
     "@remotion/animation-utils": "4.0.541",
@@ -43,7 +44,10 @@
     "still": "remotion still Animated3D out/animated3d.png --frame=60",
     "transcribe": "node scripts/transcribe.mjs",
     "lint": "eslint src && tsc",
-    "upgrade": "remotion upgrade"
+    "upgrade": "remotion upgrade",
+    "setup:voice": ".venv/bin/python scripts/tts.py --setup",
+    "episode": ".venv/bin/python scripts/make_episode.py",
+    "render:episode": "remotion render SolarSystem out/solar-system.mp4"
   },
   "allowScripts": {
     "esbuild": false

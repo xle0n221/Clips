@@ -1,0 +1,290 @@
+{
+ "id": "solar-system",
+ "title": "Milo's bet: every planet in 90 seconds",
+ "durationMs": 87182,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 5219
+  },
+  {
+   "id": "launch",
+   "startMs": 5219,
+   "endMs": 17094
+  },
+  {
+   "id": "sun",
+   "startMs": 17094,
+   "endMs": 25555
+  },
+  {
+   "id": "mercury",
+   "startMs": 25555,
+   "endMs": 31627
+  },
+  {
+   "id": "venus",
+   "startMs": 31627,
+   "endMs": 42713
+  },
+  {
+   "id": "earth",
+   "startMs": 42713,
+   "endMs": 49574
+  },
+  {
+   "id": "mars",
+   "startMs": 49574,
+   "endMs": 57118
+  },
+  {
+   "id": "jupiter",
+   "startMs": 57118,
+   "endMs": 61377
+  },
+  {
+   "id": "saturn",
+   "startMs": 61377,
+   "endMs": 66531
+  },
+  {
+   "id": "uranus",
+   "startMs": 66531,
+   "endMs": 71238
+  },
+  {
+   "id": "neptune",
+   "startMs": 71238,
+   "endMs": 79550
+  },
+  {
+   "id": "outro",
+   "startMs": 79550,
+   "endMs": 86582
+  }
+ ],
+ "cues": [
+  {
+   "sticker": "1 DAY > 1 YEAR",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "hook",
+   "atMs": 740
+  },
+  {
+   "beat": "office",
+   "sfx": "whoosh",
+   "scene": "hook",
+   "atMs": 2340
+  },
+  {
+   "beat": "laugh",
+   "sfx": "pop",
+   "scene": "hook",
+   "atMs": 4100
+  },
+  {
+   "sticker": "1 DAY = 243 DAYS",
+   "color": "#FF8A3D",
+   "sfx": "pop",
+   "scene": "launch",
+   "atMs": 7750
+  },
+  {
+   "sticker": "1 YEAR = 225 DAYS",
+   "color": "#4FC3F7",
+   "sfx": "pop",
+   "scene": "launch",
+   "atMs": 11030
+  },
+  {
+   "beat": "bet",
+   "sfx": "ding",
+   "scene": "launch",
+   "atMs": 13260
+  },
+  {
+   "beat": "launch",
+   "sfx": "whoosh",
+   "scene": "launch",
+   "atMs": 14090
+  },
+  {
+   "sticker": "4.6 BILLION YEARS",
+   "color": "#FFB300",
+   "sfx": "pop",
+   "scene": "sun",
+   "atMs": 18620
+  },
+  {
+   "sticker": "99.8 %",
+   "color": "#FF7043",
+   "sfx": "boom",
+   "scene": "sun",
+   "atMs": 20890
+  },
+  {
+   "beat": "crumbs",
+   "sfx": "pop",
+   "scene": "sun",
+   "atMs": 24980
+  },
+  {
+   "sticker": "1 YEAR = 88 DAYS",
+   "color": "#B0BEC5",
+   "sfx": "pop",
+   "scene": "mercury",
+   "atMs": 27310
+  },
+  {
+   "beat": "party",
+   "sfx": "ding",
+   "scene": "mercury",
+   "atMs": 29450
+  },
+  {
+   "sticker": "467 \u00b0C",
+   "color": "#FF3D00",
+   "sfx": "boom",
+   "scene": "venus",
+   "atMs": 34500
+  },
+  {
+   "beat": "melt",
+   "scene": "venus",
+   "atMs": 37510
+  },
+  {
+   "beat": "sunrise",
+   "sticker": "SUNRISE: WEST",
+   "color": "#FFCA28",
+   "sfx": "pop",
+   "scene": "venus",
+   "atMs": 42140
+  },
+  {
+   "sticker": "150,000,000 KM",
+   "color": "#29B6F6",
+   "sfx": "pop",
+   "scene": "earth",
+   "atMs": 43830
+  },
+  {
+   "beat": "beam",
+   "sfx": "whoosh",
+   "scene": "earth",
+   "atMs": 46390
+  },
+  {
+   "sticker": "\u2248 8 MIN",
+   "color": "#FFEE58",
+   "sfx": "ding",
+   "scene": "earth",
+   "atMs": 48430
+  },
+  {
+   "beat": "reveal",
+   "sfx": "boom",
+   "scene": "mars",
+   "atMs": 52010
+  },
+  {
+   "beat": "everest",
+   "sticker": "EVEREST: TINY",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "mars",
+   "atMs": 55120
+  },
+  {
+   "beat": "fill",
+   "sfx": "whoosh",
+   "scene": "jupiter",
+   "atMs": 58810
+  },
+  {
+   "sticker": "\u2248 1,000 EARTHS",
+   "color": "#FFAB40",
+   "sfx": "boom",
+   "scene": "jupiter",
+   "atMs": 59540
+  },
+  {
+   "beat": "zoom",
+   "sfx": "whoosh",
+   "scene": "saturn",
+   "atMs": 63020
+  },
+  {
+   "sticker": "ICE + ROCK",
+   "color": "#80DEEA",
+   "sfx": "pop",
+   "scene": "saturn",
+   "atMs": 64650
+  },
+  {
+   "beat": "house",
+   "sfx": "boom",
+   "scene": "saturn",
+   "atMs": 66020
+  },
+  {
+   "sticker": "\u2248 98\u00b0",
+   "color": "#4DD0E1",
+   "sfx": "pop",
+   "scene": "uranus",
+   "atMs": 67930
+  },
+  {
+   "beat": "roll",
+   "sfx": "whoosh",
+   "scene": "uranus",
+   "atMs": 69720
+  },
+  {
+   "beat": "wind",
+   "sfx": "whoosh",
+   "scene": "neptune",
+   "atMs": 72070
+  },
+  {
+   "sticker": "2,000+ KM/H",
+   "color": "#448AFF",
+   "sfx": "boom",
+   "scene": "neptune",
+   "atMs": 72570
+  },
+  {
+   "sticker": "1 YEAR = 165 YEARS",
+   "color": "#B388FF",
+   "sfx": "pop",
+   "scene": "neptune",
+   "atMs": 76160
+  },
+  {
+   "beat": "win",
+   "sfx": "ding",
+   "scene": "outro",
+   "atMs": 79810
+  },
+  {
+   "beat": "lineup",
+   "sfx": "whoosh",
+   "scene": "outro",
+   "atMs": 81000
+  },
+  {
+   "sticker": "WHICH PLANET?",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "outro",
+   "atMs": 83750
+  },
+  {
+   "beat": "loop",
+   "scene": "outro",
+   "atMs": 84280
+  }
+ ]
+}

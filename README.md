@@ -24,6 +24,43 @@ npm run render       # -> out/animated3d.mp4
 npm run still        # -> out/animated3d.png (Einzelbild, Frame 60)
 ```
 
+## Erklärvideo-Episoden (Komposition `SolarSystem`)
+
+Story-Erklärvideos im Cartoon-Stil: englische KI-Stimme, wortgenaue 1–3-Wort-Untertitel,
+3D-Welt mit Cel-Shading und schwarzen Konturen, Sticker, Soundeffekte, Musikbett.
+
+**Pipeline** (`npm run episode -- episodes/solar-system.json`):
+
+1. **Drehbuch** `episodes/<id>.json`: Szenen mit Sprechtext und *Cues*. Ein Cue ist an ein Wort gebunden
+   und löst einen Sticker, Soundeffekt oder „Beat“ (Kameraschnitt/Aktion in der Szene) aus.
+2. **Stimme** `scripts/tts.py`: [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) (Apache-2.0), lokal,
+   Standardstimme `af_heart` (laut `VOICES.md` des Modells einzige englische Stimme mit Note A).
+   Zahlen werden für die Aussprache ausgeschrieben (gemessen: „1,000“ wurde sonst „one zero zero zero“).
+3. **Timing**: Whisper.cpp (`scripts/whisper-words.mjs`) liefert Wort-Zeitstempel; die Untertitel zeigen
+   trotzdem exakt den Skripttext (`scripts/make_episode.py`, Abgleich per `difflib`).
+4. **Musik + Effekte** `scripts/make_audio.py`: vollständig synthetisch erzeugt (keine Lizenzfragen).
+5. **Video**: `src/episode/` – `Episode.tsx` liest `public/episodes/<id>/timeline.json` + `captions.json`;
+   jede Szene ist eine Komponente in `src/episode/scenes/`, Baukasten in `src/episode/kit/`
+   (Figuren `Toonie`/`Milo`/`Boss`, Planeten, Requisiten, Partikel, Kamera `Shot`).
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+npm run setup:voice                       # Kokoro-Modell + Stimmen nach voices/kokoro
+node -e "import('@remotion/install-whisper-cpp').then(m=>m.installWhisperCpp({to:'whisper.cpp',version:'1.6.0'}))"
+curl -L -o whisper.cpp/ggml-medium.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium.bin
+npm run episode -- episodes/solar-system.json
+npm run render:episode                    # -> out/solar-system.mp4
+```
+
+Fakten-Belege für das Sonnensystem-Video: `docs/quellen-sonnensystem.md` (NASA-Faktenseiten, wörtlich zitiert).
+
+**Neue Episode:** Drehbuch-JSON schreiben und für jede Szenen-`id` eine Komponente in
+`src/episode/scenes/` anlegen und in `scenes/index.ts` eintragen. Die Szenen sind bewusst Code
+(Kamera, Figuren, Aktionen) – Text und Timing kommen automatisch aus der Pipeline.
+
+**Bekannte Grenze:** `<Outlines>` aus drei erscheint beim Remotion-Rendering nicht (getestet);
+deshalb nutzt `kit/toon.tsx` eine eigene Kontur (`<Ink>`, Inverted Hull).
+
 ## Eigenes Video mit Sprache + Captions
 
 1. Audiodatei ablegen, z. B. `public/audio/voiceover.mp3`

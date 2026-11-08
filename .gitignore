@@ -8,3 +8,8 @@ out
 
 # Whisper.cpp-Installation + Modelle (groß, lokal erzeugt)
 whisper.cpp
+
+# Python-Umgebung und lokal geladene Sprachmodelle (groß)
+.venv
+voices
+__pycache__

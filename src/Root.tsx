@@ -5,6 +5,12 @@ import {
   calculateAnimated3DMetadata,
   FPS,
 } from "./animated-3d/Animated3DVideo";
+import {
+  calculateEpisodeMetadata,
+  Episode,
+  episodeSchema,
+  FPS as EPISODE_FPS,
+} from "./episode/Episode";
 import { getMediaMetadata } from "./phone-demo/helpers/get-media-metadata";
 import { myCompSchema, Scene } from "./phone-demo/Scene";
 
@@ -13,6 +19,19 @@ import { myCompSchema, Scene } from "./phone-demo/Scene";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* Erklärvideo-Episode: Daten aus public/episodes/<id>/ (erzeugt mit make_episode.py) */}
+      <Composition
+        id="SolarSystem"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 90}
+        schema={episodeSchema}
+        defaultProps={{ episode: "solar-system" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* Eigene 3D-Szene im Hochformat (TikTok/Reels/Shorts) mit Audio + Captions */}
       <Composition
         id="Animated3D"
