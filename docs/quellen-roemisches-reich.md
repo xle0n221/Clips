@@ -33,7 +33,7 @@ Dio-Kapitel nach Loeb-Zählung (Buch 74); die ältere Zählung (Boissevain) nenn
 
 | Jahr | Ereignis | Wörtliches Zitat | Quelle |
 | --- | --- | --- | --- |
-| 27 v. Chr. (Herleitung) | Augustus als erster Kaiser („erster der Augusti“) | “Octavianus Augustus, the first of the Augusti, began to govern in the seven hundred and ninth year from the founding of the city” | Jordanes, Getica 46 (§243): https://www.gutenberg.org/ebooks/14809 |
+| 27 v. Chr. | Augustus als erster Kaiser („erster der Augusti“) | “Octavianus Augustus, the first of the Augusti, began to govern in the seven hundred and ninth year from the founding of the city” – **[korrigiert Faktencheck]** Jordanes’ „709. Jahr ab Gründung“ ergibt rechnerisch ca. 45 v. Chr. (754 − 709), **nicht** 27 v. Chr.; das Jahr 27 ist daraus nicht herleitbar. Beleg für 27 v. Chr.: “The Roman Empire was founded by the first emperor Augustus (r. 27 BCE-14 CE)” (WHE, https://www.worldhistory.org/Western_Roman_Empire/) | Jordanes, Getica 46 (§243): https://www.gutenberg.org/ebooks/14809 (nur „first of the Augusti“) |
 | 193 | „Auktion“ des Throns, „Year of the Five Emperors“ | “With his accession, the year 193 CE is known as 'The Year of Five Emperors.'” | WHE, Septimius Severus: https://www.worldhistory.org/Septimius_Severus/ |
 | 395 | Tod Theodosius’ I., Teilung zwischen Arcadius (Ost) und Honorius (West) | “After Theodosius, the Roman Emperor, had departed from the world, … his kingdom was taken over by his two sons, Arcadius, the elder, receiving the Eastern portion, and Honorius, the younger, the Western. [Jan. 17, 395 A.D.]” | Prokop, Vandalenkrieg III.1: https://www.gutenberg.org/ebooks/16765 |
 | 410 | Alarich (Westgoten) erobert und plündert Rom | “then they opened the gates and received Alaric and the army into the city at their leisure. [Aug. 24, 410 A.D.]” | Prokop, Vandalenkrieg III.2: https://www.gutenberg.org/ebooks/16765 |
@@ -153,7 +153,7 @@ Quelle: Prokop, Vandalenkrieg III.5 – https://www.gutenberg.org/ebooks/16765
 ### F13 – Rom „fiel“ – aber Ostrom machte noch fast 1000 Jahre weiter
 Herleitung: 1453 − 476 = **977 Jahre**. Und die Oströmer nannten sich selbst „Römer“:
 > “The Byzantines called themselves 'Romans', their emperor was basileon ton Rhomaion or 'Emperor of the Romans' and their capital was 'New Rome'.” – https://www.worldhistory.org/Byzantine_Empire/
-> “the decline and fall were only in the west.” – WHE, https://www.worldhistory.org/article/835/the-fall-of-the-western-roman-empire/
+> “the decline and fall were only in the west.” – WHE, https://www.worldhistory.org/article/835/fall-of-the-western-roman-empire/ [korrigiert Faktencheck: URL leitet per 301 hierhin um]
 
 ### F14 – So groß war das Reich: 347 Tagesreisen entlang der Küste
 > “So that the whole Roman domain, according to the distance along the sea at least, attains the measure of a three hundred and forty-seven days' journey” … “Such, then, was the size of the Roman empire in the ancient times.”
@@ -182,7 +182,7 @@ Quelle: Frontinus, De aquis 1.16 (Übers. Bennett) – https://penelope.uchicago
 
 ### M1 – „Rom ist an einem Tag gefallen“ / „476 war das große Ende“
 - Datum selbst unsicher: Gibbon, Anm. 125: “The precise year in which the Western empire was extinguished, is not positively ascertained.” (https://www.gutenberg.org/ebooks/25717)
-- Das Gebilde lief weiter: “476 CE is the traditionally accepted date for the end of the Western Roman Empire, that entity did continue on under the rule of Odoacer” (WHE, https://www.worldhistory.org/Western_Roman_Empire/)
+- Das Gebilde lief weiter: “c. 476 CE is the traditionally accepted date for the end of the Western Roman Empire, that entity did continue on under the rule of Odoacer” (WHE, https://www.worldhistory.org/Western_Roman_Empire/) [korrigiert Faktencheck: „c.“ ergänzt – der Satz lautet im Original „While c. 476 CE is …“]
 - Der Prozess zog sich über Generationen: 395 Teilung → 410 → 455 → 476 (Zeitleiste oben); Ostrom bis 1453.
 - Gag-Idee: „Rome wasn't built in a day – and it didn't fall in one either.“ (Sprichwort, kein Faktenanspruch.)
 
@@ -190,12 +190,12 @@ Quelle: Frontinus, De aquis 1.16 (Übers. Bennett) – https://penelope.uchicago
 > “Although historians generally agree on the year of the fall, 476 CE, and its consequences for western civilization, they often disagree on its causes.”
 > “Whatever the cause, whether it was religion, external attack, or the internal decay of the city itself, the debate continues to the present day”
 
-Quelle: WHE, https://www.worldhistory.org/article/835/the-fall-of-the-western-roman-empire/
+Quelle: WHE, https://www.worldhistory.org/article/835/fall-of-the-western-roman-empire/ [korrigiert Faktencheck: URL leitet per 301 hierhin um]
 Gibbon (1776–89) als klassische, heute nur eine Stimme: “But the decline of Rome was the natural and inevitable effect of immoderate greatness.” … “instead of inquiring why the Roman empire was destroyed, we should rather be surprised that it had subsisted so long.” (Kap. 38, „General Observations“, https://www.gutenberg.org/ebooks/25717)
 → Im Video: Ursachen nie als gesichert darstellen („historians still argue“).
 
 ### M3 – „Bleivergiftung hat Rom zerstört“
-- Belegt ist nur: Römer kannten die Gefahr selbst. Vitruv: “Water conducted through earthen pipes is more wholesome than that through lead; indeed that conveyed in lead must be injurious, because from it white lead is obtained, and this is said to be injurious to the human system.” (Vitruv, Buch 8, Abschnitt „10.“ der Wasserleitungs-Passage – üblicherweise 8.6.10; Kapitelzahl auf der Seite nicht sichtbar, https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/8*.html)
+- Belegt ist nur: Römer kannten die Gefahr selbst. Vitruv: “Water conducted through earthen pipes is more wholesome than that through lead; indeed that conveyed in lead must be injurious, because from it white lead is obtained, and this is said to be injurious to the human system.” (Vitruv 8.6.10 – **[korrigiert Faktencheck]** Überschrift „Chapter 6“ steht auf der Seite, Abschnitt „10.“; https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/8*.html)
 - Dass die Forschung die Blei-These als Hauptursache verwirft, ist **nicht bestätigt** (keine erreichbare Fachquelle mit Wortlaut). → Im Video Blei höchstens als „one wild theory“ / Mythos-Gag, nie als Ursache.
 
 ### M4 – „Die Barbaren haben Roms Monumente aus Hass zerstört“
