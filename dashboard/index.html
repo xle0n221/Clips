@@ -142,14 +142,25 @@ a { color: var(--accent); }
 .fix ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
 .fix li { overflow-wrap: anywhere; }
 select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; min-height: 44px; max-width: 100%; }
-#voice { flex: 0 0 150px; }
+#voice { flex: 0 0 210px; }
 .wake { font-size: 0.8125rem; margin: 0; color: var(--muted); }
 .wake.ok { color: var(--ok); }
 .wake.warn { color: var(--warn); }
+.insp-pick { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.insp-pick input[type=file], .card input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.filebtn { cursor: pointer; font-weight: 600; font-size: 0.875rem; color: var(--accent); border: 1px dashed var(--accent); border-radius: 8px; padding: 8px 12px; min-height: 40px; display: inline-flex; align-items: center; }
+.filebtn:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.insp { display: grid; gap: 6px; }
+.insp-title { font-size: 0.8125rem; color: var(--muted); margin: 0; }
+.thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; }
+.thumbs a { display: block; aspect-ratio: 1; max-width: 100%; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); color: var(--accent); font-size: 0.75rem; text-decoration: none; }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumbs a.file { display: grid; place-items: center; padding: 6px; text-align: center; overflow-wrap: anywhere; }
 .empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
-  #len, #voice { flex: 1 1 120px; }
+  #len { flex: 1 1 100px; }
+  #voice { flex: 1 1 100%; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .card { transition: border-color .2s; }
@@ -170,16 +181,21 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     <div class="row">
       <label class="sr" for="len">Wunschlänge in Sekunden</label>
       <input id="len" name="len" type="number" inputmode="numeric" min="10" max="900" step="5" placeholder="Länge (s)">
-      <label class="sr" for="voice">Stimme</label>
-      <select id="voice" name="voice" title="Stimme">
-        <option value="af_heart" selected>af_heart (Std.)</option>
-        <option value="af_bella">af_bella</option>
-        <option value="am_fenrir">am_fenrir</option>
-        <option value="am_puck">am_puck</option>
+      <label class="sr" for="voice">Sprecherstimme (Englisch)</label>
+      <select id="voice" name="voice" title="Sprecherstimme im Video (Englisch)">
+        <option value="af_heart" selected>Stimme: Frau 1 (empfohlen)</option>
+        <option value="af_bella">Stimme: Frau 2</option>
+        <option value="am_fenrir">Stimme: Mann 1</option>
+        <option value="am_puck">Stimme: Mann 2</option>
       </select>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
+    </div>
+    <div class="insp-pick" id="inspPick" hidden>
+      <label class="filebtn" for="inspFiles">Bilder zur Inspiration anhängen</label>
+      <input id="inspFiles" type="file" accept="image/*,video/*,application/pdf" multiple>
+      <span class="hint" id="inspCount">optional – Bilder, kurze Videos oder PDFs</span>
     </div>
     <p class="msg" id="addMsg" role="status"></p>
     <p class="wake" id="wakeMsg" role="status" hidden></p>
@@ -200,7 +216,10 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 
   const $ = (id) => document.getElementById(id);
   const listEl = $("list"), emptyEl = $("empty"), summaryEl = $("summary");
-  let db = null, art = null, canWrite = true, docs = [], loaded = false;
+  let db = null, art = null, assets = null, canWrite = true, docs = [], loaded = false;
+  const VOICE_NAME = { af_heart: "Frau 1", af_bella: "Frau 2", am_fenrir: "Mann 1", am_puck: "Mann 2" };
+  const voiceName = (v) => VOICE_NAME[v] ? "Stimme " + VOICE_NAME[v] : "Stimme " + v;
+  const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
   const WPS_MIN = 3.3, WPS_MAX = 3.6; // Ziel-Sprechtempo (Vorgabe aus der Video-Produktion)
   const de = (n, d) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
   const sceneDrafts = {};
@@ -374,7 +393,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       const off = p.length === 2 && Number.isFinite(p[0]) && p[0] !== p[1];
       out.push(el("span", { class: off ? "off" : "good", title: "Aussprache-Gegenprobe: von Whisper erkannte / geschriebene Wörter", text: "Whisper " + m.whisperMatch }));
     }
-    if (typeof m.voice === "string" && m.voice) out.push(el("span", { text: "Stimme " + m.voice }));
+    if (typeof m.voice === "string" && m.voice) out.push(el("span", { text: voiceName(m.voice) }));
     return out.length ? el("p", { class: "metrics" }, out) : null;
   }
 
@@ -387,11 +406,62 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       el("span", { text: "Render " + Math.round(p * 100) + " %" + (v.renderEta ? " · " + v.renderEta : "") }));
   }
 
+  async function uploadAll(fileList, onStep) {
+    const out = [];
+    const files = Array.from(fileList || []);
+    for (let i = 0; i < files.length; i++) {
+      const f = files[i];
+      onStep && onStep(i + 1, files.length);
+      const r = await assets.upload(f);
+      out.push({ id: r.id, name: f.name.slice(0, 120), type: r.contentType || f.type || "" });
+    }
+    return out;
+  }
+
+  function inspBlock(v) {
+    const list = Array.isArray(v.inspiration) ? v.inspiration.filter((x) => x && x.id) : [];
+    const canAdd = canWrite && assets && ["queued", "research", "script"].includes(v.stage);
+    if (!list.length && !canAdd) return null;
+    const box = el("div", { class: "insp" });
+    if (list.length) {
+      box.append(el("p", { class: "insp-title", text: `Inspiration (${list.length})` }));
+      box.append(el("div", { class: "thumbs" }, list.map((x) => {
+        const u = blobUrl(x.id);
+        const isImg = String(x.type || "").startsWith("image/");
+        return el("a", { href: u, target: "_blank", rel: "noopener", title: x.name || "", class: isImg ? null : "file" },
+          isImg ? el("img", { src: u, alt: x.name || "Inspirationsbild", loading: "lazy" }) : (x.name || "Datei"));
+      })));
+    }
+    if (canAdd) {
+      const fid = "add-" + v.id;
+      const msg = el("span", { class: "hint", role: "status" });
+      const input = el("input", { id: fid, type: "file", accept: "image/*,video/*,application/pdf", multiple: true,
+        onchange: async (e) => {
+          const files = e.target.files; if (!files || !files.length) return;
+          busy[v.id] = true;
+          try {
+            const added = await uploadAll(files, (i, n) => { msg.textContent = `Lade ${i} von ${n} hoch …`; });
+            const cur = docs.find((d) => d.id === v.id);
+            const base = cur && Array.isArray(cur.inspiration) ? cur.inspiration : [];
+            await db.collection("videos").doc(v.id).update({ inspiration: base.concat(added), updatedAt: new Date().toISOString() });
+            wake("inspiration", v.id);
+          } catch (err) {
+            msg.textContent = "Hochladen fehlgeschlagen (" + (err && err.code || "Fehler") + ").";
+            busy[v.id] = false; return;
+          }
+          busy[v.id] = false; render();
+        } });
+      box.append(el("div", { class: "insp-pick" },
+        el("label", { class: "filebtn", for: fid, text: list.length ? "+ Weitere Bilder" : "+ Bilder zur Inspiration" }), input, msg));
+    }
+    return box;
+  }
+
   function card(v) {
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
     metaParts.push(el("span", { title: absTime(v.updatedAt), text: "geändert " + ago(v.updatedAt) }));
-    if (v.voice) metaParts.push(el("span", { text: v.voice }));
+    if (v.voice) metaParts.push(el("span", { text: voiceName(v.voice) }));
     if (v.branch && v.stage !== "done") metaParts.push(el("span", { text: v.branch }));
 
     const c = el("article", { class: "card" + (waiting(v) || blocked(v) ? " attn" : ""), id: "v-" + v.id },
@@ -404,7 +474,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       v.statusText ? el("p", { class: "status" + (v.stage === "error" ? " err" : ""), text: v.statusText })
         : el("p", { class: "status hint", text: v.stage === "queued" ? "Wartet darauf, dass eine Claude-Sitzung das Thema übernimmt." : "" }),
       metricsLine(v.metrics),
-      v.note ? el("p", { class: "note", text: "Notiz: " + v.note }) : null);
+      v.note ? el("p", { class: "note", text: "Notiz: " + v.note }) : null,
+      inspBlock(v));
 
     if (v.review && v.stage !== "done") c.append(reviewBlock(v));
     if (v.stage === "done") c.append(doneBlock(v));
@@ -475,6 +546,11 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     busy[v.id] = false; confirmDel[v.id] = false; render();
   }
 
+  $("inspFiles").addEventListener("change", (e) => {
+    const n = e.target.files ? e.target.files.length : 0;
+    $("inspCount").textContent = n ? `${n} Datei${n === 1 ? "" : "en"} ausgewählt` : "optional – Bilder, kurze Videos oder PDFs";
+  });
+
   $("addForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const msg = $("addMsg"); msg.className = "msg"; msg.textContent = "";
@@ -486,13 +562,20 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     const id = slugify(topic);
     const btn = $("addBtn"); btn.disabled = true;
     try {
+      let inspiration = [];
+      const files = $("inspFiles").files;
+      if (assets && files && files.length) {
+        inspiration = await uploadAll(files, (i, n) => { msg.textContent = `Lade Bild ${i} von ${n} hoch …`; });
+      }
       await db.collection("videos").doc(id).set({
+        inspiration,
         topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
         voice: $("voice").value || "af_heart",
         stage: "queued", statusText: "", review: null, decision: null,
         branch: null, sessionId: null, updatedAt: new Date().toISOString()
       });
       $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "af_heart";
+      $("inspFiles").value = ""; $("inspCount").textContent = "optional – Bilder, kurze Videos oder PDFs";
       msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
       wake("add", id);
     } catch (err) {
@@ -509,8 +592,9 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       emptyEl.textContent = "Diese Seite braucht die gemeinsame Datenbank von claude.ai. Bitte dort angemeldet öffnen.";
       return;
     }
-    const [dbNs, user, artNs] = await Promise.all([window.claude.use("db"), window.claude.use("user"), window.claude.use("artifact")]);
-    db = dbNs; art = artNs;
+    const [dbNs, user, artNs, assetsNs] = await Promise.all([window.claude.use("db"), window.claude.use("user"), window.claude.use("artifact"), window.claude.use("assets")]);
+    db = dbNs; art = artNs; assets = assetsNs;
+    if (assets) $("inspPick").hidden = false;
     if (!db) {
       summaryEl.textContent = "Keine Datenbank";
       emptyEl.textContent = "Die Datenbank ist in dieser Ansicht nicht verfügbar. Bitte in claude.ai angemeldet öffnen.";

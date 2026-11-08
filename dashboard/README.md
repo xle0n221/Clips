@@ -30,7 +30,8 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `sessionId` | string \| null | Sitzung | ID der bearbeitenden Cloud-Sitzung |
 | `updatedAt` | ISO-String | beide | letzte Änderung |
 | `previewUrl` | string \| null (optional) | Sitzung | verkleinerte Vorschau bei `done` (Bild oder Video), siehe Assets; nur kleine Dateien |
-| `voice` | string (optional) | Seite (beim Anlegen) | Wunschstimme: `af_heart` (Standard), `af_bella`, `am_fenrir`, `am_puck` |
+| `voice` | string (optional) | Seite (beim Anlegen) | Sprecherstimme (Kokoro). Auf der Seite angezeigt als: `af_heart` = „Frau 1 (empfohlen)“, `af_bella` = „Frau 2“, `am_fenrir` = „Mann 1“, `am_puck` = „Mann 2“ |
+| `inspiration` | Liste `{ id, name, type }` (optional) | Seite / Nutzer | Vom Nutzer hochgeladene Inspirations-Dateien (Bilder, kurze Videos, PDFs) als Assets der Seite. Angezeigt unter `/_blob/<id>`. Hochladen beim Anlegen oder später auf Karten in den Stufen `queued`, `research`, `script` |
 | `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` außerhalb 3,3–3,6 und ungleiche Whisper-Zahlen werden orange markiert |
 | `renderProgress` | number 0..1 (optional) | Sitzung | Balken bei `stage: "render"` |
 | `renderEta` | string (optional) | Sitzung | z. B. `"noch ca. 23 Min."` |
@@ -65,6 +66,13 @@ Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, 
 3. Zur Freigabe: `update` mit `review: {…}`, `decision: null`, `statusText`, `updatedAt`.
 4. Antwort abholen: Dokument lesen; ist `decision` gesetzt → umsetzen, danach `review: null`, `decision: null` und nächster `stage`.
 5. Fertig: `stage: "done"`, `review: null`, optional `previewUrl`.
+
+### Inspirations-Dateien des Nutzers lesen
+Eine bearbeitende Sitzung lädt eine Datei mit dem Artifact-Tool herunter: `action: "read"`, `url` = Seiten-URL, `path` = die `id` aus `inspiration`.
+Die Datei landet lokal (Pfad steht im Ergebnis) und kann dann mit dem Read-Tool angesehen werden. Das ist nicht getestet, weil noch keine Datei hochgeladen wurde.
+
+Stimmen-Namen laut Kokoro-Stimmenliste (VOICES.md, huggingface.co/hexgrad/Kokoro-82M): `a` = American English, `f` = weiblich, `m` = männlich.
+Gesamtnoten dort: af_heart A, af_bella A-, am_fenrir C+, am_puck C+.
 
 ### Bilder (Kontaktabzug) und Vorschau
 Die Seite darf **keine externen Bilder** laden (Content-Security-Policy der Artifact-Seiten). `imageUrl` / `previewUrl` müssen daher sein:
