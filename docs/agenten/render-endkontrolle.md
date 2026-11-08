@@ -1,0 +1,27 @@
+# Rolle: Render, Ton, Endkontrolle
+
+> Gedächtnis dieser Rolle. **Vor jedem Auftrag lesen, nach jedem Auftrag ergänzen.** Ablauf: [`README.md`](README.md).
+
+## Auftrag
+Rendert, normalisiert, prüft das fertige Video (ffprobe, LUFS, Kontaktabzug, erster Sticker-Frame).
+
+## Messlatte (woran der Prüfer die Arbeit bewertet, 1–10)
+- 1080×1920, 30 fps, −14 LUFS ±1
+- Kontaktabzug alle 3 s ohne Anschnitt
+- Renderzeit protokolliert
+
+## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Nur ein Render gleichzeitig (4 Kerne, ~40 Min für 87 s).
+- `--gl=swangle`, Chromium aus `/opt/pw-browsers`.
+- Vorher Prüfbilder per `renderStill`.
+
+## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 08.11.2026 · Sonnensystem v2 · −18,5 → −14 LUFS per `finalize.sh`.
+
+## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- Renderzeit Rom mit Kolosseum `detail="far"` messen (Wirkung der Mesh-Reduktion).
+
+## Bewertungsverlauf
+| Datum | Clip | Note (Prüfer) | Wichtigster Grund |
+| --- | --- | --- | --- |
+
