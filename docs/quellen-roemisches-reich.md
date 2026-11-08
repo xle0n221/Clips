@@ -52,7 +52,7 @@ Abweichungen (nicht im Video verwenden, nur „476“ sagen):
 
 ## 2. Story-Fakten (belegt, mit Humor-Potenzial)
 
-### F1 – Der Kaiser und sein Huhn namens „Rom“ (410)
+### F1 – Der Kaiser und seinen Hahn namens „Rom“ (410)
 Laut Prokop erfuhr Kaiser Honorius in Ravenna, „Rom sei untergegangen“, und dachte an seinen Hahn namens Rom.
 > “At that time they say that the Emperor Honorius in Ravenna received the message from one of the eunuchs, evidently a keeper of the poultry, that Rome had perished. And he cried out and said, "And yet it has just eaten from my hands!" For he had a very large cock, Rome by name; and the eunuch comprehending his words said that it was the city of Rome which had perished at the hands of Alaric, and the emperor with a sigh of relief answered quickly: "But I, my good fellow, thought that my fowl Rome had perished." So great, they say, was the folly with which this emperor was possessed.”
 
@@ -122,7 +122,7 @@ Herleitung: „-ulus“ = Verkleinerung → „Augustulus“ ≈ „little Augus
 Thayer-Anmerkung (Excerpta Valesiana, Anm. 9): “His title Augustus was changed to Augustulus in mockery of, or perhaps because of, his youth.”
 **Nicht bestätigt:** ein genaues Alter (oft „ca. 16“) – keine wörtliche Quelle gefunden; im Video „a teenager“/„just a kid“ nur mit Prokops „still a lad“ abgedeckt.
 
-### F9 – Das Ende war … eine Rente: zu hübsch zum Töten
+### F9 – Das Ende war … eine Rente: verschont aus Mitleid mit seiner Jugend, 6.000 Goldstücke „wegen seiner Schönheit“ [korrigiert Orchestrator nach Faktencheck]
 > “Then he entered Ravenna, deposed Augustulus from his throne, but in pity for his tender years, granted him his life; and because of his beauty he also gave him an income of six thousand gold-pieces and sent him to Campania, to live there a free man with his relatives.”
 
 Quelle: Excerpta Valesiana 8.38 – https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Excerpta_Valesiana/2*.html
@@ -144,7 +144,7 @@ Ergänzend WHE (https://www.worldhistory.org/Odoacer/): “The Roman senate, whi
 Quelle: Prokop, Vandalenkrieg III.2 – https://www.gutenberg.org/ebooks/16765
 **Einschränkung:** Prokop nennt direkt danach eine Gegenversion: “But some say that Rome was not captured in this way by Alaric, but that Proba … commanded her domestics, they say, to open the gates by night.” → als „one story says“ erzählen.
 
-### F12 – Vandalen 455: halbes Golddach vom Jupitertempel mitgenommen, 14 Tage Plünderung
+### F12 – Vandalen 455: halbes vergoldetes Bronzedach vom Jupitertempel mitgenommen, 14 Tage Plünderung
 > “He plundered also the temple of Jupiter Capitolinus, and tore off half of the roof. Now this roof was of bronze of the finest quality, and since gold was laid over it exceedingly thick, it shone as a magnificent and wonderful spectacle. But of the ships with Gizeric, one, which was bearing the statues, was lost, they say”
 
 Quelle: Prokop, Vandalenkrieg III.5 – https://www.gutenberg.org/ebooks/16765
