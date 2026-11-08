@@ -1898,10 +1898,10 @@ export const Throne: React.FC<{
       <cylinderGeometry args={[1.45, 1.45, 0.28, 32, 1, false, -Math.PI / 2, Math.PI]} />
     </Part>
     {/* Purpurbespannung (Tafel + Bogen) */}
-    <Part color={cushion} position={[0, 2.85, -0.55]} ink={0.03}>
+    <Part color={cushion} position={[0, 2.85, -0.55]} ink={0}>
       <boxGeometry args={[2.3, 2.9, 0.08]} />
     </Part>
-    <Part color={cushion} position={[0, 4.3, -0.55]} rotation={[Math.PI / 2, 0, 0]} ink={0.03}>
+    <Part color={cushion} position={[0, 4.28, -0.55]} rotation={[Math.PI / 2, 0, 0]} ink={0}>
       <cylinderGeometry args={[1.15, 1.15, 0.08, 28, 1, false, -Math.PI / 2, Math.PI]} />
     </Part>
     {/* Seitenpfosten mit Knäufen – stehen links und rechts neben dem Kopf */}

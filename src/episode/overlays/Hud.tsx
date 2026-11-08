@@ -7,7 +7,7 @@ import {
   useCurrentFrame,
 } from "remotion";
 import { HudSpec } from "../types";
-import { CAPTION_FONT } from "./fonts";
+import { CAPTION_FONT, useCaptionFontReady } from "./fonts";
 import {
   ACCENT,
   clamp01,
@@ -257,17 +257,19 @@ export const Hud: React.FC<{
   readonly changes: HudChange[];
 }> = ({ spec, changes }) => {
   const frame = useCurrentFrame();
+  const fontReady = useCaptionFontReady();
+  if (!fontReady) return null;
   const sorted = [...changes].sort((a, b) => a.frame - b.frame);
   const of = (id: string) => sorted.filter((c) => c.id === id);
   const counters = spec.counters ?? [];
   const bars = spec.bars ?? [];
   // Kurzes Aufploppen in den ersten Frames (bleibt dabei unterhalb der Plattform-Oberfläche)
   const enter = interpolate(frame, [0, 5, 9], [0.94, 1.03, 1], clamp01);
-  // Zählerbreite: 1 Zähler 300 px, 2 Zähler je 250 px (mit Balken); ohne Balken teilen sie sich die Zeile
+  // Zählerbreite: 1 Zähler 340 px, 2 Zähler je 250 px (mit Balken); ohne Balken teilen sie sich die Zeile
   const cw = bars.length
     ? counters.length > 1
       ? 250
-      : 300
+      : 340
     : (INNER_W - GAP * (counters.length - 1)) / Math.max(1, counters.length);
   const counterFont = (c: (typeof counters)[number]) => {
     const values = [c.value, ...of(c.id).map((x) => x.value)];

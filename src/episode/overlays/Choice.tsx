@@ -9,7 +9,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { ChoiceSpec } from "../types";
-import { CAPTION_FONT } from "./fonts";
+import { CAPTION_FONT, useCaptionFontReady } from "./fonts";
 import {
   ACCENT,
   clamp01,
@@ -82,6 +82,8 @@ export const Choice: React.FC<{
 }> = ({ spec, duration }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const fontReady = useCaptionFontReady();
+  if (!fontReady) return null;
   const options = spec.options.slice(0, 4);
   const n = options.length;
   const pick =

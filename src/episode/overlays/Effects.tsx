@@ -7,7 +7,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { fitText } from "@remotion/layout-utils";
-import { CAPTION_FONT } from "./fonts";
+import { CAPTION_FONT, useCaptionFontReady } from "./fonts";
 import { seeded } from "../kit/toon";
 
 /** Großer Zahlen-/Text-Sticker, ploppt herein (Federanimation) und fällt wieder weg. */
@@ -21,6 +21,8 @@ export const Sticker: React.FC<{
 }> = ({ text, color, duration, tilt, top = 300 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const fontReady = useCaptionFontReady();
+  if (!fontReady) return null;
   const enter = spring({ frame, fps, config: { damping: 9, stiffness: 180 } });
   const exit = interpolate(frame, [duration - 6, duration], [1, 0], {
     extrapolateLeft: "clamp",

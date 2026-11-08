@@ -8,7 +8,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { LabelSpec } from "../types";
-import { CAPTION_FONT } from "./fonts";
+import { CAPTION_FONT, useCaptionFontReady } from "./fonts";
 import { ACCENT, clamp01, hardShadow, INK, isLight, OUTLINE } from "./style";
 
 /**
@@ -21,6 +21,8 @@ export const Pill: React.FC<{
 }> = ({ label, duration }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
+  const fontReady = useCaptionFontReady();
+  if (!fontReady) return null;
   const color = label.color ?? ACCENT;
   const fg = isLight(color) ? INK : "#FFFFFF";
   const enter = spring({ frame, fps, config: { damping: 9, stiffness: 200 } });

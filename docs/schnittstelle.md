@@ -71,8 +71,19 @@ Cues hängen wie Sticker an einem Wort der Szene (erstes Vorkommen) und landen m
 | Cue `label: {text, color?, x, y}` | Pill mit Zipfel; (x, y) = Spitze des Zipfels in Bildanteilen (0–1), Pill sitzt darüber; Standardfarbe Akzentgelb, Schrift automatisch schwarz/weiß; endet mit der Szene. |
 | `*Wort*` im Text / Cue `emph` | Untertitel zeigen das Wort in Akzentgelb `#FFD23F` (oder Cue-Farbe), ohne Sternchen. Mehrere Wörter: `*Western Empire*`. Die Sprachausgabe bekommt den Text ohne Sternchen, der Whisper-Abgleich bleibt gleich. |
 
-Platz im Hochformat: HUD 150–400 px, Auswahlkarten um die Bildmitte (ab y ≈ 470), unteres Drittel
-bleibt den Untertiteln. Alle Animationen werden aus dem Frame berechnet (kein `useEffect`).
+Platz im Hochformat: HUD 150–400 px (mit 2 Balken bis ≈ 455 px, `hudBottom()` in `Hud.tsx`; Sticker
+rutschen automatisch darunter), Auswahlkarten um die Bildmitte, Unterkante inkl. Hinweis höchstens
+y ≈ 1380, unteres Drittel bleibt den Untertiteln. Alle Animationen werden aus dem Frame berechnet;
+`useEffect` nur zum Warten auf die Schrift (`useCaptionFontReady` in `fonts.ts`), nie für Bewegung.
+
+Empfehlungen für gut lesbare Overlays (Design-Kritik 08.11.2026, Randfälle in Komposition `OverlayEdgeCases`):
+- HUD: höchstens 1 Zähler + 1 Balken (oder 2 Zähler ohne Balken). Bei 2 Zählern + 2 Balken schrumpfen
+  die Zahlen auf ≈ 40 px. Serien-Titel ≤ ~30 Zeichen, sonst wird er automatisch kleiner.
+- Auswahl: Optionen ≤ ~18 Zeichen (dann 50–60 px Schrift). Längere Texte werden zweizeilig gesetzt.
+  Frage (`title`) ≤ ~20 Zeichen, sie bleibt einzeilig und wird sonst kleiner.
+- Pills: x zwischen 0,1 und 0,75, y zwischen 0,25 und 0,7. Rechts ab x ≈ 0,8 liegen bei TikTok/Shorts
+  die Knöpfe (Like/Kommentar/Teilen), oben die Reiter, unten die Beschreibung. Diese Zonen sind eine
+  Annahme aus gängigen Vorlagen, nicht aus einer Primärquelle (siehe `docs/verbesserungen.md`).
 
 ## Aussprache nur für die Stimme (pro Episode)
 | Feld | Bedeutung | Beispiel |

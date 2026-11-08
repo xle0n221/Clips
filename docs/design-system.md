@@ -39,6 +39,7 @@ Kontrastwerte = WCAG-Kontrastverhältnis (relative Leuchtdichte), selbst nachger
 | Sandstein hell (Gesimse, Halbsäulen) | `#F4D7A1` | Licht-Kanten, gliedert die Arkaden |
 | Ocker / dunkel | `#C9873F` / `#9A5F2E` | Sockel, Inschriften |
 | Bogeninneres | `#A86A3A` | dunkle Bögen = Lesbarkeit „Arkade“ auch klein |
+| Gewölbegang (Kolosseum, `vault`) | `#5E331C` | dunkle Rückwand hinter jedem Bogen und Attika-Fenster: Arkade liest sich auch in der Totale, und weiße Köpfe davor haben gemessen **6 : 1** statt 1,3 : 1 |
 | Boden (Platten) | `#E8C990` | heller als die Bauten, damit Figuren-Beine (INK) klar stehen |
 | Marmor / Schatten | `#F6F0E4` / `#DDD3C0` | Tempel, Toga, Stele |
 | Dachziegel | `#B4472B`, Rand `#C4562F` | Terrakotta – zweitstärkstes Rom-Signal nach dem Kolosseum |
@@ -51,19 +52,22 @@ Kontrastwerte = WCAG-Kontrastverhältnis (relative Leuchtdichte), selbst nachger
 | Messing/Bronze | `#C8873A` | Helm-Rand, Schnallen |
 | Leder / Holz | `#8A5A2E` / `#9C6B3C` | Gürtel, Schäfte |
 | Pergament | `#F2E2B6` | Schriftrolle, Karte |
-| Goten: Wolle / Karo / Fell / Haar | `#4F6E5A` / `#2F4A3A` / `#7B5235` / `#D9A54A` | kühles Grün gegen das warme Rom-Ocker = „fremd“ auf einen Blick |
+| Goten: Wolle / Karo / Fell / Haar | `#4F6E5A` / `#2F4A3A` / `#7B5235` / `#C46A2B` | kühles Grün gegen das warme Rom-Ocker = „fremd“ auf einen Blick; Haar/Bart **kupfer**, nicht gelb (Gelb gehört dem Halstuch der Hauptfigur) |
 | Zypresse / Pinie / Hügel | `#2F5D3A` / `#5A8A3C` / `#A9BF72` | dunkle senkrechte Akzente in der Skyline (Italien-Signal) |
-| Gefahrenlicht | `#FF3B1F` | nur Licht/Glühen, nicht als Objektfarbe |
+| Gefahrenlicht (`DANGER`) | `#FF1F3D` | kaltes Karminrot (vorher `#FF3B1F` = orange, wirkte auf warmem Grund wie Lagerfeuer); nur Licht/Glühen, nicht als Objektfarbe |
 
 ## 4. Kontrast und Lesbarkeit auf dem Handy
 Bildschirm ≈ 6 cm breit, Daumen und UI decken Ränder ab, oft draußen bei Sonne.
 1. **Silhouette vor Farbe**: Jede Figur muss als schwarze Fläche erkennbar sein (Test: Bild auf
    Schwarz-Weiß + Weichzeichner). Rom-Figuren unterscheiden sich daher in der **Kopf-Silhouette**:
-   Legionär = Helm + Busch-Fächer, Kaiser = Kranz-Zacken + Umhang-Dreieck, Gote = Kappe + Bart-Kugel +
+   Legionär = Helm + Busch-Fächer, Kaiser = Kranz-Zacken + Umhang-Dreieck, Gote = Kappe + Zottelbart mit Spitze (keine Kugel) +
    Zöpfe, Senator = glatter Kopf + Toga-Schärpe.
-2. Weißer Kopf `#FAFAFA` auf Sandstein hat nur **1,8 : 1** und auf hellem Himmelsrand nur 1,2 : 1 –
-   lesbar nur durch die INK-Kontur (9,8 : 1 auf Sandstein). Deshalb: Kontur an Figuren nie abschalten,
-   Köpfe bevorzugt vor das **dunklere Himmelsblau oben** (2,8 : 1) oder vor Arkaden setzen.
+2. Weißer Kopf `#FAFAFA` auf Sandstein hat rechnerisch nur **1,8 : 1**; im fertigen Bild (Licht,
+   Dunst, Grading) gemessen sogar nur **1,1–1,3 : 1** (Pixel Kopf `#E5E3DA` gegen Wand `#E6D8B0`,
+   RomeKitTest Bild 7) und auf hellem Himmelsrand 1,2 : 1 – lesbar nur durch die INK-Kontur
+   (9,8 : 1). Deshalb: Kontur an Figuren nie abschalten, Köpfe vor die **dunklen Gewölbegänge der
+   Arkaden** (gemessen 6,1 : 1, Kopf gegen `#764634`) oder vor das **dunklere Himmelsblau oben**
+   (2,8 : 1) setzen. Das Kolosseum ist dafür so gebaut, dass hinter jedem Bogen eine dunkle Wand steht.
 3. Akzent gegen Umgebung mindestens **3 : 1** Leuchtdichte (Legionsrot auf Sandstein 3,0 : 1,
    Purpur 4,2 : 1) **oder** deutlicher Farbton-Gegensatz plus Kontur (Helmbusch-Rot vor Blau: nur
    1,5 : 1 Leuchtdichte, aber komplementär und konturiert – geprüft, liest sich).
@@ -71,7 +75,9 @@ Bildschirm ≈ 6 cm breit, Daumen und UI decken Ränder ab, oft draußen bei Son
    sind, sonst ranfahren. Unter ~20 px verschwinden Lorbeerblätter, Schnallen, Münz-Umschrift.
 5. **Schrift im Bild** (SPQR, Jahreszahlen, WEST/EAST): Großbuchstaben, ≥ 40 px Höhe im fertigen Bild,
    dunkel auf hell (`#6B5235` auf Marmor) oder weiß mit INK-Rand. Untertitel stehen darüber und
-   haben Vorrang.
+   haben Vorrang. Schrift ist **immer die mitgelieferte Montserrat 900** (`public/fonts`, wie die
+   Untertitel), im Kit als `ROME_FONT` per FontFace + `delayRender` geladen – nie eine Systemschrift
+   (sieht auf jedem Render-Rechner anders aus).
 6. **Untertitel-Zone** (unteres Drittel, Mitte ~ y 1400–1600 px) frei von Gesichtern und
    Schlüssel-Requisiten. Hintergrund dort ruhig (Boden, keine feinen Muster) – die Untertitel
    (weiß, 16 px INK-Rand) brauchen nichts weiter.
@@ -92,23 +98,43 @@ Bildschirm ≈ 6 cm breit, Daumen und UI decken Ränder ab, oft draußen bei Son
 5. **Gefahr = rotes Akzentlicht**: `DangerLight` (pulsierendes Punktlicht `#FF3B1F` + Glühen) von
    der Seite, bei gleichzeitig gedimmtem Key-Light (Stärke ≤ 1,6) und dunklerem Himmel. Höchstens
    ein Gefahrenlicht pro Bild. Für Spannung im Dunkeln: Lichtkegel (`Beam` aus `fx.tsx`) statt Fläche.
-6. Tageszeit erzählt: Blütezeit = Mittag (Palette oben); Niedergang = später Nachmittag
-   (Himmel `#E9A15B` → `#F7D9A8`, Key-Light `#FFC98A` flach von der Seite); Plünderung 410/476 =
-   Abend + Gefahrenlicht. Gleiche Bauten, anderes Licht → Fortschritt ohne Worte.
+6. Tageszeit erzählt: gleiche Bauten, anderes Licht → Fortschritt ohne Worte. Fertig als Preset
+   `romeMood(phase)` bzw. `<RomeAtmosphere phase=… />` (Himmel, Sonne, Wolken, Dunst, Key- und
+   Fülllicht) plus CSS-Grading `mood.grade` fürs Endbild:
+   | Phase | Himmel oben → unten | Key-Light | Aufhellung | Dunst | Einsatz |
+   | --- | --- | --- | --- | --- | --- |
+   | `glory` | `#3E9FDB` → `#CBEAF6` | `#FFF1D8`, 2,5, hoch links | `#CFEFFF`/`#C9965A` 1,0 | `#DCEFF5` 22–110 | Blütezeit, Augustus, Kolosseum |
+   | `decline` | `#D9874A` → `#F7D9A8` | `#FFC98A`, 2,2, flach von links | `#F5D2A8`/`#9C6A3A` 0,85 | `#F2CFA0` 28–150 | Krisen, Thron-Auktion 193, Teilung 395 |
+   | `fall` | `#2E2552` → `#C8553D` | `#FF9A5C`, 1,3, tief von rechts hinten | `#5F6AA8`/`#2A1712` 0,75 | `#5A3A4E` 14–75 | Plünderung 410/455, 476 – nur hier `DangerLight` |
+   Gefahr wirkt nur bedrohlich auf **kühlem, gedimmtem** Rest-Licht (`fall`): rotes Licht auf warmem
+   Mittag sieht nach Lagerfeuer aus. Gefahrenlicht als seitliches Streiflicht 3–5 Einheiten neben
+   den Figuren, Stärke 0,6–0,9 – näher färbt es die Figur ganz rot (Partei-Farben gehen verloren).
 
 ## 6. Figuren, Silhouetten, Erkennungsmerkmal (Referenz-Analyse 2, Punkt 7)
 - **Eine Hauptfigur mit einem Erkennungsmerkmal, in jeder Einstellung gleich.** Für Rom:
   Legionär mit **Querbusch** (Fächer, frontal breit) und **gelbem Halstuch** (`Legionary hero`,
-  `Focale #FFC928`). Gelb kommt sonst nur als Gold an Dingen vor, nie an anderen Figuren.
-  Andere Legionäre: Längsbusch, kein Halstuch.
-  (Querbusch als Centurio-Kennzeichen: nach Vegetius – vom Faktenprüfer zu bestätigen; bis dahin
-  im Sprechtext nicht behaupten.)
+  `Focale #FFC928`). Gelb kommt sonst nur als Gold an Dingen vor, nie an anderen Figuren
+  (deshalb Goten-Haar kupfer). Andere Legionäre: Längsbusch, kein Halstuch.
+  Das Halstuch sitzt als dicker Wulst **auf den Schultern** mit Knoten und zwei Zipfeln über dem
+  Panzer: am Hals (innerhalb des Kopfumrisses) verdeckt es der Kopf frontal. Gegen das helle Eisen
+  ist der Leuchtdichte-Kontrast fast 1 : 1 – es trägt sich über Farbton, Größe und dicke Kontur.
+- **Nicht belegt, nur Stil:** Helmbusch und Querbusch sind laut Faktencheck nicht belegt (der
+  Galea-Beleg war überdehnt, ein Querbusch-Beleg fehlt). Beides ist reine Stil-Entscheidung für die
+  Silhouette und wird im Sprechtext **nicht** behauptet (kein „centurions wore…“).
 - **Keine Hörnerhelme** bei Goten/Germanen (historisch falsch, siehe clip-regeln Themen-Treue 3):
   Standard ist Kappe mit Pelzrand, Zöpfe, Vollbart, Rundschild, Speer.
 - Kostüm-Teile ragen über den Körper hinaus (Busch, Fächer, Umhang-Dreieck, Fellkragen):
   die Figur muss **auch 15 % bildhoch** (Totale) noch zuzuordnen sein.
-- Größenverhältnis: Figur ≈ 4 Einheiten hoch; Kolosseum 6,9 hoch × ~15 breit; Tempel ~6,8 hoch.
+- Größenverhältnis: Figur ≈ 4 Einheiten hoch; Kolosseum bei `scale` 1 nur 6,9 hoch × ~15 breit
+  (= 1,7 Figuren – wirkt wie eine Mauer, nicht wie ein Weltwunder); Tempel ~6,8 hoch.
+  **Monumental**: Kolosseum in Totalen mit `scale` 2,4–3 weit hinten (z −35 … −45), seitlich
+  versetzt, damit die Krümmung des Ovals sichtbar bleibt; Kamera tief (y ≈ 2), Blick leicht nach
+  oben. Dann überragt es die Figuren 3–4-fach, und die Masten auf der Attika geben Maßstab.
+  (Echte Fassade 48,50 m ≈ 28 Toonie-Höhen – Cartoon darf untertreiben, aber nicht auf Figurhöhe.)
   Bauwerke immer hinter den Figuren, Figuren nie kleiner als 1/6 der Bildhöhe, wenn sie sprechen.
+- **Sitzen**: `sit={1}` knickt die Beine im Knie (Unterschenkel hängt). Auf dem `Throne` die Figur
+  bei `y = THRONE_SIT_Y`, `z` = Thron + 0,3. Die Thronlehne ist breiter und höher als der Kopf
+  (Seitenpfosten + Adler), damit sie frontal sichtbar bleibt.
 
 ## 7. Info-Grafik-Bausteine (Referenz-Analyse 2, Punkt 4)
 - `EmpireMap`: schematische Reichskarte (Ring ums Mittelmeer, West rot / Ost purpur, Italien,
@@ -116,7 +142,8 @@ Bildschirm ≈ 6 cm breit, Daumen und UI decken Ränder ab, oft draußen bei Son
   `westFall` 0..1 = Westen wird grau und sinkt ab. Kamera fast senkrecht von oben (y ≈ 15).
   Bewusst **schematisch** – nicht als echte Grenzkarte ausgeben.
 - `TimelineStele`: hohe Marmorstele mit Jahreszahlen (oben alt, unten neu), goldener Marker bei
-  `at` (Index, Zwischenwerte gleiten) – passt ins Hochformat.
+  `at` (Index, Zwischenwerte gleiten) – passt ins Hochformat. Standard = nur freigegebene Jahre
+  (`ROME_YEARS`: 27 BC, 193, 395, 410, 455, 476, 1453 AD); eigene Listen nur mit Freigabe des Faktenprüfers.
 - Gleicher Look wie die Welt (Toon + INK), dunkler Studio-Hintergrund, ein warmes Licht.
 
 ## 8. Rom-Kit in Kürze (`src/episode/kit/rome.tsx`)
@@ -126,5 +153,9 @@ Kopf: `LegionaryHelmet`, `LaurelWreath`, `GothCap`, `Braids`, `Beard` · Körper
 Welt: `RomeSky`, `SoftSun`, `Cloud`, `Hills`, `Pavement`, `RomeLights`, `RomeFog`, `DangerLight` ·
 Kulissen: `Colosseum` (`ruin`), `Temple` (`ruin`), `Column` (`broken`), `Rubble`, `Aqueduct`,
 `RomanHouse`, `RomanSkyline`, `Rotunda`, `Cypress`, `UmbrellaPine`, `Throne` · Requisiten:
-`SpqrBanner`, `Eagle`, `Scroll`, `Coin` · Info: `EmpireMap`, `TimelineStele`.
-Prüfkomposition: `RomeKitTest` (8 Einstellungen à 14 Frames).
+`SpqrBanner`, `Eagle`, `Scroll`, `Coin` · Info: `EmpireMap`, `TimelineStele` · Stimmung:
+`romeMood`, `RomeAtmosphere`, `DANGER` · Konstanten: `THRONE_SIT_Y`, `ROME_YEARS`, `ROME_FONT`.
+Kolosseum-Leistung: Bogen-Ring wird nur bei Form-/`ruin`-Änderung neu gebaut (memo); in der Ferne
+(kleiner als ~1/3 Bildbreite) `detail="far"` und `segments={24}` – zusammen ≈ 45 % weniger Meshes
+(32 Felder voll ≈ 1 060 Meshes inkl. Kontur, far/24 ≈ 580).
+Prüfkomposition: `RomeKitTest` (10 Einstellungen à 14 Frames; 8 = `decline`, 9 = `fall`).
