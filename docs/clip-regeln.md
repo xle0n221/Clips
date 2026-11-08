@@ -18,6 +18,19 @@ wissenschaftlich belegten Fakten.
 6. **Auflösung + Pointe**, idealerweise mit **Loop**: Der letzte Satz führt in den ersten.
 7. Reaktionen als Atempause und Humor („Wait, what?“, „Nope.“), aber sparsam.
 
+## Themen-Treue (Vorgabe des Nutzers, gilt für jedes Thema)
+1. **Alles im Bild passt sofort erkennbar zum Thema**: Figuren, Kostüme, Orte, Requisiten.
+   Wikinger → Wikinger mit Bart, Rundschild, Axt, Langschiff, Fjord. Altes Ägypten → Pharao mit
+   Kopftuch (Nemes) und Krummstab, Pyramiden, Sphinx, Nil, Hieroglyphen. Weltraum → Astronaut im
+   weißen Raumanzug mit Helm, Rakete, Planeten.
+2. **Test**: Ein Standbild ohne Ton und ohne Untertitel muss das Thema verraten.
+3. **Populäres Bild vs. Fakten**: Wo das „wie alle es sich vorstellen“-Bild historisch falsch ist
+   (Beispiel: Hörnerhelme bei Wikingern), Standard = erkennbar **ohne** das falsche Detail.
+   Das falsche Klischee nur als bewusster Gag, den der Sprechtext auflöst („Forget the horned helmets …“).
+   Solche Fälle vor der Produktion mit Primärquelle prüfen und im Quellen-Dokument vermerken.
+4. Die Hauptfigur trägt das **Kostüm des Themas** (nicht dasselbe Outfit in jedem Video).
+5. Farbwelt passend zum Thema (Ägypten: Sand/Gold/Türkis; Wikinger: kühles Blau/Grau/Holz).
+
 ## Bild & Schnitt
 1. **Eine Hauptfigur**, die durchgehend sichtbar handelt; Nebenfiguren mit klarer Rolle.
 2. **Wenige, wiedererkennbare Orte**; Ortswechsel immer **motiviert und gezeigt**
@@ -39,3 +52,4 @@ wissenschaftlich belegten Fakten.
 ## Selbstkritik am ersten Video (Sonnensystem, v1/v2)
 Erfüllt die Regeln nur teilweise: Struktur eher Liste (9 Planeten à 5–7 s), Wette schwach
 genutzt, kein Einsatz, Ortswechsel teils unvermittelt, kein laufendes Fortschritts-Element.
+Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbaren Raumanzugs mit Helm.
