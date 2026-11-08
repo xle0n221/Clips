@@ -30,7 +30,7 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `sessionId` | string \| null | Sitzung | ID der bearbeitenden Cloud-Sitzung |
 | `updatedAt` | ISO-String | beide | letzte Änderung |
 | `previewUrl` | string \| null (optional) | Sitzung | verkleinerte Vorschau bei `done` (Bild oder Video), siehe Assets; nur kleine Dateien |
-| `voice` | string (optional) | Seite (beim Anlegen) | Sprecherstimme (Kokoro). Auf der Seite angezeigt als: `af_heart` = „Frau 1 (empfohlen)“, `af_bella` = „Frau 2“, `am_fenrir` = „Mann 1“, `am_puck` = „Mann 2“ |
+| `voice` | string (optional) | Seite (beim Anlegen) | Sprecherstimme (Kokoro). Auf der Seite mit Namen angezeigt: `af_heart` = „Lily – Frau (empfohlen)“, `af_bella` = „Bella – Frau“, `am_fenrir` = „Finn – Mann“, `am_puck` = „Max – Mann“. Die Namen sind frei vergeben, nur für die Bedienung |
 | `inspiration` | Liste `{ id, name, type }` (optional) | Seite / Nutzer | Vom Nutzer hochgeladene Inspirations-Dateien (Bilder, kurze Videos, PDFs) als Assets der Seite. Angezeigt unter `/_blob/<id>`. Hochladen beim Anlegen oder später auf Karten in den Stufen `queued`, `research`, `script` |
 | `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` außerhalb 3,3–3,6 und ungleiche Whisper-Zahlen werden orange markiert |
 | `renderProgress` | number 0..1 (optional) | Sitzung | Balken bei `stage: "render"` |
@@ -66,6 +66,13 @@ Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, 
 3. Zur Freigabe: `update` mit `review: {…}`, `decision: null`, `statusText`, `updatedAt`.
 4. Antwort abholen: Dokument lesen; ist `decision` gesetzt → umsetzen, danach `review: null`, `decision: null` und nächster `stage`.
 5. Fertig: `stage: "done"`, `review: null`, optional `previewUrl`.
+
+### Hörproben der Stimmen
+`dashboard/voices/voice-<stimme>.mp3`, mit der Seite unter `voices/…` veröffentlicht (Knopf „▶ Anhören“ neben der Stimmen-Auswahl).
+Jede Stimme stellt sich auf Englisch vor (die Videos sind englisch): „Hi, I'm <Name>. I could be the voice of your next video.“
+Erzeugt mit `scripts/tts.py` (Kokoro-82M, Geschwindigkeit 1.0), danach `ffmpeg -ac 1 -b:a 64k`. Länge je ca. 3 s, 24–27 KB.
+Audio lässt sich nicht als Asset hochladen (Artifact-Tool nimmt dort kein mp3), daher als Seiten-Datei. Beim erneuten Veröffentlichen
+bleiben nicht genannte Dateien erhalten.
 
 ### Inspirations-Dateien des Nutzers lesen
 Eine bearbeitende Sitzung lädt eine Datei mit dem Artifact-Tool herunter: `action: "read"`, `url` = Seiten-URL, `path` = die `id` aus `inspiration`.
@@ -109,7 +116,13 @@ zeigt die Seite: „Damit Claude sofort reagiert: Kommentar mit @claude … send
 Die Entscheidung selbst steht weiterhin nur in der Datenbank; `last-action.json` ist nur das Signal.
 Eine geweckte Sitzung liest danach `videos` per `ArtifactData`.
 
-**Weck-Test: Ergebnis ausstehend** (Orchestrator-Sitzung beobachtet die Seite; echter Klick durch den Nutzer steht noch aus).
+**Weck-Test 1 – Veröffentlichung aus einer anderen Sitzung:** Die Orchestrator-Sitzung beobachtete die Seite seit 15:11:27 UTC
+(laut ihrer Watch-Liste). Version 3 wurde aus dieser Sitzung gegen 15:15 UTC veröffentlicht. Bis 15:21:25 UTC kam dort **kein** Weck-Turn an.
+Ob Veröffentlichungen aus einer anderen Sitzung desselben Nutzers grundsätzlich nicht wecken oder ob die Zustellung verzögert ist,
+kann nicht bestätigt werden.
+
+**Weck-Test 2 – Klick auf der Seite (Selbst-Veröffentlichung):** ausstehend; braucht einen Klick des Nutzers.
+Erkennbar daran, dass die Datei `last-action.json` in der Dateiliste der Seite auftaucht (Stand Version 5: noch nicht vorhanden).
 
 ### (a) Weckt ein Klick auf OK eine beobachtende Claude-Sitzung? (Stand Version 1)
 **Nein, nach den Angaben der Werkzeuge nicht.** Die Watch-Liste dieser Sitzung meldet für die Seite wörtlich:

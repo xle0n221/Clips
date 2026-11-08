@@ -142,7 +142,8 @@ a { color: var(--accent); }
 .fix ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
 .fix li { overflow-wrap: anywhere; }
 select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; min-height: 44px; max-width: 100%; }
-#voice { flex: 0 0 210px; }
+#voice { flex: 0 0 230px; }
+.listen { flex: none; min-height: 44px; }
 .wake { font-size: 0.8125rem; margin: 0; color: var(--muted); }
 .wake.ok { color: var(--ok); }
 .wake.warn { color: var(--warn); }
@@ -160,7 +161,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
   #len { flex: 1 1 100px; }
-  #voice { flex: 1 1 100%; }
+  #voice { flex: 1 1 180px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .card { transition: border-color .2s; }
@@ -183,11 +184,12 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       <input id="len" name="len" type="number" inputmode="numeric" min="10" max="900" step="5" placeholder="Länge (s)">
       <label class="sr" for="voice">Sprecherstimme (Englisch)</label>
       <select id="voice" name="voice" title="Sprecherstimme im Video (Englisch)">
-        <option value="af_heart" selected>Stimme: Frau 1 (empfohlen)</option>
-        <option value="af_bella">Stimme: Frau 2</option>
-        <option value="am_fenrir">Stimme: Mann 1</option>
-        <option value="am_puck">Stimme: Mann 2</option>
+        <option value="af_heart" selected>Stimme: Lily – Frau (empfohlen)</option>
+        <option value="af_bella">Stimme: Bella – Frau</option>
+        <option value="am_fenrir">Stimme: Finn – Mann</option>
+        <option value="am_puck">Stimme: Max – Mann</option>
       </select>
+      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe der gewählten Stimme abspielen">▶ Anhören</button>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
@@ -217,7 +219,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   const $ = (id) => document.getElementById(id);
   const listEl = $("list"), emptyEl = $("empty"), summaryEl = $("summary");
   let db = null, art = null, assets = null, canWrite = true, docs = [], loaded = false;
-  const VOICE_NAME = { af_heart: "Frau 1", af_bella: "Frau 2", am_fenrir: "Mann 1", am_puck: "Mann 2" };
+  const VOICE_NAME = { af_heart: "Lily", af_bella: "Bella", am_fenrir: "Finn", am_puck: "Max" };
   const voiceName = (v) => VOICE_NAME[v] ? "Stimme " + VOICE_NAME[v] : "Stimme " + v;
   const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
   const WPS_MIN = 3.3, WPS_MAX = 3.6; // Ziel-Sprechtempo (Vorgabe aus der Video-Produktion)
@@ -545,6 +547,18 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     try { await db.collection("videos").doc(v.id).delete(); } catch {}
     busy[v.id] = false; confirmDel[v.id] = false; render();
   }
+
+  // Hörproben: jede Stimme stellt sich kurz selbst vor (Dateien neben der Seite, voices/voice-<id>.mp3)
+  let player = null;
+  $("listenBtn").addEventListener("click", () => {
+    const btn = $("listenBtn");
+    if (player && !player.paused) { player.pause(); btn.textContent = "▶ Anhören"; return; }
+    player = new Audio("voices/voice-" + $("voice").value + ".mp3");
+    btn.textContent = "■ Stopp";
+    player.addEventListener("ended", () => { btn.textContent = "▶ Anhören"; });
+    player.play().catch(() => { btn.textContent = "▶ Anhören"; $("addMsg").className = "msg err"; $("addMsg").textContent = "Hörprobe konnte nicht abgespielt werden."; });
+  });
+  $("voice").addEventListener("change", () => { if (player) { player.pause(); $("listenBtn").textContent = "▶ Anhören"; } });
 
   $("inspFiles").addEventListener("change", (e) => {
     const n = e.target.files ? e.target.files.length : 0;
