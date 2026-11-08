@@ -226,6 +226,11 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     <p class="wake" id="wakeMsg" role="status" hidden></p>
   </form>
 
+  <details class="ht" id="repoBox" hidden>
+    <summary id="repoSum">Repo-Stand</summary>
+    <div id="repoBody"></div>
+  </details>
+
   <details class="ht" id="htBox" hidden>
     <summary id="htSum">Hashtags</summary>
     <div id="htBody"></div>
@@ -583,6 +588,26 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (Array.isArray(h.notes) && h.notes.length) body.append(el("ul", { class: "notes" }, h.notes.map((n) => el("li", { text: String(n) }))));
   }
 
+  // Repo-Stand: wird nach jedem Push von der Sitzung „CLIPS“ in meta/repo geschrieben
+  function renderRepo(r) {
+    const box = $("repoBox");
+    if (!r || typeof r !== "object") { box.hidden = true; return; }
+    box.hidden = false;
+    const t = Date.parse(r.updatedAt);
+    $("repoSum").replaceChildren("Repo-Stand ", el("span", { class: "sub",
+      text: (r.commit ? "· " + String(r.commit).slice(0, 7) : "") + (t ? " · " + new Date(t).toLocaleString("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "") }));
+    const body = $("repoBody"); body.replaceChildren();
+    if (r.branch) body.append(el("p", { class: "status" }, "Branch: ", el("a", { href: REPO + encodeURIComponent(r.branch).replace(/%2F/g, "/"), target: "_blank", rel: "noopener", text: r.branch })));
+    if (r.summary) body.append(el("p", { class: "status", text: String(r.summary) }));
+    const ch = Array.isArray(r.changes) ? r.changes : [];
+    if (ch.length) {
+      body.append(el("h3", { text: "Letzte Verbesserungen" }));
+      body.append(el("ul", { class: "notes" }, ch.slice(0, 12).map((c) => el("li", null,
+        c && c.date ? el("span", { class: "tc", text: String(c.date).slice(0, 10) + " " }) : null,
+        String((c && c.text) || c)))));
+    }
+  }
+
   function card(v) {
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
@@ -753,6 +778,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       summaryEl.textContent = "Verbindung verloren (" + (err && err.code) + ")";
     });
     db.doc("hashtags/current").onSnapshot((d) => renderHashtags(d.exists ? d.data() : null), () => {});
+    db.doc("meta/repo").onSnapshot((d) => renderRepo(d.exists ? d.data() : null), () => {});
     setInterval(render, 60000); // nur relative Zeitangaben auffrischen, kein Schreiben
   }
   start();
