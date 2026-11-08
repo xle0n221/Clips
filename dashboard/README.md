@@ -31,8 +31,9 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `updatedAt` | ISO-String | beide | letzte Änderung |
 | `previewUrl` | string \| null (optional) | Sitzung | verkleinerte Vorschau bei `done` (Bild oder Video), siehe Assets; nur kleine Dateien |
 | `voice` | string (optional) | Seite (beim Anlegen) | Sprecherstimme (Kokoro). Auf der Seite mit Namen angezeigt: `af_heart` = „Lily – Frau (empfohlen)“, `af_bella` = „Bella – Frau“, `am_fenrir` = „Finn – Mann“, `am_puck` = „Max – Mann“. Die Namen sind frei vergeben, nur für die Bedienung |
+| `voiceStyle` | `"lebendig"` \| `"spannend"` \| `"witzig"` \| `"ruhig"` (optional) | Seite (beim Anlegen) | Sprechstil des Videos → Drehbuch-Feld `voiceStyle` (`scripts/voice_fx.py`, Regeln in `docs/clip-regeln.md`, Abschnitt „Stimme“). Fehlt es: `lebendig` |
 | `inspiration` | Liste `{ id, name, type }` (optional) | Seite / Nutzer | Vom Nutzer hochgeladene Inspirations-Dateien (Bilder, kurze Videos, PDFs) als Assets der Seite. Angezeigt unter `/_blob/<id>`. Hochladen beim Anlegen oder später auf Karten in den Stufen `queued`, `research`, `script` |
-| `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` außerhalb 3,3–3,6 und ungleiche Whisper-Zahlen werden orange markiert |
+| `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` unter 2,6 oder über 3,6 und ungleiche Whisper-Zahlen werden orange markiert |
 | `renderProgress` | number 0..1 (optional) | Sitzung | Balken bei `stage: "render"` |
 | `renderEta` | string (optional) | Sitzung | z. B. `"noch ca. 23 Min."` |
 | `actionNeeded` | string \| null (optional) | Sitzung | auffälliges rotes Banner, z. B. `"Freigabe in der Claude-App nötig (Netzwerk)"`; Karte wird oben einsortiert |
@@ -50,7 +51,7 @@ Zusätzliche optionale Felder in `review`:
 **Zwei Freigabe-Stufen** über `review.kind`: Stufe 1 = `"script"` (Drehbuch + Quellen), Stufe 2 = `"contactsheet"`
 (Kontaktabzug, z. B. 3 Bilder pro Szene) **vor** dem finalen Render.
 
-Die Ziel-Werte 3,3–3,6 Wörter/s und die Stimmenliste stammen aus der Video-Produktions-Sitzung
+Die Ziel-Werte 3,0–3,6 Wörter/s (spannend bis 2,6; Messung in docs/clip-regeln.md) und die Stimmenliste stammen aus der Video-Produktions-Sitzung
 (Vorgabe der Orchestrator-Sitzung, hier nicht unabhängig nachgeprüft).
 
 Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, `branch: null`, `sessionId: null`.
@@ -61,7 +62,7 @@ Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, 
   wartet und der Connector das Werkzeug anbietet; danach 10 Min. gesperrt (gegen Doppelstarts; die Sperre `busy` schützt zusätzlich).
 - **Themen-Ideen:** `sample`-Capability (fragt Claude auf dem Konto des Betrachters, verbraucht dessen Nutzung); 5 Vorschläge mit
   englischem Hook, Antippen übernimmt Thema + Hook als Notiz. Vorschläge sind ungeprüft.
-- **Länge:** Knöpfe 30/60/90 s und Wortzahl-Rechner (3,3–3,6 Wörter/s).
+- **Länge:** Knöpfe 30/60/90 s und Wortzahl-Rechner (3,0–3,6 Wörter/s).
 - **Doppelte Themen:** Hinweis, wenn ein ähnliches Thema schon existiert.
 - **Filter** (ab 4 Videos): Alle / Zu erledigen / In Arbeit / Wartend / Fertig; Auswahl wird im Browser gemerkt.
 - **Hänger:** `busy` und seit über 3 Std. keine Änderung → Hinweis auf der Karte.
@@ -149,6 +150,8 @@ Die Datei landet lokal (Pfad steht im Ergebnis) und kann dann mit dem Read-Tool 
 
 Stimmen-Namen laut Kokoro-Stimmenliste (VOICES.md, huggingface.co/hexgrad/Kokoro-82M): `a` = American English, `f` = weiblich, `m` = männlich.
 Gesamtnoten dort: af_heart A, af_bella A-, am_fenrir C+, am_puck C+.
+Seit 08.11.2026 sind die Hörproben mit `scripts/voice_fx.py` bearbeitet (wie die Videos). Hörvergleich vorher/nachher:
+`voices/demo-{lily,finn}-{vorher,nachher}.mp3` (Bereich „Stimme: Hörvergleich“ auf der Seite).
 
 ### Bilder (Kontaktabzug) und Vorschau
 Die Seite darf **keine externen Bilder** laden (Content-Security-Policy der Artifact-Seiten). `imageUrl` / `previewUrl` müssen daher sein:

@@ -1,5 +1,5 @@
 {
-  "_info": "Zentrale Stimmenliste. Namen aus dem Dashboard 'Clips Studio' (frei vergeben, nur für die Bedienung). Noten laut VOICES.md von hexgrad/Kokoro-82M. Hörproben: assets/stimmproben/voice-<id>.mp3 (Satz: \"Hi, I'm <Name>. I could be the voice of your next video.\", Kokoro, Tempo 1.0).",
+  "_info": "Zentrale Stimmenliste. Namen aus dem Dashboard 'Clips Studio' (frei vergeben, nur für die Bedienung). Noten laut VOICES.md von hexgrad/Kokoro-82M. Hörproben: assets/stimmproben/voice-<id>.mp3 (Satz: \"Hi, I'm <Name>. I could be the voice of your next video.\", Kokoro, Tempo 1.0, seit 08.11.2026 mit scripts/voice_fx.py bearbeitet).",
   "default": "af_heart",
   "voices": [
     { "id": "af_heart", "name": "Lily", "gender": "Frau", "accent": "American English", "grade": "A", "recommended": true, "sample": "assets/stimmproben/voice-af_heart.mp3" },

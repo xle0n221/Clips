@@ -52,8 +52,9 @@ Während der Arbeit `updatedAt` mindestens alle 30 Minuten erneuern (zusammen mi
 | Fertig | `done` | `review: null`, `busy: false`, `previewUrl` (verkleinerte Vorschau, < 15 MB), `fileSizeBytes`, `publish` (siehe unten) |
 | Fehler | `error` | `statusText` = Fehler in Klartext, `busy: false` |
 
-Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID) → ins Drehbuch `episodes/<slug>.json` übernehmen.
-Wunschlänge `lengthSec` → Wortzahl mit 3,3–3,6 Wörtern/s planen. `note` und `inspiration` (Dateien:
+Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID) und Sprechstil `voiceStyle` (Standard `lebendig`) → ins Drehbuch
+`episodes/<slug>.json` übernehmen; je Szene `delivery`, `*Akzentwörter*` und ` | `-Pausen nach `docs/clip-regeln.md` („Stimme“).
+Wunschlänge `lengthSec` → Wortzahl mit 3,0–3,6 Wörtern/s planen. `note` und `inspiration` (Dateien:
 Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
 
 ## 5. Entscheidung umsetzen

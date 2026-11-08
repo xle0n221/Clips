@@ -195,6 +195,9 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 .idea:hover { border-color: var(--accent); }
 .stuck { font-size: 0.8125rem; color: var(--warn); margin: 0; }
 .prio { font-size: 0.75rem; font-weight: 600; color: var(--accent); }
+.ab { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; font-size: 0.875rem; }
+.ab audio { width: 100%; min-width: 0; height: 36px; }
+#vstyle { flex: 1 1 200px; }
 .empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
@@ -234,6 +237,13 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
         <option value="am_puck">Stimme: Max – Mann</option>
       </select>
       <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe der gewählten Stimme abspielen">▶ Anhören</button>
+      <label class="sr" for="vstyle">Sprechstil</label>
+      <select id="vstyle" name="vstyle" title="Wie die Stimme klingen soll (Melodie, Betonung, Pausen)">
+        <option value="lebendig" selected>Sprechstil: Lebendig (Standard)</option>
+        <option value="spannend">Sprechstil: Spannend</option>
+        <option value="witzig">Sprechstil: Witzig / aufgedreht</option>
+        <option value="ruhig">Sprechstil: Ruhig</option>
+      </select>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
@@ -252,7 +262,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       <input id="inspFiles" type="file" accept="image/*,video/*,application/pdf" multiple>
       <span class="hint" id="inspCount">optional – Bilder, kurze Videos oder PDFs</span>
     </div>
-    <p class="hint" id="nextRun">Claude holt neue Themen und Entscheidungen ab (stündlich 7–23 Uhr, wenn der Abholer eingeschaltet ist). Stil wie das Sonnensystem-Video.</p>
+    <p class="hint" id="nextRun">Deine Entscheidungen starten Claude sofort; zusätzlich schaut Claude stündlich nach. Stil wie das Sonnensystem-Video.</p>
     <div class="ideas" id="ideasBox" hidden>
       <div class="row">
         <label class="sr" for="ideaDir">Richtung für Ideen</label>
@@ -268,6 +278,17 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   <details class="ht" id="repoBox" hidden>
     <summary id="repoSum">Repo-Stand</summary>
     <div id="repoBody"></div>
+  </details>
+
+  <details class="ht" id="abBox">
+    <summary>Stimme: Hörvergleich vorher / nachher <span class="sub">· seit 08.11.2026</span></summary>
+    <p class="hint" style="margin:6px 0 10px">Gleicher Text, gleiche Lautheit. „Nachher“ = mehr Satzmelodie, betonte Schlüsselwörter, Pausen vor der Pointe, mehr Druck. So klingen neue Videos.</p>
+    <div class="ab">
+      <span>Lily vorher</span><audio controls preload="none" src="voices/demo-lily-vorher.mp3"></audio>
+      <span>Lily nachher</span><audio controls preload="none" src="voices/demo-lily-nachher.mp3"></audio>
+      <span>Finn vorher</span><audio controls preload="none" src="voices/demo-finn-vorher.mp3"></audio>
+      <span>Finn nachher</span><audio controls preload="none" src="voices/demo-finn-nachher.mp3"></audio>
+    </div>
   </details>
 
   <details class="ht" id="htBox" hidden>
@@ -289,7 +310,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   ];
   const STAGE_LABEL = { queued: "Wartet", research: "Recherche", script: "Drehbuch", scenes: "Szenen", render: "Render", done: "Fertig", error: "Fehler" };
   const REPO = "https://github.com/xle0n221/clips/tree/";
-  const PICKUP_TRIGGER = "trig_01GPmrJycLUKEASvHqbaG4hz"; // geplante Aufgabe „Clips Dashboard-Abholer“
+  const PICKUP_TRIGGER = "trig_013fFkYLstdCwVbtokfU68w5"; // geplante Aufgabe „Clips Dashboard-Abholer (Sitzung CLIPS)“, weckt die Sitzung CLIPS
   const CCR = "Claude Code Remote";
   const STUCK_MS = 3 * 3600 * 1000;
   let mcp = null, sampleFn = null, canFire = false;
@@ -303,7 +324,9 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   const VOICE_NAME = { af_heart: "Lily", af_bella: "Bella", am_fenrir: "Finn", am_puck: "Max" };
   const voiceName = (v) => VOICE_NAME[v] ? "Stimme " + VOICE_NAME[v] : "Stimme " + v;
   const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
-  const WPS_MIN = 3.3, WPS_MAX = 3.6; // Ziel-Sprechtempo (Vorgabe aus der Video-Produktion)
+  const WPS_MIN = 3.0, WPS_MAX = 3.6; // Ziel-Sprechtempo inkl. Pausen (docs/clip-regeln.md)
+  const WPS_LOW_OK = 2.6;             // spannende Clips mit langen Pausen (gemessen in einer Referenz: 2,58)
+  const STYLE_NAME = { lebendig: "lebendig", spannend: "spannend", witzig: "witzig", ruhig: "ruhig", aus: "unbearbeitet" };
   const de = (n, d) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
   const sceneDrafts = {};
   const drafts = {};      // Feedback-Entwürfe je Video, überleben Neuzeichnen
@@ -357,23 +380,23 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   ];
   const norm = (s) => String(s || "").toLowerCase().replace(/[äöüß]/g, (c) => ({ "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" })[c]).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 
-  // Nächster stündlicher Durchlauf (geplante Aufgabe: jeweils :17, 7–23 Uhr deutscher Zeit)
+  // Nächster stündlicher Durchlauf (geplante Aufgabe: jeweils :17, rund um die Uhr)
   function nextRunText() {
     let h, m;
     try {
       const parts = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
       h = Number(parts.find((x) => x.type === "hour").value); m = Number(parts.find((x) => x.type === "minute").value);
     } catch { return null; }
-    let nh = h < 7 ? 7 : (m < 17 ? h : h + 1);
-    return nh > 23 ? "morgen ca. 7:17 Uhr" : "ca. " + nh + ":17 Uhr";
+    const nh = (m < 17 ? h : h + 1) % 24;
+    return "ca. " + nh + ":17 Uhr";
   }
   function nr() {
     const el2 = $("nextRun"); if (!el2) return;
     if (pickup && pickup.enabled === false) { el2.textContent = "Der stündliche Abholer ist ausgeschaltet – neue Themen und Entscheidungen startest du mit „Jetzt starten“ oben. Stil wie das Sonnensystem-Video."; return; }
     const t = nextRunText();
     el2.textContent = pickup && pickup.enabled
-      ? "Claude schaut stündlich (7–23 Uhr) nach neuen Themen und Entscheidungen – nächster Durchlauf " + (t || "bald") + ". Stil wie das Sonnensystem-Video."
-      : "Claude holt neue Themen und Entscheidungen ab, sobald der Abholer läuft (stündlich 7–23 Uhr, wenn eingeschaltet) oder über „Jetzt starten“. Stil wie das Sonnensystem-Video.";
+      ? (canFire ? "Deine Entscheidungen starten Claude sofort. " : "") + "Zusätzlich schaut Claude stündlich nach – nächster Durchlauf " + (t || "bald") + ". Stil wie das Sonnensystem-Video."
+      : "Claude holt neue Themen und Entscheidungen ab, sobald der Abholer läuft (stündlich, wenn eingeschaltet) oder über „Jetzt starten“. Stil wie das Sonnensystem-Video.";
   }
   function slugify(s) {
     const map = { "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" };
@@ -496,7 +519,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (typeof m.durationSec === "number") out.push(el("span", { text: "Länge " + tc(m.durationSec) }));
     if (typeof m.words === "number") out.push(el("span", { text: m.words + " Wörter" }));
     if (typeof m.wordsPerSec === "number") {
-      const off = m.wordsPerSec < WPS_MIN || m.wordsPerSec > WPS_MAX;
+      const off = m.wordsPerSec < WPS_LOW_OK || m.wordsPerSec > WPS_MAX;
       out.push(el("span", { class: off ? "off" : "good", title: `Ziel ${de(WPS_MIN, 1)}–${de(WPS_MAX, 1)} Wörter/s`,
         text: de(m.wordsPerSec, 2) + " W/s" + (off ? " (Ziel " + de(WPS_MIN, 1) + "–" + de(WPS_MAX, 1) + ")" : "") }));
     }
@@ -689,7 +712,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
     metaParts.push(el("span", { title: absTime(v.updatedAt), text: "geändert " + ago(v.updatedAt) }));
-    if (v.voice) metaParts.push(el("span", { text: voiceName(v.voice) }));
+    if (v.voice) metaParts.push(el("span", { text: voiceName(v.voice) + (v.voiceStyle && STYLE_NAME[v.voiceStyle] ? ", " + STYLE_NAME[v.voiceStyle] : "") }));
     if (v.branch && v.stage !== "done") metaParts.push(el("span", { text: v.branch }));
 
     const c = el("article", { class: "card" + (waiting(v) || blocked(v) ? " attn" : ""), id: "v-" + v.id },
@@ -757,11 +780,26 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       w.textContent = "Claude wird nicht automatisch geweckt" + (why ? " (" + why + ")" : "") +
         ". Gespeichert ist es trotzdem – Claude holt es beim nächsten Durchlauf ab.";
     };
+    const hhmm = () => new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+    // 1. Sofort wecken: geplante Aufgabe der Sitzung CLIPS auslösen (als der Betrachter, Connector „Claude Code Remote“).
+    //    Das ist der zuverlässige Weg; die Datei-Veröffentlichung unten weckte in Tests nicht.
+    if (mcp && canFire && action !== "decision:undo") {
+      try {
+        await mcp.callTool(CCR, "fire_trigger", { trigger_id: PICKUP_TRIGGER });
+        store.set("clips.lastFire", String(Date.now()));
+        w.hidden = false; w.className = "wake ok";
+        w.textContent = "Gespeichert (" + hhmm() + "). Claude wurde sofort gestartet und arbeitet weiter.";
+        return;
+      } catch (e) {
+        hint("Sofortstart: " + ((e && e.code) || "Fehler"));
+        return;
+      }
+    }
     if (!art) { hint("Funktion hier nicht verfügbar"); return; }
     try {
       await art.publish({ "last-action.json": JSON.stringify({ action, id, at: new Date().toISOString() }) });
       w.hidden = false; w.className = "wake ok";
-      w.textContent = "Gespeichert (" + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + "). Claude holt es beim nächsten Durchlauf ab.";
+      w.textContent = "Gespeichert (" + hhmm() + "). Claude holt es beim nächsten Durchlauf ab.";
     } catch (e) {
       if (e && e.code === "conflict") return; // Seite lädt ohnehin die neueste Version
       hint(e && e.code);
@@ -930,12 +968,12 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       await db.collection("videos").doc(id).set({
         inspiration,
         topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
-        voice: $("voice").value || "af_heart",
+        voice: $("voice").value || "af_heart", voiceStyle: $("vstyle").value || "lebendig",
         stage: "queued", statusText: "", review: null, decision: null,
         branch: null, sessionId: null, busy: false, updatedAt: new Date().toISOString()
       });
       $("dupHint").hidden = true; $("lenHint").textContent = "";
-      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "af_heart";
+      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "af_heart"; $("vstyle").value = "lebendig";
       $("inspFiles").value = ""; $("inspCount").textContent = "optional – Bilder, kurze Videos oder PDFs";
       msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
       wake("add", id);

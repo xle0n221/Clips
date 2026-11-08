@@ -61,7 +61,42 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Standardstimme: **Lily** = Kokoro `af_heart` (laut `VOICES.md` des Modells einzige englische Stimme mit Note A).
   Alternativen: **Bella** `af_bella` (A-), **Finn** `am_fenrir`, **Max** `am_puck` (C+).
   Zentrale Liste `scripts/voices.json`, Hörproben `assets/stimmproben/` (aus dem Dashboard übernommen).
-- Ziel-Sprechtempo **3,3–3,6 Wörter/s** (gemessen in Referenz 2: 216 Wörter / 59,5 s = 3,63).
+- Ziel-Sprechtempo **3,0–3,6 Wörter/s** inklusive Pausen; spannende Clips dürfen bis **2,6** gehen
+  (gemessen: frühere Referenz 216 Wörter / 59,5 s = 3,63; Referenzen vom 08.11.2026: 3,06 und 2,58 W/s, siehe unten).
+
+## Stimme: lebendig, charakteristisch, mit Druck (Vorgabe des Nutzers, 08.11.2026)
+Vorgabe: **„Die Stimmen sollen lebendiger, charakteristischer und mehr Power haben und Betonungen passend zum Clip.“**
+
+**Gemessen** (zwei Referenzvideos des Nutzers vom 08.11.2026 vs. Kokoro, eigenes Skript: Tonhöhe per Autokorrelation,
+Wörter/Pausen per Whisper „base“; Werte der Referenzen sind durch die Hintergrundmusik verfälscht und nur Richtwerte):
+
+| Merkmal | Ref. A (deutsch, 46,7 s) | Ref. B (englisch, 71,1 s) | Kokoro Lily roh | Kokoro Finn roh | Lily / Finn mit `voice_fx` |
+| --- | --- | --- | --- | --- | --- |
+| Tonhöhen-Streuung (Halbtöne, SD) | 5,6 | 5,9 | 2,8 | 3,7 | 4,6 / 4,5 |
+| Tonhöhen-Spanne 10–90 % (Halbtöne) | 16,5 | 15,9 | 7,4 | 9,8 | 12,5 / 12,8 |
+| Wörter/s | 3,06 | 2,58 | 3,43 | 3,75 | – |
+| Pausen ≥ 400 ms pro Minute | 8,1 | 15,6 | 16,1 | 0,0 | – |
+
+Ergebnis: Tempo und Pausen von Kokoro liegen nahe an den Referenzen; die **Satzmelodie ist nur etwa halb so bewegt**.
+Daher bearbeitet `scripts/voice_fx.py` die fertige Sprachspur automatisch (in `make_episode.py`, Timing bleibt gleich):
+Melodie verstärken (WORLD-Vocoder, pyworld), Akzentwörter mit Tonhöhen-Bogen + Lautstärke betonen, Druck (EQ, Kompressor).
+Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wörter (59–60 von 65).
+
+**Regeln fürs Drehbuch (Betonung passend zum Clip):**
+1. **Sprechweise je Szene** im Feld `delivery`, passend zur Story-Stelle:
+   Hook/Rätsel `punch` · Einsatz/Erklärung `normal` · Eskalation/Aufzählung `hype` · vor dem Wendepunkt `tense` ·
+   Wendepunkt/Pointe `punch` · ruhige Erklärung `calm`. Werte (Tempo, Melodie) in `DELIVERY` in `scripts/voice_fx.py`;
+   eigene Werte als Objekt, z. B. `"delivery": {"speed": 0.9, "expr": 2.4}`.
+2. **Akzentwörter** mit Sternchen: `*five hundred years*` – 1–2 pro Satz, das überraschende Wort / die Zahl / der Kontrast.
+   Sie werden jetzt **hörbar** betont (und wie bisher in den Untertiteln hervorgehoben). Nicht jedes zweite Wort markieren.
+3. **Dramatische Pause** mit ` | ` im Sprechtext (Standard 350 ms, Feld `pauseMs`): vor Pointe, Twist, Auflösung.
+4. **Kurze Sätze, klare Satzzeichen**: `?` für echte Fragen, `!` sparsam bei Eskalation; Reaktionen als eigener Satz („Wait, what?“).
+5. **Stil des ganzen Videos** im Feld `voiceStyle` (Auswahl im Dashboard): `lebendig` (Standard) · `spannend` · `witzig` · `ruhig`;
+   `aus` schaltet die Bearbeitung ab.
+6. Prüfen: Hörprobe der Szene mit Hook und Pointe anhören; klingt etwas blechern/knarrend → `expr` der Szene senken.
+
+**Grenze:** Kokoro-82M hat keine Steuerung für Emotionen; `voice_fx` verstärkt nur die vorhandene Melodie und kann
+keinen echten Schauspieler ersetzen. Für mehr Charakter wäre ein anderes Sprachmodell nötig (nicht getestet).
 - **Alle Fakten** aus Primärquellen, wörtlich zitiert in `docs/quellen-<thema>.md`; Abweichungen von
   gängigen Angaben werden vermerkt und nicht verwendet.
 

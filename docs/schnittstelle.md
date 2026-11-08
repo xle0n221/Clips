@@ -7,6 +7,8 @@ Befehle ausführt. Alles, was sich pro Clip einstellen lässt, steht im Drehbuch
 | Feld | Bedeutung | Erlaubte Werte | Wirkung |
 | --- | --- | --- | --- |
 | `voice` | Sprecherstimme (Name oder ID) | **Lily** `af_heart` (Standard), **Bella** `af_bella`, **Finn** `am_fenrir`, **Max** `am_puck` – Liste: `scripts/voices.json` | neue Tonspur, Untertitel/Schnitte automatisch neu getimt |
+| `voiceStyle` | Sprechstil des Videos | `lebendig` (Standard), `spannend`, `witzig`, `ruhig`, `aus` | Melodie/Betonung der Stimme (`scripts/voice_fx.py`) |
+| `scenes[].delivery` | Sprechweise der Szene | `punch`, `normal`, `hype`, `tense`, `calm` oder `{speed, expr}` | Tempo und Melodie dieser Szene |
 | `speed` | Sprechtempo | 0.5–2.0 (Standard 1.3 ≈ 3,3 Wörter/s) | wie oben; Videolänge ändert sich |
 | `scenes[].text` | Sprechtext | Englisch | wie oben; Fakten müssen in `docs/quellen-<id>.md` belegt sein |
 | `scenes[].cues` | Sticker, Soundeffekte, Schnitt-Beats | siehe `episodes/solar-system.json` | Timing automatisch |

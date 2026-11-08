@@ -26,6 +26,10 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
 from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, resolve_voice, write_wav  # noqa: E402
+from voice_fx import DELIVERY, STYLES, scene_expr  # noqa: E402
+from voice_fx import process as voice_process  # noqa: E402
+
+PAUSE_MARK = "|"  # im Sprechtext: dramatische Pause (Länge: Drehbuch-Feld pauseMs, Standard 350 ms)
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -84,6 +88,8 @@ def split_words(scene: str, text: str) -> list[dict]:
     for raw in text.split():
         stars = raw.count("*")
         word = raw.replace("*", "")
+        if word == PAUSE_MARK:
+            continue
         emph = inside or stars > 0
         inside = inside ^ (stars % 2 == 1)
         if word:
@@ -107,6 +113,12 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     out_dir.mkdir(parents=True, exist_ok=True)
 
     voice = Voice(ep["voice"], ep.get("speed", 1.0))
+    base_speed = voice.speed
+    # Sprechstil des Videos (Dashboard-Feld voiceStyle): lebendig | spannend | witzig | ruhig | aus
+    style_name = ep.get("voiceStyle", "lebendig")
+    style = STYLES.get(style_name)
+    pause = np.zeros(int(SAMPLE_RATE * ep.get("pauseMs", 350) / 1000), np.float32)
+    fx_segments: list[tuple[float, float, float]] = []
     gap = np.zeros(int(SAMPLE_RATE * ep.get("sceneGapMs", 150) / 1000), np.float32)
     lead = np.zeros(int(SAMPLE_RATE * 0.15), np.float32)  # kurzer Vorlauf
 
@@ -114,8 +126,15 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     for sc in ep["scenes"]:
         # Sternchen markieren Akzentwörter ("*Rome*") – nur für die Untertitel, nicht vorlesen
         spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
-        audio = voice.synth(spoken)
+        # Sprechweise je Szene: "delivery": "hype" | "tense" | "punch" | "calm" | "normal" oder {speed, expr}
+        d = sc.get("delivery", style["delivery"] if style else "normal")
+        d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
+        voice.speed = base_speed * d["speed"]
+        pieces = [p.strip() for p in spoken.split(PAUSE_MARK) if p.strip()]
+        audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((pause,) if i else ()) + (voice.synth(p),)])
         start = cursor / SAMPLE_RATE * 1000
+        if style:
+            fx_segments.append((start / 1000, (cursor + len(audio)) / SAMPLE_RATE, scene_expr(d["expr"], style)))
         parts += [audio, gap]
         cursor += len(audio) + len(gap)
         scenes.append({"id": sc["id"], "startMs": round(start), "endMs": round(cursor / SAMPLE_RATE * 1000)})
@@ -144,6 +163,16 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     )
     print(f"Abgleich: {matched}/{len(words)} Wörter direkt von Whisper getimt")
     (out_dir / "captions.json").write_text(json.dumps(captions, indent=1) + "\n")
+
+    # Stimme lebendiger machen (scripts/voice_fx.py): Melodie je Szene, Akzentwörter (*Wort*), Druck.
+    # Timing bleibt gleich – Untertitel und Cues stimmen weiter.
+    if style:
+        raw_wav = ROOT / "out" / f"{ep['id']}-voice-raw.wav"  # out/ wird nicht committet
+        raw_wav.parent.mkdir(exist_ok=True)
+        (out_dir / "voice.wav").replace(raw_wav)
+        emph = [(captions[i]["startMs"] / 1000, captions[i]["endMs"] / 1000) for i, w in enumerate(words) if w["emph"]]
+        voice_process(raw_wav, out_dir / "voice.wav", fx_segments, emph, 2.0, style["emph_st"], style["emph_db"])
+        print(f"Stimme: Stil {style_name!r}, {len(emph)} Akzentwörter betont (Rohfassung: {raw_wav.relative_to(ROOT)})")
 
     # Cues an Wörter binden
     cues = []
