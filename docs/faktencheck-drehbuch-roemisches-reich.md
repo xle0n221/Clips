@@ -156,3 +156,45 @@ Es gibt keinen STREICHEN-Fall.
 - 25.000 = 20.000 (Dio 74.11.4) + 5.000 (Dio 74.11.5).
 - 238, sechs Tote: Maximinus + Sohn (Mai 238), Gordian I (Suizid) + Gordian II (Schlacht) (238; WHE nennt im Text 12. Mai, in der Zeitleiste 12. April), Pupienus + Balbinus (Ende Juli 238 laut Milman-Anmerkung bei Gibbon Kap. 7: “they are assassinated towards the end of July”). Davon wurden **5 getötet und 1 beging Suizid**. Gordian III überlebte.
 - Wortzahl der Ersatztexte: auction ±0, chaos ±0, perished +3, vote +2, (optional fired +2, vandals +7). Insgesamt etwa +5 Wörter Pflicht, bei ca. 3,45 W/s also etwa +1,5 s.
+
+---
+
+## Nachprüfung v2 (Commit feae034)
+
+Geprüft am 2026-11-08 gegen die oben zitierten Belege (die Quellen waren in dieser Sitzung frisch geladen). **Ergebnis: freigegeben.** Kein Satz muss geändert werden. Es gibt nur zwei Hinweise, die nichts blockieren.
+
+### (a) Die fünf Pflicht-Umformulierungen
+
+| Szene | v2-Text | Status |
+| --- | --- | --- |
+| auction | „The guards killed the last emperor after 87 days. Now they sell the throne!“ | umgesetzt ✓ |
+| chaos | „Six rulers dead in a few months.“ | umgesetzt ✓ |
+| perished | „As the story goes, … "Rome has perished!" You cry: "And yet it just ate from my hands!" …“ | umgesetzt ✓ (Legenden-Kennzeichnung und Prokop-Wortlaut). „rooster guy“ siehe (b) |
+| kid/fired | „Final respawn: 475.“ / „Then, in 476, Odoacer takes your throne.“ | umgesetzt ✓ (475 laut Dewing „[B]July 31, 475 A.D.“, Prokop V.1; facts Z10 passt) |
+| vote | „Historians still argue about why.“ | umgesetzt ✓ (WHE 835: „they often disagree on its causes“) |
+
+### (b) Neue oder geänderte Aussagen
+
+| Satz | Status | Beleg / Befund |
+| --- | --- | --- |
+| „Your rival bids inside. You shout outside!“ | OK | Dio 74.11.3: „one from the inside, the other from the outside“; 74.11.5: „shouting it in a loud voice“. |
+| „Then you flash your fingers… 5,000 more! *25,000* per soldier.“ | OK | Dio 74.11.4–5: „up to twenty thousand sesterces per soldier“ … „by five thousand at one time … indicating the amount with his fingers“; HA DJ 3.2 „five and twenty thousand sesterces to each soldier“. |
+| „So 193 gets five emperors in one year.“ | OK (Hinweis) | WHE Septimius Severus: „the year 193 CE is known as 'The Year of Five Emperors.'“ Die Formulierung umschreibt den feststehenden Namen. Wer die fünf sind, ist eine Herleitung (WHE nennt Albinus, Niger und Severus „candidates“, siehe F6). Für den gesprochenen Satz reicht das. |
+| „But in 410, Goths loot your city!“ | OK | Prokop III.2 („after plundering the whole city“), Dewing „[Aug. 24, 410 A.D.]“. „Your city“ bedeutet Rom im Reich des Westkaisers Honorius (Prokop III.1, Westen an Honorius). |
+| „One story says 300 young men, sent as a "gift", open the gate.“ | OK | Prokop III.2: „he chose out three hundred … make a present of them … pretending that they were slaves“; „then they opened the gates“. „One story says“ ist nötig, weil Prokop die Proba-Version nennt. „Midday“ fehlt jetzt, das ist unschädlich. „Trojan Horse… but with people.“ ist ein Vergleich und kein Faktenanspruch. |
+| „Legend says you keep a huge rooster… named Rome.“ | OK | „Huge“ ist gedeckt: Prokop III.2 „For he had a **very large** cock, Rome by name“. „Legend says“ entspricht Prokops „they say“. |
+| „your rooster guy reports“ | OK (Hinweis) | Prokop: „one of the eunuchs, evidently a keeper of the poultry“. „Rooster guy“ verengt „poultry“ (Geflügel) auf den Hahn. Da der Hahn zum Geflügel gehört und die Szene als „As the story goes“ markiert ist, ist das als lockere Umschreibung vertretbar. Wörtlicher wäre „your poultry guy“ (gleich lang), das ist optional. |
+| „They rip off half the gold-plated temple roof!“ | OK | Prokop III.5: „tore off half of the roof. Now this roof was of bronze … and since gold was laid over it exceedingly thick“ → vergoldetes Bronzedach = „gold-plated“. „Jupiter“ fehlt jetzt, das ist unschädlich. |
+| „The Vandals loot Rome for 14 days.“ | OK | Gibbon Kap. 36: „The pillage lasted fourteen days and nights“. |
+| „Today, *vandal* means wrecking stuff.“ | OK | WHE Vandals: „synonymous with careless destruction“. Die sichere Variante, ohne Aussage zur Herkunft. |
+| „You're a kid, so he spares you.“ | OK | Exc. Val. 8.38: „in pity for his tender years, granted him his life“. |
+| „Because you're pretty… he pays you 6,000 gold pieces. Fired… with a *pension*!“ | OK | Exc. Val. 8.38: „because of his beauty he also gave him an income of six thousand gold-pieces“. „Pension“ zeigt, dass es ein laufendes Einkommen ist. „Yearly“ wird zu Recht nicht gesagt. |
+| „The Senate tells the East: one emperor is enough!“ | OK | Gibbon Kap. 36 (Brief an Zeno, „a sole monarch is sufficient … both the East and the West“); WHE Odoacer („wrote to the emperor in the east“). |
+| „The East keeps going… almost a thousand more years! Until 1453.“ | OK | 1453 − 476 = 977 ≈ „almost a thousand“ (Freigabe F13: „fast 1000 Jahre“). Der Sticker „+977 YEARS“ passt. |
+| „Historians still argue about why.“ | OK | s. (a). |
+
+Übrige, nicht angefragte v2-Änderungen habe ich mitgelesen: „Bad news… every time you respawn, this job gets worse.“, „After 66 days… *game over*.“, „Your last words“ (Dio: „his only words“), „*Hard mode*“, „*Nightmare mode*“, „While you wait to respawn… 455!“. Das sind Erzähl- und Spielrahmen ohne neuen Faktenanspruch → OK.
+
+### (c) Aussprache-Tabelle `say`
+
+`Odo-acer`, `Au-gustulus`, `Au-gustus`, `Hon-orius`: Die Buchstabenfolge bleibt erhalten, nur ein Bindestrich wird eingefügt. Die Namen werden also nicht verändert. Laut `scripts/make_episode.py` (Z. 123) und `scripts/tts.py` (`apply_say`, „Nur für die Sprachausgabe“) gelten sie nur für die Stimme. Untertitel und Sticker zeigen weiter die richtigen Schreibungen aus `text`. Die Ersetzung arbeitet mit ganzen Wörtern, deshalb verändert „Augustus“ nicht „Augustulus“. → OK. Ob die Stimme danach richtig klingt (z. B. „Au-“ als „aw“ statt „ow“), muss man beim ersten TTS-Lauf hören. Das ist keine Faktenfrage.
