@@ -1,4 +1,4 @@
-import { fitText } from "@remotion/layout-utils";
+import { fitText, measureText } from "@remotion/layout-utils";
 import React from "react";
 import {
   AbsoluteFill,
@@ -29,6 +29,7 @@ const STAGGER = 6; // Karten kommen nacheinander
 const FIRST = 3;
 const MOVE = 18; // Zeiger fährt zur Karte
 const PRESS = 4;
+const CURSOR_LANE = 40; // Platz rechts vom Text, damit die Zeigerspitze kein Wortende verdeckt
 
 /** Standard-Hinweis aus der Zahl der Karten: "COMMENT A OR B", "COMMENT A, B OR C" … */
 export const askText = (n: number) => {
@@ -96,26 +97,77 @@ export const Choice: React.FC<{
           ? askText(n)
           : null;
 
-  // Senkrechtes Layout um die Bildmitte, unteres Drittel bleibt für die Untertitel frei
-  const cardH = n <= 2 ? 176 : 138;
-  const gap = n <= 2 ? 40 : 30;
+  // Senkrechtes Layout um die Bildmitte. Unterkante (inkl. Hinweis) höchstens bei y = ASK_LIMIT,
+  // denn ab ~1420 stehen die Untertitel (Captions.tsx: 92 px Schrift, Unterkante bei 1520).
+  const cardH = n <= 2 ? 176 : n === 3 ? 138 : 124;
+  const gap = n <= 2 ? 40 : 24;
   const titleH = spec.title ? 110 : 0;
-  const askH = ask ? 150 : 0;
+  const askH = ask ? 160 : 0;
   const block = titleH + n * cardH + (n - 1) * gap + askH;
-  const top0 = Math.max(470, 930 - block / 2);
+  const ASK_LIMIT = 1380;
+  const top0 = Math.max(440, Math.min(930 - block / 2, ASK_LIMIT - block));
   const cardsTop = top0 + titleH;
   const cardY = (i: number) => cardsTop + i * (cardH + gap);
 
   const cardsIn = FIRST + (n - 1) * STAGGER + 10;
   const cursorIn = cardsIn;
   const clickAt = cursorIn + MOVE + 3;
-  const exit = interpolate(frame, [duration - 6, duration], [1, 0], clamp01);
+  // Ausblenden nur per Skalierung (wie Sticker/Pills). Keine Gruppen-Deckkraft: opacity + transform
+  // auf der ganzen Ebene erzeugte beim Rendern (swangle) Geisterkopien und dunkle Schrift.
+  const exit = interpolate(frame, [duration - 6, duration], [1, 0], {
+    ...clamp01,
+    easing: Easing.in(Easing.cubic),
+  });
 
-  // Zeiger: fährt von rechts unten zur Karte (oder pendelt ohne Wahl zwischen A und B)
+  // Schrift je Karte: passt in die Karte, mit Reserve rechts für den Zeiger
+  const badge = cardH - 52;
+  const textLeft = LEFT + 26 + badge + 30;
+  const maxFont = n <= 2 ? 60 : 50;
+  const textW = CARD_W - cardH - 110 - CURSOR_LANE;
+  const fit = (text: string) =>
+    fitText({ text, withinWidth: textW, fontFamily: CAPTION_FONT, fontWeight: 900, letterSpacing: "-1px" })
+      .fontSize;
+  // Lange Optionen: zweizeilig statt winziger Schrift (unter 40 px auf dem Handy kaum lesbar)
+  const layouts = options.map((raw) => {
+    const text = raw.toUpperCase();
+    const one = Math.min(maxFont, fit(text));
+    const words = text.split(" ");
+    if (one >= 40 || words.length < 2) return { lines: [text], fontSize: one };
+    let best: string[] = [text];
+    let bestLen = Infinity;
+    for (let k = 1; k < words.length; k++) {
+      const l = [words.slice(0, k).join(" "), words.slice(k).join(" ")];
+      const len = Math.max(l[0].length, l[1].length);
+      if (len < bestLen) {
+        best = l;
+        bestLen = len;
+      }
+    }
+    const two = Math.min(maxFont, (cardH - 30) / 2.1, ...best.map(fit));
+    return two > one ? { lines: best, fontSize: two } : { lines: [text], fontSize: one };
+  });
+  const textEnd = (i: number) =>
+    textLeft +
+    Math.max(
+      ...layouts[i].lines.map(
+        (line) =>
+          measureText({
+            text: line,
+            fontFamily: CAPTION_FONT,
+            fontWeight: 900,
+            fontSize: layouts[i].fontSize,
+            letterSpacing: "-1px",
+          }).width,
+      ),
+    );
+
+  // Zeiger: fährt von rechts unten zur Karte (oder pendelt ohne Wahl zwischen A und B).
+  // Spitze rechts neben dem Wortende, nie weiter rechts als die Karte erlaubt.
   const startX = 980;
   const startY = 1560;
+  const xOf = (i: number) => Math.min(textEnd(i) + 26, LEFT + CARD_W - 86);
   const targetOf = (i: number) => ({
-    x: LEFT + CARD_W - 110,
+    x: xOf(i),
     y: cardY(i) + cardH * 0.62,
   });
   let cx = startX;
@@ -138,14 +190,15 @@ export const Choice: React.FC<{
     const b = targetOf(Math.min(1, n - 1));
     const mid = (a.y + b.y) / 2;
     const swing = Math.sin(Math.max(0, frame - cursorIn - MOVE) * 0.12);
-    cx = interpolate(t, [0, 1], [startX, a.x]);
+    cx = interpolate(t, [0, 1], [startX, Math.max(a.x, b.x)]);
     cy = interpolate(t, [0, 1], [startY, mid + swing * (b.y - a.y) * 0.5]);
   }
   const pressed = pick !== null && frame >= clickAt && frame < clickAt + PRESS;
   const clicked = pick !== null && frame >= clickAt;
   const cursorScale =
     spring({ frame: frame - cursorIn, fps, config: { damping: 12, stiffness: 220 } }) *
-    (pressed ? 0.82 : 1);
+    (pressed ? 0.82 : 1) *
+    exit;
   const ripple = clicked ? frame - clickAt : -1;
 
   return (
@@ -154,8 +207,6 @@ export const Choice: React.FC<{
         pointerEvents: "none",
         fontFamily: CAPTION_FONT,
         fontWeight: 900,
-        opacity: exit,
-        transform: `scale(${0.9 + 0.1 * exit})`,
       }}
     >
       {spec.title ? (
@@ -166,10 +217,14 @@ export const Choice: React.FC<{
             left: 40,
             right: 40,
             textAlign: "center",
-            fontSize: 72,
+            fontSize: Math.min(
+              72,
+              fitText({ text: spec.title, withinWidth: 940, fontFamily: CAPTION_FONT, fontWeight: 900 }).fontSize,
+            ),
             lineHeight: 1.05,
+            whiteSpace: "nowrap",
             color: "#FFFFFF",
-            transform: `scale(${spring({ frame, fps, config: { damping: 10, stiffness: 200 } })})`,
+            transform: `scale(${spring({ frame, fps, config: { damping: 10, stiffness: 200 } }) * exit})`,
             ...strokeText(14),
             textShadow: "0 8px 0 rgba(0,0,0,0.75)",
           }}
@@ -178,7 +233,7 @@ export const Choice: React.FC<{
         </div>
       ) : null}
 
-      {options.map((text, i) => {
+      {options.map((_, i) => {
         const s = spring({
           frame: frame - FIRST - i * STAGGER,
           fps,
@@ -192,16 +247,7 @@ export const Choice: React.FC<{
           : dim
             ? 0.95
             : 1;
-        const fontSize = Math.min(
-          n <= 2 ? 60 : 50,
-          fitText({
-            text: text.toUpperCase(),
-            withinWidth: CARD_W - cardH - 110,
-            fontFamily: CAPTION_FONT,
-            fontWeight: 900,
-          }).fontSize,
-        );
-        const badge = cardH - 52;
+        const { fontSize, lines } = layouts[i];
         return (
           <div
             key={i}
@@ -211,7 +257,7 @@ export const Choice: React.FC<{
               top: cardY(i) + press,
               width: CARD_W,
               height: cardH,
-              transform: `translateX(${(1 - s) * (i % 2 ? -1 : 1) * 1100}px) rotate(${(1 - s) * (i % 2 ? -8 : 8) + (i % 2 ? 0.8 : -0.8)}deg) scale(${pop})`,
+              transform: `translateX(${(1 - s) * (i % 2 ? -1 : 1) * 1100}px) rotate(${(1 - s) * (i % 2 ? -8 : 8) + (i % 2 ? 0.8 : -0.8)}deg) scale(${pop * exit})`,
               background: isPick ? ACCENT : dim ? "#CFCAD8" : "#FFFFFF",
               border: `${OUTLINE + 1}px solid ${INK}`,
               borderRadius: 38,
@@ -246,12 +292,14 @@ export const Choice: React.FC<{
               style={{
                 fontSize,
                 color: dim ? "#5C566B" : INK,
-                lineHeight: 1,
+                lineHeight: 1.02,
                 letterSpacing: -1,
                 whiteSpace: "nowrap",
               }}
             >
-              {text.toUpperCase()}
+              {lines.map((line, k) => (
+                <div key={k}>{line}</div>
+              ))}
             </div>
           </div>
         );
@@ -270,7 +318,7 @@ export const Choice: React.FC<{
               <div
                 style={{
                   position: "absolute",
-                  top: cardY(n - 1) + cardH + 56,
+                  top: cardY(n - 1) + cardH + 40,
                   left: 0,
                   right: 0,
                   display: "flex",
@@ -285,10 +333,13 @@ export const Choice: React.FC<{
                     borderRadius: 999,
                     boxShadow: hardShadow(10),
                     padding: "12px 40px 14px",
-                    fontSize: 62,
+                    fontSize: Math.min(
+                      62,
+                      fitText({ text: ask, withinWidth: 840, fontFamily: CAPTION_FONT, fontWeight: 900, letterSpacing: "1px" }).fontSize,
+                    ),
                     letterSpacing: 1,
                     whiteSpace: "nowrap",
-                    transform: `scale(${s * beat}) rotate(-2deg)`,
+                    transform: `scale(${s * beat * exit}) rotate(-2deg)`,
                     ...strokeText(8),
                   }}
                 >

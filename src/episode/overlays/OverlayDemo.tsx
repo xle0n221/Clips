@@ -5,7 +5,7 @@ import { Timeline } from "../types";
 import { Captions } from "./Captions";
 import { CutFlash, Grade, Sticker } from "./Effects";
 import { loadCaptionFont } from "./fonts";
-import { HUD_BOTTOM } from "./Hud";
+import { hudBottom } from "./Hud";
 import { EpisodeOverlays, emphMap } from "./Overlays";
 
 /**
@@ -160,10 +160,102 @@ export const OverlayDemo: React.FC = () => {
       ))}
       <EpisodeOverlays timeline={TIMELINE} ends={ends} fps={FPS} layer="below" />
       <Sequence from={stFrom} durationInFrames={30} layout="none">
-        <Sticker text={sticker.sticker!} color={sticker.color!} duration={30} tilt={-3} top={HUD_BOTTOM + 30} />
+        <Sticker text={sticker.sticker!} color={sticker.color!} duration={30} tilt={-3} top={hudBottom(TIMELINE.hud!) + 30} />
       </Sequence>
       <EpisodeOverlays timeline={TIMELINE} ends={ends} fps={FPS} layer="above" />
       <Captions captions={CAPTIONS} emph={emphMap(TIMELINE)} />
+      <Grade />
+    </AbsoluteFill>
+  );
+};
+
+/**
+ * Randfälle für die Design-Prüfung (Komposition `OverlayEdgeCases`, ohne Ton): 2 Zähler + 2 Balken,
+ * Balken auf 0 und 1, 4 Karten mit langen Texten, 3 Karten ohne Wahl, Pills am Bildrand.
+ */
+export const OVERLAY_EDGE_FRAMES = 240;
+const EDGE: Timeline = {
+  id: "overlay-edge",
+  title: "Overlay edge cases",
+  durationMs: ms(OVERLAY_EDGE_FRAMES),
+  hud: {
+    title: "THE VERY LAST EMPEROR OF THE WEST · PART 12",
+    counters: [
+      { id: "year", label: "YEAR", value: 395, suffix: " AD" },
+      { id: "gold", label: "GOLD", value: 1200, prefix: "$" },
+    ],
+    bars: [
+      { id: "empire", label: "EMPIRE", value: 1 },
+      { id: "army", label: "ARMY", value: 0.05, color: "#4FC3F7" },
+    ],
+  },
+  scenes: [
+    { id: "edge", startMs: 0, endMs: ms(80) },
+    { id: "four", startMs: ms(80), endMs: ms(160) },
+    { id: "three", startMs: ms(160), endMs: ms(OVERLAY_EDGE_FRAMES) },
+  ],
+  cues: [
+    { scene: "edge", atMs: ms(4), label: { text: "Romulus Augustulus", x: 0.03, y: 0.5 } },
+    { scene: "edge", atMs: ms(4), label: { text: "Odoacer", color: "#FFFFFF", x: 0.97, y: 0.7 } },
+    { scene: "edge", atMs: ms(4), label: { text: "Top", color: "#4FC3F7", x: 0.5, y: 0.02 } },
+    { scene: "edge", atMs: ms(10), hud: { id: "empire", value: 0 } },
+    { scene: "edge", atMs: ms(10), hud: { id: "army", value: 1 } },
+    { scene: "edge", atMs: ms(10), hud: { id: "gold", value: 1000000 } },
+    { scene: "edge", atMs: ms(10), hud: { id: "year", value: 1453 } },
+    { scene: "edge", atMs: ms(50), hud: { id: "empire", value: 0.62 } },
+    {
+      scene: "four",
+      atMs: ms(82),
+      choice: {
+        title: "WHAT SHOULD THE EMPEROR DO NOW?",
+        options: [
+          "Pay the Goths",
+          "Raise an enormous army of mercenaries",
+          "Flee to Constantinople by night",
+          "Wait",
+        ],
+        pick: 1,
+        ask: true,
+      },
+    },
+    {
+      scene: "three",
+      atMs: ms(162),
+      choice: {
+        options: ["Ravenna", "Rome", "Constantinople and the eastern provinces"],
+      },
+    },
+  ],
+};
+const EDGE_WORDS: [string, number][] = [
+  ["Constantinople", 6],
+  ["mercenaries", 90],
+  ["Ravenna,", 170],
+  ["Rome,", 186],
+  ["or", 196],
+  ["Constantinople?", 204],
+];
+const EDGE_CAPTIONS: Caption[] = EDGE_WORDS.map(([w, f], i) => ({
+  text: i === 0 ? w : ` ${w}`,
+  startMs: ms(f),
+  endMs: ms(EDGE_WORDS[i + 1]?.[1] ?? f + 30),
+  timestampMs: ms(f + 3),
+  confidence: null,
+}));
+
+export const OverlayEdgeCases: React.FC = () => {
+  useState(() => loadCaptionFont());
+  const starts = EDGE.scenes.map((s) => Math.round((s.startMs / 1000) * FPS));
+  const ends = starts.map((_, i) => starts[i + 1] ?? OVERLAY_EDGE_FRAMES);
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#0B1035" }}>
+      <Backdrop />
+      <EpisodeOverlays timeline={EDGE} ends={ends} fps={FPS} layer="below" />
+      <Sequence from={20} durationInFrames={30} layout="none">
+        <Sticker text="1 YEAR = 165 YEARS" color="#FFD23F" duration={30} tilt={3} top={hudBottom(EDGE.hud!) + 30} />
+      </Sequence>
+      <EpisodeOverlays timeline={EDGE} ends={ends} fps={FPS} layer="above" />
+      <Captions captions={EDGE_CAPTIONS} />
       <Grade />
     </AbsoluteFill>
   );

@@ -1,3 +1,4 @@
+import { measureText } from "@remotion/layout-utils";
 import React from "react";
 import {
   AbsoluteFill,
@@ -26,12 +27,22 @@ export const Pill: React.FC<{
   const exit = interpolate(frame, [duration - 5, duration], [1, 0], clamp01);
   const bob = Math.sin(frame * 0.12) * 5;
   // Nicht über den Bildrand: Pill horizontal einklemmen, Zipfel bleibt am Ziel
-  const x = Math.max(0.02, Math.min(0.98, label.x)) * width;
+  const x = Math.max(0.04, Math.min(0.96, label.x)) * width;
   const y = Math.max(0.05, Math.min(1, label.y)) * height;
-  const estW = label.text.length * 30 + 80;
+  // Gemessene Breite (Schrift 46 px, Abstand 1 px) + Innenabstand 2×30 + Rahmen 2×7 + Neigung
+  const estW =
+    measureText({
+      text: label.text.toUpperCase(),
+      fontFamily: CAPTION_FONT,
+      fontWeight: 900,
+      fontSize: 46,
+      letterSpacing: "1px",
+    }).width + 90;
+  // Zipfel bleibt unter der Pill (nicht über deren Rundung hinaus); lieber 20 px Rand als lose Spitze
+  const room = Math.max(0, estW / 2 - 50);
   const shift = Math.max(
-    40 - (x - estW / 2),
-    Math.min(0, width - 40 - (x + estW / 2)),
+    -room,
+    Math.min(room, Math.max(40 - (x - estW / 2), Math.min(0, width - 40 - (x + estW / 2)))),
   );
   const tail = 22;
   const tri = `M6 0 L${tail + 8} ${tail + 4} L${tail * 2 + 10} 0`;

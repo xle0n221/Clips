@@ -17,36 +17,47 @@ import {
   Legionary,
   Pavement,
   RomanSkyline,
+  RomeAtmosphere,
   RomeFog,
   RomeLights,
+  RomePhase,
   RomeSky,
+  romeMood,
   Rubble,
   Scroll,
   Senator,
   SpqrBanner,
   Temple,
   Throne,
+  THRONE_SIT_Y,
   TimelineStele,
   UmbrellaPine,
   Cypress,
 } from "./episode/kit/rome";
 
-/** Prüf-Komposition für das Rom-Kit: 8 Einstellungen à 14 Frames (≈ 3,7 s). */
+/**
+ * Prüf-Komposition für das Rom-Kit: 10 Einstellungen à 14 Frames (≈ 4,7 s).
+ * 0–7 Bausteine bei Mittag („glory“), 8 = gleiche Totale im Niedergang („decline“),
+ * 9 = Untergang („fall“) mit Gefahrenlicht.
+ */
 export const ROME_TEST_SHOT = 14;
-export const ROME_TEST_FRAMES = ROME_TEST_SHOT * 8;
+const SHOTS = 10;
+export const ROME_TEST_FRAMES = ROME_TEST_SHOT * SHOTS;
 
-const World: React.FC<{ readonly frame: number; readonly ruin?: number }> = ({
-  frame,
-  ruin = 0,
-}) => (
+const phaseOf = (shot: number): RomePhase => (shot === 8 ? "decline" : shot === 9 ? "fall" : "glory");
+
+/** Kulisse: Kolosseum groß und weit hinten (monumental), davor Stadt, Bäume. */
+const World: React.FC<{
+  readonly frame: number;
+  readonly ruin?: number;
+  readonly phase?: RomePhase;
+}> = ({ frame, ruin = 0, phase = "glory" }) => (
   <>
-    <RomeSky frame={frame} />
-    <RomeFog />
-    <RomeLights />
+    <RomeAtmosphere phase={phase} frame={frame} />
     <Pavement />
     <Hills />
-    <Colosseum position={[0, 0, -16]} ruin={ruin} />
-    <RomanSkyline position={[0, 0, -32]} width={44} seed={4} />
+    <Colosseum position={[6, 0, -44]} scale={2.6} ruin={ruin} />
+    <RomanSkyline position={[0, 0, -22]} width={40} rows={1} seed={4} rotunda={false} />
     <RomanSkyline position={[-4, 0, -9]} width={8} rows={1} seed={9} rotunda={false} />
     <UmbrellaPine position={[-5.2, 0, -6]} height={4.2} />
     <Cypress position={[4.6, 0, -7]} height={4} />
@@ -55,7 +66,7 @@ const World: React.FC<{ readonly frame: number; readonly ruin?: number }> = ({
 
 const Scene: React.FC = () => {
   const frame = useCurrentFrame();
-  const shot = Math.min(7, Math.floor(frame / ROME_TEST_SHOT));
+  const shot = Math.min(SHOTS - 1, Math.floor(frame / ROME_TEST_SHOT));
   const f = frame - shot * ROME_TEST_SHOT;
   const d = ROME_TEST_SHOT;
 
@@ -96,7 +107,7 @@ const Scene: React.FC = () => {
       <>
         <World frame={frame} />
         {cast}
-        <Shot frame={f} duration={d} from={[0, 2.4, 15.5]} to={[0, 2.35, 14.8]} look={[0, 4.4, -8]} fov={44} />
+        <Shot frame={f} duration={d} from={[0, 2.0, 15.5]} to={[0, 1.95, 14.8]} look={[0, 6.2, -20]} fov={46} />
       </>
     );
   }
@@ -116,7 +127,7 @@ const Scene: React.FC = () => {
         <Throne position={[0, 0, -1.5]} />
         <Emperor
           frame={frame}
-          position={[0, 0.55, -1.2]}
+          position={[0, THRONE_SIT_Y, -1.2]}
           sit={1}
           arms={[0.6, 0.3]}
           eyes="happy"
@@ -124,7 +135,7 @@ const Scene: React.FC = () => {
         />
         <SpqrBanner frame={frame} position={[-2.4, 0, -1.2]} />
         <SpqrBanner frame={frame + 30} position={[2.4, 0, -1.2]} />
-        <Shot frame={f} duration={d} from={[0, 3.6, 8.5]} to={[0, 3.5, 7.8]} look={[0, 3.0, -1]} fov={42} />
+        <Shot frame={f} duration={d} from={[0, 3.4, 10.2]} to={[0, 3.35, 9.6]} look={[0, 3.3, -1]} fov={42} />
       </>
     );
   }
@@ -142,7 +153,44 @@ const Scene: React.FC = () => {
         />
         <BlobShadow position={[-0.7, 0, 3.4]} />
         <Rubble position={[2.6, 0, -1]} count={6} seed={8} />
-        <Shot frame={f} duration={d} from={[0, 2.6, 10.5]} to={[0, 2.6, 10]} look={[0.5, 4.2, -10]} fov={44} />
+        <Shot frame={f} duration={d} from={[-0.3, 2.7, 10.4]} to={[-0.3, 2.65, 9.9]} look={[-0.5, 3.6, 3.4]} fov={42} />
+      </>
+    );
+  }
+  if (shot === 8 || shot === 9) {
+    const fall = shot === 9;
+    return (
+      <>
+        <World frame={frame} phase={phaseOf(shot)} ruin={fall ? 0.7 : 0} />
+        {fall ? (
+          <>
+            <Goth
+              frame={frame}
+              position={[1.6, 0, 0.8]}
+              rotation={[0, -0.35, 0]}
+              arms={[0.4, 0.3]}
+              eyes="angry"
+              mouth="teeth"
+            />
+            <BlobShadow position={[1.6, 0, 0.8]} />
+            <Legionary
+              frame={frame}
+              hero
+              position={[-1.8, 0, 0.4]}
+              rotation={[0, 0.35, 0]}
+              arms={[0.3, 0.6]}
+              eyes="wide"
+              mouth="o"
+              brow={-0.2}
+            />
+            <BlobShadow position={[-1.8, 0, 0.4]} />
+            <Rubble position={[3.2, 0, -2.5]} count={6} seed={8} />
+            <DangerLight frame={frame} position={[5, 2.4, -3]} intensity={0.8} />
+          </>
+        ) : (
+          cast
+        )}
+        <Shot frame={f} duration={d} from={[0, 2.0, 15.5]} to={[0, 1.95, 14.8]} look={[0, 6.2, -20]} fov={46} />
       </>
     );
   }
@@ -209,16 +257,18 @@ const Scene: React.FC = () => {
       {studio}
       <TimelineStele position={[0, 0, -1]} at={3 + f / d} frame={frame} />
       <Legionary frame={frame} hero position={[1.9, 0, 0.6]} rotation={[0, -0.4, 0]} arms={[0.3, 1.2]} eyes="wide" mouth="o" shield={false} />
-      <Shot frame={f} duration={d} from={[0, 4.2, 10]} to={[0, 4.1, 9.4]} look={[0, 3.4, -1]} fov={42} />
+      <Shot frame={f} duration={d} from={[0, 3.2, 11.5]} to={[0, 3.15, 11]} look={[0, 1.3, -1]} fov={50} />
     </>
   );
 };
 
 export const RomeKitTest: React.FC = () => {
   const { width, height } = useVideoConfig();
+  const frame = useCurrentFrame();
+  const mood = romeMood(phaseOf(Math.floor(frame / ROME_TEST_SHOT)));
   return (
-    <AbsoluteFill style={{ backgroundColor: "#CBEAF6" }}>
-      <AbsoluteFill style={{ filter: "saturate(1.15) contrast(1.05)" }}>
+    <AbsoluteFill style={{ backgroundColor: mood.background }}>
+      <AbsoluteFill style={{ filter: mood.grade }}>
         <ThreeCanvas width={width} height={height} shadows>
           <Scene />
         </ThreeCanvas>

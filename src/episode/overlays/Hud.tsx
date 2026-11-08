@@ -1,3 +1,4 @@
+import { fitText } from "@remotion/layout-utils";
 import React from "react";
 import {
   AbsoluteFill,
@@ -22,8 +23,23 @@ import {
 
 /** Oberkante der Einsatz-Anzeige: darüber liegt die Plattform-Oberfläche (Status, Suche, Tabs). */
 export const HUD_TOP = 150;
-/** Unterkante der Einsatz-Anzeige (Sticker rutschen darunter, wenn ein HUD da ist). */
+/** Unterkante der Einsatz-Anzeige im Standardfall (Titel + Zähler + 1 Balken). */
 export const HUD_BOTTOM = 400;
+
+/**
+ * Tatsächliche Unterkante (inkl. harter Schatten) für eine HUD-Angabe: 2 Balken sind höher als
+ * der Standardfall. Sticker rutschen darunter (Episode.tsx).
+ */
+export const hudBottom = (spec: HudSpec) => {
+  const title = spec.title ? 100 : 0; // Pill ~78 px + Abstand 22
+  const nb = Math.min(2, spec.bars?.length ?? 0);
+  const counters = spec.counters?.length ? 145 : 0;
+  const bars = nb ? nb * 92 + (nb - 1) * 14 + 16 : 0;
+  return Math.max(HUD_BOTTOM, HUD_TOP + title + Math.max(counters, bars) + 5);
+};
+
+const INNER_W = 1080 - 2 * 44; // Breite des HUD-Bereichs
+const GAP = 26;
 
 export type HudChange = { frame: number; id: string; value: number };
 
@@ -35,7 +51,9 @@ const LOW = 0.3; // darunter wird der Balken rot
 
 const fmt = (v: number, from: number, to: number) => {
   const decimals = Number.isInteger(from) && Number.isInteger(to) ? 0 : 1;
-  return v.toFixed(decimals);
+  const s = v.toFixed(decimals);
+  // Tausendertrennzeichen erst ab 10.000 (Jahreszahlen wie 1453 bleiben ohne Komma)
+  return Math.abs(v) >= 10000 ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : s;
 };
 
 const Counter: React.FC<{
@@ -43,14 +61,18 @@ const Counter: React.FC<{
   readonly t: Track;
   readonly prefix?: string;
   readonly suffix?: string;
-}> = ({ label, t, prefix = "", suffix = "" }) => {
+  /** feste Kastenbreite, Schriftgröße passt zum breitesten Wert des ganzen Videos */
+  readonly width: number;
+  readonly fontSize: number;
+}> = ({ label, t, prefix = "", suffix = "", width, fontSize }) => {
   const v = tween(t, COUNT_FRAMES);
   const counting = t.since < COUNT_FRAMES + 4;
   // Ruck beim Start, kleines Nachfedern am Ende
   const bump = interpolate(
     t.since,
     [0, 3, COUNT_FRAMES, COUNT_FRAMES + 4, COUNT_FRAMES + 10],
-    [1, 1.12, 1.08, 1.2, 1],
+    // max. 1,12: stärker ragte die Zahl über den Rand des Zähler-Kastens (Prüfbild Frame 40)
+    [1, 1.08, 1.05, 1.12, 1],
     clamp01,
   );
   return (
@@ -64,7 +86,8 @@ const Counter: React.FC<{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        minWidth: 210,
+        width,
+        boxSizing: "border-box",
       }}
     >
       <div
@@ -79,8 +102,8 @@ const Counter: React.FC<{
       </div>
       <div
         style={{
-          fontSize: 70,
-          lineHeight: 1.05,
+          fontSize,
+          lineHeight: 70 / fontSize * 1.05,
           color: counting ? ACCENT : "#FFFFFF",
           transform: `scale(${bump})`,
           fontVariantNumeric: "tabular-nums",
@@ -118,7 +141,7 @@ const Bar: React.FC<{
   const k = Math.exp(-t.since / 5);
   const shake =
     drop && t.since < 24 ? Math.sin(t.since * 2.4) * 16 * k : 0;
-  const grow = !drop && t.since < 14 ? 1 + 0.08 * Math.sin((t.since / 14) * Math.PI) : 1;
+  const grow = !drop && t.since < 14 ? 1 + 0.04 * Math.sin((t.since / 14) * Math.PI) : 1;
   const low = v < LOW;
   const pulse = low ? 0.5 + 0.5 * Math.sin(frame * 0.35) : 0;
   const fill = low
@@ -240,6 +263,30 @@ export const Hud: React.FC<{
   const bars = spec.bars ?? [];
   // Kurzes Aufploppen in den ersten Frames (bleibt dabei unterhalb der Plattform-Oberfläche)
   const enter = interpolate(frame, [0, 5, 9], [0.94, 1.03, 1], clamp01);
+  // Zählerbreite: 1 Zähler 300 px, 2 Zähler je 250 px (mit Balken); ohne Balken teilen sie sich die Zeile
+  const cw = bars.length
+    ? counters.length > 1
+      ? 250
+      : 300
+    : (INNER_W - GAP * (counters.length - 1)) / Math.max(1, counters.length);
+  const counterFont = (c: (typeof counters)[number]) => {
+    const values = [c.value, ...of(c.id).map((x) => x.value)];
+    const ints = values.every((x) => Number.isInteger(x));
+    const widest = values
+      .map((x) => `${c.prefix ?? ""}${fmt(x, ints ? 0 : 0.5, 0)}${c.suffix ?? ""}`)
+      .sort((a, b) => b.length - a.length)[0];
+    // Reserve für das Nachfedern (scale 1,12) und die Kontur
+    return Math.min(
+      70,
+      fitText({ text: widest, withinWidth: (cw - 66) / 1.12, fontFamily: CAPTION_FONT, fontWeight: 900, letterSpacing: "-1px" }).fontSize,
+    );
+  };
+  const titleFont = spec.title
+    ? Math.min(
+        38,
+        fitText({ text: spec.title, withinWidth: INNER_W - 90, fontFamily: CAPTION_FONT, fontWeight: 900, letterSpacing: "2px" }).fontSize,
+      )
+    : 38;
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       <div
@@ -267,7 +314,7 @@ export const Hud: React.FC<{
               borderRadius: 999,
               boxShadow: hardShadow(8),
               padding: "8px 34px 10px",
-              fontSize: 38,
+              fontSize: titleFont,
               letterSpacing: 2,
               whiteSpace: "nowrap",
               transform: "rotate(-1.5deg)",
@@ -282,7 +329,7 @@ export const Hud: React.FC<{
               alignSelf: "stretch",
               display: "flex",
               alignItems: "flex-end",
-              gap: 26,
+              gap: GAP,
             }}
           >
             {counters.map((c) => (
@@ -292,6 +339,8 @@ export const Hud: React.FC<{
                 prefix={c.prefix}
                 suffix={c.suffix}
                 t={trackAt(c.value, of(c.id), frame)}
+                width={cw}
+                fontSize={counterFont(c)}
               />
             ))}
             {bars.length ? (

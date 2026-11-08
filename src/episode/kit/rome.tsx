@@ -1,6 +1,7 @@
 /**
  * Bau-Kit „Antikes Rom“: Kostüme für Toonie, Kulissen und Requisiten.
- * Alles deterministisch (nur aus Props/`frame`, kein useFrame/useEffect),
+ * Alles deterministisch (nur aus Props/`frame`, kein useFrame; useEffect nur zum
+ * Schrift-Laden unter delayRender, siehe `useRomeFont`),
  * Cel-Shading über `toonGradient`, Kontur über <Ink> in INK.
  * Farben, Kontrast- und Silhouettenregeln: docs/design-system.md.
  *
@@ -8,7 +9,8 @@
  *   <Toonie head={<LegionaryHelmet />} body={<Lorica />} hands={[<Gladius />, <Scutum />]} />
  * oder fertig als <Legionary>, <Emperor>, <Senator>, <Goth>.
  */
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { cancelRender, continueRender, delayRender, staticFile } from "remotion";
 import {
   BackSide,
   BufferGeometry,
@@ -69,6 +71,55 @@ export const ROME = {
 } as const;
 
 const HOUSE_WALLS = ["#F4DCAA", "#EBC085", "#F2CDA5", "#E0A574", "#F7E6C6", "#E9B98E"];
+
+/* ------------------------------------------------------------------ */
+/* Schrift für Textur-Beschriftungen (SPQR, Jahreszahlen, WEST/EAST)    */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Mitgelieferte Schrift statt Systemschrift: Montserrat 900 (OFL-1.1, public/fonts) –
+ * gleiche Schrift wie die Untertitel, auf jedem Rechner gleich. Eigener Familienname,
+ * damit das Kit unabhängig von den Overlays lädt. Geladen per FontFace + delayRender:
+ * kein Frame wird aufgenommen, bevor die Texturen mit der richtigen Schrift gezeichnet sind.
+ */
+export const ROME_FONT = "RomeKitSans";
+const fontStack = (px: number) => `900 ${px}px ${ROME_FONT}, 'DejaVu Sans', sans-serif`;
+let fontPromise: Promise<void> | null = null;
+let fontLoaded = false;
+const loadRomeFont = () => {
+  if (!fontPromise) {
+    const face = new FontFace(
+      ROME_FONT,
+      `url('${staticFile("fonts/montserrat-latin-900-normal.woff2")}') format('woff2')`,
+      { weight: "900" },
+    );
+    fontPromise = face.load().then(
+      (f) => {
+        document.fonts.add(f);
+        fontLoaded = true;
+      },
+      (err) => cancelRender(err),
+    );
+  }
+  return fontPromise;
+};
+
+/** true, sobald die Kit-Schrift geladen ist; hält bis zum Neuzeichnen das Rendern an. */
+const useRomeFont = () => {
+  const [ready, setReady] = useState(fontLoaded);
+  const [handle] = useState(() => (fontLoaded ? null : delayRender("Rom-Kit: Schrift laden")));
+  useEffect(() => {
+    if (ready) {
+      if (handle !== null) {
+        // erst nach dem nächsten Bild freigeben, damit die neue Textur schon gezeichnet ist
+        requestAnimationFrame(() => requestAnimationFrame(() => continueRender(handle)));
+      }
+      return;
+    }
+    loadRomeFont().then(() => setReady(true));
+  }, [ready, handle]);
+  return ready;
+};
 
 /* ------------------------------------------------------------------ */
 /* Hilfen                                                               */
@@ -487,9 +538,9 @@ export const Beard: React.FC<{ readonly color?: string; readonly frame?: number 
           key={`sb${sd}`}
           color="#FFFFFF"
           map={strands}
-          position={[sd * 0.9, -0.3, 0.32]}
-          rotation={[0, sd * 0.5, sd * 0.12]}
-          scale={[0.13, 0.42, 0.24]}
+          position={[sd * 0.88, -0.28, 0.3]}
+          rotation={[0, -sd * 0.34, sd * 0.1]}
+          scale={[0.12, 0.4, 0.26]}
           ink={0.08}
         >
           <sphereGeometry args={[1, 14, 10]} />
@@ -1053,13 +1104,19 @@ export const RomeSky: React.FC<{
   readonly top?: string;
   readonly bottom?: string;
   readonly sun?: P3 | null;
+  readonly sunColor?: string;
+  readonly sunRadius?: number;
   readonly clouds?: boolean;
+  readonly cloudColor?: string;
   readonly frame?: number;
 }> = ({
   top = ROME.skyTop,
   bottom = ROME.skyBottom,
   sun = [-30, 60, -150],
+  sunColor = ROME.sun,
+  sunRadius = 7,
   clouds = true,
+  cloudColor = "#FFFFFF",
   frame = 0,
 }) => {
   const tex = useCanvasTexture(`romesky-${top}-${bottom}`, [8, 256], (c, w, h) => {
@@ -1077,12 +1134,12 @@ export const RomeSky: React.FC<{
         <sphereGeometry args={[300, 32, 16]} />
         <meshBasicMaterial map={tex} side={BackSide} depthWrite={false} fog={false} />
       </mesh>
-      {sun ? <SoftSun position={sun} /> : null}
+      {sun ? <SoftSun position={sun} color={sunColor} radius={sunRadius} /> : null}
       {clouds ? (
         <>
-          <Cloud position={[-30 + frame * 0.01, 38, -140]} scale={7} />
-          <Cloud position={[38 + frame * 0.008, 50, -150]} scale={9} />
-          <Cloud position={[8 + frame * 0.012, 70, -160]} scale={6} />
+          <Cloud position={[-30 + frame * 0.01, 38, -140]} scale={7} color={cloudColor} />
+          <Cloud position={[38 + frame * 0.008, 50, -150]} scale={9} color={cloudColor} />
+          <Cloud position={[8 + frame * 0.012, 70, -160]} scale={6} color={cloudColor} />
         </>
       ) : null}
     </>
@@ -1090,20 +1147,21 @@ export const RomeSky: React.FC<{
 };
 
 /** Weiche Cartoon-Sonne: Scheibe + Lichthof (ohne Kontur). */
-export const SoftSun: React.FC<{ readonly position: P3; readonly radius?: number }> = ({
-  position,
-  radius = 7,
-}) => (
+export const SoftSun: React.FC<{
+  readonly position: P3;
+  readonly radius?: number;
+  readonly color?: string;
+}> = ({ position, radius = 7, color = ROME.sun }) => (
   <group position={position}>
     <mesh>
       <circleGeometry args={[radius, 48]} />
-      <meshBasicMaterial color={ROME.sun} fog={false} />
+      <meshBasicMaterial color={color} fog={false} />
     </mesh>
     {[1.35, 1.8, 2.5].map((k, i) => (
       <mesh key={k} position={[0, 0, -1 - i]}>
         <circleGeometry args={[radius * k, 48]} />
         <meshBasicMaterial
-          color="#FFF6D0"
+          color={color === ROME.sun ? "#FFF6D0" : color}
           transparent
           opacity={0.32 - i * 0.09}
           depthWrite={false}
@@ -1115,10 +1173,11 @@ export const SoftSun: React.FC<{ readonly position: P3; readonly radius?: number
 );
 
 /** Flache Cartoon-Wolke (ohne Kontur, flacher Boden). */
-export const Cloud: React.FC<{ readonly position: P3; readonly scale?: number }> = ({
-  position,
-  scale = 1,
-}) => (
+export const Cloud: React.FC<{
+  readonly position: P3;
+  readonly scale?: number;
+  readonly color?: string;
+}> = ({ position, scale = 1, color = "#FFFFFF" }) => (
   <group position={position} scale={[scale, scale * 0.8, scale * 0.4]}>
     {(
       [
@@ -1131,12 +1190,12 @@ export const Cloud: React.FC<{ readonly position: P3; readonly scale?: number }>
     ).map(([x, y, z, r]) => (
       <mesh key={`${x}-${y}`} position={[x, y, z]}>
         <sphereGeometry args={[r, 20, 14]} />
-        <meshBasicMaterial color="#FFFFFF" fog={false} />
+        <meshBasicMaterial color={color} fog={false} />
       </mesh>
     ))}
     <mesh position={[0, -0.05, 0]}>
       <boxGeometry args={[3.2, 0.5, 1.4]} />
-      <meshBasicMaterial color="#FFFFFF" fog={false} />
+      <meshBasicMaterial color={color} fog={false} />
     </mesh>
   </group>
 );
@@ -1461,13 +1520,14 @@ export const Temple: React.FC<{
   const top = podium + colH + 0.45;
   const geo = useMemo(() => gable(W + 0.5, 1.5, 0.4), []);
   const tym = useMemo(() => gable(W - 0.6, 1.0, 0.1), []);
-  const text = useCanvasTexture(`temple-${inscription}`, [1024, 96], (c, w, h) => {
+  const font = useRomeFont();
+  const text = useCanvasTexture(`temple-${inscription}-${font}`, [1024, 96], (c, w, h) => {
     c.clearRect(0, 0, w, h);
     c.fillStyle = ROME.ochreDark;
-    c.font = "bold 70px 'DejaVu Serif', 'Times New Roman', serif";
+    c.font = fontStack(66);
     c.textAlign = "center";
     c.textBaseline = "middle";
-    c.fillText(inscription, w / 2, h / 2 + 4);
+    c.fillText(inscription, w / 2, h / 2 + 4, w - 80);
   });
   const slope = Math.atan2(1.5, (W + 0.5) / 2);
   const roofLen = Math.hypot(1.5, (W + 0.5) / 2) + 0.1;
@@ -1930,7 +1990,8 @@ export const SpqrBanner: React.FC<{
   text = "SPQR",
   color = ROME.legionRed,
 }) => {
-  const tex = useCanvasTexture(`banner-${text}-${color}`, [256, 320], (c, w, h) => {
+  const font = useRomeFont();
+  const tex = useCanvasTexture(`banner-${text}-${color}-${font}`, [256, 320], (c, w, h) => {
     c.fillStyle = color;
     c.fillRect(0, 0, w, h);
     c.strokeStyle = ROME.gold;
@@ -1942,10 +2003,10 @@ export const SpqrBanner: React.FC<{
     c.arc(w / 2, h * 0.5, 82, Math.PI * 0.62, Math.PI * 2.38);
     c.stroke();
     c.fillStyle = ROME.gold;
-    c.font = "bold 58px 'DejaVu Serif', 'Times New Roman', serif";
+    c.font = fontStack(50);
     c.textAlign = "center";
     c.textBaseline = "middle";
-    c.fillText(text, w / 2, h * 0.5 + 4);
+    c.fillText(text, w / 2, h * 0.5 + 3, 150);
   });
   const sway = Math.sin(frame * 0.09) * 0.08;
   return (
@@ -1985,7 +2046,8 @@ export const Scroll: React.FC<{
   readonly lines?: readonly string[];
 }> = ({ position = [0, 0, 0], rotation, scale = 1, open = 1, lines }) => {
   const key = lines ? lines.join("|") : "scribble";
-  const tex = useCanvasTexture(`scroll-${key}`, [256, 320], (c, w, h) => {
+  const font = useRomeFont();
+  const tex = useCanvasTexture(`scroll-${key}-${font}`, [256, 320], (c, w, h) => {
     c.fillStyle = ROME.parchment;
     c.fillRect(0, 0, w, h);
     c.fillStyle = "rgba(150,100,40,0.18)";
@@ -1993,9 +2055,9 @@ export const Scroll: React.FC<{
     c.fillRect(w - 10, 0, 10, h);
     c.fillStyle = "#4A3020";
     if (lines) {
-      c.font = "bold 34px 'DejaVu Serif', 'Times New Roman', serif";
+      c.font = fontStack(32);
       c.textAlign = "center";
-      lines.forEach((l, i) => c.fillText(l, w / 2, 60 + i * 48));
+      lines.forEach((l, i) => c.fillText(l, w / 2, 60 + i * 48, w - 36));
     } else {
       const r = seeded(17);
       for (let i = 0; i < 9; i++) {
@@ -2042,7 +2104,8 @@ export const Coin: React.FC<{
   color = ROME.gold,
   legend = "IMP CAESAR AVG",
 }) => {
-  const tex = useCanvasTexture(`coin-${color}-${legend}`, [256, 256], (c, w, h) => {
+  const font = useRomeFont();
+  const tex = useCanvasTexture(`coin-${color}-${legend}-${font}`, [256, 256], (c, w, h) => {
     const cx = w / 2;
     const cy = h / 2;
     c.fillStyle = color;
@@ -2071,7 +2134,7 @@ export const Coin: React.FC<{
     c.stroke();
     // Umschrift
     c.fillStyle = ROME.goldDark;
-    c.font = "bold 24px 'DejaVu Serif', 'Times New Roman', serif";
+    c.font = fontStack(22);
     c.textAlign = "center";
     c.textBaseline = "middle";
     const chars = legend.split("");
@@ -2147,9 +2210,11 @@ export const RomeLights: React.FC<{
   readonly intensity?: number;
   /** Key-Light-Farbe: Mittag #FFF1D8, Niedergang/Abend #FFC98A */
   readonly color?: string;
-}> = ({ sun = [-7, 12, 9], intensity = 2.5, color = "#FFF1D8" }) => (
+  /** Aufhellung [Himmel, Boden, Stärke] – kühl von oben, warm vom Boden */
+  readonly fill?: readonly [string, string, number];
+}> = ({ sun = [-7, 12, 9], intensity = 2.5, color = "#FFF1D8", fill = ["#CFEFFF", "#C9965A", 1.0] }) => (
   <>
-    <hemisphereLight args={["#CFEFFF", "#C9965A", 1.0]} />
+    <hemisphereLight args={[fill[0], fill[1], fill[2]]} />
     <directionalLight
       position={sun}
       intensity={intensity}
@@ -2171,33 +2236,41 @@ export const RomeLights: React.FC<{
 /* ------------------------------------------------------------------ */
 
 /**
- * Halstuch (focale) – Erkennungsmerkmal der Hauptfigur: in jeder Einstellung gleich,
- * gelb, damit es sich vom Legionärsrot und vom Sandstein abhebt.
+ * Halstuch (focale) – Erkennungsmerkmal der Hauptfigur: in jeder Einstellung gleich, gelb.
+ * Sitzt als dicker Wulst auf den Schultern (y 2.3, breiter als der Hals) mit Knoten und
+ * zwei langen Zipfeln vorn über dem Panzer – unterhalb und seitlich des Kopfes, damit der
+ * Kopf es frontal nicht verdeckt. Gegen das helle Eisen trägt der Farbton + INK-Kontur
+ * (Leuchtdichte fast gleich), deshalb dicke Kontur und leichte Eigenleuchtkraft.
  */
 export const Focale: React.FC<{ readonly color?: string; readonly frame?: number }> = ({
   color = "#FFC928",
   frame = 0,
-}) => (
-  <group>
-    <Part color={color} position={[0, 2.47, 0]} rotation={[Math.PI / 2, 0, 0]} ink={0.05}>
-      <torusGeometry args={[0.42, 0.11, 10, 28]} />
-    </Part>
-    <Part color={color} position={[0.16, 2.38, 0.5]} ink={0.08}>
-      <sphereGeometry args={[0.11, 12, 10]} />
-    </Part>
-    {[-1, 1].map((sd) => (
-      <Part
-        key={sd}
-        color={color}
-        position={[0.16 + sd * 0.08, 2.15, 0.56]}
-        rotation={[0.15, 0, sd * 0.25 + Math.sin(frame * 0.15 + sd) * 0.06]}
-        ink={0.06}
-      >
-        <boxGeometry args={[0.13, 0.42, 0.04]} />
+}) => {
+  const flap = Math.sin(frame * 0.15) * 0.07;
+  return (
+    <group>
+      <Part color={color} position={[0, 2.3, 0.02]} rotation={[Math.PI / 2 - 0.12, 0, 0]} ink={0.06} emissive={0.12}>
+        <torusGeometry args={[0.6, 0.15, 10, 32]} />
       </Part>
-    ))}
-  </group>
-);
+      {/* Knoten vorn, leicht seitlich */}
+      <Part color={color} position={[0.14, 2.16, 0.72]} scale={[1.15, 0.9, 0.8]} ink={0.08} emissive={0.12}>
+        <sphereGeometry args={[0.14, 14, 10]} />
+      </Part>
+      {/* Zipfel */}
+      {[-1, 1].map((sd) => (
+        <group
+          key={sd}
+          position={[0.14 + sd * 0.07, 2.1, 0.74]}
+          rotation={[0.2, 0, sd * 0.22 + flap * (sd > 0 ? 1 : -0.6)]}
+        >
+          <Part color={color} position={[0, -0.27, 0]} ink={0.07} emissive={0.12}>
+            <boxGeometry args={[0.17, 0.54, 0.05]} />
+          </Part>
+        </group>
+      ))}
+    </group>
+  );
+};
 
 /** Tiefenstaffelung: warmer, heller Dunst – Hintergrund wird weicher und zurückgenommen. */
 export const RomeFog: React.FC<{ readonly near?: number; readonly far?: number; readonly color?: string }> = ({
@@ -2206,22 +2279,133 @@ export const RomeFog: React.FC<{ readonly near?: number; readonly far?: number; 
   color = ROME.fog,
 }) => <fog attach="fog" args={[color, near, far]} />;
 
+/** Gefahrenrot: kaltes Karminrot statt Orange – liest sich als Alarm/Blut, nicht als Lagerfeuer. */
+export const DANGER = "#FF1F3D";
+
 /**
- * Rotes Gefahren-Akzentlicht (Brand, Plünderung, Alarm): pulsierendes Punktlicht +
+ * Rotes Gefahren-Akzentlicht (Brand, Plünderung, Alarm): unruhig flackerndes Punktlicht +
  * sichtbarer Lichthof. Nur für Gefahr verwenden – Rot ist sonst Legion/Rom.
+ * Bedrohlich wird es erst mit gedimmtem, kühlem Rest-Licht: zusammen mit
+ * `<RomeAtmosphere phase="fall" />` oder `romeMood("fall")` einsetzen (dort gedimmt und blau-violett).
  */
 export const DangerLight: React.FC<{
   readonly frame: number;
   readonly position: P3;
   readonly intensity?: number;
   readonly glow?: boolean;
-}> = ({ frame, position, intensity = 1, glow = true }) => {
-  const pulse = 0.75 + Math.sin(frame * 0.35) * 0.15 + Math.sin(frame * 1.3) * 0.1;
+  readonly color?: string;
+}> = ({ frame, position, intensity = 1, glow = true, color = DANGER }) => {
+  // Alarm-Puls (langsam) + Flackern (schnell, unregelmäßig) – deterministisch aus `frame`
+  const pulse =
+    0.7 + Math.sin(frame * 0.3) * 0.18 + Math.sin(frame * 1.7) * 0.07 + Math.sin(frame * 2.9 + 1) * 0.05;
   return (
     <group position={position}>
-      <pointLight color="#FF3B1F" intensity={14 * intensity * pulse} distance={12} decay={1.8} />
-      {glow ? <Glow position={[0, 0, 0]} radius={0.6} color="#FF4A1C" intensity={pulse * intensity} /> : null}
+      <pointLight color={color} intensity={18 * intensity * pulse} distance={14} decay={1.6} />
+      {glow ? <Glow position={[0, 0, 0]} radius={0.6} color={color} intensity={pulse * intensity} /> : null}
     </group>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* Stimmung nach Story-Phase (gleiche Bauten, anderes Licht)            */
+/* ------------------------------------------------------------------ */
+
+export type RomePhase = "glory" | "decline" | "fall";
+
+export type RomeMood = {
+  readonly skyTop: string;
+  readonly skyBottom: string;
+  readonly sun: P3;
+  readonly sunColor: string;
+  readonly sunRadius: number;
+  readonly cloudColor: string;
+  readonly fog: readonly [string, number, number];
+  readonly key: { readonly position: P3; readonly color: string; readonly intensity: number };
+  readonly fill: readonly [string, string, number];
+  /** CSS-Hintergrund hinter dem Canvas */
+  readonly background: string;
+  /** CSS-Filter fürs Endbild (statt saturate(1.15) contrast(1.05)) */
+  readonly grade: string;
+};
+
+/**
+ * Licht-/Himmels-Preset je Story-Phase (docs/design-system.md, Abschnitt 5.6):
+ * - `glory`   Blütezeit, Mittag: klares Blau, warmes hohes Key-Light.
+ * - `decline` Niedergang, später Nachmittag: Honig-Himmel, flaches Orange-Licht von der Seite,
+ *             längere Schatten, Dunst wärmer und näher.
+ * - `fall`    Plünderung/Untergang, Abend: Violett → Glut am Horizont, Key-Light schwach und tief,
+ *             kühle blau-violette Aufhellung – erst darauf wirkt `DangerLight` bedrohlich.
+ */
+export const romeMood = (phase: RomePhase): RomeMood => {
+  switch (phase) {
+    case "decline":
+      return {
+        skyTop: "#D9874A",
+        skyBottom: "#F7D9A8",
+        sun: [-70, 22, -150],
+        sunColor: "#FFE0A0",
+        sunRadius: 9,
+        cloudColor: "#FFE7C8",
+        fog: ["#F2CFA0", 28, 150],
+        key: { position: [-12, 6, 6], color: "#FFC98A", intensity: 2.2 },
+        fill: ["#F5D2A8", "#9C6A3A", 0.85],
+        background: "#F7D9A8",
+        grade: "saturate(1.12) contrast(1.08)",
+      };
+    case "fall":
+      return {
+        skyTop: "#2E2552",
+        skyBottom: "#C8553D",
+        sun: [60, 6, -150],
+        sunColor: "#FF8A4C",
+        sunRadius: 10,
+        cloudColor: "#6B4A6E",
+        fog: ["#5A3A4E", 14, 75],
+        key: { position: [10, 4, -4], color: "#FF9A5C", intensity: 1.3 },
+        fill: ["#5F6AA8", "#2A1712", 0.75],
+        background: "#2E2552",
+        grade: "saturate(1.05) contrast(1.12) brightness(0.92)",
+      };
+    default:
+      return {
+        skyTop: ROME.skyTop,
+        skyBottom: ROME.skyBottom,
+        sun: [-30, 60, -150],
+        sunColor: ROME.sun,
+        sunRadius: 7,
+        cloudColor: "#FFFFFF",
+        fog: [ROME.fog, 22, 110],
+        key: { position: [-7, 12, 9], color: "#FFF1D8", intensity: 2.5 },
+        fill: ["#CFEFFF", "#C9965A", 1.0],
+        background: ROME.skyBottom,
+        grade: "saturate(1.15) contrast(1.05)",
+      };
+  }
+};
+
+/** Himmel + Dunst + Licht in einem, nach Story-Phase. `sun` überschreibt die Key-Light-Richtung. */
+export const RomeAtmosphere: React.FC<{
+  readonly phase?: RomePhase;
+  readonly frame?: number;
+  readonly sun?: P3;
+  readonly clouds?: boolean;
+}> = ({ phase = "glory", frame = 0, sun, clouds = true }) => {
+  const m = romeMood(phase);
+  return (
+    <>
+      <RomeSky
+        top={m.skyTop}
+        bottom={m.skyBottom}
+        sun={m.sun}
+        sunColor={m.sunColor}
+        sunRadius={m.sunRadius}
+        cloudColor={m.cloudColor}
+        clouds={clouds}
+        frame={frame}
+      />
+      <RomeFog color={m.fog[0]} near={m.fog[1]} far={m.fog[2]} />
+      <RomeLights sun={sun ?? m.key.position} color={m.key.color} intensity={m.key.intensity} fill={m.fill} />
+    </>
   );
 };
 
@@ -2301,7 +2485,7 @@ export const EmpireMap: React.FC<{
   );
   const label = (t: string) => (c: CanvasRenderingContext2D, w: number, h: number) => {
     c.clearRect(0, 0, w, h);
-    c.font = "900 64px 'DejaVu Sans', sans-serif";
+    c.font = fontStack(64);
     c.textAlign = "center";
     c.textBaseline = "middle";
     c.lineWidth = 14;
@@ -2310,8 +2494,9 @@ export const EmpireMap: React.FC<{
     c.fillStyle = "#FFFFFF";
     c.fillText(t, w / 2, h / 2);
   };
-  const tWest = useCanvasTexture("map-west", [512, 96], label("WEST"));
-  const tEast = useCanvasTexture("map-east", [512, 96], label("EAST"));
+  const font = useRomeFont();
+  const tWest = useCanvasTexture(`map-west-${font}`, [512, 96], label("WEST"));
+  const tEast = useCanvasTexture(`map-east-${font}`, [512, 96], label("EAST"));
   const gap = split * 0.9;
   const westCol = mixHex(ROME.legionRed, "#8A8A8A", westFall);
   const sink = -westFall * 0.25;
@@ -2391,9 +2576,13 @@ const Pin: React.FC<{ readonly position: P3; readonly color: string }> = ({ posi
   </group>
 );
 
+/** Vom Faktenprüfer freigegebene Jahre (docs/faktencheck-roemisches-reich.md, „Für das Drehbuch freigegeben“). */
+export const ROME_YEARS = ["27 BC", "193 AD", "395 AD", "410 AD", "455 AD", "476 AD", "1453 AD"] as const;
+
 /**
  * Zeitleisten-Stele: hohe Marmorstele mit eingemeißelten Jahreszahlen (oben alt, unten neu),
  * goldener Marker gleitet zu `at` (Index, auch Zwischenwerte). Hochformat-tauglich.
+ * Standard sind nur freigegebene Jahre (`ROME_YEARS`); eigene Listen nur mit Freigabe.
  */
 export const TimelineStele: React.FC<{
   readonly position?: P3;
@@ -2406,13 +2595,14 @@ export const TimelineStele: React.FC<{
   position = [0, 0, 0],
   rotation,
   scale = 1,
-  years = ["27 BC", "117 AD", "285 AD", "395 AD", "410 AD", "476 AD"],
+  years = ROME_YEARS,
   at = 0,
   frame = 0,
 }) => {
   const H = 5.2;
   const cap = useMemo(() => gable(2.0, 0.6, 0.5), []);
-  const tex = useCanvasTexture(`stele-${years.join("|")}`, [256, 640], (c, w, h) => {
+  const font = useRomeFont();
+  const tex = useCanvasTexture(`stele-${years.join("|")}-${font}`, [256, 640], (c, w, h) => {
     c.fillStyle = ROME.marble;
     c.fillRect(0, 0, w, h);
     c.fillStyle = "rgba(120,100,70,0.12)";
@@ -2424,12 +2614,12 @@ export const TimelineStele: React.FC<{
     c.lineTo(60, h - 40);
     c.stroke();
     c.fillStyle = "#6B5235";
-    c.font = "bold 40px 'DejaVu Serif', 'Times New Roman', serif";
+    c.font = fontStack(years.length > 6 ? 34 : 38);
     c.textBaseline = "middle";
     years.forEach((y, i) => {
       const yy = 60 + (i * (h - 120)) / Math.max(1, years.length - 1);
       c.fillRect(48, yy - 3, 26, 6);
-      c.fillText(y, 90, yy);
+      c.fillText(y, 86, yy + 1, w - 96);
     });
   });
   const n = Math.max(1, years.length - 1);

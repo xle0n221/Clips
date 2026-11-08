@@ -15,7 +15,7 @@ import { z } from "zod";
 import { Captions } from "./overlays/Captions";
 import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
-import { HUD_BOTTOM } from "./overlays/Hud";
+import { hudBottom } from "./overlays/Hud";
 import { EpisodeOverlays, emphMap } from "./overlays/Overlays";
 import { SCENES } from "./scenes";
 import { EpisodeData, SceneContext, Timeline } from "./types";
@@ -156,7 +156,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
               color={c.color ?? "#FFD23F"}
               duration={dur}
               tilt={i % 2 ? 3 : -3}
-              top={timeline.hud ? HUD_BOTTOM + 30 : undefined}
+              top={timeline.hud ? hudBottom(timeline.hud) + 30 : undefined}
             />
           </Sequence>
         );
