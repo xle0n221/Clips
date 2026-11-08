@@ -94,3 +94,21 @@ Offen (Geschmack bzw. Entscheidung für Art Direction/Drehbuch):
 - Pills enden hart mit der Szene, auch wenn die Figur im nächsten Schnitt noch zu sehen ist. Bei Bedarf
   den Cue in jeder Szene wiederholen.
 
+
+## Rom-Kit (Design-Kritik, 08.11.2026)
+Prüfbilder: `RomeKitTest` Bilder 7–133 (je Einstellung eins), vorher/nachher per `renderStill`.
+
+| Ort | Problem | Maßnahme / Status |
+| --- | --- | --- |
+| `rome.tsx` `Colosseum`, RomeKitTest Einst. 0 | In der Totale nur 1,7 Figurhöhen hoch, Bögen und Attika-Fenster durchsichtig (Himmel scheint durch) → wirkt wie eine Mauer | Dunkle Gewölbegang-Wand (`ROME.vault #5E331C`) hinter jedem Bogen und Fenster, Masten fürs Sonnensegel auf der Attika (Maßstab); Regel: Totale mit `scale` 2,4–3, z −35…−45, seitlich versetzt, Kamera tief. **Behoben** |
+| `rome.tsx` `Colosseum` | Leistung: ~1 000 Meshes, Bogen-Baum bei jedem Frame neu aufgebaut | Bogen-Ring per `useMemo` nur bei Form-/`ruin`-Änderung; `detail="far"` + `segments={24}` ≈ 45 % weniger Meshes. Messung per Einzelbild nicht aussagekräftig (Seitenladezeit dominiert, ±1 s Rauschen). **Behoben, Wirkung im echten Render noch nicht gemessen** |
+| `rome.tsx` `Beard`, Einst. 3 | Goten-Bart = grobe gelbe Kugel; Gelb kollidiert mit dem Halstuch der Hauptfigur | Kieferschale + Füllung + Koteletten + 5 Zotteln mit Strähnen-Textur, hängender Schnurrbart; Haar/Bart kupfer `#C46A2B`. **Behoben** |
+| `rome.tsx` `Throne`, `Toonie.tsx` `sit`, Einst. 2 | Lehne verschwindet hinter dem Kopf; Sitzbeine steife Stöcke zur Kamera | Lehne 2,9 breit/5,8 hoch, Seitenpfosten mit Knäufen, Adler; `THRONE_SIT_Y`. `sit` knickt jetzt im Knie (bei `sit=0` unverändert – SolarSystem Bilder 0/300/1330 vorher/nachher nur im Render-Rauschen verschieden, 0–126 px, gleiches Bundle zweimal: 94–113 px). **Behoben** |
+| `rome.tsx` Texturen (Tempel, Banner, Rolle, Münze, Karte, Stele) | Systemschrift (DejaVu Serif) – je Rechner anders | Montserrat 900 aus `public/fonts` als `ROME_FONT` per FontFace + `delayRender`, Texturen neu gezeichnet, sobald geladen. **Behoben** |
+| `rome.tsx` `Focale`, Einst. 1 | Gelbes Halstuch kaum sichtbar: saß bei y 2,47 **im** Kopf (Kopfkugel reicht bis 2,05) – nur die Zipfel ragten heraus | Dicker Wulst auf den Schultern (y 2,3, r 0,6), Knoten + lange Zipfel über dem Panzer, Kontur 0,06–0,08, leichte Eigenleuchtkraft. **Behoben** |
+| Kontrast weißer Kopf / Sandstein | Gemessen im Endbild nur 1,1–1,3 : 1 (Kopf `#E5E3DA`, Wand `#E6D8B0`) | Köpfe vor die dunklen Gewölbegänge: gemessen 6,1 : 1 (`#764634`). Wandfläche selbst bleibt hell (Regel „Hintergrund heller“) – trägt nur die INK-Kontur. **Teilweise** (Platzierungsregel in design-system.md §4.2) |
+| `DangerLight` | Orange `#FF3B1F` auf warmem Grund = Lagerfeuer | Karmin `DANGER #FF1F3D`, unruhiges Flackern; bedrohlich nur zusammen mit `fall`-Stimmung (kühl, gedimmt). Zu nah färbt es Figuren ganz rot → Abstand 3–5, Stärke 0,6–0,9. **Behoben** |
+| Stimmung nach Story-Phase | Keine fertige Abend-/Niedergangs-Variante | `romeMood("glory" \| "decline" \| "fall")` + `<RomeAtmosphere>` + `mood.grade`; Prüfeinstellungen 8 (decline) und 9 (fall). **Behoben** |
+| `TimelineStele` | Standardjahre 117 AD/285 AD nicht freigegeben | Standard `ROME_YEARS` = 27 BC, 193, 395, 410, 455, 476, 1453 AD. **Behoben** |
+| design-system.md §6 | Querbusch „nach Vegetius“ – laut Faktencheck nicht belegt | Als reine Stil-Entscheidung markiert, nicht im Sprechtext behaupten. **Behoben** |
+| Offen | `fall`-Totale: Ruine (`ruin`) im Dunst schwach lesbar; Stele-Kappe in Einst. 7 angeschnitten (nur Prüfkamera); Wirkung von memo/`far` im echten Render messen | **Offen** – Regie/Szenen-Agent |
