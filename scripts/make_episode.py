@@ -25,7 +25,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
-from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, resolve_voice, write_wav  # noqa: E402
+from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, post_process, resolve_voice, write_wav  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -106,7 +106,14 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     out_dir = ROOT / "public" / "episodes" / ep["id"]
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    voice = Voice(ep["voice"], ep.get("speed", 1.0))
+    # Optional "voiceStyle" (docs/stimme-casting.md): Stimmen-Mischung, Tempo-Faktor je Szene,
+    # Nachbearbeitung. Ohne das Feld bleibt alles wie bisher (Sonnensystem unverändert).
+    style = ep.get("voiceStyle", {})
+    base_speed = ep.get("speed", 1.0)
+    # --voice auf der Kommandozeile hat Vorrang vor einer Mischung im Drehbuch
+    spec = ep["voice"] if voice_name or "blend" not in style else style["blend"]
+    voice = Voice(spec if isinstance(spec, dict) else resolve_voice(spec), base_speed)
+    scene_speed = style.get("sceneSpeed", {})
     gap = np.zeros(int(SAMPLE_RATE * ep.get("sceneGapMs", 150) / 1000), np.float32)
     lead = np.zeros(int(SAMPLE_RATE * 0.15), np.float32)  # kurzer Vorlauf
 
@@ -114,7 +121,7 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     for sc in ep["scenes"]:
         # Sternchen markieren Akzentwörter ("*Rome*") – nur für die Untertitel, nicht vorlesen
         spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
-        audio = voice.synth(spoken)
+        audio = voice.synth(spoken, base_speed * scene_speed[sc["id"]] if sc["id"] in scene_speed else None)
         start = cursor / SAMPLE_RATE * 1000
         parts += [audio, gap]
         cursor += len(audio) + len(gap)
@@ -122,6 +129,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         words += split_words(sc["id"], sc["text"])
         print(f"  {sc['id']:<8} {len(audio) / SAMPLE_RATE:5.2f} s")
     track = np.concatenate(parts)
+    if style.get("post"):  # gleiche Länge, Szenen-/Wortzeiten bleiben gültig
+        track = post_process(track, style["post"])
     write_wav(out_dir / "voice.wav", track)
     total_ms = round(len(track) / SAMPLE_RATE * 1000)
     print(f"Voiceover: {total_ms / 1000:.2f} s, {len(words)} Wörter")
