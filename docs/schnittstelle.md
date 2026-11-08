@@ -93,3 +93,30 @@ Empfehlungen für gut lesbare Overlays (Design-Kritik 08.11.2026, Randfälle in 
 
 Die Untertitel zeigen weiterhin den Drehbuch-Text. Ersatz-Schreibweisen vorher an den Kokoro-Phonemen
 oder per Hörprobe prüfen (`scripts/tts.py --text ... --out ...`). Umsetzung: `apply_say()` in `scripts/tts.py`.
+
+## Sprechweise (optional, pro Episode): `voiceStyle`
+Rückwärtskompatibel: ohne `voiceStyle` erzeugt `make_episode.py` dieselbe Tonspur wie bisher
+(eine einzelne Stimme wird mit Gewicht 1,0 geladen, Stil-Vektor bitgleich). Messwerte und
+Begründung: [`docs/stimme-casting.md`](stimme-casting.md).
+
+```jsonc
+{
+  "voice": "am_fenrir",            // weiterhin Pflicht (Fallback, Dashboard-Anzeige)
+  "speed": 1.25,                   // Grundtempo
+  "voiceStyle": {
+    "blend": { "am_fenrir": 0.6, "am_puck": 0.4 },   // gewichteter Mittelwert der Kokoro-Stil-Vektoren
+    "sceneSpeed": { "hook": 1.06, "east": 0.94 },    // Faktor auf `speed`, nur für diese Szenen-IDs
+    "post": "lively"                                 // Nachbearbeitung der ganzen Tonspur
+  }
+}
+```
+
+| Feld | Bedeutung | Werte |
+| --- | --- | --- |
+| `voiceStyle.blend` | Stimmen mischen. Statt dict geht auch ein String `"am_fenrir:0.6+am_puck:0.4"`, auch mit Dashboard-Namen (`"Finn:0.6+Max:0.4"`). Gewichte werden auf Summe 1 normiert. | Kokoro-IDs (`am_echo`, `bm_fable` … werden bei Bedarf vom Modell-Repo geladen) |
+| `voiceStyle.sceneSpeed` | Tempo-Faktor je Szene (Gesamttempo = `speed` × Faktor). Für Spannungsbögen: Hook/Eskalation schneller, Twist/Pointe langsamer. | sinnvoll 0,9–1,1 |
+| `voiceStyle.post` | ffmpeg-Filter auf die fertige Tonspur, **vor** dem Whisper-Abgleich; Länge bleibt exakt gleich. | `lively` (Hochpass 80 Hz, −2 dB @ 300 Hz, +3 dB @ 3,5 kHz, Kompressor 3:1), `lively-room` (zusätzlich leiser Raum 23/41 ms) oder roher `-af`-String |
+
+Vorrang: `--voice` auf der Kommandozeile ersetzt eine Mischung aus `voiceStyle.blend`; `sceneSpeed`
+und `post` gelten weiter. Einzelprobe: `.venv/bin/python scripts/tts.py --voice "am_fenrir:0.6+am_puck:0.4" --speed 1.2 --post lively --text "..." --out /tmp/probe.wav`.
+`--save` schreibt nur `voice`/`speed` zurück, `voiceStyle` bleibt unberührt.
