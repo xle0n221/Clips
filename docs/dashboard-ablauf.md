@@ -71,3 +71,10 @@ Satz, was der Nutzer tun muss, `busy: false`, Sitzung beenden. Nichts erfinden, 
   Effekte aus `fx.tsx`, Umgebungen aus `env.tsx`.
 - Untertitel, Sticker, Musik und Effekte kommen aus der vorhandenen Pipeline (`src/episode/overlays/`).
 - Format 1080×1920, 30 fps; Themen-Treue, Kostüm und Farbwelt nach `docs/clip-regeln.md`.
+
+## Getestet
+- 08.11.2026, Testlauf des „Clips Dashboard-Abholer“ (von Hand gestartet, Sitzung `cse_01UNp77Nd6zWCByNndwJ17qA`):
+  Datenbank lesen **ok** (Collection `videos` leer → „Nichts zu tun“, keine Schreibaktion, kein Klonen – wie vorgesehen).
+  Kosten des leeren Laufs laut Sitzungsdaten: 0,07 USD (Listenpreis).
+- **Nicht getestet:** `add_repo`, Klonen und Pushen aus einer Abholer-Sitzung. Die Sitzung hat die zusätzlichen
+  Testschritte abgelehnt, weil der gespeicherte Auftrag sie nicht vorsieht. Wird beim ersten echten Thema geprüft.
