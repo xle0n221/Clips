@@ -10,6 +10,10 @@
 Grundlage sind die offiziellen Remotion-Templates **`--three`** und **`--tiktok`**
 (`npx create-video@4.0.541`), zusammengeführt in einem Projekt.
 
+> **Verbindliche Regeln für jeden Clip:** [`docs/clip-regeln.md`](docs/clip-regeln.md) –
+> roter Faden, „süchtig machend“, Themen-Treue, Sprache/Stimme, gemessene Referenzwerte,
+> technische Fallstricke. Vor jedem neuen Video lesen.
+
 ## Voraussetzungen
 
 - Node.js `^20.19.0 || ^22.13.0 || >=24` (Vorgabe aus `package.json` des Templates)
