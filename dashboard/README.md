@@ -200,3 +200,12 @@ Es gibt keinen anderen Schlüssel als die URL; Collection `videos`, `doc_id` = S
 Schreibvorgänge auf bestehende Dokumente brauchen `if_version` (Version aus dem letzten Lesen).
 Das Tool ist in Cloud-Sitzungen als „deferred tool“ vorhanden und muss per ToolSearch (`select:ArtifactData`) geladen werden.
 **Nicht getestet:** der Zugriff aus einer zweiten, separaten Sitzung – nur aus der erstellenden Sitzung.
+
+### Sofortstart nach Entscheidung (ab Version 13, 08.11.2026)
+Weck-Test 2 ist entschieden: Der Klick auf „OK“ um 23:49:28 UTC erzeugte `last-action.json`, die beobachtende
+Sitzung CLIPS wurde dadurch **nicht** geweckt (sie sah die Entscheidung erst beim manuellen Nachsehen).
+Darum ruft die Seite jetzt nach jeder Entscheidung, jedem neuen Thema und jedem „weitermachen“ sofort
+`fire_trigger` für die geplante Aufgabe `trig_013fFkYLstdCwVbtokfU68w5` (Abholer, feuert in die Sitzung CLIPS) auf –
+über den Connector „Claude Code Remote“ als der Betrachter. Beim ersten Mal fragt claude.ai nach der Erlaubnis.
+Läuft die Sitzung gerade, wartet die Nachricht bis zum Ende ihres aktuellen Arbeitsschritts.
+Klappt der Aufruf nicht, bleibt der stündliche Abholer (Minute 17, rund um die Uhr) als Rückfallweg.
