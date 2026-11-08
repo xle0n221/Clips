@@ -5,11 +5,12 @@ Drehbücher / Kontaktabzüge mit **OK** / **Nicht OK** + Feedback freigeben.
 
 - **Live-Seite (privat):** https://claude.ai/artifact/5hB3B36zzQuaX5e78LEr8H
 - **Quelle:** `dashboard/index.html` (wird so, wie sie ist, per Artifact-Tool veröffentlicht)
-- **Capabilities:** `db` (gemeinsame Datenbank), `user` (Schreibrecht prüfen), `assets` (Bilder/Videos für Kontaktabzug und Vorschau)
+- **Capabilities:** `db` (gemeinsame Datenbank), `user` (Schreibrecht prüfen), `assets` (Bilder/Videos für Kontaktabzug und Vorschau), `artifact` (Seite speichert bei jeder Aktion eine neue Version → weckt beobachtende Sitzungen, siehe unten)
 
 Erneut veröffentlichen aus einer anderen Sitzung: Artifact-Tool, `action: "read"` mit obiger URL,
 dann `publish` mit `url` = obige URL und `file_path` = `dashboard/index.html`.
-Ohne `url` entsteht eine **neue** Seite mit leerer Datenbank.
+Ohne `url` entsteht eine **neue** Seite mit leerer Datenbank. Immer vorher lesen: Die Seite erzeugt selbst
+Versionen (Datei `last-action.json`), ein Publish ohne vorheriges Lesen wird abgelehnt.
 
 ## Datenmodell
 
@@ -28,12 +29,30 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `branch` | string \| null | Sitzung | Git-Branch des Videos (Link auf github.com/xle0n221/clips) |
 | `sessionId` | string \| null | Sitzung | ID der bearbeitenden Cloud-Sitzung |
 | `updatedAt` | ISO-String | beide | letzte Änderung |
-| `previewUrl` | string \| null (optional, Ergänzung) | Sitzung | verkleinerte Vorschau bei `done` (Bild oder Video), siehe Assets |
+| `previewUrl` | string \| null (optional) | Sitzung | verkleinerte Vorschau bei `done` (Bild oder Video), siehe Assets; nur kleine Dateien |
+| `voice` | string (optional) | Seite (beim Anlegen) | Wunschstimme: `af_heart` (Standard), `af_bella`, `am_fenrir`, `am_puck` |
+| `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` außerhalb 3,3–3,6 und ungleiche Whisper-Zahlen werden orange markiert |
+| `renderProgress` | number 0..1 (optional) | Sitzung | Balken bei `stage: "render"` |
+| `renderEta` | string (optional) | Sitzung | z. B. `"noch ca. 23 Min."` |
+| `actionNeeded` | string \| null (optional) | Sitzung | auffälliges rotes Banner, z. B. `"Freigabe in der Claude-App nötig (Netzwerk)"`; Karte wird oben einsortiert |
+| `fileSizeBytes` | number (optional) | Sitzung | Dateigröße auf der Fertig-Karte |
+
+Zusätzliche optionale Felder in `review`:
+- `review.corrections`: Liste `{ claim, note }` – Aussagen, die von gängigen Angaben abweichen; immer sichtbar hervorgehoben
+  (Beispiel: `{ claim: "1.300 Erden passen in Jupiter", note: "NASA: rund 1.000" }`).
+- `review.scenes`: Liste `{ id, label }` – erzeugt ein Auswahlfeld „Betrifft Szene“; die Auswahl landet in `decision.scene` (Szenen-`id` oder `null` = ganzes Video).
+
+**Zwei Freigabe-Stufen** über `review.kind`: Stufe 1 = `"script"` (Drehbuch + Quellen), Stufe 2 = `"contactsheet"`
+(Kontaktabzug, z. B. 3 Bilder pro Szene) **vor** dem finalen Render.
+
+Die Ziel-Werte 3,3–3,6 Wörter/s und die Stimmenliste stammen aus der Video-Produktions-Sitzung
+(Vorgabe der Orchestrator-Sitzung, hier nicht unabhängig nachgeprüft).
 
 Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, `branch: null`, `sessionId: null`.
 
 ### Anzeige-Logik der Seite
 - **Freigabe nötig** (orange Rahmen, oben einsortiert): `review` gesetzt, `decision` null, `stage` ≠ `done`.
+- **Aktion nötig**: `actionNeeded` nicht leer → rotes Banner, ebenfalls oben.
 - Nach dem Klick: Karte zeigt „Entscheidung gespeichert – wartet auf Claude“; der Nutzer kann sie zurücknehmen (setzt `decision` wieder auf `null`).
 - „Nicht OK“ verlangt einen Feedback-Text.
 - `queued`-Karten lassen sich (zweistufig) entfernen.
@@ -71,7 +90,20 @@ Getestet mit dem `ArtifactData`-Tool in der erstellenden Sitzung:
 und das Rendern der Live-Seite mit echten Datenbankdaten. Der Schreibweg der Seite ist derselbe `update`-Aufruf,
 der oben über das Tool getestet wurde.
 
-### (a) Weckt ein Klick auf OK eine beobachtende Claude-Sitzung?
+### Aufwecken per Selbst-Veröffentlichung (ab Version 2)
+Nach jedem erfolgreichen Datenbank-Schreibvorgang (OK, Nicht OK, Zurücknehmen, Thema hinzufügen) ruft die Seite
+`artifact.publish({ "last-action.json": … })` auf (Dateien-Form der Capability `artifact`). Inhalt: `{ action, id, at }`.
+Das erzeugt eine neue Version der Seite. Laut Typdefinition läuft die klickende Ansicht dabei weiter, nur andere offene Ansichten laden neu.
+Eine Sitzung, die die Seite per `ArtifactComments watch` beobachtet, sollte dadurch geweckt werden, denn ein Watch weckt
+„when this artifact is republished elsewhere“. Schlägt das Speichern fehl (z. B. `capability_disabled` bei öffentlich geteilter Seite),
+zeigt die Seite: „Damit Claude sofort reagiert: Kommentar mit @claude … senden oder in der Sitzung „weiter“ schreiben.“
+
+Die Entscheidung selbst steht weiterhin nur in der Datenbank; `last-action.json` ist nur das Signal.
+Eine geweckte Sitzung liest danach `videos` per `ArtifactData`.
+
+**Weck-Test: Ergebnis ausstehend** (Orchestrator-Sitzung beobachtet die Seite; echter Klick durch den Nutzer steht noch aus).
+
+### (a) Weckt ein Klick auf OK eine beobachtende Claude-Sitzung? (Stand Version 1)
 **Nein, nach den Angaben der Werkzeuge nicht.** Die Watch-Liste dieser Sitzung meldet für die Seite wörtlich:
 „durable wake subscription (woken on publish and to-Claude comments; no live updates)“.
 Laut Tool-Beschreibung (`ArtifactComments`) weckt ein Watch nur bei **neuer Version der Seite** oder bei einem
@@ -83,7 +115,7 @@ Folgerung: Eine bearbeitende Sitzung muss die Entscheidung **selbst abholen**, z
 - mit `send_later` / einer geplanten Aufgabe sich selbst in Abständen wecken und das Dokument lesen, oder
 - der Nutzer schreibt nach dem Klick kurz in die Sitzung („weiter“).
 
-Nicht umgesetzt, nur als Möglichkeit laut Capability-Doku: Die Seite könnte über die `mcp`-Capability den
+Seit Version 2 umgesetzt: Selbst-Veröffentlichung (siehe oben). Weiterhin nicht umgesetzt, nur als Möglichkeit laut Capability-Doku: Die Seite könnte über die `mcp`-Capability den
 claude.ai-Connector „Claude Code Remote“ (`send_message` an `sessionId`) aufrufen und so die Sitzung direkt wecken.
 Das ist **ungetestet**; Verfügbarkeit des Tools für den Betrachter ist laut Doku nicht garantiert.
 

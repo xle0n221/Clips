@@ -130,10 +130,26 @@ a { color: var(--accent); }
 .done-box video { width: 100%; max-width: 360px; border-radius: 8px; background: var(--bg); }
 .tc { font-family: var(--font-mono); font-size: 0.8125rem; }
 .foot { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.banner { background: var(--bad-soft); color: var(--bad); border-radius: 8px; padding: 10px 12px; font-weight: 600; margin: 0; overflow-wrap: anywhere; }
+.metrics { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.8125rem; color: var(--muted); font-variant-numeric: tabular-nums; margin: 0; }
+.metrics .off { color: var(--warn); font-weight: 600; }
+.metrics .good { color: var(--ok); }
+.bar { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); }
+.progress { display: grid; gap: 4px; font-size: 0.8125rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.fix { background: var(--warn-soft); border-radius: 8px; padding: 10px 12px; display: grid; gap: 6px; font-size: 0.875rem; }
+.fix strong { color: var(--warn); }
+.fix ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.fix li { overflow-wrap: anywhere; }
+select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; min-height: 44px; max-width: 100%; }
+#voice { flex: 0 0 150px; }
+.wake { font-size: 0.8125rem; margin: 0; color: var(--muted); }
+.wake.ok { color: var(--ok); }
+.wake.warn { color: var(--warn); }
 .empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
-  #len { flex: 1 1 120px; }
+  #len, #voice { flex: 1 1 120px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .card { transition: border-color .2s; }
@@ -154,11 +170,19 @@ a { color: var(--accent); }
     <div class="row">
       <label class="sr" for="len">Wunschlänge in Sekunden</label>
       <input id="len" name="len" type="number" inputmode="numeric" min="10" max="900" step="5" placeholder="Länge (s)">
+      <label class="sr" for="voice">Stimme</label>
+      <select id="voice" name="voice" title="Stimme">
+        <option value="af_heart" selected>af_heart (Std.)</option>
+        <option value="af_bella">af_bella</option>
+        <option value="am_fenrir">am_fenrir</option>
+        <option value="am_puck">am_puck</option>
+      </select>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
     </div>
     <p class="msg" id="addMsg" role="status"></p>
+    <p class="wake" id="wakeMsg" role="status" hidden></p>
   </form>
 
   <section id="list" aria-live="polite">
@@ -176,7 +200,10 @@ a { color: var(--accent); }
 
   const $ = (id) => document.getElementById(id);
   const listEl = $("list"), emptyEl = $("empty"), summaryEl = $("summary");
-  let db = null, canWrite = true, docs = [], loaded = false;
+  let db = null, art = null, canWrite = true, docs = [], loaded = false;
+  const WPS_MIN = 3.3, WPS_MAX = 3.6; // Ziel-Sprechtempo (Vorgabe aus der Video-Produktion)
+  const de = (n, d) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
+  const sceneDrafts = {};
   const drafts = {};      // Feedback-Entwürfe je Video, überleben Neuzeichnen
   const busy = {};        // laufende Schreibvorgänge je Video
   const confirmDel = {};  // zweistufiges Entfernen
@@ -209,8 +236,9 @@ a { color: var(--accent); }
   const absTime = (iso) => { const t = Date.parse(iso); return t ? new Date(t).toLocaleString("de-DE") : ""; };
   const tc = (sec) => { sec = Math.round(sec); return `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`; };
   const waiting = (v) => v.review && !v.decision && v.stage !== "done";
+  const blocked = (v) => typeof v.actionNeeded === "string" && v.actionNeeded.trim() !== "";
   function rank(v) {
-    if (waiting(v)) return 0;
+    if (waiting(v) || blocked(v)) return 0;
     if (v.stage === "error") return 1;
     if (["research", "script", "scenes", "render"].includes(v.stage)) return 2;
     if (v.stage === "queued") return 3;
@@ -218,7 +246,7 @@ a { color: var(--accent); }
   }
   function slugify(s) {
     const map = { "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" };
-    let x = s.toLowerCase().replace(/[äöüß]/g, (c) => map[c]).normalize("NFKD").replace(/[̀-ͯ]/g, "")
+    let x = s.toLowerCase().replace(/[äöüß]/g, (c) => map[c]).normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/-+$/, "");
     if (!x) x = "video";
     const ids = new Set(docs.map((d) => d.id));
@@ -241,6 +269,7 @@ a { color: var(--accent); }
   }
 
   function pill(v) {
+    if (blocked(v)) return el("span", { class: "pill bad", text: "Aktion nötig" });
     if (waiting(v)) return el("span", { class: "pill warn", text: "Freigabe nötig" });
     if (v.review && v.decision && v.stage !== "done") return el("span", { class: "pill", text: "Wartet auf Claude" });
     const cls = v.stage === "done" ? "ok" : v.stage === "error" ? "bad" : v.stage === "queued" ? "idle" : "";
@@ -250,11 +279,17 @@ a { color: var(--accent); }
   function reviewBlock(v) {
     const r = v.review;
     const box = el("div", { class: "review" });
-    box.append(el("h3", { text: r.kind === "contactsheet" ? "Kontaktabzug prüfen" : "Drehbuch prüfen" }));
+    box.append(el("h3", { text: r.kind === "contactsheet" ? "Stufe 2 · Kontaktabzug prüfen (vor dem finalen Render)" : "Stufe 1 · Drehbuch und Quellen prüfen" }));
     if (r.title) box.append(el("p", { class: "rtitle", text: r.title }));
     const img = safeUrl(r.imageUrl);
     if (img) box.append(el("a", { href: img, target: "_blank", rel: "noopener" }, el("img", { src: img, alt: r.title || "Kontaktabzug", loading: "lazy" })));
     if (r.text) box.append(el("pre", { class: "script", text: r.text }));
+    if (Array.isArray(r.corrections) && r.corrections.length) {
+      box.append(el("div", { class: "fix" },
+        el("strong", { text: "Abweichungen von gängigen Angaben" }),
+        el("ul", null, r.corrections.map((c) => el("li", null,
+          el("b", { text: (c && c.claim) || "" }), c && c.note ? " – " + c.note : "")))));
+    }
     if (Array.isArray(r.sources) && r.sources.length) {
       box.append(el("details", null,
         el("summary", { text: `Quellen (${r.sources.length})` }),
@@ -271,21 +306,31 @@ a { color: var(--accent); }
       const ok = v.decision.value === "ok";
       box.append(el("div", { class: "saved" },
         el("p", { class: "who " + (ok ? "ok" : "bad"), text: (ok ? "OK" : "Nicht OK") + " – Entscheidung gespeichert, wartet auf Claude" }),
+        v.decision.scene ? el("p", { text: "Szene: " + sceneLabel(r, v.decision.scene) }) : null,
         v.decision.feedback ? el("p", { text: "Feedback: " + v.decision.feedback }) : null,
         el("p", { class: "meta", text: absTime(v.decision.at) }),
-        canWrite ? el("div", null, el("button", { class: "btn-quiet", type: "button", disabled: busy[v.id], onclick: () => decide(v, null) , text: "Entscheidung zurücknehmen" })) : null));
+        canWrite ? el("div", null, el("button", { class: "btn-quiet", type: "button", disabled: busy[v.id], onclick: () => decide(v, null), text: "Entscheidung zurücknehmen" })) : null));
     } else if (canWrite) {
       const fbId = "fb-" + v.id;
       const ta = el("textarea", { id: fbId, placeholder: "Feedback (bei „Nicht OK“ bitte angeben, was geändert werden soll)", maxlength: "4000",
         oninput: (e) => { drafts[v.id] = e.target.value; } });
       ta.value = drafts[v.id] || "";
       const msg = el("p", { class: "msg err", role: "status" });
+      const scenes = Array.isArray(r.scenes) ? r.scenes.filter((x) => x && x.id) : [];
+      let sel = null;
+      if (scenes.length) {
+        sel = el("select", { id: "sc-" + v.id, onchange: (e) => { sceneDrafts[v.id] = e.target.value; } },
+          el("option", { value: "", text: "Betrifft: ganzes Video" }),
+          scenes.map((x) => el("option", { value: String(x.id), text: "Betrifft: " + (x.label || x.id) })));
+        sel.value = sceneDrafts[v.id] || "";
+      }
       const send = (value) => {
         const fb = ta.value.trim();
         if (value === "not_ok" && !fb) { msg.textContent = "Bitte kurz schreiben, was nicht passt."; ta.focus(); return; }
-        decide(v, { value, feedback: fb, at: new Date().toISOString() }, msg);
+        decide(v, { value, feedback: fb, scene: sel && sel.value ? sel.value : null, at: new Date().toISOString() }, msg);
       };
       box.append(el("div", { class: "decide" },
+        sel ? el("label", { class: "sr", for: "sc-" + v.id, text: "Betrifft Szene" }) : null, sel,
         el("label", { class: "sr", for: fbId, text: "Feedback" }), ta,
         el("div", { class: "row" },
           el("button", { class: "btn-ok", type: "button", disabled: busy[v.id], onclick: () => send("ok"), text: "OK" }),
@@ -304,23 +349,61 @@ a { color: var(--accent); }
       ? el("img", { src: prev, alt: "Vorschau", loading: "lazy" })
       : el("video", { src: prev, controls: true, preload: "metadata", playsinline: true }));
     box.append(el("p", { class: "status", text: "Das fertige Video liegt in der Claude-App (Sitzung des Bearbeiters)." }));
+    if (typeof v.fileSizeBytes === "number" && v.fileSizeBytes > 0) box.append(el("p", { class: "meta", text: "Datei " + de(v.fileSizeBytes / 1e6, 1) + " MB" }));
     if (v.branch) box.append(el("p", { class: "status" }, "Branch: ", el("a", { href: REPO + encodeURIComponent(v.branch).replace(/%2F/g, "/"), target: "_blank", rel: "noopener", text: v.branch })));
     return box;
+  }
+
+  function sceneLabel(r, id) {
+    const x = r && Array.isArray(r.scenes) ? r.scenes.find((s) => s && String(s.id) === String(id)) : null;
+    return (x && x.label) || String(id);
+  }
+
+  function metricsLine(m) {
+    if (!m || typeof m !== "object") return null;
+    const out = [];
+    if (typeof m.durationSec === "number") out.push(el("span", { text: "Länge " + tc(m.durationSec) }));
+    if (typeof m.words === "number") out.push(el("span", { text: m.words + " Wörter" }));
+    if (typeof m.wordsPerSec === "number") {
+      const off = m.wordsPerSec < WPS_MIN || m.wordsPerSec > WPS_MAX;
+      out.push(el("span", { class: off ? "off" : "good", title: `Ziel ${de(WPS_MIN, 1)}–${de(WPS_MAX, 1)} Wörter/s`,
+        text: de(m.wordsPerSec, 2) + " W/s" + (off ? " (Ziel " + de(WPS_MIN, 1) + "–" + de(WPS_MAX, 1) + ")" : "") }));
+    }
+    if (typeof m.whisperMatch === "string" && m.whisperMatch) {
+      const p = m.whisperMatch.split("/").map(Number);
+      const off = p.length === 2 && Number.isFinite(p[0]) && p[0] !== p[1];
+      out.push(el("span", { class: off ? "off" : "good", title: "Aussprache-Gegenprobe: von Whisper erkannte / geschriebene Wörter", text: "Whisper " + m.whisperMatch }));
+    }
+    if (typeof m.voice === "string" && m.voice) out.push(el("span", { text: "Stimme " + m.voice }));
+    return out.length ? el("p", { class: "metrics" }, out) : null;
+  }
+
+  function progressBlock(v) {
+    if (v.stage !== "render" || typeof v.renderProgress !== "number") return null;
+    const p = Math.max(0, Math.min(1, v.renderProgress));
+    return el("div", { class: "progress" },
+      el("div", { class: "bar", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": String(Math.round(p * 100)), "aria-label": "Render-Fortschritt" },
+        el("i", { style: "width:" + (p * 100).toFixed(1) + "%" })),
+      el("span", { text: "Render " + Math.round(p * 100) + " %" + (v.renderEta ? " · " + v.renderEta : "") }));
   }
 
   function card(v) {
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
     metaParts.push(el("span", { title: absTime(v.updatedAt), text: "geändert " + ago(v.updatedAt) }));
+    if (v.voice) metaParts.push(el("span", { text: v.voice }));
     if (v.branch && v.stage !== "done") metaParts.push(el("span", { text: v.branch }));
 
-    const c = el("article", { class: "card" + (waiting(v) ? " attn" : ""), id: "v-" + v.id },
+    const c = el("article", { class: "card" + (waiting(v) || blocked(v) ? " attn" : ""), id: "v-" + v.id },
       el("div", { class: "card-head" },
         el("div", null, el("h2", { text: v.topic || v.id }), el("div", { class: "meta" }, metaParts)),
         pill(v)),
+      blocked(v) ? el("p", { class: "banner", role: "alert", text: "Aktion nötig: " + v.actionNeeded }) : null,
       steps(v.stage),
+      progressBlock(v),
       v.statusText ? el("p", { class: "status" + (v.stage === "error" ? " err" : ""), text: v.statusText })
         : el("p", { class: "status hint", text: v.stage === "queued" ? "Wartet darauf, dass eine Claude-Sitzung das Thema übernimmt." : "" }),
+      metricsLine(v.metrics),
       v.note ? el("p", { class: "note", text: "Notiz: " + v.note }) : null);
 
     if (v.review && v.stage !== "done") c.append(reviewBlock(v));
@@ -342,13 +425,33 @@ a { color: var(--accent); }
     listEl.replaceChildren(...(sorted.length ? sorted.map(card) : [emptyEl]));
     if (focusId && $(focusId) && $(focusId).tagName === "TEXTAREA") { const t = $(focusId); t.focus(); t.setSelectionRange(t.value.length, t.value.length); }
     if (!loaded) return;
-    const nWait = docs.filter(waiting).length;
+    const nWait = docs.filter((v) => waiting(v) || blocked(v)).length;
     const nRun = docs.filter((v) => ["research", "script", "scenes", "render"].includes(v.stage)).length;
     const nDone = docs.filter((v) => v.stage === "done").length;
     const parts = [];
-    if (nWait) parts.push(`<b>${nWait} zur Freigabe</b>`);
+    if (nWait) parts.push(`<b>${nWait} zu erledigen</b>`);
     parts.push(`${nRun} in Arbeit`, `${docs.filter((v) => v.stage === "queued").length} wartend`, `${nDone} fertig`);
     summaryEl.innerHTML = parts.join(" · ");
+  }
+
+  // Weckt beobachtende Claude-Sitzungen: speichert eine kleine Datei als neue Seitenversion.
+  // Die Daten selbst bleiben in der Datenbank; diese Datei ist nur das Signal.
+  async function wake(action, id) {
+    const w = $("wakeMsg");
+    const hint = (why) => {
+      w.hidden = false; w.className = "wake warn";
+      w.textContent = "Claude wird nicht automatisch geweckt" + (why ? " (" + why + ")" : "") +
+        ". Damit Claude sofort reagiert: Kommentar mit @claude an diese Seite senden oder in der Sitzung „weiter“ schreiben.";
+    };
+    if (!art) { hint("Funktion hier nicht verfügbar"); return; }
+    try {
+      await art.publish({ "last-action.json": JSON.stringify({ action, id, at: new Date().toISOString() }) });
+      w.hidden = false; w.className = "wake ok";
+      w.textContent = "Gespeichert und Claude benachrichtigt (" + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + ").";
+    } catch (e) {
+      if (e && e.code === "conflict") return; // Seite lädt ohnehin die neueste Version
+      hint(e && e.code);
+    }
   }
 
   async function decide(v, decision, msgEl) {
@@ -356,7 +459,9 @@ a { color: var(--accent); }
     busy[v.id] = true; render();
     try {
       await db.collection("videos").doc(v.id).update({ decision, updatedAt: new Date().toISOString() });
-      if (decision) delete drafts[v.id];
+      if (decision) { delete drafts[v.id]; delete sceneDrafts[v.id]; }
+      busy[v.id] = false; render();
+      wake(decision ? "decision:" + decision.value : "decision:undo", v.id);
     } catch (e) {
       if (msgEl) msgEl.textContent = "Speichern fehlgeschlagen (" + (e && e.code || "Fehler") + "). Bitte erneut versuchen.";
       if (e && e.code === "invalid_argument") canWrite = false;
@@ -383,11 +488,13 @@ a { color: var(--accent); }
     try {
       await db.collection("videos").doc(id).set({
         topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
+        voice: $("voice").value || "af_heart",
         stage: "queued", statusText: "", review: null, decision: null,
         branch: null, sessionId: null, updatedAt: new Date().toISOString()
       });
-      $("topic").value = ""; $("len").value = ""; $("note").value = "";
+      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "af_heart";
       msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
+      wake("add", id);
     } catch (err) {
       msg.className = "msg err";
       msg.textContent = err && err.code === "invalid_argument"
@@ -402,8 +509,8 @@ a { color: var(--accent); }
       emptyEl.textContent = "Diese Seite braucht die gemeinsame Datenbank von claude.ai. Bitte dort angemeldet öffnen.";
       return;
     }
-    const [dbNs, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
-    db = dbNs;
+    const [dbNs, user, artNs] = await Promise.all([window.claude.use("db"), window.claude.use("user"), window.claude.use("artifact")]);
+    db = dbNs; art = artNs;
     if (!db) {
       summaryEl.textContent = "Keine Datenbank";
       emptyEl.textContent = "Die Datenbank ist in dieser Ansicht nicht verfügbar. Bitte in claude.ai angemeldet öffnen.";
