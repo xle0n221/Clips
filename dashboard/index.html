@@ -166,6 +166,19 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 .plat .lbl { font-size: 0.75rem; color: var(--muted); margin: 0; }
 .plat .warn { font-size: 0.75rem; color: var(--warn); margin: 0; }
 .copyrow { display: flex; gap: 6px; flex-wrap: wrap; }
+.ht { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.ht > summary { font-weight: 600; }
+.ht .sub { font-size: 0.8125rem; color: var(--muted); font-weight: 400; }
+.ht h3 { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 14px 0 6px; }
+.ht-scroll { overflow-x: auto; }
+.ht table { border-collapse: collapse; width: 100%; font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.ht th, .ht td { text-align: left; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.ht th { color: var(--muted); font-weight: 500; }
+.ht td.tag { color: var(--accent); font-weight: 600; white-space: nowrap; }
+.ht .up { color: var(--ok); } .ht .down { color: var(--bad); } .ht .new { color: var(--warn); }
+.ht .combo { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 4px 0; }
+.ht .combo code { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent); overflow-wrap: anywhere; }
+.ht ul.notes { margin: 6px 0 0; padding-left: 18px; font-size: 0.8125rem; color: var(--muted); display: grid; gap: 4px; }
 .empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
@@ -211,6 +224,11 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     <p class="msg" id="addMsg" role="status"></p>
     <p class="wake" id="wakeMsg" role="status" hidden></p>
   </form>
+
+  <details class="ht" id="htBox" hidden>
+    <summary id="htSum">Hashtags</summary>
+    <div id="htBody"></div>
+  </details>
 
   <section id="list" aria-live="polite">
     <p class="empty" id="empty">Noch keine Videos. Trage oben ein Thema ein – eine Claude-Sitzung übernimmt es dann.</p>
@@ -531,6 +549,39 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     return box;
   }
 
+  function renderHashtags(h) {
+    const box = $("htBox");
+    if (!h || typeof h !== "object") { box.hidden = true; return; }
+    box.hidden = false;
+    const t = Date.parse(h.updatedAt);
+    $("htSum").replaceChildren("Hashtags ", el("span", { class: "sub", text: t ? "· Stand " + new Date(t).toLocaleDateString("de-DE") + (h.nextUpdate ? " · nächste Prüfung " + h.nextUpdate : "") : "" }));
+    const body = $("htBody"); body.replaceChildren();
+    const trend = (c) => {
+      const m = { up: ["▲", "up", "gestiegen"], down: ["▼", "down", "gesunken"], new: ["neu", "new", "neu in der Liste"], same: ["=", "", "unverändert"] }[c];
+      return m ? el("span", { class: m[1], title: m[2], text: m[0] }) : "";
+    };
+    const table = (rows) => el("div", { class: "ht-scroll" }, el("table", null,
+      el("thead", null, el("tr", null, ["Hashtag", "Kennzahl", "Trend", "Quelle"].map((x) => el("th", { text: x })))),
+      el("tbody", null, rows.map((r) => {
+        const u = safeUrl(r.url);
+        return el("tr", null,
+          el("td", { class: "tag", text: r.tag && String(r.tag).startsWith("#") ? r.tag : "#" + (r.tag || "") }),
+          el("td", { text: r.metric || "–" }),
+          el("td", null, trend(r.change)),
+          el("td", null, u ? el("a", { href: u, target: "_blank", rel: "noopener noreferrer", text: r.source || "Link" }) : (r.source || "–")));
+      }))));
+    for (const [key, label] of [["tiktok", "TikTok"], ["youtube", "YouTube Shorts"]]) {
+      const pl = h[key]; if (!pl) continue;
+      body.append(el("h3", { text: label }));
+      (Array.isArray(pl.combos) ? pl.combos : []).forEach((c) => {
+        const tags = tagList(c.tags).join(" ");
+        body.append(el("div", { class: "combo" }, el("span", { class: "hint", text: (c.label || "Empfohlen") + ":" }), el("code", { text: tags }), copyBtn("Kopieren", () => tags)));
+      });
+      if (Array.isArray(pl.tags) && pl.tags.length) body.append(table(pl.tags));
+    }
+    if (Array.isArray(h.notes) && h.notes.length) body.append(el("ul", { class: "notes" }, h.notes.map((n) => el("li", { text: String(n) }))));
+  }
+
   function card(v) {
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
@@ -700,6 +751,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       clearTimeout(timer);
       summaryEl.textContent = "Verbindung verloren (" + (err && err.code) + ")";
     });
+    db.doc("hashtags/current").onSnapshot((d) => renderHashtags(d.exists ? d.data() : null), () => {});
     setInterval(render, 60000); // nur relative Zeitangaben auffrischen, kein Schreiben
   }
   start();

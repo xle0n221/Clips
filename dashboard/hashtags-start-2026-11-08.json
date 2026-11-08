@@ -1,0 +1,38 @@
+{
+  "updatedAt": "2026-11-08T16:00:00Z",
+  "nextUpdate": "wöchentlich (montags)",
+  "method": "Websuche nach öffentlichen Hashtag-Statistiken (Drittanbieter-Tracker). TikTok und YouTube veröffentlichen keine offiziellen Hashtag-Zahlen. Zahlen verschiedener Tracker sind nicht direkt vergleichbar.",
+  "tiktok": {
+    "combos": [
+      { "label": "Weltraum-Thema", "tags": ["#space", "#science", "#astronomy", "#nasa"] },
+      { "label": "Anderes Wissens-Thema", "tags": ["#science", "#sciencetok", "#physics"] }
+    ],
+    "tags": [
+      { "tag": "#space", "metric": "Median 479,1 Tsd. Aufrufe (Stichprobe 30 Videos, Stand 03.11.2026)", "source": "shortsintel.com", "url": "https://www.shortsintel.com/trending/hashtags/space", "change": "new" },
+      { "tag": "#nasa", "metric": "Median 100,7 Tsd. Aufrufe (Stichprobe 30 Videos, Stand 26.10.2026)", "source": "shortsintel.com", "url": "https://www.shortsintel.com/trending/hashtags/nasa", "change": "new" },
+      { "tag": "#sciencetok", "metric": "7 Mrd. Aufrufe gesamt (Seite ohne Datum)", "source": "urlebird.com", "url": "https://urlebird.com/hash/sciencetok/", "change": "new" },
+      { "tag": "#physics", "metric": "Platz 1 Kategorie Science (01.09.2026)", "source": "trendsmcp.ai", "url": "https://www.trendsmcp.ai/trending-categories/tiktok-hashtags-science-trending-september-1-2026", "change": "new" },
+      { "tag": "#astronomy", "metric": "Platz 3 Kategorie Science (01.09.2026)", "source": "trendsmcp.ai", "url": "https://www.trendsmcp.ai/trending-categories/tiktok-hashtags-science-trending-september-1-2026", "change": "new" },
+      { "tag": "#science", "metric": "ca. 5,4 Mio. Posts, Ø 14.253 Aufrufe/Post", "source": "hashtagradar.com", "url": "https://hashtagradar.com/hashtag/universe/", "change": "new" }
+    ]
+  },
+  "youtube": {
+    "combos": [
+      { "label": "Weltraum-Thema", "tags": ["#science", "#spacefacts", "#astronomy", "#Shorts"] },
+      { "label": "Anderes Wissens-Thema", "tags": ["#science", "#ScienceShorts", "#STEM", "#Shorts"] }
+    ],
+    "tags": [
+      { "tag": "#science", "metric": "keine Reichweiten-Daten gefunden; häufig empfohlen", "source": "schedulala.com", "url": "https://schedulala.com/blog/youtube-shorts-hashtags-best-practices-guide", "change": "new" },
+      { "tag": "#spacefacts", "metric": "keine Reichweiten-Daten gefunden; häufig empfohlen", "source": "vaizle.com", "url": "https://insights.vaizle.com/best-hashtags-for-youtube-shorts/", "change": "new" },
+      { "tag": "#astronomy", "metric": "keine Reichweiten-Daten gefunden; häufig empfohlen", "source": "vaizle.com", "url": "https://insights.vaizle.com/best-hashtags-for-youtube-shorts/", "change": "new" },
+      { "tag": "#Shorts", "metric": "optional; in der YouTube-Hilfe nicht erwähnt (laut outfeed.ai)", "source": "outfeed.ai", "url": "https://outfeed.ai/blog/best-hashtags-for-youtube-shorts/", "change": "new" }
+    ]
+  },
+  "notes": [
+    "Alle Zahlen stammen von Drittanbietern, nicht von TikTok oder YouTube. Methoden unterscheiden sich, Zahlen sind Richtwerte.",
+    "Für YouTube Shorts gibt es keine öffentlichen Hashtag-Reichweiten; die Liste beruht auf wiederkehrenden Empfehlungen.",
+    "TikTok: höchstens 5 Hashtags pro Post (in der App angezeigt, nicht offiziell angekündigt). Eine Auswertung von 176.367 TikToks (revid.ai) fand die höchsten Median-Aufrufe bei 3–4 Hashtags.",
+    "Pro Video 1–2 Hashtags durch themenspezifische ersetzen (z. B. #venus beim Sonnensystem).",
+    "Vor dem Posten in der TikTok-App unter Creator Search Insights gegenprüfen (tagesaktuell)."
+  ]
+}

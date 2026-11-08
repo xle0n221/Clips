@@ -101,6 +101,18 @@ Recherche-Stand 2026-11-08, per Websuche (die Seiten selbst sind aus dieser Umge
 - Keine Hashtags ohne Bezug zum Inhalt (YouTube-Richtlinie).
 - In `publish.note` vermerken: „Hashtags vor dem Posten in Creator Search Insights / YouTube-Suche gegenprüfen“.
 
+### Hashtag-Liste mit Reichweiten-Kennzahlen (automatisch, wöchentlich)
+- Dokument `hashtags/current` (angezeigt als eingeklappter Bereich „Hashtags“ oben im Dashboard) und Verlauf `hashtags/snap-<YYYY-MM-DD>`.
+- Struktur: `{ updatedAt, nextUpdate, method, tiktok: { combos: [{label, tags[]}], tags: [{tag, metric, source, url, change}] }, youtube: {…}, notes[] }`,
+  `change` = `"up" | "down" | "same" | "new"` (Vergleich mit dem Vorwert derselben Quelle).
+- Startstand 08.11.2026: `dashboard/hashtags-start-2026-11-08.json` (per Websuche; alle Zahlen von Drittanbieter-Trackern, mit Quelle).
+- Automatisch: geplante Aufgabe „Clips Hashtag-Update“ (`trig_01QwibfNVjsxrTu5VBRJD1yF`), jeden Montag 20:41 Uhr (Europe/Berlin),
+  startet jeweils eine neue Sitzung, recherchiert neu, vergleicht mit dem Vorstand und schreibt beide Dokumente. Push-Benachrichtigung an.
+- Grenzen: TikTok und YouTube veröffentlichen keine offiziellen Hashtag-Zahlen. Für YouTube Shorts wurden keine Reichweiten-Zahlen gefunden.
+  Die Tracker-Zahlen sind Richtwerte und untereinander nicht vergleichbar. Eigene Video-Statistiken sind nicht angebunden (kein Zugang zu
+  YouTube Studio / TikTok Analytics in dieser Umgebung).
+- Bearbeitende Sitzungen: für `publish` die passende `combo` aus `hashtags/current` nehmen und 1–2 Tags durch themenspezifische ersetzen.
+
 ### Hörproben der Stimmen
 `dashboard/voices/voice-<stimme>.mp3`, mit der Seite unter `voices/…` veröffentlicht (Knopf „▶ Anhören“ neben der Stimmen-Auswahl).
 Jede Stimme stellt sich auf Englisch vor (die Videos sind englisch): „Hi, I'm <Name>. I could be the voice of your next video.“
