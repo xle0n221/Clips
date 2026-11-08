@@ -1,0 +1,114 @@
+[
+  {
+    "text": "Willkommen",
+    "startMs": 600,
+    "endMs": 980,
+    "timestampMs": 790,
+    "confidence": 1
+  },
+  {
+    "text": " bei",
+    "startMs": 1040,
+    "endMs": 1420,
+    "timestampMs": 1230,
+    "confidence": 1
+  },
+  {
+    "text": " Clips!",
+    "startMs": 1480,
+    "endMs": 1860,
+    "timestampMs": 1670,
+    "confidence": 1
+  },
+  {
+    "text": " Diese",
+    "startMs": 1920,
+    "endMs": 2300,
+    "timestampMs": 2110,
+    "confidence": 1
+  },
+  {
+    "text": " Captions",
+    "startMs": 2360,
+    "endMs": 2740,
+    "timestampMs": 2550,
+    "confidence": 1
+  },
+  {
+    "text": " sind",
+    "startMs": 2800,
+    "endMs": 3180,
+    "timestampMs": 2990,
+    "confidence": 1
+  },
+  {
+    "text": " nur",
+    "startMs": 3240,
+    "endMs": 3620,
+    "timestampMs": 3430,
+    "confidence": 1
+  },
+  {
+    "text": " ein",
+    "startMs": 3680,
+    "endMs": 4060,
+    "timestampMs": 3870,
+    "confidence": 1
+  },
+  {
+    "text": " Beispiel.",
+    "startMs": 4120,
+    "endMs": 4500,
+    "timestampMs": 4310,
+    "confidence": 1
+  },
+  {
+    "text": " Erstelle",
+    "startMs": 4560,
+    "endMs": 4940,
+    "timestampMs": 4750,
+    "confidence": 1
+  },
+  {
+    "text": " echte",
+    "startMs": 5000,
+    "endMs": 5380,
+    "timestampMs": 5190,
+    "confidence": 1
+  },
+  {
+    "text": " Untertitel",
+    "startMs": 5440,
+    "endMs": 5820,
+    "timestampMs": 5630,
+    "confidence": 1
+  },
+  {
+    "text": " mit",
+    "startMs": 5880,
+    "endMs": 6260,
+    "timestampMs": 6070,
+    "confidence": 1
+  },
+  {
+    "text": " npm",
+    "startMs": 6320,
+    "endMs": 6700,
+    "timestampMs": 6510,
+    "confidence": 1
+  },
+  {
+    "text": " run",
+    "startMs": 6760,
+    "endMs": 7140,
+    "timestampMs": 6950,
+    "confidence": 1
+  },
+  {
+    "text": " transcribe.",
+    "startMs": 7200,
+    "endMs": 7580,
+    "timestampMs": 7390,
+    "confidence": 1
+  }
+]
