@@ -112,6 +112,12 @@ Recherche-Stand 2026-11-08, per Websuche (die Seiten selbst sind aus dieser Umge
   Die Tracker-Zahlen sind Richtwerte und untereinander nicht vergleichbar. Eigene Video-Statistiken sind nicht angebunden (kein Zugang zu
   YouTube Studio / TikTok Analytics in dieser Umgebung).
 - Bearbeitende Sitzungen: für `publish` die passende `combo` aus `hashtags/current` nehmen und 1–2 Tags durch themenspezifische ersetzen.
+- Testlauf 08.11.2026 (von Hand gestartet, Sitzung `cse_01UNp77NZJY8fRGs28tb4xtR`): erfolgreich. Die neue Sitzung konnte per ArtifactData
+  schreiben; `current` und `snap-2026-11-08` standen danach auf Version 3 und waren inhaltlich gleich. Neu: #universe, #spacefacts (hashtagradar),
+  #physics, #astronomy (best-hashtags.com, Werte aus Suchauszügen), #space-Gesamtaufrufe (TikTok-Tag-Seite). Kombis unverändert.
+  Einschränkungen des Laufs: Tracker-Seiten waren nicht direkt abrufbar (Netzwerk-Sperre), Werte stammen aus Suchergebnis-Auszügen bzw. dem Vorlauf;
+  der Lauf schrieb `updatedAt` 19:00Z (in der Zukunft), nachträglich auf 16:03Z (Sitzungsende) korrigiert (Version 4).
+  Manche Tags erscheinen zweimal (je Quelle eine Zeile) – gewollt, da die Kennzahlen nicht vergleichbar sind.
 
 ### Hörproben der Stimmen
 `dashboard/voices/voice-<stimme>.mp3`, mit der Seite unter `voices/…` veröffentlicht (Knopf „▶ Anhören“ neben der Stimmen-Auswahl).
