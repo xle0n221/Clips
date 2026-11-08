@@ -9,6 +9,10 @@ Lies **zuerst vollständig** `docs/clip-regeln.md` – die Regeln dort sind verb
 „süchtig machend“, Themen-Treue, Sprache/Stimme, Referenzwerte, technische Fallstricke).
 Antworte dem Nutzer auf Deutsch, das Video selbst ist auf Englisch.
 
+**Kommt das Video aus dem Dashboard „Clips Studio“** (Dokument in der Collection `videos`), gilt
+zusätzlich `docs/dashboard-ablauf.md`: Status, Kennzahlen und Freigaben (Freigabe 1 und 2) laufen
+dann über das Dashboard statt über den Chat, Stimme/Länge/Notiz/Inspiration kommen aus dem Dokument.
+
 ## 0. Umgebung prüfen
 - `.venv` mit `requirements.txt`, `voices/kokoro/` (`npm run setup:voice`), `whisper.cpp/` mit
   `ggml-medium.bin` (Befehle in README, Abschnitt „Erklärvideo-Episoden“). Downloads per `curl`.

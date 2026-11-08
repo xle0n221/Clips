@@ -221,6 +221,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       <input id="inspFiles" type="file" accept="image/*,video/*,application/pdf" multiple>
       <span class="hint" id="inspCount">optional – Bilder, kurze Videos oder PDFs</span>
     </div>
+    <p class="hint">Claude schaut stündlich (7–23 Uhr) nach neuen Themen und Entscheidungen. Stil wie das Sonnensystem-Video.</p>
     <p class="msg" id="addMsg" role="status"></p>
     <p class="wake" id="wakeMsg" role="status" hidden></p>
   </form>
@@ -638,13 +639,13 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     const hint = (why) => {
       w.hidden = false; w.className = "wake warn";
       w.textContent = "Claude wird nicht automatisch geweckt" + (why ? " (" + why + ")" : "") +
-        ". Damit Claude sofort reagiert: Kommentar mit @claude an diese Seite senden oder in der Sitzung „weiter“ schreiben.";
+        ". Gespeichert ist es trotzdem – Claude holt es beim nächsten stündlichen Durchlauf ab.";
     };
     if (!art) { hint("Funktion hier nicht verfügbar"); return; }
     try {
       await art.publish({ "last-action.json": JSON.stringify({ action, id, at: new Date().toISOString() }) });
       w.hidden = false; w.className = "wake ok";
-      w.textContent = "Gespeichert und Claude benachrichtigt (" + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + ").";
+      w.textContent = "Gespeichert (" + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + "). Claude holt es beim nächsten stündlichen Durchlauf ab.";
     } catch (e) {
       if (e && e.code === "conflict") return; // Seite lädt ohnehin die neueste Version
       hint(e && e.code);

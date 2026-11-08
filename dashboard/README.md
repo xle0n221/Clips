@@ -37,6 +37,7 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `renderEta` | string (optional) | Sitzung | z. B. `"noch ca. 23 Min."` |
 | `actionNeeded` | string \| null (optional) | Sitzung | auffälliges rotes Banner, z. B. `"Freigabe in der Claude-App nötig (Netzwerk)"`; Karte wird oben einsortiert |
 | `fileSizeBytes` | number (optional) | Sitzung | Dateigröße auf der Fertig-Karte |
+| `busy` | boolean (optional) | Sitzung | `true`, solange eine Sitzung am Video arbeitet (Sperre für den stündlichen Abholer); bei Freigabe, Fertig oder Fehler `false` |
 | `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
 
 Zusätzliche optionale Felder in `review`:
@@ -60,7 +61,8 @@ Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, 
 - `queued`-Karten lassen sich (zweistufig) entfernen.
 - Sortierung: Freigabe → Fehler → in Arbeit → wartend → fertig; innerhalb nach `updatedAt` absteigend.
 
-### Ablauf für eine bearbeitende Sitzung (Vorschlag)
+### Ablauf für eine bearbeitende Sitzung
+Verbindlich ist `docs/dashboard-ablauf.md` (Auswahl, Sperre über `busy`, Felder je Schritt, Stil). Kurzfassung:
 1. `ArtifactData list videos` → ein Dokument mit `stage: "queued"` wählen.
 2. Übernehmen: `update` mit `if_version`, `stage: "research"`, `sessionId`, `branch`, `statusText`, `updatedAt`.
    `if_version` verhindert, dass zwei Sitzungen dasselbe Thema übernehmen (zweiter Schreibversuch scheitert).
