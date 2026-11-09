@@ -156,14 +156,30 @@ def power(in_wav: Path, out_wav: Path, chain: str = "punch") -> None:
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(in_wav), "-af", POWER_CHAINS[chain], str(out_wav)], check=True)
 
 
+# Rückmeldung des Nutzers (09.11.2026): „Stimmen hören sich unnatürlich an.“ Die Tonhöhen-Bearbeitung per
+# WORLD-Vocoder (liven) ist deshalb standardmäßig AUS; nur Lautstärke-Akzente und Klangkette bleiben.
+VOCODER_DEFAULT = False
+
+
+def accent_gain(x: np.ndarray, sr: int, emphasis, emph_db: float) -> np.ndarray:
+    """Akzentwörter nur lauter machen (kein Eingriff in die Tonhöhe, klingt natürlich)."""
+    g = np.zeros(len(x))
+    for w0, w1 in emphasis or []:
+        a, b = int(w0 * sr), int(w1 * sr)
+        if b > a:
+            g[a:b] = np.maximum(g[a:b], emph_db * np.sin(np.linspace(0, np.pi, b - a)) ** 0.7)
+    y = x * 10 ** (g / 20)
+    return (y / max(np.max(np.abs(y)), 1.0)).astype(np.float32)
+
+
 def process(in_wav: Path, out_wav: Path, segments=None, emphasis=None, expr=2.0, emph_st=2.5, emph_db=3.0,
-            shift: float = 0.0, chain: str = "punch") -> None:
+            shift: float = 0.0, chain: str = "punch", vocoder: bool = VOCODER_DEFAULT) -> None:
     import soundfile as sf
 
     x, sr = sf.read(str(in_wav), dtype="float32")
     if x.ndim > 1:
         x = x.mean(axis=1)
-    y = liven(x, sr, segments, emphasis, expr, emph_st, emph_db, shift=shift)
+    y = liven(x, sr, segments, emphasis, expr, emph_st, emph_db, shift=shift) if vocoder else accent_gain(x, sr, emphasis, emph_db)
     with tempfile.TemporaryDirectory() as tmp:
         mid = Path(tmp) / "liven.wav"
         sf.write(str(mid), y, sr)
