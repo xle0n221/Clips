@@ -109,7 +109,11 @@ Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wör
   früheren Zustand. In `make_episode.py` wirken vom Sprechstil nur noch Tempo, Pausen und die Lautstärke der Akzentwörter.
 - In Prüfung: anderes Sprachmodell **Chatterbox** (MIT, https://huggingface.co/ResembleAI/chatterbox/blob/main/README.md; jede Ausgabe mit
   PerTh-Wasserzeichen von Resemble AI). Gemessen auf 4 CPU-Kernen: ~3,5× Echtzeit (29–32 s für 8–9,5 s Audio), Whisper „base“ 27/29 Wörter.
-  Mit Kokoro-Stimmen als Klangvorlage keine messbar bewegtere Melodie (SD 3,0–3,2 HT). Hörproben im Dashboard; Entscheidung des Nutzers offen.
+  Mit Kokoro-Stimmen als Klangvorlage keine messbar bewegtere Melodie (SD 3,0–3,2 HT).
+- **Entscheidung des Nutzers 09.11.2026 nach den Hörproben: „Ja passt“ → Chatterbox ist die Sprachausgabe für neue Videos.**
+  Drehbuch-Feld `"engine": "chatterbox"` (ohne das Feld bleibt Kokoro, z. B. Sonnensystem unverändert). Stimme = Dashboard-Auswahl
+  (Klangvorlage `assets/stimmvorlagen/<id>.wav`), Stil = `voicePreset` → `exaggeration`/`cfg` in `STYLES`, Szenen-`delivery` als Zuschlag.
+  Einrichtung einmalig `bash scripts/setup_chatterbox.sh` (eigene Umgebung `.venv-cb`, PyTorch aus PyPI, Modell ~3,0 GB).
 
 **Grenze:** Kokoro-82M hat keine Steuerung für Emotionen; `voice_fx` verstärkt nur die vorhandene Melodie und kann
 keinen echten Schauspieler ersetzen. Für mehr Charakter wäre ein anderes Sprachmodell nötig (nicht getestet).

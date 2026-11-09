@@ -26,11 +26,11 @@ import numpy as np
 # Sprechweisen: Tempo-Faktor (auf `speed` des Drehbuchs) und Melodie-Faktor `expr`.
 # Werte sind Startwerte aus dem Hörvergleich, keine Messgrößen – per Szene überschreibbar.
 DELIVERY = {
-    "normal": {"speed": 1.00, "expr": 2.0},
-    "hype": {"speed": 1.08, "expr": 2.3},   # aufgedreht, schnell
-    "tense": {"speed": 0.92, "expr": 1.6},  # leise Spannung, langsamer
-    "punch": {"speed": 0.94, "expr": 2.3},  # Pointe / Wendepunkt
-    "calm": {"speed": 0.95, "expr": 1.4},   # ruhig, erklärend
+    "normal": {"speed": 1.00, "expr": 2.0, "exag": 0.0},
+    "hype": {"speed": 1.08, "expr": 2.3, "exag": 0.15},   # aufgedreht, schnell
+    "tense": {"speed": 0.92, "expr": 1.6, "exag": -0.05},  # leise Spannung, langsamer
+    "punch": {"speed": 0.94, "expr": 2.3, "exag": 0.1},  # Pointe / Wendepunkt
+    "calm": {"speed": 0.95, "expr": 1.4, "exag": -0.15},   # ruhig, erklärend
 }
 # Sprechstil eines ganzen Videos (Dashboard-/Drehbuch-Feld `voicePreset`). Die Stile müssen klar hörbar verschieden sein
 # (Rückmeldung des Nutzers 09.11.2026: „hören sich in jedem Sprechstil gleich an“). Je Stil:
@@ -38,11 +38,13 @@ DELIVERY = {
 #   scale     Stärke der Melodie (1.0 = DELIVERY)     shift   Stimmlage in Halbtönen (+ höher, − tiefer)
 #   emph_*    Betonung der *Akzentwörter*             pause_ms Länge der „ | “-Pausen
 #   power     Klangkette: "punch" (Druck) oder "soft" (weich, nah)
+# Chatterbox (Standard für neue Videos seit 09.11.2026): `exaggeration`/`cfg` je Stil, `exag` je Sprechweise als Zuschlag.
+# Diese Werte klangen in den vom Nutzer freigegebenen Hörproben so (Dashboard, 09.11.2026).
 STYLES = {
-    "lebendig": {"delivery": "normal", "speed": 1.00, "scale": 1.0, "shift": 0.0, "emph_st": 2.5, "emph_db": 3.0, "pause_ms": 350, "power": "punch"},
-    "spannend": {"delivery": "tense", "speed": 0.86, "scale": 0.9, "shift": -2.0, "emph_st": 3.5, "emph_db": 4.0, "pause_ms": 650, "power": "soft"},
-    "witzig": {"delivery": "hype", "speed": 1.12, "scale": 1.35, "shift": 2.0, "emph_st": 3.5, "emph_db": 3.0, "pause_ms": 220, "power": "punch"},
-    "ruhig": {"delivery": "calm", "speed": 0.90, "scale": 0.55, "shift": -0.7, "emph_st": 1.2, "emph_db": 1.5, "pause_ms": 450, "power": "soft"},
+    "lebendig": {"delivery": "normal", "speed": 1.00, "scale": 1.0, "shift": 0.0, "emph_st": 2.5, "emph_db": 3.0, "pause_ms": 350, "power": "punch", "exaggeration": 0.6, "cfg": 0.4},
+    "spannend": {"delivery": "tense", "speed": 0.86, "scale": 0.9, "shift": -2.0, "emph_st": 3.5, "emph_db": 4.0, "pause_ms": 650, "power": "soft", "exaggeration": 0.45, "cfg": 0.3},
+    "witzig": {"delivery": "hype", "speed": 1.12, "scale": 1.35, "shift": 2.0, "emph_st": 3.5, "emph_db": 3.0, "pause_ms": 220, "power": "punch", "exaggeration": 0.85, "cfg": 0.3},
+    "ruhig": {"delivery": "calm", "speed": 0.90, "scale": 0.55, "shift": -0.7, "emph_st": 1.2, "emph_db": 1.5, "pause_ms": 450, "power": "soft", "exaggeration": 0.3, "cfg": 0.5},
 }
 
 

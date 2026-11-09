@@ -19,6 +19,8 @@ dann über das Dashboard statt über den Chat, Stimme/Länge/Notiz/Inspiration k
 - Ohne GPU: Rendern und Standbilder mit `--gl=swangle`; in Cloud-Containern ggf.
   `--browser-executable` auf das vorinstallierte Chromium-Headless-Shell setzen.
 
+- Sprachausgabe Chatterbox (Standard für neue Videos): einmalig `bash scripts/setup_chatterbox.sh`; im Drehbuch `"engine": "chatterbox"`.
+
 ## 1. Recherche (Primärquellen)
 - Fakten nur aus Primärquellen; jede Aussage mit wörtlichem Zitat + URL in `docs/quellen-<thema>.md`.
 - Gängige, aber falsche Angaben/Klischees prüfen und vermerken (Beispiel: NASA 1.000 statt „1.300 Erden“).

@@ -7,6 +7,7 @@ Befehle ausführt. Alles, was sich pro Clip einstellen lässt, steht im Drehbuch
 | Feld | Bedeutung | Erlaubte Werte | Wirkung |
 | --- | --- | --- | --- |
 | `voice` | Sprecherstimme (Name oder ID) | **Lily** `af_heart` (Standard), **Bella** `af_bella`, **Finn** `am_fenrir`, **Max** `am_puck` – Liste: `scripts/voices.json` | neue Tonspur, Untertitel/Schnitte automatisch neu getimt |
+| `engine` | Sprachmodell | `chatterbox` (Standard für neue Videos, seit 09.11.2026), `kokoro` (ohne Feld) | `chatterbox` braucht `bash scripts/setup_chatterbox.sh`; ~30–55 s Rechenzeit je 8–9 s Sprache auf 4 CPU-Kernen |
 | `voicePreset` | Sprechstil des Videos (Dashboard) | `lebendig`, `spannend`, `witzig`, `ruhig` | Tempo, Pausen (` \| `), Lautstärke der Akzentwörter (`scripts/voice_fx.py`; keine Tonhöhen-Bearbeitung) |
 | `scenes[].delivery` | Sprechweise der Szene | `punch`, `normal`, `hype`, `tense`, `calm` oder `{speed, expr}` | Tempo und Melodie dieser Szene |
 | `speed` | Sprechtempo | 0.5–2.0 (Standard 1.3 ≈ 3,3 Wörter/s) | wie oben; Videolänge ändert sich |

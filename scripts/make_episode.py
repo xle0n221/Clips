@@ -25,7 +25,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
-from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, post_process, resolve_voice, write_wav  # noqa: E402
+from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, post_process, resolve_voice, speakable, write_wav  # noqa: E402
 from voice_fx import DELIVERY, STYLES, accent_gain  # noqa: E402
 
 PAUSE_MARK = "|"  # im Sprechtext: dramatische Pause (Länge: Preset bzw. Drehbuch-Feld pauseMs)
@@ -96,6 +96,32 @@ def split_words(scene: str, text: str) -> list[dict]:
     return out
 
 
+def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tuple[str, int], np.ndarray]:
+    """Alle Szenen-Stücke (an „ | “ getrennt) in EINEM Chatterbox-Lauf erzeugen (Modell lädt nur einmal).
+    Stärke: exaggeration/cfg des Sprechstils (voicePreset) + Zuschlag der Szenen-Sprechweise (delivery)."""
+    import soundfile as sf
+
+    base = preset or STYLES["lebendig"]
+    jobs, keys = [], []
+    with tempfile.TemporaryDirectory() as tmp:
+        for sc in ep["scenes"]:
+            spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
+            d = sc.get("delivery", base["delivery"])
+            d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
+            ex = min(1.2, max(0.25, base["exaggeration"] + d.get("exag", 0.0)))
+            for i, p in enumerate(x.strip() for x in spoken.split(PAUSE_MARK) if x.strip()):
+                out = Path(tmp) / f"{sc['id']}-{i}.wav"
+                jobs.append({"text": speakable(p), "out": str(out), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]})
+                keys.append((sc["id"], i, out))
+        (Path(tmp) / "jobs.json").write_text(json.dumps(jobs))
+        py = ROOT / ".venv-cb" / "bin" / "python"
+        if not py.exists():
+            raise SystemExit("Chatterbox fehlt: einmalig `bash scripts/setup_chatterbox.sh` ausführen")
+        print(f"Chatterbox: {len(jobs)} Stücke, Stimme {voice_id}, Stil {ep.get('voicePreset', 'lebendig')!r}")
+        subprocess.run([str(py), "-W", "ignore", str(ROOT / "scripts" / "tts_chatterbox.py"), str(Path(tmp) / "jobs.json")], check=True)
+        return {(sid, i): sf.read(str(out), dtype="float32")[0] for sid, i, out in keys}
+
+
 def main(path: Path, voice_name: str | None = None, speed: float | None = None, save: bool = False) -> None:
     ep = json.loads(path.read_text())
     # Stimme/Tempo können per Kommandozeile (z. B. vom Dashboard) überschrieben werden
@@ -119,7 +145,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     spec = ep["voice"] if voice_name or "blend" not in style else style["blend"]
     if isinstance(spec, dict):  # {"am_fenrir": 0.6, "Max": 0.4} -> "am_fenrir:0.6+Max:0.4"
         spec = "+".join(f"{k}:{w}" for k, w in spec.items())
-    voice = Voice(resolve_voice(spec), base_speed)
+    engine = ep.get("engine", "kokoro")  # "chatterbox": ausdrucksstärker (scripts/tts_chatterbox.py), Standard für neue Videos
+    voice = Voice(resolve_voice(spec), base_speed) if engine == "kokoro" else None
     scene_speed = style.get("sceneSpeed", {})
     # Optional "voicePreset" (Dashboard „Sprechstil“: lebendig | spannend | witzig | ruhig) und je Szene
     # "delivery" (punch | normal | hype | tense | calm): nur Tempo, Pausen und Lautstärke der *Akzentwörter* –
@@ -128,6 +155,10 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     pause = np.zeros(int(SAMPLE_RATE * ep.get("pauseMs", preset["pause_ms"] if preset else 350) / 1000), np.float32)
     gap = np.zeros(int(SAMPLE_RATE * ep.get("sceneGapMs", 150) / 1000), np.float32)
     lead = np.zeros(int(SAMPLE_RATE * 0.15), np.float32)  # kurzer Vorlauf
+
+    cb_audio: dict[tuple[str, int], np.ndarray] = {}
+    if engine == "chatterbox":
+        cb_audio = chatterbox_scenes(ep, preset, resolve_voice(ep["voice"]).split("+")[0].split(":")[0])
 
     parts, scenes, words, cursor = [lead], [], [], len(lead)
     for sc in ep["scenes"]:
@@ -139,7 +170,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
             d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) or d is None else {**DELIVERY["normal"], **d}
             sp = (sp or base_speed) * d["speed"] * (preset["speed"] if preset else 1.0)
         pieces = [p.strip() for p in spoken.split(PAUSE_MARK) if p.strip()]
-        audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((pause,) if i else ()) + (voice.synth(p, sp),)])
+        synth = (lambda i, p: cb_audio[(sc["id"], i)]) if engine == "chatterbox" else (lambda i, p: voice.synth(p, sp))
+        audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((pause,) if i else ()) + (synth(i, p),)])
         start = cursor / SAMPLE_RATE * 1000
         parts += [audio, gap]
         cursor += len(audio) + len(gap)

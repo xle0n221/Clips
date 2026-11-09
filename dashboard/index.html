@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Clips Studio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -244,7 +243,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
         <option value="witzig">Sprechstil: Witzig</option>
         <option value="ruhig">Sprechstil: Ruhig</option>
       </select>
-      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe: gewählte Stimme im gewählten Sprechstil">▶ Anhören</button>
+      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe: gewählte Stimme im gewählten Sprechstil (Chatterbox)">▶ Anhören</button>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
@@ -263,7 +262,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       <input id="inspFiles" type="file" accept="image/*,video/*,application/pdf" multiple>
       <span class="hint" id="inspCount">optional – Bilder, kurze Videos oder PDFs</span>
     </div>
-    <p class="hint" id="nextRun">Deine Entscheidungen starten Claude sofort; zusätzlich schaut Claude stündlich nach. Stil wie das Sonnensystem-Video.</p>
+    <p class="hint" id="nextRun">Deine Entscheidungen starten Claude sofort; zusätzlich schaut Claude alle 2 Std. nach. Stil wie das Sonnensystem-Video.</p>
     <div class="ideas" id="ideasBox" hidden>
       <div class="row">
         <label class="sr" for="ideaDir">Richtung für Ideen</label>
@@ -281,19 +280,6 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     <div id="repoBody"></div>
   </details>
 
-  <details class="ht" id="abBox" open>
-    <summary>Neue Stimmen zum Testen (Chatterbox) <span class="sub">· 09.11.2026</span></summary>
-    <p class="hint" style="margin:6px 0 10px">Ausdrucksstärkeres Sprachmodell (Chatterbox, MIT-Lizenz). Gleicher Satz in allen Proben. Bitte anhören und Claude sagen, ob es nach echtem Sprecher klingt – erst dann wird es für Videos verwendet. Der Knopf „▶ Anhören“ oben spielt noch die bisherige Stimme.</p>
-    <div class="ab">
-      <span>Lily lebendig</span><audio controls preload="none" src="voices/neu/neu-lebendig-af_heart.mp3"></audio>
-      <span>Lily spannend</span><audio controls preload="none" src="voices/neu/neu-spannend-af_heart.mp3"></audio>
-      <span>Lily witzig</span><audio controls preload="none" src="voices/neu/neu-witzig-af_heart.mp3"></audio>
-      <span>Lily ruhig</span><audio controls preload="none" src="voices/neu/neu-ruhig-af_heart.mp3"></audio>
-      <span>Finn lebendig</span><audio controls preload="none" src="voices/neu/neu-lebendig-am_fenrir.mp3"></audio>
-      <span>Finn spannend</span><audio controls preload="none" src="voices/neu/neu-spannend-am_fenrir.mp3"></audio>
-      <span>Eingebaute Stimme</span><audio controls preload="none" src="voices/neu/neu-eigenstimme-lebendig.mp3"></audio>
-    </div>
-  </details>
 
   <details class="ht" id="htBox" hidden>
     <summary id="htSum">Hashtags</summary>
@@ -314,7 +300,10 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   ];
   const STAGE_LABEL = { queued: "Wartet", research: "Recherche", script: "Drehbuch", scenes: "Szenen", render: "Render", done: "Fertig", error: "Fehler" };
   const REPO = "https://github.com/xle0n221/clips/tree/";
-  const PICKUP_TRIGGER = "trig_013fFkYLstdCwVbtokfU68w5"; // geplante Aufgabe „Clips Dashboard-Abholer (Sitzung CLIPS)“, weckt die Sitzung CLIPS
+  // Rückfall-ID der geplanten Aufgabe „Abholer“. Maßgeblich ist meta/pickup.triggerId (wird beim Sitzungswechsel
+  // neu geschrieben, docs/sitzungswechsel.md) – so muss die Seite dafür nicht neu veröffentlicht werden.
+  const PICKUP_TRIGGER = "trig_01JLT1pGyNwh8YKTpJWtNJxp";
+  let pickupTrigger = PICKUP_TRIGGER, watchedTrigger = null, unwatchPickup = null, canWatch = false;
   const CCR = "Claude Code Remote";
   const STUCK_MS = 3 * 3600 * 1000;
   let mcp = null, sampleFn = null, canFire = false;
@@ -384,23 +373,25 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   ];
   const norm = (s) => String(s || "").toLowerCase().replace(/[äöüß]/g, (c) => ({ "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" })[c]).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 
-  // Nächster stündlicher Durchlauf (geplante Aufgabe: jeweils :17, rund um die Uhr)
+  // Nächster Durchlauf: next_run_at des Abholers, sonst gerechnet (alle 2 h um :17, gerade Stunden)
   function nextRunText() {
+    const nx = pickup && Date.parse(pickup.next);
+    if (nx && nx > Date.now()) return "ca. " + new Date(nx).toLocaleTimeString("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }) + " Uhr";
     let h, m;
     try {
       const parts = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
       h = Number(parts.find((x) => x.type === "hour").value); m = Number(parts.find((x) => x.type === "minute").value);
     } catch { return null; }
-    const nh = (m < 17 ? h : h + 1) % 24;
+    const nh = (m < 17 && h % 2 === 0 ? h : h + (h % 2 === 0 ? 2 : 1)) % 24; // Abholer: alle 2 h um :17 (gerade Stunden)
     return "ca. " + nh + ":17 Uhr";
   }
   function nr() {
     const el2 = $("nextRun"); if (!el2) return;
-    if (pickup && pickup.enabled === false) { el2.textContent = "Der stündliche Abholer ist ausgeschaltet – neue Themen und Entscheidungen startest du mit „Jetzt starten“ oben. Stil wie das Sonnensystem-Video."; return; }
+    if (pickup && pickup.enabled === false) { el2.textContent = "Der Abholer (alle 2 Std.) ist ausgeschaltet – neue Themen und Entscheidungen startest du mit „Jetzt starten“ oben. Stil wie das Sonnensystem-Video."; return; }
     const t = nextRunText();
     el2.textContent = pickup && pickup.enabled
-      ? (canFire ? "Deine Entscheidungen starten Claude sofort. " : "") + "Zusätzlich schaut Claude stündlich nach – nächster Durchlauf " + (t || "bald") + ". Stil wie das Sonnensystem-Video."
-      : "Claude holt neue Themen und Entscheidungen ab, sobald der Abholer läuft (stündlich, wenn eingeschaltet) oder über „Jetzt starten“. Stil wie das Sonnensystem-Video.";
+      ? (canFire ? "Deine Entscheidungen starten Claude sofort. " : "") + "Zusätzlich schaut Claude alle 2 Std. nach – nächster Durchlauf " + (t || "bald") + ". Stil wie das Sonnensystem-Video."
+      : "Claude holt neue Themen und Entscheidungen ab, sobald der Abholer läuft (alle 2 Std., wenn eingeschaltet) oder über „Jetzt starten“. Stil wie das Sonnensystem-Video.";
   }
   function slugify(s) {
     const map = { "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" };
@@ -789,7 +780,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     //    Das ist der zuverlässige Weg; die Datei-Veröffentlichung unten weckte in Tests nicht.
     if (mcp && canFire && action !== "decision:undo") {
       try {
-        await mcp.callTool(CCR, "fire_trigger", { trigger_id: PICKUP_TRIGGER });
+        await mcp.callTool(CCR, "fire_trigger", { trigger_id: pickupTrigger });
         store.set("clips.lastFire", String(Date.now()));
         w.hidden = false; w.className = "wake ok";
         w.textContent = "Gespeichert (" + hhmm() + "). Claude wurde sofort gestartet und arbeitet weiter.";
@@ -829,7 +820,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (box.hidden) return;
     if (!firing && !$("runText").dataset.msg) $("runText").textContent = recent
       ? "Vor " + Math.max(1, Math.round((Date.now() - last) / 60000)) + " Min. gestartet – Claude arbeitet daran. Erneut starten ist 10 Min. gesperrt."
-      : (n === 1 ? "1 Video wartet auf Claude." : n + " Videos warten auf Claude.") + (pickup && pickup.enabled === false ? " Der stündliche Abholer ist aus." : pickup && pickup.enabled ? " Nächster automatischer Durchlauf " + (nextRunText() || "stündlich") + "." : "");
+      : (n === 1 ? "1 Video wartet auf Claude." : n + " Videos warten auf Claude.") + (pickup && pickup.enabled === false ? " Der Abholer ist aus." : pickup && pickup.enabled ? " Nächster automatischer Durchlauf " + (nextRunText() || "in spätestens 2 Std.") + "." : "");
     $("runBtn").disabled = firing || recent || n === 0;
   }
   $("runBtn").addEventListener("click", async () => {
@@ -839,15 +830,15 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     t.textContent = "Starte …";
     const say = (msg) => { t.dataset.msg = "1"; t.textContent = msg; setTimeout(() => { delete t.dataset.msg; renderRunBox(); }, 15000); };
     try {
-      await mcp.callTool(CCR, "fire_trigger", { trigger_id: PICKUP_TRIGGER });
+      await mcp.callTool(CCR, "fire_trigger", { trigger_id: pickupTrigger });
       store.set("clips.lastFire", String(Date.now()));
       say("Gestartet. Eine Claude-Sitzung übernimmt jetzt das nächste Video; die Karte zeigt gleich den Fortschritt.");
     } catch (e) {
       const c = e && e.code;
-      if (c === "server_not_connected") say("Der Connector „" + CCR + "“ ist nicht verbunden (claude.ai → Einstellungen → Connectors). Der stündliche Durchlauf läuft trotzdem.");
+      if (c === "server_not_connected") say("Der Connector „" + CCR + "“ ist nicht verbunden (claude.ai → Einstellungen → Connectors). Der automatische Durchlauf läuft trotzdem.");
       else if (c === "needs_reauth") say("„" + CCR + "“ muss neu verbunden werden (claude.ai → Einstellungen → Connectors).");
-      else if (c === "not_in_manifest" || c === "approval_required" || c === "not_granted") say("Starten wurde nicht erlaubt. Beim nächsten Klick fragt claude.ai erneut; sonst übernimmt der stündliche Durchlauf.");
-      else if (c === "blocked_by_policy") say("Starten ist für dieses Konto gesperrt. Der stündliche Durchlauf übernimmt.");
+      else if (c === "not_in_manifest" || c === "approval_required" || c === "not_granted") say("Starten wurde nicht erlaubt. Beim nächsten Klick fragt claude.ai erneut; sonst übernimmt der automatische Durchlauf.");
+      else if (c === "blocked_by_policy") say("Starten ist für dieses Konto gesperrt. Der automatische Durchlauf übernimmt.");
       else if (c === "tool_error") say("Die geplante Aufgabe ließ sich nicht starten (" + ((e && e.message) || "Fehler").slice(0, 160) + ").");
       else { store.set("clips.lastFire", String(Date.now())); say("Unklar, ob der Start geklappt hat. Bitte nicht doppelt klicken – in ein paar Minuten zeigt die Karte es."); }
     } finally { firing = false; renderRunBox(); }
@@ -990,6 +981,20 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     } finally { btn.disabled = false; }
   });
 
+  // Status des Abholers beobachten; bei neuer ID aus meta/pickup die alte Beobachtung beenden.
+  function watchPickup() {
+    if (!mcp || !canWatch || watchedTrigger === pickupTrigger) return;
+    if (typeof unwatchPickup === "function") { try { unwatchPickup(); } catch {} }
+    const id = pickupTrigger; watchedTrigger = id; pickup = null;
+    try {
+      unwatchPickup = mcp.watchTool(CCR, "get_trigger", { trigger_id: id }, (ev) => {
+        if (ev.type !== "data" || id !== pickupTrigger) return;
+        const pl = ev.result && ev.result.payload; const tr = pl && (pl.trigger || pl);
+        if (tr && typeof tr.enabled === "boolean") { pickup = { enabled: tr.enabled, next: tr.next_run_at || null }; nr(); render(); }
+      }, { refetchInterval: 15 * 60 * 1000 });
+    } catch { unwatchPickup = null; }
+  }
+
   async function start() {
     if (!window.claude || typeof window.claude.use !== "function") {
       summaryEl.textContent = "Nur in claude.ai nutzbar";
@@ -1003,13 +1008,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       mcp = m;
       if (m) { try { const r = await m.listTools(CCR); const srv = r && r.servers && r.servers.find((x) => x.server === CCR);
         canFire = !!(srv && srv.tools.some((t) => t.name === "fire_trigger"));
-        if (srv && srv.tools.some((t) => t.name === "get_trigger")) {
-          m.watchTool(CCR, "get_trigger", { trigger_id: PICKUP_TRIGGER }, (ev) => {
-            if (ev.type !== "data") return;
-            const pl = ev.result && ev.result.payload; const tr = pl && (pl.trigger || pl);
-            if (tr && typeof tr.enabled === "boolean") { pickup = { enabled: tr.enabled, next: tr.next_run_at || null }; nr(); render(); }
-          }, { refetchInterval: 15 * 60 * 1000 });
-        } } catch { canFire = false; } }
+        canWatch = !!(srv && srv.tools.some((t) => t.name === "get_trigger"));
+        watchPickup(); } catch { canFire = false; } }
       render();
     });
     if (assets) $("inspPick").hidden = false;
@@ -1033,10 +1033,13 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     });
     db.doc("hashtags/current").onSnapshot((d) => renderHashtags(d.exists ? d.data() : null), () => {});
     db.doc("meta/repo").onSnapshot((d) => renderRepo(d.exists ? d.data() : null), () => {});
+    db.doc("meta/pickup").onSnapshot((d) => {
+      const t = d.exists ? d.data().triggerId : null;
+      const next = typeof t === "string" && /^trig_[A-Za-z0-9]+$/.test(t) ? t : PICKUP_TRIGGER;
+      if (next !== pickupTrigger) { pickupTrigger = next; watchPickup(); nr(); render(); }
+    }, () => {});
     nr(); setInterval(() => { nr(); render(); }, 60000); // nur Zeitangaben auffrischen, kein Schreiben
   }
   start();
 })();
 </script>
-
-</body></html>

@@ -11,5 +11,6 @@ whisper.cpp
 
 # Python-Umgebung und lokal geladene Sprachmodelle (groß)
 .venv
+.venv-cb
 /voices
 __pycache__
