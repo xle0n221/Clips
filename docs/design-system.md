@@ -313,3 +313,11 @@ Prüfkomposition `MotionKitTest` Einstellungen 9–12 (Frames 360–599, 8 s).
 2. Flur-Punktlichter 18 → Haut braun, Wand überstrahlt; mit 6 + Fülllicht von vorn Gesicht RGB 222/213/196 (Standbild Frame 368).
 3. Kamerafahrt zum Portal-Ziel muss frei sein: Erste Fassung flog durch das Formular (`portal-schirm.jpg`) – Requisiten neben die Achse Kamera→Öffnung stellen.
 4. Requisiten nahe der Flugbahn (Wegweiser) rauschen groß vorbei – wirkt als Parallaxe, darf aber kein Wort verdecken.
+
+**Orchestrator-Prüfung (09.11.2026, `uebersicht2.jpg`) und Korrektur:**
+1. Einstellung 9: Kopf dunkelbraun – das war der Stand **vor** dem Fülllicht. Frisches Standbild (Frame 368)
+   Kopf RGB 216–222 / 205–214 / 191–199 = hell wie Rom; im neuen Probe-Clip in allen 3 Bildern hell (`uebersicht3.jpg`).
+2. Einstellung 11: Tabletten-Augen am Rand angeschnitten und Gesicht im Untertitelband. → Tablette auf x 0,6 (nah an
+   der Achse zum Bildschirm, unter der Flugbahn), Blickpunkt `aimAt([0.1, 1.15, 0], 6.2)` statt y 1,9, Formular x −0,55
+   (Titel ganz im Bild). Gefletschte Zähne auf gewölbtem `FaceOn` versanken in der Fläche → bei `curve` Abstand 0,09 statt 0,03.
+3. Probe 9–12 neu (`out/motion-test-ricks.mp4`, 240 Bilder 132 s); Rom erneut Pixel-Diff 0 (1,2/30,6/76,3 s).

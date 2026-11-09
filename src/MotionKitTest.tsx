@@ -353,14 +353,14 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
     const talk = talkFromCaptions(WORDS2, (g / 30) * 1000);
     const worried = f > 34;
     const screenC: V3 = [1.2, 2.7, -1.5];
-    const a = aimAt([0, 1.9, 0], 6.2, { yf: 0.5, dir: [0.25, 0.15, 1] });
+    const a = aimAt([0.1, 1.15, 0], 6.2, { yf: 0.5, dir: [0.25, 0.15, 1] });
     return (
       <>
         <StudioBackdrop top="#0E2236" bottom="#1E4A5E" center="#3F8FA8" />
         <StudioLights color="#E8F7FF" />
         <FloorPlate color="#D6E4EA" rim={KIT.board} />
         <Shot frame={f} duration={LEN[10]} from={a.pos} to={[a.pos[0] * 0.6 + 0.4, a.pos[1], a.pos[2] - 1]} look={a.look} lookTo={screenC} fov={40} span={[30, LEN[10]]} ease="inOut" />
-        <group position={[0.15, 0, 0.6]}>
+        <group position={[0.6, 0, 0.6]}>
           <Pill3D />
           <FaceOn
             frame={g}
@@ -375,7 +375,7 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
           />
         </group>
         <FormSheet
-          position={[-1.05, 1.5, 0.5]}
+          position={[-0.55, 1.5, 0.45]}
           rotation={[0, 0.25, 0]}
           scale={0.62}
           title="CONSENT FORM"

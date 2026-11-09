@@ -722,7 +722,7 @@ export const FaceOn: React.FC<{
           )}
         </group>
       )}
-      {m === "clench" && <ClenchMouth pos={pt(0, -0.38, 0.03)} />}
+      {m === "clench" && <ClenchMouth pos={pt(0, -0.38, curve ? 0.09 : 0.03)} />}
       {m === "beam" && <BeamMouth pos={pt(0, -0.3, 0.02)} />}
       {m === "smirk" && <SmirkMouth pos={pt(0, -0.32, 0.02)} />}
       {m === "talk" && talk !== undefined && (
