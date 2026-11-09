@@ -73,7 +73,7 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
   (im Hintergrund; ~40 Min für 87 s auf 4 CPU-Kernen ohne GPU, Rom mit mehr Figuren ~70 Min geschätzt).
   Ohne `--browser-executable` will Remotion Chromium von remotion.media laden – das Netz der Cloud-Umgebung
   sperrt den Host (ENOTFOUND, 09.11.2026).
-- `scripts/finalize.sh out/<thema>-raw.mp4 out/<thema>.mp4` (−14 LUFS).
+- `scripts/finalize.sh out/<thema>-raw.mp4 out/<thema>.mp4` (−14 LUFS, BT.709, yuv420p, +faststart = upload-fertig für Shorts/TikTok).
 - Endkontrolle: `ffprobe` (1080×1920, 30 fps, AAC), Lautheit (`ebur128`), Kontaktabzug alle 3 s.
 - Video an den Nutzer senden, ehrlich über bekannte Schwächen berichten, committen, pushen.
 
