@@ -1,72 +1,72 @@
 {
  "id": "roman-empire",
  "title": "You bought Rome. Worst job ever.",
- "durationMs": 113201,
+ "durationMs": 133640,
  "scenes": [
   {
    "id": "hook",
    "startMs": 150,
-   "endMs": 8462
+   "endMs": 13080
   },
   {
    "id": "auction",
-   "startMs": 8462,
-   "endMs": 21467
+   "startMs": 13080,
+   "endMs": 28400
   },
   {
    "id": "stones",
-   "startMs": 21467,
-   "endMs": 30185
+   "startMs": 28400,
+   "endMs": 38770
   },
   {
    "id": "chaos",
-   "startMs": 30185,
-   "endMs": 37366
+   "startMs": 38770,
+   "endMs": 46450
   },
   {
    "id": "split",
-   "startMs": 37366,
-   "endMs": 46894
+   "startMs": 46450,
+   "endMs": 58260
   },
   {
    "id": "goths",
-   "startMs": 46894,
-   "endMs": 55227
+   "startMs": 58260,
+   "endMs": 68310
   },
   {
    "id": "perished",
-   "startMs": 55227,
-   "endMs": 63603
+   "startMs": 68310,
+   "endMs": 78370
   },
   {
    "id": "vandals",
-   "startMs": 63603,
-   "endMs": 72769
+   "startMs": 78370,
+   "endMs": 89060
   },
   {
    "id": "kid",
-   "startMs": 72769,
-   "endMs": 81315
+   "startMs": 89060,
+   "endMs": 96930
   },
   {
    "id": "fired",
-   "startMs": 81315,
-   "endMs": 90481
+   "startMs": 96930,
+   "endMs": 107080
   },
   {
    "id": "deleted",
-   "startMs": 90481,
-   "endMs": 95038
+   "startMs": 107080,
+   "endMs": 112720
   },
   {
    "id": "twist",
-   "startMs": 95038,
-   "endMs": 103307
+   "startMs": 112720,
+   "endMs": 121600
   },
   {
    "id": "vote",
-   "startMs": 103307,
-   "endMs": 112601
+   "startMs": 121600,
+   "endMs": 133040
   }
  ],
  "cues": [
@@ -75,13 +75,13 @@
    "color": "#FFD23F",
    "sfx": "boom",
    "scene": "hook",
-   "atMs": 1200
+   "atMs": 920
   },
   {
    "beat": "auctionWide",
    "sfx": "whoosh",
    "scene": "hook",
-   "atMs": 2340
+   "atMs": 3720
   },
   {
    "beat": "youWin",
@@ -93,35 +93,41 @@
     "y": 0.42
    },
    "scene": "hook",
-   "atMs": 3640
+   "atMs": 6900
   },
   {
    "beat": "throneClose",
    "sfx": "pop",
    "scene": "hook",
-   "atMs": 4880
+   "atMs": 9540
   },
   {
    "sticker": "RESPAWN = WORSE JOB",
    "color": "#FF8A3D",
    "scene": "hook",
-   "atMs": 6190
+   "atMs": 10960,
+   "beat": "respawnScare"
   },
   {
    "beat": "worriedPush",
    "scene": "hook",
-   "atMs": 7630
+   "atMs": 12340
   },
   {
    "emph": true,
    "scene": "hook",
-   "atMs": 1200
+   "atMs": 3720
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 12340
   },
   {
    "beat": "rewind",
    "sfx": "whoosh",
    "scene": "auction",
-   "atMs": 8320
+   "atMs": 13380
   },
   {
    "hud": {
@@ -129,7 +135,7 @@
     "value": 193
    },
    "scene": "auction",
-   "atMs": 8910
+   "atMs": 14210
   },
   {
    "beat": "guardsWall",
@@ -140,20 +146,20 @@
     "y": 0.3
    },
    "scene": "auction",
-   "atMs": 10070
+   "atMs": 15220
   },
   {
    "sticker": "87 DAYS",
    "color": "#B0BEC5",
    "sfx": "pop",
    "scene": "auction",
-   "atMs": 12000
+   "atMs": 17280
   },
   {
    "beat": "throneForSale",
    "sfx": "ding",
    "scene": "auction",
-   "atMs": 13210
+   "atMs": 19140
   },
   {
    "beat": "rivalInside",
@@ -164,37 +170,42 @@
     "y": 0.45
    },
    "scene": "auction",
-   "atMs": 14240
+   "atMs": 20660
   },
   {
    "beat": "youOutside",
    "sfx": "pop",
    "scene": "auction",
-   "atMs": 15850
+   "atMs": 22800
   },
   {
    "beat": "fingers",
    "sfx": "whoosh",
    "scene": "auction",
-   "atMs": 17200
+   "atMs": 24300
   },
   {
    "sticker": "25,000 SESTERCES / SOLDIER",
    "color": "#FFD23F",
    "sfx": "boom",
    "scene": "auction",
-   "atMs": 18720
+   "atMs": 25680
   },
   {
    "beat": "sold",
    "sfx": "ding",
    "scene": "auction",
-   "atMs": 20480
+   "atMs": 27620
   },
   {
    "emph": true,
    "scene": "auction",
-   "atMs": 18720
+   "atMs": 25680
+  },
+  {
+   "emph": true,
+   "scene": "auction",
+   "atMs": 26130
   },
   {
    "beat": "crowdBoo",
@@ -210,51 +221,51 @@
     "y": 0.42
    },
    "scene": "stones",
-   "atMs": 21700
+   "atMs": 28960
   },
   {
    "beat": "stonesFly",
    "sfx": "pop",
    "scene": "stones",
-   "atMs": 23750
+   "atMs": 30980
   },
   {
    "sticker": "66 DAYS",
    "color": "#FF5A5A",
    "sfx": "boom",
    "scene": "stones",
-   "atMs": 24500
+   "atMs": 32500
   },
   {
    "beat": "gameOver",
    "scene": "stones",
-   "atMs": 25310
+   "atMs": 33880
   },
   {
    "beat": "lastWords",
    "scene": "stones",
-   "atMs": 27110
+   "atMs": 35980
   },
   {
    "beat": "deadpan",
    "sfx": "ding",
    "scene": "stones",
-   "atMs": 28320
+   "atMs": 37120
   },
   {
    "emph": true,
    "scene": "stones",
-   "atMs": 25310
+   "atMs": 33880
   },
   {
    "emph": true,
    "scene": "stones",
-   "atMs": 25580
+   "atMs": 34020
   },
   {
    "emph": true,
    "scene": "stones",
-   "atMs": 28750
+   "atMs": 37640
   },
   {
    "sticker": "5 EMPERORS \u00b7 1 YEAR",
@@ -262,7 +273,7 @@
    "sfx": "pop",
    "beat": "throneCarousel",
    "scene": "chaos",
-   "atMs": 30830
+   "atMs": 40280
   },
   {
    "hud": {
@@ -272,7 +283,7 @@
    "beat": "stele238",
    "sfx": "whoosh",
    "scene": "chaos",
-   "atMs": 33630
+   "atMs": 43487
   },
   {
    "sticker": "6 RULERS \u00b7 FEW MONTHS",
@@ -283,24 +294,24 @@
     "value": 0.7
    },
    "scene": "chaos",
-   "atMs": 34560
+   "atMs": 43913
   },
   {
    "beat": "nopeSkip",
    "sfx": "whoosh",
    "scene": "chaos",
-   "atMs": 36560
+   "atMs": 46020
   },
   {
    "emph": true,
    "scene": "chaos",
-   "atMs": 36560
+   "atMs": 46020
   },
   {
    "beat": "respawn",
    "sfx": "whoosh",
    "scene": "split",
-   "atMs": 37200
+   "atMs": 46900
   },
   {
    "hud": {
@@ -308,14 +319,14 @@
     "value": 395
    },
    "scene": "split",
-   "atMs": 37810
+   "atMs": 47630
   },
   {
    "sticker": "HARD MODE",
    "color": "#FF8A3D",
    "sfx": "pop",
    "scene": "split",
-   "atMs": 38880
+   "atMs": 47740
   },
   {
    "beat": "mapSplit",
@@ -325,7 +336,7 @@
     "value": 0.5
    },
    "scene": "split",
-   "atMs": 40110
+   "atMs": 49440
   },
   {
    "label": {
@@ -335,7 +346,7 @@
     "y": 0.45
    },
    "scene": "split",
-   "atMs": 40810
+   "atMs": 50780
   },
   {
    "beat": "honoriusThrone",
@@ -346,20 +357,20 @@
     "y": 0.42
    },
    "scene": "split",
-   "atMs": 42080
+   "atMs": 52460
   },
   {
    "sticker": "LEGEND SAYS\u2026",
    "color": "#FFFFFF",
    "sfx": "pop",
    "scene": "split",
-   "atMs": 43680
+   "atMs": 54680
   },
   {
    "beat": "rooster",
    "sfx": "ding",
    "scene": "split",
-   "atMs": 45000
+   "atMs": 56020
   },
   {
    "label": {
@@ -369,22 +380,22 @@
     "y": 0.5
    },
    "scene": "split",
-   "atMs": 45420
+   "atMs": 57720
   },
   {
    "emph": true,
    "scene": "split",
-   "atMs": 38880
+   "atMs": 47740
   },
   {
    "emph": true,
    "scene": "split",
-   "atMs": 39140
+   "atMs": 48460
   },
   {
    "emph": true,
    "scene": "split",
-   "atMs": 42080
+   "atMs": 52460
   },
   {
    "hud": {
@@ -393,7 +404,7 @@
    },
    "sfx": "boom",
    "scene": "goths",
-   "atMs": 46560
+   "atMs": 58980
   },
   {
    "beat": "gothsMarch",
@@ -404,7 +415,7 @@
     "y": 0.5
    },
    "scene": "goths",
-   "atMs": 47430
+   "atMs": 59660
   },
   {
    "beat": "loot",
@@ -414,27 +425,27 @@
     "value": 0.35
    },
    "scene": "goths",
-   "atMs": 47840
+   "atMs": 60160
   },
   {
    "sticker": "ONE STORY SAYS\u2026",
    "color": "#FFFFFF",
    "sfx": "pop",
    "scene": "goths",
-   "atMs": 49250
+   "atMs": 62060
   },
   {
    "beat": "fakeGift",
    "sticker": "300 \"GIFTS\"",
    "color": "#FFAB40",
    "scene": "goths",
-   "atMs": 49900
+   "atMs": 62960
   },
   {
    "beat": "gateOpens",
    "sfx": "whoosh",
    "scene": "goths",
-   "atMs": 52440
+   "atMs": 65860
   },
   {
    "beat": "trojanGag",
@@ -442,59 +453,69 @@
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "goths",
-   "atMs": 52960
+   "atMs": 66560
+  },
+  {
+   "emph": true,
+   "scene": "goths",
+   "atMs": 66560
+  },
+  {
+   "emph": true,
+   "scene": "goths",
+   "atMs": 66820
   },
   {
    "sticker": "LEGEND SAYS\u2026",
    "color": "#FFFFFF",
    "scene": "perished",
-   "atMs": 55340
+   "atMs": 68740
   },
   {
    "beat": "servantIn",
    "sfx": "whoosh",
    "scene": "perished",
-   "atMs": 56680
+   "atMs": 70100
   },
   {
    "sticker": "ROME HAS PERISHED!",
    "color": "#FF5A5A",
    "sfx": "boom",
    "scene": "perished",
-   "atMs": 57890
+   "atMs": 71940
   },
   {
    "beat": "horror",
    "scene": "perished",
-   "atMs": 58910
+   "atMs": 72900
   },
   {
    "beat": "roosterEats",
    "sfx": "pop",
    "scene": "perished",
-   "atMs": 60590
+   "atMs": 74860
   },
   {
    "beat": "pointMap",
    "scene": "perished",
-   "atMs": 61990
+   "atMs": 76220
   },
   {
    "beat": "phew",
    "sfx": "ding",
    "scene": "perished",
-   "atMs": 62550
+   "atMs": 77680
   },
   {
    "emph": true,
    "scene": "perished",
-   "atMs": 62550
+   "atMs": 77680
   },
   {
    "beat": "respawnQueue",
    "sfx": "whoosh",
    "scene": "vandals",
-   "atMs": 63920
+   "atMs": 78920
   },
   {
    "hud": {
@@ -503,7 +524,7 @@
    },
    "beat": "templeWide",
    "scene": "vandals",
-   "atMs": 64820
+   "atMs": 80250
   },
   {
    "beat": "vandals",
@@ -514,7 +535,7 @@
     "y": 0.5
    },
    "scene": "vandals",
-   "atMs": 65830
+   "atMs": 81260
   },
   {
    "sticker": "14 DAYS",
@@ -525,13 +546,13 @@
     "value": 0.2
    },
    "scene": "vandals",
-   "atMs": 66920
+   "atMs": 82420
   },
   {
    "beat": "roofOff",
    "sfx": "pop",
    "scene": "vandals",
-   "atMs": 69700
+   "atMs": 85680
   },
   {
    "beat": "dictionary",
@@ -539,18 +560,18 @@
    "color": "#FFFFFF",
    "sfx": "ding",
    "scene": "vandals",
-   "atMs": 70160
+   "atMs": 86460
   },
   {
    "emph": true,
    "scene": "vandals",
-   "atMs": 70550
+   "atMs": 87340
   },
   {
    "beat": "respawnKid",
    "sfx": "whoosh",
    "scene": "kid",
-   "atMs": 72080
+   "atMs": 89560
   },
   {
    "hud": {
@@ -558,14 +579,14 @@
     "value": 475
    },
    "scene": "kid",
-   "atMs": 73840
+   "atMs": 90640
   },
   {
    "sticker": "NIGHTMARE MODE",
    "color": "#FF5A5A",
    "sfx": "boom",
    "scene": "kid",
-   "atMs": 74960
+   "atMs": 90820
   },
   {
    "beat": "kidThrone",
@@ -577,34 +598,34 @@
     "y": 0.45
    },
    "scene": "kid",
-   "atMs": 76330
+   "atMs": 92420
   },
   {
    "beat": "wreathSlips",
    "scene": "kid",
-   "atMs": 79070
+   "atMs": 94960
   },
   {
    "sticker": "\"LITTLE AUGUSTUS\"",
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "kid",
-   "atMs": 79930
+   "atMs": 95900
   },
   {
    "emph": true,
    "scene": "kid",
-   "atMs": 74960
+   "atMs": 90820
   },
   {
    "emph": true,
    "scene": "kid",
-   "atMs": 75440
+   "atMs": 91560
   },
   {
    "emph": true,
    "scene": "kid",
-   "atMs": 79070
+   "atMs": 94960
   },
   {
    "hud": {
@@ -613,7 +634,7 @@
    },
    "sfx": "boom",
    "scene": "fired",
-   "atMs": 81590
+   "atMs": 98300
   },
   {
    "beat": "odoacerLift",
@@ -628,42 +649,42 @@
     "y": 0.32
    },
    "scene": "fired",
-   "atMs": 82310
+   "atMs": 99140
   },
   {
    "beat": "setDown",
    "sfx": "pop",
    "scene": "fired",
-   "atMs": 84990
+   "atMs": 101480
   },
   {
    "beat": "prettyFace",
    "sfx": "ding",
    "scene": "fired",
-   "atMs": 86150
+   "atMs": 102960
   },
   {
    "sticker": "6,000 GOLD PIECES",
    "color": "#FFD23F",
    "sfx": "pop",
    "scene": "fired",
-   "atMs": 86940
+   "atMs": 103860
   },
   {
    "beat": "villaWalk",
    "sfx": "whoosh",
    "scene": "fired",
-   "atMs": 88690
+   "atMs": 105580
   },
   {
    "emph": true,
    "scene": "fired",
-   "atMs": 89180
+   "atMs": 106340
   },
   {
    "beat": "emptyThrone",
    "scene": "deleted",
-   "atMs": 90080
+   "atMs": 107580
   },
   {
    "beat": "senateScroll",
@@ -675,14 +696,14 @@
     "y": 0.42
    },
    "scene": "deleted",
-   "atMs": 90730
+   "atMs": 108240
   },
   {
    "sticker": "1 EMPEROR IS ENOUGH",
    "color": "#4FC3F7",
    "sfx": "pop",
    "scene": "deleted",
-   "atMs": 92890
+   "atMs": 110220
   },
   {
    "beat": "stamp",
@@ -692,18 +713,18 @@
     "value": 0.0
    },
    "scene": "deleted",
-   "atMs": 94280
+   "atMs": 111880
   },
   {
    "emph": true,
    "scene": "deleted",
-   "atMs": 94280
+   "atMs": 111880
   },
   {
    "beat": "flyEast",
    "sfx": "whoosh",
    "scene": "twist",
-   "atMs": 95110
+   "atMs": 113100
   },
   {
    "beat": "eastGlow",
@@ -712,14 +733,14 @@
     "value": 0.5
    },
    "scene": "twist",
-   "atMs": 96460
+   "atMs": 114940
   },
   {
    "sticker": "+977 YEARS",
    "color": "#4FC3F7",
    "sfx": "boom",
    "scene": "twist",
-   "atMs": 98520
+   "atMs": 117380
   },
   {
    "hud": {
@@ -728,7 +749,7 @@
    },
    "beat": "steleRace",
    "scene": "twist",
-   "atMs": 100190
+   "atMs": 119260
   },
   {
    "beat": "eastEmperor",
@@ -740,12 +761,12 @@
     "y": 0.42
    },
    "scene": "twist",
-   "atMs": 102510
+   "atMs": 120920
   },
   {
    "emph": true,
    "scene": "twist",
-   "atMs": 102510
+   "atMs": 120920
   },
   {
    "beat": "youSteps",
@@ -758,12 +779,12 @@
     ]
    },
    "scene": "vote",
-   "atMs": 103350
+   "atMs": 122040
   },
   {
    "beat": "cardsClose",
    "scene": "vote",
-   "atMs": 107280
+   "atMs": 126820
   },
   {
    "beat": "shrug",
@@ -771,13 +792,13 @@
    "color": "#FFFFFF",
    "sfx": "pop",
    "scene": "vote",
-   "atMs": 109310
+   "atMs": 128960
   },
   {
    "beat": "loopRush",
    "sfx": "whoosh",
    "scene": "vote",
-   "atMs": 110460
+   "atMs": 130420
   }
  ],
  "hud": {

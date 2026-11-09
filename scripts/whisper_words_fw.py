@@ -3,6 +3,9 @@
 Ausgabe wie @remotion/captions: [{text, startMs, endMs, timestampMs, confidence}].
 Audio wird mit soundfile geladen und als Array übergeben (Dateipfad scheitert in Cloud-Containern an `av`)."""
 import json
+import os
+
+os.environ.setdefault("HF_HUB_DISABLE_XET", "1")  # Xet-CDN ist im Cloud-Netz gesperrt; normaler HF-Download geht
 import sys
 
 import numpy as np
