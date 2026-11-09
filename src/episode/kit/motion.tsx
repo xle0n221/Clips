@@ -402,6 +402,78 @@ export const GradeTint: React.FC<{ readonly grade: Act | GradeSpec | undefined }
   );
 };
 
+/**
+ * Ort-Licht (referenz-analyse-4.md Technik 7): weiches Leuchten + farbige Vignette als DOM-Ebene
+ * über der Leinwand (unter Untertiteln). Kostet zwei CSS-Verläufe, kein 3D. Farbwelt je Ort über
+ * `PLACE_GLOW`-Preset oder eigene Werte; `flicker` 0..1 = Kerzen-/Lampenflackern (deterministisch).
+ */
+export type PlaceGlowSpec = {
+  /** Farbe des Leuchtens (screen-Mischung) */
+  readonly color: string;
+  /** Mittelpunkt in Bildanteilen */
+  readonly at: readonly [number, number];
+  /** Radius in Bildbreiten */
+  readonly radius: number;
+  readonly strength: number;
+  /** Vignettenfarbe (multiply-Mischung, dunkle Ränder in der Farbwelt des Orts) */
+  readonly vignette: string;
+  readonly vignetteStrength: number;
+};
+export const PLACE_GLOW = {
+  /** warmer Innenraum (Flur, Wohnzimmer, Kerzenlicht) */
+  warm: { color: "#FFB866", at: [0.5, 0.36], radius: 0.75, strength: 0.32, vignette: "#3A0E0A", vignetteStrength: 0.6 },
+  /** Körperinneres / Gefahr (rot) */
+  body: { color: "#FF6A5A", at: [0.5, 0.4], radius: 0.8, strength: 0.28, vignette: "#4A0610", vignetteStrength: 0.65 },
+  /** Labor / Technik (kühl) */
+  lab: { color: "#9FE3FF", at: [0.5, 0.3], radius: 0.8, strength: 0.22, vignette: "#0B1A33", vignetteStrength: 0.5 },
+  /** Nacht / Weltraum (violett) */
+  night: { color: "#B39CFF", at: [0.5, 0.32], radius: 0.7, strength: 0.22, vignette: "#0A0620", vignetteStrength: 0.7 },
+  /** Tageslicht draußen (sanft) */
+  day: { color: "#FFF1C7", at: [0.62, 0.18], radius: 0.9, strength: 0.18, vignette: "#24304A", vignetteStrength: 0.3 },
+} as const satisfies Record<string, PlaceGlowSpec>;
+export type Place = keyof typeof PLACE_GLOW;
+
+export const PlaceGlow: React.FC<{
+  readonly place?: Place | PlaceGlowSpec;
+  readonly frame?: number;
+  readonly flicker?: number;
+  /** 0..1 Ein-/Ausblenden (z. B. beim Ortswechsel) */
+  readonly amount?: number;
+  readonly width?: number;
+  readonly height?: number;
+}> = ({ place = "warm", frame = 0, flicker = 0, amount = 1, width = 1080, height = 1920 }) => {
+  const g = typeof place === "string" ? PLACE_GLOW[place] : place;
+  if (amount <= 0.01) return null;
+  const fl = flicker ? 1 + flicker * (0.06 * Math.sin(frame * 0.9) + 0.04 * Math.sin(frame * 2.3 + 1.1)) : 1;
+  const cx = g.at[0] * width;
+  const cy = g.at[1] * height;
+  const r = g.radius * width;
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          mixBlendMode: "screen",
+          opacity: g.strength * amount * fl,
+          background: `radial-gradient(circle at ${cx}px ${cy}px, ${g.color} 0px, rgba(0,0,0,0) ${r.toFixed(0)}px)`,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          mixBlendMode: "multiply",
+          opacity: g.vignetteStrength * amount,
+          background: `radial-gradient(ellipse 75% 62% at 50% 46%, rgba(255,255,255,0) 55%, ${g.vignette} 100%)`,
+        }}
+      />
+    </>
+  );
+};
+
 export { smooth as SMOOTH_EASE };
 
 /* ------------------------------------------------------------------ */

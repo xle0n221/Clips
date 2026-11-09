@@ -212,7 +212,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
       })}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="above" />
-      <Captions captions={captions} emph={emph.size ? emph : undefined} />
+      <Captions captions={captions} emph={emph.size ? emph : undefined} mode={timeline.captionMode} />
       <Grade />
 
       {/* Ton: Stimme, Musikbett, Effekte */}

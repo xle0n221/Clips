@@ -18,10 +18,18 @@ import { seeded, INK } from "./toon";
  * - `match` – Match Cut: harter Schnitt + 4 Bilder kleiner Zoom-Stoß (gleiche Form an gleicher
  *             Bildstelle selbst per `aimAt` planen)
  * - `cut`   – harter Schnitt ohne alles
+ * - `portal` – Portal-Fahrt (referenz-analyse-4.md Technik 1): A fliegt IN ein Objekt (Tür, Kopf,
+ *             Bildschirm) – echte 3D-Fahrt per Rig-`push` auf das Blickziel, die Öffnung leuchtet
+ *             in `color` auf und füllt das Bild; B erscheint durch eine Öffnung in Portal-Form
+ *             (`portal`: door/round/screen), deren Rahmen an der Kamera vorbeifliegt, während die
+ *             Kamera in B weiter vorwärts gleitet. Kein Schwarz, kein Blitz. Voraussetzung: Das
+ *             Blickziel (`look`) der letzten A-Einstellung liegt IN der Öffnung, `at` = ihre
+ *             Bildstelle (`screenOf`).
  */
 export type WipeShape = "circle" | "star" | "hex" | "diamond" | "burst";
+export type PortalShape = "door" | "round" | "screen";
 export type TransitionSpec = {
-  readonly kind: "flash" | "tint" | "whip" | "wipe" | "zoom" | "match" | "cut";
+  readonly kind: "flash" | "tint" | "whip" | "wipe" | "zoom" | "match" | "cut" | "portal";
   /** Bilder vor UND nach dem Schnitt (Standard: whip 6, wipe 8, zoom 8, tint 6) */
   readonly frames?: number;
   /** whip: 1 = Schwenk nach rechts (Bild zieht nach links), −1 = nach links */
@@ -31,6 +39,9 @@ export type TransitionSpec = {
   readonly shape?: WipeShape;
   /** wipe/zoom: Mittelpunkt in Bildanteilen (Standard Bildmitte etwas über der Mitte) */
   readonly at?: readonly [number, number];
+  /** portal: Form der Öffnung (Standard door) und Farbe des Rahmens (Standard INK-nahes Holz) */
+  readonly portal?: PortalShape;
+  readonly rim?: string;
 };
 
 export type TransitionState = {
@@ -48,6 +59,7 @@ const DEFAULT_FRAMES: Record<TransitionSpec["kind"], number> = {
   zoom: 8,
   match: 4,
   cut: 0,
+  portal: 12,
 };
 
 /**
@@ -64,7 +76,8 @@ export const transitionAt = (
     const spec = specs[i] ?? { kind: "flash" };
     const n = spec.frames ?? DEFAULT_FRAMES[spec.kind];
     const local = frame - cuts[i];
-    const pre = spec.kind === "whip" || spec.kind === "wipe" || spec.kind === "zoom" ? n : 0;
+    const pre =
+      spec.kind === "whip" || spec.kind === "wipe" || spec.kind === "zoom" || spec.kind === "portal" ? n : 0;
     if (local >= -pre && local < Math.max(n, 12)) return { spec, local, n };
   }
   return null;
@@ -89,6 +102,10 @@ export const rigOf = (s: TransitionState | null): CameraRig => {
       return { ...NO_RIG, push: 0.82 * pre * pre * pre + 0.5 * post * post, fov: 1 - 0.1 * pre };
     case "wipe":
       return { ...NO_RIG, push: 0.12 * pre * pre };
+    case "portal":
+      // A: beschleunigte Fahrt bis knapp vor das Blickziel (0,93 – nie hindurch, sonst near-plane);
+      // B: Kamera kommt mit Restschwung von hinten an und bremst ab (Fahrt geht über den Schnitt weiter)
+      return { ...NO_RIG, push: 0.93 * Math.pow(pre, 2.4) - 0.45 * post * post, fov: 1 - 0.08 * pre + 0.06 * post };
     default:
       return NO_RIG;
   }
@@ -111,6 +128,12 @@ export const canvasFxOf = (
     const punch = interpolate(s.local, [0, 9], [1.12, 1], { extrapolateRight: "clamp" });
     const blur = interpolate(s.local, [0, 5], [10, 0], { extrapolateRight: "clamp" });
     return { filter: `blur(${blur}px)`, transform: `scale(${punch})` };
+  }
+  if (s.spec.kind === "portal") {
+    // leichte radiale Bewegungsunschärfe-Andeutung: Zoom-Stoß am Ende von A, Nachschwingen in B
+    const k = Math.pow(pre, 3);
+    const q = post;
+    return { filter: k + q > 0.05 ? `blur(${(3 * k + 2 * q * q).toFixed(2)}px)` : "", transform: `scale(${1 + 0.05 * k + 0.04 * q * q})` };
   }
   if (s.spec.kind === "match") {
     if (s.local < 0) return { filter: "", transform: "" };
@@ -286,6 +309,9 @@ export const TransitionOverlay: React.FC<{
       </AbsoluteFill>
     );
   }
+  if (spec.kind === "portal") {
+    return <PortalOverlay state={state} width={width} height={height} cx={cx} cy={cy} far={far} />;
+  }
   if (spec.kind === "zoom") {
     // Farbe schließt sich als Iris um die Bildmitte, B öffnet sie wieder
     const open = local < 0 ? 1 - pre * pre : 1 - post * post;
@@ -300,4 +326,98 @@ export const TransitionOverlay: React.FC<{
     );
   }
   return null;
+};
+
+/* Portal-Öffnungen: Pfad (Mitte 0,0) + halbe Innenmaße des Rechtecks, das sicher in der Form liegt. */
+const PORTALS: Record<PortalShape, { d: string; hw: number; hh: number; round?: boolean }> = {
+  // Tür: Rechteck mit Rundbogen oben, 1,2 breit, 2 hoch
+  door: { d: "M -0.6 1 L -0.6 -0.4 A 0.6 0.6 0 0 1 0.6 -0.4 L 0.6 1 Z", hw: 0.6, hh: 0.7 },
+  round: { d: "M -1 0 A 1 1 0 1 0 1 0 A 1 1 0 1 0 -1 0 Z", hw: 1, hh: 1, round: true },
+  // Bildschirm: abgerundetes Hochformat-Rechteck 1,2 × 2
+  screen: {
+    d: "M -0.5 -1 L 0.5 -1 Q 0.6 -1 0.6 -0.9 L 0.6 0.9 Q 0.6 1 0.5 1 L -0.5 1 Q -0.6 1 -0.6 0.9 L -0.6 -0.9 Q -0.6 -1 -0.5 -1 Z",
+    hw: 0.58,
+    hh: 0.98,
+  },
+};
+
+/**
+ * Bildebene der Portal-Fahrt. Vor dem Schnitt: Licht aus der Öffnung (`color`) wächst von `at`
+ * aus, bis es das Bild füllt. Nach dem Schnitt: Loch in Portal-Form wächst aus der Bildmitte über
+ * den Rand hinaus, mit INK-Rand und Rahmenband (`rim`) – der Rahmen fliegt an der Kamera vorbei.
+ */
+const PortalOverlay: React.FC<{
+  readonly state: TransitionState;
+  readonly width: number;
+  readonly height: number;
+  readonly cx: number;
+  readonly cy: number;
+  readonly far: number;
+}> = ({ state, width, height, cx, cy, far }) => {
+  const { spec, local, n } = state;
+  const { pre, post } = phases(state);
+  const color = spec.color ?? "#FFE3A3";
+  const rim = spec.rim ?? "#5A3A26";
+  if (local < 0) {
+    // Licht quillt aus der Öffnung: erst weicher Schein, in den letzten Bildern deckend
+    const k = Math.pow(pre, 2.2);
+    if (k < 0.02) return null;
+    const r = far * 1.1 * k;
+    return (
+      <AbsoluteFill
+        style={{
+          background: `radial-gradient(circle at ${cx}px ${cy}px, ${color} ${(r * 0.55).toFixed(1)}px, rgba(255,255,255,0) ${r.toFixed(1)}px)`,
+          opacity: Math.min(1, 0.35 + 0.65 * k * 1.3),
+        }}
+      />
+    );
+  }
+  if (local >= n) return null;
+  const sh = PORTALS[spec.portal ?? "door"];
+  // Loch wächst immer aus der Bildmitte (B landet zentriert), Größe bis bildfüllend
+  const mx = width / 2;
+  const my = height * 0.46;
+  const full = sh.round
+    ? Math.hypot(Math.max(mx, width - mx), Math.max(my, height - my)) * 1.08
+    : Math.max(Math.max(mx, width - mx) / sh.hw, Math.max(my, height - my) / sh.hh) * 1.08;
+  const u = 1 - post; // 0 → 1
+  const e = 1 - Math.pow(1 - u, 2.6);
+  const s = full * (0.32 + 0.9 * e);
+  const band = Math.max(18, s * 0.09);
+  const glow = 1 - e;
+  return (
+    <AbsoluteFill>
+      <svg width={width} height={height}>
+        <defs>
+          <mask id="kit-portal-hole">
+            <rect width={width} height={height} fill="white" />
+            <path d={sh.d} transform={`translate(${mx} ${my}) scale(${s})`} fill="black" />
+          </mask>
+          <radialGradient id="kit-portal-glow" cx="50%" cy="46%" r="75%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.9 * glow} />
+            <stop offset="100%" stopColor={color} stopOpacity={0} />
+          </radialGradient>
+        </defs>
+        <rect width={width} height={height} fill={color} mask="url(#kit-portal-hole)" />
+        {/* Rahmenband mit INK-Kanten (zuerst breiter in INK, darüber das Band): fliegt an der Kamera vorbei */}
+        {[
+          [INK, band + 20],
+          [rim, band],
+        ].map(([c, w]) => (
+          <path
+            key={String(c)}
+            d={sh.d}
+            transform={`translate(${mx} ${my}) scale(${s})`}
+            fill="none"
+            stroke={String(c)}
+            strokeWidth={Number(w)}
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+          />
+        ))}
+        {/* Restlicht im Loch, das in den ersten Bildern von B abklingt */}
+        {glow > 0.05 ? <rect width={width} height={height} fill="url(#kit-portal-glow)" /> : null}
+      </svg>
+    </AbsoluteFill>
+  );
 };

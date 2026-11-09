@@ -1,9 +1,19 @@
 import type { Caption } from "@remotion/captions";
 import { ThreeCanvas } from "@remotion/three";
-import React from "react";
+import React, { useState } from "react";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { CameraRigContext, Shot, V3 } from "./episode/kit/camera";
-import { FloorPlate, StudioBackdrop, StudioLights } from "./episode/kit/common";
+import {
+  FloorPlate,
+  FormSheet,
+  Hallway,
+  HALLWAY_WARM,
+  KIT,
+  RoadSign,
+  StudioBackdrop,
+  StudioLights,
+} from "./episode/kit/common";
+import { Prop } from "./episode/kit/env";
 import {
   Act,
   aimAt,
@@ -15,6 +25,8 @@ import {
   gradeOf,
   GradeTint,
   hop,
+  Place,
+  PlaceGlow,
   RimLight,
   SceneFog,
   SpotlightStage,
@@ -22,7 +34,7 @@ import {
   trackShot,
 } from "./episode/kit/motion";
 import { BlobShadow } from "./episode/kit/props";
-import { Toonie } from "./episode/kit/Toonie";
+import { FaceOn, Toonie } from "./episode/kit/Toonie";
 import { Ink, Toon } from "./episode/kit/toon";
 import {
   canvasFxOf,
@@ -35,13 +47,15 @@ import {
   WhipBlurDefs,
 } from "./episode/kit/transitions";
 import { Grade } from "./episode/overlays/Effects";
+import { Captions } from "./episode/overlays/Captions";
+import { loadCaptionFont } from "./episode/overlays/fonts";
 
 /**
  * Prüf-Komposition der Bewegungs-Bausteine (kit/motion.tsx, kit/transitions.tsx, Erweiterungen
  * von Shot/Toonie). 8 Einstellungen, jede Technik einmal; zwischen den Einstellungen je ein anderer
  * Übergang (whip, wipe, zoom, match, tint, alter Blitz, harter Schnitt). Texte sind Testwerte.
  */
-const LEN = [45, 50, 45, 60, 30, 40, 50, 40];
+const LEN = [45, 50, 45, 60, 30, 40, 50, 40, 45, 55, 70, 70];
 const STARTS = LEN.map((_, i) => LEN.slice(0, i).reduce((a, b) => a + b, 0));
 export const MOTION_TEST_FRAMES = LEN.reduce((a, b) => a + b, 0);
 const SPECS: (TransitionSpec | undefined)[] = [
@@ -52,6 +66,12 @@ const SPECS: (TransitionSpec | undefined)[] = [
   { kind: "tint", color: "#FF4D6D" },
   undefined, // alter weißer Blitz zum Vergleich
   { kind: "cut" },
+  { kind: "cut" }, // in den neuen Teil (referenz-analyse-4.md)
+  { kind: "cut" },
+  // Portal-Fahrt: Kamera fliegt durch die Endtür des Flurs …
+  { kind: "portal", portal: "door", color: HALLWAY_WARM.lamp, rim: "#7A4A2E", at: [0.5, 0.5] },
+  // … und in den Bildschirm im Labor
+  { kind: "portal", portal: "screen", color: "#9FE3FF", rim: "#2B3440", at: [0.5, 0.5] },
 ];
 const LABELS = [
   "1 Blinzeln versetzt + Mund (Mitte/rechts) · links alt",
@@ -62,7 +82,12 @@ const LABELS = [
   "6 Spotlight-Bühne",
   "7 Tracking + Parallax-Vordergrund + Echo + Speed-Lines",
   "8 Color Script: neutral → glory → decline → fall",
+  "9 Ausdrücke: squint+clench+stress+sweat → wide → beam · Ort-Licht warm",
+  "10 Flur mit Fluchtpunkt + Wegweiser → Portal-Fahrt in die Tür",
+  "11 Gegenstand mit Gesicht + Formular · Ort-Licht lab → Portal in den Bildschirm",
+  "12 FaceOn gewölbt (beam) + Toonie smirk · Ort-Licht night",
 ];
+const PLACES: (Place | undefined)[] = [...Array<undefined>(8).fill(undefined), "warm", "warm", "lab", "night"];
 const ACTS: Act[] = ["neutral", "glory", "decline", "fall"];
 
 // Test-Wörter für die Mund-Animation (Zeiten in ms ab Videostart)
@@ -74,6 +99,38 @@ const WORDS: Caption[] = ["Hello", "everybody", "this", "is", "a", "talking", "t
     timestampMs: null,
     confidence: 1,
   }),
+);
+
+// Test-Wörter „ein Wort zur Zeit“ ab Einstellung 9 (12,0 s); Akzent nur auf Schlüsselwörtern
+const T0 = 12000;
+const WORDS2: Caption[] = (
+  "your head hurts so you follow the signs down the hall through the door sign the form and jump into the screen"
+)
+  .split(" ")
+  .map((text, i) => ({ text, startMs: T0 + 150 + i * 340, endMs: T0 + 150 + i * 340 + 300, timestampMs: null, confidence: 1 }));
+const EMPH = new Map(
+  WORDS2.filter((w) => ["hurts", "signs", "door", "form", "screen"].indexOf(w.text) >= 0).map((w) => [
+    w.startMs,
+    w.text === "hurts" ? "#FF4D6D" : "#FFC928",
+  ]),
+);
+
+/** Tablette (Kapsel zweifarbig) – Träger für FaceOn. Mitte bei y = 1. */
+const Pill3D: React.FC<{ readonly top?: string }> = ({ top = "#2EC4B6" }) => (
+  <group position={[0, 1, 0]}>
+    <Prop color="#FAFAFA" position={[0, -0.25, 0]}>
+      <cylinderGeometry args={[0.6, 0.6, 0.5, 24]} />
+    </Prop>
+    <Prop color="#FAFAFA" position={[0, -0.5, 0]} rotation={[Math.PI, 0, 0]}>
+      <sphereGeometry args={[0.6, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2]} />
+    </Prop>
+    <Prop color={top} position={[0, 0.25, 0]}>
+      <cylinderGeometry args={[0.6, 0.6, 0.5, 24]} />
+    </Prop>
+    <Prop color={top} position={[0, 0.5, 0]}>
+      <sphereGeometry args={[0.6, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2]} />
+    </Prop>
+  </group>
 );
 
 const Studio: React.FC<{ readonly fog?: boolean }> = ({ fog }) => (
@@ -254,6 +311,115 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
       </>
     );
   }
+  if (i === 8) {
+    // Ausdrucks-Set: drei Stufen je ~15 Bilder, Großaufnahme im Flur
+    const stage = f < 16 ? 0 : f < 30 ? 1 : 2;
+    const a = aimAt([0, 2.45, -2], 3.6, { yf: 0.42 });
+    return (
+      <>
+        <Hallway glow={1} labels={["ROOM 1", "ROOM 2"]} endLabel="HEAD" />
+        <Shot frame={f} duration={LEN[8]} from={a.pos} to={[a.pos[0], a.pos[1], a.pos[2] - 0.5]} look={a.look} fov={40} />
+        <Toonie
+          frame={g}
+          position={[0, 0, -2]}
+          scale={0.8}
+          suit="#7E57C2"
+          blinkSeed={5}
+          eyes={stage === 0 ? "squint" : stage === 1 ? "wide" : "happy"}
+          mouth={stage === 0 ? "clench" : stage === 1 ? "o" : "beam"}
+          brow={stage === 0 ? 0.25 : stage === 1 ? -0.25 : 0}
+          stress={stage === 0 ? 1 : 0}
+          sweatDrop={stage < 2 ? 1 : 0}
+          eyePop={stage === 1 ? eyePopAt(f, 16) : 1}
+        />
+      </>
+    );
+  }
+  if (i === 9) {
+    // Flur-Totale: Fluchtpunkt = Endtür; Blickziel liegt IN der Tür → Portal-Fahrt (Rig-push) fliegt hinein
+    const doorC: V3 = [0, 1.32, -34];
+    const open = Math.min(1, Math.max(0, (f - 26) / 14));
+    return (
+      <>
+        <Hallway glow={1} labels={["ROOM 1", "ROOM 2", "ROOM 3", "ROOM 4", "", "", "", ""]} endLabel="HEAD" openDoor={-1} open={open} />
+        <Shot frame={f} duration={LEN[9]} from={[0.9, 2.1, 3]} to={[0.3, 1.7, -1]} look={doorC} fov={40} ease="in" />
+        <RoadSign position={[1.15, 0, -7]} rotation={[0, -0.35, 0]} scale={0.55} lines={["HEADACHE", "20 MIN"]} arrow="up" appear={Math.min(1, f / 10)} />
+        <Toonie frame={g} position={[-0.9, 0, -5]} scale={0.6} suit="#7E57C2" walk={1.5} rotation={[0, Math.PI, 0]} blinkSeed={5} />
+      </>
+    );
+  }
+  if (i === 10) {
+    // Labor: Tablette mit Gesicht spricht, schwitzt dann; Formular wird unterschrieben; Bildschirm = nächstes Portal
+    const talk = talkFromCaptions(WORDS2, (g / 30) * 1000);
+    const worried = f > 34;
+    const screenC: V3 = [1.0, 2.6, -1.5];
+    const a = aimAt([0, 1.9, 0], 6.2, { yf: 0.5, dir: [0.25, 0.15, 1] });
+    return (
+      <>
+        <StudioBackdrop top="#0E2236" bottom="#1E4A5E" center="#3F8FA8" />
+        <StudioLights color="#E8F7FF" />
+        <FloorPlate color="#D6E4EA" rim={KIT.board} />
+        <Shot frame={f} duration={LEN[10]} from={a.pos} to={[a.pos[0] * 0.6 + 0.4, a.pos[1], a.pos[2] - 1]} look={a.look} lookTo={screenC} fov={40} span={[30, LEN[10]]} ease="inOut" />
+        <group position={[-0.9, 0, 0.6]}>
+          <Pill3D />
+          <FaceOn
+            frame={g}
+            position={[0, 1.02, 0.6]}
+            scale={0.62}
+            curve={1.0}
+            talk={worried ? undefined : talk}
+            eyes={worried ? "wide" : "dot"}
+            mouth={worried ? "clench" : "smile"}
+            sweatDrop={worried ? 1 : 0}
+            gaze={worried ? [0.8, 0.3] : [0, 0]}
+          />
+        </group>
+        <FormSheet
+          position={[0.75, 1.55, 0.9]}
+          rotation={[0, -0.2, 0]}
+          scale={0.62}
+          title="CONSENT FORM"
+          lines={["Swallow pill", "Find the pain", "Results may vary"]}
+          checks={[true, true, false]}
+          highlight={2}
+          sign={Math.min(1, Math.max(0, (f - 12) / 16))}
+          appear={Math.min(1, f / 8)}
+        />
+        {/* Bildschirm (Portal-Ziel): Rahmen + leuchtende Fläche */}
+        <group position={screenC}>
+          <Prop color={KIT.board} position={[0, 0, -0.08]}>
+            <boxGeometry args={[1.5, 2.3, 0.14]} />
+          </Prop>
+          <mesh position={[0, 0, 0.0]}>
+            <planeGeometry args={[1.25, 2.05]} />
+            <meshBasicMaterial color="#9FE3FF" toneMapped={false} />
+          </mesh>
+          <Prop color={KIT.metalDark} position={[0, -1.6, -0.1]}>
+            <cylinderGeometry args={[0.08, 0.08, 1.0, 10]} />
+          </Prop>
+        </group>
+      </>
+    );
+  }
+  if (i === 11) {
+    // Nacht: gewölbtes Gesicht auf einer Kugel + Toonie mit schiefem Grinsen
+    const a = aimAt([0, 2.2, 0], 7.5, { yf: 0.5 });
+    return (
+      <>
+        <StudioBackdrop top="#0A0620" bottom="#2A1B55" center="#5B3FA0" />
+        <StudioLights color="#E6DCFF" />
+        <FloorPlate color="#3B2F6B" rim="#1A1238" />
+        <Shot frame={f} duration={LEN[11]} from={a.pos} look={a.look} fov={40} orbit={{ center: [0, 0, 0], radius: a.pos[2], fromDeg: 12, toDeg: -12, height: a.pos[1] }} />
+        <group position={[-1.1, 2.6, 0]}>
+          <Prop color="#FFB547">
+            <sphereGeometry args={[1.05, 32, 20]} />
+          </Prop>
+          <FaceOn frame={g} position={[0, 0, 1.05]} scale={0.9} curve={1.05 / 0.9} eyes="happy" mouth="beam" blush blinkSeed={9} />
+        </group>
+        <Toonie frame={g} position={[1.4, 0, 0.3]} scale={0.72} suit="#2E7DFF" mouth="smirk" brow={0.15} blinkSeed={3} arms={[0.3, 1.2]} />
+      </>
+    );
+  }
   const a = aimAt([0, 2.4, 0], 10, { yf: 0.5 });
   return (
     <>
@@ -266,6 +432,7 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
 };
 
 export const MotionKitTest: React.FC = () => {
+  useState(() => loadCaptionFont());
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
   const i = STARTS.filter((s) => s <= frame).length - 1;
@@ -273,6 +440,7 @@ export const MotionKitTest: React.FC = () => {
   const cuts = STARTS.slice(1);
   const st = transitionAt(frame, cuts, SPECS);
   const fx = canvasFxOf(st);
+  const place = PLACES[i];
   const act = i === 7 ? ACTS[Math.min(3, Math.floor(f / 10))] : undefined;
   // alter Blitz (Einstellung 6) wie in Episode.tsx
   const oldFlash = i === 5 && f < 9;
@@ -294,9 +462,11 @@ export const MotionKitTest: React.FC = () => {
         </ThreeCanvas>
       </AbsoluteFill>
       {act ? <GradeTint grade={act} /> : null}
+      {place ? <PlaceGlow place={place} frame={frame} flicker={place === "warm" ? 0.6 : 0} /> : null}
       {i === 6 ? <SpeedStreaks strength={0.5} frame={frame} dir={-1} band={[0.25, 0.7]} count={10} /> : null}
       <TransitionOverlay state={st} />
       {oldFlash && f < 5 ? <AbsoluteFill style={{ background: "white", opacity: 0.55 - 0.11 * f }} /> : null}
+      {i >= 8 ? <Captions captions={WORDS2} emph={EMPH} mode="word" /> : null}
       <Grade />
       <div
         style={{

@@ -61,6 +61,8 @@ export type Timeline = {
     /** Color Script: Akt-Stimmung der Szene (kit/motion.tsx `COLOR_SCRIPT`); fehlt sie = unverändert */
     act?: Act;
   }[];
+  /** Untertitel-Art: "word" = ein Wort zur Zeit (Großbuchstaben, Akzent nur auf emph); ohne = bisherige Seiten */
+  captionMode?: "pages" | "word";
   /** Standard-Übergang für alle Schnitte (optional; ohne = alter Weiß-Blitz) */
   transition?: TransitionSpec;
   cues: Cue[];

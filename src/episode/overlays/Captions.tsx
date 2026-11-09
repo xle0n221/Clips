@@ -63,14 +63,94 @@ const Word: React.FC<{ readonly text: string; readonly parts?: Part[] }> = ({
 };
 
 /**
+ * Variante „ein Wort zur Zeit“ (referenz-analyse-4.md Technik 5, verbessert): GROSSBUCHSTABEN,
+ * weiß mit dicker INK-Kontur (18 : 1 auf jedem Grund), Akzentfarbe NUR auf Schlüsselwörtern
+ * (`emph`) – lesbarer als Dauer-Rot. Kleiner Pop (3 Bilder), Schlüsselwörter etwas größer.
+ */
+const OneWord: React.FC<{ readonly text: string; readonly color?: string; readonly bottom: number }> = ({
+  text,
+  color,
+  bottom,
+}) => {
+  const frame = useCurrentFrame();
+  const key = color !== undefined;
+  const pop = interpolate(frame, [0, 2, 4], key ? [0.7, 1.14, 1] : [0.82, 1.06, 1], {
+    extrapolateRight: "clamp",
+  });
+  return (
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: bottom }}>
+      <div
+        style={{
+          fontFamily: CAPTION_FONT,
+          fontWeight: 900,
+          fontSize: key ? 96 : 80,
+          lineHeight: 1,
+          color: color ?? "#FFFFFF",
+          textAlign: "center",
+          maxWidth: 980,
+          whiteSpace: "nowrap",
+          textTransform: "uppercase",
+          WebkitTextStroke: "18px #111",
+          paintOrder: "stroke",
+          textShadow: "0 7px 0 rgba(0,0,0,0.8)",
+          transform: `scale(${pop}) rotate(${key ? -2 : 0}deg)`,
+          letterSpacing: 0,
+        }}
+      >
+        {text}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/**
  * emph: Startzeit (ms) eines Untertitel-Worts -> Akzentfarbe. Kommt aus `emph`-Cues bzw. aus
  * "*Wort*" im Drehbuch (make_episode.py). Seiten ohne Akzentwort werden unverändert gezeichnet.
  */
 export const Captions: React.FC<{
   readonly captions: Caption[];
   readonly emph?: Map<number, string>;
-}> = ({ captions, emph }) => {
+  /** "word" = ein Wort zur Zeit (Großbuchstaben, Akzent nur auf emph-Wörtern); Standard = bisherige Seiten */
+  readonly mode?: "pages" | "word";
+  /** Abstand vom unteren Rand (px), nur für "word" (Standard 420) */
+  readonly bottom?: number;
+}> = ({ captions, emph, mode, bottom = 420 }) => {
   const { fps } = useVideoConfig();
+  if (mode === "word") return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} />;
+  return <PageCaptions captions={captions} emph={emph} fps={fps} />;
+};
+
+/** Ein Wort je Einblendung: steht bis zum nächsten Wort (höchstens Wortende + 300 ms, mind. 4 Bilder). */
+const WordCaptions: React.FC<{
+  readonly captions: Caption[];
+  readonly emph?: Map<number, string>;
+  readonly fps: number;
+  readonly bottom: number;
+}> = ({ captions, emph, fps, bottom }) => {
+  const words = captions.filter((c) => c.text.trim() !== "");
+  return (
+    <AbsoluteFill>
+      {words.map((w, i) => {
+        const next = words[i + 1];
+        const from = Math.round((w.startMs / 1000) * fps);
+        const endMs = next ? Math.min(next.startMs, w.endMs + 300) : w.endMs + 400;
+        const dur = Math.max(4, Math.round((endMs / 1000) * fps) - from);
+        return (
+          <Sequence key={i} from={from} durationInFrames={dur} layout="none">
+            <OneWord text={w.text.trim()} color={emph?.get(w.startMs)} bottom={bottom} />
+          </Sequence>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+/** Bisherige Untertitel (Seiten mit 1–3 Wörtern) – unverändert. */
+const PageCaptions: React.FC<{
+  readonly captions: Caption[];
+  readonly emph?: Map<number, string>;
+  readonly fps: number;
+}> = ({ captions, emph, fps }) => {
   const { pages } = useMemo(
     () =>
       createTikTokStyleCaptions({

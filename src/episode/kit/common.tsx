@@ -1291,3 +1291,375 @@ export const WarningSign: React.FC<
     </group>
   );
 };
+
+/* ------------------------------------------------------------------ */
+/* Tiefen-Kulisse + Schilder (referenz-analyse-4.md Technik 3/4)        */
+/* ------------------------------------------------------------------ */
+
+export type HallwayPalette = {
+  readonly wall: string;
+  readonly wainscot: string;
+  readonly floor: string;
+  readonly runner: string;
+  readonly trim: string;
+  readonly door: string;
+  readonly vault: string;
+  readonly lamp: string;
+};
+
+/** Warmer Flur (Standard) – Farbwelt je Ort über `palette` tauschen. */
+export const HALLWAY_WARM: HallwayPalette = {
+  wall: "#E9B48E",
+  wainscot: "#9A3B30",
+  floor: "#5E2622",
+  runner: "#C8372E",
+  trim: "#F6E3C4",
+  door: "#7A4A2E",
+  vault: "#E7A47E",
+  lamp: "#FFD38A",
+};
+
+/**
+ * Flur mit Fluchtpunkt: Gang entlang −z (Boden y = 0, Breite `width`, Wandhöhe `wall`, Tonnengewölbe
+ * darüber), Türen abwechselnd links/rechts, Wandlampen zwischen den Türen, Läufer mit Goldkante,
+ * Endtür mit Schild (`endLabel`). Kamera bei z ≈ 2…4, y ≈ 1,6–2,4, Blick nach −z → Fluchtpunkt.
+ * Türen haben Schildchen (`labels[i]`, sonst leer). `glow` 0..1 = Lampen-Leuchtkraft (Licht + Schein).
+ * `openDoor` = Index einer Tür, die (um `open` 0..1) aufschwingt – Portal-Ziel.
+ * Kosten: ≈ 12 Meshes je Tür, 3 Punktlichter (ohne Schatten).
+ */
+export const Hallway: React.FC<
+  Placement & {
+    readonly length?: number;
+    readonly width?: number;
+    readonly wall?: number;
+    readonly doors?: number;
+    readonly labels?: readonly string[];
+    readonly endLabel?: string;
+    readonly palette?: HallwayPalette;
+    readonly glow?: number;
+    readonly openDoor?: number;
+    readonly open?: number;
+  }
+> = ({
+  position,
+  rotation,
+  scale = 1,
+  length = 34,
+  width = 4.4,
+  wall = 3.2,
+  doors = 8,
+  labels = [],
+  endLabel,
+  palette = HALLWAY_WARM,
+  glow = 1,
+  openDoor,
+  open = 0,
+}) => {
+  const hw = width / 2;
+  const step = length / (doors / 2 + 0.6);
+  const ribs = Math.floor(length / 3);
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      <hemisphereLight args={["#FFE2C2", palette.floor, 0.9]} />
+      {[0.2, 0.5, 0.8].map((k) => (
+        <pointLight
+          key={k}
+          position={[0, wall + 0.6, -length * k]}
+          color={palette.lamp}
+          intensity={18 * glow}
+          distance={length * 0.45}
+          decay={1.6}
+        />
+      ))}
+      {/* Boden + Läufer + Goldkanten */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, -length / 2 + 2]} receiveShadow>
+        <planeGeometry args={[width, length + 4]} />
+        <Toon color={palette.floor} />
+      </mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, -length / 2 + 2]}>
+        <planeGeometry args={[width * 0.5, length + 4]} />
+        <Toon color={palette.runner} />
+      </mesh>
+      {[-1, 1].map((s) => (
+        <mesh key={s} rotation={[-Math.PI / 2, 0, 0]} position={[s * width * 0.23, 0.015, -length / 2 + 2]}>
+          <planeGeometry args={[0.07, length + 4]} />
+          <meshBasicMaterial color={KIT.gold} />
+        </mesh>
+      ))}
+      {/* Wände: oben hell, unten Täfelung, INK-Leisten */}
+      {[-1, 1].map((s) => (
+        <group key={s} position={[s * hw, 0, -length / 2 + 2]} rotation={[0, -s * (Math.PI / 2), 0]}>
+          <mesh position={[0, wall / 2, 0]}>
+            <planeGeometry args={[length + 4, wall]} />
+            <Toon color={palette.wall} />
+          </mesh>
+          <mesh position={[0, 0.55, 0.01]}>
+            <planeGeometry args={[length + 4, 1.1]} />
+            <Toon color={palette.wainscot} />
+          </mesh>
+          {[1.1, 0.06, wall].map((y) => (
+            <mesh key={y} position={[0, y, 0.03]}>
+              <boxGeometry args={[length + 4, 0.08, 0.05]} />
+              <meshBasicMaterial color={y === 1.1 ? palette.trim : INK} />
+            </mesh>
+          ))}
+        </group>
+      ))}
+      {/* Tonnengewölbe + Bögen (Rippen) – die Rippen zeichnen die Fluchtlinien */}
+      <mesh position={[0, wall, -length / 2 + 2]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[hw, hw, length + 4, 24, 1, true, -Math.PI / 2, Math.PI]} />
+        <meshBasicMaterial color={palette.vault} side={DoubleSide} />
+      </mesh>
+      {Array.from({ length: ribs }, (_, i) => (
+        <mesh key={i} position={[0, wall, 1 - i * 3]}>
+          <torusGeometry args={[hw - 0.06, 0.09, 6, 24, Math.PI]} />
+          <Toon color={palette.trim} />
+          <Ink f={0.04}>
+            <torusGeometry args={[hw - 0.06, 0.09, 6, 24, Math.PI]} />
+          </Ink>
+        </mesh>
+      ))}
+      {/* Türen + Lampen */}
+      {Array.from({ length: doors }, (_, i) => {
+        const s = i % 2 ? 1 : -1;
+        const z = -1.5 - Math.floor(i / 2) * step - (s > 0 ? step * 0.5 : 0);
+        const swing = i === openDoor ? open : 0;
+        return (
+          <group key={i} position={[s * (hw - 0.02), 0, z]} rotation={[0, -s * (Math.PI / 2), 0]}>
+            <HallDoor color={palette.door} trim={palette.trim} label={labels[i]} swing={swing} glowColor={palette.lamp} />
+            {/* Wandlampe zwischen den Türen */}
+            <group position={[step * 0.5, 2.35, 0.1]}>
+              <mesh>
+                <boxGeometry args={[0.18, 0.4, 0.08]} />
+                <meshBasicMaterial color={INK} />
+              </mesh>
+              <mesh position={[0, 0.18, 0.18]}>
+                <sphereGeometry args={[0.16, 14, 10]} />
+                <meshBasicMaterial color={palette.lamp} toneMapped={false} />
+              </mesh>
+              {glow > 0 ? <Glow position={[0, 0.18, 0.18]} radius={0.26} color={palette.lamp} intensity={glow} /> : null}
+            </group>
+          </group>
+        );
+      })}
+      {/* Endwand + Endtür (Ziel am Fluchtpunkt) */}
+      <mesh position={[0, wall / 2 + 1, -length]}>
+        <planeGeometry args={[width, wall + 2.4]} />
+        <Toon color={palette.wainscot} />
+      </mesh>
+      <group position={[0, 0, -length + 0.02]} scale={1.15}>
+        <HallDoor color={palette.door} trim={palette.trim} label={endLabel} swing={openDoor === -1 ? open : 0} glowColor={palette.lamp} />
+      </group>
+    </group>
+  );
+};
+
+/** Tür mit Zarge, Klinke, Schildchen; `swing` 0..1 öffnet nach innen, dahinter leuchtet `glowColor`. */
+const HallDoor: React.FC<{
+  readonly color: string;
+  readonly trim: string;
+  readonly label?: string;
+  readonly swing: number;
+  readonly glowColor: string;
+}> = ({ color, trim, label, swing, glowColor }) => (
+  <group>
+    {/* Zarge */}
+    <Prop color={trim} position={[0, 1.3, 0.04]} ink={0.02}>
+      <boxGeometry args={[1.4, 2.6, 0.08]} />
+    </Prop>
+    {/* Öffnung (leuchtet, wenn die Tür aufgeht) */}
+    <mesh position={[0, 1.15, 0.085]}>
+      <planeGeometry args={[1.08, 2.24]} />
+      <meshBasicMaterial color={swing > 0 ? glowColor : INK} toneMapped={false} />
+    </mesh>
+    {/* Türblatt, Scharnier links */}
+    <group position={[-0.54, 0, 0.1]} rotation={[0, -swing * 1.6, 0]}>
+      <Prop color={color} position={[0.54, 1.15, 0]} ink={0.02}>
+        <boxGeometry args={[1.06, 2.22, 0.06]} />
+      </Prop>
+      {[0.65, 1.6].map((y) => (
+        <mesh key={y} position={[0.54, y, 0.035]}>
+          <planeGeometry args={[0.7, y > 1 ? 0.8 : 0.6]} />
+          <meshBasicMaterial color={INK} transparent opacity={0.18} />
+        </mesh>
+      ))}
+      <mesh position={[0.92, 1.1, 0.06]}>
+        <sphereGeometry args={[0.06, 10, 8]} />
+        <Toon color={KIT.gold} />
+      </mesh>
+      {label ? (
+        <TextLabel text={label} position={[0.54, 2.0, 0.045]} width={0.82} height={0.26} bg={KIT.gold} color={INK} border round={0.4} />
+      ) : null}
+    </group>
+  </group>
+);
+
+/**
+ * Verkehrsschild (Wegweiser): grünes Feld mit weißem Rand, Text und Pfeil, auf zwei Pfosten.
+ * `lines` = 1–2 Zeilen, `arrow` = "up" | "left" | "right" | null. Fuß bei y = 0, Vorderseite +z.
+ * Kontrast weiß auf `#1E7A46` = 5,6 : 1. `appear` 0..1 = Hereinploppen.
+ */
+export const RoadSign: React.FC<
+  Placement & {
+    readonly lines: readonly string[];
+    readonly arrow?: "up" | "left" | "right" | null;
+    readonly color?: string;
+    readonly width?: number;
+    readonly appear?: number;
+    readonly posts?: number;
+  }
+> = ({ position, rotation, scale = 1, lines, arrow = "up", color = "#1E7A46", width = 3.4, appear = 1, posts = 2.2 }) => {
+  const rowH = 0.62;
+  const h = lines.length * rowH + 0.5;
+  const a = popIn(appear);
+  // Pfeil als Geometrie (die Kit-Schrift hat keine Pfeil-Zeichen); sitzt links neben der letzten Zeile
+  const arrowRot = arrow === "up" ? 0 : arrow === "left" ? Math.PI / 2 : -Math.PI / 2;
+  const textW = width - 0.4 - (arrow ? 0.7 : 0);
+  return (
+    <group position={position} rotation={rotation} scale={scale * a}>
+      {[-1, 1].map((s) => (
+        <Prop key={s} color={KIT.metalDark} position={[s * width * 0.3, (posts + h / 2) / 2, -0.1]} ink={0.03}>
+          <cylinderGeometry args={[0.07, 0.07, posts + h / 2, 10]} />
+        </Prop>
+      ))}
+      <group position={[0, posts + h / 2, 0]}>
+        <mesh>
+          <boxGeometry args={[width + 0.1, h + 0.1, 0.08]} />
+          <meshBasicMaterial color={INK} />
+        </mesh>
+        <mesh position={[0, 0, 0.045]}>
+          <planeGeometry args={[width - 0.04, h - 0.04]} />
+          <meshBasicMaterial color="#FFFFFF" toneMapped={false} />
+        </mesh>
+        <mesh position={[0, 0, 0.05]}>
+          <planeGeometry args={[width - 0.16, h - 0.16]} />
+          <meshBasicMaterial color={color} toneMapped={false} />
+        </mesh>
+        {lines.map((t, i) => {
+          const y = ((lines.length - 1) / 2) * rowH - i * rowH;
+          const last = i === lines.length - 1 && arrow;
+          return (
+            <group key={i}>
+              <TextLabel
+                text={t}
+                position={[last ? 0.35 : 0, y, 0.06]}
+                width={last ? textW : width - 0.4}
+                height={rowH}
+                color="#FFFFFF"
+                size={0.8}
+              />
+              {last ? (
+                <group position={[-width / 2 + 0.55, y, 0.06]} rotation={[0, 0, arrowRot]}>
+                  <mesh position={[0, 0.12, 0]}>
+                    <coneGeometry args={[0.2, 0.24, 3]} />
+                    <meshBasicMaterial color="#FFFFFF" toneMapped={false} />
+                  </mesh>
+                  <mesh position={[0, -0.08, 0]}>
+                    <planeGeometry args={[0.1, 0.24]} />
+                    <meshBasicMaterial color="#FFFFFF" toneMapped={false} />
+                  </mesh>
+                </group>
+              ) : null}
+            </group>
+          );
+        })}
+      </group>
+    </group>
+  );
+};
+
+/**
+ * Formular auf Klemmbrett: Titel, Zeilen (Text), Ankreuzfelder, Unterschriftslinie mit
+ * `sign` 0..1 (Strich wird gezogen). Mitte = position, Vorderseite +z. Papier/Schrift 14,7 : 1.
+ * `highlight` = Index einer Zeile in Akzentfarbe (Pointe, z. B. Kleingedrucktes).
+ */
+export const FormSheet: React.FC<
+  Placement & {
+    readonly title: string;
+    readonly lines: readonly string[];
+    readonly checks?: readonly boolean[];
+    readonly highlight?: number;
+    readonly sign?: number;
+    readonly appear?: number;
+  }
+> = ({ position, rotation, scale = 1, title, lines, checks = [], highlight, sign = 0, appear = 1 }) => {
+  const w = 2.6;
+  const rowH = 0.36;
+  const h = 1.2 + lines.length * (rowH + 0.08) + 0.7;
+  const top = h / 2;
+  const a = popIn(appear);
+  return (
+    <group position={position} rotation={rotation} scale={scale * a}>
+      {/* Klemmbrett */}
+      <Prop color={KIT.burlap} position={[0, -0.05, -0.06]} ink={0.02}>
+        <boxGeometry args={[w + 0.3, h + 0.45, 0.08]} />
+      </Prop>
+      <Prop color={KIT.metal} position={[0, top + 0.12, 0.02]} ink={0.02}>
+        <boxGeometry args={[1.0, 0.3, 0.1]} />
+      </Prop>
+      <mesh>
+        <planeGeometry args={[w, h]} />
+        <meshBasicMaterial color={KIT.paper} toneMapped={false} />
+      </mesh>
+      <TextLabel text={title} position={[0, top - 0.45, 0.01]} width={w - 0.3} height={0.46} color={KIT.paperText} />
+      <mesh position={[0, top - 0.78, 0.01]}>
+        <planeGeometry args={[w - 0.3, 0.03]} />
+        <meshBasicMaterial color={INK} />
+      </mesh>
+      {lines.map((t, i) => {
+        const y = top - 1.1 - i * (rowH + 0.08);
+        const hasBox = checks[i] !== undefined;
+        return (
+          <group key={i} position={[0, y, 0.01]}>
+            {hasBox ? (
+              <>
+                <mesh position={[-w / 2 + 0.35, 0, 0]}>
+                  <planeGeometry args={[0.26, 0.26]} />
+                  <meshBasicMaterial color={INK} />
+                </mesh>
+                <mesh position={[-w / 2 + 0.35, 0, 0.002]}>
+                  <planeGeometry args={[0.19, 0.19]} />
+                  <meshBasicMaterial color="#FFFFFF" />
+                </mesh>
+                {checks[i]
+                  ? [
+                      [-0.05, -0.02, 0.12, 0.8],
+                      [0.06, 0.03, 0.24, -0.9],
+                    ].map(([dx, dy, l, r]) => (
+                      <mesh key={r} position={[-w / 2 + 0.35 + dx, dy, 0.004]} rotation={[0, 0, r]}>
+                        <planeGeometry args={[l, 0.06]} />
+                        <meshBasicMaterial color={KIT.green} />
+                      </mesh>
+                    ))
+                  : null}
+              </>
+            ) : null}
+            <TextLabel
+              text={t}
+              position={[hasBox ? 0.2 : 0, 0, 0.003]}
+              width={w - (hasBox ? 0.8 : 0.3)}
+              height={rowH}
+              align="left"
+              color={KIT.paperText}
+              bg={i === highlight ? KIT.accent : null}
+              round={0.3}
+              size={0.62}
+            />
+          </group>
+        );
+      })}
+      {/* Unterschrift */}
+      <mesh position={[0.2, -top + 0.42, 0.01]}>
+        <planeGeometry args={[1.8, 0.03]} />
+        <meshBasicMaterial color={INK} />
+      </mesh>
+      <TextLabel text="SIGN HERE" position={[-0.85, -top + 0.25, 0.01]} width={0.9} height={0.18} color={KIT.red} align="left" />
+      {sign > 0 ? (
+        <mesh position={[-0.65 + 0.85 * clamp01(sign), -top + 0.58, 0.012]} rotation={[0, 0, 0.12]}>
+          <planeGeometry args={[1.7 * clamp01(sign), 0.05]} />
+          <meshBasicMaterial color="#1E3A8A" />
+        </mesh>
+      ) : null}
+    </group>
+  );
+};
