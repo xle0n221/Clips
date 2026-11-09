@@ -235,7 +235,10 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
             check=True,
         )
         raw = Path(tmp) / "whisper.json"
-        subprocess.run(["node", "scripts/whisper-words.mjs", str(wav16), str(raw), "en"], check=True, cwd=ROOT)
+        if (ROOT / "whisper.cpp").exists():
+            subprocess.run(["node", "scripts/whisper-words.mjs", str(wav16), str(raw), "en"], check=True, cwd=ROOT)
+        else:  # Rückfall (Cloud-Container ohne whisper.cpp): faster-whisper in .venv
+            subprocess.run([sys.executable, str(ROOT / "scripts" / "whisper_words_fw.py"), str(wav16), str(raw), "en"], check=True)
         whisper = [c for c in json.loads(raw.read_text()) if norm(c["text"])]
 
     captions = align([w["word"] for w in words], whisper)
