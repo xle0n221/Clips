@@ -81,14 +81,15 @@ if (!serveUrl) {
     rspack: true, // wie remotion.config.ts (Config.setRspack)
     onProgress: () => {},
   });
-  console.log(`Bundle: ${secs(tb)} s`);
+  console.log(`Bundle: ${secs(tb)} s → wiederverwenden mit --bundle ${serveUrl}`);
 }
 
-const browser = await openBrowser("chrome", {
+const renderOpts = {
   browserExecutable: chrome,
   chromiumOptions: { gl: "swangle" },
-});
-const renderOpts = { browserExecutable: chrome, chromiumOptions: { gl: "swangle" } };
+  logLevel: "error", // sonst je Bild eine Speicher-Warnung (cgroup) im Container
+};
+const browser = await openBrowser("chrome", renderOpts);
 
 try {
   const composition = await selectComposition({
@@ -187,7 +188,7 @@ try {
     }
   }
   rmSync(tmp, { recursive: true, force: true });
-  console.log(`Kontaktabzug: ${path.relative(process.cwd(), out)} (${c}×${rows}, ${frames.length} Bilder), gesamt ${secs(t0)} s`);
+  console.log(`Kontaktabzug: ${out} (${c}×${rows}, ${frames.length} Bilder), gesamt ${secs(t0)} s`);
 } finally {
   await browser.close({ silent: true });
 }

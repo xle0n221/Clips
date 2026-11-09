@@ -2484,6 +2484,8 @@ export const EmpireMap: React.FC<{
   readonly split?: number;
   readonly westFall?: number;
   readonly labels?: boolean;
+  /** Vergrößerung der WEST/EAST-Schilder (Totale: ≥ 40 px Schrifthöhe im Bild halten) */
+  readonly labelScale?: number;
 }> = ({
   frame = 0,
   position = [0, 0, 0],
@@ -2492,6 +2494,7 @@ export const EmpireMap: React.FC<{
   split = 0,
   westFall = 0,
   labels = true,
+  labelScale = 1,
 }) => {
   const geos = useMemo(
     () => ({
@@ -2543,7 +2546,7 @@ export const EmpireMap: React.FC<{
           <GeoPart geo={geos.sicily} color={westCol} position={[half, 0, 0]} ink={0.03} />
           <Pin position={[half + 0.02, 0.55, 0.15]} color={ROME.gold} />
           {labels ? (
-            <mesh position={[half - 1.3, -1.55, 0.17]}>
+            <mesh position={[half - 1.3, -1.55, 0.17]} scale={labelScale}>
               <planeGeometry args={[2.1, 0.4]} />
               <meshBasicMaterial map={tWest} transparent depthWrite={false} />
             </mesh>
@@ -2555,7 +2558,7 @@ export const EmpireMap: React.FC<{
           <GeoPart geo={geos.greece} color={ROME.purple} position={[-half, 0, 0]} ink={0.02} />
           <Pin position={[-half + 1.45, 1.3, 0.15]} color={ROME.gold} />
           {labels ? (
-            <mesh position={[-half + 1.3, -1.55, 0.17]}>
+            <mesh position={[-half + 1.3, -1.55, 0.17]} scale={labelScale}>
               <planeGeometry args={[2.1, 0.4]} />
               <meshBasicMaterial map={tEast} transparent depthWrite={false} />
             </mesh>

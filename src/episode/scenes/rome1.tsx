@@ -306,8 +306,8 @@ export const RomeAuction: React.FC = () => {
 
 /* 3 — stones: Rom hasst dich, Steine, GAME OVER, letzte Worte */
 const CROWD: [V3, number][] = [
-  [[-2.3, 0, 1.4], 0.9],
-  [[2.4, 0, 1.2], -0.9],
+  [[-3.0, 0, 0.3], 0.9],
+  [[3.1, 0, 0.2], -0.9],
   [[-3.2, 0, -1.4], 0.6],
   [[3.3, 0, -1.6], -0.6],
   [[-1.3, 0, -2.6], 0.3],
@@ -348,13 +348,13 @@ export const RomeStones: React.FC = () => {
     // Steine fliegen (Squash & Stretch), YOU duckt sich
     const duck = ramp(frame, stones, stones + 6);
     const throws: [number, V3, V3][] = [
-      [stones + 0, [-2.4, 3.4, 1.4], [0.7, 0, 0.8]],
-      [stones + 5, [2.4, 3.4, 1.2], [-0.8, 0, 0.6]],
+      [stones + 0, [-3.0, 3.4, 0.3], [0.7, 0, 0.8]],
+      [stones + 5, [3.1, 3.4, 0.2], [-0.8, 0, 0.6]],
       [stones + 10, [-3.2, 3.5, -1.4], [0.4, 0, -0.6]],
       [stones + 15, [3.3, 3.5, -1.6], [0.9, 0, -0.3]],
       [stones + 21, [-1.3, 3.4, -2.6], [-0.5, 0, 1.0]],
       [stones + 27, [1.5, 3.4, -2.8], [-0.2, 0, 1.3]],
-      [stones + 32, [-2.4, 3.4, 1.4], [1.2, 0, 0.2]],
+      [stones + 32, [-3.0, 3.4, 0.3], [1.2, 0, 0.2]],
     ];
     return (
       <>
@@ -385,9 +385,10 @@ export const RomeStones: React.FC = () => {
     return (
       <>
         <Studio color="#1A0F14" light={[6, 7, 6]} intensity={1.2} />
-        <DangerLight frame={frame} position={[-3.6, 4, 2]} intensity={0.8} />
+        <DangerLight frame={frame} position={[-4.6, 4, -1.5]} intensity={0.55} />
+        <directionalLight position={[0, 4, 10]} intensity={0.9} color="#FFE8D6" />
         <Hero frame={0} position={[0, -0.25, 0]} rotation={[0.18, 0, 0]} arms={[2.75, 2.75]} eyes="closed" mouth="teeth" brow={-0.3} />
-        <StampMark text="GAME OVER" position={[0, 1.7, 1.8]} rotation={[0, 0, 0.1]} w={4.2} h={1.25} scale={Math.max(0.001, 2.2 - 1.2 * s)} />
+        <StampMark text="GAME OVER" position={[0, 2.3, 2.2]} rotation={[0, 0, 0.1]} w={4.2} h={1.25} scale={Math.max(0.001, 2.2 - 1.2 * s)} />
         <Shot frame={f} duration={last - over} {...jmove(move(aim([0, 2.8, 0], 10, under(0.42, 10)), aim([0, 2.8, 0], 9.4, under(0.42, 9.4))), j)} shake={0.02} />
       </>
     );
@@ -512,13 +513,13 @@ export const RomeSplit: React.FC = () => {
     const walk = ramp(frame, split + 10, duration);
     const j = jolt(frame, split, 0.25, 14);
     const cam = shot === 0
-      ? move(aim([-2.7, 1.0, 0.6], 6.5, 0.52, 0.5, [0, 0.9, 1]), aim([-2.7, 1.0, 0.6], 5.8, 0.52, 0.5, [0.1, 0.8, 1]))
+      ? move(aim([-2.4, 0.9, 0.4], 8, 0.5, 0.5, [0, 0.9, 1]), aim([-2.4, 0.9, 0.4], 7.2, 0.5, 0.5, [0.1, 0.8, 1]))
       : move(aim([0.6, 0.3, 0.2], 13, 0.52, 0.5, [0, 1.6, 1]), aim([0.9, 0.3, 0.2], 12.5, 0.52, 0.5, [0, 1.5, 1]));
     return (
       <>
         <Studio table />
         <hemisphereLight args={["#FFE9C8", "#5A3420", 0.4]} />
-        <EmpireMap frame={frame} scale={MS} split={s} />
+        <EmpireMap frame={frame} scale={MS} split={s} labelScale={1.5} />
         <group position={[-2.7 - gap, y, 0.7]} scale={0.36 * Math.max(0.001, spawn)}>
           <Hero frame={frame} arms={frame > split ? [0.5, 1.2] : [2.4, 2.4]} eyes={frame > split ? "wide" : "happy"} mouth={frame > split ? "o" : "grin"} />
         </group>
@@ -551,7 +552,7 @@ export const RomeSplit: React.FC = () => {
         scepter={!withRooster}
       />
       {withRooster ? (
-        <group position={[1.55, 0, 0.5]} rotation={[0, -0.55, 0]} scale={[1.25 * rs * (1 - sq * 0.5), 1.25 * rs * (1 + sq), 1.25 * rs * (1 - sq * 0.5)]}>
+        <group position={[1.9, 0, 0.5]} rotation={[0, -0.55, 0]} scale={[1.6 * rs * (1 - sq * 0.5), 1.6 * rs * (1 + sq), 1.6 * rs * (1 - sq * 0.5)]}>
           <Rooster frame={frame} tag="ROME" flap={frame - rooster < 14 ? 0.8 : 0.1} />
         </group>
       ) : null}

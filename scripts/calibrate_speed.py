@@ -140,9 +140,9 @@ def main() -> None:
     for p, r in zip(rows, rows[1:]):
         pct, expect = jump_pct(p, r)
         if abs(pct - expect) > 2 and p["wps"] < MID < r["wps"]:
-            print(f"\nHinweis: Zwischen {p['speed']:g} ({p['wps']:.2f} W/s) und {r['speed']:g} ({r['wps']:.2f} W/s) springt "
-                  "die Dauer; Werte dazwischen sind mit dem Tempo allein kaum erreichbar. Feinsteuerung über "
-                  "Text (Wörter streichen/ergänzen) oder voiceStyle.sceneSpeed einzelner Szenen.")
+            print(f"\nHinweis: Steile Stelle zwischen {p['speed']:g} ({p['wps']:.2f} W/s) und {r['speed']:g} "
+                  f"({r['wps']:.2f} W/s): kleine Tempo-Änderung = große Längenänderung. Feiner messen mit "
+                  "--speeds (0.0025-Schritte) oder über Text bzw. voiceStyle.sceneSpeed nachsteuern.")
     best = recommend(rows)
     if best:
         print(f"\nEmpfehlung: --speed {best['speed']:g}  ({best['wps']:.2f} W/s, Video {best['videoSec']:.1f} s)")

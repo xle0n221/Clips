@@ -180,6 +180,8 @@ export const PalaceSet: React.FC<{
         shadow-camera-top={12}
         shadow-camera-bottom={-12}
       />
+      {/* Fülllicht von vorn für Gesichter (Kreuz-Prüfung Art Direction: im „fall“-Rot sonst fast schwarz) */}
+      <directionalLight position={[0, 5, 12]} intensity={fall ? 0.9 : 0.35} color="#FFE8D6" />
       {/* Boden (Marmor-Schachbrett über Pavement-Farbe) */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[60, 60]} />

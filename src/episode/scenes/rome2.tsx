@@ -45,13 +45,14 @@ export const Goths: React.FC = () => {
     const j = jolt(frame, loot, 0.35, 16);
     const army = Array.from({ length: 7 }, (_, i) => {
       const row = i % 2;
-      const x = lerp(7.5 + i * 0.9, 0.6 + i * 0.75, ramp(frame, 0, duration, Easing.linear)) ;
+      const x = lerp(3.4 + i * 0.9, 0.2 + i * 0.75, ramp(frame, 0, duration, Easing.linear));
       return (
         <Goth
           key={i}
           frame={frame + i * 5}
           position={[x, 0, 1.6 + row * 1.4]}
           rotation={[0, -1.2, 0]}
+          fur={false}
           walk={1.4}
           arms={[0.4, 1.4 + Math.sin(frame * 0.3 + i) * 0.3]}
           eyes="angry"
@@ -105,7 +106,7 @@ export const Goths: React.FC = () => {
         <CityGate position={[0.8, 0, -2.5]} rotation={[0, Math.PI, 0]} open={open} wall={10} />
         {/* draußen wartet das Heer */}
         {[-0.4, 0.8, 2.0].map((x, i) => (
-          <Goth key={x} frame={frame + i * 4} position={[x, 0, -6]} arms={[0.4, 1.8]} eyes="angry" mouth="teeth" />
+          <Goth key={x} frame={frame + i * 4} position={[x, 0, -6]} fur={false} arms={[0.4, 1.8]} eyes="angry" mouth="teeth" />
         ))}
         {men}
         <Shot frame={f} duration={trojan - gift} {...move(aim([1.5, 3.05, 0.8], 13, under(0.5, 13), 0.66, [0.08, 0.1, 1]), aim([1.5, 3.05, 0.8], 12, under(0.5, 12), 0.66))} />
@@ -229,7 +230,7 @@ export const Perished: React.FC = () => {
         </mesh>
       ) : null}
       <Servant frame={frame} position={[-2.6, 0, 1.4]} rotation={[0, 0.7, 0]} arms={[2.1, 0.4]} eyes="dot" mouth="smile" />
-      <SignBoard lines={["THE CITY", "OF ROME"]} post={false} position={[-3.3, 3.9, 1.2]} rotation={[0, 0.6, 0]} width={2.2} height={1.1} />
+      <SignBoard lines={["THE CITY", "OF ROME"]} post={false} position={[-2.3, 5.0, 1.4]} rotation={[0, 0.3, 0]} width={2.0} height={1.0} />
       <Shot frame={f} duration={duration - point} {...move(aim([-0.8, 3.2, 0.2], 13.5, 0.5, 0.5, [-0.1, 0.1, 1]), aim([-0.8, 3.2, 0.2], 12.8, 0.5))} punch={phew - point} />
     </>
   );

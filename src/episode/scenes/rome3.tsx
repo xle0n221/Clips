@@ -121,7 +121,7 @@ export const Fired: React.FC = () => {
       <UmbrellaPine position={[8, 0, -9]} height={6} />
       <Cypress position={[0.4, 0, -9]} height={5} />
       <Hills z={-60} />
-      <group position={[lerp(-1.2, 1.6, w), 0, lerp(0.5, -1.5, w)]} rotation={[0, 2.3, 0]} scale={KID_SCALE}>
+      <group position={[lerp(-1.0, 1.4, w), 0, lerp(0.2, -0.6, w)]} rotation={[0, 0.9, 0]} scale={KID_SCALE}>
         <Hero frame={frame} kid wreath={false} walk={1.2} arms={[0.5, 0.9]} eyes="happy" mouth="grin" />
         <MoneyBag position={[0.9, 0.3, 0.3]} scale={0.9} />
       </group>
@@ -174,7 +174,7 @@ export const Deleted: React.FC = () => {
       <Studio table />
       <SignBoard lines={["JOB:", "EMPEROR", "OF THE WEST"]} post={false} position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]} width={3.2} height={2.2} />
       {hit ? <StampMark text="DELETED" position={[0, 0.12, 0.1]} rotation={[-Math.PI / 2, 0, 0.18]} w={3.4} h={1.1} scale={1 + 0.3 * (1 - pop(frame, stamp, 9))} /> : null}
-      {!hit || frame < stamp + 8 ? <RubberStamp position={[0.1, hit ? 0.12 + (frame - stamp) * 0.25 : y, 0.1]} rotation={[0, 0.18, 0]} scale={1.3} /> : null}
+      {!hit || frame < stamp + 8 ? <RubberStamp position={[0.1, hit ? 0.12 + (frame - stamp) * 0.25 : y, 0.1]} rotation={[0, 0.18, 0]} scale={0.95} /> : null}
       <Burst frame={frame} start={stamp} origin={[0, 0.2, 0.1]} count={16} speed={0.12} gravity={0.004} size={0.1} colors={["#FFFFFF", "#D9C29A"]} seed={41} />
       <Shot frame={f} duration={duration - ad} {...jmove(move(aim([0, 0.3, 0.1], 5.2, 0.55, 0.5, [0, 1.3, 1]), aim([0, 0.3, 0.1], 4.7, 0.55, 0.5, [0, 1.3, 1])), j)} shake={0.02} />
     </>
@@ -196,13 +196,13 @@ export const Twist: React.FC = () => {
     return (
       <>
         <Studio table intensity={1.6} />
-        <EmpireMap frame={frame} scale={1.2} split={1} westFall={1} />
+        <EmpireMap frame={frame} scale={1.2} split={1} westFall={1} labelScale={1.3} />
         <pointLight position={[3, 3, 1]} intensity={20 * g} distance={9} color="#FFC870" />
         <Glow position={[3.4, 0.6, 0]} radius={1.3} color="#FFB84D" intensity={g} />
         <group position={[-3.6, 0.32, 0.8]} rotation={[0, 1.2, 0]} scale={0.36}>
           <Hero frame={frame} arms={[0.4, 0.4]} eyes="wide" mouth="o" />
         </group>
-        <Shot frame={frame} duration={1} {...move(aim([lerp(-3.2, 2.8, fly), 0.6, 0.2], lerp(6.5, 7.5, fly), 0.52, 0.5, [0, 0.9, 1]))} />
+        <Shot frame={frame} duration={1} {...move(aim([lerp(-3.0, 2.8, fly), 0.6, 0.2], lerp(8, 8.5, fly), 0.48, 0.5, [0, 1.0, 1]))} />
       </>
     );
   }
@@ -267,7 +267,7 @@ export const Vote: React.FC = () => {
         />
         <Coin position={[1.2, 1.06, 0.4]} rotation={[Math.PI / 2, 0, 0]} scale={0.6} />
         {shot === 0 ? (
-          <Shot frame={f} duration={closer} {...move(aim([0, 2.9, -0.05], 16, 0.265, 0.5, [0.05, -0.05, 1]), aim([0, 2.9, -0.05], 15, 0.265, 0.5, [0, -0.05, 1]))} />
+          <Shot frame={f} duration={closer} {...move(aim([0, 2.9, -0.05], 16, 0.265, 0.5, [0.05, 0.12, 1]), aim([0, 2.9, -0.05], 15, 0.265, 0.5, [0, 0.12, 1]))} />
         ) : (
           <Shot frame={f} duration={rush + 16 - closer} {...move(aim([0, 2.9, -0.05], 12.5, 0.27, 0.5, [0, -0.08, 1]), aim([0, 2.9, -0.05], lerp(12, 9, lean), 0.27, 0.5, [0, -0.08, 1]))} />
         )}
