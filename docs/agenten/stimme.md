@@ -21,12 +21,14 @@ Stimme und Sprechweise wählen und einstellen (Kokoro, `scripts/tts.py`). Ergebn
 - Von Retention-Kritiker: Ersatz-Schreibweisen für `say` vorher an den Kokoro-Phonemen prüfen (`kokoro_onnx.tokenizer.Tokenizer().phonemize`, Rom: Odoacer, Augustulus, Augustus, Honorius, `review-drehbuch-roemisches-reich.md` 4e) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 09.11.2026 · Chatterbox-Probe (exag 0,6, cfg 0,4; Rom-Intro 115 W.) · Prüfer-Messung: Whisper alle 115 Wörter inkl. Zahlen (als Ziffern), keine Halluzination/Wiederholung; Fenrir 2,90 W/s (Artikulation 3,49), Lily 2,73 (3,41) vs. Referenz ricksclip 3,80/4,0. Hauptabweichung: **Pausen nach Punkt/Frage ~0,50–0,65 s statt 0,22 s** (Komma passt: 0,20 vs 0,21). Keine Clips (−1,5 dBFS), Szenengrenzen sauber, Pegel je Szene ±0,5–0,9 dB. Melodie P10–P90 Fenrir 9,5 HT, Lily 8,7 HT. Note Fenrir 7, Lily 6 · Skript `scratchpad/pruef/m.py`.
 - 09.11.2026 · Nutzer-Feedback (über Dashboard-Sitzung) · „Stimmen hören sich unnatürlich an … sollen sich anhören als wären sie echte Voice-Actor“; Tonhöhen-Bearbeitung per WORLD-Vocoder klang unnatürlich → **keine Vocoder-Tonhöhenbearbeitung**. Ziel ist Natürlichkeit vor Effekt. Ausdrucksstärkeres Modell (Chatterbox, MIT) wird in der Dashboard-Sitzung getestet.
 - 09.11.2026 · Rom · Tempo-Faktor wirkt **nicht linear** (1.33→99,8 s, 1.34→91,5 s, 1.36→88,4 s): immer 2–3 Werte um die Schätzung herum aufnehmen und den besten nach W/s **und** Whisper-Treffern wählen. Gewählt 1.35 = 3,57 W/s, Whisper 315/319 · Commit 47fcab0.
 - 08.11.2026 · Rom · Casting gemessen: Mischung fenrir 0,6 + puck 0,4 trifft R3 (126,6 Hz, 6,3 HT); `lively` hebt Präsenz 2–5 kHz von −13,6 auf −10,1 dB · `docs/stimme-casting.md`.
 - 08.11.2026 · Rom · Rom-Szenen mit vielen Zahlen sprechen nur 3,0 W/s bei Tempo 1,25 (Schätzung 3,45 war zu hoch) → Tempo erst nach dem vollen Sprachlauf festlegen.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- Chatterbox: Pausen > 0,3 s nach Satzende auf ~0,25 s kürzen + Szenen-Lücke 0,3 → 0,1 s; danach W/s und Pausen-Median gegen Referenz messen. Zusätzlich cfg 0,3/0,5 je einmal (Tempo-Wirkung messen, nicht annehmen).
 - Rom mit K1 (Mischung + `lively`): Whisper-Gegenprobe über die ganze Episode; „respawn“ anhören.
 - Gehör-Urteil des Nutzers einholen (Hörproben K0–K3) und hier eintragen.
 - Silbenrate statt Wortrate messen.
@@ -34,5 +36,6 @@ Stimme und Sprechweise wählen und einstellen (Kokoro, `scripts/tts.py`). Ergebn
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 09.11.2026 | Chatterbox-Probe | Fenrir 7, Lily 6 (Messung, nicht gehört) | Satzpausen 2× zu lang, Tempo 2,9 statt 3,8 W/s |
 | 09.11.2026 | Rom | – (Gehör-Urteil Nutzer offen) | Mischung trifft R3-Melodie laut Messung |
 
