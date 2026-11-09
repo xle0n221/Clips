@@ -66,6 +66,13 @@ Qualität bleibt unverändert – gespart wird nur Leerlauf und Doppelarbeit:
 - Dashboard nur bei echtem Statuswechsel schreiben; Repo→Dashboard-Sync gebündelt nach mehreren Commits.
 - Ein Agent übernimmt zusammenhängende Teilaufgaben, statt sie auf mehrere zu verteilen, wenn sie
   dieselben Dateien lesen müssten.
+- **Neue Sitzung je Video** (größter Hebel): Jeder Schritt einer langen Sitzung liest den ganzen bisherigen
+  Verlauf mit. Alles Wissen steht im Repo – ein neues Video startet daher in einer frischen Sitzung
+  (oder nach `/compact`), nicht im Verlauf des vorigen.
+- Abholer nur alle 2 h (Dashboard-Entscheidungen wecken sofort per `fire_trigger`); „Nichts zu tun“ ohne
+  weitere Werkzeuge.
+- Warten auf Render/Agenten ohne Abfragen: Hintergrund-Befehl, der beim Ende weckt.
+- Antworten an den Nutzer kurz; keine Wiederholung bereits gesagter Inhalte.
 - **Repo wird schneller:** Der Werkzeugbau macht aus jedem Ad-hoc-Code, der zweimal geschrieben wurde,
   ein wiederverwendbares Werkzeug.
 

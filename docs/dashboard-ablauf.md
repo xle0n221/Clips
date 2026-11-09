@@ -13,8 +13,8 @@ Claude macht nur den Feinschliff, wenn der Nutzer ihn direkt anspricht.
 
 ## Wer arbeitet?
 Seit 08.11.2026 (Wunsch des Nutzers): die Sitzung **„CLIPS“** (session_01UNp77RB3vBiMZfvMTegJPC).
-Die geplante Aufgabe **„Clips Dashboard-Abholer (Sitzung CLIPS)“** weckt diese Sitzung stündlich
-rund um die Uhr (Minute 17, `CRON_TZ=Europe/Berlin 17 * * * *`, Stand 09.11.2026). Sie wählt nach Abschnitt 1 ein Video, arbeitet bis zur nächsten
+Die geplante Aufgabe **„Clips Dashboard-Abholer (Sitzung CLIPS)“** weckt diese Sitzung alle 2 Stunden
+rund um die Uhr (Minute 17, `CRON_TZ=Europe/Berlin 17 */2 * * *`, Stand 09.11.2026, sparsam auf Wunsch des Nutzers). Sie wählt nach Abschnitt 1 ein Video, arbeitet bis zur nächsten
 Freigabe bzw. bis „fertig“ und wird beim nächsten Durchlauf für Entscheidungen erneut geweckt.
 Gearbeitet wird auf dem Branch der Sitzung (`claude/friendly-dijkstra-1slqt3`), Episoden-Daten
 getrennt je Video unter `episodes/<slug>.json` und `public/episodes/<slug>/`; das Feld `branch` nennt ihn.
@@ -57,10 +57,10 @@ Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
 - `decision.value == "ok"` → `review: null`, `decision: null`, nächster Schritt.
   **Ohne Rückfrage** (Vorgabe des Nutzers, 08.11.2026): Nach „ok“ arbeitet die Sitzung sofort und
   automatisch bis zur nächsten Freigabe bzw. bis „fertig“ weiter. Die Sitzung erfährt eine Entscheidung
-  nicht in Echtzeit, sondern beim nächsten Lesen: stündlicher Abholer (Minute 17, rund um die Uhr) und
+  nicht in Echtzeit, sondern beim nächsten Lesen: Abholer alle 2 h (Minute 17, rund um die Uhr) und
   zusätzlich nach jedem Arbeitsschritt, solange eine Freigabe offen ist.
 - **Nach dem Nutzungslimit automatisch weiter** (Vorgabe des Nutzers, 09.11.2026): Während des Limits
-  kann keine Sitzung und kein Agent arbeiten. Der stündliche Abholer (Minute 17, rund um die Uhr) prüft
+  kann keine Sitzung und kein Agent arbeiten. Der Abholer alle 2 h (Minute 17, rund um die Uhr) prüft
   als Erstes, ob Arbeit liegen geblieben ist: abgebrochene Agenten werden per SendMessage fortgesetzt
   (ihr Zwischenstand bleibt erhalten), ein abgebrochener Render neu gestartet, offene Zwischenstände als
   WIP committet. Spätestens etwa 60 Minuten nach Ende des Limits läuft die Arbeit wieder.
