@@ -1,5 +1,6 @@
 import React from "react";
-import { INK, Ink, Toon, useCanvasTexture } from "./toon";
+import { blinkAt } from "./motion";
+import { INK, Ink, Toon, useCanvasTexture, useGhost } from "./toon";
 
 export type Eyes = "dot" | "happy" | "wide" | "angry" | "glow" | "closed";
 export type Mouth = "smile" | "o" | "flat" | "grin" | "frown" | "teeth";
@@ -40,6 +41,20 @@ export type ToonieProps = {
   readonly body?: React.ReactNode;
   readonly hands?: readonly [React.ReactNode?, React.ReactNode?];
   readonly sit?: number;
+  /**
+   * Bewegungs-Bausteine (kit/motion.tsx, design-system.md §10). Alle optional; ohne sie
+   * zeichnet die Figur exakt wie bisher.
+   * `blinkSeed` – eigener Blinzel-Takt je Figur (2–5 s, gelegentlich doppelt) statt `frame % 95`.
+   * `talk`      – Mundöffnung 0..1 (z. B. `talkFromCaptions`); unter 0,08 gilt `mouth`.
+   * `squash`    – Squash & Stretch, volumen-erhaltend ab Fußpunkt (1 = normal, `hop()`).
+   * `drag`      – Follow-through (rad, `followThrough()`): Antenne, Krawatte, Kappe, Arme, Kopf schwingen nach.
+   * `eyePop`    – Augen-Größe (1 = normal; Reaktions-Großaufnahme z. B. 1,8 mit `eyes="wide"`).
+   */
+  readonly blinkSeed?: number;
+  readonly talk?: number;
+  readonly squash?: number;
+  readonly drag?: number;
+  readonly eyePop?: number;
 };
 
 const R = 1; // Kopfradius
@@ -52,28 +67,40 @@ const face = (x: number, y: number, lift = 0.02): [number, number, number] => [
   Math.sqrt(Math.max(0, R * R - x * x - y * y)) + lift,
 ];
 
+/** Schwarzes Linien-Material; im Nachbild-Modus (GhostContext) in Geisterfarbe. */
+const InkMat: React.FC = () => {
+  const ghost = useGhost();
+  return ghost ? (
+    <meshBasicMaterial color={ghost.color} transparent opacity={ghost.opacity} depthWrite={false} />
+  ) : (
+    <meshBasicMaterial color={INK} />
+  );
+};
+
 const Arc: React.FC<{
   readonly pos: [number, number, number];
   readonly radius: number;
   readonly up?: boolean;
   readonly tube?: number;
-}> = ({ pos, radius, up, tube = 0.032 }) => (
-  <mesh position={pos} rotation={[0, 0, up ? 0 : Math.PI]}>
-    <torusGeometry args={[radius, tube, 8, 20, Math.PI]} />
-    <meshBasicMaterial color={INK} />
-  </mesh>
-);
+}> = ({ pos, radius, up, tube = 0.032 }) =>
+  useGhost() ? null : (
+    <mesh position={pos} rotation={[0, 0, up ? 0 : Math.PI]}>
+      <torusGeometry args={[radius, tube, 8, 20, Math.PI]} />
+      <InkMat />
+    </mesh>
+  );
 
 const Blob: React.FC<{
   readonly pos: [number, number, number];
   readonly s: [number, number, number];
   readonly color?: string;
-}> = ({ pos, s, color = INK }) => (
-  <mesh position={pos} scale={s}>
-    <sphereGeometry args={[1, 16, 12]} />
-    <meshBasicMaterial color={color} />
-  </mesh>
-);
+}> = ({ pos, s, color = INK }) =>
+  useGhost() ? null : (
+    <mesh position={pos} scale={s}>
+      <sphereGeometry args={[1, 16, 12]} />
+      <meshBasicMaterial color={color} />
+    </mesh>
+  );
 
 export const Toonie: React.FC<ToonieProps> = ({
   frame,
@@ -100,13 +127,48 @@ export const Toonie: React.FC<ToonieProps> = ({
   body,
   hands,
   sit = 0,
+  blinkSeed,
+  talk,
+  squash = 1,
+  drag = 0,
+  eyePop = 1,
 }) => {
-  // Blinzeln alle ~3 s für 3 Frames (nur bei offenen Augen)
-  const blinking = (eyes === "dot" || eyes === "angry") && frame % 95 < 3;
+  // Blinzeln: alt alle ~3 s für 3 Frames (alle Figuren gleichzeitig); mit blinkSeed je Figur versetzt
+  const blinking =
+    (eyes === "dot" || eyes === "angry") &&
+    (blinkSeed === undefined ? frame % 95 < 3 : blinkAt(frame, blinkSeed));
   const e: Eyes = blinking ? "closed" : eyes;
+  // Sprechen: offener Mund statt `mouth`, solange talk ≥ 0,08
+  const m: Mouth | "talk" = talk !== undefined && talk >= 0.08 ? "talk" : mouth;
   const step = Math.sin(frame * 0.35 * walk);
   const hop = Math.abs(Math.sin(frame * 0.3)) * bounce;
   const breathe = 1 + Math.sin(frame * 0.12) * 0.012;
+  // Ein Auge (x = Seite, p = Punkt auf der Kopfoberfläche)
+  const eyeOf = (x: number, p: [number, number, number]) => {
+      switch (e) {
+        case "happy":
+          return <Arc key={x} pos={p} radius={0.13} up />;
+        case "closed":
+          return <Arc key={x} pos={face(x, 0.08)} radius={0.12} />;
+        case "wide":
+          return (
+            <group key={x}>
+              <Blob pos={p} s={[0.2, 0.24, 0.06]} color="#FFFFFF" />
+              <Blob pos={[p[0], p[1], p[2] + 0.04]} s={[0.08, 0.1, 0.04]} />
+              <mesh position={[p[0], p[1], p[2] + 0.01]}>
+                <torusGeometry args={[0.21, 0.025, 6, 24]} />
+                <InkMat />
+              </mesh>
+            </group>
+          );
+        case "glow":
+          return (
+            <Blob key={x} pos={p} s={[0.13, 0.11, 0.06]} color="#FF1744" />
+          );
+        default:
+          return <Blob key={x} pos={p} s={[0.085, 0.12, 0.05]} />;
+      }
+  };
   const party = useCanvasTexture("party-hat", [128, 128], (c, w, h) => {
     for (let i = 0; i < 8; i++) {
       c.fillStyle = i % 2 ? "#FF4081" : "#FFEB3B";
@@ -118,7 +180,11 @@ export const Toonie: React.FC<ToonieProps> = ({
     <group
       position={[position[0], position[1] + hop, position[2]]}
       rotation={rotation}
-      scale={scale}
+      scale={
+        squash === 1
+          ? scale
+          : [scale / Math.sqrt(squash), scale * squash, scale / Math.sqrt(squash)]
+      }
     >
       {/* Beine */}
       {[-0.22, 0.22].map((x, i) =>
@@ -131,7 +197,7 @@ export const Toonie: React.FC<ToonieProps> = ({
           >
             <mesh position={[0, -0.3, 0]}>
               <cylinderGeometry args={[0.045, 0.045, 0.6, 8]} />
-              <meshBasicMaterial color={INK} />
+              <InkMat />
             </mesh>
             <Blob pos={[0, -0.6, 0]} s={[0.05, 0.05, 0.05]} />
             <group
@@ -140,7 +206,7 @@ export const Toonie: React.FC<ToonieProps> = ({
             >
               <mesh position={[0, -0.25, 0]}>
                 <cylinderGeometry args={[0.045, 0.045, 0.5, 8]} />
-                <meshBasicMaterial color={INK} />
+                <InkMat />
               </mesh>
               <Blob pos={[0, -0.5, 0.08]} s={[0.12, 0.07, 0.18]} />
             </group>
@@ -153,7 +219,7 @@ export const Toonie: React.FC<ToonieProps> = ({
           >
             <mesh position={[0, -0.55, 0]}>
               <cylinderGeometry args={[0.045, 0.045, 1.1, 8]} />
-              <meshBasicMaterial color={INK} />
+              <InkMat />
             </mesh>
             <Blob pos={[0, -1.1, 0.08]} s={[0.12, 0.07, 0.18]} />
           </group>
@@ -168,7 +234,7 @@ export const Toonie: React.FC<ToonieProps> = ({
         </Ink>
       </mesh>
       {tie ? (
-        <mesh position={[0, 1.95, 0.53]} rotation={[-0.15, 0, 0]}>
+        <mesh position={[0, 1.95, 0.53]} rotation={[-0.15, 0, drag * 0.8]}>
           <boxGeometry args={[0.16, 0.6, 0.04]} />
           <Toon color={tie} />
           <Ink f={0.028}>
@@ -186,11 +252,11 @@ export const Toonie: React.FC<ToonieProps> = ({
         <group
           key={side}
           position={[side * 0.5, 2.15, 0]}
-          rotation={[0, 0, side * (arms[i] + Math.sin(frame * 0.2 + i) * 0.05)]}
+          rotation={[0, 0, side * (arms[i] + Math.sin(frame * 0.2 + i) * 0.05) + drag * 0.5]}
         >
           <mesh position={[0, -0.47, 0]}>
             <cylinderGeometry args={[0.045, 0.045, 0.95, 8]} />
-            <meshBasicMaterial color={INK} />
+            <InkMat />
           </mesh>
           <Blob pos={[0, -0.97, 0]} s={[0.1, 0.1, 0.1]} />
           {hands?.[i] ? (
@@ -200,7 +266,7 @@ export const Toonie: React.FC<ToonieProps> = ({
       ))}
       {body}
       {/* Kopf */}
-      <group position={[0, HEAD_Y, 0]} rotation={[0, look, 0]}>
+      <group position={[0, HEAD_Y, 0]} rotation={[0, look, drag * 0.2]}>
         <mesh>
           <sphereGeometry args={[R, 32, 24]} />
           <Toon color={skin} />
@@ -211,29 +277,15 @@ export const Toonie: React.FC<ToonieProps> = ({
         {/* Augen */}
         {[-0.3, 0.3].map((x) => {
           const p = face(x, 0.12);
-          switch (e) {
-            case "happy":
-              return <Arc key={x} pos={p} radius={0.13} up />;
-            case "closed":
-              return <Arc key={x} pos={face(x, 0.08)} radius={0.12} />;
-            case "wide":
-              return (
-                <group key={x}>
-                  <Blob pos={p} s={[0.2, 0.24, 0.06]} color="#FFFFFF" />
-                  <Blob pos={[p[0], p[1], p[2] + 0.04]} s={[0.08, 0.1, 0.04]} />
-                  <mesh position={[p[0], p[1], p[2] + 0.01]}>
-                    <torusGeometry args={[0.21, 0.025, 6, 24]} />
-                    <meshBasicMaterial color={INK} />
-                  </mesh>
-                </group>
-              );
-            case "glow":
-              return (
-                <Blob key={x} pos={p} s={[0.13, 0.11, 0.06]} color="#FF1744" />
-              );
-            default:
-              return <Blob key={x} pos={p} s={[0.085, 0.12, 0.05]} />;
+          if (eyePop !== 1) {
+            // Augen-Pop: Auge um seinen Mittelpunkt skalieren (nur wenn gesetzt)
+            return (
+              <group key={x} position={p} scale={eyePop}>
+                <group position={[-p[0], -p[1], -p[2]]}>{eyeOf(x, p)}</group>
+              </group>
+            );
           }
+          return eyeOf(x, p);
         })}
         {/* Augenbrauen */}
         {[-1, 1].map((side) => (
@@ -247,31 +299,41 @@ export const Toonie: React.FC<ToonieProps> = ({
             ]}
           >
             <boxGeometry args={[0.28, 0.055, 0.03]} />
-            <meshBasicMaterial color={INK} />
+            <InkMat />
           </mesh>
         ))}
         {/* Mund */}
-        {mouth === "smile" && <Arc pos={face(0, -0.3)} radius={0.17} />}
-        {mouth === "frown" && <Arc pos={face(0, -0.42)} radius={0.15} up />}
-        {mouth === "o" && <Blob pos={face(0, -0.35)} s={[0.11, 0.14, 0.05]} />}
-        {mouth === "flat" && (
+        {m === "smile" && <Arc pos={face(0, -0.3)} radius={0.17} />}
+        {m === "frown" && <Arc pos={face(0, -0.42)} radius={0.15} up />}
+        {m === "o" && <Blob pos={face(0, -0.35)} s={[0.11, 0.14, 0.05]} />}
+        {m === "flat" && (
           <mesh position={face(0, -0.35, 0.03)}>
             <boxGeometry args={[0.26, 0.05, 0.03]} />
-            <meshBasicMaterial color={INK} />
+            <InkMat />
           </mesh>
         )}
-        {(mouth === "grin" || mouth === "teeth") && (
+        {(m === "grin" || m === "teeth") && (
           <group position={face(0, -0.33, 0.01)}>
             <mesh rotation={[0, 0, Math.PI]}>
               <circleGeometry args={[0.22, 20, 0, Math.PI]} />
-              <meshBasicMaterial color={INK} />
+              <InkMat />
             </mesh>
-            {mouth === "teeth" && (
+            {m === "teeth" && (
               <mesh position={[0, -0.04, 0.01]}>
                 <boxGeometry args={[0.34, 0.07, 0.01]} />
                 <meshBasicMaterial color="#FFFFFF" />
               </mesh>
             )}
+          </group>
+        )}
+        {m === "talk" && talk !== undefined && (
+          <group position={face(0, -0.36, 0.0)}>
+            <Blob pos={[0, 0, 0]} s={[0.15, 0.04 + 0.15 * talk, 0.05]} />
+            <Blob
+              pos={[0, -0.02 - 0.06 * talk, 0.03]}
+              s={[0.08, 0.02 + 0.05 * talk, 0.03]}
+              color="#E85A6B"
+            />
           </group>
         )}
         {blush &&
@@ -295,23 +357,23 @@ export const Toonie: React.FC<ToonieProps> = ({
             {[-0.3, 0.3].map((x) => (
               <mesh key={x} position={[x, 0, 0]}>
                 <boxGeometry args={[0.42, 0.26, 0.06]} />
-                <meshBasicMaterial color={INK} />
+                <InkMat />
               </mesh>
             ))}
             <mesh>
               <boxGeometry args={[0.3, 0.05, 0.05]} />
-              <meshBasicMaterial color={INK} />
+              <InkMat />
             </mesh>
           </group>
         )}
         {antenna && (
           <group
             position={[0.15, 0.95, 0]}
-            rotation={[0, 0, -0.25 + Math.sin(frame * 0.25) * 0.08]}
+            rotation={[0, 0, -0.25 + Math.sin(frame * 0.25) * 0.08 + drag]}
           >
             <mesh position={[0, 0.25, 0]}>
               <cylinderGeometry args={[0.025, 0.025, 0.5, 6]} />
-              <meshBasicMaterial color={INK} />
+              <InkMat />
             </mesh>
             <mesh position={[0, 0.55, 0]}>
               <sphereGeometry args={[0.11, 16, 12]} />
@@ -327,7 +389,7 @@ export const Toonie: React.FC<ToonieProps> = ({
           </group>
         )}
         {cap && (
-          <group position={[0, 0.45, 0]} rotation={[-0.2, 0, 0]}>
+          <group position={[0, 0.45, 0]} rotation={[-0.2, 0, drag * 0.15]}>
             <mesh scale={[1.05, 0.62, 1.05]}>
               <sphereGeometry
                 args={[R, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2]}

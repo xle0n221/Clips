@@ -1,5 +1,7 @@
 import type { Caption } from "@remotion/captions";
 import { createContext, useContext } from "react";
+import type { Act } from "./kit/motion";
+import type { TransitionSpec } from "./kit/transitions";
 
 export type Cue = {
   scene: string;
@@ -50,7 +52,17 @@ export type Timeline = {
   id: string;
   title: string;
   durationMs: number;
-  scenes: { id: string; startMs: number; endMs: number }[];
+  scenes: {
+    id: string;
+    startMs: number;
+    endMs: number;
+    /** Übergang IN diese Szene (kit/transitions.tsx); fehlt er, gilt `transition` bzw. der alte Weiß-Blitz */
+    transition?: TransitionSpec;
+    /** Color Script: Akt-Stimmung der Szene (kit/motion.tsx `COLOR_SCRIPT`); fehlt sie = unverändert */
+    act?: Act;
+  }[];
+  /** Standard-Übergang für alle Schnitte (optional; ohne = alter Weiß-Blitz) */
+  transition?: TransitionSpec;
   cues: Cue[];
   /** Einsatz-Anzeige oben (optional, aus dem Drehbuch-Feld `hud`) */
   hud?: HudSpec;

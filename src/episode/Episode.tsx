@@ -17,6 +17,16 @@ import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
 import { hudBottom } from "./overlays/Hud";
 import { EpisodeOverlays, emphMap } from "./overlays/Overlays";
+import { CameraRigContext } from "./kit/camera";
+import { gradeOf, GradeTint } from "./kit/motion";
+import {
+  canvasFxOf,
+  rigOf,
+  transitionAt,
+  TransitionOverlay,
+  whipBlurOf,
+  WhipBlurDefs,
+} from "./kit/transitions";
 import { scenesFor } from "./scenes";
 import { EpisodeData, SceneContext, Timeline } from "./types";
 
@@ -99,19 +109,51 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
       ? 0
       : interpolate(local, [0, 5], [10, 0], { extrapolateRight: "clamp" });
 
+  // Neue Übergänge / Color Script (optional, timeline.scenes[i].transition / .act).
+  // Ohne diese Felder bleiben Stil-Strings und Effekte exakt wie bisher.
+  const cuts = starts.slice(1);
+  const specs = timeline.scenes
+    .slice(1)
+    .map((s) => s.transition ?? timeline.transition);
+  const isFlash = (i: number) => !specs[i] || specs[i]!.kind === "flash";
+  const curIdx = starts.filter((s) => s <= frame).length - 1;
+  const oldCutFx = curIdx <= 0 || isFlash(curIdx - 1);
+  const tState = transitionAt(frame, cuts, specs);
+  const fx = canvasFxOf(tState);
+  const act = timeline.scenes[curIdx]?.act;
+  const anyWhip = specs.some((s) => s?.kind === "whip");
+  const canvasStyle: React.CSSProperties =
+    !fx && !act && oldCutFx
+      ? {
+          transform: `scale(${punch})`,
+          filter: `blur(${blur}px) saturate(1.15) contrast(1.05)`,
+        }
+      : {
+          transform:
+            [oldCutFx ? `scale(${punch})` : "", fx?.transform ?? ""]
+              .join(" ")
+              .trim() || "none",
+          filter: [
+            oldCutFx ? `blur(${blur}px)` : "",
+            fx?.filter ?? "",
+            "saturate(1.15) contrast(1.05)",
+            gradeOf(act).filter,
+          ]
+            .join(" ")
+            .replace(/\s+/g, " ")
+            .trim(),
+        };
+
   const stickers = timeline.cues.filter((c) => c.sticker);
   const emph = emphMap(timeline);
   const base = `episodes/${episode}`;
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#0B1035" }}>
-      <AbsoluteFill
-        style={{
-          transform: `scale(${punch})`,
-          filter: `blur(${blur}px) saturate(1.15) contrast(1.05)`,
-        }}
-      >
+      {anyWhip ? <WhipBlurDefs blur={whipBlurOf(tState)} /> : null}
+      <AbsoluteFill style={canvasStyle}>
         <ThreeCanvas width={width} height={height} shadows>
+          <CameraRigContext.Provider value={rigOf(tState)}>
           {timeline.scenes.map((s, i) => (
             <Sequence
               key={s.id}
@@ -128,14 +170,19 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
               />
             </Sequence>
           ))}
+          </CameraRigContext.Provider>
         </ThreeCanvas>
       </AbsoluteFill>
+      {act ? <GradeTint grade={act} /> : null}
+      <TransitionOverlay state={tState} width={width} height={height} />
 
-      {starts.slice(1).map((s) => (
-        <Sequence key={s} from={s} durationInFrames={6} layout="none">
-          <CutFlash />
-        </Sequence>
-      ))}
+      {starts.slice(1).map((s, i) =>
+        isFlash(i) ? (
+          <Sequence key={s} from={s} durationInFrames={6} layout="none">
+            <CutFlash />
+          </Sequence>
+        ) : null,
+      )}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="below" />
 

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { createContext, useContext, useMemo } from "react";
 import {
   BackSide,
   CanvasTexture,
@@ -9,6 +9,14 @@ import {
 } from "three";
 
 export const INK = "#141414";
+
+/**
+ * Nachbild-Modus (Bewegungs-Echo, kit/motion.tsx `Echo`): innerhalb dieses Kontexts zeichnet `Toon`
+ * eine flache, halbtransparente Fläche in `color`, `Ink` und Gesichts-Details entfallen.
+ * Standard `null` = normales Zeichnen (unverändert).
+ */
+export const GhostContext = createContext<{ color: string; opacity: number } | null>(null);
+export const useGhost = () => useContext(GhostContext);
 
 // 3-stufiger Verlauf -> harte Cartoon-Schattierung (Cel-Shading).
 let gradient: DataTexture | null = null;
@@ -37,7 +45,18 @@ export const Toon: React.FC<{
   emissiveIntensity = 0,
   transparent,
   opacity,
-}) => (
+}) => {
+  const ghost = useGhost();
+  if (ghost)
+    return (
+      <meshBasicMaterial
+        color={ghost.color}
+        transparent
+        opacity={ghost.opacity}
+        depthWrite={false}
+      />
+    );
+  return (
   <meshToonMaterial
     color={color}
     map={map ?? null}
@@ -47,7 +66,8 @@ export const Toon: React.FC<{
     transparent={transparent}
     opacity={opacity ?? 1}
   />
-);
+  );
+};
 
 /**
  * Dicke schwarze Kontur (Inverted Hull): dieselbe Geometrie, leicht vergrößert,
@@ -58,12 +78,16 @@ export const Toon: React.FC<{
 export const Ink: React.FC<{
   readonly f?: number;
   readonly children: React.ReactNode;
-}> = ({ f = 0.05, children }) => (
-  <mesh scale={1 + f}>
-    {children}
-    <meshBasicMaterial color={INK} side={BackSide} />
-  </mesh>
-);
+}> = ({ f = 0.05, children }) => {
+  const ghost = useGhost();
+  if (ghost) return null;
+  return (
+    <mesh scale={1 + f}>
+      {children}
+      <meshBasicMaterial color={INK} side={BackSide} />
+    </mesh>
+  );
+};
 
 /** Deterministischer Zufall (gleiche Werte in Vorschau und Render). */
 export const seeded = (seed: number) => {

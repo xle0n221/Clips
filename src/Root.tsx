@@ -21,6 +21,7 @@ import { getMediaMetadata } from "./phone-demo/helpers/get-media-metadata";
 import { myCompSchema, Scene } from "./phone-demo/Scene";
 import { ROME_TEST_FRAMES, RomeKitTest } from "./RomeKitTest";
 import { CommonKitTest, COMMON_TEST_FRAMES } from "./CommonKitTest";
+import { MotionKitTest, MOTION_TEST_FRAMES } from "./MotionKitTest";
 
 // Jede <Composition> erscheint als Eintrag in der Seitenleiste von Remotion Studio.
 // Docs: https://remotion.dev/docs  ·  https://remotion.dev/docs/three
@@ -71,6 +72,16 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         fps={30}
         durationInFrames={COMMON_TEST_FRAMES}
+      />
+
+      {/* Prüf-Komposition der Bewegungs-Bausteine (kit/motion.tsx, kit/transitions.tsx) */}
+      <Composition
+        id="MotionKitTest"
+        component={MotionKitTest}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={MOTION_TEST_FRAMES}
       />
 
       {/* Overlays (HUD, Auswahlkarten, Pills, Akzentwörter) – Vorführung ohne Ton */}
