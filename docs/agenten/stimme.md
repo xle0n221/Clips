@@ -19,6 +19,7 @@ Stimme und Sprechweise wählen und einstellen (Kokoro, `scripts/tts.py`). Ergebn
 - Lebendige Melodie (Tonhöhen-Streuung ≥ 6 Halbtöne wie R3) erreichen nur am_fenrir und am_puck.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 09.11.2026 · Rom · Tempo-Faktor wirkt **nicht linear** (1.33→99,8 s, 1.34→91,5 s, 1.36→88,4 s): immer 2–3 Werte um die Schätzung herum aufnehmen und den besten nach W/s **und** Whisper-Treffern wählen. Gewählt 1.35 = 3,57 W/s, Whisper 315/319 · Commit 47fcab0.
 - 08.11.2026 · Rom · Casting gemessen: Mischung fenrir 0,6 + puck 0,4 trifft R3 (126,6 Hz, 6,3 HT); `lively` hebt Präsenz 2–5 kHz von −13,6 auf −10,1 dB · `docs/stimme-casting.md`.
 - 08.11.2026 · Rom · Rom-Szenen mit vielen Zahlen sprechen nur 3,0 W/s bei Tempo 1,25 (Schätzung 3,45 war zu hoch) → Tempo erst nach dem vollen Sprachlauf festlegen.
 
@@ -30,4 +31,5 @@ Stimme und Sprechweise wählen und einstellen (Kokoro, `scripts/tts.py`). Ergebn
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 09.11.2026 | Rom | – (Gehör-Urteil Nutzer offen) | Mischung trifft R3-Melodie laut Messung |
 
