@@ -1062,8 +1062,16 @@ export const Senator: React.FC<ToonieProps> = (p) => (
 
 /** Gote: Fellumhang, karierte Tunika, Kappe, Zöpfe, Bart, Rundschild + Speer. Keine Hörner. */
 export const Goth: React.FC<
-  ToonieProps & { readonly cap?: boolean; readonly gear?: boolean; readonly hairColor?: string }
-> = ({ cap = true, gear = true, hairColor = ROME.hair, ...p }) => (
+  ToonieProps & {
+    readonly cap?: boolean;
+    readonly gear?: boolean;
+    readonly hairColor?: string;
+    /** false = ohne Fellumhang (Vandalen, Odoaker, junge Goten) */
+    readonly fur?: boolean;
+    /** statt Fell: einfacher Umhang in dieser Farbe */
+    readonly cloak?: string;
+  }
+> = ({ cap = true, gear = true, hairColor = ROME.hair, fur = true, cloak, ...p }) => (
   <Toonie
     suit={ROME.gothWool}
     head={
@@ -1076,7 +1084,8 @@ export const Goth: React.FC<
     body={
       <>
         <BarbarianTunic />
-        <FurCloak frame={p.frame} />
+        {fur ? <FurCloak frame={p.frame} /> : null}
+        {cloak ? <ImperialCloak frame={p.frame} color={cloak} clasp={ROME.bronze} /> : null}
       </>
     }
     hands={
@@ -1505,6 +1514,10 @@ export const Temple: React.FC<{
   readonly columns?: number;
   readonly inscription?: string;
   readonly ruin?: number;
+  /** Dachfarbe (Standard Terrakotta; vergoldetes Dach z. B. ROME.gold) */
+  readonly roofColor?: string;
+  /** 0..1: rechte Dachhälfte wird von vorn nach hinten abgedeckt (Plünderung 455) */
+  readonly roofGone?: number;
 }> = ({
   position = [0, 0, 0],
   rotation,
@@ -1512,6 +1525,8 @@ export const Temple: React.FC<{
   columns = 6,
   inscription = "S·P·Q·R",
   ruin = 0,
+  roofColor = ROME.roof,
+  roofGone = 0,
 }) => {
   const W = 6.6;
   const D = 6;
@@ -1588,17 +1603,22 @@ export const Temple: React.FC<{
             <ToonM color={ROME.marbleShade} />
           </mesh>
           {/* Dach */}
-          {[-1, 1].map((sd) => (
-            <Part
-              key={sd}
-              color={ROME.roof}
-              position={[sd * ((W + 0.5) / 4), roofY + 0.25, -0.6]}
-              rotation={[0, 0, -sd * slope]}
-              ink={0.015}
-            >
-              <boxGeometry args={[roofLen, 0.14, D + 0.2]} />
-            </Part>
-          ))}
+          {[-1, 1].map((sd) => {
+            const keep = sd > 0 ? 1 - Math.min(Math.max(roofGone, 0), 1) : 1;
+            if (keep < 0.02) return null;
+            const depth = (D + 0.2) * keep;
+            return (
+              <Part
+                key={sd}
+                color={roofColor}
+                position={[sd * ((W + 0.5) / 4), roofY + 0.25, -0.6 - (D + 0.2 - depth) / 2]}
+                rotation={[0, 0, -sd * slope]}
+                ink={0.015}
+              >
+                <boxGeometry args={[roofLen, 0.14, depth]} />
+              </Part>
+            );
+          })}
         </>
       ) : null}
     </group>
