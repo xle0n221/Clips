@@ -106,7 +106,7 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
   const head: V3 = [0, 3.05, 0];
   if (i === 0) {
     const talk = talkFromCaptions(WORDS, (g / 30) * 1000);
-    const a = aimAt([0, 2.6, 0], 9, { yf: 0.5 });
+    const a = aimAt([0, 2.6, 0], 11, { yf: 0.5 });
     return (
       <>
         <Studio />
@@ -221,8 +221,8 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
     );
   }
   if (i === 6) {
-    const t = trackShot([0, 2.4, 0], 10, 7);
-    const runX = (k: number) => -3 + (k / LEN[6]) * 7;
+    const t = trackShot([0, 2.4, 0], 10, 3);
+    const runX = (k: number) => -1.8 + (k / LEN[6]) * 3.6;
     return (
       <>
         <Studio />
@@ -231,10 +231,11 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
         <Foreground
           {...t.start}
           items={[
-            { xf: 0.08, yf: 0.3, depth: 2.6, size: 0.55, shape: "leaf", rot: 0.4 },
-            { xf: 0.62, yf: 0.9, depth: 3, size: 0.7, shape: "rock" },
-            { xf: 1.15, yf: 0.25, depth: 2.4, size: 0.5, shape: "leaf", rot: -0.5 },
-            { xf: 1.55, yf: 0.85, depth: 2.8, size: 0.7, shape: "rock" },
+            { xf: 0.04, yf: 0.22, depth: 5, size: 0.42, shape: "leaf", rot: 0.5 },
+            { xf: 0.75, yf: 0.93, depth: 5.5, size: 0.45, shape: "rock" },
+            { xf: 1.35, yf: 0.18, depth: 4.5, size: 0.4, shape: "leaf", rot: -0.6 },
+            { xf: 1.95, yf: 0.9, depth: 5, size: 0.45, shape: "rock" },
+            { xf: 2.45, yf: 0.25, depth: 5.5, size: 0.42, shape: "leaf", rot: 0.3 },
           ]}
         />
         <Echo

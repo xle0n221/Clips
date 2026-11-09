@@ -224,3 +224,65 @@ lebt allein vom INK-Rand (Deko, kein Lese-Text).
    ihre Pillen überlappten (Prüfbild 2. Runde).
 7. `WorldMap` ist **schematisch** (grobe Kontinente) – nie als Grenz- oder Detailkarte ausgeben;
    Inhalte aller Grafiken (Zahlen, Jahre, Orte) nur mit Freigabe des Faktenprüfers.
+
+## 10. Bewegung & Übergänge (`kit/motion.tsx`, `kit/transitions.tsx`)
+Top 8 aus `animation-techniken.md` + Zusatz aus `referenz-analyse-3.md` („Übertragbar“ 1–4) als
+themenunabhängige Bausteine. Alles reine Funktion von `frame` (kein `useFrame`, kein Zustand).
+Alle Erweiterungen alter Bausteine sind optional: ohne sie rendern Rom und Sonnensystem
+**pixelgleich** (Pixel-Diff 0 an 3 + 2 Standbildern, 09.11.2026). Prüfkomposition `MotionKitTest`
+(8 Einstellungen, 360 Frames, jede Technik einmal, zwischen den Einstellungen je ein anderer Übergang).
+
+**Übergänge** – in der Episode per `timeline.json`: `scenes[i].transition` (Übergang IN Szene i) oder
+`transition` für alle; ohne Feld = alter Weiß-Blitz. Typ `TransitionSpec`:
+
+| `kind` | Wirkung | Props | Wann |
+| --- | --- | --- | --- |
+| `whip` | Reißschwenk: A dreht weg, B dreht aus Gegenrichtung ein, waagrechte Unschärfe (SVG-Filter) + Speed-Streifen | `dir` ±1, `frames` (6) | Ort-/Zeitsprung, Tempo |
+| `wipe` | Form wächst bildfüllend (INK-Rand), Schnitt, Form öffnet sich als Loch | `shape` circle/star/hex/diamond/burst, `color`, `at` [x,y], `frames` (8) | Kapitelwechsel, Themen-Form |
+| `zoom` | Zoom-Through: Kamera fährt rein, Farb-Iris schließt, B fährt zurück | `color`, `at`, `frames` (8) | „hinein in …“ |
+| `match` | harter Schnitt + 4 Bilder Zoom-Stoß; Bildstelle selbst mit `aimAt` gleich legen | `frames` (4) | Match Cut, Reaktions-Großaufnahme |
+| `tint` | alter Blitz in Akzentfarbe | `color` | Pointe/Schock |
+| `flash` / `cut` | alter Weiß-Blitz / harter Schnitt | – | – |
+
+Bausteine dafür (für eigene Kompositionen): `transitionAt(frame, cuts, specs)`, `rigOf` →
+`CameraRigContext` (Kamera-Zusatz yaw/push/roll/fov, wirkt auf jeden `Shot`), `canvasFxOf`,
+`WhipBlurDefs`, `TransitionOverlay`, `SpeedStreaks` (DOM-Speed-Lines, auch einzeln).
+
+**Kamera** – `Shot` (neue optionale Props): `orbit {center, radius, fromDeg, toDeg, height, heightTo}`
+(≤ 100°, Erkennungsmerkmal), `fovTo` + `dollyZoom` (Vertigo, Bildhöhe am Blickziel konstant),
+`anticipate` (Anteil der Strecke, z. B. 0,12) + `anticipateFrames` (5), `span [start, ende]` (Fahrt
+nur zwischen diesen Frames, z. B. Ranfahrt auf den Wort-Cue), `ease` smooth/linear/in/out/inOut/snap.
+`shotPose(props)` liefert pos/target/fov ohne Rendern. `aimAt(p, H, {xf, yf, dir, fov})` (wie `aim()`,
+freies fov) und `screenOf(p, pos, look, fov)` (Bildstelle eines Punkts) für Match Cuts.
+`trackShot(subject, H, travel)` = seitliche Tracking-Fahrt, liefert `shot` (für `<Shot>`) und `start`
+(für `<Foreground>`).
+
+**Parallax** – `<Foreground pos look fov items>`: Elemente (leaf/rock/post/blob, dunkel, INK) werden im
+Kamerabild von Frame 0 platziert (`xf`, `yf`, `depth`, `size`) und bleiben in der Welt stehen.
+Gemessen in `MotionKitTest` Einstellung 7: depth 2,4–3 mit Fahrt 7 = Elemente schwarze Flächen, nach
+3–4 Bildern durch → **depth 4,5–5,5, size 0,4–0,45, Fahrt 3, xf über 0…(1 + Fahrt/Bildbreite)
+verteilen** (Bildbreite ≈ 0,41 × depth bei fov 40).
+
+**Figur** – `Toonie` (neue optionale Props): `blinkSeed` (eigener Takt 2–5 s, 15 % doppelt; statt alle
+gleichzeitig `frame % 95`), `talk` 0..1 (offener Mund; aus `talkFromCaptions(captions, ms)` = Wort-Rhythmus
+je Silbe, keine Lautanalyse), `squash` (volumen-erhaltend ab Fußpunkt; `hop(frame, at, height, air)`
+liefert y + squash mit Ducken/Strecken/Landung), `drag` (Follow-through für Antenne/Krawatte/Kappe/
+Arme/Kopf; Wert aus `followThrough(signal, frame)` = gedämpfte Nachschwingung auf die Körperbewegung),
+`eyePop` (Augen-Skalierung; `eyePopAt(frame, at)` 1 → 2 → 1,6 für die Reaktions-Großaufnahme, mit
+`eyes="wide"`). `anticipate(frame, at, from, back, to)` für Arme/Requisiten.
+`<Echo frame render={(f) => <Toonie frame={f} …/>} count step color strength>` = Nachbilder bei
+`frame − k·step` als flache, transparente Silhouetten (GhostContext in `toon.tsx`; kostet je Kopie einen
+Figuren-Satz Meshes).
+
+**Licht/Farbe** – `<RimLight from color intensity>` (Richtungslicht ohne Schatten), `<SceneFog color
+near far>` (`scene.fog`, Toon + Kontur reagieren), `<SpotlightStage center on color beam radius>`
+(dunkler Raum, Spot-Licht, Bodenkreis, sichtbarer Kegel), Color Script `COLOR_SCRIPT` mit Akten
+`hook/rise/glory/tension/decline/fall/aftermath/neutral` (CSS-Filter + Farbschleier `GradeTint`);
+in der Episode per `timeline.json` `scenes[i].act`.
+
+**Messwerte (09.11.2026, halbe Größe, swangle, 4 Kerne, inkl. Start):** `MotionKitTest` 360 Bilder
+230 s bzw. 192 s (2. Lauf) = 0,64 bzw. 0,53 s/Bild; Rom Frames 0–359 gleich gerendert 303 s = 0,84 s/Bild. Die Szenen sind
+verschieden – das zeigt nur, dass die Bausteine keinen großen Aufschlag haben, keine Kosten je Technik.
+**Rim-Light-Befund:** Mit `meshToonMaterial` (Half-Lambert-Rampe) hellt Gegenlicht Figur und Kulisse
+insgesamt auf; eine harte helle Kante entsteht kaum (Ausschnitt `rim-vorher-nachher.jpg`). Für echte
+Kontur-Trennung braucht es einen Fresnel-Shader – nicht gebaut.
