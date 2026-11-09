@@ -52,7 +52,7 @@ import { loadCaptionFont } from "./episode/overlays/fonts";
 
 /**
  * Prüf-Komposition der Bewegungs-Bausteine (kit/motion.tsx, kit/transitions.tsx, Erweiterungen
- * von Shot/Toonie). 8 Einstellungen, jede Technik einmal; zwischen den Einstellungen je ein anderer
+ * von Shot/Toonie). 12 Einstellungen (9–12 = Vorbild ricksclip, design-system.md §11), jede Technik einmal; zwischen den Einstellungen je ein anderer
  * Übergang (whip, wipe, zoom, match, tint, alter Blitz, harter Schnitt). Texte sind Testwerte.
  */
 const LEN = [45, 50, 45, 60, 30, 40, 50, 40, 45, 55, 70, 70];

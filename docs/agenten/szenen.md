@@ -23,6 +23,10 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 09.11.2026 · MotionKitTest 9–12 · **Experiment Portal-Fahrt** (Tür im Flur → Labor, Bildschirm → Nacht):
+  liest sich im Bildstreifen als eine durchgehende Kamerareise ohne Schnitt; Voraussetzung: `look` liegt in der
+  Öffnung, die Öffnung leuchtet in der Portal-Farbe, Flugbahn frei (erste Fassung flog durchs Formular).
+  Rom pixelgleich (Diff 0, 3 Bilder). 0,85 s/Bild halbe Größe · `scratchpad/portal/portal-streifen.jpg`, `design-system.md` §11.
 - 09.11.2026 · MotionKitTest · **Übergänge in einer Canvas funktionieren ohne Überblendung:** Whip
   (6+6 Bilder, Kamera-Yaw 0,55 rad + SVG-Unschärfe bis 90 px) liest sich im Bildstreifen als ein
   durchgehender Schwenk von A nach B; Stern-Wipe, Zoom-Through-Iris, Match Cut auf Großaufnahme und
@@ -53,6 +57,7 @@
 - 08.11.2026 · Sonnensystem · Tafel/Figur/Sticker angeschnitten (9 s, 66 s, 75 s) → Kamera-Korrekturen be84199.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- NEU: Im nächsten Clip **eine** Portal-Fahrt statt Schnitt an einem Ortswechsel (Tür/Kopf/Bildschirm), Note vom Regie-Kritiker im bewegten Clip; Wort-Untertitel (`captionMode: "word"`) gegen Seiten vergleichen.
 - ERLEDIGT (Werkzeug gebaut 09.11.2026, Einsatz im echten Clip offen): Übergänge, Orbit/Dolly-Zoom, Figur lebendig – siehe Gelernt; noch zu messen: Note je Übergang vom Regie-Kritiker, Kopfgröße beim Dolly-Zoom in px (nicht gemessen).
 - NEU: Im nächsten Clip je Szenenwechsel einen anderen Übergang aus §10 wählen, Mitte auf Wort-Cue; Match Cut mit `aimAt` (gleiches xf/yf) und mit `screenOf` prüfen.
 - NEU: Lippen-Sync aus `voice.wav` (`useWindowedAudioData`) gegen `talkFromCaptions` vergleichen – nur wenn deterministisch.

@@ -292,3 +292,24 @@ Aufhellung; ohne Kinder bleibt das alte Richtungslicht. Ohne Kontext unveränder
 `captionBand` (Standard y 0,62–0,86) – nach unten, sodass nur die Oberkante ins Bild ragt.
 **Echo:** Abstand je Nachbild = Tempo × `step` ≥ ½ Körperbreite, sonst liest es sich als Leuchten
 (Probe: `step` 2 → Schein, `step` 4 → erkennbare Nachbilder).
+
+## 11. Vorbild ricksclip (`referenz-analyse-4.md`) – Bausteine
+Techniken übernommen, keine Figuren oder Texte. Alles optional: ohne neue Props/Felder bleiben Rom und
+Sonnensystem **pixelgleich** (Rom 1,2/30,6/76,3 s: Pixel-Diff 0, alter gegen neuen Stand, 09.11.2026).
+Prüfkomposition `MotionKitTest` Einstellungen 9–12 (Frames 360–599, 8 s).
+
+| Baustein | Wo | Nutzung |
+| --- | --- | --- |
+| **Portal-Fahrt** | `transitions.tsx` `kind: "portal"` | `portal` door/round/screen, `color` (= Licht der Öffnung), `rim` (Rahmen), `frames` (12). Blickziel `look` der letzten A-Einstellung **in** die Öffnung legen (Rig-`push` 0,93 fliegt darauf zu), Öffnung in `color` leuchten lassen (z. B. `Hallway openDoor={-1} open`). B: Loch in Portal-Form wächst aus der Mitte, Rahmenband fliegt vorbei, Kamera kommt mit Restschwung (push −0,45 → 0). In der Episode per `timeline.json` `scenes[i].transition`. |
+| **Ausdrücke** | `Toonie` | `eyes="squint"` (> <), `mouth="clench"` (gefletscht) / `"beam"` (breites Grinsen) / `"smirk"`, `sweatDrop` 0..1, `stress` 0..1 (rote Striche, pulsieren). Auch einzeln: `SweatDrop`, `StressMarks`. |
+| **Gegenstand mit Gesicht** | `FaceOn` (Toonie.tsx) | Kind an die Vorderseite eines beliebigen Objekts, `scale` (1 = Toonie-Gesicht), `curve` = Wölbungsradius (in Gesichts-Einheiten: Objektradius / scale), alle Augen/Münder, `talk`, `blinkSeed`, `gaze`, `sweatDrop`, `stress`. |
+| **Flur mit Fluchtpunkt** | `Hallway` (common.tsx) | Gang entlang −z, Tonnengewölbe mit Rippen, Türen mit Schildchen (`labels`), Wandlampen (`glow`), Endtür (`endLabel`, `openDoor`/`open`), `palette` (`HALLWAY_WARM`), `fill` (Fülllicht von vorn). Kamera z ≈ 3, y 1,7–2,1, Blick auf die Endtür. |
+| **Schilder** | `RoadSign`, `FormSheet` | Wegweiser (Text + Geometrie-Pfeil, weiß auf `#1E7A46` 5,6 : 1); Formular mit Titel, Ankreuzfeldern, `highlight`-Zeile in Akzent, Unterschrift `sign` 0..1. Kit-Schrift hat **keine** Pfeile/Häkchen → als Geometrie. |
+| **Wort-Untertitel** | `Captions mode="word"`, `timeline.captionMode: "word"` | Ein Wort je Einblendung, GROSS, weiß + INK-Kontur 18 px, Akzentfarbe nur auf `emph`-Wörtern (größer, −2° gekippt). Ohne Feld = alte Seiten. |
+| **Ort-Licht** | `PlaceGlow` (motion.tsx) | DOM: Leuchten (screen) + Vignette in Ortsfarbe (multiply), Presets `PLACE_GLOW` warm/body/lab/night/day, `flicker`. |
+
+**Befunde (Probe `out/motion-test-ricks.mp4`, halbe Größe, 240 Bilder 203 s = 0,85 s/Bild):**
+1. Tonnengewölbe: `cylinderGeometry` mit θ −π/2…π/2 und Drehung **+π/2** um x liegt im Boden; richtig −π/2 (erster Lauf, `uebersicht.jpg`).
+2. Flur-Punktlichter 18 → Haut braun, Wand überstrahlt; mit 6 + Fülllicht von vorn Gesicht RGB 222/213/196 (Standbild Frame 368).
+3. Kamerafahrt zum Portal-Ziel muss frei sein: Erste Fassung flog durch das Formular (`portal-schirm.jpg`) – Requisiten neben die Achse Kamera→Öffnung stellen.
+4. Requisiten nahe der Flugbahn (Wegweiser) rauschen groß vorbei – wirkt als Parallaxe, darf aber kein Wort verdecken.

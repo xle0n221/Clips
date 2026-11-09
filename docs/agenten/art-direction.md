@@ -13,6 +13,7 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Leistung (Mesh-Zahl) im Blick
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Sonderzeichen (Pfeile, Häkchen) nie in `TextLabel`: Montserrat-Subset hat sie nicht → als Geometrie bauen.
 - Erkennungsfarbe der Hauptfigur exklusiv halten (Rom: Gelb nur am Halstuch).
 - Accessoires nicht in die Kopfkugel setzen (Kopf reicht bis y 2,05).
 - Texturschrift aus `public/fonts` mit `delayRender` laden, nie Systemschrift.
@@ -21,6 +22,10 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 09.11.2026 · MotionKitTest 9–12 · **Experiment Flur + Ort-Licht:** `Hallway` mit 3 Punktlichtern à 18 färbte
+  weiße Haut braun und überstrahlte die Wände; mit 6 + Fülllicht von vorn (1,4) Gesicht RGB 222/213/196, Wand
+  201/150/95 – Trennung über INK-Kontur, nicht über Helligkeit (Kontrast nicht gemessen). Halbschalen-Gewölbe:
+  Drehung −π/2 (sonst liegt es im Boden). Kit-Schrift ohne ↑/✓ → Geometrie · `scratchpad/portal/uebersicht2.jpg`.
 - 09.11.2026 · MotionKitTest · **Experiment Rim-Light:** Richtungslicht hinten-oben-seitlich (2,2) auf
   Toon-Figur. **Ergebnis:** hellt Figur und Kulisse insgesamt auf, harte Kante kaum sichtbar – Ursache:
   `meshToonMaterial` rechnet Half-Lambert (auch abgewandte Flächen bekommen die unterste Rampenstufe
