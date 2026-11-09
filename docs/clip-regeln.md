@@ -50,6 +50,21 @@ Themenunabhängiger Ablauf und Muster je Themen-Art: [`playbook-themen.md`](play
 6. Hochformat: Kompositionen **vertikal** aufbauen; alles Wichtige im mittleren Bildbereich,
    unteres Drittel für Untertitel freihalten.
 
+## Bewegung & Übergänge (Pflicht ab Clip 3)
+Bausteine: `design-system.md` §10. Grundlage: Regie-Kritik des Probe-Clips `MotionKitTest` (09.11.2026,
+Noten in `agenten/regie-kritiker.md`). Pflicht in jedem Clip, jeweils mindestens einmal:
+1. **Whip** (`transition.kind: "whip"`) für Orts-/Zeitsprünge statt Weiß-Blitz.
+2. **Form-Wipe** (`wipe`, Themen-Form) für Kapitel-/Aktwechsel – höchstens 2× je Clip.
+3. **Match Cut / Reaktions-Großaufnahme mit Augen-Pop** (`match` + `eyePopAt`, `eyes="wide"`) für die Pointe.
+4. **Spotlight-Bühne** (`SpotlightStage`) für den einen „Fokus“-Moment (Enthüllung/Frage).
+5. **Versetztes Blinzeln + Mund** (`blinkSeed` je Figur, `talk` aus `talkFromCaptions`) – immer, für alle Sprecher.
+6. **Squash/Hop + Follow-through** (`hop`, `drag`) bei jedem Sprung/Stopp der Hauptfigur.
+7. **Orbit** (≤ 100°) oder **Tracking + Parallax** (`trackShot` + `Foreground`) als bewegte Einstellung je Akt.
+8. **Color Script** (`scenes[i].act`) über den ganzen Clip (Aufstieg → Fall sichtbar in der Farbe).
+Nicht Pflicht (schwach oder nur gezielt): Dolly-Zoom (wirkt nur mit viel Hintergrund-Tiefe), Zoom-Through,
+Farb-Blitz `tint`, Echo (nur bei schneller Bewegung, `step` so, dass Abstand ≥ ½ Körperbreite), Dunst, Rim-Light
+(nur als `<RimLight>`-Hülle um Figuren). Alter Weiß-Blitz (`flash`) nicht mehr als Standard-Übergang.
+
 ## Prüfung vor dem Render (Pflicht)
 - Drehbuch laut gegen die Story-Regeln prüfen: Gibt es Frage, Einsatz, Kausalkette, Eskalation,
   Wendepunkt, Auflösung? Würde man nach 3 Sekunden weiterschauen?

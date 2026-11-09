@@ -122,7 +122,6 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
       <>
         <Studio fog />
         <Posts />
-        {f >= 25 ? <RimLight intensity={2.2} /> : null}
         <Shot
           frame={f}
           duration={LEN[1]}
@@ -131,7 +130,13 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
           fov={40}
           orbit={{ center: [0, 0, 0], radius: 12, fromDeg: -40, toDeg: 40, height: 3.6, heightTo: 3 }}
         />
-        <Toonie frame={g} suit="#2E7DFF" blinkSeed={3} cap="#FF4D6D" />
+        {f >= 25 ? (
+          <RimLight color="#BFE4FF">
+            <Toonie frame={g} suit="#2E7DFF" blinkSeed={3} cap="#FF4D6D" />
+          </RimLight>
+        ) : (
+          <Toonie frame={g} suit="#2E7DFF" blinkSeed={3} cap="#FF4D6D" />
+        )}
         <BlobShadow position={[0, 0.01, 0]} />
       </>
     );
@@ -240,7 +245,7 @@ const Scene: React.FC<{ readonly i: number; readonly f: number; readonly g: numb
         />
         <Echo
           frame={f}
-          step={2}
+          step={4}
           count={3}
           render={(k) => (
             <Toonie frame={g - f + k} position={[runX(k), 0, 0]} scale={0.8} suit="#2E7DFF" walk={2.2} antenna rotation={[0, 0.9, 0]} />

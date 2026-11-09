@@ -2,6 +2,7 @@ import React, { createContext, useContext, useMemo } from "react";
 import {
   BackSide,
   CanvasTexture,
+  Color,
   DataTexture,
   NearestFilter,
   RedFormat,
@@ -17,6 +18,30 @@ export const INK = "#141414";
  */
 export const GhostContext = createContext<{ color: string; opacity: number } | null>(null);
 export const useGhost = () => useContext(GhostContext);
+
+/**
+ * Rim-Light-Kante (kit/motion.tsx `RimLight`): innerhalb dieses Kontexts bekommt `Toon` eine harte,
+ * helle Fresnel-Kante (Silhouetten-Rand), nur auf der Seite `side` (Bildrichtung x/y, z. B. [-0.6, 0.8]
+ * = oben links). Standard `null` = Material unverändert (Rom/Sonnensystem pixelgleich).
+ */
+export type Rim = { color: string; strength: number; width: number; side: [number, number] };
+export const RimContext = createContext<Rim | null>(null);
+
+const rimShader = (rim: Rim) => {
+  const c = new Color(rim.color);
+  const len = Math.hypot(rim.side[0], rim.side[1]) || 1;
+  const f = (v: number) => v.toFixed(4);
+  // Fresnel 0..1 am Rand; harte Stufe (Toon) bei 1 − width; Maske zur Lichtseite
+  return `
+  {
+    vec3 rimN = normalize(normal);
+    float rimF = 1.0 - clamp(dot(rimN, normalize(vViewPosition)), 0.0, 1.0);
+    float rimEdge = smoothstep(${f(1 - rim.width)}, ${f(1 - rim.width + 0.04)}, rimF);
+    float rimSide = smoothstep(-0.1, 0.35, dot(normalize(rimN.xy + 1e-4), vec2(${f(rim.side[0] / len)}, ${f(rim.side[1] / len)})));
+    outgoingLight = mix(outgoingLight, vec3(${f(c.r)}, ${f(c.g)}, ${f(c.b)}), rimEdge * rimSide * ${f(rim.strength)});
+  }
+  #include <opaque_fragment>`;
+};
 
 // 3-stufiger Verlauf -> harte Cartoon-Schattierung (Cel-Shading).
 let gradient: DataTexture | null = null;
@@ -47,6 +72,7 @@ export const Toon: React.FC<{
   opacity,
 }) => {
   const ghost = useGhost();
+  const rim = useContext(RimContext);
   if (ghost)
     return (
       <meshBasicMaterial
@@ -58,6 +84,7 @@ export const Toon: React.FC<{
     );
   return (
   <meshToonMaterial
+    key={rim ? "rim" : "plain"}
     color={color}
     map={map ?? null}
     gradientMap={toonGradient()}
@@ -65,6 +92,15 @@ export const Toon: React.FC<{
     emissiveIntensity={emissiveIntensity}
     transparent={transparent}
     opacity={opacity ?? 1}
+    {...(rim
+      ? {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          onBeforeCompile: (sh: any) => {
+            sh.fragmentShader = sh.fragmentShader.replace("#include <opaque_fragment>", rimShader(rim));
+          },
+          customProgramCacheKey: () => `rim:${rim.color}:${rim.strength}:${rim.width}:${rim.side.join(",")}`,
+        }
+      : {})}
   />
   );
 };

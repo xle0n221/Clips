@@ -284,5 +284,11 @@ in der Episode per `timeline.json` `scenes[i].act`.
 230 s bzw. 192 s (2. Lauf) = 0,64 bzw. 0,53 s/Bild; Rom Frames 0–359 gleich gerendert 303 s = 0,84 s/Bild. Die Szenen sind
 verschieden – das zeigt nur, dass die Bausteine keinen großen Aufschlag haben, keine Kosten je Technik.
 **Rim-Light-Befund:** Mit `meshToonMaterial` (Half-Lambert-Rampe) hellt Gegenlicht Figur und Kulisse
-insgesamt auf; eine harte helle Kante entsteht kaum (Ausschnitt `rim-vorher-nachher.jpg`). Für echte
-Kontur-Trennung braucht es einen Fresnel-Shader – nicht gebaut.
+insgesamt auf; eine harte helle Kante entsteht kaum (Ausschnitt `rim-vorher-nachher.jpg`). **Behoben
+(Regie-Kritiker 09.11.2026):** `<RimLight>{figuren}</RimLight>` legt per `RimContext` (toon.tsx) eine
+Fresnel-Kante ins Toon-Material der Kinder (`side` Bildrichtung, `width` 0,4, `strength` 1), ohne
+Aufhellung; ohne Kinder bleibt das alte Richtungslicht. Ohne Kontext unverändert (Rom/Sonne Diff 0).
+**Parallax-Schutz:** `Foreground` schiebt Elemente (außer `post`) aus dem Untertitel-Band
+`captionBand` (Standard y 0,62–0,86) – nach unten, sodass nur die Oberkante ins Bild ragt.
+**Echo:** Abstand je Nachbild = Tempo × `step` ≥ ½ Körperbreite, sonst liest es sich als Leuchten
+(Probe: `step` 2 → Schein, `step` 4 → erkennbare Nachbilder).

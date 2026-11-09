@@ -2,7 +2,7 @@ import type { Caption } from "@remotion/captions";
 import React from "react";
 import { Easing } from "remotion";
 import { AdditiveBlending, DoubleSide, Object3D } from "three";
-import { GhostContext, Ink, seeded, Toon } from "./toon";
+import { GhostContext, Ink, RimContext, seeded, Toon } from "./toon";
 import type { V3 } from "./camera";
 
 /**
@@ -221,14 +221,18 @@ export type ForegroundItem = {
  * Multiplane-Vordergrund: Elemente werden einmal im Kamerabild von Frame 0 (`pos`→`look`)
  * platziert und bleiben dann in der Welt stehen. Fährt die Kamera seitlich (Truck/Orbit),
  * ziehen die nahen Ebenen schneller vorbei als der Hintergrund → Tiefe.
- * Dunkle Farbe = liest sich als „unscharf nah“. Untertitel-Zone (yf > 0,68) nur an den Rand.
+ * Dunkle Farbe = liest sich als „unscharf nah“.
+ * Untertitel-Schutz: Elemente (außer `post`), deren Bildhöhe das Band `captionBand` (Standard
+ * y 0,62–0,86 = Untertitel bei paddingBottom 400 + Rand) schneidet, werden aus dem Band geschoben –
+ * nach unten (nur die Oberkante ragt ins Bild) bzw. nach oben. `captionBand={null}` schaltet das ab.
  */
 export const Foreground: React.FC<{
   readonly pos: V3;
   readonly look: V3;
   readonly fov?: number;
   readonly items: readonly ForegroundItem[];
-}> = ({ pos, look, fov = 40, items }) => {
+  readonly captionBand?: readonly [number, number] | null;
+}> = ({ pos, look, fov = 40, items, captionBand = [0.62, 0.86] }) => {
   const fwd = norm(sub(look, pos));
   const right = norm(cross(fwd, [0, 1, 0]));
   const up = cross(right, fwd);
@@ -239,7 +243,15 @@ export const Foreground: React.FC<{
         const h = 2 * it.depth * tan;
         const w = h * ASPECT;
         const dx = (it.xf - 0.5) * w;
-        const dy = (0.5 - it.yf) * h;
+        const s0 = it.size ?? 0.6;
+        const shape0 = it.shape ?? "blob";
+        // halbe Bildhöhe des Elements (Anteil), +15 % für die Perspektive naher Körper
+        const half = (s0 * (shape0 === "rock" ? 0.8 : shape0 === "leaf" ? 1.3 : 1) * 1.15) / h;
+        let yf = it.yf;
+        if (captionBand && shape0 !== "post" && yf + half > captionBand[0] && yf - half < captionBand[1]) {
+          yf = yf >= (captionBand[0] + captionBand[1]) / 2 ? captionBand[1] + half : captionBand[0] - half;
+        }
+        const dy = (0.5 - yf) * h;
         const p: V3 = [
           pos[0] + fwd[0] * it.depth + right[0] * dx + up[0] * dy,
           pos[1] + fwd[1] * it.depth + right[1] * dx + up[1] * dy,
@@ -302,17 +314,32 @@ export const Foreground: React.FC<{
 /* ------------------------------------------------------------------ */
 
 /**
- * Gegenlicht (Rim-Light) ohne Schatten. Richtungslicht aus `from` (Richtung, relativ – nur der
- * Winkel zählt). Standard: hinten-oben-seitlich. Toon-Rampe macht daraus eine harte helle Kante
- * an Kopf/Schultern; die Vorderseite wird nur leicht (≈ 35 % der Stärke) mit aufgehellt.
+ * Gegenlicht (Rim-Light) als harte helle Kante an der Silhouette (Fresnel im Toon-Material) für alle
+ * `children` – trennt Figur vom Hintergrund, ohne sie insgesamt aufzuhellen. `side` = Bildrichtung der
+ * Lichtquelle ([-0.6, 0.8] = oben links), `width` 0,3–0,45 (Kantenbreite, Standard 0,4), `strength` 0..1.
+ * Ohne `children` nur das alte Richtungslicht (`light`, hellt alles auf – Befund 09.11.2026).
+ * `light` > 0 ergänzt ein schwaches Richtungslicht aus `from`.
  */
 export const RimLight: React.FC<{
   readonly from?: V3;
   readonly color?: string;
   readonly intensity?: number;
-}> = ({ from = [-3, 5, -6], color = "#CFE6FF", intensity = 1.4 }) => (
-  <directionalLight position={from} color={color} intensity={intensity} />
-);
+  readonly side?: [number, number];
+  readonly width?: number;
+  readonly strength?: number;
+  readonly light?: number;
+  readonly children?: React.ReactNode;
+}> = ({ from = [-3, 5, -6], color = "#CFE6FF", intensity = 1.4, side = [-0.6, 0.8], width = 0.4, strength = 1, light, children }) => {
+  const li = light ?? (children ? 0 : intensity);
+  return (
+    <>
+      {li > 0 ? <directionalLight position={from} color={color} intensity={li} /> : null}
+      {children ? (
+        <RimContext.Provider value={{ color, strength, width, side }}>{children}</RimContext.Provider>
+      ) : null}
+    </>
+  );
+};
 
 /**
  * Atmosphären-Dunst: `scene.fog` in Hintergrundfarbe. Ab `near` beginnt der Dunst, ab `far`
