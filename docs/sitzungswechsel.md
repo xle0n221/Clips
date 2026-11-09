@@ -30,3 +30,4 @@ Nicht mitten in einem laufenden Render oder während Agenten arbeiten – erst s
 | Datum | alte Sitzung | neue Sitzung | Anlass |
 |---|---|---|---|
 | 09.11.2026 | session_01UNp77RB3vBiMZfvMTegJPC | session_01UNp77RfgMaxCV6mq19omHk („CLIPS – Orchestrator (ab 09.11.2026, nach Rom-Video)“) | Rom-Video fertig, Verlauf sehr lang; Abholer trig_01JLT1pGyNwh8YKTpJWtNJxp, Wochenrunde trig_01XgFBdQWeP3pQUJpqF5EKNr; alte Trigger abgeschaltet |
+| 09.11.2026 | session_01UNp77RfgMaxCV6mq19omHk | session_01UNp77PfeZgZvzb2ptJpUgZ („CLIPS – Rom-Video v3 (Chatterbox Finn, ricksclip-Stil)“) | Verlauf lang, Rom-Überarbeitung beginnt; Abholer trig_011W3kQivp9AmUoMEjgQwfvL, Wochenrunde trig_01WspzYtyzSYSSJ4QBj9Msr2; alte Trigger aus |
