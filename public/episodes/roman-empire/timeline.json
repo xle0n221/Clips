@@ -1,0 +1,802 @@
+{
+ "id": "roman-empire",
+ "title": "You bought Rome. Worst job ever.",
+ "durationMs": 90011,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 6649
+  },
+  {
+   "id": "auction",
+   "startMs": 6649,
+   "endMs": 16881
+  },
+  {
+   "id": "stones",
+   "startMs": 16881,
+   "endMs": 23849
+  },
+  {
+   "id": "chaos",
+   "startMs": 23849,
+   "endMs": 29302
+  },
+  {
+   "id": "split",
+   "startMs": 29302,
+   "endMs": 36867
+  },
+  {
+   "id": "goths",
+   "startMs": 36867,
+   "endMs": 43494
+  },
+  {
+   "id": "perished",
+   "startMs": 43494,
+   "endMs": 50462
+  },
+  {
+   "id": "vandals",
+   "startMs": 50462,
+   "endMs": 57686
+  },
+  {
+   "id": "kid",
+   "startMs": 57686,
+   "endMs": 64334
+  },
+  {
+   "id": "fired",
+   "startMs": 64334,
+   "endMs": 71707
+  },
+  {
+   "id": "deleted",
+   "startMs": 71707,
+   "endMs": 75241
+  },
+  {
+   "id": "twist",
+   "startMs": 75241,
+   "endMs": 81761
+  },
+  {
+   "id": "vote",
+   "startMs": 81761,
+   "endMs": 89411
+  }
+ ],
+ "cues": [
+  {
+   "sticker": "EMPIRE FOR SALE",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "hook",
+   "atMs": 920
+  },
+  {
+   "beat": "auctionWide",
+   "sfx": "whoosh",
+   "scene": "hook",
+   "atMs": 1860
+  },
+  {
+   "beat": "youWin",
+   "sfx": "ding",
+   "label": {
+    "text": "YOU",
+    "color": "#9B5DE5",
+    "x": 0.5,
+    "y": 0.42
+   },
+   "scene": "hook",
+   "atMs": 2900
+  },
+  {
+   "beat": "throneClose",
+   "sfx": "pop",
+   "scene": "hook",
+   "atMs": 3840
+  },
+  {
+   "sticker": "RESPAWN = WORSE JOB",
+   "color": "#FF8A3D",
+   "scene": "hook",
+   "atMs": 4880
+  },
+  {
+   "beat": "worriedPush",
+   "scene": "hook",
+   "atMs": 6100
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 920
+  },
+  {
+   "beat": "rewind",
+   "sfx": "whoosh",
+   "scene": "auction",
+   "atMs": 6560
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 193
+   },
+   "scene": "auction",
+   "atMs": 7010
+  },
+  {
+   "beat": "guardsWall",
+   "label": {
+    "text": "GUARDS",
+    "color": "#FF5A5A",
+    "x": 0.5,
+    "y": 0.3
+   },
+   "scene": "auction",
+   "atMs": 7910
+  },
+  {
+   "sticker": "87 DAYS",
+   "color": "#B0BEC5",
+   "sfx": "pop",
+   "scene": "auction",
+   "atMs": 9220
+  },
+  {
+   "beat": "throneForSale",
+   "sfx": "ding",
+   "scene": "auction",
+   "atMs": 10220
+  },
+  {
+   "beat": "rivalInside",
+   "label": {
+    "text": "RIVAL",
+    "color": "#B0BEC5",
+    "x": 0.32,
+    "y": 0.45
+   },
+   "scene": "auction",
+   "atMs": 11080
+  },
+  {
+   "beat": "youOutside",
+   "sfx": "pop",
+   "scene": "auction",
+   "atMs": 12340
+  },
+  {
+   "beat": "fingers",
+   "sfx": "whoosh",
+   "scene": "auction",
+   "atMs": 13620
+  },
+  {
+   "sticker": "25,000 SESTERCES / SOLDIER",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "auction",
+   "atMs": 14780
+  },
+  {
+   "beat": "sold",
+   "sfx": "ding",
+   "scene": "auction",
+   "atMs": 16050
+  },
+  {
+   "emph": true,
+   "scene": "auction",
+   "atMs": 14780
+  },
+  {
+   "beat": "crowdBoo",
+   "sfx": "boom",
+   "hud": {
+    "id": "empire",
+    "value": 0.85
+   },
+   "label": {
+    "text": "JULIANUS",
+    "color": "#9B5DE5",
+    "x": 0.5,
+    "y": 0.42
+   },
+   "scene": "stones",
+   "atMs": 17050
+  },
+  {
+   "beat": "stonesFly",
+   "sfx": "pop",
+   "scene": "stones",
+   "atMs": 18640
+  },
+  {
+   "sticker": "66 DAYS",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "stones",
+   "atMs": 19340
+  },
+  {
+   "beat": "gameOver",
+   "scene": "stones",
+   "atMs": 20000
+  },
+  {
+   "beat": "lastWords",
+   "scene": "stones",
+   "atMs": 21380
+  },
+  {
+   "beat": "deadpan",
+   "sfx": "ding",
+   "scene": "stones",
+   "atMs": 22410
+  },
+  {
+   "emph": true,
+   "scene": "stones",
+   "atMs": 20000
+  },
+  {
+   "emph": true,
+   "scene": "stones",
+   "atMs": 20170
+  },
+  {
+   "emph": true,
+   "scene": "stones",
+   "atMs": 22760
+  },
+  {
+   "sticker": "5 EMPERORS \u00b7 1 YEAR",
+   "color": "#FFAB40",
+   "sfx": "pop",
+   "beat": "throneCarousel",
+   "scene": "chaos",
+   "atMs": 24500
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 238
+   },
+   "beat": "stele238",
+   "sfx": "whoosh",
+   "scene": "chaos",
+   "atMs": 26340
+  },
+  {
+   "sticker": "6 RULERS \u00b7 FEW MONTHS",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "hud": {
+    "id": "empire",
+    "value": 0.7
+   },
+   "scene": "chaos",
+   "atMs": 27040
+  },
+  {
+   "beat": "nopeSkip",
+   "sfx": "whoosh",
+   "scene": "chaos",
+   "atMs": 28660
+  },
+  {
+   "emph": true,
+   "scene": "chaos",
+   "atMs": 28660
+  },
+  {
+   "beat": "respawn",
+   "sfx": "whoosh",
+   "scene": "split",
+   "atMs": 29330
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 395
+   },
+   "scene": "split",
+   "atMs": 29640
+  },
+  {
+   "sticker": "HARD MODE",
+   "color": "#FF8A3D",
+   "sfx": "pop",
+   "scene": "split",
+   "atMs": 30400
+  },
+  {
+   "beat": "mapSplit",
+   "sfx": "boom",
+   "hud": {
+    "id": "empire",
+    "value": 0.5
+   },
+   "scene": "split",
+   "atMs": 31510
+  },
+  {
+   "label": {
+    "text": "EAST",
+    "color": "#4FC3F7",
+    "x": 0.72,
+    "y": 0.45
+   },
+   "scene": "split",
+   "atMs": 32080
+  },
+  {
+   "beat": "honoriusThrone",
+   "label": {
+    "text": "HONORIUS",
+    "color": "#9B5DE5",
+    "x": 0.4,
+    "y": 0.42
+   },
+   "scene": "split",
+   "atMs": 33000
+  },
+  {
+   "sticker": "LEGEND SAYS\u2026",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "split",
+   "atMs": 34480
+  },
+  {
+   "beat": "rooster",
+   "sfx": "ding",
+   "scene": "split",
+   "atMs": 35520
+  },
+  {
+   "label": {
+    "text": "ROME (ROOSTER)",
+    "color": "#FFD23F",
+    "x": 0.6,
+    "y": 0.5
+   },
+   "scene": "split",
+   "atMs": 35760
+  },
+  {
+   "emph": true,
+   "scene": "split",
+   "atMs": 30400
+  },
+  {
+   "emph": true,
+   "scene": "split",
+   "atMs": 30730
+  },
+  {
+   "emph": true,
+   "scene": "split",
+   "atMs": 33000
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 410
+   },
+   "sfx": "boom",
+   "scene": "goths",
+   "atMs": 36970
+  },
+  {
+   "beat": "gothsMarch",
+   "label": {
+    "text": "GOTHS",
+    "color": "#FF5A5A",
+    "x": 0.7,
+    "y": 0.5
+   },
+   "scene": "goths",
+   "atMs": 37520
+  },
+  {
+   "beat": "loot",
+   "sfx": "boom",
+   "hud": {
+    "id": "empire",
+    "value": 0.35
+   },
+   "scene": "goths",
+   "atMs": 37770
+  },
+  {
+   "sticker": "ONE STORY SAYS\u2026",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "goths",
+   "atMs": 38740
+  },
+  {
+   "beat": "fakeGift",
+   "sticker": "300 \"GIFTS\"",
+   "color": "#FFAB40",
+   "scene": "goths",
+   "atMs": 39280
+  },
+  {
+   "beat": "gateOpens",
+   "sfx": "whoosh",
+   "scene": "goths",
+   "atMs": 41250
+  },
+  {
+   "beat": "trojanGag",
+   "sticker": "TROJAN HORSE 2.0",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "goths",
+   "atMs": 41770
+  },
+  {
+   "sticker": "LEGEND SAYS\u2026",
+   "color": "#FFFFFF",
+   "scene": "perished",
+   "atMs": 43650
+  },
+  {
+   "beat": "servantIn",
+   "sfx": "whoosh",
+   "scene": "perished",
+   "atMs": 44770
+  },
+  {
+   "sticker": "ROME HAS PERISHED!",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "perished",
+   "atMs": 45850
+  },
+  {
+   "beat": "horror",
+   "scene": "perished",
+   "atMs": 46580
+  },
+  {
+   "beat": "roosterEats",
+   "sfx": "pop",
+   "scene": "perished",
+   "atMs": 48050
+  },
+  {
+   "beat": "pointMap",
+   "scene": "perished",
+   "atMs": 49060
+  },
+  {
+   "beat": "phew",
+   "sfx": "ding",
+   "scene": "perished",
+   "atMs": 49620
+  },
+  {
+   "emph": true,
+   "scene": "perished",
+   "atMs": 49620
+  },
+  {
+   "beat": "respawnQueue",
+   "sfx": "whoosh",
+   "scene": "vandals",
+   "atMs": 50750
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 455
+   },
+   "beat": "templeWide",
+   "scene": "vandals",
+   "atMs": 51540
+  },
+  {
+   "beat": "vandals",
+   "label": {
+    "text": "VANDALS",
+    "color": "#FF5A5A",
+    "x": 0.65,
+    "y": 0.5
+   },
+   "scene": "vandals",
+   "atMs": 52380
+  },
+  {
+   "sticker": "14 DAYS",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "hud": {
+    "id": "empire",
+    "value": 0.2
+   },
+   "scene": "vandals",
+   "atMs": 53210
+  },
+  {
+   "beat": "roofOff",
+   "sfx": "pop",
+   "scene": "vandals",
+   "atMs": 55230
+  },
+  {
+   "beat": "dictionary",
+   "sticker": "VANDAL = WRECKER",
+   "color": "#FFFFFF",
+   "sfx": "ding",
+   "scene": "vandals",
+   "atMs": 55690
+  },
+  {
+   "emph": true,
+   "scene": "vandals",
+   "atMs": 56120
+  },
+  {
+   "beat": "respawnKid",
+   "sfx": "whoosh",
+   "scene": "kid",
+   "atMs": 57730
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 475
+   },
+   "scene": "kid",
+   "atMs": 58430
+  },
+  {
+   "sticker": "NIGHTMARE MODE",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "kid",
+   "atMs": 59060
+  },
+  {
+   "beat": "kidThrone",
+   "sfx": "pop",
+   "label": {
+    "text": "STILL A KID",
+    "color": "#9B5DE5",
+    "x": 0.5,
+    "y": 0.45
+   },
+   "scene": "kid",
+   "atMs": 60350
+  },
+  {
+   "beat": "wreathSlips",
+   "scene": "kid",
+   "atMs": 62530
+  },
+  {
+   "sticker": "\"LITTLE AUGUSTUS\"",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "kid",
+   "atMs": 63210
+  },
+  {
+   "emph": true,
+   "scene": "kid",
+   "atMs": 59060
+  },
+  {
+   "emph": true,
+   "scene": "kid",
+   "atMs": 59550
+  },
+  {
+   "emph": true,
+   "scene": "kid",
+   "atMs": 62530
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 476
+   },
+   "sfx": "boom",
+   "scene": "fired",
+   "atMs": 64570
+  },
+  {
+   "beat": "odoacerLift",
+   "hud": {
+    "id": "empire",
+    "value": 0.05
+   },
+   "label": {
+    "text": "ODOACER",
+    "color": "#FF5A5A",
+    "x": 0.62,
+    "y": 0.32
+   },
+   "scene": "fired",
+   "atMs": 65170
+  },
+  {
+   "beat": "setDown",
+   "sfx": "pop",
+   "scene": "fired",
+   "atMs": 67280
+  },
+  {
+   "beat": "prettyFace",
+   "sfx": "ding",
+   "scene": "fired",
+   "atMs": 68370
+  },
+  {
+   "sticker": "6,000 GOLD PIECES",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "fired",
+   "atMs": 69060
+  },
+  {
+   "beat": "villaWalk",
+   "sfx": "whoosh",
+   "scene": "fired",
+   "atMs": 70300
+  },
+  {
+   "emph": true,
+   "scene": "fired",
+   "atMs": 70900
+  },
+  {
+   "beat": "emptyThrone",
+   "scene": "deleted",
+   "atMs": 71760
+  },
+  {
+   "beat": "senateScroll",
+   "sfx": "whoosh",
+   "label": {
+    "text": "SENATE",
+    "color": "#FFFFFF",
+    "x": 0.5,
+    "y": 0.42
+   },
+   "scene": "deleted",
+   "atMs": 72120
+  },
+  {
+   "sticker": "1 EMPEROR IS ENOUGH",
+   "color": "#4FC3F7",
+   "sfx": "pop",
+   "scene": "deleted",
+   "atMs": 73430
+  },
+  {
+   "beat": "stamp",
+   "sfx": "boom",
+   "hud": {
+    "id": "empire",
+    "value": 0.0
+   },
+   "scene": "deleted",
+   "atMs": 74620
+  },
+  {
+   "emph": true,
+   "scene": "deleted",
+   "atMs": 74620
+  },
+  {
+   "beat": "flyEast",
+   "sfx": "whoosh",
+   "scene": "twist",
+   "atMs": 75300
+  },
+  {
+   "beat": "eastGlow",
+   "hud": {
+    "id": "empire",
+    "value": 0.5
+   },
+   "scene": "twist",
+   "atMs": 76460
+  },
+  {
+   "sticker": "+977 YEARS",
+   "color": "#4FC3F7",
+   "sfx": "boom",
+   "scene": "twist",
+   "atMs": 77970
+  },
+  {
+   "hud": {
+    "id": "year",
+    "value": 1453
+   },
+   "beat": "steleRace",
+   "scene": "twist",
+   "atMs": 79310
+  },
+  {
+   "beat": "eastEmperor",
+   "sfx": "ding",
+   "label": {
+    "text": "STILL \"ROMANS\"",
+    "color": "#4FC3F7",
+    "x": 0.5,
+    "y": 0.42
+   },
+   "scene": "twist",
+   "atMs": 81140
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 81140
+  },
+  {
+   "beat": "youSteps",
+   "sfx": "whoosh",
+   "choice": {
+    "title": "WHEN DID ROME FALL?",
+    "options": [
+     "476 \u00b7 WEST DIES",
+     "1453 \u00b7 EAST DIES"
+    ]
+   },
+   "scene": "vote",
+   "atMs": 81790
+  },
+  {
+   "beat": "cardsClose",
+   "scene": "vote",
+   "atMs": 85120
+  },
+  {
+   "beat": "shrug",
+   "sticker": "HISTORIANS STILL ARGUE WHY",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "vote",
+   "atMs": 86740
+  },
+  {
+   "beat": "loopRush",
+   "sfx": "whoosh",
+   "scene": "vote",
+   "atMs": 87710
+  }
+ ],
+ "hud": {
+  "title": "WORST JOB IN ROME",
+  "counters": [
+   {
+    "id": "year",
+    "label": "YEAR",
+    "value": 193,
+    "suffix": " AD"
+   }
+  ],
+  "bars": [
+   {
+    "id": "empire",
+    "label": "EMPIRE",
+    "value": 0.95,
+    "color": "#FFB627"
+   }
+  ]
+ }
+}

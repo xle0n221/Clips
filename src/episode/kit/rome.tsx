@@ -1062,8 +1062,16 @@ export const Senator: React.FC<ToonieProps> = (p) => (
 
 /** Gote: Fellumhang, karierte Tunika, Kappe, Zöpfe, Bart, Rundschild + Speer. Keine Hörner. */
 export const Goth: React.FC<
-  ToonieProps & { readonly cap?: boolean; readonly gear?: boolean; readonly hairColor?: string }
-> = ({ cap = true, gear = true, hairColor = ROME.hair, ...p }) => (
+  ToonieProps & {
+    readonly cap?: boolean;
+    readonly gear?: boolean;
+    readonly hairColor?: string;
+    /** false = ohne Fellumhang (Vandalen, Odoaker, junge Goten) */
+    readonly fur?: boolean;
+    /** statt Fell: einfacher Umhang in dieser Farbe */
+    readonly cloak?: string;
+  }
+> = ({ cap = true, gear = true, hairColor = ROME.hair, fur = true, cloak, ...p }) => (
   <Toonie
     suit={ROME.gothWool}
     head={
@@ -1076,7 +1084,8 @@ export const Goth: React.FC<
     body={
       <>
         <BarbarianTunic />
-        <FurCloak frame={p.frame} />
+        {fur ? <FurCloak frame={p.frame} /> : null}
+        {cloak ? <ImperialCloak frame={p.frame} color={cloak} clasp={ROME.bronze} /> : null}
       </>
     }
     hands={
@@ -1505,6 +1514,10 @@ export const Temple: React.FC<{
   readonly columns?: number;
   readonly inscription?: string;
   readonly ruin?: number;
+  /** Dachfarbe (Standard Terrakotta; vergoldetes Dach z. B. ROME.gold) */
+  readonly roofColor?: string;
+  /** 0..1: rechte Dachhälfte wird von vorn nach hinten abgedeckt (Plünderung 455) */
+  readonly roofGone?: number;
 }> = ({
   position = [0, 0, 0],
   rotation,
@@ -1512,6 +1525,8 @@ export const Temple: React.FC<{
   columns = 6,
   inscription = "S·P·Q·R",
   ruin = 0,
+  roofColor = ROME.roof,
+  roofGone = 0,
 }) => {
   const W = 6.6;
   const D = 6;
@@ -1588,17 +1603,22 @@ export const Temple: React.FC<{
             <ToonM color={ROME.marbleShade} />
           </mesh>
           {/* Dach */}
-          {[-1, 1].map((sd) => (
-            <Part
-              key={sd}
-              color={ROME.roof}
-              position={[sd * ((W + 0.5) / 4), roofY + 0.25, -0.6]}
-              rotation={[0, 0, -sd * slope]}
-              ink={0.015}
-            >
-              <boxGeometry args={[roofLen, 0.14, D + 0.2]} />
-            </Part>
-          ))}
+          {[-1, 1].map((sd) => {
+            const keep = sd > 0 ? 1 - Math.min(Math.max(roofGone, 0), 1) : 1;
+            if (keep < 0.02) return null;
+            const depth = (D + 0.2) * keep;
+            return (
+              <Part
+                key={sd}
+                color={roofColor}
+                position={[sd * ((W + 0.5) / 4), roofY + 0.25, -0.6 - (D + 0.2 - depth) / 2]}
+                rotation={[0, 0, -sd * slope]}
+                ink={0.015}
+              >
+                <boxGeometry args={[roofLen, 0.14, depth]} />
+              </Part>
+            );
+          })}
         </>
       ) : null}
     </group>
@@ -2651,6 +2671,700 @@ export const TimelineStele: React.FC<{
           </Part>
         </group>
       </group>
+    </group>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* Ergänzungen für das Rom-Video (episodes/roman-empire.json)           */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Hauptfigur „YOU“ als Kaiser: Emperor-Kostüm + gelbes Halstuch (Focale) als
+ * Erkennungsmerkmal. Das Halstuch ist für den Kaiser vergrößert, damit es über dem
+ * Mantel-Überwurf (r 0.66) liegt und frontal wie seitlich sichtbar bleibt.
+ * `kid` = Romulus Augustulus: Mantel zu groß (hängt bis zum Boden), Kranz zu groß;
+ * die Figur selbst wird über `scale` verkleinert. `wreathSlip` 0..1 lässt den Kranz
+ * über die Augen rutschen.
+ */
+export const Hero: React.FC<
+  ToonieProps & {
+    readonly kid?: boolean;
+    readonly wreathSlip?: number;
+    readonly scepter?: boolean;
+    readonly wreath?: boolean;
+  }
+> = ({ kid = false, wreathSlip = 0, scepter = false, wreath = true, ...p }) => {
+  const slip = Math.min(Math.max(wreathSlip, 0), 1);
+  const wy = (kid ? 0.42 : 0.48) - slip * 0.42;
+  const cloakK = kid ? 1.32 : 1;
+  return (
+    <Toonie
+      suit={ROME.marble}
+      head={
+        wreath ? (
+          <group rotation={[0, 0, slip * 0.22]} scale={kid ? 1.12 : 1}>
+            <LaurelWreath color={ROME.gold} y={wy} />
+          </group>
+        ) : null
+      }
+      body={
+        <>
+          <Toga color={ROME.marble} stripe={ROME.purple} />
+          <group position={[0, 2.5, 0]} scale={cloakK}>
+            <group position={[0, -2.5, 0]}>
+              <ImperialCloak frame={p.frame} />
+            </group>
+          </group>
+          <group position={[0, 2.26, 0.04]} scale={[1.18, 1.05, 1.18]}>
+            <group position={[0, -2.3, 0]}>
+              <Focale frame={p.frame} />
+            </group>
+          </group>
+        </>
+      }
+      hands={
+        p.hands ?? [
+          scepter ? (
+            <group key="r" rotation={[0, 0, armComp(p.arms, 0)]}>
+              <Scepter />
+            </group>
+          ) : null,
+        ]
+      }
+      {...p}
+    />
+  );
+};
+
+/** Diener/Bürger: schlichte Tunika mit Gürtel. */
+export const Servant: React.FC<ToonieProps & { readonly color?: string }> = ({
+  color = "#D9B98A",
+  ...p
+}) => (
+  <Toonie
+    suit={color}
+    body={<Belt y={1.38} color={ROME.leather} studs={ROME.bronze} apron={false} />}
+    {...p}
+  />
+);
+
+/**
+ * Großer Hahn (Honorius' Lieblingshahn „Roma“ – Legende bei Prokop, im Video als Legende markiert).
+ * Höhe ≈ 2,6 (größer als ein halber Toonie, damit er neben dem Kaiser auffällt).
+ * `peck` 0..1 neigt Hals und Kopf nach vorn unten, `flap` 0..1 hebt die Flügel.
+ */
+export const Rooster: React.FC<{
+  readonly frame?: number;
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly peck?: number;
+  readonly flap?: number;
+  readonly tag?: string | null;
+}> = ({ frame = 0, position = [0, 0, 0], rotation, scale = 1, peck = 0, flap = 0, tag = null }) => {
+  const body = "#9A3F24";
+  const neck = "#D0702F";
+  const tailA = "#1F4A42";
+  const tailB = "#2F6A57";
+  const comb = "#E53935";
+  const beak = "#E89A2E";
+  const font = useRomeFont();
+  const tagTex = useCanvasTexture(`rooster-tag-${tag}-${font}`, [256, 128], (c, w, h) => {
+    c.fillStyle = ROME.parchment;
+    c.fillRect(0, 0, w, h);
+    c.strokeStyle = ROME.ochreDark;
+    c.lineWidth = 10;
+    c.strokeRect(5, 5, w - 10, h - 10);
+    c.fillStyle = "#4A3020";
+    c.font = fontStack(70);
+    c.textAlign = "center";
+    c.textBaseline = "middle";
+    c.fillText(tag ?? "", w / 2, h / 2 + 4, w - 30);
+  });
+  const breathe = Math.sin(frame * 0.18) * 0.02;
+  const bob = Math.sin(frame * 0.25) * 0.04 * (1 - peck);
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      {/* Beine */}
+      {[-1, 1].map((sd) => (
+        <group key={sd} position={[sd * 0.25, 0, 0.05]}>
+          <Part color={beak} position={[0, 0.42, 0]} ink={0.12}>
+            <cylinderGeometry args={[0.055, 0.06, 0.84, 8]} />
+          </Part>
+          {[-0.5, 0, 0.5].map((a) => (
+            <Part key={a} color={beak} position={[Math.sin(a) * 0.14, 0.03, Math.cos(a) * 0.14]} rotation={[Math.PI / 2, 0, -a]} ink={0.14}>
+              <cylinderGeometry args={[0.035, 0.035, 0.3, 6]} />
+            </Part>
+          ))}
+        </group>
+      ))}
+      {/* Körper */}
+      <Part color={body} position={[0, 1.3, -0.05]} scale={[0.72, 0.68 + breathe, 0.9]} ink={0.04}>
+        <sphereGeometry args={[1, 24, 18]} />
+      </Part>
+      {/* Brust */}
+      <Part color="#7A2F1C" position={[0, 1.15, 0.45]} scale={[0.55, 0.55, 0.45]} ink={0.05}>
+        <sphereGeometry args={[1, 20, 14]} />
+      </Part>
+      {/* Flügel */}
+      {[-1, 1].map((sd) => (
+        <group key={sd} position={[sd * 0.62, 1.45, -0.05]} rotation={[0.25, 0, sd * (0.15 + flap * 0.9)]}>
+          <Part color="#7A2F1C" position={[sd * 0.08, -0.25, 0]} scale={[0.16, 0.42, 0.62]} ink={0.06}>
+            <sphereGeometry args={[1, 16, 12]} />
+          </Part>
+        </group>
+      ))}
+      {/* Schwanzfedern: Bögen nach hinten oben */}
+      {[-0.5, -0.25, 0, 0.25, 0.5].map((a, i) => (
+        <group key={a} position={[a * 0.35, 1.55, -0.75]} rotation={[0, Math.PI / 2 + a * 0.5, 0]}>
+          <Part
+            color={i % 2 ? tailB : tailA}
+            position={[0.45, 0.35 + Math.sin(frame * 0.12 + i) * 0.02, 0]}
+            rotation={[0, 0, 0.2 + i * 0.08]}
+            ink={0.06}
+          >
+            <torusGeometry args={[0.6 + (i % 3) * 0.1, 0.08, 8, 20, Math.PI * 0.95]} />
+          </Part>
+        </group>
+      ))}
+      {/* Hals + Kopf (pickt um den Halsansatz) */}
+      <group position={[0, 1.75, 0.35]} rotation={[peck * 1.15, 0, 0]}>
+        <group position={[0, bob, 0]}>
+          <Part color={neck} position={[0, 0.32, 0.1]} rotation={[0.35, 0, 0]} scale={[0.36, 0.55, 0.36]} ink={0.05}>
+            <sphereGeometry args={[1, 18, 14]} />
+          </Part>
+          <Part color={neck} position={[0, 0.82, 0.25]} ink={0.06}>
+            <sphereGeometry args={[0.34, 20, 16]} />
+          </Part>
+          {/* Kamm */}
+          {[-0.14, 0.02, 0.18].map((z, i) => (
+            <Part key={z} color={comb} position={[0, 1.15 + (i === 1 ? 0.05 : 0), 0.25 + z]} ink={0.09}>
+              <sphereGeometry args={[0.12 + (i === 1 ? 0.03 : 0), 14, 10]} />
+            </Part>
+          ))}
+          {/* Schnabel */}
+          <Part color={beak} position={[0, 0.8, 0.66]} rotation={[Math.PI / 2, 0, 0]} ink={0.1}>
+            <coneGeometry args={[0.11, 0.32, 10]} />
+          </Part>
+          {/* Kehllappen */}
+          <Part color={comb} position={[0, 0.55, 0.52]} scale={[0.09, 0.16, 0.08]} ink={0.12}>
+            <sphereGeometry args={[1, 12, 10]} />
+          </Part>
+          {/* Augen */}
+          {[-1, 1].map((sd) => (
+            <group key={sd} position={[sd * 0.24, 0.9, 0.42]}>
+              <mesh>
+                <sphereGeometry args={[0.075, 12, 10]} />
+                <meshBasicMaterial color="#FFFFFF" />
+              </mesh>
+              <mesh position={[sd * 0.02, 0, 0.05]}>
+                <sphereGeometry args={[0.045, 10, 8]} />
+                <meshBasicMaterial color={INK} />
+              </mesh>
+            </group>
+          ))}
+        </group>
+      </group>
+      {/* Namensschild am Hals */}
+      {tag ? (
+        <group position={[0, 1.6, 0.86]} rotation={[-0.15, 0, 0.06]}>
+          <Part color="#FFFFFF" map={tagTex} ink={0.05}>
+            <boxGeometry args={[0.62, 0.31, 0.03]} />
+          </Part>
+        </group>
+      ) : null}
+    </group>
+  );
+};
+
+/** Geldsack (Leder) mit Kordel und Goldmünze vorn. */
+export const MoneyBag: React.FC<{
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly squash?: number;
+}> = ({ position = [0, 0, 0], rotation, scale = 1, squash = 0 }) => (
+  <group position={position} rotation={rotation} scale={scale}>
+    <group scale={[1 + squash * 0.25, 1 - squash * 0.25, 1 + squash * 0.25]}>
+      <Part color={ROME.wood} position={[0, 0.55, 0]} scale={[0.62, 0.55, 0.58]} ink={0.05}>
+        <sphereGeometry args={[1, 20, 16]} />
+      </Part>
+      <Part color={ROME.wood} position={[0, 1.15, 0]} ink={0.07}>
+        <cylinderGeometry args={[0.16, 0.26, 0.3, 14]} />
+      </Part>
+      <Part color={ROME.gold} position={[0, 1.08, 0]} rotation={[Math.PI / 2, 0, 0]} ink={0.1}>
+        <torusGeometry args={[0.24, 0.05, 8, 20]} />
+      </Part>
+      <Part color={ROME.wood} position={[0, 1.38, 0]} scale={[1.4, 0.7, 1.4]} ink={0.08}>
+        <sphereGeometry args={[0.18, 12, 10]} />
+      </Part>
+      <group position={[0, 0.55, 0.56]}>
+        <Coin scale={0.62} spin={0} />
+      </group>
+    </group>
+  </group>
+);
+
+/**
+ * Große Cartoon-Hand (Handschuh-Look wie der Toonie-Kopf: weiß + INK), zeigt `fingers`
+ * gestreckte Finger (0–5, Daumen zählt als fünfter). Handfläche zeigt nach +z.
+ */
+export const BigHand: React.FC<{
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly fingers?: number;
+  readonly wiggle?: number;
+  readonly frame?: number;
+}> = ({ position = [0, 0, 0], rotation, scale = 1, fingers = 5, wiggle = 0, frame = 0 }) => {
+  const skin = "#FAFAFA";
+  const xs = [-0.33, -0.11, 0.11, 0.33];
+  const lens = [0.62, 0.78, 0.74, 0.58];
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      {/* Handfläche */}
+      <Part color={skin} position={[0, 0, 0]} scale={[1, 1, 0.55]} ink={0.06}>
+        <sphereGeometry args={[0.5, 24, 18]} />
+      </Part>
+      {/* Finger */}
+      {xs.map((x, i) => {
+        const up = i < Math.min(4, fingers);
+        const w = Math.sin(frame * 0.5 + i) * 0.06 * wiggle;
+        return (
+          <group key={x} position={[x, 0.35, 0]} rotation={[up ? 0 : 1.9, 0, -x * 0.35 + w]}>
+            <Part color={skin} position={[0, up ? lens[i] / 2 : 0.18, 0]} ink={0.1}>
+              <capsuleGeometry args={[0.1, up ? lens[i] : 0.2, 6, 12]} />
+            </Part>
+          </group>
+        );
+      })}
+      {/* Daumen */}
+      <group position={[-0.42, -0.05, 0.05]} rotation={[0, 0, fingers >= 5 ? 0.9 : 0.2]}>
+        <Part color={skin} position={[0, 0.25, 0]} ink={0.1}>
+          <capsuleGeometry args={[0.11, 0.4, 6, 12]} />
+        </Part>
+      </group>
+      {/* Bündchen (Ärmel-Saum Purpur) */}
+      <Part color={ROME.purple} position={[0, -0.55, 0]} ink={0.06}>
+        <cylinderGeometry args={[0.32, 0.36, 0.3, 16]} />
+      </Part>
+    </group>
+  );
+};
+
+/** Holzschild auf Pfosten mit 1–3 Textzeilen (Montserrat 900). */
+export const SignBoard: React.FC<{
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly lines: readonly string[];
+  readonly width?: number;
+  readonly height?: number;
+  readonly post?: boolean;
+  readonly color?: string;
+  readonly ink?: string;
+}> = ({
+  position = [0, 0, 0],
+  rotation,
+  scale = 1,
+  lines,
+  width = 3,
+  height = 1.5,
+  post = true,
+  color = ROME.parchment,
+  ink = "#4A3020",
+}) => {
+  const font = useRomeFont();
+  const tw = 512;
+  const th = Math.round((512 * height) / width);
+  const tex = useCanvasTexture(`sign-${lines.join("|")}-${color}-${ink}-${width}x${height}-${font}`, [tw, th], (c, w, h) => {
+    c.fillStyle = color;
+    c.fillRect(0, 0, w, h);
+    c.strokeStyle = ROME.ochreDark;
+    c.lineWidth = 14;
+    c.strokeRect(12, 12, w - 24, h - 24);
+    c.fillStyle = ink;
+    const px = Math.min((h - 60) / lines.length / 1.08, 120);
+    c.font = fontStack(px);
+    c.textAlign = "center";
+    c.textBaseline = "middle";
+    lines.forEach((l, i) => {
+      const y = h / 2 + (i - (lines.length - 1) / 2) * px * 1.08 + px * 0.04;
+      c.fillText(l, w / 2, y, w - 60);
+    });
+  });
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      {post ? (
+        <Part color={ROME.wood} position={[0, (height + 1.2) / 2, -0.1]} ink={0.05}>
+          <boxGeometry args={[0.22, height + 1.2, 0.16]} />
+        </Part>
+      ) : null}
+      <group position={[0, post ? 1.2 + height / 2 : 0, 0]}>
+        <Part color={ROME.wood} position={[0, 0, -0.04]} ink={0.03}>
+          <boxGeometry args={[width + 0.2, height + 0.2, 0.1]} />
+        </Part>
+        <mesh position={[0, 0, 0.02]}>
+          <planeGeometry args={[width, height]} />
+          <meshToonMaterial map={tex} gradientMap={toonGradient()} />
+        </mesh>
+      </group>
+    </group>
+  );
+};
+
+/**
+ * Stadttor/Lagertor: Torbau mit Rundbogen und dunklem Durchgang, zwei Türme mit Zinnen,
+ * Mauer nach links/rechts. `open` 0..1 schwingt die Torflügel nach innen (−z).
+ * Breite Torbau 5, Höhe 5,2; Mauer je Seite `wall` lang, Höhe 3,6. Vorderseite +z.
+ */
+export const CityGate: React.FC<{
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly open?: number;
+  readonly wall?: number;
+  readonly color?: string;
+}> = ({ position = [0, 0, 0], rotation, scale = 1, open = 0, wall = 8, color = ROME.sandstone }) => {
+  const W = 5;
+  const H = 5.2;
+  const D = 1.6;
+  const bay = useMemo(() => archBay(W, H, D, 2.6, 2.4), []);
+  const line = useMemo(() => archLine(H, 2.6, 2.4, 0.07), []);
+  const wallH = 3.6;
+  const merlons = (len: number, y: number, z: number, x0: number) =>
+    Array.from({ length: Math.floor(len / 0.9) }, (_, i) => (
+      <Part key={`m${x0}-${i}`} color={color} position={[x0 + 0.45 + i * 0.9, y + 0.25, z]} ink={0.03}>
+        <boxGeometry args={[0.5, 0.5, 0.5]} />
+      </Part>
+    ));
+  const doorA = open * 1.45;
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      {/* Torbau */}
+      <GeoPart geo={bay} color={color} position={[0, H / 2, 0]} ink={0.015} />
+      <mesh geometry={line} position={[0, H / 2, D / 2 + 0.01]}>
+        <meshBasicMaterial color={INK} />
+      </mesh>
+      {/* dunkler Durchgang dahinter */}
+      <mesh position={[0, 1.8, -D / 2 - 0.6]}>
+        <planeGeometry args={[2.8, 3.8]} />
+        <meshBasicMaterial color={ROME.vault} />
+      </mesh>
+      <Part color={ROME.sandLight} position={[0, H + 0.15, 0]} ink={0.02}>
+        <boxGeometry args={[W + 0.3, 0.3, D + 0.2]} />
+      </Part>
+      {merlons(W, H + 0.3, D / 2 - 0.25, -W / 2)}
+      {/* Torflügel (Holz, Eisenbänder), Scharniere an den Bogenseiten */}
+      {[-1, 1].map((sd) => (
+        <group key={sd} position={[sd * 1.3, 0, -0.2]} rotation={[0, sd * doorA, 0]}>
+          <Part color={ROME.wood} position={[-sd * 0.65, 1.8, 0]} ink={0.03}>
+            <boxGeometry args={[1.3, 3.6, 0.14]} />
+          </Part>
+          {[0.8, 2.8].map((y) => (
+            <Part key={y} color={ROME.ironDark} position={[-sd * 0.65, y, 0.08]} ink={0}>
+              <boxGeometry args={[1.3, 0.12, 0.03]} />
+            </Part>
+          ))}
+        </group>
+      ))}
+      {/* Türme */}
+      {[-1, 1].map((sd) => (
+        <group key={`t${sd}`} position={[sd * (W / 2 + 0.9), 0, 0.2]}>
+          <Part color={color} position={[0, 3.3, 0]} ink={0.02}>
+            <boxGeometry args={[1.8, 6.6, 2.2]} />
+          </Part>
+          <mesh position={[0, 4.6, 1.11]}>
+            <planeGeometry args={[0.4, 0.8]} />
+            <meshBasicMaterial color={ROME.vault} />
+          </mesh>
+          <Part color={ROME.sandLight} position={[0, 6.7, 0]} ink={0.02}>
+            <boxGeometry args={[2.0, 0.24, 2.4]} />
+          </Part>
+          {merlons(1.8, 6.82, 0.95, -0.9)}
+        </group>
+      ))}
+      {/* Mauern */}
+      {[-1, 1].map((sd) => (
+        <group key={`w${sd}`} position={[sd * (W / 2 + 1.8 + wall / 2), 0, 0]}>
+          <Part color={color} position={[0, wallH / 2, 0]} ink={0.015}>
+            <boxGeometry args={[wall, wallH, 1.2]} />
+          </Part>
+          {merlons(wall, wallH, 0.35, -wall / 2)}
+        </group>
+      ))}
+    </group>
+  );
+};
+
+/** Hölzernes Pferd auf Rädern (Gag „Trojanisches Pferd“). Höhe ≈ 5, Blick nach +x. */
+export const WoodenHorse: React.FC<{
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly frame?: number;
+}> = ({ position = [0, 0, 0], rotation, scale = 1, frame = 0 }) => {
+  const wood = ROME.wood;
+  const dark = "#7A4E28";
+  const roll = frame * 0.05;
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      <Part color={dark} position={[0, 0.55, 0]} ink={0.03}>
+        <boxGeometry args={[3.6, 0.25, 1.6]} />
+      </Part>
+      {[-1.4, 1.4].map((x) =>
+        [-0.9, 0.9].map((z) => (
+          <group key={`${x}${z}`} position={[x, 0.4, z]} rotation={[Math.PI / 2, 0, 0]}>
+            <group rotation={[0, roll, 0]}>
+              <Part color={dark} ink={0.06}>
+                <cylinderGeometry args={[0.4, 0.4, 0.16, 16]} />
+              </Part>
+              <Part color={wood} position={[0, 0.09, 0]} ink={0}>
+                <boxGeometry args={[0.6, 0.02, 0.1]} />
+              </Part>
+            </group>
+          </group>
+        )),
+      )}
+      {/* Beine */}
+      {[-1.1, 1.1].map((x) =>
+        [-0.4, 0.4].map((z) => (
+          <Part key={`l${x}${z}`} color={wood} position={[x, 1.45, z]} ink={0.04}>
+            <boxGeometry args={[0.32, 1.6, 0.32]} />
+          </Part>
+        )),
+      )}
+      {/* Rumpf */}
+      <Part color={wood} position={[0, 2.6, 0]} rotation={[0, 0, Math.PI / 2]} ink={0.025}>
+        <capsuleGeometry args={[0.75, 2.0, 8, 18]} />
+      </Part>
+      {/* Luke */}
+      <Part color={dark} position={[0, 2.6, 0.77]} ink={0.04}>
+        <boxGeometry args={[0.8, 0.6, 0.04]} />
+      </Part>
+      {/* Hals + Kopf */}
+      <Part color={wood} position={[1.55, 3.7, 0]} rotation={[0, 0, -0.55]} ink={0.03}>
+        <boxGeometry args={[0.75, 1.9, 0.7]} />
+      </Part>
+      <Part color={wood} position={[2.25, 4.45, 0]} rotation={[0, 0, -1.25]} ink={0.03}>
+        <boxGeometry args={[0.65, 1.3, 0.6]} />
+      </Part>
+      {[-0.18, 0.18].map((z) => (
+        <Part key={z} color={wood} position={[1.95, 5.0, z]} rotation={[0, 0, -0.3]} ink={0.07}>
+          <coneGeometry args={[0.12, 0.4, 6]} />
+        </Part>
+      ))}
+      <mesh position={[2.35, 4.7, 0.31]}>
+        <circleGeometry args={[0.08, 12]} />
+        <meshBasicMaterial color={INK} />
+      </mesh>
+      {/* Mähne */}
+      {[0, 1, 2, 3].map((i) => (
+        <Part key={i} color={dark} position={[1.15 + i * 0.22, 3.3 + i * 0.42, 0]} rotation={[0, 0, 0.6]} ink={0.06}>
+          <boxGeometry args={[0.18, 0.5, 0.5]} />
+        </Part>
+      ))}
+      {/* Schweif */}
+      <Part color={dark} position={[-1.95, 2.35, 0]} rotation={[0, 0, 0.5]} ink={0.05}>
+        <coneGeometry args={[0.22, 1.4, 8]} />
+      </Part>
+    </group>
+  );
+};
+
+/** Geschenkschleife (rosa – kein Rom-Rot, kein Gold) für die „Geschenk“-Goten. Ursprung = Knoten. */
+export const GiftBow: React.FC<{ readonly position?: P3; readonly scale?: number; readonly color?: string }> = ({
+  position = [0, 0, 0],
+  scale = 1,
+  color = "#FF5C8A",
+}) => (
+  <group position={position} scale={scale}>
+    {[-1, 1].map((sd) => (
+      <Part key={sd} color={color} position={[sd * 0.24, 0.06, 0]} rotation={[0, 0, sd * 0.45]} scale={[1, 0.7, 0.5]} ink={0.08}>
+        <torusGeometry args={[0.2, 0.07, 8, 18]} />
+      </Part>
+    ))}
+    <Part color={color} ink={0.1}>
+      <sphereGeometry args={[0.11, 12, 10]} />
+    </Part>
+    {[-1, 1].map((sd) => (
+      <Part key={`t${sd}`} color={color} position={[sd * 0.12, -0.22, 0]} rotation={[0, 0, sd * 0.35]} ink={0.08}>
+        <boxGeometry args={[0.1, 0.38, 0.04]} />
+      </Part>
+    ))}
+  </group>
+);
+
+/** „RESPAWNING…“-Ladebalken als Tafel (Spiel-Gag); `progress` 0..1. Breite 3,4. */
+export const RespawnBar: React.FC<{
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly progress?: number;
+  readonly frame?: number;
+  readonly text?: string;
+}> = ({ position = [0, 0, 0], rotation, scale = 1, progress = 0, frame = 0, text = "RESPAWNING…" }) => {
+  const font = useRomeFont();
+  const tex = useCanvasTexture(`respawn-${text}-${font}`, [512, 96], (c, w, h) => {
+    c.clearRect(0, 0, w, h);
+    c.font = fontStack(58);
+    c.textAlign = "center";
+    c.textBaseline = "middle";
+    c.lineWidth = 12;
+    c.strokeStyle = INK;
+    c.strokeText(text, w / 2, h / 2);
+    c.fillStyle = "#FFFFFF";
+    c.fillText(text, w / 2, h / 2);
+  });
+  const p = Math.min(Math.max(progress, 0), 1);
+  const pulse = 0.35 + Math.sin(frame * 0.3) * 0.15;
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      <mesh position={[0, 0.62, 0.05]}>
+        <planeGeometry args={[3.4, 0.64]} />
+        <meshBasicMaterial map={tex} transparent depthWrite={false} />
+      </mesh>
+      <Part color="#2A1A12" ink={0.03}>
+        <boxGeometry args={[3.4, 0.5, 0.12]} />
+      </Part>
+      {p > 0.01 ? (
+        <Part color="#4FC3F7" position={[-1.55 + (3.1 * p) / 2, 0, 0.07]} ink={0} emissive={pulse}>
+          <boxGeometry args={[3.1 * p, 0.3, 0.04]} />
+        </Part>
+      ) : null}
+    </group>
+  );
+};
+
+/**
+ * Stempel-Abdruck (z. B. „DELETED“, „GAME OVER“): roter Rahmen + Schrift auf transparenter
+ * Fläche, leicht schräg. Größe w×h. Kein Licht – liest sich wie Tinte.
+ */
+export const StampMark: React.FC<{
+  readonly text: string;
+  readonly position?: P3;
+  readonly rotation?: P3;
+  readonly scale?: number;
+  readonly w?: number;
+  readonly h?: number;
+  readonly color?: string;
+}> = ({ text, position = [0, 0, 0], rotation = [0, 0, 0.12], scale = 1, w = 3, h = 1, color = DANGER }) => {
+  const font = useRomeFont();
+  const tex = useCanvasTexture(`stamp-${text}-${color}-${w}x${h}-${font}`, [768, Math.round((768 * h) / w)], (c, cw, ch) => {
+    c.clearRect(0, 0, cw, ch);
+    c.strokeStyle = color;
+    c.lineWidth = 26;
+    c.strokeRect(18, 18, cw - 36, ch - 36);
+    c.fillStyle = color;
+    c.font = fontStack(Math.min(ch * 0.62, 200));
+    c.textAlign = "center";
+    c.textBaseline = "middle";
+    c.fillText(text, cw / 2, ch / 2 + 6, cw - 90);
+  });
+  return (
+    <mesh position={position} rotation={rotation} scale={scale}>
+      <planeGeometry args={[w, h]} />
+      <meshBasicMaterial map={tex} transparent depthWrite={false} />
+    </mesh>
+  );
+};
+
+/** Stempel (Holzgriff + Gummiplatte). Ursprung = Unterseite der Platte. */
+export const RubberStamp: React.FC<{ readonly position?: P3; readonly rotation?: P3; readonly scale?: number }> = ({
+  position = [0, 0, 0],
+  rotation,
+  scale = 1,
+}) => (
+  <group position={position} rotation={rotation} scale={scale}>
+    <Part color={DANGER} position={[0, 0.08, 0]} ink={0.04}>
+      <boxGeometry args={[1.6, 0.16, 0.9]} />
+    </Part>
+    <Part color={ROME.wood} position={[0, 0.3, 0]} ink={0.04}>
+      <boxGeometry args={[1.5, 0.3, 0.8]} />
+    </Part>
+    <Part color={ROME.wood} position={[0, 0.75, 0]} ink={0.06}>
+      <cylinderGeometry args={[0.13, 0.18, 0.7, 12]} />
+    </Part>
+    <Part color={ROME.wood} position={[0, 1.2, 0]} ink={0.05}>
+      <sphereGeometry args={[0.3, 16, 12]} />
+    </Part>
+  </group>
+);
+
+/** Münzstapel: `count` Münzen übereinander (wächst mit dem Gebot). */
+export const CoinStack: React.FC<{ readonly position?: P3; readonly count?: number; readonly scale?: number }> = ({
+  position = [0, 0, 0],
+  count = 5,
+  scale = 1,
+}) => (
+  <group position={position} scale={scale}>
+    {Array.from({ length: Math.max(0, Math.floor(count)) }, (_, i) => (
+      <Part
+        key={i}
+        color={i % 2 ? ROME.gold : "#E8A92A"}
+        position={[Math.sin(i * 2.1) * 0.04, 0.06 + i * 0.12, Math.cos(i * 1.7) * 0.04]}
+        ink={0.06}
+      >
+        <cylinderGeometry args={[0.42, 0.42, 0.11, 24]} />
+      </Part>
+    ))}
+  </group>
+);
+
+/**
+ * Fliegender Stein mit Squash & Stretch: Wurfparabel von `from` nach `to` zwischen
+ * `start` und `start + dur` (Frames). Im Flug entlang der Bewegung gestreckt (bis 1,45×),
+ * beim Aufprall 6 Frames gestaucht (0,55× hoch, 1,35× breit), danach liegt er still.
+ */
+export const FlyingStone: React.FC<{
+  readonly frame: number;
+  readonly start: number;
+  readonly dur?: number;
+  readonly from: P3;
+  readonly to: P3;
+  readonly arc?: number;
+  readonly size?: number;
+  readonly squash?: boolean;
+  readonly color?: string;
+}> = ({ frame, start, dur = 14, from, to, arc = 1.5, size = 0.22, squash = true, color = "#A89A86" }) => {
+  const t = (frame - start) / dur;
+  if (t < 0) return null;
+  const k = Math.min(t, 1);
+  const pos: P3 = [
+    from[0] + (to[0] - from[0]) * k,
+    from[1] + (to[1] - from[1]) * k + Math.sin(Math.PI * k) * arc,
+    from[2] + (to[2] - from[2]) * k,
+  ];
+  // Richtung (für Ausrichtung der Streckung)
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1] + Math.cos(Math.PI * k) * Math.PI * arc;
+  const dz = to[2] - from[2];
+  const yaw = Math.atan2(dx, dz);
+  const pitch = -Math.atan2(dy, Math.hypot(dx, dz));
+  let sc: P3 = [1, 1, 1];
+  let rot: [number, number, number, "YXZ"] = [pitch, yaw, 0, "YXZ"];
+  if (squash) {
+    if (t < 1) {
+      const st = 1 + 0.45 * Math.sin(Math.PI * Math.min(1, k * 1.2));
+      sc = [1 / Math.sqrt(st), 1 / Math.sqrt(st), st];
+    } else {
+      const after = frame - start - dur;
+      const q = after < 6 ? Math.sin((after / 6) * Math.PI) : 0;
+      sc = [1 + 0.35 * q, 1 - 0.45 * q, 1 + 0.35 * q];
+      rot = [0, yaw, 0, "YXZ"];
+    }
+  }
+  const spin = t < 1 ? (frame - start) * 0.4 : dur * 0.4;
+  return (
+    <group position={pos} rotation={rot} scale={[sc[0] * size, sc[1] * size, sc[2] * size]}>
+      <mesh rotation={squash ? [0, 0, spin] : [spin, spin * 0.7, 0]} castShadow>
+        <dodecahedronGeometry args={[1, 0]} />
+        <ToonM color={color} />
+        <Ink f={0.1}>
+          <dodecahedronGeometry args={[1, 0]} />
+        </Ink>
+      </mesh>
     </group>
   );
 };

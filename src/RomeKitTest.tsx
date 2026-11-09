@@ -255,9 +255,9 @@ const Scene: React.FC = () => {
   return (
     <>
       {studio}
-      <TimelineStele position={[0, 0, -1]} at={3 + f / d} frame={frame} />
+      <TimelineStele position={[-0.5, 0, -1]} at={3 + f / d} frame={frame} />
       <Legionary frame={frame} hero position={[1.9, 0, 0.6]} rotation={[0, -0.4, 0]} arms={[0.3, 1.2]} eyes="wide" mouth="o" shield={false} />
-      <Shot frame={f} duration={d} from={[0, 3.2, 11.5]} to={[0, 3.15, 11]} look={[0, 1.3, -1]} fov={50} />
+      <Shot frame={f} duration={d} from={[0, 3.4, 8.2]} to={[0, 3.35, 7.8]} look={[0, 1.6, -1]} fov={50} />
     </>
   );
 };

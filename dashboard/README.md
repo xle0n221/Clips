@@ -31,7 +31,7 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `updatedAt` | ISO-String | beide | letzte Änderung |
 | `previewUrl` | string \| null (optional) | Sitzung | verkleinerte Vorschau bei `done` (Bild oder Video), siehe Assets; nur kleine Dateien |
 | `voice` | string (optional) | Seite (beim Anlegen) | Sprecherstimme (Kokoro). Auf der Seite mit Namen angezeigt: `af_heart` = „Lily – Frau (empfohlen)“, `af_bella` = „Bella – Frau“, `am_fenrir` = „Finn – Mann“, `am_puck` = „Max – Mann“. Die Namen sind frei vergeben, nur für die Bedienung |
-| `voiceStyle` | `"lebendig"` \| `"spannend"` \| `"witzig"` \| `"ruhig"` (optional) | Seite (beim Anlegen) | Sprechstil des Videos → Drehbuch-Feld `voiceStyle` (`scripts/voice_fx.py`, Regeln in `docs/clip-regeln.md`, Abschnitt „Stimme“). Fehlt es: `lebendig` |
+| `voicePreset` (früher `voiceStyle`) | `"lebendig"` \| `"spannend"` \| `"witzig"` \| `"ruhig"` (optional) | Seite (beim Anlegen) | Sprechstil des Videos → Drehbuch-Feld `voicePreset` (`scripts/voice_fx.py`, Regeln in `docs/clip-regeln.md`, Abschnitt „Stimme“). Fehlt es: `lebendig` |
 | `inspiration` | Liste `{ id, name, type }` (optional) | Seite / Nutzer | Vom Nutzer hochgeladene Inspirations-Dateien (Bilder, kurze Videos, PDFs) als Assets der Seite. Angezeigt unter `/_blob/<id>`. Hochladen beim Anlegen oder später auf Karten in den Stufen `queued`, `research`, `script` |
 | `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` unter 2,6 oder über 3,6 und ungleiche Whisper-Zahlen werden orange markiert |
 | `renderProgress` | number 0..1 (optional) | Sitzung | Balken bei `stage: "render"` |
@@ -221,3 +221,12 @@ Es gibt keinen anderen Schlüssel als die URL; Collection `videos`, `doc_id` = S
 Schreibvorgänge auf bestehende Dokumente brauchen `if_version` (Version aus dem letzten Lesen).
 Das Tool ist in Cloud-Sitzungen als „deferred tool“ vorhanden und muss per ToolSearch (`select:ArtifactData`) geladen werden.
 **Nicht getestet:** der Zugriff aus einer zweiten, separaten Sitzung – nur aus der erstellenden Sitzung.
+
+### Sofortstart nach Entscheidung (ab Version 13, 08.11.2026)
+Weck-Test 2 ist entschieden: Der Klick auf „OK“ um 23:49:28 UTC erzeugte `last-action.json`, die beobachtende
+Sitzung CLIPS wurde dadurch **nicht** geweckt (sie sah die Entscheidung erst beim manuellen Nachsehen).
+Darum ruft die Seite jetzt nach jeder Entscheidung, jedem neuen Thema und jedem „weitermachen“ sofort
+`fire_trigger` für die geplante Aufgabe `trig_013fFkYLstdCwVbtokfU68w5` (Abholer, feuert in die Sitzung CLIPS) auf –
+über den Connector „Claude Code Remote“ als der Betrachter. Beim ersten Mal fragt claude.ai nach der Erlaubnis.
+Läuft die Sitzung gerade, wartet die Nachricht bis zum Ende ihres aktuellen Arbeitsschritts.
+Klappt der Aufruf nicht, bleibt der stündliche Abholer (Minute 17, rund um die Uhr) als Rückfallweg.

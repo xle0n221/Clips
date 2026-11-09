@@ -25,6 +25,9 @@ Regeln für die Zusammenarbeit:
 - Nur ein Render gleichzeitig (4 CPU-Kerne, ~40 Min für 87 s). Prüfbilder per `renderStill` sind frei.
 
 ## Ständige Weiterentwicklung
+0. **Gedächtnis je Rolle** in [`docs/agenten/`](agenten/README.md): Jeder Agent liest vor dem Auftrag
+   seine Rollen-Datei (Checkliste, Gelerntes, Experimente) und ergänzt sie danach mit Note, Befund und
+   neuem Experiment. So lernt jede Rolle (Animation, Artwork, Drehbuch, Stimme, …) von Clip zu Clip.
 1. **Lernprotokoll** `docs/verbesserungen.md`: Nach jedem Clip tragen die Prüfer ihre Befunde ein
    (was gut war, was schlecht war, Beleg-Standbild). Was zweimal auftritt, wird zur Regel in
    `docs/clip-regeln.md` oder zur Korrektur im Bau-Kit.

@@ -17,7 +17,7 @@ import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
 import { hudBottom } from "./overlays/Hud";
 import { EpisodeOverlays, emphMap } from "./overlays/Overlays";
-import { SCENES } from "./scenes";
+import { scenesFor } from "./scenes";
 import { EpisodeData, SceneContext, Timeline } from "./types";
 
 export const FPS = 30;
@@ -46,13 +46,14 @@ export const calculateEpisodeMetadata: CalculateMetadataFunction<
 };
 
 const SceneRunner: React.FC<{
+  readonly episode: string;
   readonly id: string;
   readonly start: number;
   readonly duration: number;
   readonly beats: Record<string, number>;
-}> = ({ id, start, duration, beats }) => {
+}> = ({ episode, id, start, duration, beats }) => {
   const frame = useCurrentFrame();
-  const Scene = SCENES[id];
+  const Scene = scenesFor(episode)[id];
   if (!Scene) throw new Error(`Keine Szene für "${id}" in src/episode/scenes`);
   return (
     <SceneContext.Provider
@@ -119,6 +120,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
               layout="none"
             >
               <SceneRunner
+                episode={episode}
                 id={s.id}
                 start={starts[i]}
                 duration={ends[i] - starts[i]}

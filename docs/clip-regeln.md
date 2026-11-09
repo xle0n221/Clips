@@ -91,7 +91,8 @@ Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wör
    Sie werden jetzt **hörbar** betont (und wie bisher in den Untertiteln hervorgehoben). Nicht jedes zweite Wort markieren.
 3. **Dramatische Pause** mit ` | ` im Sprechtext (Standard 350 ms, Feld `pauseMs`): vor Pointe, Twist, Auflösung.
 4. **Kurze Sätze, klare Satzzeichen**: `?` für echte Fragen, `!` sparsam bei Eskalation; Reaktionen als eigener Satz („Wait, what?“).
-5. **Stil des ganzen Videos** im Feld `voiceStyle` (Auswahl im Dashboard), `aus` schaltet die Bearbeitung ab.
+5. **Sprechstil des ganzen Videos** im Feld `voicePreset` (Auswahl „Sprechstil“ im Dashboard; früher `voiceStyle` –
+   umbenannt, weil `voiceStyle` jetzt das Objekt für Stimmen-Mischung/Nachbearbeitung ist, siehe `docs/stimme-casting.md`).
    Die Stile müssen **klar hörbar verschieden** sein (Rückmeldung des Nutzers: „hören sich in jedem Sprechstil gleich an“).
    Werte in `STYLES` (`scripts/voice_fx.py`); gemessen an den Hörproben (Lily, gleicher Satz):
 
@@ -101,10 +102,23 @@ Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wör
    | `spannend` | −14 % | −2 Halbtöne | mittel, starke Akzente | 650 ms | weich, nah | 7,6 s / 185 Hz / 3,8 HT |
    | `witzig` | +12 % | +2 Halbtöne | sehr kräftig | 220 ms | Druck | 5,1 s / 250 Hz / 4,5 HT |
    | `ruhig` | −10 % | −0,7 Halbtöne | flach | 450 ms | weich, nah | 7,0 s / 195 Hz / 3,3 HT |
-6. Prüfen: Hörprobe der Szene mit Hook und Pointe anhören; klingt etwas blechern/knarrend → `expr` der Szene senken.
+6. Prüfen: Hörprobe der Szene mit Hook und Pointe anhören.
+
+**Stand 09.11.2026 (Rückmeldung des Nutzers: „Stimmen hören sich unnatürlich an … sollen sich anhören wie echte Voice-Actor“):**
+- Die Tonhöhen-Bearbeitung (WORLD-Vocoder, `liven`) ist **aus** (`VOCODER_DEFAULT = False`); die Tabelle oben beschreibt den
+  früheren Zustand. In `make_episode.py` wirken vom Sprechstil nur noch Tempo, Pausen und die Lautstärke der Akzentwörter.
+- In Prüfung: anderes Sprachmodell **Chatterbox** (MIT, https://huggingface.co/ResembleAI/chatterbox/blob/main/README.md; jede Ausgabe mit
+  PerTh-Wasserzeichen von Resemble AI). Gemessen auf 4 CPU-Kernen: ~3,5× Echtzeit (29–32 s für 8–9,5 s Audio), Whisper „base“ 27/29 Wörter.
+  Mit Kokoro-Stimmen als Klangvorlage keine messbar bewegtere Melodie (SD 3,0–3,2 HT). Hörproben im Dashboard; Entscheidung des Nutzers offen.
 
 **Grenze:** Kokoro-82M hat keine Steuerung für Emotionen; `voice_fx` verstärkt nur die vorhandene Melodie und kann
 keinen echten Schauspieler ersetzen. Für mehr Charakter wäre ein anderes Sprachmodell nötig (nicht getestet).
+- **Sprechweise lebendig** (Messung in [`docs/stimme-casting.md`](stimme-casting.md)): Erzählstimme mit
+  Tonhöhen-Streuung wie die englische Referenz R3 (F0-Interquartil ≈ 6–7 Halbtöne; flache Stimmen wie
+  `am_michael`, `bm_george`, `af_heart` liegen bei 3–4). Lautheitsschwankung mit `voiceStyle.post: "lively"`
+  bändigen (Präsenz 2–5 kHz + Kompressor), Pausen kurz halten (R3: kaum Pausen ≥ 0,3 s); Kunstpausen
+  vor Pointen mit „…“ (einzige Satzzeichen-Variante mit messbarer Pause: 0,16 s in einer Probe), Tempo-Akzente über `voiceStyle.sceneSpeed` (0,9–1,1).
+  Jede neue Stimme/Mischung per Whisper-Gegenprobe auf Verständlichkeit prüfen.
 - **Alle Fakten** aus Primärquellen, wörtlich zitiert in `docs/quellen-<thema>.md`; Abweichungen von
   gängigen Angaben werden vermerkt und nicht verwendet.
 

@@ -32,7 +32,7 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - ~3,0–3,6 Wörter/s ⇒ 60 s ≈ 180–215 Wörter, 90 s ≈ 270–320 Wörter (spannende Clips bis 2,6 W/s).
 - **Stimme lebendig machen** (verbindlich, `docs/clip-regeln.md` → „Stimme“): je Szene `delivery`
   (punch | normal | hype | tense | calm) passend zur Story-Stelle, 1–2 `*Akzentwörter*` pro Satz,
-  ` | ` als dramatische Pause vor Pointe/Twist, `voiceStyle` des Videos (aus dem Dashboard, Standard `lebendig`).
+  ` | ` als dramatische Pause vor Pointe/Twist, `voicePreset` des Videos (aus dem Dashboard, Standard `lebendig`).
 - Zahlen als Ziffern schreiben (die Sprachausgabe schreibt sie automatisch aus).
 - **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter.
 

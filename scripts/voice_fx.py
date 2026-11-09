@@ -32,7 +32,7 @@ DELIVERY = {
     "punch": {"speed": 0.94, "expr": 2.3},  # Pointe / Wendepunkt
     "calm": {"speed": 0.95, "expr": 1.4},   # ruhig, erklärend
 }
-# Sprechstil eines ganzen Videos (Dashboard-Feld `voiceStyle`). Die Stile müssen klar hörbar verschieden sein
+# Sprechstil eines ganzen Videos (Dashboard-/Drehbuch-Feld `voicePreset`). Die Stile müssen klar hörbar verschieden sein
 # (Rückmeldung des Nutzers 09.11.2026: „hören sich in jedem Sprechstil gleich an“). Je Stil:
 #   delivery  Standard-Sprechweise der Szenen        speed   Tempo-Faktor zusätzlich zur Sprechweise
 #   scale     Stärke der Melodie (1.0 = DELIVERY)     shift   Stimmlage in Halbtönen (+ höher, − tiefer)
