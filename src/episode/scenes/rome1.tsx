@@ -63,14 +63,14 @@ const SEAT: V3 = [0, STAGE_Y + THRONE_SIT_Y, -0.6];
 export const HOOK_A = aim([0.7, 3.0, -0.2], 10.5, 0.5, 0.5, [0, 0.1, 1]);
 export const HOOK_CAM = move(HOOK_A, aim([0.7, 3.0, -0.2], 11.5, 0.5, 0.5, [0, 0.12, 1]));
 
-/* 1 — hook: „the Roman Empire got auctioned off …“ */
+/* 1 — hook: „What if you could buy the Roman Empire? …“ */
 export const RomeHook: React.FC = () => {
   const { frame, duration, beat } = useScene();
   const wide = beat("auctionWide");
   const win = beat("youWin");
   const close = beat("throneClose");
   const worried = beat("worriedPush");
-  const respawnAt = 146; // Sticker „RESPAWN = WORSE JOB“ (Wort „respawn“)
+  const respawnAt = beat("respawnScare"); // Sticker „RESPAWN = WORSE JOB“ (Wort „respawn“)
   const { shot, f } = cut(frame, [wide, close]);
 
   if (shot === 0) {

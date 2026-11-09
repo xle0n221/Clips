@@ -67,7 +67,8 @@
         {
           "word": "respawn",
           "sticker": "RESPAWN = WORSE JOB",
-          "color": "#FF8A3D"
+          "color": "#FF8A3D",
+          "beat": "respawnScare"
         },
         {
           "word": "worse",

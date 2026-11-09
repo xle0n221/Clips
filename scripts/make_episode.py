@@ -240,6 +240,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         else:  # Rückfall (Cloud-Container ohne whisper.cpp): faster-whisper in .venv
             subprocess.run([sys.executable, str(ROOT / "scripts" / "whisper_words_fw.py"), str(wav16), str(raw), "en"], check=True)
         whisper = [c for c in json.loads(raw.read_text()) if norm(c["text"])]
+        (ROOT / "out").mkdir(exist_ok=True)  # Rohdaten für die Aussprache-Gegenprobe (nicht im Repo)
+        (ROOT / "out" / f"{ep['id']}-whisper.json").write_text(json.dumps(whisper, indent=1) + "\n")
 
     captions = align([w["word"] for w in words], whisper)
     matched = sum(
@@ -251,6 +253,7 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     (out_dir / "captions.json").write_text(json.dumps(captions, indent=1) + "\n")
 
     # *Akzentwörter* hörbar machen: nur Lautstärke (+emph_db), Timing bleibt gleich
+    preset = STYLES.get(ep.get("voicePreset", ""))
     if preset:
         import soundfile as sf
 
