@@ -1360,13 +1360,13 @@ export const Hallway: React.FC<
   const ribs = Math.floor(length / 3);
   return (
     <group position={position} rotation={rotation} scale={scale}>
-      <hemisphereLight args={["#FFE2C2", palette.floor, 0.9]} />
+      <hemisphereLight args={["#FFE2C2", palette.floor, 0.55]} />
       {[0.2, 0.5, 0.8].map((k) => (
         <pointLight
           key={k}
           position={[0, wall + 0.6, -length * k]}
           color={palette.lamp}
-          intensity={18 * glow}
+          intensity={6 * glow}
           distance={length * 0.45}
           decay={1.6}
         />
@@ -1406,7 +1406,8 @@ export const Hallway: React.FC<
         </group>
       ))}
       {/* Tonnengewölbe + Bögen (Rippen) – die Rippen zeichnen die Fluchtlinien */}
-      <mesh position={[0, wall, -length / 2 + 2]} rotation={[Math.PI / 2, 0, 0]}>
+      {/* Achse entlang z; −π/2 legt die Halbschale nach OBEN (+π/2 läge sie im Boden) */}
+      <mesh position={[0, wall, -length / 2 + 2]} rotation={[-Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[hw, hw, length + 4, 24, 1, true, -Math.PI / 2, Math.PI]} />
         <meshBasicMaterial color={palette.vault} side={DoubleSide} />
       </mesh>

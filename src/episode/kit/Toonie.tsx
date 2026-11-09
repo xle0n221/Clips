@@ -199,14 +199,14 @@ export const SweatDrop: React.FC<{
     <group position={[position[0], position[1] - slide, position[2]]} scale={0.22 * size}>
       <mesh>
         <sphereGeometry args={[0.5, 16, 12]} />
-        <Toon color="#7FD3FF" />
+        <Toon color="#7FD3FF" emissive="#7FD3FF" emissiveIntensity={0.45} />
         <Ink f={0.08}>
           <sphereGeometry args={[0.5, 16, 12]} />
         </Ink>
       </mesh>
       <mesh position={[0, 0.55, 0]}>
         <coneGeometry args={[0.43, 0.75, 16]} />
-        <Toon color="#7FD3FF" />
+        <Toon color="#7FD3FF" emissive="#7FD3FF" emissiveIntensity={0.45} />
         <Ink f={0.08}>
           <coneGeometry args={[0.43, 0.75, 16]} />
         </Ink>
