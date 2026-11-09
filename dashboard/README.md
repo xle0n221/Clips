@@ -37,7 +37,7 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `renderEta` | string (optional) | Sitzung | z. B. `"noch ca. 23 Min."` |
 | `actionNeeded` | string \| null (optional) | Sitzung | auffälliges rotes Banner, z. B. `"Freigabe in der Claude-App nötig (Netzwerk)"`; Karte wird oben einsortiert |
 | `fileSizeBytes` | number (optional) | Sitzung | Dateigröße auf der Fertig-Karte |
-| `busy` | boolean (optional) | Sitzung | `true`, solange eine Sitzung am Video arbeitet (Sperre für den stündlichen Abholer); bei Freigabe, Fertig oder Fehler `false` |
+| `busy` | boolean (optional) | Sitzung | `true`, solange eine Sitzung am Video arbeitet (Sperre für den Abholer); bei Freigabe, Fertig oder Fehler `false` |
 | `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
 
 Zusätzliche optionale Felder in `review`:
@@ -208,4 +208,4 @@ Darum ruft die Seite jetzt nach jeder Entscheidung, jedem neuen Thema und jedem 
 `fire_trigger` für die geplante Aufgabe `trig_013fFkYLstdCwVbtokfU68w5` (Abholer, feuert in die Sitzung CLIPS) auf –
 über den Connector „Claude Code Remote“ als der Betrachter. Beim ersten Mal fragt claude.ai nach der Erlaubnis.
 Läuft die Sitzung gerade, wartet die Nachricht bis zum Ende ihres aktuellen Arbeitsschritts.
-Klappt der Aufruf nicht, bleibt der stündliche Abholer (Minute 17, rund um die Uhr) als Rückfallweg.
+Die Trigger-ID kommt aus `meta/pickup.triggerId` (`{ triggerId, sessionId, since }`, beim Sitzungswechsel neu geschrieben, docs/sitzungswechsel.md); fehlt sie, gilt die Konstante `PICKUP_TRIGGER`. Klappt der Aufruf nicht, bleibt der Abholer (alle 2 h um :17, gerade Stunden) als Rückfallweg.

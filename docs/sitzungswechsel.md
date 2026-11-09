@@ -20,8 +20,9 @@ Nicht mitten in einem laufenden Render oder während Agenten arbeiten – erst s
 3. Geplante Aufgaben umziehen: Abholer und Wochenrunde je mit `create_trigger` und
    `persistent_session_id` = neue Sitzung neu anlegen (gleicher Prompt), die alten mit
    `update_trigger enabled=false` abschalten.
-4. Dashboard: `meta/pickup` = `{ triggerId, sessionId, since }` schreiben. Die Seite liest die Trigger-ID
-   von dort (Umbau einmalig durch die erste neue Sitzung; bis dahin holt der Abholer alle 2 h ab).
+4. Dashboard: `meta/pickup` = `{ triggerId, sessionId, since }` schreiben (mit `if_version`, das Dokument
+   existiert). Die Seite liest die Trigger-ID für „Jetzt starten“/Sofortstart live von dort (Rückfall: Konstante
+   `PICKUP_TRIGGER` in `dashboard/index.html`) – **kein Neuveröffentlichen nötig**.
    `sessionId` beim laufenden Video auf die neue Sitzung setzen.
 5. Dem Nutzer in einem Satz sagen, dass es in der neuen Sitzung weitergeht (Titel nennen).
 

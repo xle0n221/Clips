@@ -196,6 +196,9 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
 .idea:hover { border-color: var(--accent); }
 .stuck { font-size: 0.8125rem; color: var(--warn); margin: 0; }
 .prio { font-size: 0.75rem; font-weight: 600; color: var(--accent); }
+.ab { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; font-size: 0.875rem; }
+.ab audio { width: 100%; min-width: 0; height: 36px; }
+#vstyle { flex: 1 1 200px; }
 .empty { text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 16px; margin: 0; }
 @media (max-width: 480px) {
   .steps li span { font-size: 0.6875rem; }
@@ -234,7 +237,14 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
         <option value="am_fenrir">Stimme: Finn – Mann</option>
         <option value="am_puck">Stimme: Max – Mann</option>
       </select>
-      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe der gewählten Stimme abspielen">▶ Anhören</button>
+      <label class="sr" for="vstyle">Sprechstil</label>
+      <select id="vstyle" name="vstyle" title="Wie die Stimme klingen soll (Melodie, Betonung, Pausen)">
+        <option value="lebendig" selected>Sprechstil: Lebendig (Standard)</option>
+        <option value="spannend">Sprechstil: Spannend</option>
+        <option value="witzig">Sprechstil: Witzig</option>
+        <option value="ruhig">Sprechstil: Ruhig</option>
+      </select>
+      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe: gewählte Stimme im gewählten Sprechstil">▶ Anhören</button>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
@@ -253,7 +263,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       <input id="inspFiles" type="file" accept="image/*,video/*,application/pdf" multiple>
       <span class="hint" id="inspCount">optional – Bilder, kurze Videos oder PDFs</span>
     </div>
-    <p class="hint" id="nextRun">Deine Entscheidungen starten Claude sofort; zusätzlich schaut Claude stündlich nach. Stil wie das Sonnensystem-Video.</p>
+    <p class="hint" id="nextRun">Deine Entscheidungen starten Claude sofort; zusätzlich schaut Claude alle 2 Std. nach. Stil wie das Sonnensystem-Video.</p>
     <div class="ideas" id="ideasBox" hidden>
       <div class="row">
         <label class="sr" for="ideaDir">Richtung für Ideen</label>
@@ -269,6 +279,20 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   <details class="ht" id="repoBox" hidden>
     <summary id="repoSum">Repo-Stand</summary>
     <div id="repoBody"></div>
+  </details>
+
+  <details class="ht" id="abBox" open>
+    <summary>Neue Stimmen zum Testen (Chatterbox) <span class="sub">· 09.11.2026</span></summary>
+    <p class="hint" style="margin:6px 0 10px">Ausdrucksstärkeres Sprachmodell (Chatterbox, MIT-Lizenz). Gleicher Satz in allen Proben. Bitte anhören und Claude sagen, ob es nach echtem Sprecher klingt – erst dann wird es für Videos verwendet. Der Knopf „▶ Anhören“ oben spielt noch die bisherige Stimme.</p>
+    <div class="ab">
+      <span>Lily lebendig</span><audio controls preload="none" src="voices/neu/neu-lebendig-af_heart.mp3"></audio>
+      <span>Lily spannend</span><audio controls preload="none" src="voices/neu/neu-spannend-af_heart.mp3"></audio>
+      <span>Lily witzig</span><audio controls preload="none" src="voices/neu/neu-witzig-af_heart.mp3"></audio>
+      <span>Lily ruhig</span><audio controls preload="none" src="voices/neu/neu-ruhig-af_heart.mp3"></audio>
+      <span>Finn lebendig</span><audio controls preload="none" src="voices/neu/neu-lebendig-am_fenrir.mp3"></audio>
+      <span>Finn spannend</span><audio controls preload="none" src="voices/neu/neu-spannend-am_fenrir.mp3"></audio>
+      <span>Eingebaute Stimme</span><audio controls preload="none" src="voices/neu/neu-eigenstimme-lebendig.mp3"></audio>
+    </div>
   </details>
 
   <details class="ht" id="htBox" hidden>
@@ -290,7 +314,10 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   ];
   const STAGE_LABEL = { queued: "Wartet", research: "Recherche", script: "Drehbuch", scenes: "Szenen", render: "Render", done: "Fertig", error: "Fehler" };
   const REPO = "https://github.com/xle0n221/clips/tree/";
-  const PICKUP_TRIGGER = "trig_013fFkYLstdCwVbtokfU68w5"; // geplante Aufgabe „Clips Dashboard-Abholer (Sitzung CLIPS)“, weckt die Sitzung CLIPS
+  // Rückfall-ID der geplanten Aufgabe „Abholer“. Maßgeblich ist meta/pickup.triggerId (wird beim Sitzungswechsel
+  // neu geschrieben, docs/sitzungswechsel.md) – so muss die Seite dafür nicht neu veröffentlicht werden.
+  const PICKUP_TRIGGER = "trig_01JLT1pGyNwh8YKTpJWtNJxp";
+  let pickupTrigger = PICKUP_TRIGGER, watchedTrigger = null, unwatchPickup = null, canWatch = false;
   const CCR = "Claude Code Remote";
   const STUCK_MS = 3 * 3600 * 1000;
   let mcp = null, sampleFn = null, canFire = false;
@@ -304,7 +331,9 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   const VOICE_NAME = { af_heart: "Lily", af_bella: "Bella", am_fenrir: "Finn", am_puck: "Max" };
   const voiceName = (v) => VOICE_NAME[v] ? "Stimme " + VOICE_NAME[v] : "Stimme " + v;
   const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
-  const WPS_MIN = 3.3, WPS_MAX = 3.6; // Ziel-Sprechtempo (Vorgabe aus der Video-Produktion)
+  const WPS_MIN = 3.0, WPS_MAX = 3.6; // Ziel-Sprechtempo inkl. Pausen (docs/clip-regeln.md)
+  const WPS_LOW_OK = 2.6;             // spannende Clips mit langen Pausen (gemessen in einer Referenz: 2,58)
+  const STYLE_NAME = { lebendig: "lebendig", spannend: "spannend", witzig: "witzig", ruhig: "ruhig", aus: "unbearbeitet" };
   const de = (n, d) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
   const sceneDrafts = {};
   const drafts = {};      // Feedback-Entwürfe je Video, überleben Neuzeichnen
@@ -358,23 +387,25 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   ];
   const norm = (s) => String(s || "").toLowerCase().replace(/[äöüß]/g, (c) => ({ "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" })[c]).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 
-  // Nächster stündlicher Durchlauf (geplante Aufgabe: jeweils :17, rund um die Uhr)
+  // Nächster Durchlauf: next_run_at des Abholers, sonst gerechnet (alle 2 h um :17, gerade Stunden)
   function nextRunText() {
+    const nx = pickup && Date.parse(pickup.next);
+    if (nx && nx > Date.now()) return "ca. " + new Date(nx).toLocaleTimeString("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }) + " Uhr";
     let h, m;
     try {
       const parts = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
       h = Number(parts.find((x) => x.type === "hour").value); m = Number(parts.find((x) => x.type === "minute").value);
     } catch { return null; }
-    const nh = (m < 17 ? h : h + 1) % 24;
+    const nh = (m < 17 && h % 2 === 0 ? h : h + (h % 2 === 0 ? 2 : 1)) % 24; // Abholer: alle 2 h um :17 (gerade Stunden)
     return "ca. " + nh + ":17 Uhr";
   }
   function nr() {
     const el2 = $("nextRun"); if (!el2) return;
-    if (pickup && pickup.enabled === false) { el2.textContent = "Der stündliche Abholer ist ausgeschaltet – neue Themen und Entscheidungen startest du mit „Jetzt starten“ oben. Stil wie das Sonnensystem-Video."; return; }
+    if (pickup && pickup.enabled === false) { el2.textContent = "Der Abholer (alle 2 Std.) ist ausgeschaltet – neue Themen und Entscheidungen startest du mit „Jetzt starten“ oben. Stil wie das Sonnensystem-Video."; return; }
     const t = nextRunText();
     el2.textContent = pickup && pickup.enabled
-      ? (canFire ? "Deine Entscheidungen starten Claude sofort. " : "") + "Zusätzlich schaut Claude stündlich nach – nächster Durchlauf " + (t || "bald") + ". Stil wie das Sonnensystem-Video."
-      : "Claude holt neue Themen und Entscheidungen ab, sobald der Abholer läuft (stündlich, wenn eingeschaltet) oder über „Jetzt starten“. Stil wie das Sonnensystem-Video.";
+      ? (canFire ? "Deine Entscheidungen starten Claude sofort. " : "") + "Zusätzlich schaut Claude alle 2 Std. nach – nächster Durchlauf " + (t || "bald") + ". Stil wie das Sonnensystem-Video."
+      : "Claude holt neue Themen und Entscheidungen ab, sobald der Abholer läuft (alle 2 Std., wenn eingeschaltet) oder über „Jetzt starten“. Stil wie das Sonnensystem-Video.";
   }
   function slugify(s) {
     const map = { "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss" };
@@ -497,7 +528,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (typeof m.durationSec === "number") out.push(el("span", { text: "Länge " + tc(m.durationSec) }));
     if (typeof m.words === "number") out.push(el("span", { text: m.words + " Wörter" }));
     if (typeof m.wordsPerSec === "number") {
-      const off = m.wordsPerSec < WPS_MIN || m.wordsPerSec > WPS_MAX;
+      const off = m.wordsPerSec < WPS_LOW_OK || m.wordsPerSec > WPS_MAX;
       out.push(el("span", { class: off ? "off" : "good", title: `Ziel ${de(WPS_MIN, 1)}–${de(WPS_MAX, 1)} Wörter/s`,
         text: de(m.wordsPerSec, 2) + " W/s" + (off ? " (Ziel " + de(WPS_MIN, 1) + "–" + de(WPS_MAX, 1) + ")" : "") }));
     }
@@ -690,7 +721,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     const metaParts = [];
     if (typeof v.lengthSec === "number" && v.lengthSec > 0) metaParts.push(el("span", { class: "tc", title: "Wunschlänge", text: tc(v.lengthSec) }));
     metaParts.push(el("span", { title: absTime(v.updatedAt), text: "geändert " + ago(v.updatedAt) }));
-    if (v.voice) metaParts.push(el("span", { text: voiceName(v.voice) }));
+    if (v.voice) metaParts.push(el("span", { text: voiceName(v.voice) + (STYLE_NAME[v.voicePreset || v.voiceStyle] ? ", " + STYLE_NAME[v.voicePreset || v.voiceStyle] : "") }));
     if (v.branch && v.stage !== "done") metaParts.push(el("span", { text: v.branch }));
 
     const c = el("article", { class: "card" + (waiting(v) || blocked(v) ? " attn" : ""), id: "v-" + v.id },
@@ -763,7 +794,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     //    Das ist der zuverlässige Weg; die Datei-Veröffentlichung unten weckte in Tests nicht.
     if (mcp && canFire && action !== "decision:undo") {
       try {
-        await mcp.callTool(CCR, "fire_trigger", { trigger_id: PICKUP_TRIGGER });
+        await mcp.callTool(CCR, "fire_trigger", { trigger_id: pickupTrigger });
         store.set("clips.lastFire", String(Date.now()));
         w.hidden = false; w.className = "wake ok";
         w.textContent = "Gespeichert (" + hhmm() + "). Claude wurde sofort gestartet und arbeitet weiter.";
@@ -803,7 +834,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     if (box.hidden) return;
     if (!firing && !$("runText").dataset.msg) $("runText").textContent = recent
       ? "Vor " + Math.max(1, Math.round((Date.now() - last) / 60000)) + " Min. gestartet – Claude arbeitet daran. Erneut starten ist 10 Min. gesperrt."
-      : (n === 1 ? "1 Video wartet auf Claude." : n + " Videos warten auf Claude.") + (pickup && pickup.enabled === false ? " Der stündliche Abholer ist aus." : pickup && pickup.enabled ? " Nächster automatischer Durchlauf " + (nextRunText() || "stündlich") + "." : "");
+      : (n === 1 ? "1 Video wartet auf Claude." : n + " Videos warten auf Claude.") + (pickup && pickup.enabled === false ? " Der Abholer ist aus." : pickup && pickup.enabled ? " Nächster automatischer Durchlauf " + (nextRunText() || "in spätestens 2 Std.") + "." : "");
     $("runBtn").disabled = firing || recent || n === 0;
   }
   $("runBtn").addEventListener("click", async () => {
@@ -813,15 +844,15 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     t.textContent = "Starte …";
     const say = (msg) => { t.dataset.msg = "1"; t.textContent = msg; setTimeout(() => { delete t.dataset.msg; renderRunBox(); }, 15000); };
     try {
-      await mcp.callTool(CCR, "fire_trigger", { trigger_id: PICKUP_TRIGGER });
+      await mcp.callTool(CCR, "fire_trigger", { trigger_id: pickupTrigger });
       store.set("clips.lastFire", String(Date.now()));
       say("Gestartet. Eine Claude-Sitzung übernimmt jetzt das nächste Video; die Karte zeigt gleich den Fortschritt.");
     } catch (e) {
       const c = e && e.code;
-      if (c === "server_not_connected") say("Der Connector „" + CCR + "“ ist nicht verbunden (claude.ai → Einstellungen → Connectors). Der stündliche Durchlauf läuft trotzdem.");
+      if (c === "server_not_connected") say("Der Connector „" + CCR + "“ ist nicht verbunden (claude.ai → Einstellungen → Connectors). Der automatische Durchlauf läuft trotzdem.");
       else if (c === "needs_reauth") say("„" + CCR + "“ muss neu verbunden werden (claude.ai → Einstellungen → Connectors).");
-      else if (c === "not_in_manifest" || c === "approval_required" || c === "not_granted") say("Starten wurde nicht erlaubt. Beim nächsten Klick fragt claude.ai erneut; sonst übernimmt der stündliche Durchlauf.");
-      else if (c === "blocked_by_policy") say("Starten ist für dieses Konto gesperrt. Der stündliche Durchlauf übernimmt.");
+      else if (c === "not_in_manifest" || c === "approval_required" || c === "not_granted") say("Starten wurde nicht erlaubt. Beim nächsten Klick fragt claude.ai erneut; sonst übernimmt der automatische Durchlauf.");
+      else if (c === "blocked_by_policy") say("Starten ist für dieses Konto gesperrt. Der automatische Durchlauf übernimmt.");
       else if (c === "tool_error") say("Die geplante Aufgabe ließ sich nicht starten (" + ((e && e.message) || "Fehler").slice(0, 160) + ").");
       else { store.set("clips.lastFire", String(Date.now())); say("Unklar, ob der Start geklappt hat. Bitte nicht doppelt klicken – in ein paar Minuten zeigt die Karte es."); }
     } finally { firing = false; renderRunBox(); }
@@ -915,12 +946,13 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   $("listenBtn").addEventListener("click", () => {
     const btn = $("listenBtn");
     if (player && !player.paused) { player.pause(); btn.textContent = "▶ Anhören"; return; }
-    player = new Audio("voices/voice-" + $("voice").value + ".mp3");
+    // Probe passend zu Stimme UND Sprechstil (voices/style-<stil>-<stimme>.mp3)
+    player = new Audio("voices/style-" + ($("vstyle").value || "lebendig") + "-" + $("voice").value + ".mp3");
     btn.textContent = "■ Stopp";
     player.addEventListener("ended", () => { btn.textContent = "▶ Anhören"; });
     player.play().catch(() => { btn.textContent = "▶ Anhören"; $("addMsg").className = "msg err"; $("addMsg").textContent = "Hörprobe konnte nicht abgespielt werden."; });
   });
-  $("voice").addEventListener("change", () => { if (player) { player.pause(); $("listenBtn").textContent = "▶ Anhören"; } });
+  for (const id of ["voice", "vstyle"]) $(id).addEventListener("change", () => { if (player) { player.pause(); $("listenBtn").textContent = "▶ Anhören"; } });
 
   $("inspFiles").addEventListener("change", (e) => {
     const n = e.target.files ? e.target.files.length : 0;
@@ -946,12 +978,12 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       await db.collection("videos").doc(id).set({
         inspiration,
         topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
-        voice: $("voice").value || "af_heart",
+        voice: $("voice").value || "af_heart", voicePreset: $("vstyle").value || "lebendig",
         stage: "queued", statusText: "", review: null, decision: null,
         branch: null, sessionId: null, busy: false, updatedAt: new Date().toISOString()
       });
       $("dupHint").hidden = true; $("lenHint").textContent = "";
-      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "af_heart";
+      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "af_heart"; $("vstyle").value = "lebendig";
       $("inspFiles").value = ""; $("inspCount").textContent = "optional – Bilder, kurze Videos oder PDFs";
       msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
       wake("add", id);
@@ -962,6 +994,20 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
         : "Speichern fehlgeschlagen (" + (err && err.code || "Fehler") + "). Bitte erneut versuchen.";
     } finally { btn.disabled = false; }
   });
+
+  // Status des Abholers beobachten; bei neuer ID aus meta/pickup die alte Beobachtung beenden.
+  function watchPickup() {
+    if (!mcp || !canWatch || watchedTrigger === pickupTrigger) return;
+    if (typeof unwatchPickup === "function") { try { unwatchPickup(); } catch {} }
+    const id = pickupTrigger; watchedTrigger = id; pickup = null;
+    try {
+      unwatchPickup = mcp.watchTool(CCR, "get_trigger", { trigger_id: id }, (ev) => {
+        if (ev.type !== "data" || id !== pickupTrigger) return;
+        const pl = ev.result && ev.result.payload; const tr = pl && (pl.trigger || pl);
+        if (tr && typeof tr.enabled === "boolean") { pickup = { enabled: tr.enabled, next: tr.next_run_at || null }; nr(); render(); }
+      }, { refetchInterval: 15 * 60 * 1000 });
+    } catch { unwatchPickup = null; }
+  }
 
   async function start() {
     if (!window.claude || typeof window.claude.use !== "function") {
@@ -976,13 +1022,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       mcp = m;
       if (m) { try { const r = await m.listTools(CCR); const srv = r && r.servers && r.servers.find((x) => x.server === CCR);
         canFire = !!(srv && srv.tools.some((t) => t.name === "fire_trigger"));
-        if (srv && srv.tools.some((t) => t.name === "get_trigger")) {
-          m.watchTool(CCR, "get_trigger", { trigger_id: PICKUP_TRIGGER }, (ev) => {
-            if (ev.type !== "data") return;
-            const pl = ev.result && ev.result.payload; const tr = pl && (pl.trigger || pl);
-            if (tr && typeof tr.enabled === "boolean") { pickup = { enabled: tr.enabled, next: tr.next_run_at || null }; nr(); render(); }
-          }, { refetchInterval: 15 * 60 * 1000 });
-        } } catch { canFire = false; } }
+        canWatch = !!(srv && srv.tools.some((t) => t.name === "get_trigger"));
+        watchPickup(); } catch { canFire = false; } }
       render();
     });
     if (assets) $("inspPick").hidden = false;
@@ -1006,6 +1047,11 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     });
     db.doc("hashtags/current").onSnapshot((d) => renderHashtags(d.exists ? d.data() : null), () => {});
     db.doc("meta/repo").onSnapshot((d) => renderRepo(d.exists ? d.data() : null), () => {});
+    db.doc("meta/pickup").onSnapshot((d) => {
+      const t = d.exists ? d.data().triggerId : null;
+      const next = typeof t === "string" && /^trig_[A-Za-z0-9]+$/.test(t) ? t : PICKUP_TRIGGER;
+      if (next !== pickupTrigger) { pickupTrigger = next; watchPickup(); nr(); render(); }
+    }, () => {});
     nr(); setInterval(() => { nr(); render(); }, 60000); // nur Zeitangaben auffrischen, kein Schreiben
   }
   start();
