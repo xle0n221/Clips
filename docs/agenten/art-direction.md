@@ -28,6 +28,9 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - 08.11.2026 · Rom-Kit · 10 Befunde behoben (Kolosseum, Bart, Thron, Halstuch, Gefahrenlicht, Stimmungen) · Kontaktabzug vorher/nachher in `verbesserungen.md`.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- NEU (09.11.2026, aus `docs/animation-techniken.md` Top 7/8): **Rim-Light** hinter/über der Hauptfigur (ohne Schatten) + `scene.fog` in Hintergrundfarbe testen; messen: Kopf-Kontrast vor dunklem Grund (Ziel ≥ 4,5 : 1, Rom-`fall` war Problemfall) und Renderzeit/Bild vorher/nachher.
+- NEU: **Color Script** vor dem Bau: Farbband aller Szenen als ein Bild (je Szene `mood` → CSS-Filter + Farb-Overlay); Prüfung: Kontaktabzug ohne Ton, verrät jedes Bild die Phase?
+- NEU: **Form-Wipe-Silhouetten** je Thema (eigene SVG-Form, nichts Fremdes) für `ShapeWipe`; Messung: Form in ≤ 8 Bildern bildfüllend, lesbar im Kontaktabzug.
 - Common-Kit im echten Clip: Info-Einschub mit `BarChart`/`CounterBoard` auf Wort-Cue binden und im Kontaktabzug prüfen, ob die Zahl ohne Ton verstanden wird (Messung: Schrifthöhe px, Kontrast, Zeit bis Endwert ≤ 0,5 s).
 - `rome.tsx` auf den gemeinsamen Schrift-Helfer `kit/font.ts` umstellen (nur mit Auftrag; Pixel-Vergleich vorher/nachher).
 - Studio-Hintergrund pro Thema einfärben (z. B. Rom: `top #2A1A12`) und prüfen, ob Info-Einschübe das Thema noch verraten.

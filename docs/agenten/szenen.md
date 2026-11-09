@@ -42,6 +42,9 @@
 - 08.11.2026 · Sonnensystem · Tafel/Figur/Sticker angeschnitten (9 s, 66 s, 75 s) → Kamera-Korrekturen be84199.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- NEU (09.11.2026, aus `docs/animation-techniken.md` Top 1–3): **Übergänge statt Einheits-Blitz** – Whip Pan (6+6 Bilder schneller Schwenk, Schnitt im Blur) und Match Cut (gleiche Form an gleicher Bildstelle via `aim()`), Mitte des Übergangs auf einen Wort-Cue. Messung: Regie-Kritiker im bewegten Probe-Clip, Note je Übergang.
+- NEU: **Kamera** `Shot` um Orbit (≤ 100°) und Dolly-Zoom (`fovTo`, Abstand = Breite/(2·tan(fov/2))) erweitern lassen (Werkzeugbau) und je einmal einsetzen; Prüfung: Kopf bleibt beim Dolly-Zoom gleich groß (px im Anfangs-/Endbild).
+- NEU: **Figur lebendig**: Follow-through an Halstuch/Antenne (`frame − 3`), versetztes Blinzeln je Figur (heute alle bei `frame % 95`), Lippen-Sync aus `voice.wav`; Prüfung im bewegten Clip.
 - Ergebnis Rom (09.11.2026): **Antizipation wirkt.** Finger-Hand (auction, Frames 407/411/416) und
   Stempel (deleted, 2204/2231/2238/2241) holen sichtbar aus, bevor sie zuschlagen. Die Bewegung liest
   sich auch im Standbild als Absicht. Voraussetzung: Das Ausholen muss im Bild bleiben. Beim ersten
