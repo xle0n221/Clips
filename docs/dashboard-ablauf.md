@@ -58,6 +58,11 @@ Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
   automatisch bis zur nächsten Freigabe bzw. bis „fertig“ weiter. Die Sitzung erfährt eine Entscheidung
   nicht in Echtzeit, sondern beim nächsten Lesen: stündlicher Abholer (Minute 17, rund um die Uhr) und
   zusätzlich nach jedem Arbeitsschritt, solange eine Freigabe offen ist.
+- **Nach dem Nutzungslimit automatisch weiter** (Vorgabe des Nutzers, 09.11.2026): Während des Limits
+  kann keine Sitzung und kein Agent arbeiten. Der stündliche Abholer (Minute 17, rund um die Uhr) prüft
+  als Erstes, ob Arbeit liegen geblieben ist: abgebrochene Agenten werden per SendMessage fortgesetzt
+  (ihr Zwischenstand bleibt erhalten), ein abgebrochener Render neu gestartet, offene Zwischenstände als
+  WIP committet. Spätestens etwa 60 Minuten nach Ende des Limits läuft die Arbeit wieder.
 - `"not_ok"` → `decision.feedback` (und `decision.scene`, falls gesetzt) umsetzen, dieselbe Stufe neu
   vorlegen (neues `review`, `decision: null`). Feedback nie stillschweigend übergehen.
 - Die Seite schreibt `decision` – die Sitzung setzt es nur auf `null` zurück.
