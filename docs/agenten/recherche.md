@@ -23,6 +23,7 @@ Fakten zum Thema aus Primärquellen sammeln, wörtlich zitieren, mit URL. Ergebn
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
 - Für jedes Thema 2 „Wow“-Fakten mit Zahl suchen, die man in einem Bild zeigen kann (Info-Grafik), und messen, ob das Drehbuch sie übernimmt.
+- Von Art Direction/Faktenprüfer: für jedes Kostüm- und Kulissen-Detail, das das Kit braucht (Kopfbedeckung, Fell, Farben), eine Zeile „belegt/unbelegt“ in die Bild-Hinweise – Rom: Querbusch und Goten-Fell kamen ohne Beleg ins Kit (`design-system.md` §2.4, §6) (übertragen vom Wissensverwalter 09.11.2026). Quellen-Typen je Themen-Art: `docs/playbook-themen.md` C1–C6.
 
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |

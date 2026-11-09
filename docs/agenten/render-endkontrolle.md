@@ -14,6 +14,7 @@ Rendert, normalisiert, prüft das fertige Video (ffprobe, LUFS, Kontaktabzug, er
 - Nur ein Render gleichzeitig (4 Kerne, ~40 Min für 87 s).
 - `--gl=swangle`, Chromium aus `/opt/pw-browsers`.
 - Vorher Prüfbilder per `renderStill`.
+- Von Design-Kritiker: bei Vorher/Nachher-Vergleichen zuerst die Rausch-Grenze messen (gleiches Bundle zweimal: 94–113 Pixel Unterschied, `verbesserungen.md` Rom-Kit) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
 - 08.11.2026 · Sonnensystem v2 · −18,5 → −14 LUFS per `finalize.sh`.

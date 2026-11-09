@@ -11,7 +11,7 @@ Schreibt für jedes fertige Video YouTube-Shorts- und TikTok-Texte (Titel, Besch
 - Jede Faktenaussage im Text belegt
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
-_noch leer_
+- Von Faktenprüfer: Kausal-Wörter („so“, „because“, „killed“) in Titel und Caption gegen die Freigabeliste prüfen – sie erzeugen Behauptungen, die die Quelle nicht macht (`faktencheck-drehbuch-roemisches-reich.md`) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
 - 09.11.2026 · Rom · **Titel gegen Hook-Zeitpunkt messen:** Zu jeder Titel-Variante notieren, in welcher Sekunde das Video ihr

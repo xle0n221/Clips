@@ -21,6 +21,8 @@ _noch leer_
 - Kontaktabzug-Skript (`scripts/contactsheet`) statt Ad-hoc-Code in jedem Agenten.
 - Tempo-Kalibrierung automatisch (2–3 Tempi aufnehmen, bestes nach W/s + Whisper wählen).
 - Episoden-Gerüst: aus `episodes/<id>.json` leere Szenen-Dateien + Komposition erzeugen.
+- Von Design-Kritiker/Render: Pixel-Vergleichs-Skript mit eingebauter Rausch-Grenze (Rom: 94–113 Pixel bei gleichem Bundle, `verbesserungen.md`) (übertragen vom Wissensverwalter 09.11.2026).
+- Von Veröffentlichung: Skript „Titel → Einlöse-Sekunde aus `captions.json` + Zeichenzahl“ (`agenten/veroeffentlichung.md`) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |

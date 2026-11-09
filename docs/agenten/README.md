@@ -45,6 +45,7 @@ Rolle**. Ein Agent startet ohne Erinnerung; was er gelernt hat, existiert nur, w
   Veröffentlichung → Recherche) und schreibt den Befund ins Austausch-Brett.
 - **Themenunabhängig denken:** Jede Erkenntnis so formulieren, dass sie für jedes künftige Thema gilt;
   Themen-Spezielles gehört in die Themen-Dateien (`kit/<thema>.tsx`, `quellen-<thema>.md`).
+  Muster je Themen-Art und Ablauf-Checkliste: [`../playbook-themen.md`](../playbook-themen.md).
 - **So viele Agenten wie möglich parallel:** Der Orchestrator startet für jeden unabhängigen Arbeitsschritt
   einen eigenen Agenten (eigene Dateien, keine Überschneidung). Grenzen: nur ein Video-Render gleichzeitig
   (4 CPU-Kerne) und das Nutzungslimit – mehr Agenten verbrauchen es schneller; nach dem Limit setzt der

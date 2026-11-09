@@ -7,7 +7,7 @@ Befehle ausführt. Alles, was sich pro Clip einstellen lässt, steht im Drehbuch
 | Feld | Bedeutung | Erlaubte Werte | Wirkung |
 | --- | --- | --- | --- |
 | `voice` | Sprecherstimme (Name oder ID) | **Lily** `af_heart` (Standard), **Bella** `af_bella`, **Finn** `am_fenrir`, **Max** `am_puck` – Liste: `scripts/voices.json` | neue Tonspur, Untertitel/Schnitte automatisch neu getimt |
-| `speed` | Sprechtempo | 0.5–2.0 (Standard 1.3 ≈ 3,3 Wörter/s) | wie oben; Videolänge ändert sich |
+| `speed` | Sprechtempo | 0.5–2.0 (Standard 1.3; Wörter/s hängt von Stimme und Text ab: Lily 1,3 → 3,26 W/s Sonnensystem, Rom-Mischung 1,35 → 3,54 W/s) | wie oben; Videolänge ändert sich |
 | `scenes[].text` | Sprechtext | Englisch | wie oben; Fakten müssen in `docs/quellen-<id>.md` belegt sein |
 | `scenes[].cues` | Sticker, Soundeffekte, Schnitt-Beats | siehe `episodes/solar-system.json` | Timing automatisch |
 

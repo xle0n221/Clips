@@ -22,6 +22,8 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
 - Prüfzeit senken: zuerst nur Sätze mit Zahl, Name oder Kausal-Wort prüfen, dann den Rest – messen, ob dabei etwas übersehen wird.
+- Von Veröffentlichung: auch Titel/Caption gegen die Freigabeliste prüfen, mit Tabelle Text → Freigabe-Nr. (Rom: schnelle Prüfung, `docs/veroeffentlichung-roemisches-reich.md`) (übertragen vom Wissensverwalter 09.11.2026).
+- Kit-Standardwerte mitprüfen, nicht nur Sprechtext: Rom `Goth` hat `fur = true` als Standard, obwohl die Bild-Hinweise keine Felle wollen (`quellen-roemisches-reich.md` Bildhinweise) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |

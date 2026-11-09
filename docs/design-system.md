@@ -25,6 +25,10 @@ Kontrastwerte = WCAG-Kontrastverhältnis (relative Leuchtdichte), selbst nachger
    sondern über **Licht**: rotes Akzentlicht (`DangerLight`) + dunklere Umgebung.
 4. **Eine Farbe pro Partei**, über das ganze Video gleich: Rom/West = Rot `#C62828`,
    Ostrom/Kaiserhaus = Purpur `#7B2D96`, Goten/Barbaren = Waldgrün kariert `#4F6E5A` + Fell `#7B5235`.
+   **Konflikt (offen, Art Direction):** Fell bei Goten/Vandalen widerspricht den Bild-Hinweisen der
+   Recherche („keine Felle als ‚Steinzeit‘-Klischee“, `quellen-roemisches-reich.md` Bildhinweise) und dem
+   Faktencheck (`faktencheck-drehbuch-roemisches-reich.md`, „FurCloak“). `Goth` setzt `fur = true` als
+   Standard. Bis zur Entscheidung `fur={false}` verwenden; Partei-Signal trägt das Waldgrün-Karo.
    So verrät jedes Standbild ohne Ton, wer zu wem gehört (auch auf der Karte `EmpireMap`).
 5. Keine reinen Schwarz-/Weißflächen außer Kontur und Kopf. Schatten warm (`#7A4A2A`-Richtung),
    nie grau: grau wirkt auf dem Handy schmutzig.
@@ -78,7 +82,8 @@ Bildschirm ≈ 6 cm breit, Daumen und UI decken Ränder ab, oft draußen bei Son
    haben Vorrang. Schrift ist **immer die mitgelieferte Montserrat 900** (`public/fonts`, wie die
    Untertitel), im Kit als `ROME_FONT` per FontFace + `delayRender` geladen – nie eine Systemschrift
    (sieht auf jedem Render-Rechner anders aus).
-6. **Untertitel-Zone** (unteres Drittel, Mitte ~ y 1400–1600 px) frei von Gesichtern und
+6. **Untertitel-Zone** (unteres Drittel; laut `Captions.tsx` Unterkante y = 1520 durch `paddingBottom: 400`,
+   Schrift 92 px → eine Zeile ≈ y 1420–1520, zwei Zeilen ab ≈ y 1325) frei von Gesichtern und
    Schlüssel-Requisiten. Hintergrund dort ruhig (Boden, keine feinen Muster) – die Untertitel
    (weiß, 16 px INK-Rand) brauchen nichts weiter.
 7. Feine Muster (Karo, Fell, Kanneluren) nur mit **≤ 25 % Helligkeitsunterschied**, sonst
@@ -95,7 +100,8 @@ Bildschirm ≈ 6 cm breit, Daumen und UI decken Ränder ab, oft draußen bei Son
    (teuer im Render); der Dunst übernimmt das „weicher/tiefer“.
 4. **Dunkle Ränder**: immer `Grade` (Vignette). Bei Innen-/Info-Einstellungen dunkler
    Studio-Hintergrund `#2A1A12` und Tischplatte – Licht nur auf dem Objekt.
-5. **Gefahr = rotes Akzentlicht**: `DangerLight` (pulsierendes Punktlicht `#FF3B1F` + Glühen) von
+5. **Gefahr = rotes Akzentlicht**: `DangerLight` (pulsierendes Punktlicht `DANGER #FF1F3D` + Glühen; das frühere
+   Orange `#FF3B1F` ist ersetzt, `rome.tsx` `export const DANGER`) von
    der Seite, bei gleichzeitig gedimmtem Key-Light (Stärke ≤ 1,6) und dunklerem Himmel. Höchstens
    ein Gefahrenlicht pro Bild. Für Spannung im Dunkeln: Lichtkegel (`Beam` aus `fx.tsx`) statt Fläche.
 6. Tageszeit erzählt: gleiche Bauten, anderes Licht → Fortschritt ohne Worte. Fertig als Preset

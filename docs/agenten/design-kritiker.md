@@ -14,6 +14,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 - Randfälle eigens bauen (`OverlayEdgeCases`).
 - Gruppen-Deckkraft beim Ausblenden vermeiden (Geisterbilder in Chromium/swangle).
 - Schrift erst nach dem Laden messen (`useCaptionFontReady`).
+- Untertitel-Zone mit den Werten aus dem Code prüfen: Unterkante y 1520 (`Captions.tsx` `paddingBottom: 400`), eine Zeile ≈ 1420–1520, zwei Zeilen ab ≈ 1325 (`design-system.md` §4.6) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
 - 08.11.2026 · Overlays · 13 Fehler behoben.
@@ -21,6 +22,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
 - Safe-Areas von TikTok/Shorts an echten Bildschirmfotos prüfen (bisher Annahme).
+- Von Veröffentlichung: Vorschaubild-Kandidaten mit derselben Kontrastmessung prüfen wie Kit-Standbilder (`agenten/veroeffentlichung.md`, Nächste Experimente) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |

@@ -18,6 +18,7 @@ Stimme und Sprechweise wählen und einstellen (Kokoro, `scripts/tts.py`). Ergebn
 - Nur `…` erzeugt eine messbare Pause (0,16 s); `.`, `:`, `!`, `?`, `—` nicht.
 - Tempo verändert die Tonhöhe nicht; Tonhöhe pro Szene verschieben klingt künstlich → nicht nutzen.
 - Lebendige Melodie (Tonhöhen-Streuung ≥ 6 Halbtöne wie R3) erreichen nur am_fenrir und am_puck.
+- Von Retention-Kritiker: Ersatz-Schreibweisen für `say` vorher an den Kokoro-Phonemen prüfen (`kokoro_onnx.tokenizer.Tokenizer().phonemize`, Rom: Odoacer, Augustulus, Augustus, Honorius, `review-drehbuch-roemisches-reich.md` 4e) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
 - 09.11.2026 · Nutzer-Feedback (über Dashboard-Sitzung) · „Stimmen hören sich unnatürlich an … sollen sich anhören als wären sie echte Voice-Actor“; Tonhöhen-Bearbeitung per WORLD-Vocoder klang unnatürlich → **keine Vocoder-Tonhöhenbearbeitung**. Ziel ist Natürlichkeit vor Effekt. Ausdrucksstärkeres Modell (Chatterbox, MIT) wird in der Dashboard-Sitzung getestet.

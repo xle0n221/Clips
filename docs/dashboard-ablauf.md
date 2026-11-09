@@ -14,7 +14,7 @@ Claude macht nur den Feinschliff, wenn der Nutzer ihn direkt anspricht.
 ## Wer arbeitet?
 Seit 08.11.2026 (Wunsch des Nutzers): die Sitzung **„CLIPS“** (session_01UNp77RB3vBiMZfvMTegJPC).
 Die geplante Aufgabe **„Clips Dashboard-Abholer (Sitzung CLIPS)“** weckt diese Sitzung stündlich
-(7–23 Uhr Berlin, Minute 17). Sie wählt nach Abschnitt 1 ein Video, arbeitet bis zur nächsten
+rund um die Uhr (Minute 17, `CRON_TZ=Europe/Berlin 17 * * * *`, Stand 09.11.2026). Sie wählt nach Abschnitt 1 ein Video, arbeitet bis zur nächsten
 Freigabe bzw. bis „fertig“ und wird beim nächsten Durchlauf für Entscheidungen erneut geweckt.
 Gearbeitet wird auf dem Branch der Sitzung (`claude/friendly-dijkstra-1slqt3`), Episoden-Daten
 getrennt je Video unter `episodes/<slug>.json` und `public/episodes/<slug>/`; das Feld `branch` nennt ihn.
@@ -49,7 +49,8 @@ Während der Arbeit `updatedAt` mindestens alle 30 Minuten erneuern (zusammen mi
 | Fehler | `error` | `statusText` = Fehler in Klartext, `busy: false` |
 
 Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID) → ins Drehbuch `episodes/<slug>.json` übernehmen.
-Wunschlänge `lengthSec` → Wortzahl mit 3,3–3,6 Wörtern/s planen. `note` und `inspiration` (Dateien:
+Wunschlänge `lengthSec` → Wortzahl (Skriptwörter) mit 3,3–3,6 Wörtern/s planen; Zahlen werden beim
+Sprechen länger, Tempo nach dem ersten Sprachlauf kalibrieren (`playbook-themen.md`, Tempo-Abkürzungen). `note` und `inspiration` (Dateien:
 Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
 
 ## 5. Entscheidung umsetzen

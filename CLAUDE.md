@@ -14,6 +14,7 @@ Jeder beauftragte Agent bekommt seine Rollen-Datei aus `docs/agenten/` mit (Lern
 Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regeln `docs/clip-regeln.md`.
 Stil: immer das Bau-Kit `src/episode/kit/` (Cel-Shading, `<Ink>`-Kontur, `Toonie`-Figuren) wie im
 Sonnensystem-Video, Format 1080×1920.
+Themenunabhängiger Ablauf und Muster je Themen-Art: `docs/playbook-themen.md`.
 
 ## Nicht anfassen ohne Auftrag
 - `public/episodes/` des fertigen Sonnensystem-Videos und andere Video-Branches als den eigenen.

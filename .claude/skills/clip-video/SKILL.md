@@ -8,6 +8,8 @@ description: Erstellt ein englisches 3D-Cartoon-Story-Short (9:16, ~60–90 s) z
 Lies **zuerst vollständig** `docs/clip-regeln.md` – die Regeln dort sind verbindlich (roter Faden,
 „süchtig machend“, Themen-Treue, Sprache/Stimme, Referenzwerte, technische Fallstricke).
 Antworte dem Nutzer auf Deutsch, das Video selbst ist auf Englisch.
+Ablauf-Checkliste mit Rollen und Muster je Themen-Art (Hook, Erzähl-Klammer, Figur, Quellen, Fallen):
+`docs/playbook-themen.md`.
 
 **Kommt das Video aus dem Dashboard „Clips Studio“** (Dokument in der Collection `videos`), gilt
 zusätzlich `docs/dashboard-ablauf.md`: Status, Kennzahlen und Freigaben (Freigabe 1 und 2) laufen
@@ -29,7 +31,8 @@ Format wie `episodes/solar-system.json`: `id`, `title`, `voice`, `speed`, `scene
 mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom|pop|whoosh|ding, `beat`).
 - Struktur nach `docs/clip-regeln.md`: zentrale Frage in den ersten 2 s → Einsatz → Kausalkette →
   Eskalation → Wendepunkt → Auflösung → Loop zum ersten Satz.
-- ~3,3–3,6 Wörter/s ⇒ 60 s ≈ 200–215 Wörter, 90 s ≈ 300 Wörter.
+- ~3,3–3,6 Skriptwörter/s ⇒ 60 s ≈ 200–215 Wörter, 90 s ≈ 300 Wörter (Zielwert und Messungen:
+  `docs/clip-regeln.md`, Sprache & Stimme).
 - Zahlen als Ziffern schreiben (die Sprachausgabe schreibt sie automatisch aus).
 - **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter.
 
@@ -67,6 +70,6 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 ## Stimme eines fertigen Clips ändern
 `npm run episode -- episodes/<thema>.json --voice <name> --save`, danach Schritt 6.
 Erlaubte Stimmen (Name oder ID, zentrale Liste `scripts/voices.json`, Hörproben in `assets/stimmproben/`):
-**Lily** `af_heart` (Standard, Note A), **Bella** `af_bella` (A-), **Finn** `am_fenrir` (C+), **Max** `am_puck` (C+)
+**Lily** `af_heart` (technischer Standard, Note A; Rom nutzt eine Mischung, siehe `docs/clip-regeln.md`), **Bella** `af_bella` (A-), **Finn** `am_fenrir` (C+), **Max** `am_puck` (C+)
 – Noten laut `VOICES.md` von hexgrad/Kokoro-82M. Namen identisch mit dem Dashboard „Clips Studio“.
 Die Szenen bleiben unverändert; Untertitel, Sticker und Schnitte werden automatisch neu getimt.
