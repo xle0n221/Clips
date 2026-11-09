@@ -319,7 +319,7 @@ const CROWD: [V3, number][] = [
 ];
 
 export const RomeStones: React.FC = () => {
-  const { frame, duration, beat } = useScene();
+  const { frame, beat } = useScene();
   const boo = beat("crowdBoo");
   const stones = beat("stonesFly");
   const over = beat("gameOver");

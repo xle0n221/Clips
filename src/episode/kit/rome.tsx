@@ -1062,7 +1062,7 @@ export const Senator: React.FC<ToonieProps> = (p) => (
 
 /** Gote: Fellumhang, karierte Tunika, Kappe, Zöpfe, Bart, Rundschild + Speer. Keine Hörner. */
 export const Goth: React.FC<
-  ToonieProps & {
+  Omit<ToonieProps, "cap"> & {
     readonly cap?: boolean;
     readonly gear?: boolean;
     readonly hairColor?: string;

@@ -114,7 +114,7 @@ export const AuctionStage: React.FC<{
   readonly phase?: RomePhase;
   readonly sign?: readonly string[];
   readonly signY?: number;
-}> = ({ frame, phase = "glory", sign = ["FOR SALE"], signY = 0 }) => (
+}> = ({ frame, phase = "glory", sign = ["EMPIRE", "FOR SALE"], signY = 0 }) => (
   <>
     <RomeAtmosphere phase={phase} frame={frame} />
     <Pavement size={120} />
@@ -123,7 +123,7 @@ export const AuctionStage: React.FC<{
       <Block key={x} size={[0.12, 0.5, 0.05]} position={[x, 0.3, 1.66]} color="#7A4E28" ink={0} />
     ))}
     <Throne position={[0, STAGE_Y, -0.9]} />
-    <SignBoard lines={sign} position={[2.85, STAGE_Y + signY, 0.2]} rotation={[0, -0.25, 0]} width={2.6} height={1.2} />
+    <SignBoard lines={sign} position={[1.55, STAGE_Y + signY, 1.0]} rotation={[0, -0.15, 0.04]} width={2.6} height={1.5} />
     <SpqrBanner frame={frame} position={[-4.0, STAGE_Y, -1.6]} />
     <SpqrBanner frame={frame + 20} position={[4.0, STAGE_Y, -1.6]} />
     <RomanSkyline position={[0, 0, -26]} width={60} rows={2} seed={7} />
