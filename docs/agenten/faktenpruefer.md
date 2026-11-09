@@ -17,6 +17,7 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 - Bild-Hinweise mitprüfen (Tageszeit, Kleidung) – getrennt von Sprechtext melden.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 09.11.2026 · Rom v3 (Stil-Umschrift) · 13 Szenen v2↔v3 verglichen, Zahlen 14/14 korrekt, keine neue Sachbehauptung; nur Hinweis: „sixty-six days later“ nach den Steinen verschiebt den Bezugspunkt (66 Tage = Regierungsdauer, Dio 74.17.5). Experiment „erst Zahl/Name/Kausal-Wort“: per Skript-Diff in einem Durchgang, nichts übersehen · `quellen-roemisches-reich.md` F1–F6.
 - 08.11.2026 · Rom-Drehbuch v1 · 5 Umformulierungen, 0 Streichungen; „Vandal“-Satz entgegen Verdacht gedeckt (WHE) · `faktencheck-drehbuch-roemisches-reich.md`.
 - 08.11.2026 · Rom-Drehbuch v2 · freigegeben, 2 Hinweise ohne Blockade.
 
@@ -29,3 +30,4 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 08.11.2026 | Rom | – | Gründlich, Ersatztexte direkt nutzbar |
+| 09.11.2026 | Rom v3 | 9 | Umschrift faktentreu, ein Bezugs-Hinweis (F3) |
