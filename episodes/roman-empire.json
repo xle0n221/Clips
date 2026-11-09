@@ -287,7 +287,8 @@
             "color": "#4FC3F7",
             "x": 0.72,
             "y": 0.45
-          }
+          },
+          "untilBeat": "honoriusThrone"
         },
         {
           "word": "Honorius",
@@ -471,7 +472,7 @@
           }
         },
         {
-          "word": "roof",
+          "word": "rip",
           "beat": "roofOff",
           "sfx": "pop"
         },
@@ -698,7 +699,13 @@
               "476 · WEST DIES",
               "1453 · EAST DIES"
             ]
-          }
+          },
+          "untilBeat": "loopRush"
+        },
+        {
+          "word": "B",
+          "beat": "cardB",
+          "sfx": "pop"
         },
         {
           "word": "Comment",
@@ -712,7 +719,7 @@
           "sfx": "pop"
         },
         {
-          "word": "vote",
+          "word": "went",
           "beat": "loopRush",
           "sfx": "whoosh"
         }

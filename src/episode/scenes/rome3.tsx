@@ -239,12 +239,13 @@ export const Twist: React.FC = () => {
 /* 13 — vote: YOU auf den Stufen des Kolosseums, A/B-Karten, Loop zurück zur Auktion */
 export const Vote: React.FC = () => {
   const { frame, duration, beat } = useScene();
+  const cardB = beat("cardB"); // Regie-Kritik Rom v3: Einstellung stand 4,8 s → Ranschnitt auf „B“
   const closer = beat("cardsClose");
   const shrug = beat("shrug");
   const rush = beat("loopRush");
-  const { shot, f } = cut(frame, [closer, rush + 16]);
+  const { shot, f } = cut(frame, [cardB, closer, rush + 16]);
 
-  if (shot <= 1) {
+  if (shot <= 2) {
     // Regie-Kritik 09.11.: Die A/B-Karten (Choice.tsx) belegen y ≈ 594–1300 über die ganze Szene, der
     // Sticker „HISTORIANS…“ y ≈ 430–560 (x 180–900). Freies Band: y 400–594. YOU-Kopf daher klein in
     // dieses Band: S0 mittig, S1 (mit Sticker) am rechten Rand neben dem Sticker.
@@ -263,9 +264,9 @@ export const Vote: React.FC = () => {
         <Hero
           frame={frame}
           position={[0, seat - 1.15, -0.3 + 0.25]}
-          rotation={[0.25 * lean, shot === 1 ? -0.45 : 0, 0]}
+          rotation={[0.25 * lean, shot === 2 ? -0.45 : shot === 1 ? 0.3 : 0, 0]}
           sit={1}
-          arms={[lerp(0.6, 2.2, shrugT), lerp(0.6, 2.2, shrugT)]}
+          arms={shot === 1 ? [0.6, 2.0] : [lerp(0.6, 2.2, shrugT), lerp(0.6, 2.2, shrugT)]}
           eyes={lean > 0 ? "happy" : shrugT > 0.1 ? "dot" : "dot"}
           mouth={lean > 0 ? "grin" : shrugT > 0.1 ? "flat" : "smile"}
           brow={shrugT * -0.35}
@@ -273,7 +274,9 @@ export const Vote: React.FC = () => {
         />
         <Coin position={[1.2, 1.06, 0.4]} rotation={[Math.PI / 2, 0, 0]} scale={0.6} />
         {shot === 0 ? (
-          <Shot frame={f} duration={closer} {...move(aim(HEAD, 18, 0.258, 0.5, [0.05, 0.12, 1]), aim(HEAD, 17, 0.258, 0.5, [0, 0.12, 1]))} />
+          <Shot frame={f} duration={cardB} {...move(aim(HEAD, 18, 0.258, 0.5, [0.05, 0.12, 1]), aim(HEAD, 17, 0.258, 0.5, [0, 0.12, 1]))} />
+        ) : shot === 1 ? (
+          <Shot frame={f} duration={closer - cardB} {...move(aim(HEAD, 15, 0.258, 0.5, [0.3, 0.1, 1]), aim(HEAD, 14, 0.258, 0.5, [0.35, 0.1, 1]))} punch={0} />
         ) : (
           <Shot frame={f} duration={rush + 16 - closer} {...move(aim(HEAD, 20, 0.258, 0.885, [-0.2, 0.05, 1]), aim(HEAD, lerp(19.5, 17, lean), 0.258, 0.885, [-0.2, 0.05, 1]))} />
         )}

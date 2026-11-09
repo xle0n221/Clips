@@ -30,6 +30,11 @@ export const EpisodeOverlays: React.FC<{
     const i = timeline.scenes.findIndex((s) => s.id === scene);
     return ends[i] ?? ends[ends.length - 1] ?? 0;
   };
+  // Ende eines Overlays: Szenenende oder – mit `untilBeat` – der Beat dieses Namens in derselben Szene
+  const endOf = (c: Timeline["cues"][number]) => {
+    const b = c.untilBeat ? timeline.cues.find((x) => x.scene === c.scene && x.beat === c.untilBeat) : undefined;
+    return b ? Math.min(toF(b.atMs), sceneEnd(c.scene)) : sceneEnd(c.scene);
+  };
   // Pills liegen unter den Stickern (an der Figur), HUD und Auswahl darüber
   if (layer === "below") {
     const labels = timeline.cues.filter((c) => c.label);
@@ -38,7 +43,7 @@ export const EpisodeOverlays: React.FC<{
       <AbsoluteFill style={{ pointerEvents: "none" }}>
         {labels.map((c, i) => {
           const from = toF(c.atMs);
-          const dur = Math.max(10, sceneEnd(c.scene) - from);
+          const dur = Math.max(10, endOf(c) - from);
           return (
             <Sequence key={`lb-${i}`} from={from} durationInFrames={dur} layout="none">
               <Pill label={c.label!} duration={dur} />
@@ -61,7 +66,7 @@ export const EpisodeOverlays: React.FC<{
         const next = choices[i + 1];
         const nextF =
           next && next.scene === c.scene ? toF(next.atMs) : Infinity;
-        const dur = Math.max(20, Math.min(sceneEnd(c.scene), nextF) - from);
+        const dur = Math.max(20, Math.min(endOf(c), nextF) - from);
         return (
           <Sequence key={`ch-${i}`} from={from} durationInFrames={dur} layout="none">
             <Choice spec={c.choice!} duration={dur} />

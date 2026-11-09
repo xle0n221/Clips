@@ -104,9 +104,9 @@
   {
    "sticker": "RESPAWN = WORSE JOB",
    "color": "#FF8A3D",
+   "beat": "respawnScare",
    "scene": "hook",
-   "atMs": 10960,
-   "beat": "respawnScare"
+   "atMs": 10960
   },
   {
    "beat": "worriedPush",
@@ -345,6 +345,7 @@
     "x": 0.72,
     "y": 0.45
    },
+   "untilBeat": "honoriusThrone",
    "scene": "split",
    "atMs": 50780
   },
@@ -552,7 +553,7 @@
    "beat": "roofOff",
    "sfx": "pop",
    "scene": "vandals",
-   "atMs": 85680
+   "atMs": 83960
   },
   {
    "beat": "dictionary",
@@ -778,8 +779,15 @@
      "1453 \u00b7 EAST DIES"
     ]
    },
+   "untilBeat": "loopRush",
    "scene": "vote",
    "atMs": 122040
+  },
+  {
+   "beat": "cardB",
+   "sfx": "pop",
+   "scene": "vote",
+   "atMs": 124720
   },
   {
    "beat": "cardsClose",
@@ -798,7 +806,7 @@
    "beat": "loopRush",
    "sfx": "whoosh",
    "scene": "vote",
-   "atMs": 130420
+   "atMs": 131080
   }
  ],
  "hud": {

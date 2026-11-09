@@ -206,6 +206,41 @@ def synth_track(ep: dict, voice: Voice | None, post: bool = True, log=print) -> 
     return track, scenes, words
 
 
+def bind_cues(ep: dict, words: list[dict], captions: list[dict]) -> list[dict]:
+    """Cues an das erste passende Wort ihrer Szene binden (+ emph-Cues aus *Akzentwörtern*)."""
+    cues = []
+    for sc in ep["scenes"]:
+        idx = [i for i, w in enumerate(words) if w["scene"] == sc["id"]]
+        for cue in sc.get("cues", []):
+            target = norm(cue["word"])
+            hit = next((i for i in idx if norm(words[i]["word"]) == target), None)
+            if hit is None:
+                raise SystemExit(f"Cue-Wort {cue['word']!r} nicht in Szene {sc['id']} gefunden")
+            entry = {k: v for k, v in cue.items() if k != "word"}
+            entry.update({"scene": sc["id"], "atMs": captions[hit]["startMs"]})
+            cues.append(entry)
+        # Akzentwörter aus dem Text (*Wort*) als emph-Cues
+        cues += [{"emph": True, "scene": sc["id"], "atMs": captions[i]["startMs"]} for i in idx if words[i]["emph"]]
+    return cues
+
+
+def retime(path: Path) -> None:
+    """Nur Cues neu binden (Beats/Sticker auf andere Wörter gelegt), Sprachspur und Wortzeiten bleiben.
+    Spart die Neuvertonung – Chatterbox würfelt jede Aufnahme neu (Rom v3, 09.11.2026)."""
+    ep = json.loads(path.read_text())
+    out_dir = ROOT / "public" / "episodes" / ep["id"]
+    tl = json.loads((out_dir / "timeline.json").read_text())
+    captions = json.loads((out_dir / "captions.json").read_text())
+    words = [w for sc in ep["scenes"] for w in split_words(sc["id"], sc["text"])]
+    if len(words) != len(captions) or any(norm(w["word"]) != norm(c["text"]) for w, c in zip(words, captions)):
+        raise SystemExit("--retime: Drehbuch-Text passt nicht mehr zu captions.json – Text geändert? Dann neu vertonen.")
+    tl["cues"] = bind_cues(ep, words, captions)
+    if "hud" in ep:
+        tl["hud"] = ep["hud"]
+    (out_dir / "timeline.json").write_text(json.dumps(tl, indent=1) + "\n")
+    print(f"Cues neu gebunden: {len(tl['cues'])} ({out_dir.relative_to(ROOT)}/timeline.json)")
+
+
 def main(path: Path, voice_name: str | None = None, speed: float | None = None, save: bool = False) -> None:
     ep = json.loads(path.read_text())
     # Stimme/Tempo können per Kommandozeile (z. B. vom Dashboard) überschrieben werden
@@ -262,20 +297,7 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         sf.write(str(out_dir / "voice.wav"), accent_gain(x, sr, emph, preset["emph_db"]), sr)
         print(f"Sprechstil {ep['voicePreset']!r}: {len(emph)} Akzentwörter betont")
 
-    # Cues an Wörter binden
-    cues = []
-    for sc in ep["scenes"]:
-        idx = [i for i, w in enumerate(words) if w["scene"] == sc["id"]]
-        for cue in sc.get("cues", []):
-            target = norm(cue["word"])
-            hit = next((i for i in idx if norm(words[i]["word"]) == target), None)
-            if hit is None:
-                raise SystemExit(f"Cue-Wort {cue['word']!r} nicht in Szene {sc['id']} gefunden")
-            entry = {k: v for k, v in cue.items() if k != "word"}
-            entry.update({"scene": sc["id"], "atMs": captions[hit]["startMs"]})
-            cues.append(entry)
-        # Akzentwörter aus dem Text (*Wort*) als emph-Cues
-        cues += [{"emph": True, "scene": sc["id"], "atMs": captions[i]["startMs"]} for i in idx if words[i]["emph"]]
+    cues = bind_cues(ep, words, captions)
 
     timeline = {
         "id": ep["id"],
@@ -302,5 +324,6 @@ if __name__ == "__main__":
     ap.add_argument("--voice", help=f"Stimme überschreiben, Name oder ID: {names}")
     ap.add_argument("--speed", type=float, help="Sprechtempo überschreiben (Kokoro, 0.5–2.0)")
     ap.add_argument("--save", action="store_true", help="Stimme/Tempo zusätzlich ins Drehbuch schreiben")
+    ap.add_argument("--retime", action="store_true", help="nur Cues neu an vorhandene Wortzeiten binden (keine Neuvertonung)")
     a = ap.parse_args()
-    main(a.episode, a.voice, a.speed, a.save)
+    retime(a.episode) if a.retime else main(a.episode, a.voice, a.speed, a.save)

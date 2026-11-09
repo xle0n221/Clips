@@ -10,6 +10,8 @@ export type Cue = {
   color?: string;
   sfx?: "boom" | "pop" | "whoosh" | "ding";
   beat?: string;
+  /** Overlay (label/choice) endet schon am Beat dieses Namens in derselben Szene statt am Szenenende */
+  untilBeat?: string;
   /** Overlays (siehe docs/schnittstelle.md, Abschnitt „Overlays“) */
   hud?: { id: string; value: number };
   choice?: ChoiceSpec;
