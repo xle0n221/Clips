@@ -15,6 +15,7 @@ Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regel
 Stil: immer das Bau-Kit `src/episode/kit/` (Cel-Shading, `<Ink>`-Kontur, `Toonie`-Figuren) wie im
 Sonnensystem-Video, Format 1080×1920.
 Themenunabhängiger Ablauf und Muster je Themen-Art: `docs/playbook-themen.md`.
+Letzter Rückblick + Kurzablauf für den nächsten Clip: `docs/rueckblick-roemisches-reich.md`.
 
 ## Nicht anfassen ohne Auftrag
 - `public/episodes/` des fertigen Sonnensystem-Videos und andere Video-Branches als den eigenen.
