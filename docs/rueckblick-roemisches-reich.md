@@ -40,3 +40,14 @@
 Agenten je Clip: Recherche/Drehbuch, Faktenprüfer, Szenen, Regie-Kritiker, Veröffentlichung – mehr nur,
 wenn ein Schritt wirklich parallel laufen kann. Erwartete Dauer: nicht gemessen – erst der nächste Clip
 liefert einen Vergleichswert ohne Limit-Pause.
+
+## Vorgabe des Nutzers für den nächsten Clip (09.11.2026)
+„Die Agenten sollen lernen, die Animationen besser zu machen und sich mehr von anderen Cartoon-Clips
+inspirieren lassen – 3D-Animationen, Transitions etc. verbessern. Das nächste Video soll anders aussehen,
+besser und optisch ansprechender.“ Umsetzung:
+1. Recherche → `docs/animation-techniken.md` (belegte Techniken, Machbarkeit, Top 8).
+2. Art Direction + Szenen bauen die Top-Techniken als wiederverwendbare Bausteine ins Kit
+   (Übergänge, Kamera, Figuren-Bewegung) mit Prüf-Komposition und Vorher/Nachher-Clip.
+3. Regie-Kritiker prüft im **bewegten** Probe-Clip (nicht nur Standbild), Note je Technik.
+4. Der nächste Clip muss mindestens 5 der Top 8 sichtbar nutzen; Inspiration = Technik, nie fremde
+   Figuren/Marken/Looks kopieren.
