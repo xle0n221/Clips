@@ -51,3 +51,15 @@ besser und optisch ansprechender.“ Umsetzung:
 3. Regie-Kritiker prüft im **bewegten** Probe-Clip (nicht nur Standbild), Note je Technik.
 4. Der nächste Clip muss mindestens 5 der Top 8 sichtbar nutzen; Inspiration = Technik, nie fremde
    Figuren/Marken/Looks kopieren.
+
+## Selbstanalyse Orchestrator – was besser wird (maximale Qualität, 09.11.2026)
+| Fehler (Beleg) | Folge | Neu |
+|---|---|---|
+| Tempo-Regel 3,3–3,6 W/s ohne Hörprobe übernommen | Nutzer: „zu schnell“ nach dem Render → Neuaufnahme + 2. Render | Hörprobe direkt nach Freigabe 1 |
+| Freigabe 2 nur Standbilder | Bewegung/Tempo erst im fertigen Video sichtbar | Vorschau-Video halbe Auflösung zur Freigabe 2 |
+| Kontaktabzug mit bekannten Schwächen vorgelegt (YOU fehlt in 2 Szenen, Quiz) | Nutzer prüft Unfertiges | Qualitäts-Tor: keine Note < 7 |
+| Export: Vollbereich-Farben, 104 MB | Farbrisiko, Download scheiterte | `finalize.sh` BT.709 + Download-Fassung ≤ 50 MB |
+| Inspiration erst nach dem Video | Look erst beim nächsten Clip besser | Referenzen beim Thema-Start abfragen |
+| Primärquellen teils gesperrt (remotion.dev, wikipedia.org) | Belege nur aus Suchauszügen | Freigabe der Hosts vorschlagen, sobald nötig |
+| Plattform-Grenzen nicht geprüft | Unsicherheit beim Posten | vor Veröffentlichung offizielle Hilfe-Seiten prüfen |
+| Uhrzeiten geschätzt (2×) | Korrekturen | nur `date -u` |

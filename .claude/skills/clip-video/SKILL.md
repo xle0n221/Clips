@@ -34,7 +34,9 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - ~2,6–3,0 Skriptwörter/s (natürlich, nicht schneller!) ⇒ 60 s ≈ 170 Wörter, 90 s ≈ 250 Wörter (Zielwert und Messungen:
   `docs/clip-regeln.md`, Sprache & Stimme).
 - Zahlen als Ziffern schreiben (die Sprachausgabe schreibt sie automatisch aus).
-- **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter.
+- **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter. Direkt danach eine
+  **Hörprobe** (erste ~20 s der Sprachspur, Tempo 2,6–3,0 W/s) zur Freigabe schicken – Tempo und Stimme
+  werden VOR dem Szenenbau abgenommen (Rom: „zu schnell“ kam erst nach dem Render → ein Render verloren).
 
 ## 3. Audio + Timing
 `npm run episode -- episodes/<thema>.json` (Optionen: `--voice <name>`, `--speed <x>`, `--save`)
@@ -66,7 +68,10 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
   `tile`. Gemessen 3,3–4 s/Bild statt 5,7 s je `npx remotion still`. Kein eigener Ad-hoc-Code mehr nötig.
 - Checkliste: nichts außerhalb des Bildes, keine leeren Einstellungen, Figuren nicht verdeckt,
   Sticker enden mit ihrer Szene, Thema erkennbar, roter Faden sichtbar.
-- **Freigabe 2:** Kontaktabzug dem Nutzer zeigen, erst nach OK rendern.
+- **Qualitäts-Tor vor Freigabe 2:** Keine bekannte Schwäche mit Note < 7 geht zum Nutzer; Pflicht-Techniken
+  aus `clip-regeln.md` („Bewegung & Übergänge“) sichtbar; YOU in jeder Szene; erste 0,3 s mit Text.
+- **Freigabe 2:** Kontaktabzug **plus Vorschau-Video** in halber Auflösung (`--scale=0.5`, ~0,6 s/Bild,
+  Rechenzeit statt Tokens) – der Nutzer sieht Bewegung, Tempo und Übergänge vor dem vollen Render.
 
 ## 6. Render + Abschluss
 - `npx remotion render <Komposition> out/<thema>-raw.mp4 --crf=18 --browser-executable=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell --gl=swangle`
