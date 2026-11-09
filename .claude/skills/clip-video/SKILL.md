@@ -31,7 +31,7 @@ Format wie `episodes/solar-system.json`: `id`, `title`, `voice`, `speed`, `scene
 mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom|pop|whoosh|ding, `beat`).
 - Struktur nach `docs/clip-regeln.md`: zentrale Frage in den ersten 2 s → Einsatz → Kausalkette →
   Eskalation → Wendepunkt → Auflösung → Loop zum ersten Satz.
-- ~3,0–3,6 Wörter/s ⇒ 60 s ≈ 180–215 Wörter, 90 s ≈ 270–320 Wörter (spannende Clips bis 2,6 W/s).
+- 2,6–3,0 Wörter/s (Nutzer 09.11.2026: schneller klang „zu schnell, unnatürlich“) ⇒ 60 s ≈ 156–180 Wörter, 90 s ≈ 234–270 Wörter.
 - **Stimme lebendig machen** (verbindlich, `docs/clip-regeln.md` → „Stimme“): je Szene `delivery`
   (punch | normal | hype | tense | calm) passend zur Story-Stelle, 1–2 `*Akzentwörter*` pro Satz,
   ` | ` als dramatische Pause vor Pointe/Twist, `voicePreset` des Videos (aus dem Dashboard, Standard `lebendig`).

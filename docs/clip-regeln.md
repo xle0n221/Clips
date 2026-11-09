@@ -61,7 +61,7 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Standardstimme: **Lily** = Kokoro `af_heart` (laut `VOICES.md` des Modells einzige englische Stimme mit Note A).
   Alternativen: **Bella** `af_bella` (A-), **Finn** `am_fenrir`, **Max** `am_puck` (C+).
   Zentrale Liste `scripts/voices.json`, Hörproben `assets/stimmproben/` (aus dem Dashboard übernommen).
-- Ziel-Sprechtempo **3,0–3,6 Wörter/s** inklusive Pausen; spannende Clips dürfen bis **2,6** gehen
+- Ziel-Sprechtempo **2,6–3,0 Wörter/s** inklusive Pausen (Rückmeldung des Nutzers zum Rom-Video 09.11.2026: 3,57 W/s „zu schnell, unnatürlich“; neu vertont mit 2,83 W/s; Quelle: Sitzung CLIPS, docs/clip-regeln.md auf claude/friendly-dijkstra-1slqt3). Früher: 3,0–3,6
   (gemessen: frühere Referenz 216 Wörter / 59,5 s = 3,63; Referenzen vom 08.11.2026: 3,06 und 2,58 W/s, siehe unten).
 
 ## Stimme: lebendig, charakteristisch, mit Druck (Vorgabe des Nutzers, 08.11.2026)
@@ -113,6 +113,8 @@ Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wör
 - **Entscheidung des Nutzers 09.11.2026 nach den Hörproben: „Ja passt“ → Chatterbox ist die Sprachausgabe für neue Videos.**
   Drehbuch-Feld `"engine": "chatterbox"` (ohne das Feld bleibt Kokoro, z. B. Sonnensystem unverändert). Stimme = Dashboard-Auswahl
   (Klangvorlage `assets/stimmvorlagen/<id>.wav`), Stil = `voicePreset` → `exaggeration`/`cfg` in `STYLES`, Szenen-`delivery` als Zuschlag.
+  Tempo der Chatterbox-Hörproben (19 Wörter, Dauer per ffprobe): Lily 2,59–3,07, Finn 2,73–3,17 W/s – fast alle im Ziel 2,6–3,0;
+  Chatterbox hat keinen Tempo-Regler, nur „witzig“/„lebendig“ liegen knapp darüber.
   Einrichtung einmalig `bash scripts/setup_chatterbox.sh` (eigene Umgebung `.venv-cb`, PyTorch aus PyPI, Modell ~3,0 GB).
 
 **Grenze:** Kokoro-82M hat keine Steuerung für Emotionen; `voice_fx` verstärkt nur die vorhandene Melodie und kann

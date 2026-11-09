@@ -51,7 +51,7 @@ Zusätzliche optionale Felder in `review`:
 **Zwei Freigabe-Stufen** über `review.kind`: Stufe 1 = `"script"` (Drehbuch + Quellen), Stufe 2 = `"contactsheet"`
 (Kontaktabzug, z. B. 3 Bilder pro Szene) **vor** dem finalen Render.
 
-Die Ziel-Werte 3,0–3,6 Wörter/s (spannend bis 2,6; Messung in docs/clip-regeln.md) und die Stimmenliste stammen aus der Video-Produktions-Sitzung
+Die Ziel-Werte 2,6–3,0 Wörter/s (seit 09.11.2026, docs/clip-regeln.md) und die Stimmenliste stammen aus der Video-Produktions-Sitzung
 (Vorgabe der Orchestrator-Sitzung, hier nicht unabhängig nachgeprüft).
 
 Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, `branch: null`, `sessionId: null`.
@@ -62,7 +62,7 @@ Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, 
   wartet und der Connector das Werkzeug anbietet; danach 10 Min. gesperrt (gegen Doppelstarts; die Sperre `busy` schützt zusätzlich).
 - **Themen-Ideen:** `sample`-Capability (fragt Claude auf dem Konto des Betrachters, verbraucht dessen Nutzung); 5 Vorschläge mit
   englischem Hook, Antippen übernimmt Thema + Hook als Notiz. Vorschläge sind ungeprüft.
-- **Länge:** Knöpfe 30/60/90 s und Wortzahl-Rechner (3,0–3,6 Wörter/s).
+- **Länge:** Knöpfe 30/60/90 s und Wortzahl-Rechner (2,6–3,0 Wörter/s).
 - **Doppelte Themen:** Hinweis, wenn ein ähnliches Thema schon existiert.
 - **Filter** (ab 4 Videos): Alle / Zu erledigen / In Arbeit / Wartend / Fertig; Auswahl wird im Browser gemerkt.
 - **Hänger:** `busy` und seit über 3 Std. keine Änderung → Hinweis auf der Karte.
