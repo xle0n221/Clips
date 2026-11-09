@@ -24,6 +24,22 @@ npx remotion render SolarSystem out/<id>-raw.mp4 --props='{"episode":"<id>"}' --
 scripts/finalize.sh out/<id>-raw.mp4 out/<id>.mp4
 ```
 
+## Werkzeuge (themenunabhängig, Werkzeugbau 09.11.2026)
+```bash
+# Tempo kalibrieren: nur Stimme, ~5 Tempo-Werte, Tabelle Dauer/W/s + Empfehlung (Ausgabe out/calibrate/<id>/)
+npm run calibrate -- episodes/<id>.json                    # Automatik: Probe, Schätzung ±0,01, Sprung halbieren
+npm run calibrate -- episodes/<id>.json --speeds 1.33,1.335,1.34 --wav   # feste Werte, Tonspuren zum Anhören
+# Kontaktabzug (renderStill, ein Bundle, ein Browser, Beschriftung Szene/Sekunde/Frame)
+npm run contactsheet -- --comp RomanEmpire --per-scene 3   # 3 Bilder je Szene aus timeline.json
+npm run contactsheet -- --comp SolarSystem --every 10 --scale 0.25 --out out/cs.jpg
+npm run contactsheet -- --comp OverlayDemo --at 1,2.5,4 --cols 3
+# Szenen-Gerüst aus dem Drehbuch (überschreibt nie)
+npm run scaffold -- episodes/<id>.json [--out src/episode/scenes/<name>.tsx] [--prefix Name]
+```
+Kontaktabzug: weitere Props mit `--props '{"episode":"<id>"}'`, Browser per `CHROME_PATH`, Einzelbilder mit `--keep <ordner>`.
+Die Synthese in `calibrate_speed.py` ist dieselbe Funktion wie in `make_episode.py` (`synth_track`, `make_voice`);
+die Rom-Tonspur kommt darüber bitgleich heraus (max. Abweichung 0,0).
+
 ## Ergebnisse, die ein Dashboard anzeigen kann
 | Quelle | Inhalt |
 | --- | --- |

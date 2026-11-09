@@ -39,10 +39,17 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 ## 3. Audio + Timing
 `npm run episode -- episodes/<thema>.json` (Optionen: `--voice <name>`, `--speed <x>`, `--save`)
 - Prüfen: Ausgabe „Abgleich: N/M Wörter“ (Ziel ≥ 98 %); Gesamtlänge und Wörter/s notieren.
+- **Tempo vorher kalibrieren:** `npm run calibrate -- episodes/<thema>.json` erzeugt nur die Stimme für
+  ~5 Tempo-Werte (ohne Whisper/Musik, nichts in `public/`), misst Dauer + W/s und empfiehlt einen Wert im
+  Zielband 3,3–3,6 W/s. Kokoro wirkt nicht linear: zwischen 1,33 und 1,34 wird die Tonspur ~10 % kürzer
+  (beide getesteten Stimmen) – nie linear hochrechnen. Rom: 5 Werte in 89 s (ruhige CPU) bzw. 351 s (geteilt).
 - Aussprache-Gegenprobe: `node scripts/whisper-words.mjs` auf `voice.wav` (16 kHz) und mit dem
   ausgeschriebenen Skript vergleichen – Abweichungen außer Ziffernschreibweise beheben.
 
 ## 4. Szenen bauen (Themen-Treue!)
+- Startpunkt: `npm run scaffold -- episodes/<thema>.json` → `src/episode/scenes/<id>-template.tsx` mit einer
+  Komponente pro Szene (Kommentar: Text, `visual`, Cues mit Zeit; Beat-Schnitte per `shotIndex` vorbereitet,
+  Zeiten aus `timeline.json`, also nach Schritt 3 laufen lassen). Überschreibt nie; lint-sauber.
 - Pro Szenen-`id` eine Komponente in `src/episode/scenes/` (Vorbild: `part1.tsx`, `part2.tsx`),
   in `scenes/index.ts` eintragen. Baukasten: `src/episode/kit/` (Toonie-Figuren, Planeten,
   Requisiten, Partikel, `Shot`-Kamera, `<Ink>`-Konturen). Neue themenspezifische Figuren/Kostüme/
@@ -54,8 +61,9 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - `npm run lint` muss sauber sein.
 
 ## 5. Prüfbilder (Pflicht vor dem Render)
-- Projekt bündeln (`npx remotion bundle`) und Standbilder per `@remotion/renderer` `renderStill`
-  (3 pro Szene + mehrere über jede Bewegung) → Kontaktabzug mit ffmpeg `tile`.
+- `npm run contactsheet -- --comp <Komposition> --per-scene 3` (oder `--every 2`, `--at 0.8,7.7`; `--scale 0.25`,
+  `--out out/x.jpg`): bündelt einmal, ein Browser für alle Bilder, beschriftet (Szene, Sekunde, Frame), ffmpeg
+  `tile`. Gemessen 3,3–4 s/Bild statt 5,7 s je `npx remotion still`. Kein eigener Ad-hoc-Code mehr nötig.
 - Checkliste: nichts außerhalb des Bildes, keine leeren Einstellungen, Figuren nicht verdeckt,
   Sticker enden mit ihrer Szene, Thema erkennbar, roter Faden sichtbar.
 - **Freigabe 2:** Kontaktabzug dem Nutzer zeigen, erst nach OK rendern.

@@ -47,7 +47,10 @@
     "upgrade": "remotion upgrade",
     "setup:voice": ".venv/bin/python scripts/tts.py --setup",
     "episode": ".venv/bin/python scripts/make_episode.py",
-    "render:episode": "remotion render SolarSystem out/solar-system.mp4"
+    "render:episode": "remotion render SolarSystem out/solar-system.mp4",
+    "contactsheet": "node scripts/contactsheet.mjs",
+    "calibrate": ".venv/bin/python scripts/calibrate_speed.py",
+    "scaffold": "node scripts/scaffold_episode.mjs"
   },
   "allowScripts": {
     "esbuild": false
