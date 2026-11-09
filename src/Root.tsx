@@ -39,6 +39,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* Rom-Video „WORST JOB IN ROME“: gleiche Episode-Maschine, eigene Szenen (scenes/rome*.tsx) */}
+      <Composition
+        id="RomanEmpire"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 90}
+        schema={episodeSchema}
+        defaultProps={{ episode: "roman-empire" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* Prüf-Komposition des Rom-Bau-Kits (src/episode/kit/rome.tsx) */}
       <Composition
         id="RomeKitTest"
