@@ -49,6 +49,9 @@ Rolle**. Ein Agent startet ohne Erinnerung; was er gelernt hat, existiert nur, w
 - **Parallel, aber sparsam (Vorgabe des Nutzers, 09.11.2026: „so effizient, dass das Sitzungslimit so
   langsam wie möglich erreicht wird, ohne Qualitätsverlust“):** Agenten nur für Schritte, die echte
   Arbeit sind und auf dem kritischen Pfad zum nächsten Video liegen; keine Agenten „auf Vorrat“.
+  **So viele Agenten wie nötig, nicht wie möglich** (Nutzer, 09.11.2026) – ersetzt die frühere
+  Vorgabe „so viele wie möglich“. Was der Orchestrator selbst in wenigen Schritten erledigt, macht er
+  selbst. Pflicht bleiben nur die Prüfpaare (Ersteller ≠ Prüfer), damit die Qualität gleich bleibt.
   Grenzen: ein Video-Render gleichzeitig (4 CPU-Kerne) und das Nutzungslimit; nach dem Limit setzt der
   stündliche Abholer automatisch fort.
 
