@@ -252,11 +252,17 @@ export const RomeAuction: React.FC = () => {
       </>
     );
   }
-  // Finger-Detail (Antizipation: Hand holt erst nach unten aus) → Zurückfahren bei „Sold!“
+  // Finger-Detail (Antizipation: Hand holt erst nach unten aus) → Zurückfahren bei „Sold!“.
+  // Regie-Kritik 09.11.: Die Pill „RIVAL“ (x 0.32, y 0.45) steht bis zum Szenenende. Deshalb ist die
+  // Kamera am Kopf des Rivalen verankert (bleibt unter der Pill), YOU steht rechts vorn.
   const a = anticipate(frame, fingers + 4, 9);
   const handY = lerp(2.4, 4.75, a);
   const soldT = ramp(frame, sold, duration, Easing.out(Easing.cubic));
   const won = frame >= sold;
+  const RIVAL_HEAD: V3 = [-1.4, 3.05, -1.2];
+  const HERO_P: V3 = [0.9, 0, 2.4];
+  const H = lerp(11.5, 14.5, soldT);
+  const cam = aim(RIVAL_HEAD, H, under(0.45, H), 0.3, [0.12, -0.08, 1]);
   return (
     <>
       <RomeAtmosphere phase="glory" frame={frame} />
@@ -276,30 +282,22 @@ export const RomeAuction: React.FC = () => {
           shield={false}
         />
       ))}
-      <Senator frame={frame} position={[-1.4, 0, -1.2]} arms={[0.3, won ? 0.3 : 2.4]} eyes={won ? "wide" : "angry"} mouth={won ? "o" : "teeth"} />
+      <Senator frame={frame} position={[RIVAL_HEAD[0], 0, RIVAL_HEAD[2]]} rotation={[0, 0.35, 0]} arms={[0.3, won ? 0.3 : 2.4]} eyes={won ? "wide" : "angry"} mouth={won ? "o" : "teeth"} />
       <Hero
         frame={frame}
-        position={[0.6, 0, 2.6]}
-        rotation={[0, 0.1, 0]}
-        arms={won ? [2.6, 2.6] : [lerp(0.4, 2.3, Math.max(0, a)), 0.4]}
+        position={HERO_P}
+        rotation={[0, -0.25, 0]}
+        arms={won ? [2.6, 2.6] : [0.4, lerp(0.4, 2.3, Math.max(0, a))]}
         eyes={won ? "happy" : "angry"}
         mouth={won ? "teeth" : "grin"}
         brow={won ? 0 : 0.15}
         bounce={won ? 0.12 : 0}
       />
       {!won ? (
-        <BigHand position={[-0.5, handY, 3.3]} rotation={[0, 0.2, lerp(-0.4, 0.15, Math.max(0, a))]} scale={0.95} fingers={5} wiggle={1} frame={frame} />
+        <BigHand position={[HERO_P[0] + 1.1, handY, HERO_P[2] + 0.5]} rotation={[0, -0.2, lerp(0.4, -0.15, Math.max(0, a))]} scale={0.95} fingers={5} wiggle={1} frame={frame} />
       ) : null}
-      <Burst frame={frame} start={sold} origin={[0.9, 5.5, 2.6]} count={34} speed={0.16} gravity={0.006} size={0.22} colors={[ROME.gold, "#E8A92A", "#FFE08A"]} seed={12} />
-      <Shot
-        frame={frame}
-        duration={1}
-        from={aim([0.6, 3.05, 2.6], lerp(8.2, 13.5, soldT), 0.56, 0.52, [0.1, 0.1, 1]).pos}
-        look={aim([0.6, 3.05, 2.6], lerp(8.2, 13.5, soldT), 0.56, 0.52, [0.1, 0.1, 1]).look}
-        fov={40}
-        shake={0.04}
-        punch={sold}
-      />
+      <Burst frame={frame} start={sold} origin={[HERO_P[0], 5.5, HERO_P[2]]} count={34} speed={0.16} gravity={0.006} size={0.22} colors={[ROME.gold, "#E8A92A", "#FFE08A"]} seed={12} />
+      <Shot frame={frame} duration={1} from={cam.pos} look={cam.look} fov={40} shake={0.04} punch={sold} />
     </>
   );
 };
@@ -424,18 +422,24 @@ export const RomeChaos: React.FC = () => {
   const { shot, f } = cut(frame, [stele]);
 
   if (shot === 0) {
-    const spinA = frame * 0.16;
+    // Regie-Kritik 09.11.: Dauerdrehung 0,16 rad/Frame zeigte meist den Rücken des Kaisers, die
+    // herausfliegenden Figuren überschlugen sich (Gesicht unlesbar). Jetzt: pro Kaiser eine schnelle
+    // ganze Umdrehung in der zweiten Takthälfte → beim Wechsel schaut jeder nach vorn; Flieger kippen
+    // nur leicht und fliegen Richtung Kamera (werden größer).
     const step = 11;
+    const s = Math.max(0, frame - carousel) / step;
+    const s0 = Math.floor(s);
+    const spinA = frame < carousel ? 0 : s0 >= 4 ? 0 : (s0 + Easing.inOut(Easing.cubic)(Math.max(0, Math.min(1, (s - s0 - 0.4) / 0.6)))) * Math.PI * 2;
     const k = Math.max(0, Math.min(4, Math.floor((frame - carousel) / step) + 1));
     const seatY = THRONE_SIT_Y + 0.3;
     const flyers = Array.from({ length: k }, (_, i) => {
       const t = frame - (carousel + i * step);
-      if (t < 0 || t > 40) return null;
+      if (t < 0 || t > 30) return null;
       const dir = i % 2 ? 1 : -1;
-      const pos: V3 = [dir * t * 0.26, seatY + t * 0.32 - 0.011 * t * t, 0.6 + t * 0.1];
+      const pos: V3 = [dir * t * 0.2, seatY + t * 0.34 - 0.012 * t * t, 0.6 + t * 0.17];
       const P = i === 1 ? Hero : Emperor;
       return (
-        <P key={`fly${i}`} frame={frame} position={pos} rotation={[t * 0.2, 0, dir * t * 0.25]} arms={[2.5, 2.5]} eyes="wide" mouth="o" />
+        <P key={`fly${i}`} frame={frame} position={pos} rotation={[-0.15, dir * 0.3, dir * Math.min(0.5, t * 0.04)]} arms={[2.5, 2.5]} eyes="wide" mouth="o" />
       );
     });
     const SeatP = k === 1 ? Hero : Emperor;
@@ -540,6 +544,17 @@ export const RomeSplit: React.FC = () => {
   return (
     <>
       <PalaceSet frame={frame} phase="decline" />
+      {/* Regie-Kritik 09.11.: Pill „EAST“ (x 0.72, y 0.45) steht bis Szenenende → der Bruder (Ostkaiser)
+          steht hinten rechts genau darunter und winkt zum Abschied */}
+      <Emperor
+        frame={frame + 7}
+        position={[2.0, 0, -2.3]}
+        rotation={[0, -0.35, 0]}
+        scale={1.22}
+        arms={[0.4, 1.9 + Math.sin(frame * 0.35) * 0.35]}
+        eyes="happy"
+        mouth="grin"
+      />
       <Hero
         frame={frame}
         position={[0, THRONE_SIT_Y, -0.7]}
@@ -552,9 +567,13 @@ export const RomeSplit: React.FC = () => {
         scepter={!withRooster}
       />
       {withRooster ? (
-        <group position={[1.9, 0, 0.5]} rotation={[0, -0.55, 0]} scale={[1.6 * rs * (1 - sq * 0.5), 1.6 * rs * (1 + sq), 1.6 * rs * (1 - sq * 0.5)]}>
-          <Rooster frame={frame} tag="ROME" flap={frame - rooster < 14 ? 0.8 : 0.1} />
-        </group>
+        <>
+          {/* Hahn auf Marmorsockel: Kopf unter der Pill „ROME (ROOSTER)“ (x 0.6, y 0.5), nicht in der Untertitel-Zone */}
+          <Block size={[1.3, 1.5, 1.1]} position={[1.25, 0.75, 0.15]} color={ROME.marble} ink={0.03} />
+          <group position={[1.25, 1.5, 0.15]} rotation={[0, -0.75, 0]} scale={[1.1 * rs * (1 - sq * 0.5), 1.1 * rs * (1 + sq), 1.1 * rs * (1 - sq * 0.5)]}>
+            <Rooster frame={frame} tag="ROME" flap={frame - rooster < 14 ? 0.8 : 0.1} />
+          </group>
+        </>
       ) : null}
       {shot === 2 ? (
         <Shot frame={f} duration={rooster - throne} {...move(aim([0, 3.71, -0.7], 11.5, under(0.42, 11.5), 0.4), aim([0, 3.71, -0.7], 10.5, under(0.42, 10.5), 0.4))} />

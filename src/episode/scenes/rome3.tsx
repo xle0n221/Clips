@@ -15,7 +15,6 @@ import {
   LaurelWreath,
   MoneyBag,
   Pavement,
-  RomanHouse,
   RomanSkyline,
   ROME,
   RomeAtmosphere,
@@ -28,8 +27,6 @@ import {
   THRONE_SIT_Y,
   Throne,
   TimelineStele,
-  UmbrellaPine,
-  Cypress,
   Coin,
 } from "../kit/rome";
 import { useScene } from "../types";
@@ -110,22 +107,21 @@ export const Fired: React.FC = () => {
       </>
     );
   }
-  // Villa in Kampanien: sonnig (Gag-Kontrast), das Kind marschiert mit dem Geldsack los
+  // Regie-Kritik 09.11.: Die Pill „ODOACER“ (x 0.62, y 0.32) steht bis Szenenende; in der Villa zeigte
+  // sie ins Leere. Jetzt: Odoaker hat den Thron genommen (Kopf unter der Pill), das Kind zieht mit dem
+  // Geldsack vorn links ab („Fired… with a pension!“). Leichte Untersicht, damit das Kind über y 0,69 bleibt.
   const w = ramp(frame, villa, duration, Easing.linear);
+  const ODO_SEAT: V3 = [0, (1.15 + THRONE_SIT_Y) * 1.25 - 1.15 * ODO_K, -1 + 0.3 * 1.25];
+  const odoHead: V3 = [ODO_SEAT[0], ODO_SEAT[1] + 3.05 * ODO_K, ODO_SEAT[2]];
   return (
     <>
-      <RomeAtmosphere phase="glory" frame={frame} />
-      <Pavement size={120} />
-      <RomanHouse position={[3.6, 0, -6]} w={6} h={3.2} d={4} floors={1} wall="#F4DCAA" gableRoof />
-      <UmbrellaPine position={[-1.5, 0, -7]} height={5.5} />
-      <UmbrellaPine position={[8, 0, -9]} height={6} />
-      <Cypress position={[0.4, 0, -9]} height={5} />
-      <Hills z={-60} />
-      <group position={[lerp(-1.0, 1.4, w), 0, lerp(0.2, -0.6, w)]} rotation={[0, 0.9, 0]} scale={KID_SCALE}>
-        <Hero frame={frame} kid wreath={false} walk={1.2} arms={[0.5, 0.9]} eyes="happy" mouth="grin" />
+      <PalaceSet frame={frame} phase="fall" throneScale={1.25} />
+      <Odoacer frame={frame} position={ODO_SEAT} arms={[0.5, 2.0 + Math.sin(frame * 0.35) * 0.3]} mouth="grin" />
+      <group position={[lerp(-0.6, -2.3, w), 0, lerp(0.8, 1.5, w)]} rotation={[0, -0.7, 0]} scale={KID_SCALE}>
+        <Hero frame={frame} kid wreath={false} walk={1.2} arms={[0.5, 0.9]} eyes="happy" mouth="grin" look={0.3} />
         <MoneyBag position={[0.9, 0.3, 0.3]} scale={0.9} />
       </group>
-      <Shot frame={frame - villa} duration={duration - villa} {...move(aim([0.2, 1.8, -0.5], 7.5, 0.55, 0.5, [-0.2, 0.1, 1]), aim([1.0, 1.8, -0.8], 7, 0.55, 0.5, [-0.1, 0.1, 1]))} />
+      <Shot frame={frame - villa} duration={duration - villa} {...move(aim(odoHead, 13, under(0.32, 13, ODO_K), 0.62, [-0.15, -0.25, 1]), aim(odoHead, 12.6, under(0.32, 12.6, ODO_K), 0.62, [-0.15, -0.25, 1]))} />
     </>
   );
 };
@@ -191,18 +187,24 @@ export const Twist: React.FC = () => {
   const { shot, f } = cut(frame, [82, eastEmp]);
 
   if (shot === 0) {
+    // Regie-Kritik 09.11.: Karte war fast leer, YOU winzig außerhalb des Bildes. Jetzt läuft YOU
+    // (größer) von West nach Ost über die Karte, die Kamera fährt mit (Vorlauf rechts = Reiserichtung),
+    // beim Aufleuchten des Ostens jubelt er.
     const fly = ramp(frame, 0, glow + 8, Easing.inOut(Easing.cubic));
     const g = ramp(frame, glow, glow + 14);
+    const arrived = frame >= glow + 4;
+    const youX = lerp(-3.4, 2.3, fly);
+    const hop = arrived ? Math.abs(Math.sin((frame - glow) * 0.28)) * 0.25 : 0;
     return (
       <>
         <Studio table intensity={1.6} />
         <EmpireMap frame={frame} scale={1.2} split={1} westFall={1} labelScale={1.3} />
         <pointLight position={[3, 3, 1]} intensity={20 * g} distance={9} color="#FFC870" />
         <Glow position={[3.4, 0.6, 0]} radius={1.3} color="#FFB84D" intensity={g} />
-        <group position={[-3.6, 0.32, 0.8]} rotation={[0, 1.2, 0]} scale={0.36}>
-          <Hero frame={frame} arms={[0.4, 0.4]} eyes="wide" mouth="o" />
+        <group position={[youX, 0.32 + hop, 0.8]} rotation={[0, arrived ? 0.35 : 1.15, 0]} scale={0.5}>
+          <Hero frame={frame} walk={arrived ? 0 : 1.4} arms={arrived ? [2.5, 2.5] : [0.5, 0.9]} eyes={arrived ? "happy" : "wide"} mouth={arrived ? "teeth" : "o"} />
         </group>
-        <Shot frame={frame} duration={1} {...move(aim([lerp(-3.0, 2.8, fly), 0.6, 0.2], lerp(8, 8.5, fly), 0.48, 0.5, [0, 1.0, 1]))} />
+        <Shot frame={frame} duration={1} {...move(aim([youX + 0.5, 1.2, 0.8], lerp(7, 6.4, fly), 0.46, 0.5, [0, 0.45, 1]))} />
       </>
     );
   }
@@ -243,9 +245,13 @@ export const Vote: React.FC = () => {
   const { shot, f } = cut(frame, [closer, rush + 16]);
 
   if (shot <= 1) {
+    // Regie-Kritik 09.11.: Die A/B-Karten (Choice.tsx) belegen y ≈ 594–1300 über die ganze Szene, der
+    // Sticker „HISTORIANS…“ y ≈ 430–560 (x 180–900). Freies Band: y 400–594. YOU-Kopf daher klein in
+    // dieses Band: S0 mittig, S1 (mit Sticker) am rechten Rand neben dem Sticker.
     const shrugT = frame >= shrug && frame < shrug + 30 ? Math.sin(((frame - shrug) / 30) * Math.PI) : 0;
     const lean = ramp(frame, rush, rush + 14);
     const seat = 1.0;
+    const HEAD: V3 = [0, 2.9, -0.05];
     return (
       <>
         <RomeAtmosphere phase="decline" frame={frame} />
@@ -257,7 +263,7 @@ export const Vote: React.FC = () => {
         <Hero
           frame={frame}
           position={[0, seat - 1.15, -0.3 + 0.25]}
-          rotation={[0.25 * lean, 0, 0]}
+          rotation={[0.25 * lean, shot === 1 ? -0.45 : 0, 0]}
           sit={1}
           arms={[lerp(0.6, 2.2, shrugT), lerp(0.6, 2.2, shrugT)]}
           eyes={lean > 0 ? "happy" : shrugT > 0.1 ? "dot" : "dot"}
@@ -267,9 +273,9 @@ export const Vote: React.FC = () => {
         />
         <Coin position={[1.2, 1.06, 0.4]} rotation={[Math.PI / 2, 0, 0]} scale={0.6} />
         {shot === 0 ? (
-          <Shot frame={f} duration={closer} {...move(aim([0, 2.9, -0.05], 16, 0.265, 0.5, [0.05, 0.12, 1]), aim([0, 2.9, -0.05], 15, 0.265, 0.5, [0, 0.12, 1]))} />
+          <Shot frame={f} duration={closer} {...move(aim(HEAD, 18, 0.258, 0.5, [0.05, 0.12, 1]), aim(HEAD, 17, 0.258, 0.5, [0, 0.12, 1]))} />
         ) : (
-          <Shot frame={f} duration={rush + 16 - closer} {...move(aim([0, 2.9, -0.05], 12.5, 0.27, 0.5, [0, -0.08, 1]), aim([0, 2.9, -0.05], lerp(12, 9, lean), 0.27, 0.5, [0, -0.08, 1]))} />
+          <Shot frame={f} duration={rush + 16 - closer} {...move(aim(HEAD, 20, 0.258, 0.885, [-0.2, 0.05, 1]), aim(HEAD, lerp(19.5, 17, lean), 0.258, 0.885, [-0.2, 0.05, 1]))} />
         )}
       </>
     );

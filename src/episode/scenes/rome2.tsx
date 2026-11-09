@@ -113,17 +113,24 @@ export const Goths: React.FC = () => {
       </>
     );
   }
-  // Gag: Holzpferd ploppt weg, an seiner Stelle drei junge Männer
-  const swap = trojan + 18;
-  const squash = ramp(frame, swap - 4, swap + 4);
+  // Gag: Holzpferd rollt herein, bleibt ~0,8 s stehen, ploppt weg, an seiner Stelle drei junge Männer.
+  // Regie-Kritik 09.11.: Pferd war nur ~0,5 s und meist gestaucht zu sehen, Räder in der Untertitel-Zone.
+  // Jetzt eigene Bildmitte für das Pferd (Profil, ganz im Bild), dann Schwenk auf die Männer unter „GOTHS“.
+  const swap = trojan + 26;
+  const roll = ramp(frame, trojan, trojan + 12, Easing.out(Easing.back(1.2)));
+  const squash = ramp(frame, swap - 3, swap + 3);
+  const camA = aim([0.9, 2.4, 0], 11, 0.49, 0.5, [0, 0.1, 1]);
+  const camB = aim([1.45, 3.05, 0.2], 12.5, under(0.5, 12.5), 0.66);
+  const c = ramp(frame, swap - 4, swap + 8, Easing.inOut(Easing.cubic));
+  const lv = (p: V3, q: V3): V3 => [lerp(p[0], q[0], c), lerp(p[1], q[1], c), lerp(p[2], q[2], c)];
   return (
     <>
       <RomeAtmosphere phase="decline" frame={frame} />
       <Pavement size={120} />
       <CityGate position={[0, 0, -5]} open={1} wall={10} />
-      {frame < swap + 4 ? (
-        <group scale={[1 + squash * 0.4, Math.max(0.001, 1 - squash), 1 + squash * 0.4]}>
-          <WoodenHorse position={[0.6, 0, 0]} scale={0.85} frame={frame} />
+      {frame < swap + 3 ? (
+        <group position={[lerp(4.5, 0, roll), 0, 0]} scale={[1 + squash * 0.4, Math.max(0.001, 1 - squash), 1 + squash * 0.4]}>
+          <WoodenHorse position={[0.6, 0, 0]} scale={0.95} frame={frame} />
         </group>
       ) : null}
       {[0, 1, 2].map((i) => {
@@ -137,7 +144,7 @@ export const Goths: React.FC = () => {
         );
       })}
       <Burst frame={frame} start={swap} origin={[1.0, 2.5, 0]} count={24} speed={0.15} gravity={0.004} size={0.2} colors={[ROME.wood, "#7A4E28", "#FF5C8A"]} seed={14} />
-      <Shot frame={f} duration={duration - trojan} {...move(aim([1.45, 3.05, 0.2], 13, under(0.5, 13), 0.66), aim([1.45, 3.05, 0.2], 12, under(0.5, 12), 0.66))} />
+      <Shot frame={frame} duration={1} from={lv(camA.pos, camB.pos)} look={lv(camA.look, camB.look)} fov={40} shake={frame < trojan + 12 ? 0.03 : 0} />
     </>
   );
 };
