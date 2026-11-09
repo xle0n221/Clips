@@ -1325,7 +1325,7 @@ export const HALLWAY_WARM: HallwayPalette = {
  * Endtür mit Schild (`endLabel`). Kamera bei z ≈ 2…4, y ≈ 1,6–2,4, Blick nach −z → Fluchtpunkt.
  * Türen haben Schildchen (`labels[i]`, sonst leer). `glow` 0..1 = Lampen-Leuchtkraft (Licht + Schein).
  * `openDoor` = Index einer Tür, die (um `open` 0..1) aufschwingt – Portal-Ziel.
- * Kosten: ≈ 12 Meshes je Tür, 3 Punktlichter (ohne Schatten).
+ * `fill` = Fülllicht von vorn (Standard 1). Kosten: ≈ 12 Meshes je Tür, 3 Punktlichter + 1 Richtungslicht (ohne Schatten).
  */
 export const Hallway: React.FC<
   Placement & {
@@ -1339,6 +1339,8 @@ export const Hallway: React.FC<
     readonly glow?: number;
     readonly openDoor?: number;
     readonly open?: number;
+    /** Fülllicht von vorn (0 = aus) */
+    readonly fill?: number;
   }
 > = ({
   position,
@@ -1354,6 +1356,7 @@ export const Hallway: React.FC<
   glow = 1,
   openDoor,
   open = 0,
+  fill = 1,
 }) => {
   const hw = width / 2;
   const step = length / (doors / 2 + 0.6);
@@ -1361,6 +1364,8 @@ export const Hallway: React.FC<
   return (
     <group position={position} rotation={rotation} scale={scale}>
       <hemisphereLight args={["#FFE2C2", palette.floor, 0.55]} />
+      {/* Fülllicht von vorn (Kamera-Seite): hält Gesichter hell, sonst färbt der rote Boden die Haut braun */}
+      <directionalLight position={[0, 3.5, 8]} intensity={1.4 * fill} color="#FFF4E6" />
       {[0.2, 0.5, 0.8].map((k) => (
         <pointLight
           key={k}
