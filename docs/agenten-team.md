@@ -12,7 +12,7 @@ committet und pusht und hält das Dashboard aktuell. Die Freigaben des Nutzers i
 | # | Ersteller | Ergebnis (nur diese Dateien) | Prüfer | Prüft vor allem |
 | --- | --- | --- | --- | --- |
 | 1 | Recherche | `docs/quellen-<thema>.md` | Faktenprüfer | jedes Zitat gegen die URL, Zahlen-Herleitung, Mythen markiert |
-| 2 | Drehbuch | `episodes/<thema>.json` | Retention-Kritiker + Faktenprüfer | Hook in 2 s, roter Faden, Kausalkette, Humor, Loop, Tempo 2,6–3,0 W/s (natürlich), jede Aussage belegt |
+| 2 | Drehbuch | `episodes/<thema>.json` | Retention-Kritiker + Faktenprüfer | Hook in 2 s, roter Faden, Kausalkette, Humor, Loop, Tempo 2,6–3,0 W/s (natürlich), Stimme nach clip-regeln „Stimme“ (delivery, *Akzentwörter*, | -Pausen), jede Aussage belegt |
 | 3 | Art Direction (Farben, Grafik, Kostüme, Kulissen) | `src/episode/kit/<thema>.tsx`, `docs/design-system.md` | Design-Kritiker | Themen-Treue (Standbild ohne Ton verrät Thema), Kontrast auf dem Handy, Konsistenz mit dem Kit, Farbwelt |
 | 4 | Szenen/Animation | `src/episode/scenes/<thema>*.tsx` | Regie-Kritiker | Bildausschnitt, Bewegung, Schnitt auf Beats, nichts außerhalb des Bildes, Untertitel-Zone frei |
 | 5 | Render, Ton, Endkontrolle | `out/` (nicht im Repo) | Endabnahme | ffprobe, −14 LUFS, Kontaktabzug alle 3 s, Sticker im ersten Frame |

@@ -21,6 +21,8 @@ dann über das Dashboard statt über den Chat, Stimme/Länge/Notiz/Inspiration k
 - Ohne GPU: Rendern und Standbilder mit `--gl=swangle`; in Cloud-Containern ggf.
   `--browser-executable` auf das vorinstallierte Chromium-Headless-Shell setzen.
 
+- Sprachausgabe Chatterbox (Standard für neue Videos): einmalig `bash scripts/setup_chatterbox.sh`; im Drehbuch `"engine": "chatterbox"`.
+
 ## 1. Recherche (Primärquellen)
 - Fakten nur aus Primärquellen; jede Aussage mit wörtlichem Zitat + URL in `docs/quellen-<thema>.md`.
 - Gängige, aber falsche Angaben/Klischees prüfen und vermerken (Beispiel: NASA 1.000 statt „1.300 Erden“).
@@ -33,6 +35,9 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
   Eskalation → Wendepunkt → Auflösung → Loop zum ersten Satz.
 - ~2,6–3,0 Skriptwörter/s (natürlich, nicht schneller!) ⇒ 60 s ≈ 170 Wörter, 90 s ≈ 250 Wörter (Zielwert und Messungen:
   `docs/clip-regeln.md`, Sprache & Stimme).
+- **Stimme lebendig machen** (verbindlich, `docs/clip-regeln.md` → „Stimme“): je Szene `delivery`
+  (punch | normal | hype | tense | calm) passend zur Story-Stelle, 1–2 `*Akzentwörter*` pro Satz,
+  ` | ` als dramatische Pause vor Pointe/Twist, `voicePreset` des Videos (aus dem Dashboard, Standard `lebendig`).
 - Zahlen als Ziffern schreiben (die Sprachausgabe schreibt sie automatisch aus).
 - **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter. Direkt danach eine
   **Hörprobe** (erste ~20 s der Sprachspur, Tempo 2,6–3,0 W/s) zur Freigabe schicken – Tempo und Stimme
@@ -45,6 +50,8 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
   ~5 Tempo-Werte (ohne Whisper/Musik, nichts in `public/`), misst Dauer + W/s und empfiehlt einen Wert im
   Zielband 2,6–3,0 W/s, Kokoro-Tempo ≤ 1,33. Kokoro wirkt nicht linear: zwischen 1,33 und 1,34 wird die Tonspur ~10 % kürzer
   (beide getesteten Stimmen) – nie linear hochrechnen. Rom: 5 Werte in 89 s (ruhige CPU) bzw. 351 s (geteilt).
+- `make_episode.py` bearbeitet die Stimme automatisch mit `scripts/voice_fx.py` (Ausgabe „Stimme: Stil …,
+  N Akzentwörter betont“); Rohfassung liegt in `out/<id>-voice-raw.wav` zum Vergleich.
 - Aussprache-Gegenprobe: `node scripts/whisper-words.mjs` auf `voice.wav` (16 kHz) und mit dem
   ausgeschriebenen Skript vergleichen – Abweichungen außer Ziffernschreibweise beheben.
 

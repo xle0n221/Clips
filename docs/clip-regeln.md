@@ -96,6 +96,74 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   Folgen: Wortbudget ≈ 2,8 × Sekunden (60 s ≈ 170 Wörter, 90 s ≈ 250, 120 s ≈ 335). Passt der Stoff nicht,
   **erst kürzen** (weniger Stationen, dafür jede mit Pointe), dann länger werden – nie schneller sprechen.
   Kokoro-Tempo nie über 1,33 (darüber Sprung um ~10 %, unnatürlich); Tempo mit `npm run calibrate` wählen.
+
+## Stimme: lebendig, charakteristisch, mit Druck (Vorgabe des Nutzers, 08.11.2026)
+Vorgabe: **„Die Stimmen sollen lebendiger, charakteristischer und mehr Power haben und Betonungen passend zum Clip.“**
+
+**Gemessen** (zwei Referenzvideos des Nutzers vom 08.11.2026 vs. Kokoro, eigenes Skript: Tonhöhe per Autokorrelation,
+Wörter/Pausen per Whisper „base“; Werte der Referenzen sind durch die Hintergrundmusik verfälscht und nur Richtwerte):
+
+| Merkmal | Ref. A (deutsch, 46,7 s) | Ref. B (englisch, 71,1 s) | Kokoro Lily roh | Kokoro Finn roh | Lily / Finn mit `voice_fx` |
+| --- | --- | --- | --- | --- | --- |
+| Tonhöhen-Streuung (Halbtöne, SD) | 5,6 | 5,9 | 2,8 | 3,7 | 4,6 / 4,5 |
+| Tonhöhen-Spanne 10–90 % (Halbtöne) | 16,5 | 15,9 | 7,4 | 9,8 | 12,5 / 12,8 |
+| Wörter/s | 3,06 | 2,58 | 3,43 | 3,75 | – |
+| Pausen ≥ 400 ms pro Minute | 8,1 | 15,6 | 16,1 | 0,0 | – |
+
+Ergebnis: Tempo und Pausen von Kokoro liegen nahe an den Referenzen; die **Satzmelodie ist nur etwa halb so bewegt**.
+Daher bearbeitet `scripts/voice_fx.py` die fertige Sprachspur automatisch (in `make_episode.py`, Timing bleibt gleich):
+Melodie verstärken (WORLD-Vocoder, pyworld), Akzentwörter mit Tonhöhen-Bogen + Lautstärke betonen, Druck (EQ, Kompressor).
+Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wörter (59–60 von 65).
+
+**Regeln fürs Drehbuch (Betonung passend zum Clip):**
+1. **Sprechweise je Szene** im Feld `delivery`, passend zur Story-Stelle:
+   Hook/Rätsel `punch` · Einsatz/Erklärung `normal` · Eskalation/Aufzählung `hype` · vor dem Wendepunkt `tense` ·
+   Wendepunkt/Pointe `punch` · ruhige Erklärung `calm`. Werte (Tempo, Melodie) in `DELIVERY` in `scripts/voice_fx.py`;
+   eigene Werte als Objekt, z. B. `"delivery": {"speed": 0.9, "expr": 2.4}`.
+2. **Akzentwörter** mit Sternchen: `*five hundred years*` – 1–2 pro Satz, das überraschende Wort / die Zahl / der Kontrast.
+   Sie werden jetzt **hörbar** betont (und wie bisher in den Untertiteln hervorgehoben). Nicht jedes zweite Wort markieren.
+3. **Dramatische Pause** mit ` | ` im Sprechtext (Standard 350 ms, Feld `pauseMs`): vor Pointe, Twist, Auflösung.
+4. **Kurze Sätze, klare Satzzeichen**: `?` für echte Fragen, `!` sparsam bei Eskalation; Reaktionen als eigener Satz („Wait, what?“).
+5. **Sprechstil des ganzen Videos** im Feld `voicePreset` (Auswahl „Sprechstil“ im Dashboard; früher `voiceStyle` –
+   umbenannt, weil `voiceStyle` jetzt das Objekt für Stimmen-Mischung/Nachbearbeitung ist, siehe `docs/stimme-casting.md`).
+   Die Stile müssen **klar hörbar verschieden** sein (Rückmeldung des Nutzers: „hören sich in jedem Sprechstil gleich an“).
+   Werte in `STYLES` (`scripts/voice_fx.py`); gemessen an den Hörproben (Lily, gleicher Satz):
+
+   | Stil | Tempo | Stimmlage | Melodie | Pausen | Klang | Lily: Dauer / Stimmlage / Melodie-SD |
+   | --- | --- | --- | --- | --- | --- | --- |
+   | `lebendig` (Standard) | normal | normal | kräftig | 350 ms | Druck | 6,2 s / 212 Hz / 3,9 HT |
+   | `spannend` | −14 % | −2 Halbtöne | mittel, starke Akzente | 650 ms | weich, nah | 7,6 s / 185 Hz / 3,8 HT |
+   | `witzig` | +12 % | +2 Halbtöne | sehr kräftig | 220 ms | Druck | 5,1 s / 250 Hz / 4,5 HT |
+   | `ruhig` | −10 % | −0,7 Halbtöne | flach | 450 ms | weich, nah | 7,0 s / 195 Hz / 3,3 HT |
+6. Prüfen: Hörprobe der Szene mit Hook und Pointe anhören.
+
+**Stand 09.11.2026 (Rückmeldung des Nutzers: „Stimmen hören sich unnatürlich an … sollen sich anhören wie echte Voice-Actor“):**
+- Die Tonhöhen-Bearbeitung (WORLD-Vocoder, `liven`) ist **aus** (`VOCODER_DEFAULT = False`); die Tabelle oben beschreibt den
+  früheren Zustand. In `make_episode.py` wirken vom Sprechstil nur noch Tempo, Pausen und die Lautstärke der Akzentwörter.
+- In Prüfung: anderes Sprachmodell **Chatterbox** (MIT, https://huggingface.co/ResembleAI/chatterbox/blob/main/README.md; jede Ausgabe mit
+  PerTh-Wasserzeichen von Resemble AI). Gemessen auf 4 CPU-Kernen: ~3,5× Echtzeit (29–32 s für 8–9,5 s Audio), Whisper „base“ 27/29 Wörter.
+  Mit Kokoro-Stimmen als Klangvorlage keine messbar bewegtere Melodie (SD 3,0–3,2 HT).
+- **Entscheidung des Nutzers 09.11.2026 nach den Hörproben: „Ja passt“ → Chatterbox ist die Sprachausgabe für neue Videos.**
+  Drehbuch-Feld `"engine": "chatterbox"` (ohne das Feld bleibt Kokoro, z. B. Sonnensystem unverändert). Stimme = Dashboard-Auswahl
+  (Klangvorlage `assets/stimmvorlagen/<id>.wav`), Stil = `voicePreset` → `exaggeration`/`cfg` in `STYLES`, Szenen-`delivery` als Zuschlag.
+  Tempo der Chatterbox-Hörproben (19 Wörter, Dauer per ffprobe): Lily 2,59–3,07, Finn 2,73–3,17 W/s – fast alle im Ziel 2,6–3,0;
+  Chatterbox hat keinen Tempo-Regler, nur „witzig“/„lebendig“ liegen knapp darüber.
+  Einrichtung einmalig `bash scripts/setup_chatterbox.sh` (eigene Umgebung `.venv-cb`, PyTorch aus PyPI, Modell ~3,0 GB).
+
+**Stand 09.11.2026 abends – Sprechweise nach Vorbild ricksclip3000 (Nutzer: „die männliche Stimme ist sehr gut“):**
+- **Standardstimme: Finn (`am_fenrir`) mit Chatterbox**, `exaggeration` 0,6, `cfg` 0,4 (Prüfer Stimme: Finn 7/10, Lily 6/10 –
+  Lily ließ zwei Fragen fallen und zerteilte einen Satz; `docs/agenten/stimme.md`).
+- **Gemessen am Vorbild** (R7 „Brain in a jar“, 57,0 s, faster-whisper small.en, 215 Wörter): 3,80 W/s, ohne Pausen 4,0 W/s;
+  Pause nach Komma Median 0,21 s, nach Punkt 0,22 s (P25 0,16, P75 0,26), längste 0,40 s; Median 7 Wörter je Satz;
+  **keine dramatischen Pausen**. Tonhöhe wegen Musik nicht messbar.
+- **Daraus für Drehbuch und Stimme:** kurze Sätze (Median ~7 Wörter), Frage als Hook, „Well,“ als Wende, trockene Pointe am
+  Satzende; **keine „…“- und kaum „ | “-Pausen** (Kokoro-Pausen „natürlich“ mit 0,32–0,55 s fand der Nutzer „sehr unnatürlich“);
+  Zahlen ausschreiben („one ninety-three“). Chatterbox-Pausen > 0,3 s kürzt `make_episode.py` automatisch auf 0,25 s
+  (`maxPauseMs`, 0 = aus). Probe Finn danach 115 Wörter / 37,8 s = 3,05 W/s.
+- Offen: Tempo-Ziel (2,6–3,0 nach Rom-Rückmeldung vs. 3,8 Vorbild) – vom Nutzer nicht entschieden; die gelobte Probe hat 3,05.
+
+**Grenze:** Kokoro-82M hat keine Steuerung für Emotionen; `voice_fx` verstärkt nur die vorhandene Melodie und kann
+keinen echten Schauspieler ersetzen. Für mehr Charakter wäre ein anderes Sprachmodell nötig (nicht getestet).
 - **Sprechweise lebendig** (Messung in [`docs/stimme-casting.md`](stimme-casting.md)): Erzählstimme mit
   Tonhöhen-Streuung wie die englische Referenz R3 (F0-Interquartil ≈ 6–7 Halbtöne; flache Stimmen wie
   `am_michael`, `bm_george`, `af_heart` liegen bei 3–4). Lautheitsschwankung mit `voiceStyle.post: "lively"`

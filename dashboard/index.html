@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Clips Studio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -244,7 +243,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
         <option value="witzig">Sprechstil: Witzig</option>
         <option value="ruhig">Sprechstil: Ruhig</option>
       </select>
-      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe: gewählte Stimme im gewählten Sprechstil">▶ Anhören</button>
+      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe: gewählte Stimme im gewählten Sprechstil (Chatterbox)">▶ Anhören</button>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
@@ -281,19 +280,6 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     <div id="repoBody"></div>
   </details>
 
-  <details class="ht" id="abBox" open>
-    <summary>Neue Stimmen zum Testen (Chatterbox) <span class="sub">· 09.11.2026</span></summary>
-    <p class="hint" style="margin:6px 0 10px">Ausdrucksstärkeres Sprachmodell (Chatterbox, MIT-Lizenz). Gleicher Satz in allen Proben. Bitte anhören und Claude sagen, ob es nach echtem Sprecher klingt – erst dann wird es für Videos verwendet. Der Knopf „▶ Anhören“ oben spielt noch die bisherige Stimme.</p>
-    <div class="ab">
-      <span>Lily lebendig</span><audio controls preload="none" src="voices/neu/neu-lebendig-af_heart.mp3"></audio>
-      <span>Lily spannend</span><audio controls preload="none" src="voices/neu/neu-spannend-af_heart.mp3"></audio>
-      <span>Lily witzig</span><audio controls preload="none" src="voices/neu/neu-witzig-af_heart.mp3"></audio>
-      <span>Lily ruhig</span><audio controls preload="none" src="voices/neu/neu-ruhig-af_heart.mp3"></audio>
-      <span>Finn lebendig</span><audio controls preload="none" src="voices/neu/neu-lebendig-am_fenrir.mp3"></audio>
-      <span>Finn spannend</span><audio controls preload="none" src="voices/neu/neu-spannend-am_fenrir.mp3"></audio>
-      <span>Eingebaute Stimme</span><audio controls preload="none" src="voices/neu/neu-eigenstimme-lebendig.mp3"></audio>
-    </div>
-  </details>
 
   <details class="ht" id="htBox" hidden>
     <summary id="htSum">Hashtags</summary>
@@ -331,8 +317,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   const VOICE_NAME = { af_heart: "Lily", af_bella: "Bella", am_fenrir: "Finn", am_puck: "Max" };
   const voiceName = (v) => VOICE_NAME[v] ? "Stimme " + VOICE_NAME[v] : "Stimme " + v;
   const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
-  const WPS_MIN = 3.0, WPS_MAX = 3.6; // Ziel-Sprechtempo inkl. Pausen (docs/clip-regeln.md)
-  const WPS_LOW_OK = 2.6;             // spannende Clips mit langen Pausen (gemessen in einer Referenz: 2,58)
+  const WPS_MIN = 2.6, WPS_MAX = 3.0; // Ziel-Sprechtempo inkl. Pausen seit 09.11.2026 (Nutzer: schneller klang „zu schnell, unnatürlich“)
+  const WPS_LOW_OK = 2.6;
   const STYLE_NAME = { lebendig: "lebendig", spannend: "spannend", witzig: "witzig", ruhig: "ruhig", aus: "unbearbeitet" };
   const de = (n, d) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
   const sceneDrafts = {};
@@ -1057,5 +1043,3 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   start();
 })();
 </script>
-
-</body></html>

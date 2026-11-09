@@ -22,9 +22,13 @@ Der frühere Abholer, der jedes Mal eine neue Sitzung startete, ist deaktiviert 
 
 ## 1. Auswahl (in dieser Reihenfolge, genau ein Video)
 1. `review` gesetzt **und** `decision` gesetzt **und** nicht `busy` → Entscheidung umsetzen.
-2. `busy: true`, aber `updatedAt` älter als 3 Stunden → abgebrochene Arbeit, dort weitermachen.
-3. Ältestes Dokument mit `stage: "queued"` → neu beginnen.
-4. Sonst: nichts tun, keine Schreibaktion, Sitzung beenden.
+2. `resume: true` und nicht `busy` → der Nutzer hat nach Fehler/Blocker „Erneut versuchen“ bzw.
+   „Erledigt – weitermachen“ gedrückt: auf dem Branch des Videos dort weitermachen, wo es stand.
+3. `busy: true`, aber `updatedAt` älter als 3 Stunden → abgebrochene Arbeit, dort weitermachen.
+4. `stage: "queued"`: zuerst die mit `priority: true` (Knopf „Als Nächstes“), sonst das älteste → neu beginnen.
+5. Sonst: nichts tun, keine Schreibaktion, Sitzung beenden.
+
+Beim Übernehmen `resume` und `priority` auf `null` setzen, `actionNeeded` auf `null`.
 
 ## 2. Übernehmen (Sperre)
 `update` mit `if_version`: `busy: true`, `sessionId` (eigene Sitzungs-ID), `statusText`, `updatedAt`.
@@ -48,7 +52,8 @@ Während der Arbeit `updatedAt` mindestens alle 30 Minuten erneuern (zusammen mi
 | Fertig | `done` | `review: null`, `busy: false`, `previewUrl` (verkleinerte Vorschau, < 15 MB), `fileSizeBytes`, `publish` (siehe unten) |
 | Fehler | `error` | `statusText` = Fehler in Klartext, `busy: false` |
 
-Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID) → ins Drehbuch `episodes/<slug>.json` übernehmen.
+Neue Videos mit `"engine": "chatterbox"` (Freigabe des Nutzers 09.11.2026). Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID = Klangvorlage) und Sprechstil `voicePreset` (Standard `lebendig`; alte Einträge: `voiceStyle` als Text) → ins Drehbuch
+`episodes/<slug>.json` übernehmen; je Szene `delivery`, `*Akzentwörter*` und ` | `-Pausen nach `docs/clip-regeln.md` („Stimme“).
 Wunschlänge `lengthSec` → Wortzahl (Skriptwörter) mit 2,6–3,0 Wörtern/s planen (≈ 2,8 × Sekunden); Zahlen werden beim
 Sprechen länger, Tempo nach dem ersten Sprachlauf kalibrieren (`playbook-themen.md`, Tempo-Abkürzungen). `note` und `inspiration` (Dateien:
 Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
@@ -84,3 +89,10 @@ Satz, was der Nutzer tun muss, `busy: false`, Sitzung beenden. Nichts erfinden, 
   Effekte aus `fx.tsx`, Umgebungen aus `env.tsx`.
 - Untertitel, Sticker, Musik und Effekte kommen aus der vorhandenen Pipeline (`src/episode/overlays/`).
 - Format 1080×1920, 30 fps; Themen-Treue, Kostüm und Farbwelt nach `docs/clip-regeln.md`.
+
+## Getestet
+- 08.11.2026, Testlauf des „Clips Dashboard-Abholer“ (von Hand gestartet, Sitzung `cse_01UNp77Nd6zWCByNndwJ17qA`):
+  Datenbank lesen **ok** (Collection `videos` leer → „Nichts zu tun“, keine Schreibaktion, kein Klonen – wie vorgesehen).
+  Kosten des leeren Laufs laut Sitzungsdaten: 0,07 USD (Listenpreis).
+- **Nicht getestet:** `add_repo`, Klonen und Pushen aus einer Abholer-Sitzung. Die Sitzung hat die zusätzlichen
+  Testschritte abgelehnt, weil der gespeicherte Auftrag sie nicht vorsieht. Wird beim ersten echten Thema geprüft.

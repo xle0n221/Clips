@@ -25,7 +25,10 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
-from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, post_process, resolve_voice, write_wav  # noqa: E402
+from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, post_process, resolve_voice, speakable, write_wav  # noqa: E402
+from voice_fx import DELIVERY, STYLES, accent_gain  # noqa: E402
+
+PAUSE_MARK = "|"  # im Sprechtext: dramatische Pause (Länge: Preset bzw. Drehbuch-Feld pauseMs)
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -84,6 +87,8 @@ def split_words(scene: str, text: str) -> list[dict]:
     for raw in text.split():
         stars = raw.count("*")
         word = raw.replace("*", "")
+        if word == PAUSE_MARK:
+            continue
         emph = inside or stars > 0
         inside = inside ^ (stars % 2 == 1)
         if word:
@@ -101,22 +106,93 @@ def make_voice(ep: dict, override: bool = False) -> Voice:
     return Voice(resolve_voice(spec), ep.get("speed", 1.0))
 
 
-def synth_track(ep: dict, voice: Voice, post: bool = True, log=print) -> tuple[np.ndarray, list[dict], list[dict]]:
-    """Sprachausgabe aller Szenen hintereinander (Vorlauf, Szenen-Lücken, `years`/`say`,
-    `voiceStyle.sceneSpeed`, optional `voiceStyle.post`). Tempo = ep["speed"] (× Szenen-Faktor).
-    Ohne "voiceStyle" dieselbe Tonspur wie bisher. Rückgabe: Tonspur, Szenen (ms), Skript-Wörter.
-    Genutzt von main() und scripts/calibrate_speed.py."""
+def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tuple[str, int], np.ndarray]:
+    """Alle Szenen-Stücke (an „ | “ getrennt) in EINEM Chatterbox-Lauf erzeugen (Modell lädt nur einmal).
+    Stärke: exaggeration/cfg des Sprechstils (voicePreset) + Zuschlag der Szenen-Sprechweise (delivery)."""
+    import soundfile as sf
+
+    base = preset or STYLES["lebendig"]
+    jobs, keys = [], []
+    with tempfile.TemporaryDirectory() as tmp:
+        for sc in ep["scenes"]:
+            spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
+            d = sc.get("delivery", base["delivery"])
+            d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
+            ex = min(1.2, max(0.25, base["exaggeration"] + d.get("exag", 0.0)))
+            for i, p in enumerate(x.strip() for x in spoken.split(PAUSE_MARK) if x.strip()):
+                out = Path(tmp) / f"{sc['id']}-{i}.wav"
+                jobs.append({"text": speakable(p), "out": str(out), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]})
+                keys.append((sc["id"], i, out))
+        (Path(tmp) / "jobs.json").write_text(json.dumps(jobs))
+        py = ROOT / ".venv-cb" / "bin" / "python"
+        if not py.exists():
+            raise SystemExit("Chatterbox fehlt: einmalig `bash scripts/setup_chatterbox.sh` ausführen")
+        print(f"Chatterbox: {len(jobs)} Stücke, Stimme {voice_id}, Stil {ep.get('voicePreset', 'lebendig')!r}")
+        subprocess.run([str(py), "-W", "ignore", str(ROOT / "scripts" / "tts_chatterbox.py"), str(Path(tmp) / "jobs.json")], check=True)
+        cap = ep.get("maxPauseMs", 300) / 1000  # Chatterbox macht nach Satzende ~0,5 s Pause, Vorbild ricksclip ~0,22 s
+        return {(sid, i): tighten_pauses(sf.read(str(out), dtype="float32")[0], cap) for sid, i, out in keys}
+
+
+def tighten_pauses(y: np.ndarray, max_s: float = 0.30, keep_s: float = 0.25, thr_db: float = -40.0) -> np.ndarray:
+    """Innere Stillen > max_s auf keep_s kürzen (10-ms-Raster, Schwelle −40 dB); Anfang/Ende bleiben.
+    Gemessen an der vom Nutzer gelobten Probe (Finn, 09.11.2026): 39,4 → 37,8 s, längste Pause 0,48 s."""
+    if max_s <= 0:
+        return y
+    hop = SAMPLE_RATE // 100
+    n = len(y) // hop
+    if n < 3:
+        return y
+    rms = np.sqrt(np.mean(y[: n * hop].reshape(n, hop) ** 2, axis=1)) + 1e-9
+    quiet = 20 * np.log10(rms) < thr_db
+    out, i = [], 0
+    while i < n:
+        j = i
+        while j < n and quiet[j] == quiet[i]:
+            j += 1
+        seg = y[i * hop:j * hop]
+        if quiet[i] and i > 0 and j < n and (j - i) * hop / SAMPLE_RATE > max_s:
+            k = int(keep_s * SAMPLE_RATE)
+            seg = np.concatenate([seg[: k // 2], seg[-(k - k // 2):]])
+        out.append(seg)
+        i = j
+    return np.concatenate(out + [y[n * hop:]])
+
+
+def synth_track(ep: dict, voice: Voice | None, post: bool = True, log=print) -> tuple[np.ndarray, list[dict], list[dict]]:
+    """Sprachausgabe aller Szenen hintereinander (Vorlauf, Szenen-Lücken, Pausen „ | “, `years`/`say`,
+    `voiceStyle.sceneSpeed`, `voicePreset`/`delivery`, optional `voiceStyle.post`). `engine`: "kokoro"
+    (Standard, `voice` nötig) oder "chatterbox" (`voice` darf None sein). Rückgabe: Tonspur, Szenen (ms),
+    Skript-Wörter. Genutzt von main() und scripts/calibrate_speed.py."""
+    # Optional "voiceStyle" (docs/stimme-casting.md): Stimmen-Mischung, Tempo-Faktor je Szene,
+    # Nachbearbeitung. Ohne das Feld bleibt alles wie bisher (Sonnensystem unverändert).
     style = ep.get("voiceStyle", {})
     base_speed = ep.get("speed", 1.0)
+    engine = ep.get("engine", "kokoro")  # "chatterbox": ausdrucksstärker (scripts/tts_chatterbox.py), Standard für neue Videos
     scene_speed = style.get("sceneSpeed", {})
+    # Optional "voicePreset" (Dashboard „Sprechstil“: lebendig | spannend | witzig | ruhig) und je Szene
+    # "delivery" (punch | normal | hype | tense | calm): nur Tempo, Pausen und Lautstärke der *Akzentwörter* –
+    # keine Tonhöhen-Bearbeitung (Nutzer 09.11.2026: klang unnatürlich). Werte: scripts/voice_fx.py.
+    preset = STYLES.get(ep.get("voicePreset", ""))
+    pause = np.zeros(int(SAMPLE_RATE * ep.get("pauseMs", preset["pause_ms"] if preset else 350) / 1000), np.float32)
     gap = np.zeros(int(SAMPLE_RATE * ep.get("sceneGapMs", 150) / 1000), np.float32)
     lead = np.zeros(int(SAMPLE_RATE * 0.15), np.float32)  # kurzer Vorlauf
+
+    cb_audio: dict[tuple[str, int], np.ndarray] = {}
+    if engine == "chatterbox":
+        cb_audio = chatterbox_scenes(ep, preset, resolve_voice(ep["voice"]).split("+")[0].split(":")[0])
 
     parts, scenes, words, cursor = [lead], [], [], len(lead)
     for sc in ep["scenes"]:
         # Sternchen markieren Akzentwörter ("*Rome*") – nur für die Untertitel, nicht vorlesen
         spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
-        audio = voice.synth(spoken, base_speed * scene_speed.get(sc["id"], 1.0))
+        sp = base_speed * scene_speed[sc["id"]] if sc["id"] in scene_speed else None
+        d = sc.get("delivery", preset["delivery"] if preset else None)
+        if d is not None or preset:
+            d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) or d is None else {**DELIVERY["normal"], **d}
+            sp = (sp or base_speed) * d["speed"] * (preset["speed"] if preset else 1.0)
+        pieces = [p.strip() for p in spoken.split(PAUSE_MARK) if p.strip()]
+        synth = (lambda i, p: cb_audio[(sc["id"], i)]) if engine == "chatterbox" else (lambda i, p: voice.synth(p, sp))
+        audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((pause,) if i else ()) + (synth(i, p),)])
         start = cursor / SAMPLE_RATE * 1000
         parts += [audio, gap]
         cursor += len(audio) + len(gap)
@@ -145,7 +221,9 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     out_dir = ROOT / "public" / "episodes" / ep["id"]
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    track, scenes, words = synth_track(ep, make_voice(ep, override=bool(voice_name)))
+    engine = ep.get("engine", "kokoro")
+    voice = make_voice(ep, override=bool(voice_name)) if engine == "kokoro" else None
+    track, scenes, words = synth_track(ep, voice)
     write_wav(out_dir / "voice.wav", track)
     total_ms = round(len(track) / SAMPLE_RATE * 1000)
     print(f"Voiceover: {total_ms / 1000:.2f} s, {len(words)} Wörter")
@@ -168,6 +246,15 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     )
     print(f"Abgleich: {matched}/{len(words)} Wörter direkt von Whisper getimt")
     (out_dir / "captions.json").write_text(json.dumps(captions, indent=1) + "\n")
+
+    # *Akzentwörter* hörbar machen: nur Lautstärke (+emph_db), Timing bleibt gleich
+    if preset:
+        import soundfile as sf
+
+        emph = [(captions[i]["startMs"] / 1000, captions[i]["endMs"] / 1000) for i, w in enumerate(words) if w["emph"]]
+        x, sr = sf.read(str(out_dir / "voice.wav"), dtype="float32")
+        sf.write(str(out_dir / "voice.wav"), accent_gain(x, sr, emph, preset["emph_db"]), sr)
+        print(f"Sprechstil {ep['voicePreset']!r}: {len(emph)} Akzentwörter betont")
 
     # Cues an Wörter binden
     cues = []

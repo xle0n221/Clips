@@ -5,7 +5,7 @@ Drehbücher / Kontaktabzüge mit **OK** / **Nicht OK** + Feedback freigeben.
 
 - **Live-Seite (privat):** https://claude.ai/artifact/5hB3B36zzQuaX5e78LEr8H
 - **Quelle:** `dashboard/index.html` (wird so, wie sie ist, per Artifact-Tool veröffentlicht)
-- **Capabilities:** `db` (gemeinsame Datenbank), `user` (Schreibrecht prüfen), `assets` (Bilder/Videos für Kontaktabzug und Vorschau), `artifact` (Seite speichert bei jeder Aktion eine neue Version → weckt beobachtende Sitzungen, siehe unten)
+- **Capabilities:** `db` (gemeinsame Datenbank), `user` (Schreibrecht prüfen), `assets` (Bilder/Videos für Kontaktabzug und Vorschau), `artifact` (Seite speichert bei jeder Aktion eine neue Version → weckt beobachtende Sitzungen, siehe unten), `mcp` (Connector „Claude Code Remote“, nur `fire_trigger` für „Jetzt starten“), `sample` (Themen-Ideen)
 
 Erneut veröffentlichen aus einer anderen Sitzung: Artifact-Tool, `action: "read"` mit obiger URL,
 dann `publish` mit `url` = obige URL und `file_path` = `dashboard/index.html`.
@@ -31,13 +31,16 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `updatedAt` | ISO-String | beide | letzte Änderung |
 | `previewUrl` | string \| null (optional) | Sitzung | verkleinerte Vorschau bei `done` (Bild oder Video), siehe Assets; nur kleine Dateien |
 | `voice` | string (optional) | Seite (beim Anlegen) | Sprecherstimme (Kokoro). Auf der Seite mit Namen angezeigt: `af_heart` = „Lily – Frau (empfohlen)“, `af_bella` = „Bella – Frau“, `am_fenrir` = „Finn – Mann“, `am_puck` = „Max – Mann“. Die Namen sind frei vergeben, nur für die Bedienung |
+| `voicePreset` (früher `voiceStyle`) | `"lebendig"` \| `"spannend"` \| `"witzig"` \| `"ruhig"` (optional) | Seite (beim Anlegen) | Sprechstil des Videos → Drehbuch-Feld `voicePreset` (`scripts/voice_fx.py`, Regeln in `docs/clip-regeln.md`, Abschnitt „Stimme“). Fehlt es: `lebendig` |
 | `inspiration` | Liste `{ id, name, type }` (optional) | Seite / Nutzer | Vom Nutzer hochgeladene Inspirations-Dateien (Bilder, kurze Videos, PDFs) als Assets der Seite. Angezeigt unter `/_blob/<id>`. Hochladen beim Anlegen oder später auf Karten in den Stufen `queued`, `research`, `script` |
-| `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` außerhalb 3,3–3,6 und ungleiche Whisper-Zahlen werden orange markiert |
+| `metrics` | null \| `{ durationSec?, words?, wordsPerSec?, whisperMatch?, voice? }` (optional) | Sitzung | Kennzahlen; `whisperMatch` als Text `"283/284"` (Aussprache-Gegenprobe). `wordsPerSec` unter 2,6 oder über 3,6 und ungleiche Whisper-Zahlen werden orange markiert |
 | `renderProgress` | number 0..1 (optional) | Sitzung | Balken bei `stage: "render"` |
 | `renderEta` | string (optional) | Sitzung | z. B. `"noch ca. 23 Min."` |
 | `actionNeeded` | string \| null (optional) | Sitzung | auffälliges rotes Banner, z. B. `"Freigabe in der Claude-App nötig (Netzwerk)"`; Karte wird oben einsortiert |
 | `fileSizeBytes` | number (optional) | Sitzung | Dateigröße auf der Fertig-Karte |
 | `busy` | boolean (optional) | Sitzung | `true`, solange eine Sitzung am Video arbeitet (Sperre für den Abholer); bei Freigabe, Fertig oder Fehler `false` |
+| `resume` | true \| null (optional) | Seite / Nutzer | Knopf „Erneut versuchen“ (bei `error`) bzw. „Erledigt – weitermachen“ (bei `actionNeeded`): der nächste Durchlauf setzt das Video fort; die Sitzung setzt es beim Übernehmen auf `null` |
+| `priority` | true \| null (optional) | Seite / Nutzer | Knopf „Als Nächstes“ auf wartenden Karten: wird vor älteren Themen übernommen |
 | `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
 
 Zusätzliche optionale Felder in `review`:
@@ -48,10 +51,23 @@ Zusätzliche optionale Felder in `review`:
 **Zwei Freigabe-Stufen** über `review.kind`: Stufe 1 = `"script"` (Drehbuch + Quellen), Stufe 2 = `"contactsheet"`
 (Kontaktabzug, z. B. 3 Bilder pro Szene) **vor** dem finalen Render.
 
-Die Ziel-Werte 3,3–3,6 Wörter/s und die Stimmenliste stammen aus der Video-Produktions-Sitzung
+Die Ziel-Werte 2,6–3,0 Wörter/s (seit 09.11.2026, docs/clip-regeln.md) und die Stimmenliste stammen aus der Video-Produktions-Sitzung
 (Vorgabe der Orchestrator-Sitzung, hier nicht unabhängig nachgeprüft).
 
 Neue Themen von der Seite: `stage: "queued"`, `review: null`, `decision: null`, `branch: null`, `sessionId: null`.
+
+### Werkzeuge auf der Seite (ab Version 9)
+- **Jetzt starten:** löst die geplante Aufgabe „Clips Dashboard-Abholer“ (`trig_01GPmrJycLUKEASvHqbaG4hz`) sofort aus,
+  über den Connector „Claude Code Remote“ (`mcp`-Capability, Werkzeug `fire_trigger`, als der Betrachter). Sichtbar nur, wenn Arbeit
+  wartet und der Connector das Werkzeug anbietet; danach 10 Min. gesperrt (gegen Doppelstarts; die Sperre `busy` schützt zusätzlich).
+- **Themen-Ideen:** `sample`-Capability (fragt Claude auf dem Konto des Betrachters, verbraucht dessen Nutzung); 5 Vorschläge mit
+  englischem Hook, Antippen übernimmt Thema + Hook als Notiz. Vorschläge sind ungeprüft.
+- **Länge:** Knöpfe 30/60/90 s und Wortzahl-Rechner (2,6–3,0 Wörter/s).
+- **Doppelte Themen:** Hinweis, wenn ein ähnliches Thema schon existiert.
+- **Filter** (ab 4 Videos): Alle / Zu erledigen / In Arbeit / Wartend / Fertig; Auswahl wird im Browser gemerkt.
+- **Hänger:** `busy` und seit über 3 Std. keine Änderung → Hinweis auf der Karte.
+- **Erneut versuchen / Erledigt – weitermachen / Als Nächstes:** setzen `resume` bzw. `priority`.
+- **Nächster Durchlauf:** aus dem Zeitplan berechnet (jeweils :17 Uhr, 7–23 Uhr deutscher Zeit); geplante Läufe können sich verzögern.
 
 ### Anzeige-Logik der Seite
 - **Freigabe nötig** (orange Rahmen, oben einsortiert): `review` gesetzt, `decision` null, `stage` ≠ `done`.
@@ -134,6 +150,11 @@ Die Datei landet lokal (Pfad steht im Ergebnis) und kann dann mit dem Read-Tool 
 
 Stimmen-Namen laut Kokoro-Stimmenliste (VOICES.md, huggingface.co/hexgrad/Kokoro-82M): `a` = American English, `f` = weiblich, `m` = männlich.
 Gesamtnoten dort: af_heart A, af_bella A-, am_fenrir C+, am_puck C+.
+Seit 08.11.2026 sind die Hörproben mit `scripts/voice_fx.py` bearbeitet (wie die Videos). Hörvergleich vorher/nachher:
+`voices/demo-{lily,finn}-{vorher,nachher}.mp3` (Bereich „Stimme: Hörvergleich“ auf der Seite).
+Knopf „▶ Anhören“ spielt seit 09.11.2026 die gewählte Stimme **im gewählten Sprechstil**: `voices/style-<stil>-<stimme>.mp3`
+(16 Dateien, Satz „Hi, I'm <Name>. Rome ruled the world for *five hundred years*. | Then, in a *single afternoon*, it was over.“,
+Kokoro + `scripts/voice_fx.py` mit den Werten aus `STYLES`; Akzentwörter per Whisper „base“ getimt).
 
 ### Bilder (Kontaktabzug) und Vorschau
 Die Seite darf **keine externen Bilder** laden (Content-Security-Policy der Artifact-Seiten). `imageUrl` / `previewUrl` müssen daher sein:
