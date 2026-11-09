@@ -278,7 +278,9 @@ export const Vandals: React.FC = () => {
   const wide = beat("templeWide");
   const vandals = beat("vandals");
   const roof = beat("roofOff");
-  const { shot, f } = cut(frame, [vandals, roof]);
+  const dict = beat("dictionary");
+  // Regie-Kritik Rom v3: „rip off half the … roof“ muss man sehen → eigene Dach-Einstellung, Nah auf „Today“
+  const { shot, f } = cut(frame, [vandals, roof, dict]);
   const progress = ramp(frame, queue, duration, Easing.linear) * 0.8 + 0.05;
   const templeAt: V3 = [-1.2, 0, -7];
   const aimV = (t: number) =>
@@ -309,7 +311,7 @@ export const Vandals: React.FC = () => {
       </>
     );
   }
-  const gone = ramp(frame, vandals, duration, Easing.linear) * 0.45 + 0.15;
+  const gone = 0.15 + 0.1 * ramp(frame, vandals, roof, Easing.linear) + 0.45 * ramp(frame, roof + 4, roof + 50, Easing.inOut(Easing.cubic));
   if (shot === 1) {
     // Vandalen tragen Goldplatten nach rechts davon (Label „VANDALS“ x 0.65)
     const carriers = [0, 1, 2].map((i) => {
@@ -330,8 +332,30 @@ export const Vandals: React.FC = () => {
       </>
     );
   }
-  // Nah: Vandale reißt eine Platte hoch (Pop), jubelt; halbes Dach fehlt dahinter
-  const lift = pop(frame, roof, 9);
+  if (shot === 2) {
+    // Dach von vorn oben: die rechte Goldhälfte wird abgerissen, Platten fliegen nach rechts weg
+    const plates = [0, 1, 2].map((i) => {
+      const t = ramp(frame, roof + 6 + i * 12, roof + 30 + i * 12, Easing.out(Easing.cubic));
+      if (t <= 0 || t >= 1) return null;
+      return (
+        <Block key={i} size={[1.4, 0.12, 0.9]} position={[lerp(0.9, 4.5, t), lerp(6.4, 7.6, t) - 3 * t * t, lerp(-4.2 - i * 0.9, -3.5, t)]} rotation={[0.4 * t, 0, -0.4 - 1.2 * t]} color={ROME.gold} ink={0.05} />
+      );
+    });
+    return (
+      <>
+        <RomeAtmosphere phase="decline" frame={frame} />
+        <Pavement size={140} />
+        <Temple position={templeAt} roofColor={ROME.gold} roofGone={gone} />
+        <RomanSkyline position={[0, 0, -22]} width={60} rows={2} seed={13} />
+        <Hills z={-80} />
+        {plates}
+        <Burst frame={frame} start={roof + 6} origin={[1.0, 6.5, -4.5]} count={22} speed={0.14} gravity={0.004} size={0.14} colors={[ROME.gold, "#FFE08A", "#FFFFFF"]} seed={23} />
+        <Shot frame={f} duration={dict - roof} {...move(aim([-0.6, 5.6, -6], 15, 0.5, 0.5, [0.2, 0.3, 1]), aim([-0.2, 5.6, -6], 13.5, 0.5, 0.5, [0.25, 0.3, 1]))} punch={0} />
+      </>
+    );
+  }
+  // Nah: Vandale hält eine Platte hoch (Pop), jubelt; halbes Dach fehlt dahinter
+  const lift = pop(frame, dict, 9);
   return (
     <>
       <RomeAtmosphere phase="decline" frame={frame} />
@@ -341,8 +365,8 @@ export const Vandals: React.FC = () => {
       <Goth frame={frame} position={[1.4, 0, 0.6]} rotation={[0, -0.25, 0]} fur={false} cloak="#5B4636" gear={false} arms={[lerp(0.5, 2.8, lift), lerp(0.5, 2.8, lift)]} eyes="happy" mouth="teeth" bounce={0.1} />
       <Block size={[1.6, 0.12, 0.95]} position={[1.4, lerp(2.3, 4.45, lift), 0.6]} rotation={[0.3 * (1 - lift), 0, 0.08]} color={ROME.gold} ink={0.05} />
       <Vandal frame={frame + 11} position={[-1.2, 0, -0.8]} rotation={[0, 0.4, 0]} cheer />
-      <Burst frame={frame} start={roof} origin={[1.4, 4.4, 0.6]} count={18} speed={0.12} gravity={0.004} size={0.13} colors={[ROME.gold, "#FFE08A", "#FFFFFF"]} seed={19} />
-      <Shot frame={f} duration={duration - roof} {...move(aim([1.4, 3.05, 0.6], 11, under(0.5, 11), 0.64, [0, 0.12, 1]), aim([1.4, 3.05, 0.6], 10.2, under(0.5, 10.2), 0.64))} punch={0} />
+      <Burst frame={frame} start={dict} origin={[1.4, 4.4, 0.6]} count={18} speed={0.12} gravity={0.004} size={0.13} colors={[ROME.gold, "#FFE08A", "#FFFFFF"]} seed={19} />
+      <Shot frame={f} duration={duration - dict} {...move(aim([1.4, 3.05, 0.6], 11, under(0.5, 11), 0.64, [0, 0.12, 1]), aim([1.4, 3.05, 0.6], 10.2, under(0.5, 10.2), 0.64))} punch={0} />
     </>
   );
 };
