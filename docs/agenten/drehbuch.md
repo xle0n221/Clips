@@ -9,7 +9,7 @@ Englisches Sprechskript mit Szenen, Cues, HUD, Auswahlkarten. Ergebnis `episodes
 - Hook in ≤ 2 s, Frage/Einsatz sofort klar
 - Roter Faden (eine Figur, ein Ziel), Kausalkette statt Liste, Eskalation
 - Pointe am Satzende, Loop zum ersten Satz
-- 3,3–3,6 Wörter/s, jede Aussage belegt
+- 2,6–3,0 Wörter/s (natürlich; lieber Stoff kürzen als schneller), jede Aussage belegt
 - Klingt gesprochen lebendig (kurze Sätze, Ausrufe, Fragen)
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)

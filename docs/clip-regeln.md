@@ -88,11 +88,14 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   im Dashboard-Feld `voice` gewählte Stimme.
   Alternativen: **Bella** `af_bella` (A-), **Finn** `am_fenrir`, **Max** `am_puck` (C+).
   Zentrale Liste `scripts/voices.json`, Hörproben `assets/stimmproben/` (aus dem Dashboard übernommen).
-- Ziel-Sprechtempo **3,3–3,6 Wörter/s** (gemessen in Referenz 2: 216 Wörter / 59,5 s = 3,63).
-  Gezählt werden **Skriptwörter** (wie die Untertitel). Zum Vergleich gemessen: R3-Erzähler 152 / 54,2 s
-  = 2,81 W/s (`stimme-casting.md`), Sonnensystem 284 / 87,2 s = 3,26 W/s, Rom 319 / 90,0 s = 3,54 W/s
-  (Dauer aus `timeline.json` inkl. Szenenpausen). Ob der Zielbereich gesenkt wird, ist eine **offene
-  Frage an den Nutzer** – bis zur Entscheidung gilt 3,3–3,6 unverändert.
+- **Ziel-Sprechtempo 2,6–3,0 Wörter/s** (Entscheidung des Nutzers 09.11.2026: „Das Video ist zu schnell,
+  unnatürlich schnell. Angenehme Sprechgeschwindigkeit; wenn es sein muss, sollen die Videos länger sein oder
+  das Thema nicht so extrem ausgeführt werden. Der Zuschauer soll maximal unterhalten werden.“).
+  Orientierung: R3-Erzähler 152 / 54,2 s = 2,81 W/s (`stimme-casting.md`). Zu schnell waren: Rom 319 / 90,0 s
+  = 3,54 W/s, Sonnensystem 3,26 W/s. Gezählt werden **Skriptwörter** (wie die Untertitel).
+  Folgen: Wortbudget ≈ 2,8 × Sekunden (60 s ≈ 170 Wörter, 90 s ≈ 250, 120 s ≈ 335). Passt der Stoff nicht,
+  **erst kürzen** (weniger Stationen, dafür jede mit Pointe), dann länger werden – nie schneller sprechen.
+  Kokoro-Tempo nie über 1,33 (darüber Sprung um ~10 %, unnatürlich); Tempo mit `npm run calibrate` wählen.
 - **Sprechweise lebendig** (Messung in [`docs/stimme-casting.md`](stimme-casting.md)): Erzählstimme mit
   Tonhöhen-Streuung wie die englische Referenz R3 (F0-Interquartil ≈ 6–7 Halbtöne; flache Stimmen wie
   `am_michael`, `bm_george`, `af_heart` liegen bei 3–4). Lautheitsschwankung mit `voiceStyle.post: "lively"`

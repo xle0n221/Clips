@@ -49,7 +49,7 @@ Während der Arbeit `updatedAt` mindestens alle 30 Minuten erneuern (zusammen mi
 | Fehler | `error` | `statusText` = Fehler in Klartext, `busy: false` |
 
 Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID) → ins Drehbuch `episodes/<slug>.json` übernehmen.
-Wunschlänge `lengthSec` → Wortzahl (Skriptwörter) mit 3,3–3,6 Wörtern/s planen; Zahlen werden beim
+Wunschlänge `lengthSec` → Wortzahl (Skriptwörter) mit 2,6–3,0 Wörtern/s planen (≈ 2,8 × Sekunden); Zahlen werden beim
 Sprechen länger, Tempo nach dem ersten Sprachlauf kalibrieren (`playbook-themen.md`, Tempo-Abkürzungen). `note` und `inspiration` (Dateien:
 Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
 

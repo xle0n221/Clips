@@ -7,7 +7,7 @@ Stimme und Sprechweise wählen und einstellen (Kokoro, `scripts/tts.py`). Ergebn
 
 ## Messlatte (woran der Prüfer die Arbeit bewertet, 1–10)
 - Lebendig, aufgeweckt, charakteristisch, angenehm (Nutzer-Vorgabe)
-- Gemessen: Wörter/s 3,3–3,6, Tonhöhen-Spannweite, Pausen – im Vergleich zu R3
+- Gemessen: Wörter/s 2,6–3,0 (Nutzer 09.11.2026: Rom mit 3,54 „zu schnell, unnatürlich“), Tonhöhen-Spannweite, Pausen – im Vergleich zu R3
 - Aussprache: Whisper-Gegenprobe erkannte/geschriebene Wörter
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)

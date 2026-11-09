@@ -28,7 +28,7 @@ from make_episode import make_voice, synth_track  # noqa: E402
 from tts import SAMPLE_RATE, write_wav  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-LO, HI = 3.3, 3.6  # Ziel-Sprechtempo laut docs/clip-regeln.md
+LO, HI = 2.6, 3.0  # Ziel-Sprechtempo laut docs/clip-regeln.md (Nutzer 09.11.2026: natürlich, nicht zu schnell)
 MID = (LO + HI) / 2
 
 
