@@ -46,10 +46,23 @@ Rolle**. Ein Agent startet ohne Erinnerung; was er gelernt hat, existiert nur, w
 - **Themenunabhängig denken:** Jede Erkenntnis so formulieren, dass sie für jedes künftige Thema gilt;
   Themen-Spezielles gehört in die Themen-Dateien (`kit/<thema>.tsx`, `quellen-<thema>.md`).
   Muster je Themen-Art und Ablauf-Checkliste: [`../playbook-themen.md`](../playbook-themen.md).
-- **So viele Agenten wie möglich parallel:** Der Orchestrator startet für jeden unabhängigen Arbeitsschritt
-  einen eigenen Agenten (eigene Dateien, keine Überschneidung). Grenzen: nur ein Video-Render gleichzeitig
-  (4 CPU-Kerne) und das Nutzungslimit – mehr Agenten verbrauchen es schneller; nach dem Limit setzt der
+- **Parallel, aber sparsam (Vorgabe des Nutzers, 09.11.2026: „so effizient, dass das Sitzungslimit so
+  langsam wie möglich erreicht wird, ohne Qualitätsverlust“):** Agenten nur für Schritte, die echte
+  Arbeit sind und auf dem kritischen Pfad zum nächsten Video liegen; keine Agenten „auf Vorrat“.
+  Grenzen: ein Video-Render gleichzeitig (4 CPU-Kerne) und das Nutzungslimit; nach dem Limit setzt der
   stündliche Abholer automatisch fort.
+
+## Sparsam arbeiten (Token-Budget)
+Qualität bleibt unverändert – gespart wird nur Leerlauf und Doppelarbeit:
+- Aufträge kurz: auf Rollen-Datei und Regeln **verweisen**, nicht abschreiben.
+- Bilder nur ansehen, wenn sie eine Entscheidung tragen (Kontaktabzug statt vieler Einzelbilder,
+  verkleinert mit `--scale`); dasselbe Bild nicht mehrfach öffnen.
+- Große Dateien gezielt lesen (`grep`, Zeilenbereiche), nicht komplett; Datenbank-Reads mit `out_dir`.
+- Agenten-Berichte knapp: Ergebnis, geänderte Dateien, was nicht verifiziert ist – keine Wiederholung
+  des Auftrags.
+- Dashboard nur bei echtem Statuswechsel schreiben; Repo→Dashboard-Sync gebündelt nach mehreren Commits.
+- Ein Agent übernimmt zusammenhängende Teilaufgaben, statt sie auf mehrere zu verteilen, wenn sie
+  dieselben Dateien lesen müssten.
 - **Repo wird schneller:** Der Werkzeugbau macht aus jedem Ad-hoc-Code, der zweimal geschrieben wurde,
   ein wiederverwendbares Werkzeug.
 
