@@ -80,8 +80,8 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Clips sind **auf Englisch**, mit einer **angenehmen Stimme**.
 - **Zeitgemäßer, lockerer Slang**, aber so, dass **jede Altersgruppe** sich abgeholt fühlt
   (z. B. „Wait, what?“, „Nope.“, „real talk“, „basically“) – kein Cringe, keine Insider-Wörter.
-- Standardstimme: **Lily** = Kokoro `af_heart` (laut `VOICES.md` des Modells einzige englische Stimme mit Note A).
-  Das ist der **technische Standard** (`scripts/voices.json` `default`, Dashboard-Vorauswahl). Gemessen
+- Standardstimme: **Finn** = `am_fenrir` mit Chatterbox (Nutzer 09.11.2026: „die männliche Stimme ist sehr gut“, „direkt als
+  Standardstimme ins Dashboard“) – `scripts/voices.json` `default` und Dashboard-Vorauswahl. Früher Lily = Kokoro `af_heart`. Gemessen
   spricht `af_heart` flach (F0-IQR 3,5 HT, `stimme-casting.md`); das Rom-Video nutzt deshalb die Mischung
   `am_fenrir` 0,6 + `am_puck` 0,4 mit `post: "lively"` (Empfehlung K1). Welche Stimme für **neue** Clips
   Standard sein soll, entscheidet der Nutzer (offen, siehe `agenten/austausch.md`); bis dahin gilt die
