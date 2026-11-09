@@ -152,6 +152,9 @@ Stimmen-Namen laut Kokoro-Stimmenliste (VOICES.md, huggingface.co/hexgrad/Kokoro
 Gesamtnoten dort: af_heart A, af_bella A-, am_fenrir C+, am_puck C+.
 Seit 08.11.2026 sind die Hörproben mit `scripts/voice_fx.py` bearbeitet (wie die Videos). Hörvergleich vorher/nachher:
 `voices/demo-{lily,finn}-{vorher,nachher}.mp3` (Bereich „Stimme: Hörvergleich“ auf der Seite).
+Knopf „▶ Anhören“ spielt seit 09.11.2026 die gewählte Stimme **im gewählten Sprechstil**: `voices/style-<stil>-<stimme>.mp3`
+(16 Dateien, Satz „Hi, I'm <Name>. Rome ruled the world for *five hundred years*. | Then, in a *single afternoon*, it was over.“,
+Kokoro + `scripts/voice_fx.py` mit den Werten aus `STYLES`; Akzentwörter per Whisper „base“ getimt).
 
 ### Bilder (Kontaktabzug) und Vorschau
 Die Seite darf **keine externen Bilder** laden (Content-Security-Policy der Artifact-Seiten). `imageUrl` / `previewUrl` müssen daher sein:

@@ -32,13 +32,17 @@ DELIVERY = {
     "punch": {"speed": 0.94, "expr": 2.3},  # Pointe / Wendepunkt
     "calm": {"speed": 0.95, "expr": 1.4},   # ruhig, erklärend
 }
-# Sprechstil eines ganzen Videos (Dashboard-Feld `voiceStyle`):
-# Standard-Sprechweise der Szenen, Skalierung der Melodie (1.0 = Werte oben) und Betonung der *Akzentwörter*.
+# Sprechstil eines ganzen Videos (Dashboard-Feld `voiceStyle`). Die Stile müssen klar hörbar verschieden sein
+# (Rückmeldung des Nutzers 09.11.2026: „hören sich in jedem Sprechstil gleich an“). Je Stil:
+#   delivery  Standard-Sprechweise der Szenen        speed   Tempo-Faktor zusätzlich zur Sprechweise
+#   scale     Stärke der Melodie (1.0 = DELIVERY)     shift   Stimmlage in Halbtönen (+ höher, − tiefer)
+#   emph_*    Betonung der *Akzentwörter*             pause_ms Länge der „ | “-Pausen
+#   power     Klangkette: "punch" (Druck) oder "soft" (weich, nah)
 STYLES = {
-    "lebendig": {"delivery": "normal", "scale": 1.0, "emph_st": 2.5, "emph_db": 3.0},
-    "spannend": {"delivery": "tense", "scale": 1.0, "emph_st": 3.0, "emph_db": 3.5},
-    "witzig": {"delivery": "hype", "scale": 1.15, "emph_st": 3.0, "emph_db": 3.0},
-    "ruhig": {"delivery": "calm", "scale": 0.8, "emph_st": 1.5, "emph_db": 2.0},
+    "lebendig": {"delivery": "normal", "speed": 1.00, "scale": 1.0, "shift": 0.0, "emph_st": 2.5, "emph_db": 3.0, "pause_ms": 350, "power": "punch"},
+    "spannend": {"delivery": "tense", "speed": 0.86, "scale": 0.9, "shift": -2.0, "emph_st": 3.5, "emph_db": 4.0, "pause_ms": 650, "power": "soft"},
+    "witzig": {"delivery": "hype", "speed": 1.12, "scale": 1.35, "shift": 2.0, "emph_st": 3.5, "emph_db": 3.0, "pause_ms": 220, "power": "punch"},
+    "ruhig": {"delivery": "calm", "speed": 0.90, "scale": 0.55, "shift": -0.7, "emph_st": 1.2, "emph_db": 1.5, "pause_ms": 450, "power": "soft"},
 }
 
 
@@ -67,6 +71,7 @@ def liven(
     emph_st: float = 2.5,
     emph_db: float = 3.0,
     max_dev_st: float = 9.0,
+    shift: float = 0.0,
 ) -> np.ndarray:
     """Satzmelodie verstärken.
 
@@ -111,6 +116,7 @@ def liven(
         new[a:b] += emph_st * win
         gain_db[a:b] = np.maximum(gain_db[a:b], emph_db * win)
 
+    new = new + shift  # Stimmlage des Stils
     f0n = np.where(voiced, 2 ** (new / 12), 0.0)
     y = pw.synthesize(f0n, sp, ap, sr, frame_period=FRAME_MS)[: len(x)]
     if len(y) < len(x):
@@ -122,32 +128,46 @@ def liven(
     return (y / max(peak, 1.0)).astype(np.float32)
 
 
-POWER_CHAIN = ",".join([
-    "highpass=f=70",
-    "equalizer=f=280:t=q:w=1.0:g=-2",     # Mulm raus
-    "equalizer=f=3200:t=q:w=1.2:g=3.5",   # Präsenz / Verständlichkeit
-    "equalizer=f=9000:t=q:w=1.0:g=1.5",   # etwas Luft
-    "acompressor=threshold=-22dB:ratio=3.5:attack=4:release=80:makeup=5",
-    "alimiter=limit=0.95:level=disabled",
-])
+POWER_CHAINS = {
+    # Druck: Mulm raus, Präsenz rauf, kräftig komprimieren
+    "punch": ",".join([
+        "highpass=f=70",
+        "equalizer=f=280:t=q:w=1.0:g=-2",
+        "equalizer=f=3200:t=q:w=1.2:g=3.5",
+        "equalizer=f=9000:t=q:w=1.0:g=1.5",
+        "acompressor=threshold=-22dB:ratio=3.5:attack=4:release=80:makeup=5",
+        "alimiter=limit=0.95:level=disabled",
+    ]),
+    # weich und nah (Erzähler-Ton): etwas Wärme, Höhen sanfter, leichte Kompression
+    "soft": ",".join([
+        "highpass=f=60",
+        "equalizer=f=180:t=q:w=1.0:g=2",
+        "equalizer=f=3200:t=q:w=1.2:g=0.5",
+        "equalizer=f=8000:t=q:w=1.0:g=-2.5",
+        "acompressor=threshold=-26dB:ratio=2:attack=12:release=150:makeup=3",
+        "alimiter=limit=0.95:level=disabled",
+    ]),
+}
+POWER_CHAIN = POWER_CHAINS["punch"]
 
 
-def power(in_wav: Path, out_wav: Path) -> None:
-    """Mehr Druck: EQ + Kompressor + Limiter (ffmpeg). Lautheit normalisiert später scripts/finalize.sh."""
-    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(in_wav), "-af", POWER_CHAIN, str(out_wav)], check=True)
+def power(in_wav: Path, out_wav: Path, chain: str = "punch") -> None:
+    """Klangkette (ffmpeg). Lautheit normalisiert später scripts/finalize.sh."""
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(in_wav), "-af", POWER_CHAINS[chain], str(out_wav)], check=True)
 
 
-def process(in_wav: Path, out_wav: Path, segments=None, emphasis=None, expr=2.0, emph_st=2.5, emph_db=3.0) -> None:
+def process(in_wav: Path, out_wav: Path, segments=None, emphasis=None, expr=2.0, emph_st=2.5, emph_db=3.0,
+            shift: float = 0.0, chain: str = "punch") -> None:
     import soundfile as sf
 
     x, sr = sf.read(str(in_wav), dtype="float32")
     if x.ndim > 1:
         x = x.mean(axis=1)
-    y = liven(x, sr, segments, emphasis, expr, emph_st, emph_db)
+    y = liven(x, sr, segments, emphasis, expr, emph_st, emph_db, shift=shift)
     with tempfile.TemporaryDirectory() as tmp:
         mid = Path(tmp) / "liven.wav"
         sf.write(str(mid), y, sr)
-        power(mid, out_wav)
+        power(mid, out_wav, chain)
 
 
 if __name__ == "__main__":

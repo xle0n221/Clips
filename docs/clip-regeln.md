@@ -91,8 +91,16 @@ Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wör
    Sie werden jetzt **hörbar** betont (und wie bisher in den Untertiteln hervorgehoben). Nicht jedes zweite Wort markieren.
 3. **Dramatische Pause** mit ` | ` im Sprechtext (Standard 350 ms, Feld `pauseMs`): vor Pointe, Twist, Auflösung.
 4. **Kurze Sätze, klare Satzzeichen**: `?` für echte Fragen, `!` sparsam bei Eskalation; Reaktionen als eigener Satz („Wait, what?“).
-5. **Stil des ganzen Videos** im Feld `voiceStyle` (Auswahl im Dashboard): `lebendig` (Standard) · `spannend` · `witzig` · `ruhig`;
-   `aus` schaltet die Bearbeitung ab.
+5. **Stil des ganzen Videos** im Feld `voiceStyle` (Auswahl im Dashboard), `aus` schaltet die Bearbeitung ab.
+   Die Stile müssen **klar hörbar verschieden** sein (Rückmeldung des Nutzers: „hören sich in jedem Sprechstil gleich an“).
+   Werte in `STYLES` (`scripts/voice_fx.py`); gemessen an den Hörproben (Lily, gleicher Satz):
+
+   | Stil | Tempo | Stimmlage | Melodie | Pausen | Klang | Lily: Dauer / Stimmlage / Melodie-SD |
+   | --- | --- | --- | --- | --- | --- | --- |
+   | `lebendig` (Standard) | normal | normal | kräftig | 350 ms | Druck | 6,2 s / 212 Hz / 3,9 HT |
+   | `spannend` | −14 % | −2 Halbtöne | mittel, starke Akzente | 650 ms | weich, nah | 7,6 s / 185 Hz / 3,8 HT |
+   | `witzig` | +12 % | +2 Halbtöne | sehr kräftig | 220 ms | Druck | 5,1 s / 250 Hz / 4,5 HT |
+   | `ruhig` | −10 % | −0,7 Halbtöne | flach | 450 ms | weich, nah | 7,0 s / 195 Hz / 3,3 HT |
 6. Prüfen: Hörprobe der Szene mit Hook und Pointe anhören; klingt etwas blechern/knarrend → `expr` der Szene senken.
 
 **Grenze:** Kokoro-82M hat keine Steuerung für Emotionen; `voice_fx` verstärkt nur die vorhandene Melodie und kann

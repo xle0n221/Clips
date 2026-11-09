@@ -236,14 +236,14 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
         <option value="am_fenrir">Stimme: Finn – Mann</option>
         <option value="am_puck">Stimme: Max – Mann</option>
       </select>
-      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe der gewählten Stimme abspielen">▶ Anhören</button>
       <label class="sr" for="vstyle">Sprechstil</label>
       <select id="vstyle" name="vstyle" title="Wie die Stimme klingen soll (Melodie, Betonung, Pausen)">
         <option value="lebendig" selected>Sprechstil: Lebendig (Standard)</option>
         <option value="spannend">Sprechstil: Spannend</option>
-        <option value="witzig">Sprechstil: Witzig / aufgedreht</option>
+        <option value="witzig">Sprechstil: Witzig</option>
         <option value="ruhig">Sprechstil: Ruhig</option>
       </select>
+      <button class="btn-quiet listen" id="listenBtn" type="button" aria-label="Hörprobe: gewählte Stimme im gewählten Sprechstil">▶ Anhören</button>
       <label class="sr" for="note">Notiz</label>
       <input id="note" name="note" placeholder="Notiz (optional)" maxlength="500">
       <button class="btn-primary" id="addBtn" type="submit">Thema hinzufügen</button>
@@ -937,12 +937,13 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   $("listenBtn").addEventListener("click", () => {
     const btn = $("listenBtn");
     if (player && !player.paused) { player.pause(); btn.textContent = "▶ Anhören"; return; }
-    player = new Audio("voices/voice-" + $("voice").value + ".mp3");
+    // Probe passend zu Stimme UND Sprechstil (voices/style-<stil>-<stimme>.mp3)
+    player = new Audio("voices/style-" + ($("vstyle").value || "lebendig") + "-" + $("voice").value + ".mp3");
     btn.textContent = "■ Stopp";
     player.addEventListener("ended", () => { btn.textContent = "▶ Anhören"; });
     player.play().catch(() => { btn.textContent = "▶ Anhören"; $("addMsg").className = "msg err"; $("addMsg").textContent = "Hörprobe konnte nicht abgespielt werden."; });
   });
-  $("voice").addEventListener("change", () => { if (player) { player.pause(); $("listenBtn").textContent = "▶ Anhören"; } });
+  for (const id of ["voice", "vstyle"]) $(id).addEventListener("change", () => { if (player) { player.pause(); $("listenBtn").textContent = "▶ Anhören"; } });
 
   $("inspFiles").addEventListener("change", (e) => {
     const n = e.target.files ? e.target.files.length : 0;

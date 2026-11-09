@@ -117,7 +117,7 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     # Sprechstil des Videos (Dashboard-Feld voiceStyle): lebendig | spannend | witzig | ruhig | aus
     style_name = ep.get("voiceStyle", "lebendig")
     style = STYLES.get(style_name)
-    pause = np.zeros(int(SAMPLE_RATE * ep.get("pauseMs", 350) / 1000), np.float32)
+    pause = np.zeros(int(SAMPLE_RATE * ep.get("pauseMs", style["pause_ms"] if style else 350) / 1000), np.float32)
     fx_segments: list[tuple[float, float, float]] = []
     gap = np.zeros(int(SAMPLE_RATE * ep.get("sceneGapMs", 150) / 1000), np.float32)
     lead = np.zeros(int(SAMPLE_RATE * 0.15), np.float32)  # kurzer Vorlauf
@@ -129,7 +129,7 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         # Sprechweise je Szene: "delivery": "hype" | "tense" | "punch" | "calm" | "normal" oder {speed, expr}
         d = sc.get("delivery", style["delivery"] if style else "normal")
         d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
-        voice.speed = base_speed * d["speed"]
+        voice.speed = base_speed * d["speed"] * (style["speed"] if style else 1.0)
         pieces = [p.strip() for p in spoken.split(PAUSE_MARK) if p.strip()]
         audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((pause,) if i else ()) + (voice.synth(p),)])
         start = cursor / SAMPLE_RATE * 1000
@@ -171,7 +171,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         raw_wav.parent.mkdir(exist_ok=True)
         (out_dir / "voice.wav").replace(raw_wav)
         emph = [(captions[i]["startMs"] / 1000, captions[i]["endMs"] / 1000) for i, w in enumerate(words) if w["emph"]]
-        voice_process(raw_wav, out_dir / "voice.wav", fx_segments, emph, 2.0, style["emph_st"], style["emph_db"])
+        voice_process(raw_wav, out_dir / "voice.wav", fx_segments, emph, 2.0, style["emph_st"], style["emph_db"],
+                      shift=style["shift"], chain=style["power"])
         print(f"Stimme: Stil {style_name!r}, {len(emph)} Akzentwörter betont (Rohfassung: {raw_wav.relative_to(ROOT)})")
 
     # Cues an Wörter binden
