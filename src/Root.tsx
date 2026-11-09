@@ -20,6 +20,7 @@ import {
 import { getMediaMetadata } from "./phone-demo/helpers/get-media-metadata";
 import { myCompSchema, Scene } from "./phone-demo/Scene";
 import { ROME_TEST_FRAMES, RomeKitTest } from "./RomeKitTest";
+import { CommonKitTest, COMMON_TEST_FRAMES } from "./CommonKitTest";
 
 // Jede <Composition> erscheint als Eintrag in der Seitenleiste von Remotion Studio.
 // Docs: https://remotion.dev/docs  ·  https://remotion.dev/docs/three
@@ -60,6 +61,16 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         fps={30}
         durationInFrames={ROME_TEST_FRAMES}
+      />
+
+      {/* Prüf-Komposition der themenunabhängigen Bausteine (src/episode/kit/common.tsx) */}
+      <Composition
+        id="CommonKitTest"
+        component={CommonKitTest}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={COMMON_TEST_FRAMES}
       />
 
       {/* Overlays (HUD, Auswahlkarten, Pills, Akzentwörter) – Vorführung ohne Ton */}

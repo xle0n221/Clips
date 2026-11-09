@@ -21,9 +21,16 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 09.11.2026 · Common-Kit · **Experiment:** Text auf unbeleuchteten Flächen (`meshBasicMaterial`, `toneMapped={false}`, Textur sRGB) statt Toon-Fläche. **Ergebnis:** Kontrast im fertigen Bild = Palettenwert (Pille gerechnet 14,7 : 1, gemessen 14,7 : 1; Tafel 13,4 → 15,0 nach Grading), unabhängig vom Licht · `CommonKitTest`, Standbilder `scratchpad/common-kit/s4/`.
+- 09.11.2026 · Common-Kit · Beschriftungen unter y = 0 verschwinden im Boden → Beschriftung auf die Vorderseite eines Sockels; Pillen 0,44 hoch ergaben nur ≈ 34 px, ab 0,54 ≥ 40 px (Kamera-Abstand 12–14) · Prüfrunden 1–4.
+- 09.11.2026 · Common-Kit · Hochformat-Breite: sichtbar ≈ 0,41 × Kamera-Abstand (fov 42); Weltkarte 4,6 bei Abstand 10,5 lief rechts aus dem Bild, Größenvergleich mit Lineal braucht Abstand 16 · Prüfrunde 1 vs. 3.
+- 09.11.2026 · Common-Kit · Lange Zahlen („8,100,000,000“) werden per maxWidth gestaucht → `compact` („8.1B“) · Prüfrunde 1 vs. 2.
 - 08.11.2026 · Rom-Kit · 10 Befunde behoben (Kolosseum, Bart, Thron, Halstuch, Gefahrenlicht, Stimmungen) · Kontaktabzug vorher/nachher in `verbesserungen.md`.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- Common-Kit im echten Clip: Info-Einschub mit `BarChart`/`CounterBoard` auf Wort-Cue binden und im Kontaktabzug prüfen, ob die Zahl ohne Ton verstanden wird (Messung: Schrifthöhe px, Kontrast, Zeit bis Endwert ≤ 0,5 s).
+- `rome.tsx` auf den gemeinsamen Schrift-Helfer `kit/font.ts` umstellen (nur mit Auftrag; Pixel-Vergleich vorher/nachher).
+- Studio-Hintergrund pro Thema einfärben (z. B. Rom: `top #2A1A12`) und prüfen, ob Info-Einschübe das Thema noch verraten.
 - Tiefenunschärfe/Dunst für Hintergrund (wie Referenz R3) testen und Kontrast der Figuren messen.
 - Kolosseum-Ruine in `fall` lesbarer machen (Silhouette gegen Himmel).
 - Neue Themen-Art (Natur, Körper, Technik …): Palette nach `playbook-themen.md` C2–C6 anlegen und Phasen-Licht wie `romeMood` als Preset bauen (übertragen vom Wissensverwalter 09.11.2026).
@@ -32,3 +39,4 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 08.11.2026 | Rom-Kit | – | Monumentalität und Kontrast schwach → behoben |
+| 09.11.2026 | Common-Kit | – (Prüfung Design-Kritiker offen) | Erstausgabe, 4 Prüfrunden selbst |

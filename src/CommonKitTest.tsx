@@ -61,7 +61,7 @@ const Scene: React.FC = () => {
           progress={p}
           height={4.6}
         />
-        <Shot frame={f} duration={d} from={[0, 3.4, 13.5]} to={[0, 3.3, 13]} look={[0, 2.6, 0]} fov={42} />
+        <Shot frame={f} duration={d} from={[0, 3.2, 14]} to={[0, 3.1, 13.5]} look={[0, 1.4, 0]} fov={42} />
       </>
     );
   }
@@ -69,10 +69,10 @@ const Scene: React.FC = () => {
     return (
       <>
         <Studio />
-        <CounterBoard position={[0, 4.6, -0.5]} title="PEOPLE" to={8100000000} progress={p} legs={3.2} appear={p * 2} width={4.4} height={2.4} />
+        <CounterBoard position={[0, 4.6, -0.5]} title="PEOPLE" to={8100000000} compact progress={p} legs={3.2} appear={p * 2} width={4.4} height={2.4} />
         <Toonie frame={frame} position={[-1.3, 0, 1.2]} rotation={[0, 0.4, 0]} scale={0.75} suit="#3D8BD9" arms={[0.3, 2.4]} eyes="wide" mouth="o" />
         <BlobShadow position={[-1.3, 0, 1.2]} size={0.7} />
-        <Shot frame={f} duration={d} from={[0, 3.6, 12]} to={[0, 3.5, 11.4]} look={[0, 3.2, 0]} fov={42} />
+        <Shot frame={f} duration={d} from={[0, 3.4, 12.5]} to={[0, 3.3, 12]} look={[0, 1.9, 0]} fov={42} />
       </>
     );
   }
@@ -83,7 +83,7 @@ const Scene: React.FC = () => {
         <PercentRing position={[0, 4.4, 0]} value={71} progress={p} color="#3D8BD9" label="WATER" />
         <Toonie frame={frame} position={[1.5, 0, 1.4]} rotation={[0, -0.4, 0]} scale={0.7} suit="#3DA35D" arms={[2.3, 0.3]} eyes="happy" mouth="grin" />
         <BlobShadow position={[1.5, 0, 1.4]} size={0.65} />
-        <Shot frame={f} duration={d} from={[0, 3.8, 11.5]} to={[0, 3.7, 11]} look={[0, 3.4, 0]} fov={42} />
+        <Shot frame={f} duration={d} from={[0, 3.6, 12]} to={[0, 3.5, 11.5]} look={[0, 2.1, 0]} fov={42} />
       </>
     );
   }
@@ -101,10 +101,10 @@ const Scene: React.FC = () => {
           unit=" m"
           maxHeight={5}
           progress={p}
-          spacing={1.7}
+          spacing={1.6}
           frame={frame}
         />
-        <Shot frame={f} duration={d} from={[0, 3.6, 13.5]} to={[0, 3.5, 13]} look={[0, 2.9, 0]} fov={42} />
+        <Shot frame={f} duration={d} from={[-0.2, 3.4, 16]} to={[-0.2, 3.3, 15.5]} look={[-0.2, 1.6, 0]} fov={42} />
       </>
     );
   }
@@ -126,7 +126,7 @@ const Scene: React.FC = () => {
           length={5.4}
           frame={frame}
         />
-        <Shot frame={f} duration={d} from={[0, 3.6, 12.5]} to={[0, 3.5, 12]} look={[0, 3.2, 0]} fov={42} />
+        <Shot frame={f} duration={d} from={[0.3, 3.6, 14]} to={[0.3, 3.5, 13.5]} look={[0.3, 2.6, 0]} fov={42} />
       </>
     );
   }
@@ -136,18 +136,18 @@ const Scene: React.FC = () => {
         <Studio />
         <WorldMap
           position={[0, 4.2, 0]}
-          width={4.6}
+          width={4.0}
           drop={p}
           frame={frame}
           pins={[
             { lon: 2.35, lat: 48.86, label: "PARIS" },
             { lon: 139.7, lat: 35.7, label: "TOKYO", color: "#3D8BD9" },
-            { lon: -74, lat: 40.7, label: "NYC", color: "#3DA35D" },
+            { lon: -74, lat: 40.7, label: "NYC", color: "#3DA35D", labelDy: 0.55 },
           ]}
         />
         <Toonie frame={frame} position={[0, 0, 1.6]} scale={0.6} suit="#E5484D" arms={[0.4, 0.4]} eyes="dot" mouth="smile" />
         <BlobShadow position={[0, 0, 1.6]} size={0.55} />
-        <Shot frame={f} duration={d} from={[0, 3.8, 10.5]} to={[0, 3.7, 10]} look={[0, 3.5, 0]} fov={42} />
+        <Shot frame={f} duration={d} from={[0, 3.6, 12.5]} to={[0, 3.5, 12]} look={[0, 2.3, 0]} fov={42} />
       </>
     );
   }
@@ -158,10 +158,10 @@ const Scene: React.FC = () => {
         <WarningSign position={[-1.6, 0, -1.6]} frame={frame} wobble={1} />
         <Mark kind="?" position={[0.2, 2.2, -1.6]} frame={frame} appear={p * 2} />
         <Mark kind="!" position={[1.6, 2.2, -1.6]} frame={frame + 9} appear={p * 2 - 0.3} color="#E5484D" />
-        <CashBag position={[-1.5, 0, 1]} rotation={[0, 0.3, 0]} squash={Math.max(0, 0.5 - p)} />
-        <Stopwatch position={[0, 1.2, 1.2]} t={f / 20} frame={frame} alarm={1} scale={0.85} />
-        <LightBulb position={[1.5, 0, 1]} on={p} frame={frame} />
-        <Shot frame={f} duration={d} from={[0, 3.4, 12.5]} to={[0, 3.3, 12]} look={[0, 2.4, 0]} fov={42} />
+        <CashBag position={[-1.75, 0, 0.8]} rotation={[0, 0.3, 0]} squash={Math.max(0, 0.5 - p)} />
+        <Stopwatch position={[0, 1.0, 1.4]} t={f / 20} frame={frame} alarm={1} scale={0.7} />
+        <LightBulb position={[1.75, 0, 0.8]} on={p} frame={frame} />
+        <Shot frame={f} duration={d} from={[0, 3.2, 13.5]} to={[0, 3.1, 13]} look={[0, 1.2, 0]} fov={42} />
       </>
     );
   }
@@ -173,7 +173,7 @@ const Scene: React.FC = () => {
       <BlobShadow position={[-1.3, 0, 1]} size={0.75} />
       <LightBulb position={[-1.3, 3.5, 1]} scale={0.6} on={interpolate(f, [4, 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} frame={frame} />
       <Arrow from={[-0.4, 2.4, 1.2]} to={[0.8, 3.4, 0]} grow={p} frame={frame} color="#FFC928" />
-      <Shot frame={f} duration={d} from={[0, 3.8, 12]} to={[0, 3.7, 11.5]} look={[0, 3.4, 0]} fov={42} />
+      <Shot frame={f} duration={d} from={[0, 3.6, 13]} to={[0, 3.5, 12.5]} look={[0, 2.2, 0]} fov={42} />
     </>
   );
 };

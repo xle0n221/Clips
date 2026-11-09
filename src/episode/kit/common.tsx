@@ -42,8 +42,8 @@ type Placement = {
 
 /**
  * Neutrale Kit-Palette. Text-Paare (Kontrast WCAG, nachgerechnet):
- * paperText auf paper 15,1 : 1 · boardText auf board 13,4 : 1 · paperText auf accent 10,5 : 1 ·
- * INK auf accent 12,4 : 1. Datenfarben (SERIES) stehen nie unter Text.
+ * paperText auf paper 14,7 : 1 · boardText auf board 13,4 : 1 · paperText auf accent 10,2 : 1 ·
+ * INK auf accent 12,0 : 1 · paperText auf muted 10,0 : 1. Datenfarben (SERIES) stehen nie unter Text.
  */
 export const KIT = {
   paper: "#FFF6E3",
@@ -98,6 +98,14 @@ export const formatNumber = (v: number, decimals = 0) => {
   const [int, dec] = fixed.split(".");
   const withSep = int.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return `${neg ? "-" : ""}${withSep}${dec ? `.${dec}` : ""}`;
+};
+
+/** Kurzform für große Zahlen: 8100000000 → „8.1B“, 12500 → „12.5K“ (1 Nachkommastelle, „.0“ entfällt). */
+export const formatCompact = (v: number) => {
+  const a = Math.abs(v);
+  const [div, suf] = a >= 1e9 ? [1e9, "B"] : a >= 1e6 ? [1e6, "M"] : a >= 1e3 ? [1e3, "K"] : [1, ""];
+  if (div === 1) return formatNumber(v);
+  return `${(v / div).toFixed(1).replace(/\.0$/, "")}${suf}`;
 };
 
 /** „Schöne“ Schrittweite für Skalen (1, 2, 5 × 10^n). */
@@ -230,7 +238,7 @@ export const TextLabel: React.FC<
   );
 };
 
-/** Pill-Beschriftung (Feld + Rahmen), Standard dunkle Schrift auf Papier (15 : 1). */
+/** Pill-Beschriftung (Feld + Rahmen), Standard dunkle Schrift auf Papier (14,7 : 1). */
 export const Pill: React.FC<
   Placement & {
     readonly text: string;
@@ -239,7 +247,7 @@ export const Pill: React.FC<
     readonly bg?: string;
     readonly color?: string;
   }
-> = ({ text, width, height = 0.5, bg = KIT.paper, color = KIT.paperText, ...p }) => (
+> = ({ text, width, height = 0.56, bg = KIT.paper, color = KIT.paperText, ...p }) => (
   <TextLabel
     text={text}
     width={width ?? Math.max(1.2, text.length * height * 0.46 + height * 0.8)}
@@ -357,7 +365,7 @@ export const FloorPlate: React.FC<
 
 /**
  * Info-Tafel: Rahmen, Titelleiste in Akzentfarbe, Textzeilen. Mitte der Tafel = position.
- * `dark` = dunkle Tafel mit weißer Schrift (13,4 : 1), sonst Papier mit dunkler Schrift (15,1 : 1).
+ * `dark` = dunkle Tafel mit weißer Schrift (13,4 : 1), sonst Papier mit dunkler Schrift (14,7 : 1).
  * `legs` = Länge der Standbeine nach unten (0 = hängt frei). `children` sitzen vor der
  * Tafelfläche (lokale Mitte, z = 0.12).
  */
@@ -450,7 +458,7 @@ export const InfoBoard: React.FC<
 /**
  * Balkendiagramm: Balken wachsen gestaffelt mit `progress`, Wert zählt mit (weiß mit
  * INK-Rand über dem Balken), Beschriftung als Papier-Pille unter dem Sockel.
- * Ursprung = Mitte der Sockel-Unterkante. `highlight` = Index, der in Akzentfarbe leuchtet.
+ * Ursprung = Mitte der Sockel-Unterkante (Sockel 0,62 hoch, Beschriftung auf seiner Vorderseite). `highlight` = Index, der in Akzentfarbe leuchtet.
  */
 export const BarChart: React.FC<
   Placement & {
@@ -485,11 +493,12 @@ export const BarChart: React.FC<
   const n = values.length;
   const top = max ?? Math.max(...values, 1e-9);
   const total = n * barWidth + (n - 1) * gap;
-  const base = 0.22;
+  const base = 0.62;
+  const depth = barWidth + 0.7;
   return (
     <group position={position} rotation={rotation} scale={scale}>
-      <Prop color={KIT.paper} position={[0, base / 2, 0]} ink={0.01}>
-        <boxGeometry args={[total + 0.9, base, barWidth + 0.7]} />
+      <Prop color={KIT.frame} position={[0, base / 2, 0]} ink={0.01}>
+        <boxGeometry args={[total + 0.9, base, depth]} />
       </Prop>
       {values.map((v, i) => {
         const g = easeOutCubic(stagger(progress, i, n, 0.6));
@@ -514,9 +523,9 @@ export const BarChart: React.FC<
             {labels[i] ? (
               <Pill
                 text={labels[i]}
-                position={[0, -0.42, barWidth * 0.45]}
-                width={barWidth + gap * 0.9}
-                height={0.46}
+                position={[0, -base / 2, depth / 2 + 0.02]}
+                width={barWidth + gap * 0.95}
+                height={0.54}
               />
             ) : null}
           </group>
@@ -539,6 +548,8 @@ export const CounterBoard: React.FC<
     readonly prefix?: string;
     readonly suffix?: string;
     readonly decimals?: number;
+    /** Kurzform „8.1B“ statt „8,100,000,000“ (ab ~9 Zeichen empfohlen: lange Zahlen werden sonst gestaucht) */
+    readonly compact?: boolean;
     readonly width?: number;
     readonly height?: number;
     readonly dark?: boolean;
@@ -554,6 +565,7 @@ export const CounterBoard: React.FC<
   prefix = "",
   suffix = "",
   decimals = 0,
+  compact = false,
   width = 4.2,
   height = 2.4,
   dark = true,
@@ -567,7 +579,7 @@ export const CounterBoard: React.FC<
   return (
     <InfoBoard {...p} width={width} height={height} title={title} dark={dark} accent={accent} appear={appear} legs={legs}>
       <TextLabel
-        text={`${prefix}${formatNumber(v, decimals)}${suffix}`}
+        text={`${prefix}${compact ? formatCompact(v) : formatNumber(v, decimals)}${suffix}`}
         position={[0, -titleH / 2, 0]}
         width={width - 0.3}
         height={(height - titleH) * 0.8}
@@ -645,7 +657,7 @@ export const PercentRing: React.FC<
         color={KIT.paperText}
         size={0.82}
       />
-      {label ? <Pill text={label} position={[0, -radius - tube - 0.5, 0.1]} height={0.5} /> : null}
+      {label ? <Pill text={label} position={[0, -radius - tube - 0.5, 0.1]} height={0.56} /> : null}
     </group>
   );
 };
@@ -662,7 +674,7 @@ export type CompareItem = {
 /**
  * Größenvergleich: Objekte nebeneinander, maßstäblich (größter Wert = `maxHeight`),
  * Maßstab-Lineal links mit runden Schritten, Wert über, Name unter jedem Objekt.
- * Ursprung = Boden, Mitte. Werte in `unit` (z. B. „ m“).
+ * Ursprung = Boden, Mitte; alles steht auf einem 0,55 hohen Sockel mit den Namen vorn. Werte in `unit` (z. B. „ m“).
  */
 export const SizeCompare: React.FC<
   Placement & {
@@ -695,10 +707,14 @@ export const SizeCompare: React.FC<
   const x0 = (-(n - 1) * spacing) / 2;
   const rulerX = x0 - spacing * 0.75;
   const shown = easeOutCubic(progress);
+  const plinth = 0.55;
   return (
     <group position={position} rotation={rotation} scale={scale}>
+      <Prop color={KIT.frame} position={[(rulerX - 0.6 + (-x0 + 0.9)) / 2, plinth / 2, 0]} ink={0.01}>
+        <boxGeometry args={[-x0 + 0.9 - (rulerX - 0.6), plinth, 1.6]} />
+      </Prop>
       {ruler ? (
-        <group position={[rulerX, 0, 0]}>
+        <group position={[rulerX, plinth, 0]}>
           <Prop color={KIT.paper} position={[0, (maxHeight * shown) / 2, 0]} ink={0.04}>
             <boxGeometry args={[0.14, Math.max(0.01, maxHeight * shown), 0.14]} />
           </Prop>
@@ -711,9 +727,9 @@ export const SizeCompare: React.FC<
                 </mesh>
                 <TextLabel
                   text={`${formatNumber(v)}${unit}`}
-                  position={[-0.75, 0, 0]}
-                  width={1.3}
-                  height={0.36}
+                  position={[-0.85, 0, 0]}
+                  width={1.4}
+                  height={0.5}
                   color="#FFFFFF"
                   stroke={INK}
                   align="right"
@@ -760,7 +776,7 @@ export const SizeCompare: React.FC<
           );
         }
         return (
-          <group key={it.label} position={[x0 + i * spacing, 0, 0]}>
+          <group key={it.label} position={[x0 + i * spacing, plinth, 0]}>
             {obj}
             {g > 0.04 ? (
               <TextLabel
@@ -772,7 +788,7 @@ export const SizeCompare: React.FC<
                 stroke={INK}
               />
             ) : null}
-            <Pill text={it.label} position={[0, -0.4, 0.8]} height={0.46} />
+            <Pill text={it.label} position={[0, -plinth / 2, 0.82]} height={0.5} width={Math.min(spacing * 0.95, it.label.length * 0.24 + 0.5)} />
           </group>
         );
       })}
@@ -839,7 +855,7 @@ export const Timeline: React.FC<
               text={e.year}
               position={[-0.45 - 0.75, 0, 0.1]}
               width={1.5}
-              height={0.5}
+              height={0.56}
               bg={past ? color : KIT.muted}
               color={KIT.paperText}
             />
@@ -847,7 +863,7 @@ export const Timeline: React.FC<
               text={e.label}
               position={[0.45 + labelWidth / 2, 0, 0.1]}
               width={labelWidth}
-              height={0.5}
+              height={0.56}
             />
           </group>
         );
@@ -894,6 +910,8 @@ export type MapPin = {
   readonly lat: number;
   readonly label?: string;
   readonly color?: string;
+  /** Beschriftung höher/tiefer setzen, wenn zwei Nadeln dicht beieinander stehen (Einheiten) */
+  readonly labelDy?: number;
 };
 
 /**
@@ -998,7 +1016,7 @@ export const WorldMap: React.FC<
                 <meshBasicMaterial color="#FFFFFF" toneMapped={false} />
               </mesh>
               {p.label && t > 0.8 ? (
-                <Pill text={p.label} position={[0, 1.25, 0.1]} height={0.42} />
+                <Pill text={p.label} position={[0, 1.25 + (p.labelDy ?? 0), 0.1]} height={0.42} />
               ) : null}
             </group>
           </group>
@@ -1217,7 +1235,7 @@ export const LightBulb: React.FC<
       </Prop>
       {on > 0.01 ? (
         <>
-          <Glow position={[0, 1.1, 0]} radius={0.7} color="#FFE36E" intensity={on} />
+          <Glow position={[0, 1.1, 0]} radius={0.42} color="#FFE36E" intensity={on * 0.8} />
           {Array.from({ length: rays }, (_, i) => {
             const a = (i / rays) * Math.PI * 2 + Math.PI / 2;
             const pulse = 1 + Math.sin(frame * 0.4 + i) * 0.12;

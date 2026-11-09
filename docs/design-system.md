@@ -165,3 +165,62 @@ Kolosseum-Leistung: Bogen-Ring wird nur bei Form-/`ruin`-Änderung neu gebaut (m
 (kleiner als ~1/3 Bildbreite) `detail="far"` und `segments={24}` – zusammen ≈ 45 % weniger Meshes
 (32 Felder voll ≈ 1 060 Meshes inkl. Kontur, far/24 ≈ 580).
 Prüfkomposition: `RomeKitTest` (10 Einstellungen à 14 Frames; 8 = `decline`, 9 = `fall`).
+
+## 9. Themenunabhängige Bausteine (`src/episode/kit/common.tsx`)
+Für Info-Einschübe und Pointen in **jedem** Thema (Referenz-Analyse 2, Punkt 4: Fakten als Grafik
+zeigen). Gleicher Look (Toon + `<Ink>`), alles aus Props, deterministisch. Prüfkomposition
+`CommonKitTest` (8 Einstellungen à 20 Frames, nur Testwerte); Kontaktabzug vom 09.11.2026:
+`scratchpad/common-kit/kontaktabzug.jpg` (Session-Scratchpad, nicht im Repo).
+
+**Konventionen:** Vorderseite +z; `position`/`rotation`/`scale` überall; `progress` 0..1 = Aufbau
+(Balken wachsen, Zahl zählt, Ring füllt sich – in der Szene per `interpolate` an den Wort-Cue binden);
+`appear` 0..1 = Hereinploppen mit Überschwinger; `frame` = Dauerbewegung (Wippen, Puls).
+Hilfen: `clamp01`, `easeOutCubic`, `popIn`, `stagger(progress, i, n)`, `formatNumber` (engl. Kommas,
+ohne Locale), `formatCompact` („8.1B“), `niceStep`.
+
+| Baustein | Wofür | Wichtigste Props |
+| --- | --- | --- |
+| `BarChart` | Vergleich weniger Werte (≤ 5) | `values`, `labels`, `unit`, `highlight`, `progress`, `height` |
+| `CounterBoard` | eine große Zahl, die hochzählt | `to`, `from`, `title`, `prefix`/`suffix`, `compact`, `dark`, `legs` |
+| `PercentRing` | Anteil / Prozent | `value` (0–100), `label`, `color`, `progress` |
+| `SizeCompare` | maßstäblicher Größenvergleich mit Lineal | `items` (`label`, `value`, `shape` column/tower/sphere/figure oder `node`), `unit`, `maxHeight` |
+| `Timeline` | Jahre/Ereignisse senkrecht (Hochformat) | `events` (`year`, `label`), `at` (Marker), `progress`, `length` |
+| `WorldMap` | Ort zeigen (schematische Plattkarte 2 : 1) | `pins` (`lon`, `lat`, `label`, `color`, `labelDy`), `drop`, `width` |
+| `Mark` | „?“ / „!“ als 3D-Zeichen | `kind`, `color`, `appear` |
+| `Arrow` | Hinweis-Pfeil von A nach B | `from`, `to`, `grow`, `color` |
+| `StudioBackdrop` + `StudioLights` + `FloorPlate` | Info-Studio: Verlauf, Rückwand mit Vignette, warmes Key-Light links oben | Farben `top`/`bottom`/`center` |
+| `InfoBoard` | Tafel mit Titelleiste und ≤ 3 Zeilen, Kinder vor der Fläche | `title`, `lines`, `dark`, `legs`, `appear` |
+| `CashBag`, `Stopwatch`, `LightBulb`, `WarningSign` | Pointen: Geld, Zeitdruck, Idee, Gefahr | `symbol`, `t`/`alarm`, `on`, `wobble` |
+| `TextLabel`, `Pill`, `useTextTexture` | beliebiger Text als Fläche/Pille | `text`, `width`, `height`, `bg`, `stroke`, `border` |
+
+**Schrift:** `kit/font.ts` (`KIT_FONT`, `kitFont(px)`, `useKitFont`) – gleiches Muster wie
+`ROME_FONT` (Montserrat 900 aus `public/fonts`, FontFace + `delayRender`, Freigabe erst zwei Bilder
+nach dem Neuzeichnen). Für neue Themen-Kits diesen Helfer verwenden statt ihn zu kopieren.
+`useTextTexture` bemalt bei Textänderung **dieselbe** Canvas neu (hochzählende Zahl = keine neue
+Textur pro Frame); zu lange Texte werden per `maxWidth` gestaucht, nie abgeschnitten.
+
+**Kontrast (gemessen):** Text liegt auf **unbeleuchteten** Flächen (`meshBasicMaterial`,
+`toneMapped={false}`, Textur in sRGB) – so ist der Kontrast im fertigen Bild der der Palette,
+unabhängig von Licht und Stimmung. Rechnerisch: dunkle Schrift `#2B2118` auf Papier `#FFF6E3`
+14,7 : 1, weiß auf Tafel `#22303F` 13,4 : 1, dunkel auf Akzent `#FFC928` 10,2 : 1, auf Grau
+`#C9CED6` 10,0 : 1. Im Standbild (halbe Größe, nach Grading) gemessen: Zähler-Tafel 15,0 : 1,
+Titelleiste 10,8 : 1, Zeitstrahl-Pille 14,7 : 1, Jahr-Pille 9,3 : 1, Ring-Mitte 16,0 : 1.
+Werte über Balken/Objekten: weiß mit INK-Rand (wie Untertitel, 18,4 : 1 zur Kontur) – liest sich
+auf jedem Hintergrund. Ausnahme: das grüne „$“ auf dem Geldsack hat Füllung/Jute nur 1,3 : 1 und
+lebt allein vom INK-Rand (Deko, kein Lese-Text).
+
+**Lesbarkeit/Platz (aus den Prüfbildern):**
+1. Schrift ≥ 40 px im fertigen Bild: Pillen-Höhe ≥ 0,54 Einheiten bei Kamera-Abstand 12–14
+   (0,44 ergab nur ≈ 34 px). Lineal-Zahlen 0,5.
+2. Nichts unter y = 0 beschriften: Beschriftungen sitzen auf der **Vorderseite eines Sockels**
+   (`BarChart`, `SizeCompare`), sonst verschwinden sie im Boden (erste Prüfrunde).
+3. Breite im Hochformat: sichtbare Bildbreite ≈ 0,41 × Kamera-Abstand (fov 42). `WorldMap` 4,0
+   breit braucht Abstand ≥ 12,5; `SizeCompare` mit 3 Objekten + Lineal ≥ 16; `BarChart` mit 4 Balken ≥ 14.
+4. Blickziel `look` etwa 1,2–1,8 Einheiten **unter** der Grafik-Mitte setzen, dann liegt die Grafik
+   im oberen Zwei-Drittel und die Untertitel-Zone (ab y ≈ 1300 px) bleibt frei.
+5. Lange Zahlen ab ~9 Zeichen mit `compact` („8.1B“) – sonst staucht `maxWidth` die Ziffern.
+6. Nadeln, deren Abstand auf der Karte kleiner ist als die Pillenbreite (≈ 1,2–1,5 Einheiten),
+   mit `labelDy` versetzen – NYC und Paris liegen bei Kartenbreite 4,6 nur 0,97 auseinander,
+   ihre Pillen überlappten (Prüfbild 2. Runde).
+7. `WorldMap` ist **schematisch** (grobe Kontinente) – nie als Grenz- oder Detailkarte ausgeben;
+   Inhalte aller Grafiken (Zahlen, Jahre, Orte) nur mit Freigabe des Faktenprüfers.
