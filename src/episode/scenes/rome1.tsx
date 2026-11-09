@@ -39,6 +39,10 @@ import { Fired, Deleted, Twist, Vote } from "./rome3";
 import { Goths, Perished, Vandals, Kid } from "./rome2";
 import {
   add,
+  aim,
+  jmove,
+  move,
+  under,
   anticipate,
   AuctionStage,
   Block,
@@ -56,12 +60,8 @@ import { lerp } from "./util";
 const SEAT: V3 = [0, STAGE_Y + THRONE_SIT_Y, -0.6];
 
 /** Kamera der ersten Einstellung (Hook S0) – auch Zielbild des Loops am Ende (vote). */
-export const HOOK_CAM = {
-  from: [0.5, 3.6, 11.5] as V3,
-  to: [0.6, 3.9, 13.5] as V3,
-  look: [0.4, 3.4, -0.4] as V3,
-  fov: 40,
-};
+export const HOOK_A = aim([0.7, 3.0, -0.2], 10.5, 0.5, 0.5, [0, 0.1, 1]);
+export const HOOK_CAM = move(HOOK_A, aim([0.7, 3.0, -0.2], 11.5, 0.5, 0.5, [0, 0.12, 1]));
 
 /* 1 — hook: „the Roman Empire got auctioned off …“ */
 export const RomeHook: React.FC = () => {
@@ -120,19 +120,15 @@ export const RomeHook: React.FC = () => {
         <Legionary frame={frame} position={[-2.6, STAGE_Y, 0.6]} rotation={[0, 0.5, 0]} arms={won ? [1.4, 0.4] : [0.3, 0.5]} mouth={won ? "grin" : "flat"} />
         <Legionary frame={frame + 7} position={[2.6, STAGE_Y, 0.6]} rotation={[0, -0.5, 0]} arms={won ? [0.4, 1.4] : [0.3, 0.5]} mouth={won ? "grin" : "flat"} />
         <Burst frame={frame} start={win} origin={[0, 4.6, 4.2]} count={26} speed={0.14} gravity={0.004} size={0.16} colors={[ROME.gold, "#FFFFFF", "#FFE08A"]} seed={3} />
-        <Shot frame={f} duration={close - wide} from={[0.2, 3.8, 17]} to={[0, 3.7, 15.5]} look={[0, 3.3, 1.5]} fov={40} punch={win - wide} />
+        <Shot frame={f} duration={close - wide} {...move(aim([0, 3.05, 4.2], 14.5, under(0.42, 14.5)), aim([0, 3.05, 4.2], 13.5, under(0.42, 13.5)))} punch={win - wide} />
       </>
     );
   }
   // Halbnah auf dem Thron: erst Grinsen, ab „respawn“ Sorge, Ranfahrt bei „worse“
   const scared = frame >= respawnAt;
   const push = ramp(frame, worried - 30, duration, Easing.out(Easing.cubic));
-  const from: V3 = [0.3, 4.6, 9.6];
-  const mid: V3 = [0.15, 4.55, 8.2];
-  const end: V3 = [0, 4.5, 6.6];
-  const pos: V3 = frame < worried - 30
-    ? [lerp(from[0], mid[0], ramp(frame, close, worried - 30)), lerp(from[1], mid[1], ramp(frame, close, worried - 30)), lerp(from[2], mid[2], ramp(frame, close, worried - 30))]
-    : [lerp(mid[0], end[0], push), lerp(mid[1], end[1], push), lerp(mid[2], end[2], push)];
+  const H = frame < worried - 30 ? lerp(10, 9, ramp(frame, close, worried - 30)) : lerp(9, 7.4, push);
+  const cam = aim(add(SEAT, [0, 3.05, 0]), H, under(0.42, H), 0.5, [0.05, 0.08, 1]);
   return (
     <>
       <AuctionStage frame={frame} />
@@ -148,7 +144,7 @@ export const RomeHook: React.FC = () => {
         bounce={scared ? 0 : 0.06}
         scepter
       />
-      <Shot frame={frame} duration={1} from={pos} look={[0, 3.55, -0.6]} fov={40} shake={scared ? 0.05 : 0.03} />
+      <Shot frame={frame} duration={1} from={cam.pos} look={cam.look} fov={40} shake={scared ? 0.05 : 0.03} />
     </>
   );
 };
@@ -189,7 +185,7 @@ export const RomeAuction: React.FC = () => {
         <Studio />
         <TimelineStele position={[0, 0, 0]} at={lerp(6, 1, t)} frame={frame} />
         <Burst frame={frame} start={guards - 8} origin={[-0.95, 4.6, 0.4]} count={16} speed={0.1} gravity={0} size={0.12} colors={[ROME.gold, "#FFFFFF"]} seed={8} />
-        <Shot frame={frame} duration={1} from={[Math.sin(a) * 9.5, 3.6, Math.cos(a) * 9.5]} look={[0, 3.2, 0]} fov={42} shake={0.06} />
+        <Shot frame={frame} duration={1} {...move(aim([0, 3.4, 0], 9.2, 0.5, 0.5, [Math.sin(a), 0.1, Math.cos(a)]))} shake={0.06} />
       </>
     );
   }
@@ -213,7 +209,7 @@ export const RomeAuction: React.FC = () => {
           />
         ))}
         <RomanSkyline position={[0, 0, -24]} width={60} rows={2} seed={5} />
-        <Shot frame={f} duration={forSale - guards} from={[0.6, 2.2, 17]} to={[0, 2.6, 15.5]} look={[0, 6.4, -2]} fov={40} />
+        <Shot frame={f} duration={forSale - guards} {...move(aim([0, 8.55, -2.1], 15, under(0.3, 15), 0.5, [0.05, -0.25, 1]), aim([0, 8.55, -2.1], 14, under(0.3, 14), 0.5, [0, -0.22, 1]))} />
       </>
     );
   }
@@ -228,8 +224,8 @@ export const RomeAuction: React.FC = () => {
         <Pavement size={120} />
         <Palisade along="z" />
         <Legionary frame={frame} position={[0, PALISADE_H, -0.8]} arms={[2.7, 2.7]} mouth="grin" eyes="happy" bounce={0.04} shield={false} />
-        <group position={[0, PALISADE_H + 5.2, -0.6]} scale={Math.max(0.001, sign)}>
-          <SignBoard lines={["THRONE", "FOR SALE"]} post={false} width={2.4} height={1.1} />
+        <group position={[0, PALISADE_H + 1.75, -0.1]} scale={Math.max(0.001, sign)}>
+          <SignBoard lines={["THRONE", "FOR SALE"]} post={false} width={2.0} height={1.0} />
         </group>
         <Legionary frame={frame + 15} position={[0, PALISADE_H, -3.2]} arms={[0.3, 0.5]} />
         <Senator
@@ -244,21 +240,21 @@ export const RomeAuction: React.FC = () => {
         <CoinStack position={[-2.9, 0, 0.9]} count={bidR ? Math.min(9, 2 + (frame - rival) / 4) : 2} scale={0.75} />
         <Hero
           frame={frame}
-          position={[1.8, 0, 0.6]}
+          position={[1.3, 0, 0.6]}
           rotation={[0, -0.55, 0]}
           arms={bidY ? [2.7 + Math.sin(frame * 0.5) * 0.15, 2.7 - Math.sin(frame * 0.5) * 0.15] : [0.3, 0.3]}
           eyes={bidY ? "angry" : "dot"}
           mouth={bidY ? "teeth" : "smile"}
           bounce={bidY ? 0.12 : 0}
         />
-        <CoinStack position={[3.0, 0, 1.0]} count={bidY ? Math.min(11, 2 + (frame - outside) / 3) : 2} scale={0.75} />
-        <Shot frame={f} duration={fingers - forSale} from={[-0.8, 3.7, 17.5]} to={[0.6, 3.6, 16.5]} look={[0, 3.6, 0]} fov={40} />
+        <CoinStack position={[2.4, 0, 1.4]} count={bidY ? Math.min(11, 2 + (frame - outside) / 3) : 2} scale={0.75} />
+        <Shot frame={f} duration={fingers - forSale} {...move(aim([-1.7, 3.05, 0.5], 12.5, under(0.45, 12.5), 0.32), aim([-1.7, 3.05, 0.5], 12, under(0.45, 12), 0.3))} />
       </>
     );
   }
   // Finger-Detail (Antizipation: Hand holt erst nach unten aus) → Zurückfahren bei „Sold!“
   const a = anticipate(frame, fingers + 4, 9);
-  const handY = lerp(1.9, 4.0, a);
+  const handY = lerp(2.4, 4.75, a);
   const soldT = ramp(frame, sold, duration, Easing.out(Easing.cubic));
   const won = frame >= sold;
   return (
@@ -280,26 +276,26 @@ export const RomeAuction: React.FC = () => {
           shield={false}
         />
       ))}
-      <Senator frame={frame} position={[-1.5, 0, -1.6]} arms={[0.3, won ? 0.3 : 2.4]} eyes={won ? "wide" : "angry"} mouth={won ? "o" : "teeth"} />
+      <Senator frame={frame} position={[-1.4, 0, -1.2]} arms={[0.3, won ? 0.3 : 2.4]} eyes={won ? "wide" : "angry"} mouth={won ? "o" : "teeth"} />
       <Hero
         frame={frame}
-        position={[0.9, 0, 2.6]}
-        rotation={[0, -0.15, 0]}
-        arms={won ? [2.6, 2.6] : [0.3, lerp(0.4, 2.5, Math.max(0, a))]}
+        position={[0.6, 0, 2.6]}
+        rotation={[0, 0.1, 0]}
+        arms={won ? [2.6, 2.6] : [lerp(0.4, 2.3, Math.max(0, a)), 0.4]}
         eyes={won ? "happy" : "angry"}
         mouth={won ? "teeth" : "grin"}
         brow={won ? 0 : 0.15}
         bounce={won ? 0.12 : 0}
       />
       {!won ? (
-        <BigHand position={[2.2, handY, 3.0]} rotation={[0, -0.25, lerp(0.4, -0.15, Math.max(0, a))]} scale={0.95} fingers={5} wiggle={1} frame={frame} />
+        <BigHand position={[-0.5, handY, 3.3]} rotation={[0, 0.2, lerp(-0.4, 0.15, Math.max(0, a))]} scale={0.95} fingers={5} wiggle={1} frame={frame} />
       ) : null}
       <Burst frame={frame} start={sold} origin={[0.9, 5.5, 2.6]} count={34} speed={0.16} gravity={0.006} size={0.22} colors={[ROME.gold, "#E8A92A", "#FFE08A"]} seed={12} />
       <Shot
         frame={frame}
         duration={1}
-        from={[lerp(1.5, 0.6, soldT), lerp(3.7, 4.4, soldT), lerp(8.6, 15, soldT)]}
-        look={[lerp(1.3, 0.4, soldT), lerp(3.6, 3.6, soldT), 1.5]}
+        from={aim([0.6, 3.05, 2.6], lerp(8.2, 13.5, soldT), 0.56, 0.52, [0.1, 0.1, 1]).pos}
+        look={aim([0.6, 3.05, 2.6], lerp(8.2, 13.5, soldT), 0.56, 0.52, [0.1, 0.1, 1]).look}
         fov={40}
         shake={0.04}
         punch={sold}
@@ -344,7 +340,7 @@ export const RomeStones: React.FC = () => {
         {temple}
         {crowd(frame >= boo)}
         <Hero frame={frame} position={[0, 0, 0]} arms={[0.6, 0.6]} eyes="wide" mouth="o" brow={-0.3} sweat />
-        <Shot frame={f} duration={stones} from={[0, 4.6, 15.5]} to={[0.4, 4.3, 14]} look={[0, 3.0, -1]} fov={40} punch={boo} />
+        <Shot frame={f} duration={stones} {...move(aim([0, 3.05, 0], 14, under(0.42, 14), 0.5, [0, 0.14, 1]), aim([0, 3.05, 0], 13, under(0.42, 13), 0.5, [0.05, 0.12, 1]))} punch={boo} />
       </>
     );
   }
@@ -378,7 +374,7 @@ export const RomeStones: React.FC = () => {
         {throws.map(([s, a, b], i) => (
           <FlyingStone key={i} frame={frame} start={s} dur={13} from={a} to={b} arc={1.6} size={0.2} />
         ))}
-        <Shot frame={f} duration={over - stones} from={[1.4, 3.9, 10]} to={[1.0, 3.8, 9]} look={[0, 3.0, 0]} fov={40} shake={0.08} />
+        <Shot frame={f} duration={over - stones} {...move(aim([0, 3.05, 0], 11, under(0.42, 11), 0.5, [0.18, 0.1, 1]), aim([0, 3.05, 0], 10, under(0.42, 10), 0.5, [0.14, 0.1, 1]))} shake={0.08} />
       </>
     );
   }
@@ -391,8 +387,8 @@ export const RomeStones: React.FC = () => {
         <Studio color="#1A0F14" light={[6, 7, 6]} intensity={1.2} />
         <DangerLight frame={frame} position={[-3.6, 4, 2]} intensity={0.8} />
         <Hero frame={0} position={[0, -0.25, 0]} rotation={[0.18, 0, 0]} arms={[2.75, 2.75]} eyes="closed" mouth="teeth" brow={-0.3} />
-        <StampMark text="GAME OVER" position={[0, 2.9, 1.8]} rotation={[0, 0, 0.1]} w={4.2} h={1.25} scale={Math.max(0.001, 2.2 - 1.2 * s)} />
-        <Shot frame={f} duration={last - over} from={add([0, 3.3, 9.2], j)} to={add([0, 3.3, 8.6], j)} look={[0, 3.0, 0]} fov={40} shake={0.02} />
+        <StampMark text="GAME OVER" position={[0, 1.7, 1.8]} rotation={[0, 0, 0.1]} w={4.2} h={1.25} scale={Math.max(0.001, 2.2 - 1.2 * s)} />
+        <Shot frame={f} duration={last - over} {...jmove(move(aim([0, 2.8, 0], 10, under(0.42, 10)), aim([0, 2.8, 0], 9.4, under(0.42, 9.4))), j)} shake={0.02} />
       </>
     );
   }
@@ -413,7 +409,7 @@ export const RomeStones: React.FC = () => {
         blush={deadpan}
         look={Math.sin(frame * 0.07) * 0.06}
       />
-      <Shot frame={frame} duration={1} from={[0, lerp(3.4, 3.3, push), lerp(8.6, 6.8, push)]} look={[0, 2.7, 0]} fov={40} shake={0.03} />
+      <Shot frame={frame} duration={1} {...move(aim([0, 3.05, 0], lerp(8.4, 7.0, push), under(0.42, lerp(8.4, 7.0, push))))} shake={0.03} />
     </>
   );
 };
@@ -457,7 +453,7 @@ export const RomeChaos: React.FC = () => {
           </group>
         </group>
         {flyers}
-        <Shot frame={f} duration={stele} from={[0, 6.4, 14.5]} to={[0.6, 5.6, 13]} look={[0, 3.0, 0]} fov={40} shake={0.06} />
+        <Shot frame={f} duration={stele} {...move(aim([0, 3.6, 0], 13, 0.55, 0.5, [0, 0.4, 1]), aim([0, 3.6, 0], 12, 0.55, 0.5, [0.1, 0.3, 1]))} shake={0.06} />
       </>
     );
   }
@@ -472,7 +468,7 @@ export const RomeChaos: React.FC = () => {
     const land = 16;
     const y = t < land ? lerp(8.5, 0.12, Math.pow(t / land, 2)) : 0.12;
     const sq = t >= land && t < land + 6 ? Math.sin(((t - land) / 6) * Math.PI) : 0;
-    const x = -2.6 + i * 0.62;
+    const x = -2.2 + i * 0.55;
     return (
       <group key={i} position={[x, y, 1.4 + (i % 2) * 0.5]} scale={[0.32 * (1 + sq * 0.3), 0.32 * (1 - sq * 0.4), 0.32 * (1 + sq * 0.3)]} rotation={[0.3, i, 0]}>
         <LaurelWreath y={0} />
@@ -494,7 +490,7 @@ export const RomeChaos: React.FC = () => {
         brow={nopeOn ? 0.3 : -0.3}
         look={nopeOn ? Math.sin(frame * 0.9) * 0.35 : 0}
       />
-      <Shot frame={f} duration={duration - stele} from={[0.3, 3.6, 12.2]} to={[0.2, 3.5, 11]} look={[0.2, 3.2, 0]} fov={40} punch={nope - stele} />
+      <Shot frame={f} duration={duration - stele} {...move(aim([0.2, 3.2, 0.3], 10.5, 0.52), aim([0.2, 3.2, 0.3], 9.8, 0.52))} punch={nope - stele} />
     </>
   );
 };
@@ -516,8 +512,8 @@ export const RomeSplit: React.FC = () => {
     const walk = ramp(frame, split + 10, duration);
     const j = jolt(frame, split, 0.25, 14);
     const cam = shot === 0
-      ? { from: [-2.6, 6.4, 7.6] as V3, to: [-2.4, 5.8, 6.8] as V3, look: [-2.6, 0.5, 0] as V3 }
-      : { from: [0, 15, 12] as V3, to: [0.6, 14, 11] as V3, look: [0.4, 0, 0] as V3 };
+      ? move(aim([-2.7, 1.0, 0.6], 6.5, 0.52, 0.5, [0, 0.9, 1]), aim([-2.7, 1.0, 0.6], 5.8, 0.52, 0.5, [0.1, 0.8, 1]))
+      : move(aim([0.6, 0.3, 0.2], 13, 0.52, 0.5, [0, 1.6, 1]), aim([0.9, 0.3, 0.2], 12.5, 0.52, 0.5, [0, 1.5, 1]));
     return (
       <>
         <Studio table />
@@ -530,7 +526,7 @@ export const RomeSplit: React.FC = () => {
         <group position={[2.5 + gap + walk * 1.6, y, 0.7]} rotation={[0, frame > split ? 1.2 : -0.3, 0]} scale={0.36}>
           <Emperor frame={frame} walk={frame > split + 10 ? 1 : 0} arms={[0.4, 1.6 + Math.sin(frame * 0.4) * 0.3]} eyes="happy" mouth="grin" />
         </group>
-        <Shot frame={f} duration={shot === 0 ? split : throne - split} from={add(cam.from, j)} to={add(cam.to, j)} look={cam.look} fov={40} />
+        <Shot frame={f} duration={shot === 0 ? split : throne - split} {...jmove(cam, j)} />
       </>
     );
   }
@@ -555,14 +551,14 @@ export const RomeSplit: React.FC = () => {
         scepter={!withRooster}
       />
       {withRooster ? (
-        <group position={[1.85, 0, 0.3]} rotation={[0, -0.55, 0]} scale={[rs * (1 - sq * 0.5), rs * (1 + sq), rs * (1 - sq * 0.5)]}>
+        <group position={[1.55, 0, 0.5]} rotation={[0, -0.55, 0]} scale={[1.25 * rs * (1 - sq * 0.5), 1.25 * rs * (1 + sq), 1.25 * rs * (1 - sq * 0.5)]}>
           <Rooster frame={frame} tag="ROME" flap={frame - rooster < 14 ? 0.8 : 0.1} />
         </group>
       ) : null}
       {shot === 2 ? (
-        <Shot frame={f} duration={rooster - throne} from={[1.3, 3.9, 11]} to={[1.1, 3.8, 9.8]} look={[1.0, 3.3, -0.7]} fov={40} />
+        <Shot frame={f} duration={rooster - throne} {...move(aim([0, 3.71, -0.7], 11.5, under(0.42, 11.5), 0.4), aim([0, 3.71, -0.7], 10.5, under(0.42, 10.5), 0.4))} />
       ) : (
-        <Shot frame={f} duration={duration - rooster} from={[0.9, 3.4, 9.0]} to={[0.8, 3.4, 8.4]} look={[0.75, 2.9, -0.4]} fov={40} punch={0} />
+        <Shot frame={f} duration={duration - rooster} {...move(aim([0, 3.71, -0.7], 10, under(0.42, 10), 0.36), aim([0, 3.71, -0.7], 9.4, under(0.42, 9.4), 0.37))} punch={0} />
       )}
     </>
   );

@@ -224,3 +224,56 @@ export const SenateSet: React.FC<{ readonly frame: number }> = () => (
     ))}
   </>
 );
+
+/* ------------------------------------------------------------------ */
+/* Bildgestaltung: Kamera aus gewünschter Bildposition berechnen        */
+/* ------------------------------------------------------------------ */
+
+const FOV = 40;
+const TAN = Math.tan(((FOV / 2) * Math.PI) / 180);
+const ASPECT = 1080 / 1920;
+const norm = (v: V3): V3 => {
+  const l = Math.hypot(v[0], v[1], v[2]) || 1;
+  return [v[0] / l, v[1] / l, v[2] / l];
+};
+const cross = (a: V3, b: V3): V3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+
+/**
+ * Kamera so stellen, dass Punkt `p` (z. B. Kopfmitte) bei Bildanteil (xf, yf) liegt und das
+ * Bild dort `H` Einheiten hoch ist (H/0,728 = Abstand bei fov 40). `dir` = Richtung von p
+ * zur Kamera. Für Pills: Kopf knapp unter die Pill-Spitze legen (yf = Pill-y + 0,02 + 1,3/H).
+ */
+export const aim = (p: V3, H: number, yf = 0.55, xf = 0.5, dir: V3 = [0, 0.12, 1]) => {
+  const d = H / (2 * TAN);
+  const W = H * ASPECT;
+  const back = norm(dir);
+  const fwd: V3 = [-back[0], -back[1], -back[2]];
+  const right = norm(cross(fwd, [0, 1, 0]));
+  const up = cross(right, fwd);
+  const dy = (yf - 0.5) * H;
+  const dx = (xf - 0.5) * W;
+  const look: V3 = [
+    p[0] + up[0] * dy - right[0] * dx,
+    p[1] + up[1] * dy - right[1] * dx,
+    p[2] + up[2] * dy - right[2] * dx,
+  ];
+  const pos: V3 = [look[0] + back[0] * d, look[1] + back[1] * d, look[2] + back[2] * d];
+  return { pos, look };
+};
+
+/** Props für <Shot>: Fahrt von Bildausschnitt a nach b (je Ergebnis von `aim`). */
+export const move = (a: { pos: V3; look: V3 }, b: { pos: V3; look: V3 } = a) => ({
+  from: a.pos,
+  to: b.pos,
+  look: a.look,
+  lookTo: b.look,
+  fov: FOV,
+});
+
+/** Kopfmitte einer stehenden Figur (Maßstab k) bei Fußpunkt p. */
+export const headOf = (p: V3, k = 1): V3 => [p[0], p[1] + 3.05 * k, p[2]];
+/** yf für einen Kopf (Radius r) direkt unter einer Pill bei Bild-y ly. */
+export const under = (ly: number, H: number, r = 1) => ly + 0.025 + (1.3 * r) / H;
+
+/** Wackler (aus `jolt`) auf eine Kamerafahrt addieren. */
+export const jmove = (m: ReturnType<typeof move>, j: V3) => ({ ...m, from: add(m.from, j), to: add(m.to, j) });

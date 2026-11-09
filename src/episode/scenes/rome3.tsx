@@ -35,10 +35,11 @@ import {
 import { useScene } from "../types";
 import { KID_SCALE, KID_SEAT } from "./rome2";
 import { HOOK_CAM } from "./rome1";
-import { add, anticipate, AuctionStage, Block, cut, jolt, PalaceSet, pop, ramp, SenateSet, Studio } from "./romeSets";
+import { aim, anticipate, AuctionStage, Block, cut, jmove, jolt, move, PalaceSet, pop, ramp, SenateSet, Studio, under } from "./romeSets";
 import { lerp } from "./util";
 
 const ODO_K = 1.15;
+const ODO_HEAD: V3 = [1.7, 3.05 * ODO_K, 0.9];
 const Odoacer: React.FC<{
   readonly frame: number;
   readonly position: V3;
@@ -71,7 +72,7 @@ export const Fired: React.FC = () => {
         <group position={kidPos} scale={KID_SCALE}>
           <Hero frame={frame} kid sit={up > 0.5 ? 0 : 1} walk={up > 0 ? 2.2 : 0} arms={up > 0 ? [2.0 + Math.sin(frame * 0.6) * 0.4, 2.0 - Math.sin(frame * 0.6) * 0.4] : [0.5, 0.5]} eyes="wide" mouth="o" brow={-0.3} />
         </group>
-        <Shot frame={f} duration={setDown} from={[1.2, 4.0, 12.5]} to={[1.0, 3.9, 11.6]} look={[0.9, 3.5, -0.3]} fov={40} />
+        <Shot frame={f} duration={setDown} {...move(aim(ODO_HEAD, 12.5, under(0.32, 12.5, ODO_K), 0.62), aim(ODO_HEAD, 11.8, under(0.32, 11.8, ODO_K), 0.62))} />
       </>
     );
   }
@@ -88,7 +89,7 @@ export const Fired: React.FC = () => {
         <group position={[-0.6, 0.08, 0.9]} rotation={[Math.PI / 2, 0, 0.3]} scale={0.32}>
           <LaurelWreath y={0} />
         </group>
-        <Shot frame={f} duration={pretty - setDown} from={[-1.6, 3.2, 9.5]} to={[-1.3, 3.1, 9]} look={[0.9, 2.6, 0.6]} fov={40} />
+        <Shot frame={f} duration={pretty - setDown} {...move(aim(ODO_HEAD, 11.5, under(0.32, 11.5, ODO_K), 0.62, [-0.35, 0.1, 1]), aim(ODO_HEAD, 11, under(0.32, 11, ODO_K), 0.62, [-0.3, 0.1, 1]))} />
       </>
     );
   }
@@ -105,7 +106,7 @@ export const Fired: React.FC = () => {
         </group>
         {frame >= bag ? <MoneyBag position={[0.1, lerp(5.5, 0.7, b), 2.4]} scale={0.6} squash={sq} /> : null}
         <Burst frame={frame} start={bag + 6} origin={[0.4, 5.5, 1.8]} count={26} speed={0.07} gravity={0.006} size={0.2} colors={[ROME.gold, "#E8A92A"]} seed={31} />
-        <Shot frame={f} duration={villa - pretty} from={[-0.4, 2.0, 7.4]} to={[-0.3, 2.1, 6.6]} look={[0.6, 2.9, 0.6]} fov={40} />
+        <Shot frame={f} duration={villa - pretty} {...move(aim([1.7, 3.5, -0.2], 9.5, under(0.32, 9.5, ODO_K), 0.62, [-0.25, -0.05, 1]), aim([1.7, 3.5, -0.2], 9, under(0.32, 9, ODO_K), 0.62, [-0.25, -0.05, 1]))} />
       </>
     );
   }
@@ -124,7 +125,7 @@ export const Fired: React.FC = () => {
         <Hero frame={frame} kid wreath={false} walk={1.2} arms={[0.5, 0.9]} eyes="happy" mouth="grin" />
         <MoneyBag position={[0.9, 0.3, 0.3]} scale={0.9} />
       </group>
-      <Shot frame={frame - villa} duration={duration - villa} from={[-1.2, 2.4, 8]} to={[-0.6, 2.4, 7.2]} look={[1.0, 1.9, -2]} fov={40} />
+      <Shot frame={frame - villa} duration={duration - villa} {...move(aim([0.2, 1.8, -0.5], 7.5, 0.55, 0.5, [-0.2, 0.1, 1]), aim([1.0, 1.8, -0.8], 7, 0.55, 0.5, [-0.1, 0.1, 1]))} />
     </>
   );
 };
@@ -159,7 +160,7 @@ export const Deleted: React.FC = () => {
             mouth={i === 1 ? "flat" : "smile"}
           />
         ))}
-        <Shot frame={frame} duration={1} from={[lerp(-4.6, 0, pan), 3.6, 11]} look={[lerp(-5, 0, pan), 3.0, -0.5]} fov={40} />
+        <Shot frame={frame} duration={1} {...move(aim([lerp(-5, 0, pan), 3.05, -0.8], 12, under(0.42, 12)))} />
       </>
     );
   }
@@ -175,7 +176,7 @@ export const Deleted: React.FC = () => {
       {hit ? <StampMark text="DELETED" position={[0, 0.12, 0.1]} rotation={[-Math.PI / 2, 0, 0.18]} w={3.4} h={1.1} scale={1 + 0.3 * (1 - pop(frame, stamp, 9))} /> : null}
       {!hit || frame < stamp + 8 ? <RubberStamp position={[0.1, hit ? 0.12 + (frame - stamp) * 0.25 : y, 0.1]} rotation={[0, 0.18, 0]} scale={1.3} /> : null}
       <Burst frame={frame} start={stamp} origin={[0, 0.2, 0.1]} count={16} speed={0.12} gravity={0.004} size={0.1} colors={["#FFFFFF", "#D9C29A"]} seed={41} />
-      <Shot frame={f} duration={duration - ad} from={add([0, 6.2, 4.4], j)} to={add([0, 5.7, 3.8], j)} look={[0, 0.3, -0.1]} fov={40} shake={0.02} />
+      <Shot frame={f} duration={duration - ad} {...jmove(move(aim([0, 0.3, 0.1], 5.2, 0.55, 0.5, [0, 1.3, 1]), aim([0, 0.3, 0.1], 4.7, 0.55, 0.5, [0, 1.3, 1])), j)} shake={0.02} />
     </>
   );
 };
@@ -201,7 +202,7 @@ export const Twist: React.FC = () => {
         <group position={[-3.6, 0.32, 0.8]} rotation={[0, 1.2, 0]} scale={0.36}>
           <Hero frame={frame} arms={[0.4, 0.4]} eyes="wide" mouth="o" />
         </group>
-        <Shot frame={frame} duration={1} from={[lerp(-3.4, 2.8, fly), lerp(6.2, 6.8, fly), lerp(6.4, 7.2, fly)]} look={[lerp(-3.4, 2.8, fly), 0.4, 0]} fov={40} />
+        <Shot frame={frame} duration={1} {...move(aim([lerp(-3.2, 2.8, fly), 0.6, 0.2], lerp(6.5, 7.5, fly), 0.52, 0.5, [0, 0.9, 1]))} />
       </>
     );
   }
@@ -212,7 +213,7 @@ export const Twist: React.FC = () => {
         <Studio color="#3A2016" intensity={2.6} />
         <TimelineStele at={at} frame={frame} />
         <Burst frame={frame} start={race + 12} origin={[-0.95, 1.1, 0.4]} count={20} speed={0.1} gravity={0.002} size={0.12} colors={[ROME.gold, "#FFFFFF", ROME.purple]} seed={52} />
-        <Shot frame={f} duration={eastEmp - 82} from={[1.6, 3.2, 10]} to={[0.4, 3.0, 9]} look={[0, 3.0, 0]} fov={40} punch={race - 82} />
+        <Shot frame={f} duration={eastEmp - 82} {...move(aim([0, 3.4, 0], 9.6, 0.5, 0.5, [0.25, 0.05, 1]), aim([0, 3.4, 0], 9, 0.5, 0.5, [0.05, 0.05, 1]))} punch={race - 82} />
       </>
     );
   }
@@ -228,7 +229,7 @@ export const Twist: React.FC = () => {
       <Rotunda position={[-6, 0, -18]} scale={2.2} />
       <Rotunda position={[7, 0, -22]} scale={1.6} />
       <RomanSkyline position={[0, 0, -26]} width={60} rows={2} seed={17} rotunda={false} />
-      <Shot frame={f} duration={duration - eastEmp} from={[0.2, 3.9, 11]} to={[0, 3.8, 9.6]} look={[0, 3.1, -0.7]} fov={40} punch={label - eastEmp} />
+      <Shot frame={f} duration={duration - eastEmp} {...move(aim([0, 3.71, -0.7], 11.5, under(0.42, 11.5)), aim([0, 3.71, -0.7], 10.5, under(0.42, 10.5)))} punch={label - eastEmp} />
     </>
   );
 };
@@ -266,9 +267,9 @@ export const Vote: React.FC = () => {
         />
         <Coin position={[1.2, 1.06, 0.4]} rotation={[Math.PI / 2, 0, 0]} scale={0.6} />
         {shot === 0 ? (
-          <Shot frame={f} duration={closer} from={[0.4, 1.6, 12]} to={[0.2, 1.7, 11]} look={[0, 4.1, -2]} fov={40} />
+          <Shot frame={f} duration={closer} {...move(aim([0, 2.9, -0.05], 16, 0.265, 0.5, [0.05, -0.05, 1]), aim([0, 2.9, -0.05], 15, 0.265, 0.5, [0, -0.05, 1]))} />
         ) : (
-          <Shot frame={f} duration={rush + 16 - closer} from={[0.2, 2.2, 8.2]} to={[0, 2.4, lerp(7.4, 5.5, lean)]} look={[0, 4.0, -1]} fov={40} />
+          <Shot frame={f} duration={rush + 16 - closer} {...move(aim([0, 2.9, -0.05], 12.5, 0.27, 0.5, [0, -0.08, 1]), aim([0, 2.9, -0.05], lerp(12, 9, lean), 0.27, 0.5, [0, -0.08, 1]))} />
         )}
       </>
     );

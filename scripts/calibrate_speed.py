@@ -6,7 +6,7 @@ Wörter/s messen, besten Wert empfehlen. Kein Whisper, keine Musik, schreibt nic
   .venv/bin/python scripts/calibrate_speed.py episodes/x.json --wav   # Tonspuren zum Anhören behalten
 
 Automatik: 1 Probe beim Tempo aus dem Drehbuch -> lineare Schätzung für die Zielmitte (3,45 W/s)
--> weitere Werte im Abstand --step um die Schätzung (insgesamt --n Werte).
+-> Schätzung ± --step -> restliche Werte (bis --n) halbieren das Intervall mit dem größten Sprung.
 Hintergrund: Kokoros Tempo wirkt nicht linear (Rom: 1.33 -> 99,8 s, 1.34 -> 91,5 s, 1.35 -> 89,4 s),
 deshalb wird gemessen statt gerechnet. Empfohlen wird ein Wert im Zielband, dessen Nachbarn
 möglichst auch im Band liegen (robust gegen Sprünge), am nächsten an der Zielmitte.
@@ -50,6 +50,12 @@ def measure(ep: dict, voice, speed: float, wav_dir: Path | None) -> dict:
     }
 
 
+def jump_pct(p: dict, r: dict) -> tuple[float, float]:
+    """Gemessene Dauer-Änderung p -> r in % und die bei Dauer ~ 1/Tempo erwartete."""
+    pct = (r["voiceSec"] - p["voiceSec"]) / p["voiceSec"] * 100
+    return pct, (p["speed"] / r["speed"] - 1) * 100
+
+
 def recommend(rows: list[dict]) -> dict | None:
     rows = sorted(rows, key=lambda r: r["speed"])
     inband = lambda r: LO <= r["wps"] <= HI  # noqa: E731
@@ -68,7 +74,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("episode", type=Path)
     ap.add_argument("--speeds", help="Komma-Liste, z. B. 1.30,1.33,1.36 (sonst automatisch)")
-    ap.add_argument("--n", type=int, default=4, help="Anzahl Werte im Automatik-Modus (Standard 4, inkl. Probe)")
+    ap.add_argument("--n", type=int, default=5, help="Anzahl Werte im Automatik-Modus (Standard 5, inkl. Probe)")
     ap.add_argument("--step", type=float, default=0.01, help="Abstand der Werte (Standard 0.01)")
     ap.add_argument("--wav", action="store_true", help="Tonspuren in out/calibrate/<id>/ behalten")
     ap.add_argument("--out", type=Path, help="Ausgabeordner (Standard out/calibrate/<id>)")
@@ -100,14 +106,24 @@ def main() -> None:
     else:
         probe = float(ep.get("speed", 1.0))
         run(probe)
-        # W/s ~ Tempo (lineare Näherung) -> Schätzung, dann Werte drumherum
+        # W/s ~ Tempo (lineare Näherung) -> Schätzung und Nachbarn
         est = round(probe * MID / rows[0]["wps"] / a.step) * a.step
         print(f"  Schätzung (linear) für {MID:.2f} W/s: {est:.3f}")
-        k = 0
-        while len(rows) < a.n and k < 4 * a.n:
-            off = (k + 1) // 2 * (1 if k % 2 else -1) if k else 0
-            run(est + off * a.step)
-            k += 1
+        for s in (est, est - a.step, est + a.step):
+            if len(rows) < a.n:
+                run(s)
+        # Rest: Intervall mit dem größten Sprung (Abweichung von Dauer ~ 1/Tempo) halbieren
+        while len(rows) < a.n:
+            rs = sorted(rows, key=lambda r: r["speed"])
+            pairs = [(abs(jump_pct(p, r)[0] - jump_pct(p, r)[1]), p, r) for p, r in zip(rs, rs[1:])
+                     if r["speed"] - p["speed"] > 0.004]
+            if not pairs:
+                break
+            _, p, r = max(pairs, key=lambda x: x[0])
+            n0 = len(rows)
+            run(round((p["speed"] + r["speed"]) / 2 / 0.0025) * 0.0025)
+            if len(rows) == n0:
+                break
 
     rows.sort(key=lambda r: r["speed"])
     print(f"\n{ep['id']}: {rows[0]['words']} Skript-Wörter, Ziel {LO}–{HI} W/s")
@@ -116,12 +132,17 @@ def main() -> None:
         jump = ""
         if i:
             p = rows[i - 1]
-            pct = (r["voiceSec"] - p["voiceSec"]) / p["voiceSec"] * 100
-            expect = -(r["speed"] - p["speed"]) / r["speed"] * 100  # Dauer ~ 1/Tempo
+            pct, expect = jump_pct(p, r)
             jump = f"{pct:+.1f} % (linear {expect:+.1f} %)" + ("  <- Sprung" if abs(pct - expect) > 2 else "")
         band = "ja" if LO <= r["wps"] <= HI else "–"
         print(f"{r['speed']:7.3f} {r['voiceSec']:9.2f} {r['videoSec']:8.2f} {r['wps']:6.2f}  {band:>4}  {jump}")
 
+    for p, r in zip(rows, rows[1:]):
+        pct, expect = jump_pct(p, r)
+        if abs(pct - expect) > 2 and p["wps"] < MID < r["wps"]:
+            print(f"\nHinweis: Zwischen {p['speed']:g} ({p['wps']:.2f} W/s) und {r['speed']:g} ({r['wps']:.2f} W/s) springt "
+                  "die Dauer; Werte dazwischen sind mit dem Tempo allein kaum erreichbar. Feinsteuerung über "
+                  "Text (Wörter streichen/ergänzen) oder voiceStyle.sceneSpeed einzelner Szenen.")
     best = recommend(rows)
     if best:
         print(f"\nEmpfehlung: --speed {best['speed']:g}  ({best['wps']:.2f} W/s, Video {best['videoSec']:.1f} s)")

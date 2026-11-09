@@ -28,7 +28,7 @@ import {
   Hills,
 } from "../kit/rome";
 import { useScene } from "../types";
-import { add, Block, cut, jolt, PalaceSet, pop, ramp } from "./romeSets";
+import { aim, Block, cut, jmove, jolt, move, PalaceSet, pop, ramp, under } from "./romeSets";
 import { lerp } from "./util";
 
 /* 6 — goths: 410, Plünderung, 300 „Geschenke“ öffnen das Tor, Trojanisches Pferd */
@@ -68,7 +68,7 @@ export const Goths: React.FC = () => {
         {army}
         <Rubble position={[-3.2, 0, 0.5]} count={6} spread={1.4} seed={4} />
         <Burst frame={frame} start={loot} origin={[-3.4, 3.2, -1]} count={22} speed={0.18} gravity={0.008} size={0.32} colors={[ROME.sandstone, ROME.sandLight, ROME.ochre]} seed={6} shape="rock" />
-        <Shot frame={f} duration={gift} from={add([2.0, 3.4, 16], j)} to={add([1.6, 3.2, 14.5], j)} look={[1.6, 3.4, -0.5]} fov={40} punch={loot} />
+        <Shot frame={f} duration={gift} {...jmove(move(aim([3.2, 3.05, 2.2], 14, under(0.5, 14), 0.7, [0.1, 0.12, 1]), aim([2.8, 3.05, 2.2], 13, under(0.5, 13), 0.7, [0.05, 0.1, 1])), j)} punch={loot} />
       </>
     );
   }
@@ -108,7 +108,7 @@ export const Goths: React.FC = () => {
           <Goth key={x} frame={frame + i * 4} position={[x, 0, -6]} arms={[0.4, 1.8]} eyes="angry" mouth="teeth" />
         ))}
         {men}
-        <Shot frame={f} duration={trojan - gift} from={[2.2, 3.3, 14]} to={[1.8, 3.2, 12.8]} look={[1.8, 3.3, -1]} fov={40} />
+        <Shot frame={f} duration={trojan - gift} {...move(aim([1.5, 3.05, 0.8], 13, under(0.5, 13), 0.66, [0.08, 0.1, 1]), aim([1.5, 3.05, 0.8], 12, under(0.5, 12), 0.66))} />
       </>
     );
   }
@@ -136,7 +136,7 @@ export const Goths: React.FC = () => {
         );
       })}
       <Burst frame={frame} start={swap} origin={[1.0, 2.5, 0]} count={24} speed={0.15} gravity={0.004} size={0.2} colors={[ROME.wood, "#7A4E28", "#FF5C8A"]} seed={14} />
-      <Shot frame={f} duration={duration - trojan} from={[1.6, 3.4, 12.5]} to={[1.4, 3.2, 11.2]} look={[1.4, 3.0, -0.5]} fov={40} />
+      <Shot frame={f} duration={duration - trojan} {...move(aim([1.45, 3.05, 0.2], 13, under(0.5, 13), 0.66), aim([1.45, 3.05, 0.2], 12, under(0.5, 12), 0.66))} />
     </>
   );
 };
@@ -174,7 +174,7 @@ export const Perished: React.FC = () => {
           sweat
           bounce={shout ? 0.15 : 0}
         />
-        <Shot frame={f} duration={horror} from={[1.4, 3.7, 13]} to={[1.6, 3.6, 12]} look={[1.5, 3.0, -0.4]} fov={40} punch={perished} />
+        <Shot frame={f} duration={horror} {...move(aim([1.5, 3.1, 0], 13.5, 0.5), aim([1.6, 3.1, 0], 12.5, 0.5))} punch={perished} />
       </>
     );
   }
@@ -208,7 +208,7 @@ export const Perished: React.FC = () => {
               </mesh>
             ))
           : null}
-        <Shot frame={f} duration={point - horror} from={[1.0, 3.6, 8.6]} to={[0.9, 3.5, 7.8]} look={[0.9, 3.1, -0.3]} fov={40} shake={0.05} />
+        <Shot frame={f} duration={point - horror} {...move(aim([0.9, 3.2, -0.2], 9, 0.5), aim([0.9, 3.2, -0.2], 8.3, 0.5))} shake={0.05} />
       </>
     );
   }
@@ -230,7 +230,7 @@ export const Perished: React.FC = () => {
       ) : null}
       <Servant frame={frame} position={[-2.6, 0, 1.4]} rotation={[0, 0.7, 0]} arms={[2.1, 0.4]} eyes="dot" mouth="smile" />
       <SignBoard lines={["THE CITY", "OF ROME"]} post={false} position={[-3.3, 3.9, 1.2]} rotation={[0, 0.6, 0]} width={2.2} height={1.1} />
-      <Shot frame={f} duration={duration - point} from={[-0.6, 3.6, 11]} to={[-0.4, 3.5, 10.2]} look={[-0.7, 3.2, -0.2]} fov={40} punch={phew - point} />
+      <Shot frame={f} duration={duration - point} {...move(aim([-0.8, 3.2, 0.2], 13.5, 0.5, 0.5, [-0.1, 0.1, 1]), aim([-0.8, 3.2, 0.2], 12.8, 0.5))} punch={phew - point} />
     </>
   );
 };
@@ -273,6 +273,8 @@ export const Vandals: React.FC = () => {
   const { shot, f } = cut(frame, [vandals, roof]);
   const progress = ramp(frame, queue, duration, Easing.linear) * 0.8 + 0.05;
   const templeAt: V3 = [-1.2, 0, -7];
+  const aimV = (t: number) =>
+    aim([lerp(0.4, 0.4, t), lerp(18.4, 4.0, t), lerp(-1.8, -4, t)], lerp(9, 15, t), 0.55, 0.5, [0, lerp(0.1, 0.25, t), 1]);
 
   if (shot === 0) {
     // YOU wartet auf einer Wolke („RESPAWNING…“), Kamera neigt sich zum Tempel hinab
@@ -292,8 +294,8 @@ export const Vandals: React.FC = () => {
         <Shot
           frame={frame}
           duration={1}
-          from={[lerp(0.6, 1.6, tilt), lerp(17.2, 6.0, tilt), lerp(9.5, 13, tilt)]}
-          look={[lerp(0.4, 0.2, tilt), lerp(17.0, 4.2, tilt), lerp(-2, -6, tilt)]}
+          from={aimV(tilt).pos}
+          look={aimV(tilt).look}
           fov={40}
         />
       </>
@@ -316,7 +318,7 @@ export const Vandals: React.FC = () => {
         <RomanSkyline position={[0, 0, -22]} width={60} rows={2} seed={13} />
         <Hills z={-80} />
         {carriers}
-        <Shot frame={f} duration={roof - vandals} from={[1.8, 4.6, 13.5]} to={[2.2, 4.3, 12.5]} look={[1.6, 3.6, -3]} fov={40} />
+        <Shot frame={f} duration={roof - vandals} {...move(aim([2.4, 3.05, 1.0], 14, under(0.5, 14), 0.65, [0.05, 0.15, 1]), aim([2.6, 3.05, 1.0], 13, under(0.5, 13), 0.65))} />
       </>
     );
   }
@@ -332,7 +334,7 @@ export const Vandals: React.FC = () => {
       <Block size={[1.6, 0.12, 0.95]} position={[1.4, lerp(2.3, 4.45, lift), 0.6]} rotation={[0.3 * (1 - lift), 0, 0.08]} color={ROME.gold} ink={0.05} />
       <Vandal frame={frame + 11} position={[-1.2, 0, -0.8]} rotation={[0, 0.4, 0]} cheer />
       <Burst frame={frame} start={roof} origin={[1.4, 4.4, 0.6]} count={18} speed={0.12} gravity={0.004} size={0.13} colors={[ROME.gold, "#FFE08A", "#FFFFFF"]} seed={19} />
-      <Shot frame={f} duration={duration - roof} from={[1.2, 4.6, 10.5]} to={[1.0, 4.4, 9.4]} look={[0.6, 4.2, -2.5]} fov={40} punch={0} />
+      <Shot frame={f} duration={duration - roof} {...move(aim([1.4, 3.05, 0.6], 11, under(0.5, 11), 0.64, [0, 0.12, 1]), aim([1.4, 3.05, 0.6], 10.2, under(0.5, 10.2), 0.64))} punch={0} />
     </>
   );
 };
@@ -342,6 +344,7 @@ export const KID_SCALE = 0.58;
 const THRONE_K = 1.25;
 /** Sitzposition des Kindes auf dem vergrößerten Thron (Thron bei z −1). */
 export const KID_SEAT: V3 = [0, (1.15 + THRONE_SIT_Y) * THRONE_K - 1.15 * KID_SCALE, -1 + 0.3 * THRONE_K];
+const KID_HEAD: V3 = [KID_SEAT[0], KID_SEAT[1] + 3.05 * KID_SCALE, KID_SEAT[2]];
 
 export const Kid: React.FC = () => {
   const { frame, duration, beat } = useScene();
@@ -367,7 +370,7 @@ export const Kid: React.FC = () => {
         <DangerLight frame={frame} position={[4.2, 4.5, 1.5]} intensity={0.7} />
         {kidFig({ eyes: frame > nightmare ? "wide" : "dot", kick: 0.8 })}
         <Burst frame={frame} start={10} origin={[0, KID_SEAT[1] + 1, KID_SEAT[2]]} count={20} speed={0.1} gravity={0.002} size={0.1} colors={["#4FC3F7", "#FFFFFF", ROME.gold]} seed={23} />
-        <Shot frame={f} duration={kid} from={add([0, 2.6, 14.5], j)} to={add([0, 2.8, 13.5], j)} look={[0, 4.0, -1]} fov={40} />
+        <Shot frame={f} duration={kid} {...jmove(move(aim([0, 3.6, -1], 13, 0.5, 0.5, [0, 0.0, 1]), aim([0, 3.6, -1], 12, 0.5)), j)} />
       </>
     );
   }
@@ -377,7 +380,7 @@ export const Kid: React.FC = () => {
         <PalaceSet frame={frame} phase="fall" throneScale={THRONE_K} />
         <DangerLight frame={frame} position={[4.2, 4.5, 1.5]} intensity={0.6} />
         {kidFig({ eyes: "wide", kick: 1.2 })}
-        <Shot frame={f} duration={slips - kid} from={[0.2, 3.9, 9.4]} to={[0, 3.7, 8.4]} look={[0, 3.0, -0.6]} fov={40} />
+        <Shot frame={f} duration={slips - kid} {...move(aim(KID_HEAD, 8, under(0.45, 8, KID_SCALE), 0.5, [0.05, 0.1, 1]), aim(KID_HEAD, 7.2, under(0.45, 7.2, KID_SCALE)))} />
       </>
     );
   }
@@ -387,7 +390,7 @@ export const Kid: React.FC = () => {
       <PalaceSet frame={frame} phase="fall" throneScale={THRONE_K} />
       <DangerLight frame={frame} position={[4.2, 4.5, 1.5]} intensity={0.5} />
       {kidFig({ eyes: "wide", slip, kick: 0.6 })}
-      <Shot frame={f} duration={duration - slips} from={[0, 3.75, 5.6]} to={[0, 3.7, 4.9]} look={[0, 3.05, -0.6]} fov={40} />
+      <Shot frame={f} duration={duration - slips} {...move(aim(KID_HEAD, 5.4, under(0.45, 5.4, KID_SCALE)), aim(KID_HEAD, 4.9, under(0.45, 4.9, KID_SCALE)))} />
     </>
   );
 };
