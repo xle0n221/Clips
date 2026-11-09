@@ -166,17 +166,17 @@ export const Deleted: React.FC = () => {
   }
   // Stellenanzeige auf dem Tisch, Stempel holt aus (Antizipation) und knallt
   const a = anticipate(frame, stamp, 10);
-  const y = lerp(2.6, 0.12, Math.max(0, Math.min(1, a))) + (a < 0 ? -a * 2.2 : 0);
+  const y = lerp(1.35, 0.12, Math.max(0, Math.min(1, a))) + (a < 0 ? -a * 1.6 : 0);
   const hit = frame >= stamp;
   const j = jolt(frame, stamp, 0.18, 14);
   return (
     <>
       <Studio table />
-      <SignBoard lines={["JOB:", "EMPEROR", "OF THE WEST"]} post={false} position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]} width={3.2} height={2.2} />
-      {hit ? <StampMark text="DELETED" position={[0, 0.12, 0.1]} rotation={[-Math.PI / 2, 0, 0.18]} w={3.4} h={1.1} scale={1 + 0.3 * (1 - pop(frame, stamp, 9))} /> : null}
+      <SignBoard lines={["JOB:", "EMPEROR", "OF THE WEST"]} post={false} position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]} width={2.5} height={1.8} />
+      {hit ? <StampMark text="DELETED" position={[0, 0.12, 0.1]} rotation={[-Math.PI / 2, 0, 0.18]} w={2.6} h={0.85} scale={1 + 0.3 * (1 - pop(frame, stamp, 9))} /> : null}
       {!hit || frame < stamp + 8 ? <RubberStamp position={[0.1, hit ? 0.12 + (frame - stamp) * 0.25 : y, 0.1]} rotation={[0, 0.18, 0]} scale={0.95} /> : null}
       <Burst frame={frame} start={stamp} origin={[0, 0.2, 0.1]} count={16} speed={0.12} gravity={0.004} size={0.1} colors={["#FFFFFF", "#D9C29A"]} seed={41} />
-      <Shot frame={f} duration={duration - ad} {...jmove(move(aim([0, 0.3, 0.1], 5.2, 0.55, 0.5, [0, 1.3, 1]), aim([0, 0.3, 0.1], 4.7, 0.55, 0.5, [0, 1.3, 1])), j)} shake={0.02} />
+      <Shot frame={f} duration={duration - ad} {...jmove(move(aim([0, 0.4, 0.1], 6.2, 0.55, 0.5, [0, 1.3, 1]), aim([0, 0.4, 0.1], 5.7, 0.55, 0.5, [0, 1.3, 1])), j)} shake={0.02} />
     </>
   );
 };

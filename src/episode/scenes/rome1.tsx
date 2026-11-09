@@ -372,7 +372,7 @@ export const RomeStones: React.FC = () => {
           sweat
         />
         {throws.map(([s, a, b], i) => (
-          <FlyingStone key={i} frame={frame} start={s} dur={13} from={a} to={b} arc={1.6} size={0.2} />
+          <FlyingStone key={i} frame={frame} start={s} dur={13} from={a} to={b} arc={1.6} size={0.34} />
         ))}
         <Shot frame={f} duration={over - stones} {...move(aim([0, 3.05, 0], 11, under(0.42, 11), 0.5, [0.18, 0.1, 1]), aim([0, 3.05, 0], 10, under(0.42, 10), 0.5, [0.14, 0.1, 1]))} shake={0.08} />
       </>
