@@ -16,6 +16,7 @@ Bewertet Drehbuch (und später Schnitt) danach, ob Zuschauer bis zum Ende bleibe
 - Von Stimme: Länge in Skriptwörtern bewerten – die Messung in `stimme-casting.md` (Methode) zählt Skriptwörter; das löst die offene Frage aus dem Rom-Review („Skript- oder Sprechwörter?“) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 11.11.2026 · Erde ohne Menschen v1 · Re-Hook lag bei ~47 % (236/496 Skriptwörter vor „swift“), weil zwei Stromausfall-Szenen (Spanien + Puerto Rico) und ein Zitat-Absatz davor stehen → Dubletten-Beats und Zitate vor dem Re-Hook streichen; Ziel 40 %. Loop-Schlusssatz stand auf `calm` → Loop-Satz braucht `tense/punch`. Mitte (Rost, Tschernobyl, CO2, Rushmore) folgt dreimal der Schablone „Year X → Fakt → Gag“ → Einsatz (HUD-Balken, Bedrohung) pro Szene hochhalten. Beleg: Wortzählung `episodes/earth-without-humans.json`, 496 W ≈ 177 s bei 2,8 W/s.
 - 08.11.2026 · Rom v1 · Respawn-Regel im Hook vorgeschlagen und übernommen; „a general, Odoacer“ nicht übernehmbar (nicht freigegeben) → Vorschläge vorher gegen Freigabeliste prüfen.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
@@ -25,4 +26,4 @@ Bewertet Drehbuch (und später Schnitt) danach, ob Zuschauer bis zum Ende bleibe
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
-
+| 11.11.2026 | Erde ohne Menschen v1 (Drehbuch) | 7 (Retention-Kritiker) | Starker Hook, Wendepunkt (Mond) und Loop; Re-Hook zu spät (~47 %), Mitte schablonenhaft, Stimmungsbruch Zitat/Nachschlag nach der Auflösung |
