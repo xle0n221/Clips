@@ -35,3 +35,13 @@ Dass die Tipps von ihm stammen: **Ich kann das nicht bestätigen** (die Doku nen
 | `clip-video` | 10/100 LOW | SAFE | 2× RP1 MEDIUM „`npx remotion` ohne gepinnte Version“ (SKILL.md Z. 80, 89) | **APPROVE** – `npx` nutzt die lokal installierte, per `package-lock.json` gepinnte Remotion-Version, kein MCP-Server |
 | `skillspector` | 8/100 LOW | SAFE | 1× AS3 MEDIUM „Skill Enumeration“ (Z. 7) | **APPROVE** – Skills lesen ist der Zweck des Skills |
 Neue Skills: vor dem Einbau `/skillspector`; Ergebnis hier eintragen.
+
+## Automatik (Vorgabe des Nutzers, 11.11.2026)
+> „Ab jetzt automatisiere alles und Umgebungen automatisch freigeben.“
+
+- Keine Rückfragen im Chat. Fehlt etwas aus der Umgebung (gesperrter Host: Proxy-Antwort 403, fehlendes Werkzeug, langer
+  Einrichtungsschritt), beantragt der Orchestrator die Änderung sofort selbst mit `update_environment`, nur mit genau den nötigen Hosts.
+- Grenze, die Claude nicht aufheben kann: Jede Umgebungsänderung zeigt dem Nutzer eine Freigabe-Abfrage – laut Werkzeugbeschreibung
+  „every time, in every permission mode“. Claude bestätigt sie nie selbst; der Nutzer muss sie in der App antippen.
+- Fremde Plugins/Skills: `/plugin` gibt es in Cloud-Sitzungen nicht („/plugin isn't available in this environment“, 11.11.2026).
+  Ersatz: Repo klonen, mit `/skillspector` prüfen, bei SAFE/APPROVE den Skill-Ordner nach `.claude/skills/<name>/` übernehmen, Ergebnis in die Tabelle oben.
