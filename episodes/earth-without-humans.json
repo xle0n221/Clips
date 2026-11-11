@@ -1,0 +1,653 @@
+{
+  "id": "earth-without-humans",
+  "title": "Every human vanished tonight. You're the only witness.",
+  "engine": "chatterbox",
+  "voice": "am_fenrir",
+  "voicePreset": "spannend",
+  "sceneGapMs": 120,
+  "sources": "docs/quellen-erde-ohne-menschen.md",
+  "factcheck": "offen (Faktenprüfer)",
+  "version": "v1 (Drehbuch-Entwurf 11.11.2026)",
+  "style": {
+    "look": "2d",
+    "why": "Zeitleisten-Thema mit Karten, Diagrammen (Abklingbecken, Orbit, Höhen-Lineal) und Zähler: flache 2D-Infografik erklärt das am klarsten und entspricht dem Format der Inspirationsvideos; düstere Nachtpalette mit gelbem Akzent trägt den Thriller-Ton.",
+    "characters": "YOU = blass-cyaner Geist (runder Kopf, hohle Augen, gelbes Halstuch als einziges Gelb neben den Stadtlichtern), in jeder Szene sichtbar; keine weiteren Menschen nach dem Hook."
+  },
+  "note": "Themen-Art: Gedankenexperiment/Weltraum+Natur. Klammer: YOU ist der letzte Zeuge (Geist) und hat eine Frage: 'how long until this planet forgets we were ever here?' (Hook, Re-Hook in 'swift' bei ~40 %, Antwort im Wendepunkt 'moon': Erde vergisst langsam, der Mond nicht). HUD: großer Zähler TIME oben links mit Text-Werten (HOUR 0 → HOUR 1 → DAY 1 → DAY 2 → WEEK 1 → MONTH 1 → YEAR 1 → YEAR 10 → YEAR 15 → YEAR 25 → YEAR 300 → YEAR 1,000 → YEAR 10,000), darunter Balken HUMAN TRACES (sinkt, friert beim Mond ein). Szenen 'blackout' und 'comeback' sind als Vorschau/Analogie markiert (heutige Ereignisse mit Menschen). Loop: letzte Worte 'And it all starts tonight.' → erster Satz 'Tonight, every human on Earth vanishes.' Zahlen ausgeschrieben (Chatterbox), Sticker mit Ziffern. Hinweis Szenenbau: Zähler-Wert ist ein String – falls das HUD nur Zahlen kann, Text-Zähler im 2D-Kit bauen.",
+  "hud": {
+    "title": "EARTH WITHOUT US",
+    "counters": [
+      {
+        "id": "time",
+        "label": "",
+        "value": "HOUR 0"
+      }
+    ],
+    "bars": [
+      {
+        "id": "traces",
+        "label": "HUMAN TRACES",
+        "value": 1.0,
+        "color": "#FFD23F"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "delivery": "punch",
+      "text": "Tonight, every human on Earth *vanishes*. Everyone. Except you. You're a ghost now, the last witness. And you get one question: | how long until this planet *forgets* we were ever here?",
+      "visual": "2D flat, deep navy night. Big counter top-left 'HOUR 0', thin progress bar under it at 0 %. A busy street in flat paper-cut style: people mid-step, then POP, empty clothes drop, phones fall. YOU = pale-cyan ghost (round head, hollow eyes, little scarf in signal yellow) fades in alone among the piles, looks at camera on 'forgets'.",
+      "sources": [
+        "Gedankenexperiment, keine Faktenaussage (Prämisse)"
+      ],
+      "cues": [
+        {
+          "word": "Tonight",
+          "sticker": "EVERY HUMAN: GONE",
+          "color": "#FFD23F",
+          "sfx": "boom",
+          "hud": {
+            "id": "time",
+            "value": "HOUR 0"
+          }
+        },
+        {
+          "word": "vanishes",
+          "beat": "poof",
+          "sfx": "pop"
+        },
+        {
+          "word": "ghost",
+          "beat": "ghostIn",
+          "sfx": "whoosh",
+          "label": {
+            "text": "YOU",
+            "color": "#FFD23F",
+            "x": 0.5,
+            "y": 0.42
+          }
+        },
+        {
+          "word": "forgets",
+          "beat": "eyePop",
+          "sticker": "HOW LONG?",
+          "color": "#FFD23F",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "lights",
+      "delivery": "calm",
+      "text": "Zoom out. From space, Earth's night side still *twinkles* with our cities. A NOAA scientist said nothing tells us more about the spread of humans across the Earth than *city lights*. | Enjoy the view.",
+      "visual": "Whip up from the street to orbit: flat 2D Earth night side, yellow city dots in clusters (Black-Marble look, stylised). YOU floats in front of the globe like a tiny astronaut-ghost. Quote card slides in (small, upper half). On 'change' one cluster flickers.",
+      "sources": [
+        "Z4: \"The night side of our planet twinkles with light, and the first thing to stand out is the cities.\"",
+        "Z5: \"Nothing tells us more about the spread of humans across the Earth than city lights,\" (Chris Elvidge, NOAA)"
+      ],
+      "cues": [
+        {
+          "word": "Zoom",
+          "beat": "whipToOrbit",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "twinkles",
+          "beat": "cityDots",
+          "sfx": "ding"
+        },
+        {
+          "word": "NOAA",
+          "beat": "quoteCard"
+        },
+        {
+          "word": "view",
+          "beat": "flicker",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "blackout",
+      "delivery": "tense",
+      "text": "Here's a preview. In April twenty twenty-five, a blackout hit Spain. Trains *stopped*. Hospitals ran on generators. Phones died. The south stayed dark all night, and that was *with* crews fixing it. Tonight? | Nobody's coming.",
+      "visual": "Counter flips to 'HOUR 1'. Flat map of Spain, power lines as glowing strokes going dark south to north; icons pop: halted train, hospital with generator, phone with no bars. YOU checks a dead phone. Cut: empty repair truck with open door, nobody inside, on 'Nobody'.",
+      "sources": [
+        "Z1: \"A widespread power outage on April 28, 2025\" · \"Trains came to a halt, hospitals relied on generators, and phone and internet connections failed.\"",
+        "Z2: \"But in the country's south, darkness lasted through at least the night.\"",
+        "\"Nobody's coming\" = Gedankenexperiment-Folgerung (Quellendatei Z1: Folgerung, keine Zahl)"
+      ],
+      "cues": [
+        {
+          "word": "preview",
+          "hud": {
+            "id": "time",
+            "value": "HOUR 1"
+          },
+          "sfx": "whoosh"
+        },
+        {
+          "word": "twenty-five",
+          "sticker": "SPAIN, APRIL 2025",
+          "color": "#B0BEC5",
+          "sfx": "pop"
+        },
+        {
+          "word": "stopped",
+          "beat": "trainHalt",
+          "sfx": "boom"
+        },
+        {
+          "word": "Phones",
+          "beat": "noBars"
+        },
+        {
+          "word": "Nobody's",
+          "beat": "emptyTruck",
+          "sticker": "NOBODY'S COMING",
+          "color": "#FF5A5A",
+          "sfx": "boom",
+          "bar": {
+            "id": "traces",
+            "value": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "id": "darkness",
+      "delivery": "normal",
+      "text": "After a hurricane knocked out Puerto Rico's grid, satellite images showed the dark. Now picture that *everywhere*. No crews. City by city, the lights go out.",
+      "visual": "Counter 'DAY 1'. Split frame: small satellite photo-style panel of San Juan with dark patches, then the big flat globe from scene 2: yellow dots switch off in waves, sweeping west. YOU watches from orbit, his scarf the only yellow left.",
+      "sources": [
+        "Z3: \"Most of the electric power grid and telecommunications network was knocked offline.\" · \"The images above show widespread outages around San Juan\"",
+        "\"City by city\" = Gedankenexperiment ohne Zeitangabe (Quellendatei Fallen: keine Stundenzahl)"
+      ],
+      "cues": [
+        {
+          "word": "hurricane",
+          "hud": {
+            "id": "time",
+            "value": "DAY 1"
+          },
+          "sfx": "whoosh"
+        },
+        {
+          "word": "everywhere",
+          "beat": "globeDark",
+          "sfx": "boom",
+          "bar": {
+            "id": "traces",
+            "value": 0.8
+          }
+        },
+        {
+          "word": "lights",
+          "beat": "lastDotOff",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "stars",
+      "delivery": "normal",
+      "text": "And then something comes *back*. Light pollution hides the Milky Way from more than a third of humanity. Without us, the sky goes *full blast*. | Best show ever. Zero audience.",
+      "visual": "Counter 'DAY 2'. Ground level, dark empty city skyline in flat silhouettes; the sky fills layer by layer with stars, then the Milky Way band in soft 2D gradient. YOU lies on a car roof, alone, applauding slowly on 'Zero audience'.",
+      "sources": [
+        "Z23: \"The Milky Way is hidden from more than one-third of humanity\" (Falchi et al. 2016)",
+        "\"sky goes full blast\" = Folgerung, in Quellendatei Z23 als Folgerung erlaubt"
+      ],
+      "cues": [
+        {
+          "word": "back",
+          "hud": {
+            "id": "time",
+            "value": "DAY 2"
+          },
+          "beat": "starsFill",
+          "sfx": "ding"
+        },
+        {
+          "word": "third",
+          "sticker": "1/3 OF US NEVER SEE IT",
+          "color": "#B0BEC5"
+        },
+        {
+          "word": "blast",
+          "beat": "milkyWay",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "Zero",
+          "beat": "slowClap",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "nuclear",
+      "delivery": "tense",
+      "text": "Meanwhile, at nuclear plants, used fuel still makes *heat*. It cools in pools under about *twenty feet* of water, giving operators time to fix any problem. | Operators. Right. Other fuel sits in dry casks. No fans, no pumps, about the heat of a home heater. Cozy.",
+      "visual": "Counter 'WEEK 1'. Cutaway diagram (flat infographic): blue pool, fuel racks at the bottom, a '20 FT' measuring line. Empty control room chair spins slowly on 'Operators'. Then a row of grey casks with little arrow streams of warm air rising; YOU warms his ghost hands at one on 'Cozy'.",
+      "sources": [
+        "Z18: \"spent fuel still produces a lot of radiation and heat that must be managed\" · \"about 20 feet of water above the top of the fuel, giving plant operators time to correct any problem that may arise.\"",
+        "Z19: \"without fans or pumps\" · \"A typical cask emits roughly the same heat as a home-heating system.\"",
+        "Keine Aussage über Schmelze/Unfall (Quellendatei Fallen)"
+      ],
+      "cues": [
+        {
+          "word": "Meanwhile",
+          "hud": {
+            "id": "time",
+            "value": "WEEK 1"
+          },
+          "sfx": "whoosh"
+        },
+        {
+          "word": "twenty",
+          "sticker": "20 FT OF WATER",
+          "color": "#4FC3F7",
+          "sfx": "pop"
+        },
+        {
+          "word": "Operators.",
+          "beat": "emptyChair",
+          "sfx": "boom"
+        },
+        {
+          "word": "casks",
+          "beat": "casks"
+        },
+        {
+          "word": "Cozy",
+          "beat": "warmHands",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "satellites",
+      "delivery": "tense",
+      "text": "Look up. The satellites still fly. For now. Dodging each other is routine, and someone has to steer. | Nobody steers. And the Sun heats our air, it puffs up, and drag pulls them *lower*.",
+      "visual": "Counter 'MONTH 1'. Orbit view, flat: satellites as white icons on dotted tracks; two drift close, a red warning ring pulses, no hand on the joystick in a tiny empty ops room inset. Then the atmosphere drawn as a glowing layer swelling outward; satellites dip down a notch.",
+      "sources": [
+        "Z25: \"Collision avoidance ... is now a regular part of flying missions in low-Earth orbit.\" (ESA)",
+        "Z6: \"Solar activity heats Earth's atmosphere and causes it to puff outward\" · \"which increases drag on all spacecraft in low Earth orbit, gradually reducing their altitude over time.\"",
+        "\"Nobody steers\" = Folgerung (Quellendatei Z25); keine Kollisionszahl"
+      ],
+      "cues": [
+        {
+          "word": "Look",
+          "hud": {
+            "id": "time",
+            "value": "MONTH 1"
+          },
+          "beat": "lookUp",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "Dodging",
+          "beat": "nearMiss",
+          "sfx": "ding"
+        },
+        {
+          "word": "Nobody",
+          "beat": "emptyJoystick",
+          "sticker": "NO PILOTS",
+          "color": "#FF5A5A",
+          "sfx": "boom"
+        },
+        {
+          "word": "puffs",
+          "beat": "airSwell"
+        },
+        {
+          "word": "lower",
+          "beat": "satDip",
+          "sfx": "pop",
+          "bar": {
+            "id": "traces",
+            "value": 0.7
+          }
+        }
+      ]
+    },
+    {
+      "id": "swift",
+      "delivery": "punch",
+      "text": "NASA's Swift telescope had already sunk below *two hundred fifty miles*, waiting for a boost. So, ghost, how long until Earth *forgets* us? | It already started.",
+      "visual": "Counter 'YEAR 1'. Swift as a cute flat telescope icon with a worried face, an altitude ruler beside it sliding down past '250 MI'. On 'forgets' Spotlight moment: everything dims, YOU center in a single beam, the question sticker returns (re-hook).",
+      "sources": [
+        "Z7: \"As of early February, Swift's average altitude had fallen below about 250 miles (about 400 kilometers).\" · Swift-Blog: Mission \"prep for orbit boost\" (Seitentitel)",
+        "Re-Hook der zentralen Frage (Experiment)"
+      ],
+      "cues": [
+        {
+          "word": "Swift",
+          "hud": {
+            "id": "time",
+            "value": "YEAR 1"
+          },
+          "beat": "swiftFace",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "fifty",
+          "sticker": "BELOW 250 MILES",
+          "color": "#FF8A3D",
+          "sfx": "pop"
+        },
+        {
+          "word": "forgets",
+          "beat": "spotlight",
+          "sticker": "HOW LONG?",
+          "color": "#FFD23F",
+          "sfx": "boom"
+        },
+        {
+          "word": "started",
+          "beat": "ghostNod"
+        }
+      ]
+    },
+    {
+      "id": "hubble",
+      "delivery": "hype",
+      "text": "Year ten. Our methane? Mostly scrubbed from the air within about *ten years*. And Hubble keeps sinking. Earliest re-entry: the *mid twenty-thirties*. We always used the atmosphere as an *incinerator* for old spacecraft. | Hubble's turn.",
+      "visual": "Counter rolls fast to 'YEAR 10'. A methane cloud icon fades away like smoke from a candle. Hubble, flat and shiny, drifts lower over the glowing rim of Earth; on 'incinerator' the rim turns into a cartoon furnace mouth. YOU salutes.",
+      "sources": [
+        "Z13: \"methane is mostly scrubbed out of the air by chemical reactions within about ten years\"",
+        "Z8: \"Hubble is not expected to re-enter Earth's atmosphere until the mid 2030s at the earliest.\" · \"Hubble's altitude is slowly decreasing.\"",
+        "Z9: \"using the Earth's atmosphere as an incinerator for both the spent spacecraft and the refuse.\""
+      ],
+      "cues": [
+        {
+          "word": "Year",
+          "hud": {
+            "id": "time",
+            "value": "YEAR 10"
+          },
+          "beat": "counterRoll",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "methane",
+          "beat": "methaneFade"
+        },
+        {
+          "word": "Hubble",
+          "beat": "hubbleSink",
+          "sfx": "ding"
+        },
+        {
+          "word": "twenty-thirties",
+          "sticker": "MID-2030s (AT THE EARLIEST)",
+          "color": "#B0BEC5"
+        },
+        {
+          "word": "incinerator",
+          "beat": "furnace",
+          "sfx": "boom",
+          "bar": {
+            "id": "traces",
+            "value": 0.6
+          }
+        },
+        {
+          "word": "turn",
+          "beat": "salute"
+        }
+      ]
+    },
+    {
+      "id": "rust",
+      "delivery": "normal",
+      "text": "The Golden Gate Bridge is painted *continuously*, because salty air eats the steel. No painters now. | Rust takes no days off. Year fifteen. A plastic bottle in the sea stays robust for about *fifteen years*, then starts breaking down.",
+      "visual": "Whip down to San Francisco, flat 2D: the red bridge, a paint bucket and roller abandoned on a cable; orange-brown rust patches grow like spreading ink. Counter 'YEAR 15'. Underwater layer: a clear bottle bobbing, a hairline crack appears on 'breaking'.",
+      "sources": [
+        "Z20: \"The truth is that the Bridge is painted continuously.\" · \"The paint applied to the Bridge's steel protects it from the high salt content in the air which can cause the steel to corrode or rust.\"",
+        "Z24: \"PETs seem to remain robust for approximately fifteen years. Afterwards, a significant decrease of the native functional groups was recorded\"",
+        "Keine Zahl bis zum Brücken-Versagen, keine 450 Jahre (Quellendatei Fallen)"
+      ],
+      "cues": [
+        {
+          "word": "Golden",
+          "beat": "whipDown",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "continuously",
+          "sticker": "PAINTED NON-STOP",
+          "color": "#FF5A5A"
+        },
+        {
+          "word": "Rust",
+          "beat": "rustSpread",
+          "sfx": "boom"
+        },
+        {
+          "word": "fifteen.",
+          "hud": {
+            "id": "time",
+            "value": "YEAR 15"
+          }
+        },
+        {
+          "word": "bottle",
+          "beat": "bottle",
+          "sfx": "pop"
+        },
+        {
+          "word": "breaking",
+          "beat": "crack",
+          "sfx": "ding",
+          "bar": {
+            "id": "traces",
+            "value": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "comeback",
+      "delivery": "calm",
+      "text": "Year twenty-five. After one hundred sixteen thousand people left Chernobyl, plants and animals made *something of a comeback*, according to some studies. Nature doesn't wait for permission.",
+      "visual": "Counter 'YEAR 25'. Flat 2D abandoned town square: weeds and trees grow through the pavement in stop-motion layers, a deer silhouette steps into frame, birds on a rusty sign. YOU sits on a bench, a fox glances at him, unimpressed.",
+      "sources": [
+        "Z10: \"the evacuation of 116,000 residents from a highly contaminated area\" · \"plants and animals appeared to have made something of a comeback, according to some studies.\"",
+        "Analogie, kein Beweis für die ganze Erde; keine Tierzahlen (Deryabina nicht abgerufen)"
+      ],
+      "cues": [
+        {
+          "word": "Year",
+          "hud": {
+            "id": "time",
+            "value": "YEAR 25"
+          },
+          "sfx": "whoosh"
+        },
+        {
+          "word": "sixteen",
+          "sticker": "116,000 PEOPLE LEFT",
+          "color": "#B0BEC5",
+          "sfx": "pop"
+        },
+        {
+          "word": "comeback",
+          "beat": "greenGrow",
+          "sfx": "ding",
+          "bar": {
+            "id": "traces",
+            "value": 0.4
+          }
+        },
+        {
+          "word": "permission",
+          "beat": "foxLook"
+        }
+      ]
+    },
+    {
+      "id": "carbon",
+      "delivery": "tense",
+      "text": "But one thing *won't* leave. Our carbon dioxide. Once it's in the air, it hangs around for three hundred to *a thousand years*. We're gone. Our exhaust? | Still here.",
+      "visual": "Counter climbs 'YEAR 300' → 'YEAR 1,000'. A faint grey CO2 haze layer hangs over a green, empty planet like a ghost of its own; it barely thins. YOU waves a hand through it; it doesn't move.",
+      "sources": [
+        "Z11: \"Once it's added to the atmosphere, it hangs around, for a long time: between 300 to 1,000 years.\"",
+        "Nicht \"weg nach 1.000 Jahren\" (Quellendatei Fallen)"
+      ],
+      "cues": [
+        {
+          "word": "won't",
+          "beat": "hazeIn",
+          "sfx": "boom"
+        },
+        {
+          "word": "hundred",
+          "hud": {
+            "id": "time",
+            "value": "YEAR 300"
+          }
+        },
+        {
+          "word": "thousand",
+          "hud": {
+            "id": "time",
+            "value": "YEAR 1,000"
+          },
+          "sticker": "300–1,000 YEARS",
+          "color": "#B0BEC5",
+          "sfx": "pop"
+        },
+        {
+          "word": "Still",
+          "beat": "hazeStays",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "rushmore",
+      "delivery": "punch",
+      "text": "Year ten thousand. Mount Rushmore's granite erodes about *one inch* every ten thousand years. So the presidents lost about an inch. | Honestly? Still better skin than ours.",
+      "visual": "Counter jumps to 'YEAR 10,000', progress bar nearly full. Flat 2D Mount Rushmore, four stone faces (simplified, no likeness detail), lichen and trees around; a tiny ruler shows '1 INCH'. YOU squints at the faces, then at his own see-through hand.",
+      "sources": [
+        "Z21: \"The granite erodes very slowly at only one inch every 10,000 years\"",
+        "Herleitung: 10.000 Jahre × 1 inch/10.000 Jahre = 1 inch"
+      ],
+      "cues": [
+        {
+          "word": "Year",
+          "hud": {
+            "id": "time",
+            "value": "YEAR 10,000"
+          },
+          "beat": "counterSlam",
+          "sfx": "boom"
+        },
+        {
+          "word": "inch",
+          "sticker": "1 INCH / 10,000 YEARS",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        },
+        {
+          "word": "Honestly",
+          "beat": "squint"
+        },
+        {
+          "word": "skin",
+          "beat": "handLook",
+          "sfx": "ding",
+          "bar": {
+            "id": "traces",
+            "value": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "moon",
+      "delivery": "punch",
+      "text": "So Earth forgets us. Slowly. But the Moon? | The Moon has no wind and no rain. Apollo tracks were still visible *thirty-nine years* later. A NASA orbiter even spotted the *shadows* of our flags.",
+      "visual": "Twist, colour shift to cold silver. Match cut: YOU's round ghost head → the full Moon. Flat grey lunar surface, a trail of boot prints and rover tracks, a little flag shadow stretching across the dust. Progress bar STOPS dropping on 'Moon'.",
+      "sources": [
+        "Z14: \"The Moon has no atmosphere, and no wind or rain to sweep the footprints away.\" · \"the tracks that Apollo 15 astronauts ... made 39 years previously\"",
+        "Z15: \"scientists can see the shadows cast by the American flags the astronauts planted at the sites.\"",
+        "Nicht \"Millionen Jahre\", nicht \"Flaggen stehen noch\" (Quellendatei Fallen)"
+      ],
+      "cues": [
+        {
+          "word": "forgets",
+          "beat": "barFreeze"
+        },
+        {
+          "word": "Moon?",
+          "beat": "matchCutMoon",
+          "sfx": "whoosh",
+          "sticker": "BUT THE MOON?",
+          "color": "#E0E0E0"
+        },
+        {
+          "word": "wind",
+          "beat": "footprints"
+        },
+        {
+          "word": "thirty-nine",
+          "sticker": "TRACKS SEEN 39 YEARS LATER",
+          "color": "#B0BEC5",
+          "sfx": "pop"
+        },
+        {
+          "word": "shadows",
+          "beat": "flagShadow",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "voyager",
+      "delivery": "calm",
+      "text": "Far out there, Voyager One left the Sun's bubble in twenty twelve, carrying a golden record. President Carter wrote it's likely to survive *a billion years*. | So our last proof? A message, flying away from an empty planet. And it all starts tonight.",
+      "visual": "Pull back from the Moon past the planets to deep black space; Voyager 1 (flat icon, big dish) crosses a faint bubble line labelled 'HELIOSPHERE'. The golden record glints. On 'tonight' a form-wipe returns to the night street from the hook and the counter snaps back to 'HOUR 0' (loop).",
+      "sources": [
+        "Z16: \"on Aug. 25, 2012, the spacecraft became the first to exit the heliosphere\" · \"The probe is now in interstellar space\"",
+        "Z17: \"It is likely to survive a billion years into our future\" (Carter, Hoffnung, keine Messung)",
+        "Kein Datum für einen anderen Stern (Quellendatei Fallen)"
+      ],
+      "cues": [
+        {
+          "word": "Voyager",
+          "beat": "voyagerCross",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "twelve",
+          "sticker": "LEFT THE SUN'S BUBBLE: 2012",
+          "color": "#B0BEC5"
+        },
+        {
+          "word": "record",
+          "beat": "recordGlint",
+          "sfx": "ding"
+        },
+        {
+          "word": "billion",
+          "sticker": "\"A BILLION YEARS\" (HOPE)",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        },
+        {
+          "word": "tonight",
+          "beat": "loopToStreet",
+          "hud": {
+            "id": "time",
+            "value": "HOUR 0"
+          },
+          "sfx": "boom"
+        }
+      ]
+    }
+  ]
+}
