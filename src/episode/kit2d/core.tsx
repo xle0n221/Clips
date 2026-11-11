@@ -255,3 +255,12 @@ export const Spotlight: React.FC<{ readonly x: number; readonly y: number; reado
     <ellipse cx={x} cy={y} rx={w} ry={w * 0.16} fill="#FFF6D8" opacity={0.28} />
   </g>
 );
+
+/** Kamera so stellen, dass Weltpunkt (wx, wy) bei Zoom `zoom` an Bildstelle (sx, sy) liegt. */
+export const frameOn = (wx: number, wy: number, sx: number, sy: number, zoom: number): Cam2D => ({
+  x: wx - (sx - 540) / zoom,
+  y: wy - (sy - 960) / zoom,
+  zoom,
+});
+/** Kurze Glocke 0..1..0 um Frame `at` (Breite `w`). */
+export const bump = (f: number, at: number, w = 10) => Math.max(0, 1 - Math.abs(f - at) / w);

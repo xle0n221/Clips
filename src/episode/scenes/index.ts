@@ -1,6 +1,8 @@
 import React from "react";
 import { Earth, Hook, Launch, Mercury, Sun, Venus } from "./part1";
 import { Jupiter, Mars, Neptune, Outro, Saturn, Uranus } from "./part2";
+import type { TransitionSpec } from "../kit/transitions";
+import { EARTH_SCENES, EARTH_TRANSITIONS } from "./earth";
 import { ROME_SCENES } from "./rome1";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -25,6 +27,23 @@ export const SCENES: Record<string, React.FC> = {
  */
 export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "roman-empire": ROME_SCENES,
+  "earth-without-humans": EARTH_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
+
+/**
+ * Zusatz je Episode (optional, nur additiv): `look: "2d"` zeichnet die Szenen als SVG statt in der
+ * ThreeCanvas (kit2d), `transitions` setzt Übergänge je Szenen-ID, `hud2d` ersetzt das Zahlen-HUD
+ * durch den Text-Zähler `TimelineHUD` (Balken friert ab Beat `freezeBeat` ein).
+ * Episoden ohne Eintrag bleiben unverändert.
+ */
+export type EpisodeConfig = {
+  readonly look?: "2d";
+  readonly transitions?: Record<string, TransitionSpec>;
+  readonly hud2d?: { readonly freezeBeat?: string };
+};
+export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
+  "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" } },
+};
+export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

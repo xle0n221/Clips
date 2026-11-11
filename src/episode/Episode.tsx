@@ -27,7 +27,8 @@ import {
   whipBlurOf,
   WhipBlurDefs,
 } from "./kit/transitions";
-import { scenesFor } from "./scenes";
+import { Kit2DContext, TIMELINE_HUD_BOTTOM, TimelineHUD } from "./kit2d";
+import { configFor, EpisodeConfig, scenesFor } from "./scenes";
 import { EpisodeData, SceneContext, Timeline } from "./types";
 
 export const FPS = 30;
@@ -78,7 +79,21 @@ const SceneRunner: React.FC<{
   );
 };
 
-export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
+/** Episoden-Zusatz (scenes/index.ts `EPISODE_CONFIG`) anwenden – ohne Eintrag unverändert. */
+const withConfig = (t: Timeline, cfg: EpisodeConfig): Timeline => ({
+  ...t,
+  // Übergang je Szenen-ID (Schlüssel per Variable: Lint hält „transition:“ sonst für CSS)
+  scenes: t.scenes.map((s) => {
+    const key = "transition" as const;
+    return { ...s, [key]: cfg.transitions?.[s.id] ?? s[key] };
+  }),
+  // Text-Zähler zeichnet kit2d/TimelineHUD; das Zahlen-HUD bleibt aus
+  hud: cfg.hud2d ? undefined : t.hud,
+});
+
+export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, captions }) => {
+  const cfg = configFor(episode);
+  const timeline = rawTimeline && cfg ? withConfig(rawTimeline, cfg) : rawTimeline;
   const frame = useCurrentFrame();
   const { fps, width, height, durationInFrames } = useVideoConfig();
   useState(() => loadCaptionFont());
@@ -152,6 +167,24 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
     <AbsoluteFill style={{ backgroundColor: "#0B1035" }}>
       {anyWhip ? <WhipBlurDefs blur={whipBlurOf(tState)} /> : null}
       <AbsoluteFill style={canvasStyle}>
+        {cfg?.look === "2d" ? (
+          // 2D-Stil (kit2d): Szenen als SVG; Übergänge wirken über denselben Kamera-Zusatz
+          <CameraRigContext.Provider value={rigOf(tState)}>
+            {timeline.scenes.map((s, i) => (
+              <Sequence key={s.id} from={starts[i]} durationInFrames={ends[i] - starts[i]}>
+                <Kit2DContext.Provider value={{ captions, fps, start: starts[i] }}>
+                  <SceneRunner
+                    episode={episode}
+                    id={s.id}
+                    start={starts[i]}
+                    duration={ends[i] - starts[i]}
+                    beats={beatsOf(s.id)}
+                  />
+                </Kit2DContext.Provider>
+              </Sequence>
+            ))}
+          </CameraRigContext.Provider>
+        ) : (
         <ThreeCanvas width={width} height={height} shadows>
           <CameraRigContext.Provider value={rigOf(tState)}>
           {timeline.scenes.map((s, i) => (
@@ -172,6 +205,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
           ))}
           </CameraRigContext.Provider>
         </ThreeCanvas>
+        )}
       </AbsoluteFill>
       {act ? <GradeTint grade={act} /> : null}
       <TransitionOverlay state={tState} width={width} height={height} />
@@ -185,6 +219,9 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
       )}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="below" />
+      {cfg?.hud2d && rawTimeline ? (
+        <TimelineHUD timeline={rawTimeline} freezeBeat={cfg.hud2d.freezeBeat} />
+      ) : null}
 
       {stickers.map((c, i) => {
         const from = toF(c.atMs);
@@ -205,7 +242,13 @@ export const Episode: React.FC<Props> = ({ episode, timeline, captions }) => {
               color={c.color ?? "#FFD23F"}
               duration={dur}
               tilt={i % 2 ? 3 : -3}
-              top={timeline.hud ? hudBottom(timeline.hud) + 30 : undefined}
+              top={
+                timeline.hud
+                  ? hudBottom(timeline.hud) + 30
+                  : cfg?.hud2d
+                    ? TIMELINE_HUD_BOTTOM + 30
+                    : undefined
+              }
             />
           </Sequence>
         );

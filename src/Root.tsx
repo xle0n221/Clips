@@ -1,4 +1,5 @@
 import { Composition, staticFile } from "remotion";
+import { Kit2DTest, KIT2D_TEST_FRAMES } from "./Kit2DTest";
 import {
   Animated3DVideo,
   animated3DSchema,
@@ -52,6 +53,29 @@ export const RemotionRoot: React.FC = () => {
         schema={episodeSchema}
         defaultProps={{ episode: "roman-empire" }}
         calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „Earth Without Humans“: 2D-Stil (kit2d), gleiche Episode-Maschine (scenes/earth*.tsx) */}
+      <Composition
+        id="EarthWithoutHumans"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 90}
+        schema={episodeSchema}
+        defaultProps={{ episode: "earth-without-humans" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* Prüf-Komposition des 2D-Bau-Kits (src/episode/kit2d/) */}
+      <Composition
+        id="Kit2DTest"
+        component={Kit2DTest}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={KIT2D_TEST_FRAMES}
       />
 
       {/* Prüf-Komposition des Rom-Bau-Kits (src/episode/kit/rome.tsx) */}

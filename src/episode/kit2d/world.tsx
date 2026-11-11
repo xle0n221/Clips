@@ -260,7 +260,7 @@ export const mix = (a: string, b: string, t: number) => {
   const p = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
   const [x, y] = [p(a), p(b)];
   const k = clamp01(t);
-  return `#${x.map((v, i) => Math.round(v + (y[i] - v) * k).toString(16).padStart(2, "0")).join("")}`;
+  return `#${x.map((v, i) => ("0" + Math.round(v + (y[i] - v) * k).toString(16)).slice(-2)).join("")}`;
 };
 
 /* ------------------------------------------------------------------ */
