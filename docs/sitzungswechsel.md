@@ -18,7 +18,7 @@ Nicht mitten in einem laufenden Render oder während Agenten arbeiten – erst s
    `title` „CLIPS – <Thema/Stand>“ und einem **Übergabe-Prompt**: Stand in 5–10 Zeilen (laufendes Video,
    Stufe, offene Entscheidungen des Nutzers, nächste Schritte), Verweis auf `CLAUDE.md` und diese Datei.
 3. Geplante Aufgaben umziehen: Abholer und Wochenrunde je mit `create_trigger` und
-   `persistent_session_id` = neue Sitzung neu anlegen (gleicher Prompt), die alten mit
+   `persistent_session_id` = neue Sitzung neu anlegen (gleicher Prompt – er enthält die automatische Modellwahl), die alten mit
    `update_trigger enabled=false` abschalten.
 4. Dashboard: `meta/pickup` = `{ triggerId, sessionId, since }` schreiben (mit `if_version`, das Dokument
    existiert). Die Seite liest die Trigger-ID für „Jetzt starten“/Sofortstart live von dort (Rückfall: Konstante

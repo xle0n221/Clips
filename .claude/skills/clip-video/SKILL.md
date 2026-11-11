@@ -15,6 +15,10 @@ Ablauf-Checkliste mit Rollen und Muster je Themen-Art (Hook, Erzähl-Klammer, Fi
 zusätzlich `docs/dashboard-ablauf.md`: Status, Kennzahlen und Freigaben (Freigabe 1 und 2) laufen
 dann über das Dashboard statt über den Chat, Stimme/Länge/Notiz/Inspiration kommen aus dem Dokument.
 
+## Agenten und Modelle
+Jeder beauftragte Agent bekommt sein Modell automatisch laut `docs/agenten/README.md` → „Modellwahl je Aufgabe“
+(haiku leicht · sonnet Standard · opus schwer); Arbeitsweise (Plan vor Bau, Worktrees, Prüfpaare): `docs/claude-arbeitsweise.md`.
+
 ## 0. Umgebung prüfen
 - `.venv` mit `requirements.txt`, `voices/kokoro/` (`npm run setup:voice`), `whisper.cpp/` mit
   `ggml-medium.bin` (Befehle in README, Abschnitt „Erklärvideo-Episoden“). Downloads per `curl`.
