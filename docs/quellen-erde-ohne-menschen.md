@@ -1,6 +1,6 @@
 # Quellen: „What would happen to Earth if every human vanished overnight?“ (Zeitleiste)
 
-Recherche-Rolle, Abrufdatum aller Zeilen: **11.11.2026**. Prüfer: Faktenprüfer (noch offen).
+Recherche-Rolle, Abrufdatum aller Zeilen: **11.11.2026**. Prüfer: Faktenprüfer, 11.11.2026 – siehe „Prüfvermerke Faktenprüfer“ am Ende.
 
 ## Quellenlage (Stand 2. Durchgang, 11.11.2026)
 Im 1. Durchgang war nur science.nasa.gov erreichbar. Nach der Freigabe liefen per curl (ehrlicher User-Agent „ClipsResearch/1.0“): nrc.gov, goldengate.org, nps.gov, esa.int, pmc.ncbi.nlm.nih.gov, science.nasa.gov. **Weiter gesperrt (Akamai/Proxy 403 bzw. connect_rejected): cdc.gov, new.mta.info, www.mta.info, iaea.org, usgs.gov, cell.com/doi.org→Elsevier, noaa.gov (Blog/Ocean Service), science.org.** Ich habe die Sperren nicht umgangen (ein Versuch mit Browser-Kennung wurde vom Sicherheitsfilter abgelehnt und nicht wiederholt).
@@ -74,3 +74,14 @@ Hosts weiter gesperrt (siehe Quellenlage). Diese Stränge sind **unbelegt**, nic
 
 ## Freigabe-Hinweis
 Alles in der Tabelle ist NASA-primär, aber: Zeilen 1–17 stehen unter Vorbehalt des Gegenlesens durch den Faktenprüfer (Zitate aus Werkzeug-Antwort). Bis Strom, Atomkraft, Tiere/Pflanzen und Bauwerke belegt sind, trägt die Zeitleiste im Zeitbereich DAY 2 → YEAR 25 nur Stromausfall-, Orbit- und CO2-Fakten.
+
+## Prüfvermerke Faktenprüfer (11.11.2026, curl, UA „ClipsResearch/1.0 (fact-check; curl)“, alle HTTP 200)
+- **Zeilen 1, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 17: curl bestätigt** – jedes Zitat wörtlich im Seitentext gefunden (nach Vereinheitlichung typografischer Apostrophe).
+- **Zeile 2: curl bestätigt mit Hinweis** – Originalsatz lautet „…was restored by evening, according to news reports.“ Die Zuschreibung „according to news reports“ fehlt im Zitat; der Drehbuch-Satz nutzt nur den „south … night“-Teil, daher ohne Folgen.
+- **Zeile 10:** Seite nennt Landsat-Bild 2004 und eine Debatte der Experten über den Zustand der Tiere („experts debated…“); „appeared to have made“ ist vorsichtiger als das Drehbuch.
+- **Zeile 17:** „It“ bezieht sich auf Carters Botschaft („We cast this message into the cosmos. It is likely to survive…“) – Drehbuch korrekt.
+- **Zeile 8 Zusatz:** FAQ: „A propulsion module will eventually be attached to the telescope to complete either a controlled reentry into the south Pacific ocean, or to boost Hubble into a much higher orbit“ – mit Menschen ist der Absturz also nicht sicher; im Gedankenexperiment ohne Menschen entfällt das Modul (Folgerung).
+- **Zeile 7: ABWEICHUNG (veraltet).** Der Boost fand nicht statt, Swift ist abgestürzt:
+  - „NASA and Katalyst Space announced Wednesday the LINK spacecraft will not capture or boost an agency satellite to a higher altitude“ (19.08.2026) – https://science.nasa.gov/blogs/swift/2026/08/19/nasa-updates-next-steps-for-commercial-swift-boost-mission/
+  - „NASA’s Neil Gehrels Swift Observatory re-entered Earth’s atmosphere Wednesday, almost 22 years after launch.“ · „The U.S. Space Force confirmed that the Swift spacecraft re-entered Earth’s atmosphere at 7:39 a.m. EST Wednesday over the North Sumatra region of Indonesia“ · „NASA expected most of the spacecraft to burn up … but some components may have survived re-entry.“ (Beitrag 02.11.2026, Editor’s Note: aktualisiert 04.11.) – https://science.nasa.gov/blogs/swift/2026/11/02/nasas-swift-observatory-to-re-enter-atmosphere/
+  - Folge: „waiting for a boost“ im Drehbuch ist heute falsch; Swift ist jetzt ein **belegtes** Beispiel für Orbitzerfall bis zum Wiedereintritt.
