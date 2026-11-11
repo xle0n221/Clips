@@ -22,6 +22,7 @@ Regeln für die Zusammenarbeit:
   Ersteller setzt um, der Prüfer prüft erneut. Nach höchstens 2 Runden entscheidet der Orchestrator.
 - Fakten nur aus Quellen mit Zitat und URL. Was der Faktenprüfer nicht bestätigen kann, fliegt raus.
 - Jeder Agent ändert nur seine eigenen Dateien. Committen und pushen nur der Orchestrator.
+- Arbeitsweise nach `docs/claude-arbeitsweise.md` (geprüft an der Claude-Code-Doku): erst Plan, dann Bau; parallel arbeitende Code-Agenten mit `isolation: "worktree"`; Prüfer nur lesend mit frischem Kontext; fremde Skills vorher mit `/skillspector` prüfen.
 - Nur ein Render gleichzeitig (4 CPU-Kerne, ~40 Min für 87 s). Prüfbilder per `renderStill` sind frei.
 
 ## Ständige Weiterentwicklung
