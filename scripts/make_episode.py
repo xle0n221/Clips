@@ -14,6 +14,7 @@ Ausgabe: public/episodes/<id>/{voice.wav, captions.json, timeline.json, music.wa
 from __future__ import annotations
 
 import difflib
+import hashlib
 import json
 import re
 import subprocess
@@ -113,6 +114,8 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
 
     base = preset or STYLES["lebendig"]
     jobs, keys = [], []
+    cache = ROOT / "out" / "cb-cache"
+    cache.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         for sc in ep["scenes"]:
             spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
@@ -120,17 +123,32 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
             d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
             ex = min(1.2, max(0.25, base["exaggeration"] + d.get("exag", 0.0)))
             for i, p in enumerate(x.strip() for x in spoken.split(PAUSE_MARK) if x.strip()):
-                out = Path(tmp) / f"{sc['id']}-{i}.wav"
-                jobs.append({"text": speakable(p), "out": str(out), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]})
+                job = {"text": speakable(p), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]}
+                # Zwischenspeicher je Stück (out/cb-cache): nach einer Textkorrektur werden nur geänderte Stücke neu erzeugt
+                out = cache / (hashlib.sha1(json.dumps(job, sort_keys=True).encode()).hexdigest()[:16] + ".wav")
+                if not out.exists():
+                    jobs.append({**job, "out": str(out)})
                 keys.append((sc["id"], i, out))
         (Path(tmp) / "jobs.json").write_text(json.dumps(jobs))
         py = ROOT / ".venv-cb" / "bin" / "python"
         if not py.exists():
             raise SystemExit("Chatterbox fehlt: einmalig `bash scripts/setup_chatterbox.sh` ausführen")
-        print(f"Chatterbox: {len(jobs)} Stücke, Stimme {voice_id}, Stil {ep.get('voicePreset', 'lebendig')!r}")
-        subprocess.run([str(py), "-W", "ignore", str(ROOT / "scripts" / "tts_chatterbox.py"), str(Path(tmp) / "jobs.json")], check=True)
+        print(f"Chatterbox: {len(jobs)} von {len(keys)} Stücken neu, Stimme {voice_id}, Stil {ep.get('voicePreset', 'lebendig')!r}")
+        if jobs:
+            subprocess.run([str(py), "-W", "ignore", str(ROOT / "scripts" / "tts_chatterbox.py"), str(Path(tmp) / "jobs.json")], check=True)
         cap = ep.get("maxPauseMs", 300) / 1000  # Chatterbox macht nach Satzende ~0,5 s Pause, Vorbild ricksclip ~0,22 s
-        return {(sid, i): tighten_pauses(sf.read(str(out), dtype="float32")[0], cap) for sid, i, out in keys}
+        tempo = float(ep.get("speed", 1.0))  # Chatterbox hat kein Tempo-Feld: tonhöhenneutral strecken (ffmpeg atempo)
+
+        def load(i: int, out: Path) -> np.ndarray:
+            y = tighten_pauses(sf.read(str(out), dtype="float32")[0], cap)
+            if abs(tempo - 1.0) < 0.005:
+                return y
+            a, b = Path(tmp) / f"t{i}a.wav", Path(tmp) / f"t{i}b.wav"
+            sf.write(str(a), y, SAMPLE_RATE)
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(a), "-af", f"atempo={tempo:.3f}", str(b)], check=True)
+            return sf.read(str(b), dtype="float32")[0]
+
+        return {(sid, i): load(n, out) for n, (sid, i, out) in enumerate(keys)}
 
 
 def tighten_pauses(y: np.ndarray, max_s: float = 0.30, keep_s: float = 0.25, thr_db: float = -40.0) -> np.ndarray:

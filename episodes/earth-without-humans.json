@@ -4,6 +4,8 @@
   "engine": "chatterbox",
   "voice": "am_fenrir",
   "voicePreset": "spannend",
+  "speed": 1.07,
+  "pauseMs": 450,
   "sceneGapMs": 120,
   "sources": "docs/quellen-erde-ohne-menschen.md",
   "factcheck": "docs/quellen-erde-ohne-menschen.md → Prüfvermerke Faktenprüfer (11.11.2026)",
@@ -268,7 +270,7 @@
     {
       "id": "satellites",
       "delivery": "tense",
-      "text": "Look up. The satellites still fly. For now. Dodging each other is routine, and someone has to steer. | Not you. Nobody steers. So, ghost, when does Earth *forget* us? It already started. The Sun heats our air, it puffs up, and drag pulls them *lower*.",
+      "text": "Look up. The satellites still fly. For now. Dodging each other is routine, and someone has to steer. | Not you. Nobody steers. So, ghost, when does Earth *forget* us? It already started. The Sun heats our air. It swells, and drag pulls them *lower*.",
       "visual": "Counter 'MONTH 1'. Orbit view, flat: satellites as white icons on dotted tracks; two drift close, a red warning ring pulses, no hand on the joystick in a tiny empty ops room inset. Then the atmosphere drawn as a glowing layer swelling outward; satellites dip down a notch. On 'forget' Spotlight moment: everything dims, YOU center in a single beam, the question sticker returns (re-hook).",
       "sources": [
         "Z25: \"Collision avoidance ... is now a regular part of flying missions in low-Earth orbit.\" (ESA)",
@@ -306,7 +308,7 @@
           "sfx": "ding"
         },
         {
-          "word": "puffs",
+          "word": "swells",
           "beat": "airSwell"
         },
         {
