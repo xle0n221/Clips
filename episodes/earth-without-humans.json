@@ -6,14 +6,14 @@
   "voicePreset": "spannend",
   "sceneGapMs": 120,
   "sources": "docs/quellen-erde-ohne-menschen.md",
-  "factcheck": "offen (Faktenprüfer)",
-  "version": "v1 (Drehbuch-Entwurf 11.11.2026)",
+  "factcheck": "docs/quellen-erde-ohne-menschen.md → Prüfvermerke Faktenprüfer (11.11.2026)",
+  "version": "v2 (nach Faktencheck 7/10 + Retention 7/10, 11.11.2026)",
   "style": {
     "look": "2d",
     "why": "Zeitleisten-Thema mit Karten, Diagrammen (Abklingbecken, Orbit, Höhen-Lineal) und Zähler: flache 2D-Infografik erklärt das am klarsten und entspricht dem Format der Inspirationsvideos; düstere Nachtpalette mit gelbem Akzent trägt den Thriller-Ton.",
     "characters": "YOU = blass-cyaner Geist (runder Kopf, hohle Augen, gelbes Halstuch als einziges Gelb neben den Stadtlichtern), in jeder Szene sichtbar; keine weiteren Menschen nach dem Hook."
   },
-  "note": "Themen-Art: Gedankenexperiment/Weltraum+Natur. Klammer: YOU ist der letzte Zeuge (Geist) und hat eine Frage: 'how long until this planet forgets we were ever here?' (Hook, Re-Hook in 'swift' bei ~40 %, Antwort im Wendepunkt 'moon': Erde vergisst langsam, der Mond nicht). HUD: großer Zähler TIME oben links mit Text-Werten (HOUR 0 → HOUR 1 → DAY 1 → DAY 2 → WEEK 1 → MONTH 1 → YEAR 1 → YEAR 10 → YEAR 15 → YEAR 25 → YEAR 300 → YEAR 1,000 → YEAR 10,000), darunter Balken HUMAN TRACES (sinkt, friert beim Mond ein). Szenen 'blackout' und 'comeback' sind als Vorschau/Analogie markiert (heutige Ereignisse mit Menschen). Loop: letzte Worte 'And it all starts tonight.' → erster Satz 'Tonight, every human on Earth vanishes.' Zahlen ausgeschrieben (Chatterbox), Sticker mit Ziffern. Hinweis Szenenbau: Zähler-Wert ist ein String – falls das HUD nur Zahlen kann, Text-Zähler im 2D-Kit bauen.",
+  "note": "Themen-Art: Gedankenexperiment/Weltraum+Natur. Klammer: YOU ist der letzte Zeuge (Geist) und hat eine Frage: 'how long until this planet forgets we were ever here?' (Hook, Re-Hook (neu formuliert) in 'swift' bei ~40 %, Antwort im Wendepunkt 'moon': Erde vergisst langsam, der Mond nicht). HUD: großer Zähler TIME oben links mit Text-Werten (HOUR 0 → HOUR 1 → DAY 1 → DAY 2 → WEEK 1 → MONTH 1 → YEAR 1 → YEAR 10 → YEAR 15 → YEAR 25 → YEAR 300 → YEAR 1,000 → YEAR 10,000), darunter Balken HUMAN TRACES (sinkt, friert beim Mond ein). Szenen 'blackout', 'swift' (Swift-Absturz Nov. 2026 geschah MIT Menschen) und 'comeback' sind als Vorschau/Analogie markiert (heutige Ereignisse mit Menschen). Loop: eigene Schluss-Szene 'ending' (punch), letzte Worte 'And it all starts tonight.' → erster Satz 'Tonight, every human on Earth vanishes.' Zahlen ausgeschrieben (Chatterbox), Sticker mit Ziffern. Hinweis Szenenbau: Zähler-Wert ist ein String – falls das HUD nur Zahlen kann, Text-Zähler im 2D-Kit bauen.",
   "hud": {
     "title": "EARTH WITHOUT US",
     "counters": [
@@ -80,11 +80,11 @@
     {
       "id": "lights",
       "delivery": "calm",
-      "text": "Zoom out. From space, Earth's night side still *twinkles* with our cities. A NOAA scientist said nothing tells us more about the spread of humans across the Earth than *city lights*. | Enjoy the view.",
-      "visual": "Whip up from the street to orbit: flat 2D Earth night side, yellow city dots in clusters (Black-Marble look, stylised). YOU floats in front of the globe like a tiny astronaut-ghost. Quote card slides in (small, upper half). On 'change' one cluster flickers.",
+      "text": "Zoom out. From space, Earth's night side *twinkles* with our cities. That glow is basically our *signature*. | Enjoy the view.",
+      "visual": "Whip up from the street to orbit: flat 2D Earth night side, yellow city dots in clusters (stylised Black-Marble look). YOU floats in front of the globe. On 'signature' the dots pulse like a handwriting stroke; on 'view' one cluster flickers.",
       "sources": [
         "Z4: \"The night side of our planet twinkles with light, and the first thing to stand out is the cities.\"",
-        "Z5: \"Nothing tells us more about the spread of humans across the Earth than city lights,\" (Chris Elvidge, NOAA)"
+        "\"signature\" = Bild/Folgerung aus Z5 (Elvidge: city lights zeigen die Ausbreitung der Menschen)"
       ],
       "cues": [
         {
@@ -98,8 +98,8 @@
           "sfx": "ding"
         },
         {
-          "word": "NOAA",
-          "beat": "quoteCard"
+          "word": "signature",
+          "beat": "glowPulse"
         },
         {
           "word": "view",
@@ -111,7 +111,7 @@
     {
       "id": "blackout",
       "delivery": "tense",
-      "text": "Here's a preview. In April twenty twenty-five, a blackout hit Spain. Trains *stopped*. Hospitals ran on generators. Phones died. The south stayed dark all night, and that was *with* crews fixing it. Tonight? | Nobody's coming.",
+      "text": "Here's a preview. In April twenty twenty-five, a blackout hit Spain. Trains *stopped*. Hospitals ran on generators. Phones lost signal. The south stayed dark all night, and that was *with* crews fixing it. Tonight? | Nobody's coming.",
       "visual": "Counter flips to 'HOUR 1'. Flat map of Spain, power lines as glowing strokes going dark south to north; icons pop: halted train, hospital with generator, phone with no bars. YOU checks a dead phone. Cut: empty repair truck with open door, nobody inside, on 'Nobody'.",
       "sources": [
         "Z1: \"A widespread power outage on April 28, 2025\" · \"Trains came to a halt, hospitals relied on generators, and phone and internet connections failed.\"",
@@ -158,15 +158,14 @@
     {
       "id": "darkness",
       "delivery": "normal",
-      "text": "After a hurricane knocked out Puerto Rico's grid, satellite images showed the dark. Now picture that *everywhere*. No crews. City by city, the lights go out.",
-      "visual": "Counter 'DAY 1'. Split frame: small satellite photo-style panel of San Juan with dark patches, then the big flat globe from scene 2: yellow dots switch off in waves, sweeping west. YOU watches from orbit, his scarf the only yellow left.",
+      "text": "Now picture that *everywhere*. City by city, the lights go out, until the whole night side goes *black*.",
+      "visual": "Counter 'DAY 1'. Back to the flat globe from scene 2: yellow dots switch off in waves, sweeping west, until the night side is black. YOU watches from orbit, his scarf the only yellow left.",
       "sources": [
-        "Z3: \"Most of the electric power grid and telecommunications network was knocked offline.\" · \"The images above show widespread outages around San Juan\"",
-        "\"City by city\" = Gedankenexperiment ohne Zeitangabe (Quellendatei Fallen: keine Stundenzahl)"
+        "Gedankenexperiment ohne Zeitangabe (Quellendatei Fallen: keine Stundenzahl); Puerto Rico (Z3) für Retention gestrichen"
       ],
       "cues": [
         {
-          "word": "hurricane",
+          "word": "picture",
           "hud": {
             "id": "time",
             "value": "DAY 1"
@@ -183,7 +182,7 @@
           }
         },
         {
-          "word": "lights",
+          "word": "black",
           "beat": "lastDotOff",
           "sfx": "pop"
         }
@@ -192,7 +191,7 @@
     {
       "id": "stars",
       "delivery": "normal",
-      "text": "And then something comes *back*. Light pollution hides the Milky Way from more than a third of humanity. Without us, the sky goes *full blast*. | Best show ever. Zero audience.",
+      "text": "And then something comes *back*. Light pollution hides the Milky Way from more than a third of humanity. Without us, the sky goes *full blast*. | Best show ever. And you're the only audience.",
       "visual": "Counter 'DAY 2'. Ground level, dark empty city skyline in flat silhouettes; the sky fills layer by layer with stars, then the Milky Way band in soft 2D gradient. YOU lies on a car roof, alone, applauding slowly on 'Zero audience'.",
       "sources": [
         "Z23: \"The Milky Way is hidden from more than one-third of humanity\" (Falchi et al. 2016)",
@@ -219,7 +218,7 @@
           "sfx": "whoosh"
         },
         {
-          "word": "Zero",
+          "word": "audience",
           "beat": "slowClap",
           "sfx": "pop"
         }
@@ -228,11 +227,11 @@
     {
       "id": "nuclear",
       "delivery": "tense",
-      "text": "Meanwhile, at nuclear plants, used fuel still makes *heat*. It cools in pools under about *twenty feet* of water, giving operators time to fix any problem. | Operators. Right. Other fuel sits in dry casks. No fans, no pumps, about the heat of a home heater. Cozy.",
+      "text": "Meanwhile, at nuclear plants, used fuel still makes *heat*. It cools under about *twenty feet* of water, giving operators time to fix any problem. | Operators. Right. Other fuel sits in dry casks. No fans, no pumps. Cozy.",
       "visual": "Counter 'WEEK 1'. Cutaway diagram (flat infographic): blue pool, fuel racks at the bottom, a '20 FT' measuring line. Empty control room chair spins slowly on 'Operators'. Then a row of grey casks with little arrow streams of warm air rising; YOU warms his ghost hands at one on 'Cozy'.",
       "sources": [
         "Z18: \"spent fuel still produces a lot of radiation and heat that must be managed\" · \"about 20 feet of water above the top of the fuel, giving plant operators time to correct any problem that may arise.\"",
-        "Z19: \"without fans or pumps\" · \"A typical cask emits roughly the same heat as a home-heating system.\"",
+        "Z19: \"Draw fresh air in at the bottom without fans or pumps\" (Wärme wie Heizung nicht mehr gesprochen; \"Cozy\" = Pointe)",
         "Keine Aussage über Schmelze/Unfall (Quellendatei Fallen)"
       ],
       "cues": [
@@ -269,12 +268,13 @@
     {
       "id": "satellites",
       "delivery": "tense",
-      "text": "Look up. The satellites still fly. For now. Dodging each other is routine, and someone has to steer. | Nobody steers. And the Sun heats our air, it puffs up, and drag pulls them *lower*.",
-      "visual": "Counter 'MONTH 1'. Orbit view, flat: satellites as white icons on dotted tracks; two drift close, a red warning ring pulses, no hand on the joystick in a tiny empty ops room inset. Then the atmosphere drawn as a glowing layer swelling outward; satellites dip down a notch.",
+      "text": "Look up. The satellites still fly. For now. Dodging each other is routine, and someone has to steer. | Not you. Nobody steers. So, ghost, when does Earth *forget* us? It already started. The Sun heats our air, it puffs up, and drag pulls them *lower*.",
+      "visual": "Counter 'MONTH 1'. Orbit view, flat: satellites as white icons on dotted tracks; two drift close, a red warning ring pulses, no hand on the joystick in a tiny empty ops room inset. Then the atmosphere drawn as a glowing layer swelling outward; satellites dip down a notch. On 'forget' Spotlight moment: everything dims, YOU center in a single beam, the question sticker returns (re-hook).",
       "sources": [
         "Z25: \"Collision avoidance ... is now a regular part of flying missions in low-Earth orbit.\" (ESA)",
         "Z6: \"Solar activity heats Earth's atmosphere and causes it to puff outward\" · \"which increases drag on all spacecraft in low Earth orbit, gradually reducing their altitude over time.\"",
-        "\"Nobody steers\" = Folgerung (Quellendatei Z25); keine Kollisionszahl"
+        "\"Nobody steers\" = Folgerung (Quellendatei Z25); keine Kollisionszahl",
+        "Re-Hook der zentralen Frage, neu formuliert (Experiment), bei ~42 % der Wörter"
       ],
       "cues": [
         {
@@ -299,6 +299,13 @@
           "sfx": "boom"
         },
         {
+          "word": "forget",
+          "beat": "spotlight",
+          "sticker": "HOW LONG?",
+          "color": "#FFD23F",
+          "sfx": "ding"
+        },
+        {
           "word": "puffs",
           "beat": "airSwell"
         },
@@ -316,21 +323,25 @@
     {
       "id": "swift",
       "delivery": "punch",
-      "text": "NASA's Swift telescope had already sunk below *two hundred fifty miles*, waiting for a boost. So, ghost, how long until Earth *forgets* us? | It already started.",
-      "visual": "Counter 'YEAR 1'. Swift as a cute flat telescope icon with a worried face, an altitude ruler beside it sliding down past '250 MI'. On 'forgets' Spotlight moment: everything dims, YOU center in a single beam, the question sticker returns (re-hook).",
+      "text": "Orbits sink even with us around. NASA's Swift telescope fell below *two hundred fifty miles*. No boost came. It fell this *November*. | Next up, Hubble.",
+      "visual": "Counter 'YEAR 1'. Inset labelled 'REAL, NOV 2026': Swift as a flat telescope with a worried face, an altitude ruler sliding past '250 MI', then a streak of fire. On 'Hubble' the camera pans to Hubble, still shiny, a bit lower.",
       "sources": [
-        "Z7: \"As of early February, Swift's average altitude had fallen below about 250 miles (about 400 kilometers).\" · Swift-Blog: Mission \"prep for orbit boost\" (Seitentitel)",
-        "Re-Hook der zentralen Frage (Experiment)"
+        "Z7: \"As of early February, Swift's average altitude had fallen below about 250 miles (about 400 kilometers).\"",
+        "Z26: \"NASA and Katalyst Space announced Wednesday the LINK spacecraft will not capture or boost an agency satellite to a higher altitude\" (19.08.2026) · \"NASA's Neil Gehrels Swift Observatory re-entered Earth's atmosphere Wednesday, almost 22 years after launch.\" (4. Nov. 2026)",
+        "Logik: geschah MIT Menschen – Beleg für Orbitzerfall, nicht Folge des Verschwindens"
       ],
       "cues": [
         {
-          "word": "Swift",
+          "word": "Orbits",
           "hud": {
             "id": "time",
             "value": "YEAR 1"
           },
-          "beat": "swiftFace",
           "sfx": "whoosh"
+        },
+        {
+          "word": "Swift",
+          "beat": "swiftFace"
         },
         {
           "word": "fifty",
@@ -339,27 +350,28 @@
           "sfx": "pop"
         },
         {
-          "word": "forgets",
-          "beat": "spotlight",
-          "sticker": "HOW LONG?",
-          "color": "#FFD23F",
+          "word": "November",
+          "beat": "swiftBurn",
+          "sticker": "RE-ENTERED NOV 2026",
+          "color": "#FF5A5A",
           "sfx": "boom"
         },
         {
-          "word": "started",
-          "beat": "ghostNod"
+          "word": "Hubble",
+          "beat": "hubbleTease",
+          "sfx": "whoosh"
         }
       ]
     },
     {
       "id": "hubble",
       "delivery": "hype",
-      "text": "Year ten. Our methane? Mostly scrubbed from the air within about *ten years*. And Hubble keeps sinking. Earliest re-entry: the *mid twenty-thirties*. We always used the atmosphere as an *incinerator* for old spacecraft. | Hubble's turn.",
-      "visual": "Counter rolls fast to 'YEAR 10'. A methane cloud icon fades away like smoke from a candle. Hubble, flat and shiny, drifts lower over the glowing rim of Earth; on 'incinerator' the rim turns into a cartoon furnace mouth. YOU salutes.",
+      "text": "Year ten. It's sinking too. Earliest re-entry: the *mid twenty-thirties*. We often used the atmosphere as an *incinerator* for old spacecraft. | Hubble's turn.",
+      "visual": "Counter rolls fast to 'YEAR 10'. Hubble, flat and shiny, drifts lower over the glowing rim of Earth; on 'incinerator' the rim turns into a cartoon furnace mouth. YOU salutes.",
       "sources": [
-        "Z13: \"methane is mostly scrubbed out of the air by chemical reactions within about ten years\"",
         "Z8: \"Hubble is not expected to re-enter Earth's atmosphere until the mid 2030s at the earliest.\" · \"Hubble's altitude is slowly decreasing.\"",
-        "Z9: \"using the Earth's atmosphere as an incinerator for both the spent spacecraft and the refuse.\""
+        "Z9: \"using the Earth's atmosphere as an incinerator for both the spent spacecraft and the refuse.\"",
+        "Z8 Zusatz (Faktenprüfer): mit Menschen wäre ein Antriebsmodul geplant; ohne Menschen entfällt es (Folgerung)"
       ],
       "cues": [
         {
@@ -370,15 +382,6 @@
           },
           "beat": "counterRoll",
           "sfx": "whoosh"
-        },
-        {
-          "word": "methane",
-          "beat": "methaneFade"
-        },
-        {
-          "word": "Hubble",
-          "beat": "hubbleSink",
-          "sfx": "ding"
         },
         {
           "word": "twenty-thirties",
@@ -397,14 +400,19 @@
         {
           "word": "turn",
           "beat": "salute"
+        },
+        {
+          "word": "sinking",
+          "beat": "hubbleSink",
+          "sfx": "ding"
         }
       ]
     },
     {
       "id": "rust",
       "delivery": "normal",
-      "text": "The Golden Gate Bridge is painted *continuously*, because salty air eats the steel. No painters now. | Rust takes no days off. Year fifteen. A plastic bottle in the sea stays robust for about *fifteen years*, then starts breaking down.",
-      "visual": "Whip down to San Francisco, flat 2D: the red bridge, a paint bucket and roller abandoned on a cable; orange-brown rust patches grow like spreading ink. Counter 'YEAR 15'. Underwater layer: a clear bottle bobbing, a hairline crack appears on 'breaking'.",
+      "text": "The Golden Gate Bridge is painted *continuously*, because salty air eats the steel. No painters now. | Rust takes no days off. And under the bridge, a plastic bottle bobs. It stays robust for about *fifteen years*, then starts breaking down.",
+      "visual": "Whip down to San Francisco, flat 2D: the red bridge, a paint bucket and roller abandoned on a cable; orange-brown rust patches spread like ink. Tilt down under the bridge: a clear bottle bobbing in the bay; counter rolls to 'YEAR 15' on 'fifteen', a hairline crack appears on 'breaking'.",
       "sources": [
         "Z20: \"The truth is that the Bridge is painted continuously.\" · \"The paint applied to the Bridge's steel protects it from the high salt content in the air which can cause the steel to corrode or rust.\"",
         "Z24: \"PETs seem to remain robust for approximately fifteen years. Afterwards, a significant decrease of the native functional groups was recorded\"",
@@ -427,7 +435,7 @@
           "sfx": "boom"
         },
         {
-          "word": "fifteen.",
+          "word": "fifteen",
           "hud": {
             "id": "time",
             "value": "YEAR 15"
@@ -452,7 +460,7 @@
     {
       "id": "comeback",
       "delivery": "calm",
-      "text": "Year twenty-five. After one hundred sixteen thousand people left Chernobyl, plants and animals made *something of a comeback*, according to some studies. Nature doesn't wait for permission.",
+      "text": "Year twenty-five. After one hundred sixteen thousand people left Chernobyl, plants and animals seemed to make *something of a comeback*, according to some studies. Nature doesn't wait for permission.",
       "visual": "Counter 'YEAR 25'. Flat 2D abandoned town square: weeds and trees grow through the pavement in stop-motion layers, a deer silhouette steps into frame, birds on a rusty sign. YOU sits on a bench, a fox glances at him, unimpressed.",
       "sources": [
         "Z10: \"the evacuation of 116,000 residents from a highly contaminated area\" · \"plants and animals appeared to have made something of a comeback, according to some studies.\"",
@@ -609,8 +617,8 @@
     {
       "id": "voyager",
       "delivery": "calm",
-      "text": "Far out there, Voyager One left the Sun's bubble in twenty twelve, carrying a golden record. President Carter wrote it's likely to survive *a billion years*. | So our last proof? A message, flying away from an empty planet. And it all starts tonight.",
-      "visual": "Pull back from the Moon past the planets to deep black space; Voyager 1 (flat icon, big dish) crosses a faint bubble line labelled 'HELIOSPHERE'. The golden record glints. On 'tonight' a form-wipe returns to the night street from the hook and the counter snaps back to 'HOUR 0' (loop).",
+      "text": "Far out there, Voyager One left the Sun's bubble in twenty twelve, carrying a golden record. President Carter wrote it's likely to survive *a billion years*.",
+      "visual": "Pull back from the Moon past the planets to deep black space; Voyager 1 (flat icon, big dish) crosses a faint bubble line labelled 'HELIOSPHERE'. The golden record glints.",
       "sources": [
         "Z16: \"on Aug. 25, 2012, the spacecraft became the first to exit the heliosphere\" · \"The probe is now in interstellar space\"",
         "Z17: \"It is likely to survive a billion years into our future\" (Carter, Hoffnung, keine Messung)",
@@ -637,6 +645,26 @@
           "sticker": "\"A BILLION YEARS\" (HOPE)",
           "color": "#FFD23F",
           "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "delivery": "punch",
+      "text": "So our last proof? A message, flying away from an empty planet. | And it all starts *tonight*.",
+      "visual": "Voyager shrinks to a dot; the black frame becomes the night sky over the empty street from the hook. Form-wipe back to street level, the counter snaps to 'HOUR 0', YOU turns to camera (loop into 'Tonight, every human on Earth vanishes').",
+      "sources": [
+        "Folgerung aus Z16/Z17; Loop zum ersten Satz"
+      ],
+      "cues": [
+        {
+          "word": "proof",
+          "beat": "voyagerDot"
+        },
+        {
+          "word": "empty",
+          "beat": "skyToStreet",
+          "sfx": "whoosh"
         },
         {
           "word": "tonight",

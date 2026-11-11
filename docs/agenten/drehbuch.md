@@ -23,6 +23,7 @@ Englisches Sprechskript mit Szenen, Cues, HUD, Auswahlkarten. Ergebnis `episodes
 - Von Stimme: Länge in **Skriptwörtern** planen und Zahlen sparsam setzen – Zahlen-Szenen sprechen langsamer (Rom hook–stones 3,0 W/s bei 1,25, `stimme-casting.md`) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 11.11.2026 · Erde ohne Menschen v2 · Faktenprüfer 7/10: Quellenzeile zu Swift war nach 9 Monaten veraltet (Boost abgesagt, Absturz Nov. 2026) → bei Ereignissen „in progress“ die neueste Seite derselben Quelle prüfen; Abschwächer der Quelle wörtlich übernehmen („appeared to“, „most of“, „often“). Retention 7/10: Re-Hook-Position über Wortindex steuern (Ziel 40–44 %, erreicht 203/470 = 43 % durch Verlegen in 'satellites') · `episodes/earth-without-humans.json` v2.
 - 11.11.2026 · Erde ohne Menschen v1 · Erster Entwurf 558 Wörter (≈ 199 s) → 496 durch Kürzen je Szene auf eine Pointe; Zählskript (Wörter ohne `*`/`|` + Cue-Wort-Abgleich) fand 0 fehlende Cue-Wörter. Gedankenexperiment-Thema: heutige Ereignisse (Spanien-Blackout, Tschernobyl) als „preview“ markieren, statt Folgen ohne Menschen mit Zahlen zu behaupten · `episodes/earth-without-humans.json`, Feld `sources` je Szene.
 - 08.11.2026 · Rom v1 · Retention 7/10: Goten/Vandalen ohne „you“, zu viele Zahlen → v2 behoben.
 - 08.11.2026 · Sonnensystem · wirkte wie Liste statt Kausalkette → Regel „roter Faden“.
