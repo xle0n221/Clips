@@ -28,3 +28,10 @@ Dass die Tipps von ihm stammen: **Ich kann das nicht bestätigen** (die Doku nen
 4. **Prüfpaare.** Unverändert Pflicht (`docs/agenten-team.md`). Prüfer bekommen frischen Kontext und arbeiten nur lesend
    (Doku: „a reviewer that can read but not edit“, sub-agents.md); der Ersteller setzt die Befunde um.
 5. **Fremde Skills/Plugins/MCP-Server** vor dem Einbau mit `/skillspector` prüfen (`.claude/skills/skillspector/`).
+
+## SkillSpector-Prüfung der Repo-Skills (11.11.2026, SkillSpector 2.12.0, `--no-llm`)
+| Skill | Score | Empfehlung | Befunde | Urteil nach Quellprüfung |
+|---|---|---|---|---|
+| `clip-video` | 10/100 LOW | SAFE | 2× RP1 MEDIUM „`npx remotion` ohne gepinnte Version“ (SKILL.md Z. 80, 89) | **APPROVE** – `npx` nutzt die lokal installierte, per `package-lock.json` gepinnte Remotion-Version, kein MCP-Server |
+| `skillspector` | 8/100 LOW | SAFE | 1× AS3 MEDIUM „Skill Enumeration“ (Z. 7) | **APPROVE** – Skills lesen ist der Zweck des Skills |
+Neue Skills: vor dem Einbau `/skillspector`; Ergebnis hier eintragen.
