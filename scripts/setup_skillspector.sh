@@ -9,5 +9,5 @@ REV="${SKILLSPECTOR_REV:-ece5dbcaabc4b41eb539a41fba285c4e7762e3d0}"  # Stand 11.
 python3 -m venv .venv-skillspector
 .venv-skillspector/bin/pip install -q --upgrade pip
 .venv-skillspector/bin/pip install -q "skillspector @ git+https://github.com/NVIDIA/skillspector.git@${REV}"
-.venv-skillspector/bin/skillspector --help | head -3
+.venv-skillspector/bin/skillspector --help >/dev/null
 echo "SkillSpector bereit: .venv-skillspector/bin/skillspector"

@@ -34,6 +34,7 @@ Dass die Tipps von ihm stammen: **Ich kann das nicht bestätigen** (die Doku nen
 |---|---|---|---|---|
 | `clip-video` | 10/100 LOW | SAFE | 2× RP1 MEDIUM „`npx remotion` ohne gepinnte Version“ (SKILL.md Z. 80, 89) | **APPROVE** – `npx` nutzt die lokal installierte, per `package-lock.json` gepinnte Remotion-Version, kein MCP-Server |
 | `skillspector` | 8/100 LOW | SAFE | 1× AS3 MEDIUM „Skill Enumeration“ (Z. 7) | **APPROVE** – Skills lesen ist der Zweck des Skills |
+| `watch` (bradautomates/claude-video 03ceb42) | 100/100 CRITICAL | DO_NOT_INSTALL | 10× HIGH: .env-Schlüssel lesen (PE3), Netz/Env nicht deklariert (LP1), Gemini-Upload (E4), Env an Unterprozess (E2), setup.py teilweise analysiert (AE1) | **CAUTION** – nur dokumentierte Ziele (Gemini/Groq/OpenAI/uv/PyTorch), kein eval/exec/base64; eingebaut nur mit `--engine local --backend none`, ohne Hook, ohne Schlüssel |
 Neue Skills: vor dem Einbau `/skillspector`; Ergebnis hier eintragen.
 
 ## Automatik (Vorgabe des Nutzers, 11.11.2026)
