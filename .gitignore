@@ -14,3 +14,4 @@ whisper.cpp
 .venv-cb
 /voices
 __pycache__
+.venv-skillspector/
