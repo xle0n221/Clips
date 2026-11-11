@@ -1,6 +1,6 @@
 ---
 name: clip-video
-description: Erstellt ein englisches 3D-Cartoon-Story-Short (9:16, ~60–90 s) zu einem beliebigen Thema mit Remotion + Three.js – von Recherche über Drehbuch, Stimme, Untertitel und 3D-Szenen bis zum fertigen Video. Verwenden, wenn der Nutzer ein neues Video/einen Clip zu einem Thema möchte oder Stimme/Tempo eines bestehenden Clips ändern will.
+description: Erstellt ein englisches Cartoon-Story-Short (3D oder 2D, je nach Thema) (9:16, ~60–90 s) zu einem beliebigen Thema mit Remotion + Three.js – von Recherche über Drehbuch, Stimme, Untertitel und 3D-Szenen bis zum fertigen Video. Verwenden, wenn der Nutzer ein neues Video/einen Clip zu einem Thema möchte oder Stimme/Tempo eines bestehenden Clips ändern will.
 ---
 
 # Clip-Video erstellen
@@ -63,6 +63,7 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - Startpunkt: `npm run scaffold -- episodes/<thema>.json` → `src/episode/scenes/<id>-template.tsx` mit einer
   Komponente pro Szene (Kommentar: Text, `visual`, Cues mit Zeit; Beat-Schnitte per `shotIndex` vorbereitet,
   Zeiten aus `timeline.json`, also nach Schritt 3 laufen lassen). Überschreibt nie; lint-sauber.
+- **Stil zuerst wählen** (3D/2D/Mix, `docs/clip-regeln.md` → „Stilwahl“), dann bauen.
 - Pro Szenen-`id` eine Komponente in `src/episode/scenes/` (Vorbild: `part1.tsx`, `part2.tsx`),
   in `scenes/index.ts` eintragen. Baukasten: `src/episode/kit/` (Toonie-Figuren, Planeten,
   Requisiten, Partikel, `Shot`-Kamera, `<Ink>`-Konturen). Neue themenspezifische Figuren/Kostüme/

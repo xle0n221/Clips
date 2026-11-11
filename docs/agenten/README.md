@@ -70,6 +70,11 @@ Regeln:
 - Prüfer ist nie kleiner als der Ersteller (sonst übersieht er dessen Fehler).
 - Das Modell der laufenden Orchestrator-Sitzung und der an sie gebundenen geplanten Aufgaben (Abholer, Wochenrunde) ist fest;
   nur Agenten und geplante Aufgaben mit frischer Sitzung je Lauf können ein eigenes Modell bekommen.
+- **Orchestrator spart selbst:** Leichte Schritte (Statuslisten, Messungen, Datei-Suche, Endkontrolle) gibt er an einen `haiku`-Agenten
+  statt sie im eigenen langen Verlauf zu machen; jedes neue Video startet in einer **frischen Sitzung** (`docs/sitzungswechsel.md`),
+  weil jeder Schritt einer langen Sitzung den ganzen Verlauf mitliest.
+- Getestet 11.11.2026: Eine Haiku-Vorprüfung als geplante Aufgabe mit frischer Sitzung kostet ~0,8 Cent/Lauf und erkennt Arbeit,
+  **kann den Orchestrator aber nicht wecken** (`fire_trigger` fehlt in solchen Sitzungen) → wieder entfernt; der Abholer bleibt.
 - Jede Rollen-Datei nennt ihr Standardmodell nicht separat – maßgeblich ist diese Tabelle (eine Stelle, kein Widerspruch).
 
 ## Sparsam arbeiten (Token-Budget)

@@ -76,6 +76,22 @@ Erfüllt die Regeln nur teilweise: Struktur eher Liste (9 Planeten à 5–7 s), 
 genutzt, kein Einsatz, Ortswechsel teils unvermittelt, kein laufendes Fortschritts-Element.
 Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbaren Raumanzugs mit Helm.
 
+## Stilwahl je Video (Vorgabe des Nutzers 11.11.2026)
+> „Animationen und Charaktere müssen in den Videos nicht unbedingt genau gleich sein und es muss auch nicht immer 3D sein.
+> Es kann auch 2D sein, wenn es zum Video passt. Du musst eigenständig lernen und denken und entscheiden.“
+
+- **Art Direction entscheidet eigenständig** vor dem Szenenbau: 3D-Bau-Kit, 2D (flache Formen, SVG/CSS in Remotion,
+  Paper-Cut, Infografik) oder Mischung (z. B. 2D-Karten/Diagramme in 3D-Welt). Kriterium: Was erklärt das Thema am klarsten
+  und hält am besten? (Beispiele: Karten/Abläufe/Daten → eher 2D; Räume, Größenvergleiche, Weltall → eher 3D.)
+- Figuren dürfen je Video neu gestaltet werden (anderer Look, andere Proportionen); **innerhalb eines Videos** bleibt die
+  Hauptfigur wiedererkennbar (roter Faden).
+- Im Drehbuch `"style": {"look": "2d|3d|mix", "why": "<1 Satz Begründung>", "characters": "<kurz>"}`; der Design-Kritiker
+  bewertet die Wahl mit (Note ≥ 7). Ergebnis + Wirkung in `docs/agenten/art-direction.md` („Gelernt“) eintragen, damit die
+  Entscheidung beim nächsten Thema auf Erfahrung beruht.
+- Neue 2D-Bausteine als wiederverwendbare Komponenten anlegen (`src/episode/kit2d/`), genau wie das 3D-Kit wächst.
+- Unverändert für jeden Stil: Themen-Treue (Standbild ohne Ton verrät das Thema), unteres Drittel frei für Untertitel,
+  Schnitt auf Beats, Qualitäts-Tor Note ≥ 7.
+
 ## Sprache & Stimme (Vorgaben des Nutzers)
 - Clips sind **auf Englisch**, mit einer **angenehmen Stimme**.
 - **Zeitgemäßer, lockerer Slang**, aber so, dass **jede Altersgruppe** sich abgeholt fühlt

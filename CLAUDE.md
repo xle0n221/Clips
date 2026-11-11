@@ -17,8 +17,9 @@ Jeder beauftragte Agent bekommt seine Rollen-Datei aus `docs/agenten/` mit (Lern
 
 ## Ein Video herstellen
 Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regeln `docs/clip-regeln.md`.
-Stil: immer das Bau-Kit `src/episode/kit/` (Cel-Shading, `<Ink>`-Kontur, `Toonie`-Figuren) wie im
-Sonnensystem-Video, Format 1080×1920.
+Stil: **je Video passend zum Thema entscheiden** (Vorgabe Nutzer 11.11.2026) – 3D (Bau-Kit `src/episode/kit/`),
+2D (flach/SVG/Paper-Cut) oder Mischung; Figuren dürfen je Video anders aussehen. Entscheidung + Begründung im
+Drehbuch-Feld `style`; Regeln: `docs/clip-regeln.md` → „Stilwahl“. Format immer 1080×1920.
 Themenunabhängiger Ablauf und Muster je Themen-Art: `docs/playbook-themen.md`.
 Letzter Rückblick + Kurzablauf für den nächsten Clip: `docs/rueckblick-roemisches-reich.md`.
 
