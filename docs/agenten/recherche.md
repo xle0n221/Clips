@@ -18,10 +18,12 @@ Fakten zum Thema aus Primärquellen sammeln, wörtlich zitieren, mit URL. Ergebn
 - Freigabeliste am Ende: nur was der Faktenprüfer bestätigt, darf ins Drehbuch.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 11.11.2026 · Erde ohne Menschen · Netz war auf science.nasa.gov (+ Gutenberg) beschränkt; cdc/nrc/nps/goldengate/mta/iaea/esa/noaa/cell/ncbi/wikipedia gesperrt → nur 15 Aussagen statt 20–30. Vor dem Auftrag Erreichbarkeit mit einer curl-Schleife je Host prüfen (1 Minute) und nicht auf unerreichbare Stränge bauen. WebSearch-Zusammenfassungen sind kein Beleg (z. B. „Hubble 2033–2034“ stand nicht auf der abgerufenen Seite, dort nur „mid 2030s at the earliest“) · `quellen-erde-ohne-menschen.md`.
 - 08.11.2026 · Rom · Überschrift F1 „Hahn“ und F9 waren unscharf, F12 „Golddach“ war falsch („vergoldetes Bronzedach“) · `faktencheck-roemisches-reich.md`.
 - 08.11.2026 · Rom · „six princes cut off by the sword“ (Gibbon) widerspricht Gibbons eigener Erzählung → Zahlen nie nur aus einer Zusammenfassung übernehmen · `faktencheck-drehbuch-roemisches-reich.md`.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- Erde ohne Menschen: mit offenem Netz die Lücken schließen (Kernkraft/NRC+IAEA, U-Bahn/MTA, CDC-Läuse, NPS, Golden Gate, Plastik/NOAA, Falchi 2016, Deryabina 2015) und messen, wie viele davon der Faktenprüfer freigibt; Kandidatenliste steht unten in der Quellen-Datei.
 - Für jedes Thema 2 „Wow“-Fakten mit Zahl suchen, die man in einem Bild zeigen kann (Info-Grafik), und messen, ob das Drehbuch sie übernimmt.
 - Von Art Direction/Faktenprüfer: für jedes Kostüm- und Kulissen-Detail, das das Kit braucht (Kopfbedeckung, Fell, Farben), eine Zeile „belegt/unbelegt“ in die Bild-Hinweise – Rom: Querbusch und Goten-Fell kamen ohne Beleg ins Kit (`design-system.md` §2.4, §6) (übertragen vom Wissensverwalter 09.11.2026). Quellen-Typen je Themen-Art: `docs/playbook-themen.md` C1–C6.
 
