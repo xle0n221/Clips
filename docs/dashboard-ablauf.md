@@ -57,6 +57,10 @@ Neue Videos mit `"engine": "chatterbox"` (Freigabe des Nutzers 09.11.2026). Vom 
 Wunschlänge `lengthSec` → Wortzahl (Skriptwörter) mit 2,6–3,0 Wörtern/s planen (≈ 2,8 × Sekunden); Zahlen werden beim
 Sprechen länger, Tempo nach dem ersten Sprachlauf kalibrieren (`playbook-themen.md`, Tempo-Abkürzungen). `note` und `inspiration` (Dateien:
 Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
+**Inspiration ist ein Angebot, keine Vorgabe** (Nutzer, 11.11.2026: „nicht unbedingt das nutzen, was ich als Inspo gebe, nur wenn es
+wirklich passt, wie z. B. Animation … wenn ich Quatsch reinschicke, ignoriere es“): Nur übernehmen, was zum Thema passt und das
+Video besser macht (Animationsart, Format, Tempo); Unpassendes stillschweigend weglassen; nie Text/Bilder kopieren.
+Entscheidung in einem Satz im Drehbuch-Feld `style.why` bzw. `note` festhalten.
 
 ## 5. Entscheidung umsetzen
 - `decision.value == "ok"` → `review: null`, `decision: null`, nächster Schritt.
