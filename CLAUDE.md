@@ -3,7 +3,7 @@
 - Antworten an den Nutzer auf Deutsch; die Videos selbst sind auf Englisch.
 - **Standard: sparsam bei gleicher Qualität** (Vorgabe des Nutzers) – nur so viele Agenten wie nötig, neue
   Sitzung je Video, kurze Aufträge/Antworten, Warten ohne Abfragen; Prüfpaare und Freigaben bleiben.
-  Details: `docs/agenten/README.md` → „Sparsam arbeiten“.
+  Details: `docs/agenten/README.md` → „Sparsam arbeiten“ und „Modellwahl je Aufgabe“ (haiku leicht · sonnet Standard · opus schwer).
 - **Sitzung automatisch erneuern, ohne Rückfrage**, sobald sie zu lang wird: `docs/sitzungswechsel.md`.
 - Arbeitsweise mit Claude (Plan vor Bau, Worktrees, Prüfpaare, `/skillspector`, diese Datei < 200 Zeilen): `docs/claude-arbeitsweise.md`.
 - Wahrheit vor Tempo: Fakten nur aus Primärquellen mit Zitat + URL, Unbelegtes kennzeichnen

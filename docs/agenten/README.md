@@ -55,6 +55,23 @@ Rolle**. Ein Agent startet ohne Erinnerung; was er gelernt hat, existiert nur, w
   Grenzen: ein Video-Render gleichzeitig (4 CPU-Kerne) und das Nutzungslimit; nach dem Limit setzt der
   stündliche Abholer automatisch fort.
 
+## Modellwahl je Aufgabe (Vorgabe des Nutzers 11.11.2026: leichte Aufgaben kleineres Modell, schwere Opus)
+Der Orchestrator gibt jedem Agenten beim Start das Modell mit (`Agent`-Parameter `model`). Faustregel:
+**so klein wie möglich, so groß wie nötig** – Qualität geht vor; Prüfpaare bleiben, sie fangen Fehler kleinerer Modelle ab.
+
+| Modell | Wann | Rollen / Aufgaben |
+|---|---|---|
+| `haiku` | mechanisch, klar vorgegeben, leicht nachprüfbar | Webseite abrufen/zusammenfassen (`web-fetch`), Dateien suchen/auflisten, Messungen ausführen und berichten (ffprobe, LUFS, W/s), Endkontrolle nach Checkliste, Dashboard-Status übertragen |
+| `sonnet` | Standardarbeit mit Urteil, aber gut eingegrenzt | Recherche (Quellen finden + zitieren), Retention-Kritiker, Design-Kritiker, Werkzeugbau (Skripte), Wissensverwalter, Veröffentlichung (Titel/Texte/Hashtags), Hashtag-Analyse |
+| `opus` | schwer, kreativ oder fehlerteuer | Drehbuch, Faktenprüfer (Wahrheit vor Tempo), Szenen/Animation (3D-Code), Art Direction, Regie-Kritiker (Bildurteil), Stimme/Casting, Orchestrator selbst, alles mit unklarer Ursache (Fehlersuche) |
+
+Regeln:
+- Ist ein Ergebnis eines kleineren Modells beim Prüfer unter Note 7, wird die **Nacharbeit mit dem nächstgrößeren Modell** vergeben (nicht dasselbe Modell erneut).
+- Prüfer ist nie kleiner als der Ersteller (sonst übersieht er dessen Fehler).
+- Das Modell der laufenden Orchestrator-Sitzung und der an sie gebundenen geplanten Aufgaben (Abholer, Wochenrunde) ist fest;
+  nur Agenten und geplante Aufgaben mit frischer Sitzung je Lauf können ein eigenes Modell bekommen.
+- Jede Rollen-Datei nennt ihr Standardmodell nicht separat – maßgeblich ist diese Tabelle (eine Stelle, kein Widerspruch).
+
 ## Sparsam arbeiten (Token-Budget)
 Qualität bleibt unverändert – gespart wird nur Leerlauf und Doppelarbeit:
 - Aufträge kurz: auf Rollen-Datei und Regeln **verweisen**, nicht abschreiben.
