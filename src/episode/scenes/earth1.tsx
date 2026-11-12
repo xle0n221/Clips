@@ -67,6 +67,8 @@ export const Hook: React.FC = () => {
   // Schnitte innerhalb der Handlung: ghostIn (Ranschnitt halbnah), „And you get one question“ (Ranschnitt YOU), „how long …“ (Detail leere Straße → Pointe)
   const c1 = ghostIn + 54;
   const c2 = Math.min(eyeAt - 40, c1 + 60);
+  // „Everyone.“: Detail leere Kleiderhaufen (zwischen POOF und YOU)
+  const cPiles = Math.min(ghostIn - 50, poof + 33);
   const shot = shotIndex(f, [c1, c2]);
   const gx = 540;
   const gy = 1120;
@@ -82,7 +84,7 @@ export const Hook: React.FC = () => {
         ? lerp(1.75, 1.9, ease(f, c1, c2))
         : anticipate(f, eyeAt, lerp(0.92, 1.02, ease(f, c2, eyeAt)), 0.98, 1.38, { pre: 5, dur: 10 });
   const pan = shot === 2 ? lerp(470, 540, ease(f, c2, eyeAt)) : lerp(470, 540, ease(f, 0, ghostIn + 20));
-  const cam = frameOn(pan, ht, 540, 850, zIn);
+  const cam = f >= cPiles && f < ghostIn ? frameOn(lerp(500, 580, ease(f, cPiles, ghostIn)), 1180, 540, 900, 1.9) : frameOn(pan, ht, 540, 850, zIn);
   const shake = jolt(f, poof, 12);
   const o = ease(f, ghostIn - 4, ghostIn + 12);
   const wide = f >= eyeAt;
@@ -141,7 +143,19 @@ export const Lights: React.FC = () => {
   const pulse = bump(f, glow + 6, 12);
   const off = f > flick && Math.floor((f - flick) / 3) % 2 === 0;
   // „Zoom out“: aus dem Lichtermeer zurück bis zum ganzen Globus
-  const cam: Cam2D = { x: 540 + Math.sin(f * 0.02) * 10, y: 900, zoom: lerp(1.9, 1, ease(f, 0, 45, "inOut")) };
+  // Einstellungen: Zoom raus → Detail Lichter („twinkles with our cities“) → Globus pulsiert → YOU nah („Enjoy the view“)
+  const cDetail = dots - 23;
+  const cGlow = glow - 37;
+  const cView = flick - 15;
+  const shot = shotIndex(f, [cDetail, cGlow, cView]);
+  const cam: Cam2D =
+    shot === 0
+      ? { x: 540 + Math.sin(f * 0.02) * 10, y: 900, zoom: lerp(1.9, 1, ease(f, 0, 45, "inOut")) }
+      : shot === 1
+        ? { x: lerp(560, 620, ease(f, cDetail, cGlow)), y: 720, zoom: lerp(2.2, 2.35, ease(f, cDetail, cGlow)) }
+        : shot === 2
+          ? { x: 540, y: lerp(900, 880, ease(f, cGlow, cView)), zoom: lerp(1.05, 1.12, ease(f, cGlow, cView)) }
+          : frameOn(760, 1290 - 262 * 0.72, 540, 820, 1.5);
   const view = f > flick;
   return (
     <Stage2D cam={cam} mood="space">
@@ -316,8 +330,17 @@ export const Darkness: React.FC = () => {
   const last = B("lastDotOff", d - 25);
   B("globeDark", 40);
   const front = lerp(1.3, -1.3, ease(f, 6, last, "inOut"));
+  // Einstellungen: Globus total → Detail Städte gehen aus („City by city“) → Globus total + Ranfahrt auf YOU
+  const cCity = last - 98;
+  const cWhole = last - 46;
+  const shot = shotIndex(f, [cCity, cWhole]);
   const zoom = lerp(1, 1.75, ease(f, last - 4, last + 22, "inOut"));
-  const cam = frameOn(lerp(540, 540, 0), lerp(780, 1080, ease(f, last - 4, last + 22, "inOut")), 540, lerp(780, 860, ease(f, last - 4, last + 22)), zoom);
+  const cam =
+    shot === 1
+      ? { x: lerp(600, 520, ease(f, cCity, cWhole)), y: 700, zoom: 2.1 }
+      : shot === 0
+        ? { x: 540, y: lerp(820, 790, ease(f, 0, cCity)), zoom: lerp(1.08, 1.02, ease(f, 0, cCity)) }
+        : frameOn(540, lerp(780, 1080, ease(f, last - 4, last + 22, "inOut")), 540, lerp(780, 860, ease(f, last - 4, last + 22)), zoom);
   return (
     <Stage2D cam={cam} mood="space">
       <SpaceBack f={f} seed={41} />
@@ -325,7 +348,7 @@ export const Darkness: React.FC = () => {
         <NightEarth x={540} y={780} s={1.12} rot={f * 0.05 + 4} frame={f} lit={(dx) => dx < front} />
       </Layer>
       <Layer depth={1}>
-        <Ghost x={540} y={1300} s={0.8} frame={f} eyes={f > last ? "wide" : "side"} mouth="frown" armL={10} armR={10} blinkSeed={3} />
+        <Ghost x={540} y={1300} s={0.8} frame={f} o={shot === 1 ? 0 : 1} eyes={f > last ? "wide" : "side"} mouth="frown" armL={10} armR={10} blinkSeed={3} />
       </Layer>
     </Stage2D>
   );
@@ -630,9 +653,24 @@ export const Swift: React.FC = () => {
   const sy = lerp(520, 1000, ease(f, 0, burn, "linear")) + lerp(0, 200, ease(f, burn, burn + 40, "smooth"));
   const sx = 600 + lerp(0, -260, ease(f, burn, burn + 40));
   const pan = ease(f, tease - 2, tease + 14, "inOut");
-  const cam: Cam2D = { x: lerp(540, 1640, pan), y: lerp(Math.min(sy, 1000) - 60, 900, pan), zoom: 1 };
+  // Einstellungen: total (sinkt) → Swift nah („NASA's Swift telescope“) → total (unter 250 MI) → Absturz total
+  // → YOU nah („Next up, Hubble“) → Schwenk zu Hubble
+  const cFace = face - 8;
+  const cBelow = face + 59;
+  const cDown = burn - 21;
+  const cNext = tease - 37;
+  const shot = shotIndex(f, [cFace, cBelow, cDown, cNext]);
+  const gxS = sx + 260;
+  const gyS = Math.min(sy, 1000) + 230 - pan * 60;
+  const base: Cam2D =
+    shot === 1
+      ? frameOn(sx, sy, 540, 820, lerp(1.7, 1.8, ease(f, cFace, cBelow)))
+      : shot === 4
+        ? frameOn(gxS - 40, gyS - 262 * 0.55, 540, 820, 1.7)
+        : { x: 540, y: Math.min(sy, 1000) - 60, zoom: shot === 3 ? 1.04 : 1 };
+  const cam: Cam2D = { x: lerp(base.x, 1640, pan), y: lerp(base.y, 900, pan), zoom: lerp(base.zoom, 1, pan) };
   const fire = ease(f, burn, burn + 6) * (1 - ease(f, burn + 30, burn + 44));
-  const inset = 1 - pan;
+  const inset = shot === 1 || shot === 4 ? 0 : 1 - pan;
   return (
     <Stage2D cam={cam} mood="space">
       <SpaceBack f={f} />
@@ -655,7 +693,7 @@ export const Swift: React.FC = () => {
         <FireTrail x={sx - 60} y={sy - 40} o={fire} frame={f} r={-60} len={520} />
         <Telescope x={sx} y={sy} s={0.75 * (1 - 0.6 * ease(f, burn + 20, burn + 44))} r={-20 + 40 * ease(f, burn, burn + 30)} face={f >= face - 10} frame={f} />
         <Telescope x={1640} y={900} s={0.8} shine={pan} frame={f} r={-8} />
-        <Ghost x={sx + 260} y={Math.min(sy, 1000) + 230 - pan * 60} s={0.55} frame={f} armL={f > burn ? 150 : 25} armR={f > burn ? 150 : 25} eyes={f > burn ? "wide" : "side"} mouth={f > burn ? "o" : "flat"} blinkSeed={3} flip={pan < 0.5} />
+        <Ghost x={gxS} y={gyS} s={0.55} frame={f} armL={f > burn ? 150 : 25} armR={f > burn ? 150 : 25} eyes={f > burn ? "wide" : "side"} mouth={f > burn ? "o" : "flat"} blinkSeed={3} flip={pan < 0.5} />
       </Layer>
       {/* Einsatz-Rahmen „REAL“ (Bildraum) */}
       <g opacity={inset}>

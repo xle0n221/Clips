@@ -28,7 +28,7 @@
   stars, nuclear, satellites, rust, carbon, rushmore jetzt 1,1–3,3 s je Einstellung (vorher bis 9,6 s). Neu: Ampel, Zug,
   CO₂ in `kit2d/props.tsx`. Fallen: Figuren in Parallax-Ebene (depth ≠ 1) landen bei Zoom 2 im Untertitelband → in
   Detail-Einstellungen ausblenden; Karten-Beschriftung nur in der Totale. Label + Sonde: nicht auf den Kreuzungspunkt legen,
-  Sonde links / YOU rechts / Label mittig dazwischen. Offen: unbearbeitete Fahrten (swift 11 s, voyager 9,8 s, hubble 9 s).
+  Sonde links / YOU rechts / Label mittig dazwischen. Runde 2: auch Fahrten (swift, voyager, hubble, comeback, lights, moon, ending) gebrochen → alle 16 Szenen ≤ 3,5 s. Dunkle Silhouetten (Hirsch) verschwinden im Detail vor dunklem Grund → Detail auf helle Figur (Fuchs) legen.
   Beleg `scratchpad/before.jpg` gegen `after.jpg`, `out/earth-contact.jpg`.
 - 09.11.2026 · MotionKitTest 9–12 · **Experiment Portal-Fahrt** (Tür im Flur → Labor, Bildschirm → Nacht):
   liest sich im Bildstreifen als eine durchgehende Kamerareise ohne Schnitt; Voraussetzung: `look` liegt in der

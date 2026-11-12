@@ -28,6 +28,7 @@ import {
   PaintKit,
   pop,
   Ruler,
+  Satellite,
   Skyline,
   Stage2D,
   Stars,
@@ -56,7 +57,17 @@ export const Hubble: React.FC = () => {
   const salute = B("salute", d - 40);
   const hot = ease(f, furnace - 3, furnace + 10);
   const hy = lerp(560, 760, ease(f, 0, sink + 20)) + lerp(0, 120, ease(f, furnace, d));
-  const cam = { x: 540, y: 960 + jolt(f, furnace, 16), zoom: lerp(1, 1.1, ease(f, 0, d)) };
+  // Einstellungen: total → Hubble nah („Earliest re-entry“) → total mit Ofen-Rand → YOU halbnah (Salut)
+  const cNear = sink + 26;
+  const cOven = furnace - 47;
+  const cYou = furnace + 32;
+  const shot = shotIndex(f, [cNear, cOven, cYou]);
+  const cam =
+    shot === 1
+      ? frameOn(600, hy, 540, 820, lerp(1.85, 1.95, ease(f, cNear, cOven)))
+      : shot === 3
+        ? frameOn(380, 931, 540, 820, lerp(1.4, 1.48, ease(f, cYou, d)))
+        : { x: 540, y: 960 + jolt(f, furnace, 16), zoom: lerp(1, 1.1, ease(f, 0, d)) };
   const saluting = f >= salute;
   return (
     <Stage2D cam={cam} mood="space">
@@ -175,11 +186,20 @@ export const Comeback: React.FC = () => {
   const { f, d, B } = useBeats();
   const green = B("greenGrow", Math.round(d * 0.6));
   const fox = B("foxLook", d - 40);
-  const shot = shotIndex(f, [fox - 24]);
+  // Einstellungen: Fahrt total → Detail rostiges Schild (verlassen) → Detail Hirsch („plants and animals“)
+  // → Fahrt total (alles grünt) → Fuchs + YOU nah
+  const cSign = green - 112;
+  const cDeer = green - 59;
+  const shot = shotIndex(f, [cSign, cDeer, green, fox - 24]);
+  const pan: Cam2D = { x: lerp(400, 660, ease(f, 0, fox - 24, "linear")), y: 930, zoom: 1 };
   const cam: Cam2D =
-    shot === 0
-      ? { x: lerp(400, 660, ease(f, 0, fox - 24, "linear")), y: 930, zoom: 1 }
-      : frameOn(560, 1000, 540, 900, lerp(1.45, 1.55, ease(f, fox - 24, d)));
+    shot === 1
+      ? frameOn(-20, 900, 540, 820, lerp(2, 2.1, ease(f, cSign, cDeer)))
+      : shot === 2
+        ? frameOn(lerp(820, 780, ease(f, cDeer, green)), 1100, 540, 860, 1.7)
+        : shot === 4
+          ? frameOn(560, 1000, 540, 900, lerp(1.45, 1.55, ease(f, fox - 24, d)))
+          : { ...pan, zoom: shot === 3 ? 1.06 : 1 };
   const sil = MOODS.nature.sil;
   const g = (i: number) => ease(f, 6 + i * 10, 40 + i * 10) * (0.55 + 0.45 * ease(f, green - 4, green + 14));
   const deerX = lerp(1400, 900, ease(f, 20, 120));
@@ -391,7 +411,19 @@ export const MoonScene: React.FC = () => {
     );
   }
   const g = f - fp;
-  const cam = { x: lerp(470, 620, ease(g, 0, d - fp, "linear")), y: 900, zoom: 1 };
+  // Einstellungen: Mondboden total → Detail Spuren („Apollo tracks“) → Orbiter am Himmel → Flaggen-Schatten nah
+  const cTracks = fp + 47;
+  const cOrbiter = flag - 52;
+  const sub = shotIndex(f, [cTracks, cOrbiter, flag]);
+  const cam =
+    sub === 1
+      ? frameOn(lerp(400, 480, ease(f, cTracks, cOrbiter)), 1150, 540, 880, 1.8)
+      : sub === 2
+        ? { x: 600, y: lerp(820, 780, ease(f, cOrbiter, flag)), zoom: 0.95 }
+        : sub === 3
+          ? frameOn(820, 980, 540, 820, lerp(1.7, 1.8, ease(f, flag, d)))
+          : { x: lerp(470, 560, ease(g, 0, cTracks - fp, "linear")), y: 900, zoom: 1 };
+  const orbX = lerp(80, 980, ease(f, cOrbiter - 10, flag + 10, "linear"));
   return (
     <Stage2D cam={cam} mood="moon">
       <SpaceBack f={f} seed={103} />
@@ -401,9 +433,10 @@ export const MoonScene: React.FC = () => {
       <Layer depth={1}>
         <MoonGround y0={1000} />
         <path d="M -200 1280 Q 300 1150 900 1060 M -200 1330 Q 300 1200 900 1110" stroke="#4A5163" strokeWidth={14} fill="none" strokeDasharray="4 10" opacity={0.85} />
-        <Footprints x0={120} y0={1250} x1={760} y1={1050} reveal={ease(g, 0, 30)} n={16} />
+        <Footprints x0={120} y0={1250} x1={760} y1={1050} reveal={ease(f, cTracks - 6, cTracks + 26)} n={16} />
+        {sub === 2 ? <Satellite x={orbX} y={430} s={0.7} r={-10} /> : null}
         <FlagShadow x={820} y={1050} s={0.9} shadow={ease(f, flag, flag + 16)} />
-        <Ghost x={300} y={1040} s={0.6} frame={f} eyes="normal" mouth="smile" blinkSeed={3} />
+        <Ghost x={300} y={1040} s={0.6} frame={f} eyes={sub === 2 ? "wide" : "normal"} mouth={sub === 2 ? "o" : "smile"} armR={sub === 2 ? 130 : 18} blinkSeed={3} />
       </Layer>
     </Stage2D>
   );
@@ -416,8 +449,20 @@ export const VoyagerScene: React.FC = () => {
   const cross = B("voyagerCross", Math.round(d * 0.35));
   const glint = B("recordGlint", Math.round(d * 0.7));
   const vy = lerp(1150, 700, Math.min(1, f / Math.max(1, cross))) - Math.max(0, f - cross) * 1.2;
-  const zoom = lerp(1.3, 1.05, ease(f, 0, d, "inOut"));
-  const cam = { x: 540, y: vy + 60 / zoom, zoom };
+  // Einstellungen: Anflug nah → Grenze total (HELIOSPHERE) → Detail goldene Platte → Sonde + YOU halbnah („Carter wrote“)
+  // → total, Sonde zieht davon („a billion years“)
+  const cWide = cross;
+  const cRecord = cross + 68;
+  const cCarter = glint + 25;
+  const cFar = glint + 79;
+  const shot = shotIndex(f, [cWide, cRecord, cCarter, cFar]);
+  const zoom = shot === 0 ? 1.35 : shot === 1 ? lerp(1.05, 1.1, ease(f, cWide, cRecord)) : shot === 3 ? 1.3 : lerp(0.95, 0.9, ease(f, cFar, d));
+  const cam =
+    shot === 2
+      ? frameOn(320, vy + 38, 540, 820, lerp(2.5, 2.65, ease(f, cRecord, cCarter)))
+      : shot === 3
+        ? { x: 580, y: vy + 40, zoom }
+        : { x: 540, y: vy + 60 / zoom, zoom };
   const wave = f >= glint;
   // Sonde links, YOU rechts, HELIOSPHERE mittig über der Grenze dazwischen (nichts überdeckt sich)
   return (
@@ -433,7 +478,7 @@ export const VoyagerScene: React.FC = () => {
       <Layer depth={1}>
         <circle cx={540} cy={3600} r={2900} fill="none" stroke="#7FD4FF" strokeWidth={8} strokeDasharray="30 20" opacity={0.75} />
         <circle cx={540} cy={3600} r={2900} fill="#7FD4FF" opacity={0.05} />
-        <Label x={580} y={655} size={32} color="#BFE6FF" o={ease(f, 15, 27)}>
+        <Label x={580} y={655} size={32} color="#BFE6FF" o={shot === 2 ? 0 : ease(f, 15, 27)}>
           HELIOSPHERE
         </Label>
         <Voyager x={290} y={vy} s={0.8} r={-8} glint={bump(f, glint + 4, 10)} />
@@ -453,7 +498,11 @@ export const Ending: React.FC = () => {
   const down = ease(f, sky - 4, sky + 24, "inOut");
   const ht = 1120 - 262 * 1.1;
   const street = frameOn(540, ht, 540, 850, 1);
-  const cam: Cam2D = { x: 540, y: lerp(-520, street.y, down), zoom: 1 };
+  // „And it all starts tonight“: Ranschnitt auf YOU in der Straße
+  const cTonight = loop - 31;
+  // „A message, flying away“: Ranschnitt auf den Lichtpunkt, dann Neigung hinunter in die Straße
+  const cDot = dot + 20;
+  const cam: Cam2D = f >= cDot && f < sky - 4 ? frameOn(540, -560, 540, 760, lerp(1.8, 2, ease(f, cDot, sky))) : f >= cTonight ? frameOn(540, ht, 540, 820, lerp(1.45, 1.55, ease(f, cTonight, d))) : { x: 540, y: lerp(-520, street.y, down), zoom: 1 };
   const vs = lerp(0.42, 0.03, ease(f, 0, dot + 20));
   const turned = f >= loop;
   const h = hop(f, loop, 0.8, 10);
@@ -461,7 +510,12 @@ export const Ending: React.FC = () => {
     <Stage2D cam={cam} mood="night">
       <StreetSet f={f} lit={0} stars={1} tallSky piles />
       <Layer depth={1}>
-        {vs > 0.06 ? <Voyager x={540} y={-560} s={vs} /> : <circle cx={540} cy={-560} r={5 + Math.sin(f * 0.3) * 1.5} fill={C.white} />}
+        {f >= cDot && f < sky - 4 ? (
+          <g>
+            <circle cx={540} cy={-560} r={46 + Math.sin(f * 0.3) * 6} fill={C.white} opacity={0.12} />
+            <Voyager x={540} y={-560} s={0.11} r={-8} />
+          </g>
+        ) : vs > 0.06 ? <Voyager x={540} y={-560} s={vs} /> : <circle cx={540} cy={-560} r={5 + Math.sin(f * 0.3) * 1.5} fill={C.white} />}
       </Layer>
       <Layer depth={1}>
         <Ghost
