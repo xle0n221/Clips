@@ -4,8 +4,10 @@
   "engine": "chatterbox",
   "voice": "am_fenrir",
   "voicePreset": "ruhig",
-  "music": {"mood": "dark"},
-  "speed": 1.12,
+  "music": {
+    "mood": "dark"
+  },
+  "speed": 1.02,
   "pauseMs": 450,
   "sceneGapMs": 120,
   "lengthSec": 68,
