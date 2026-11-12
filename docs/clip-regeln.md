@@ -170,6 +170,16 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   **erst kürzen** (weniger Stationen, dafür jede mit Pointe), dann länger werden – nie schneller sprechen.
   Kokoro-Tempo nie über 1,33 (darüber Sprung um ~10 %, unnatürlich); Tempo mit `npm run calibrate` wählen.
 
+## Stimme wie ein Synchronsprecher (Vorgabe des Nutzers, 12.11.2026 – gilt für jedes Video, geht den älteren Stimm-Regeln vor)
+> „Dazu sollen die Stimmen lebensecht klingen und so klingen wie echte Menschen. Es heißt, das, was gesagt wird,
+> thematisch soll auch so emotional ausgedrückt werden. Als würde ein Skript ein Synchronsprecher sprechen.“
+- Jede Szene bekommt eine **Emotion passend zum Inhalt** (z. B. traurig/leise bei Tod, ungläubig bei Twist, ironisch bei
+  Satire, triumphierend bei Erfolg, ernst bei Skandal) – im Drehbuch je Szene (`delivery` + Emotion), nicht ein Ton für alles.
+- Lebensecht: natürliche Atmung/Pausen, wechselnde Tonhöhe und Lautstärke, Betonung auf Sinnwörtern; kein Leiern, kein
+  gleichförmiges Vorlesen. Tempo-Regel 2,3–2,6 W/s bleibt.
+- Prüfen vor Freigabe: Hörprobe mit mindestens zwei kontrastierenden Szenen (z. B. ruhig + dramatisch); Claude misst
+  Tonhöhen- und Lautstärke-Spannweite je Szene, das Urteil „klingt echt“ trifft der Nutzer.
+
 ## Stimme: lebendig, charakteristisch, mit Druck (Vorgabe des Nutzers, 08.11.2026)
 Vorgabe: **„Die Stimmen sollen lebendiger, charakteristischer und mehr Power haben und Betonungen passend zum Clip.“**
 
