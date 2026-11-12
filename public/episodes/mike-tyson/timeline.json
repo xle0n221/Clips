@@ -1,0 +1,550 @@
+{
+ "id": "mike-tyson",
+ "title": "How hard was Mike Tyson's life, really?",
+ "durationMs": 80180,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4110
+  },
+  {
+   "id": "brooklyn",
+   "startMs": 4110,
+   "endMs": 10810
+  },
+  {
+   "id": "streets",
+   "startMs": 10810,
+   "endMs": 18080
+  },
+  {
+   "id": "detention",
+   "startMs": 18080,
+   "endMs": 24230
+  },
+  {
+   "id": "mother",
+   "startMs": 24230,
+   "endMs": 33820
+  },
+  {
+   "id": "champion",
+   "startMs": 33820,
+   "endMs": 41780
+  },
+  {
+   "id": "douglas",
+   "startMs": 41780,
+   "endMs": 48890
+  },
+  {
+   "id": "conviction",
+   "startMs": 48890,
+   "endMs": 57710
+  },
+  {
+   "id": "ear",
+   "startMs": 57710,
+   "endMs": 63870
+  },
+  {
+   "id": "exodus",
+   "startMs": 63870,
+   "endMs": 70520
+  },
+  {
+   "id": "ending",
+   "startMs": 70520,
+   "endMs": 79580
+  }
+ ],
+ "cues": [
+  {
+   "sticker": "HARD LIFE OR HIS FAULT?",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "hud": {
+    "id": "age",
+    "value": "AGE 0"
+   },
+   "scene": "hook",
+   "atMs": 1260
+  },
+  {
+   "beat": "lookUp",
+   "scene": "hook",
+   "atMs": 2570
+  },
+  {
+   "beat": "scorecardIn",
+   "sfx": "ding",
+   "scene": "hook",
+   "atMs": 3290
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1260
+  },
+  {
+   "sticker": "ROUND 1: BROOKLYN, 1966",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "scene": "brooklyn",
+   "atMs": 4350
+  },
+  {
+   "beat": "dadWalksOut",
+   "bar": {
+    "id": "hits",
+    "value": 0.08
+   },
+   "scene": "brooklyn",
+   "atMs": 5370
+  },
+  {
+   "beat": "momKids",
+   "scene": "brooklyn",
+   "atMs": 6990
+  },
+  {
+   "beat": "whipBrownsville",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "age",
+    "value": "AGE 10"
+   },
+   "bar": {
+    "id": "hits",
+    "value": 0.15
+   },
+   "scene": "brooklyn",
+   "atMs": 10070
+  },
+  {
+   "emph": true,
+   "scene": "brooklyn",
+   "atMs": 6990
+  },
+  {
+   "sticker": "ROUND 2",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "scene": "streets",
+   "atMs": 11670
+  },
+  {
+   "label": {
+    "text": "HE SAYS",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "streets",
+   "atMs": 12280
+  },
+  {
+   "beat": "featherFall",
+   "sfx": "pop",
+   "bar": {
+    "id": "hits",
+    "value": 0.25
+   },
+   "scene": "streets",
+   "atMs": 14650
+  },
+  {
+   "hud": {
+    "id": "age",
+    "value": "AGE 13"
+   },
+   "beat": "tallyMarks",
+   "scene": "streets",
+   "atMs": 15350
+  },
+  {
+   "sticker": "38 ARRESTS (REPORTEDLY)",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "bar": {
+    "id": "hits",
+    "value": 0.32
+   },
+   "scene": "streets",
+   "atMs": 17730
+  },
+  {
+   "emph": true,
+   "scene": "streets",
+   "atMs": 14650
+  },
+  {
+   "emph": true,
+   "scene": "streets",
+   "atMs": 17080
+  },
+  {
+   "sticker": "ROUND 3",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "scene": "detention",
+   "atMs": 18640
+  },
+  {
+   "beat": "eyePop",
+   "sfx": "pop",
+   "scene": "detention",
+   "atMs": 22080
+  },
+  {
+   "beat": "matchCutHandshake",
+   "sfx": "whoosh",
+   "label": {
+    "text": "CUS D'AMATO",
+    "color": "#F5F5F5",
+    "x": 0.5,
+    "y": 0.4
+   },
+   "scene": "detention",
+   "atMs": 23540
+  },
+  {
+   "emph": true,
+   "scene": "detention",
+   "atMs": 22080
+  },
+  {
+   "sticker": "ROUND 4",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "hud": {
+    "id": "age",
+    "value": "AGE 16"
+   },
+   "scene": "mother",
+   "atMs": 24610
+  },
+  {
+   "beat": "frameFade",
+   "bar": {
+    "id": "hits",
+    "value": 0.45
+   },
+   "scene": "mother",
+   "atMs": 25950
+  },
+  {
+   "beat": "guardianDoc",
+   "scene": "mother",
+   "atMs": 28400
+  },
+  {
+   "beat": "spotlight",
+   "sticker": "HOW HARD?",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "mother",
+   "atMs": 29500
+  },
+  {
+   "beat": "scorecardRed",
+   "scene": "mother",
+   "atMs": 31130
+  },
+  {
+   "emph": true,
+   "scene": "mother",
+   "atMs": 31130
+  },
+  {
+   "sticker": "ROUND 5",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "hud": {
+    "id": "age",
+    "value": "AGE 19"
+   },
+   "scene": "champion",
+   "atMs": 34500
+  },
+  {
+   "beat": "emptyCoat",
+   "bar": {
+    "id": "hits",
+    "value": 0.55
+   },
+   "scene": "champion",
+   "atMs": 35820
+  },
+  {
+   "label": {
+    "text": "SOME SAY",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "champion",
+   "atMs": 36480
+  },
+  {
+   "beat": "gloveWipe",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "age",
+    "value": "AGE 20"
+   },
+   "scene": "champion",
+   "atMs": 38980
+  },
+  {
+   "beat": "beltUp",
+   "sticker": "YOUNGEST HEAVYWEIGHT CHAMP: 20",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "champion",
+   "atMs": 39560
+  },
+  {
+   "emph": true,
+   "scene": "champion",
+   "atMs": 39560
+  },
+  {
+   "sticker": "ROUND 6: TOKYO, 1990",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "hud": {
+    "id": "age",
+    "value": "AGE 23"
+   },
+   "scene": "douglas",
+   "atMs": 42160
+  },
+  {
+   "sticker": "42\u20131 (ODDS AT ONE CASINO)",
+   "color": "#B0BEC5",
+   "scene": "douglas",
+   "atMs": 42610
+  },
+  {
+   "beat": "knockdown",
+   "sfx": "boom",
+   "bar": {
+    "id": "hits",
+    "value": 0.65
+   },
+   "scene": "douglas",
+   "atMs": 44420
+  },
+  {
+   "beat": "beltRollsAway",
+   "scene": "douglas",
+   "atMs": 46350
+  },
+  {
+   "beat": "secondFrame",
+   "bar": {
+    "id": "hits",
+    "value": 0.72
+   },
+   "scene": "douglas",
+   "atMs": 48120
+  },
+  {
+   "sticker": "ROUND 7: 1992",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "hud": {
+    "id": "age",
+    "value": "AGE 25"
+   },
+   "scene": "conviction",
+   "atMs": 49240
+  },
+  {
+   "sticker": "CONVICTED OF RAPE",
+   "color": "#F5F5F5",
+   "scene": "conviction",
+   "atMs": 51100
+  },
+  {
+   "beat": "barShadows",
+   "scene": "conviction",
+   "atMs": 49400
+  },
+  {
+   "label": {
+    "text": "HE DENIES IT \u00b7 APPEALS FAILED",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "conviction",
+   "atMs": 53920
+  },
+  {
+   "beat": "barStill",
+   "sticker": "NOT BAD LUCK",
+   "color": "#B0BEC5",
+   "scene": "conviction",
+   "atMs": 56960
+  },
+  {
+   "emph": true,
+   "scene": "conviction",
+   "atMs": 56410
+  },
+  {
+   "sticker": "ROUND 8: 1997",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "hud": {
+    "id": "age",
+    "value": "AGE 30"
+   },
+   "scene": "ear",
+   "atMs": 58090
+  },
+  {
+   "beat": "earPiece",
+   "sfx": "pop",
+   "sticker": "A PIECE OF HIS EAR",
+   "color": "#FF5A5A",
+   "scene": "ear",
+   "atMs": 59860
+  },
+  {
+   "beat": "moneyFly",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "age",
+    "value": "AGE 37"
+   },
+   "scene": "ear",
+   "atMs": 60720
+  },
+  {
+   "sticker": "$23M DEBT (REPORTEDLY)",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "bar": {
+    "id": "hits",
+    "value": 0.82
+   },
+   "scene": "ear",
+   "atMs": 62440
+  },
+  {
+   "emph": true,
+   "scene": "ear",
+   "atMs": 62030
+  },
+  {
+   "emph": true,
+   "scene": "ear",
+   "atMs": 62440
+  },
+  {
+   "sticker": "ROUND 9: 2009",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "hud": {
+    "id": "age",
+    "value": "AGE 42"
+   },
+   "scene": "exodus",
+   "atMs": 65120
+  },
+  {
+   "beat": "flowerFall",
+   "bar": {
+    "id": "hits",
+    "value": 0.95
+   },
+   "scene": "exodus",
+   "atMs": 69120
+  },
+  {
+   "sticker": "FINAL BELL: 2024",
+   "color": "#F5F5F5",
+   "sfx": "ding",
+   "hud": {
+    "id": "age",
+    "value": "AGE 58"
+   },
+   "scene": "ending",
+   "atMs": 71770
+  },
+  {
+   "sticker": "LOST TO JAKE PAUL, 31 YEARS YOUNGER",
+   "color": "#B0BEC5",
+   "scene": "ending",
+   "atMs": 74080
+  },
+  {
+   "beat": "scorecardHard",
+   "bar": {
+    "id": "hits",
+    "value": 1.0
+   },
+   "scene": "ending",
+   "atMs": 75120
+  },
+  {
+   "beat": "scorecardNo",
+   "sfx": "pop",
+   "scene": "ending",
+   "atMs": 76420
+  },
+  {
+   "beat": "cardToCamera",
+   "sfx": "ding",
+   "scene": "ending",
+   "atMs": 78240
+  },
+  {
+   "beat": "loopToRing",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "age",
+    "value": "AGE 0"
+   },
+   "scene": "ending",
+   "atMs": 78880
+  },
+  {
+   "emph": true,
+   "scene": "ending",
+   "atMs": 75430
+  },
+  {
+   "emph": true,
+   "scene": "ending",
+   "atMs": 77630
+  }
+ ],
+ "hud": {
+  "title": "TYSON vs. LIFE",
+  "counters": [
+   {
+    "id": "age",
+    "label": "",
+    "value": "AGE 0"
+   }
+  ],
+  "bars": [
+   {
+    "id": "hits",
+    "label": "LIFE HITS",
+    "value": 0.0,
+    "color": "#FF5A5A"
+   }
+  ]
+ },
+ "cover": {
+  "text": "HARD LIFE OR HIS FAULT?",
+  "sub": "Mike Tyson, scored round by round",
+  "frames": 15
+ }
+}
