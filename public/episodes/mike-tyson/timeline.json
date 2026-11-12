@@ -1,62 +1,62 @@
 {
  "id": "mike-tyson",
  "title": "How hard was Mike Tyson's life, really?",
- "durationMs": 78691,
+ "durationMs": 79079,
  "scenes": [
   {
    "id": "hook",
    "startMs": 150,
-   "endMs": 3830
+   "endMs": 4055
   },
   {
    "id": "brooklyn",
-   "startMs": 3830,
-   "endMs": 10641
+   "startMs": 4055,
+   "endMs": 11065
   },
   {
    "id": "streets",
-   "startMs": 10641,
-   "endMs": 17410
+   "startMs": 11065,
+   "endMs": 17892
   },
   {
    "id": "detention",
-   "startMs": 17410,
-   "endMs": 23916
+   "startMs": 17892,
+   "endMs": 23452
   },
   {
    "id": "mother",
-   "startMs": 23916,
-   "endMs": 33288
+   "startMs": 23452,
+   "endMs": 32595
   },
   {
    "id": "champion",
-   "startMs": 33288,
-   "endMs": 40823
+   "startMs": 32595,
+   "endMs": 41464
   },
   {
    "id": "douglas",
-   "startMs": 40823,
-   "endMs": 48032
+   "startMs": 41464,
+   "endMs": 49217
   },
   {
    "id": "conviction",
-   "startMs": 48032,
-   "endMs": 56464
+   "startMs": 49217,
+   "endMs": 57508
   },
   {
    "id": "ear",
-   "startMs": 56464,
-   "endMs": 61987
+   "startMs": 57508,
+   "endMs": 63780
   },
   {
    "id": "exodus",
-   "startMs": 61987,
-   "endMs": 68444
+   "startMs": 63780,
+   "endMs": 69861
   },
   {
    "id": "ending",
-   "startMs": 68444,
-   "endMs": 78091
+   "startMs": 69861,
+   "endMs": 78479
   }
  ],
  "cues": [
@@ -69,30 +69,30 @@
     "value": "AGE 0"
    },
    "scene": "hook",
-   "atMs": 1320
+   "atMs": 1340
   },
   {
    "beat": "lookUp",
    "scene": "hook",
-   "atMs": 2520
+   "atMs": 2580
   },
   {
    "beat": "scorecardIn",
    "sfx": "ding",
    "scene": "hook",
-   "atMs": 2840
+   "atMs": 3340
   },
   {
    "emph": true,
    "scene": "hook",
-   "atMs": 1320
+   "atMs": 1340
   },
   {
    "sticker": "ROUND 1: BROOKLYN, 1966",
    "color": "#F5F5F5",
    "sfx": "ding",
    "scene": "brooklyn",
-   "atMs": 3860
+   "atMs": 4160
   },
   {
    "beat": "dadWalksOut",
@@ -101,12 +101,12 @@
     "value": 0.08
    },
    "scene": "brooklyn",
-   "atMs": 4920
+   "atMs": 5060
   },
   {
    "beat": "momKids",
    "scene": "brooklyn",
-   "atMs": 6800
+   "atMs": 7080
   },
   {
    "beat": "whipBrownsville",
@@ -120,19 +120,19 @@
     "value": 0.15
    },
    "scene": "brooklyn",
-   "atMs": 9540
+   "atMs": 10180
   },
   {
    "emph": true,
    "scene": "brooklyn",
-   "atMs": 6800
+   "atMs": 7080
   },
   {
    "sticker": "ROUND 2",
    "color": "#F5F5F5",
    "sfx": "ding",
    "scene": "streets",
-   "atMs": 11220
+   "atMs": 11460
   },
   {
    "label": {
@@ -142,7 +142,7 @@
     "y": 0.36
    },
    "scene": "streets",
-   "atMs": 11800
+   "atMs": 11980
   },
   {
    "beat": "featherFall",
@@ -152,7 +152,7 @@
     "value": 0.25
    },
    "scene": "streets",
-   "atMs": 13660
+   "atMs": 13960
   },
   {
    "hud": {
@@ -161,7 +161,7 @@
    },
    "beat": "tallyMarks",
    "scene": "streets",
-   "atMs": 14480
+   "atMs": 14960
   },
   {
    "sticker": "38 ARRESTS (REPORTEDLY)",
@@ -172,30 +172,30 @@
     "value": 0.32
    },
    "scene": "streets",
-   "atMs": 16360
+   "atMs": 16920
   },
   {
    "emph": true,
    "scene": "streets",
-   "atMs": 13660
+   "atMs": 13960
   },
   {
    "emph": true,
    "scene": "streets",
-   "atMs": 15800
+   "atMs": 16320
   },
   {
    "sticker": "ROUND 3",
    "color": "#F5F5F5",
    "sfx": "ding",
    "scene": "detention",
-   "atMs": 17600
+   "atMs": 18040
   },
   {
    "beat": "eyePop",
    "sfx": "pop",
    "scene": "detention",
-   "atMs": 21560
+   "atMs": 21460
   },
   {
    "beat": "matchCutHandshake",
@@ -207,12 +207,12 @@
     "y": 0.4
    },
    "scene": "detention",
-   "atMs": 22800
+   "atMs": 22640
   },
   {
    "emph": true,
    "scene": "detention",
-   "atMs": 21560
+   "atMs": 21460
   },
   {
    "sticker": "ROUND 4",
@@ -223,7 +223,7 @@
     "value": "AGE 16"
    },
    "scene": "mother",
-   "atMs": 24260
+   "atMs": 23600
   },
   {
    "beat": "frameFade",
@@ -232,12 +232,12 @@
     "value": 0.45
    },
    "scene": "mother",
-   "atMs": 25360
+   "atMs": 24660
   },
   {
    "beat": "guardianDoc",
    "scene": "mother",
-   "atMs": 27400
+   "atMs": 27240
   },
   {
    "beat": "spotlight",
@@ -245,17 +245,17 @@
    "color": "#FFD23F",
    "sfx": "boom",
    "scene": "mother",
-   "atMs": 28580
+   "atMs": 28300
   },
   {
    "beat": "scorecardRed",
    "scene": "mother",
-   "atMs": 30040
+   "atMs": 29880
   },
   {
    "emph": true,
    "scene": "mother",
-   "atMs": 30040
+   "atMs": 29880
   },
   {
    "sticker": "ROUND 5",
@@ -266,7 +266,7 @@
     "value": "AGE 19"
    },
    "scene": "champion",
-   "atMs": 33640
+   "atMs": 33020
   },
   {
    "beat": "emptyCoat",
@@ -275,7 +275,7 @@
     "value": 0.55
    },
    "scene": "champion",
-   "atMs": 34700
+   "atMs": 34400
   },
   {
    "label": {
@@ -285,7 +285,7 @@
     "y": 0.36
    },
    "scene": "champion",
-   "atMs": 35120
+   "atMs": 35680
   },
   {
    "beat": "gloveWipe",
@@ -295,7 +295,7 @@
     "value": "AGE 20"
    },
    "scene": "champion",
-   "atMs": 37940
+   "atMs": 38760
   },
   {
    "beat": "beltUp",
@@ -303,12 +303,12 @@
    "color": "#FFD23F",
    "sfx": "boom",
    "scene": "champion",
-   "atMs": 38520
+   "atMs": 39720
   },
   {
    "emph": true,
    "scene": "champion",
-   "atMs": 38520
+   "atMs": 39720
   },
   {
    "sticker": "ROUND 6: TOKYO, 1990",
@@ -319,13 +319,13 @@
     "value": "AGE 23"
    },
    "scene": "douglas",
-   "atMs": 40460
+   "atMs": 41580
   },
   {
    "sticker": "42\u20131 (ODDS AT ONE CASINO)",
    "color": "#B0BEC5",
    "scene": "douglas",
-   "atMs": 41600
+   "atMs": 42160
   },
   {
    "beat": "knockdown",
@@ -335,12 +335,12 @@
     "value": 0.65
    },
    "scene": "douglas",
-   "atMs": 43540
+   "atMs": 44300
   },
   {
    "beat": "beltRollsAway",
    "scene": "douglas",
-   "atMs": 45280
+   "atMs": 46380
   },
   {
    "beat": "secondFrame",
@@ -349,7 +349,7 @@
     "value": 0.72
    },
    "scene": "douglas",
-   "atMs": 46820
+   "atMs": 48100
   },
   {
    "sticker": "ROUND 7: 1992",
@@ -360,18 +360,18 @@
     "value": "AGE 25"
    },
    "scene": "conviction",
-   "atMs": 47560
+   "atMs": 49220
   },
   {
    "sticker": "CONVICTED OF RAPE",
    "color": "#F5F5F5",
    "scene": "conviction",
-   "atMs": 50180
+   "atMs": 51340
   },
   {
    "beat": "barShadows",
    "scene": "conviction",
-   "atMs": 48400
+   "atMs": 49400
   },
   {
    "label": {
@@ -381,19 +381,19 @@
     "y": 0.36
    },
    "scene": "conviction",
-   "atMs": 52360
+   "atMs": 54020
   },
   {
    "beat": "barStill",
    "sticker": "NOT BAD LUCK",
    "color": "#B0BEC5",
    "scene": "conviction",
-   "atMs": 55720
+   "atMs": 57000
   },
   {
    "emph": true,
    "scene": "conviction",
-   "atMs": 55020
+   "atMs": 56520
   },
   {
    "sticker": "ROUND 8: 1997",
@@ -404,7 +404,7 @@
     "value": "AGE 30"
    },
    "scene": "ear",
-   "atMs": 56780
+   "atMs": 57600
   },
   {
    "beat": "earPiece",
@@ -412,7 +412,7 @@
    "sticker": "A PIECE OF HIS EAR",
    "color": "#FF5A5A",
    "scene": "ear",
-   "atMs": 58220
+   "atMs": 59220
   },
   {
    "beat": "moneyFly",
@@ -422,7 +422,7 @@
     "value": "AGE 37"
    },
    "scene": "ear",
-   "atMs": 59040
+   "atMs": 60460
   },
   {
    "sticker": "$23M DEBT (REPORTEDLY)",
@@ -433,17 +433,17 @@
     "value": 0.82
    },
    "scene": "ear",
-   "atMs": 60800
+   "atMs": 62200
   },
   {
    "emph": true,
    "scene": "ear",
-   "atMs": 60240
+   "atMs": 61840
   },
   {
    "emph": true,
    "scene": "ear",
-   "atMs": 60800
+   "atMs": 62200
   },
   {
    "sticker": "ROUND 9: 2009",
@@ -454,7 +454,7 @@
     "value": "AGE 42"
    },
    "scene": "exodus",
-   "atMs": 62940
+   "atMs": 64640
   },
   {
    "beat": "flowerFall",
@@ -463,7 +463,7 @@
     "value": 0.95
    },
    "scene": "exodus",
-   "atMs": 66980
+   "atMs": 68580
   },
   {
    "sticker": "FINAL BELL: 2024",
@@ -474,13 +474,13 @@
     "value": "AGE 58"
    },
    "scene": "ending",
-   "atMs": 69980
+   "atMs": 71160
   },
   {
    "sticker": "LOST TO JAKE PAUL, 31 YEARS YOUNGER",
    "color": "#B0BEC5",
    "scene": "ending",
-   "atMs": 72160
+   "atMs": 73100
   },
   {
    "beat": "scorecardHard",
@@ -489,19 +489,19 @@
     "value": 1.0
    },
    "scene": "ending",
-   "atMs": 73240
+   "atMs": 74360
   },
   {
    "beat": "scorecardNo",
    "sfx": "pop",
    "scene": "ending",
-   "atMs": 74680
+   "atMs": 75720
   },
   {
    "beat": "cardToCamera",
    "sfx": "ding",
    "scene": "ending",
-   "atMs": 76500
+   "atMs": 77180
   },
   {
    "beat": "loopToRing",
@@ -511,17 +511,17 @@
     "value": "AGE 0"
    },
    "scene": "ending",
-   "atMs": 77040
+   "atMs": 77840
   },
   {
    "emph": true,
    "scene": "ending",
-   "atMs": 73900
+   "atMs": 75000
   },
   {
    "emph": true,
    "scene": "ending",
-   "atMs": 75500
+   "atMs": 76440
   }
  ],
  "hud": {
