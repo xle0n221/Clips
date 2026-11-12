@@ -2,1226 +2,1226 @@
  {
   "text": "Step",
   "startMs": 0,
-  "endMs": 560,
-  "timestampMs": 280,
+  "endMs": 80,
+  "timestampMs": 40,
   "confidence": null
  },
  {
   "text": " 1:",
-  "startMs": 560,
-  "endMs": 860,
-  "timestampMs": 710,
+  "startMs": 0,
+  "endMs": 360,
+  "timestampMs": 180,
   "confidence": null
  },
  {
   "text": " be",
-  "startMs": 980,
-  "endMs": 1160,
-  "timestampMs": 1070,
+  "startMs": 580,
+  "endMs": 800,
+  "timestampMs": 690,
   "confidence": null
  },
  {
   "text": " rich.",
-  "startMs": 1160,
-  "endMs": 1500,
-  "timestampMs": 1330,
+  "startMs": 800,
+  "endMs": 1160,
+  "timestampMs": 980,
   "confidence": null
  },
  {
   "text": " Done?",
-  "startMs": 2480,
-  "endMs": 2580,
-  "timestampMs": 2530,
+  "startMs": 1900,
+  "endMs": 1920,
+  "timestampMs": 1910,
   "confidence": null
  },
  {
   "text": " Cool.",
-  "startMs": 2980,
-  "endMs": 3160,
-  "timestampMs": 3070,
+  "startMs": 2200,
+  "endMs": 2400,
+  "timestampMs": 2300,
   "confidence": null
  },
  {
   "text": " Rolls-Royce",
-  "startMs": 3660,
-  "endMs": 3960,
-  "timestampMs": 3810,
+  "startMs": 2760,
+  "endMs": 3140,
+  "timestampMs": 2950,
   "confidence": null
  },
  {
   "text": " driver",
-  "startMs": 3960,
-  "endMs": 4180,
-  "timestampMs": 4070,
+  "startMs": 3140,
+  "endMs": 3340,
+  "timestampMs": 3240,
   "confidence": null
  },
  {
   "text": " in",
-  "startMs": 4180,
-  "endMs": 4440,
-  "timestampMs": 4310,
+  "startMs": 3340,
+  "endMs": 3520,
+  "timestampMs": 3430,
   "confidence": null
  },
  {
   "text": " 1",
-  "startMs": 4440,
-  "endMs": 4660,
-  "timestampMs": 4550,
+  "startMs": 3520,
+  "endMs": 3680,
+  "timestampMs": 3600,
   "confidence": null
  },
  {
   "text": " minute.",
-  "startMs": 4660,
-  "endMs": 4920,
-  "timestampMs": 4790,
+  "startMs": 3680,
+  "endMs": 3920,
+  "timestampMs": 3800,
   "confidence": null
  },
  {
   "text": " Go!",
-  "startMs": 5180,
-  "endMs": 5460,
-  "timestampMs": 5320,
+  "startMs": 4120,
+  "endMs": 4340,
+  "timestampMs": 4230,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 5880,
-  "endMs": 6020,
-  "timestampMs": 5950,
+  "startMs": 4680,
+  "endMs": 4760,
+  "timestampMs": 4720,
   "confidence": null
  },
  {
   "text": " 2:",
-  "startMs": 6020,
-  "endMs": 6240,
-  "timestampMs": 6130,
+  "startMs": 4760,
+  "endMs": 5060,
+  "timestampMs": 4910,
   "confidence": null
  },
  {
   "text": " pick",
-  "startMs": 6540,
-  "endMs": 6660,
-  "timestampMs": 6600,
+  "startMs": 5360,
+  "endMs": 5480,
+  "timestampMs": 5420,
   "confidence": null
  },
  {
   "text": " your",
-  "startMs": 6660,
-  "endMs": 6820,
-  "timestampMs": 6740,
+  "startMs": 5480,
+  "endMs": 5660,
+  "timestampMs": 5570,
   "confidence": null
  },
  {
   "text": " ride.",
-  "startMs": 6820,
-  "endMs": 7120,
-  "timestampMs": 6970,
+  "startMs": 5660,
+  "endMs": 6000,
+  "timestampMs": 5830,
   "confidence": null
  },
  {
   "text": " Phantom:",
-  "startMs": 7400,
-  "endMs": 7560,
-  "timestampMs": 7480,
+  "startMs": 6580,
+  "endMs": 6580,
+  "timestampMs": 6580,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 7920,
-  "endMs": 7960,
-  "timestampMs": 7940,
+  "startMs": 6820,
+  "endMs": 6840,
+  "timestampMs": 6830,
   "confidence": null
  },
  {
   "text": " flagship.",
-  "startMs": 7960,
-  "endMs": 8260,
-  "timestampMs": 8110,
+  "startMs": 6840,
+  "endMs": 7160,
+  "timestampMs": 7000,
   "confidence": null
  },
  {
   "text": " Ghost:",
-  "startMs": 8680,
-  "endMs": 8780,
-  "timestampMs": 8730,
+  "startMs": 7160,
+  "endMs": 7600,
+  "timestampMs": 7380,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 9160,
-  "endMs": 9180,
-  "timestampMs": 9170,
+  "startMs": 8040,
+  "endMs": 8140,
+  "timestampMs": 8090,
   "confidence": null
  },
  {
   "text": " entry",
-  "startMs": 9180,
-  "endMs": 9460,
-  "timestampMs": 9320,
+  "startMs": 8140,
+  "endMs": 8420,
+  "timestampMs": 8280,
   "confidence": null
  },
  {
   "text": " model.",
-  "startMs": 9460,
-  "endMs": 9780,
-  "timestampMs": 9620,
+  "startMs": 8420,
+  "endMs": 8680,
+  "timestampMs": 8550,
   "confidence": null
  },
  {
   "text": " It's",
-  "startMs": 10780,
-  "endMs": 11020,
-  "timestampMs": 10900,
+  "startMs": 9100,
+  "endMs": 9380,
+  "timestampMs": 9240,
   "confidence": null
  },
  {
   "text": " giving",
-  "startMs": 11020,
-  "endMs": 11240,
-  "timestampMs": 11130,
+  "startMs": 9380,
+  "endMs": 9620,
+  "timestampMs": 9500,
   "confidence": null
  },
  {
   "text": " starter",
-  "startMs": 11240,
-  "endMs": 11680,
-  "timestampMs": 11460,
+  "startMs": 9620,
+  "endMs": 10000,
+  "timestampMs": 9810,
   "confidence": null
  },
  {
   "text": " pack.",
-  "startMs": 11680,
-  "endMs": 12000,
-  "timestampMs": 11840,
+  "startMs": 10000,
+  "endMs": 10400,
+  "timestampMs": 10200,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 12320,
-  "endMs": 12580,
-  "timestampMs": 12450,
+  "startMs": 10800,
+  "endMs": 10820,
+  "timestampMs": 10810,
   "confidence": null
  },
  {
   "text": " 3:",
-  "startMs": 12580,
-  "endMs": 12940,
-  "timestampMs": 12760,
+  "startMs": 10820,
+  "endMs": 10840,
+  "timestampMs": 10830,
   "confidence": null
  },
  {
   "text": " wait.",
-  "startMs": 13340,
-  "endMs": 13500,
-  "timestampMs": 13420,
+  "startMs": 11280,
+  "endMs": 11500,
+  "timestampMs": 11390,
   "confidence": null
  },
  {
   "text": " Rumor",
-  "startMs": 14040,
-  "endMs": 14180,
-  "timestampMs": 14110,
+  "startMs": 11980,
+  "endMs": 12220,
+  "timestampMs": 12100,
   "confidence": null
  },
  {
   "text": " says",
-  "startMs": 14180,
-  "endMs": 14400,
-  "timestampMs": 14290,
+  "startMs": 12220,
+  "endMs": 12440,
+  "timestampMs": 12330,
   "confidence": null
  },
  {
   "text": " you",
-  "startMs": 14400,
-  "endMs": 14600,
-  "timestampMs": 14500,
+  "startMs": 12440,
+  "endMs": 12700,
+  "timestampMs": 12570,
   "confidence": null
  },
  {
   "text": " need",
-  "startMs": 14600,
-  "endMs": 14700,
-  "timestampMs": 14650,
+  "startMs": 12700,
+  "endMs": 12860,
+  "timestampMs": 12780,
   "confidence": null
  },
  {
   "text": " an",
-  "startMs": 14700,
-  "endMs": 14860,
-  "timestampMs": 14780,
+  "startMs": 12860,
+  "endMs": 13000,
+  "timestampMs": 12930,
   "confidence": null
  },
  {
   "text": " invite.",
-  "startMs": 14860,
-  "endMs": 15260,
-  "timestampMs": 15060,
+  "startMs": 13000,
+  "endMs": 13380,
+  "timestampMs": 13190,
   "confidence": null
  },
  {
   "text": " Unconfirmed.",
-  "startMs": 16040,
-  "endMs": 16500,
-  "timestampMs": 16270,
+  "startMs": 14140,
+  "endMs": 14660,
+  "timestampMs": 14400,
   "confidence": null
  },
  {
   "text": " In",
-  "startMs": 16920,
-  "endMs": 17020,
-  "timestampMs": 16970,
+  "startMs": 15060,
+  "endMs": 15160,
+  "timestampMs": 15110,
   "confidence": null
  },
  {
   "text": " 2019,",
-  "startMs": 17020,
-  "endMs": 17700,
-  "timestampMs": 17360,
+  "startMs": 15160,
+  "endMs": 15720,
+  "timestampMs": 15440,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 18100,
-  "endMs": 18160,
-  "timestampMs": 18130,
+  "startMs": 16080,
+  "endMs": 16120,
+  "timestampMs": 16100,
   "confidence": null
  },
  {
   "text": " company",
-  "startMs": 18160,
-  "endMs": 18380,
-  "timestampMs": 18270,
+  "startMs": 16120,
+  "endMs": 16300,
+  "timestampMs": 16210,
   "confidence": null
  },
  {
   "text": " claimed:",
-  "startMs": 18380,
-  "endMs": 18880,
-  "timestampMs": 18630,
+  "startMs": 16300,
+  "endMs": 16660,
+  "timestampMs": 16480,
   "confidence": null
  },
  {
   "text": " not",
-  "startMs": 19340,
-  "endMs": 19380,
-  "timestampMs": 19360,
+  "startMs": 16660,
+  "endMs": 16960,
+  "timestampMs": 16810,
   "confidence": null
  },
  {
   "text": " enough",
-  "startMs": 19380,
-  "endMs": 19640,
-  "timestampMs": 19510,
+  "startMs": 16960,
+  "endMs": 17200,
+  "timestampMs": 17080,
   "confidence": null
  },
  {
   "text": " Cullinans",
-  "startMs": 19640,
-  "endMs": 20180,
-  "timestampMs": 19910,
+  "startMs": 17200,
+  "endMs": 17600,
+  "timestampMs": 17400,
   "confidence": null
  },
  {
   "text": " for",
-  "startMs": 20180,
-  "endMs": 20300,
-  "timestampMs": 20240,
+  "startMs": 17600,
+  "endMs": 17820,
+  "timestampMs": 17710,
   "confidence": null
  },
  {
   "text": " established",
-  "startMs": 20300,
-  "endMs": 20720,
-  "timestampMs": 20510,
+  "startMs": 17820,
+  "endMs": 18220,
+  "timestampMs": 18020,
   "confidence": null
  },
  {
   "text": " buyers.",
-  "startMs": 20720,
-  "endMs": 21140,
-  "timestampMs": 20930,
+  "startMs": 18220,
+  "endMs": 18680,
+  "timestampMs": 18450,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 22200,
-  "endMs": 22280,
-  "timestampMs": 22240,
+  "startMs": 19480,
+  "endMs": 19620,
+  "timestampMs": 19550,
   "confidence": null
  },
  {
   "text": " 4:",
-  "startMs": 22280,
-  "endMs": 22580,
-  "timestampMs": 22430,
+  "startMs": 19620,
+  "endMs": 19920,
+  "timestampMs": 19770,
   "confidence": null
  },
  {
   "text": " sit",
-  "startMs": 22960,
-  "endMs": 23080,
-  "timestampMs": 23020,
+  "startMs": 20280,
+  "endMs": 20360,
+  "timestampMs": 20320,
   "confidence": null
  },
  {
   "text": " down.",
-  "startMs": 23080,
-  "endMs": 23340,
-  "timestampMs": 23210,
+  "startMs": 20360,
+  "endMs": 20620,
+  "timestampMs": 20490,
   "confidence": null
  },
  {
   "text": " Nobody:",
-  "startMs": 23760,
-  "endMs": 23940,
-  "timestampMs": 23850,
+  "startMs": 20940,
+  "endMs": 21080,
+  "timestampMs": 21010,
   "confidence": null
  },
  {
   "text": " Rolls-Royce:",
-  "startMs": 24880,
-  "endMs": 25490,
-  "timestampMs": 25185,
+  "startMs": 21760,
+  "endMs": 22260,
+  "timestampMs": 22010,
   "confidence": null
  },
  {
   "text": " 2.2",
-  "startMs": 25490,
-  "endMs": 26100,
-  "timestampMs": 25795,
+  "startMs": 22260,
+  "endMs": 22760,
+  "timestampMs": 22510,
   "confidence": null
  },
  {
   "text": " million",
-  "startMs": 26100,
-  "endMs": 26220,
-  "timestampMs": 26160,
+  "startMs": 22760,
+  "endMs": 22940,
+  "timestampMs": 22850,
   "confidence": null
  },
  {
   "text": " stitches",
-  "startMs": 26220,
-  "endMs": 26580,
-  "timestampMs": 26400,
+  "startMs": 22940,
+  "endMs": 23300,
+  "timestampMs": 23120,
   "confidence": null
  },
  {
   "text": " in",
-  "startMs": 26580,
-  "endMs": 26880,
-  "timestampMs": 26730,
+  "startMs": 23300,
+  "endMs": 23540,
+  "timestampMs": 23420,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 26880,
-  "endMs": 27000,
-  "timestampMs": 26940,
+  "startMs": 23540,
+  "endMs": 23640,
+  "timestampMs": 23590,
   "confidence": null
  },
  {
   "text": " Ghost's",
-  "startMs": 27000,
-  "endMs": 27360,
-  "timestampMs": 27180,
+  "startMs": 23640,
+  "endMs": 23780,
+  "timestampMs": 23710,
   "confidence": null
  },
  {
   "text": " bamboo",
-  "startMs": 27360,
-  "endMs": 27520,
-  "timestampMs": 27440,
+  "startMs": 23780,
+  "endMs": 24140,
+  "timestampMs": 23960,
   "confidence": null
  },
  {
   "text": " fabric.",
-  "startMs": 27520,
-  "endMs": 27940,
-  "timestampMs": 27730,
+  "startMs": 24140,
+  "endMs": 24440,
+  "timestampMs": 24290,
   "confidence": null
  },
  {
   "text": " Over",
-  "startMs": 28240,
-  "endMs": 28420,
-  "timestampMs": 28330,
+  "startMs": 24440,
+  "endMs": 25080,
+  "timestampMs": 24760,
   "confidence": null
  },
  {
   "text": " 11",
-  "startMs": 28420,
-  "endMs": 28680,
-  "timestampMs": 28550,
+  "startMs": 25080,
+  "endMs": 26060,
+  "timestampMs": 25570,
   "confidence": null
  },
  {
   "text": " miles",
-  "startMs": 28680,
-  "endMs": 28900,
-  "timestampMs": 28790,
+  "startMs": 26060,
+  "endMs": 26320,
+  "timestampMs": 26190,
   "confidence": null
  },
  {
   "text": " of",
-  "startMs": 28900,
-  "endMs": 29120,
-  "timestampMs": 29010,
+  "startMs": 26320,
+  "endMs": 26580,
+  "timestampMs": 26450,
   "confidence": null
  },
  {
   "text": " thread!",
-  "startMs": 29120,
-  "endMs": 29420,
-  "timestampMs": 29270,
+  "startMs": 26580,
+  "endMs": 26960,
+  "timestampMs": 26770,
   "confidence": null
  },
  {
   "text": " Still",
-  "startMs": 30600,
-  "endMs": 30740,
-  "timestampMs": 30670,
+  "startMs": 28800,
+  "endMs": 28940,
+  "timestampMs": 28870,
   "confidence": null
  },
  {
   "text": " here?",
-  "startMs": 30740,
-  "endMs": 31040,
-  "timestampMs": 30890,
+  "startMs": 28940,
+  "endMs": 29400,
+  "timestampMs": 29170,
   "confidence": null
  },
  {
   "text": " 2",
-  "startMs": 31340,
-  "endMs": 31560,
-  "timestampMs": 31450,
+  "startMs": 29720,
+  "endMs": 29820,
+  "timestampMs": 29770,
   "confidence": null
  },
  {
   "text": " plot",
-  "startMs": 31560,
-  "endMs": 31900,
-  "timestampMs": 31730,
+  "startMs": 29820,
+  "endMs": 30060,
+  "timestampMs": 29940,
   "confidence": null
  },
  {
   "text": " twists",
-  "startMs": 31900,
-  "endMs": 32260,
-  "timestampMs": 32080,
+  "startMs": 30060,
+  "endMs": 30300,
+  "timestampMs": 30180,
   "confidence": null
  },
  {
   "text": " incoming.",
-  "startMs": 32260,
-  "endMs": 32880,
-  "timestampMs": 32570,
+  "startMs": 30300,
+  "endMs": 30720,
+  "timestampMs": 30510,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 33340,
-  "endMs": 33360,
-  "timestampMs": 33350,
+  "startMs": 31100,
+  "endMs": 31100,
+  "timestampMs": 31100,
   "confidence": null
  },
  {
   "text": " 5:",
-  "startMs": 33360,
-  "endMs": 33780,
-  "timestampMs": 33570,
+  "startMs": 31100,
+  "endMs": 31540,
+  "timestampMs": 31320,
   "confidence": null
  },
  {
   "text": " look",
-  "startMs": 34080,
-  "endMs": 34200,
-  "timestampMs": 34140,
+  "startMs": 31940,
+  "endMs": 32040,
+  "timestampMs": 31990,
   "confidence": null
  },
  {
   "text": " up.",
-  "startMs": 34200,
-  "endMs": 34520,
-  "timestampMs": 34360,
+  "startMs": 32040,
+  "endMs": 32400,
+  "timestampMs": 32220,
   "confidence": null
  },
  {
   "text": " Stars",
-  "startMs": 35080,
-  "endMs": 35140,
-  "timestampMs": 35110,
+  "startMs": 32980,
+  "endMs": 32980,
+  "timestampMs": 32980,
   "confidence": null
  },
  {
   "text": " in",
-  "startMs": 35140,
-  "endMs": 35340,
-  "timestampMs": 35240,
+  "startMs": 32980,
+  "endMs": 33260,
+  "timestampMs": 33120,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 35340,
-  "endMs": 35480,
-  "timestampMs": 35410,
+  "startMs": 33260,
+  "endMs": 33380,
+  "timestampMs": 33320,
   "confidence": null
  },
  {
   "text": " ceiling.",
-  "startMs": 35480,
-  "endMs": 35700,
-  "timestampMs": 35590,
+  "startMs": 33380,
+  "endMs": 33640,
+  "timestampMs": 33510,
   "confidence": null
  },
  {
   "text": " On",
-  "startMs": 35980,
-  "endMs": 36140,
-  "timestampMs": 36060,
+  "startMs": 33980,
+  "endMs": 34080,
+  "timestampMs": 34030,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 36140,
-  "endMs": 36340,
-  "timestampMs": 36240,
+  "startMs": 34080,
+  "endMs": 34320,
+  "timestampMs": 34200,
   "confidence": null
  },
  {
   "text": " Cullinan?",
-  "startMs": 36340,
-  "endMs": 36600,
-  "timestampMs": 36470,
+  "startMs": 34320,
+  "endMs": 34700,
+  "timestampMs": 34510,
   "confidence": null
  },
  {
   "text": " Optional.",
-  "startMs": 36920,
-  "endMs": 37200,
-  "timestampMs": 37060,
+  "startMs": 34860,
+  "endMs": 35120,
+  "timestampMs": 34990,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 37640,
-  "endMs": 37760,
-  "timestampMs": 37700,
+  "startMs": 35600,
+  "endMs": 35680,
+  "timestampMs": 35640,
   "confidence": null
  },
  {
   "text": " 6:",
-  "startMs": 37760,
-  "endMs": 38040,
-  "timestampMs": 37900,
+  "startMs": 35680,
+  "endMs": 36080,
+  "timestampMs": 35880,
   "confidence": null
  },
  {
   "text": " check",
-  "startMs": 38520,
-  "endMs": 38580,
-  "timestampMs": 38550,
+  "startMs": 36480,
+  "endMs": 36580,
+  "timestampMs": 36530,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 38580,
-  "endMs": 38820,
-  "timestampMs": 38700,
+  "startMs": 36580,
+  "endMs": 36780,
+  "timestampMs": 36680,
   "confidence": null
  },
  {
   "text": " Spectre's",
-  "startMs": 38820,
-  "endMs": 39320,
-  "timestampMs": 39070,
+  "startMs": 36780,
+  "endMs": 37200,
+  "timestampMs": 36990,
   "confidence": null
  },
  {
   "text": " hood.",
-  "startMs": 39320,
-  "endMs": 39460,
-  "timestampMs": 39390,
+  "startMs": 37200,
+  "endMs": 37360,
+  "timestampMs": 37280,
   "confidence": null
  },
  {
   "text": " Those",
-  "startMs": 39700,
-  "endMs": 39820,
-  "timestampMs": 39760,
+  "startMs": 37620,
+  "endMs": 37740,
+  "timestampMs": 37680,
   "confidence": null
  },
  {
   "text": " aren't",
-  "startMs": 39820,
-  "endMs": 40060,
-  "timestampMs": 39940,
+  "startMs": 37740,
+  "endMs": 37980,
+  "timestampMs": 37860,
   "confidence": null
  },
  {
   "text": " wings.",
-  "startMs": 40060,
-  "endMs": 40340,
-  "timestampMs": 40200,
+  "startMs": 37980,
+  "endMs": 38280,
+  "timestampMs": 38130,
   "confidence": null
  },
  {
   "text": " They're",
-  "startMs": 40920,
-  "endMs": 41180,
-  "timestampMs": 41050,
+  "startMs": 38800,
+  "endMs": 39000,
+  "timestampMs": 38900,
   "confidence": null
  },
  {
   "text": " robes.",
-  "startMs": 41180,
-  "endMs": 41400,
-  "timestampMs": 41290,
+  "startMs": 39000,
+  "endMs": 39260,
+  "timestampMs": 39130,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 41860,
-  "endMs": 42160,
-  "timestampMs": 42010,
+  "startMs": 40860,
+  "endMs": 41000,
+  "timestampMs": 40930,
   "confidence": null
  },
  {
   "text": " 7:",
-  "startMs": 42160,
-  "endMs": 42580,
-  "timestampMs": 42370,
+  "startMs": 41000,
+  "endMs": 41340,
+  "timestampMs": 41170,
   "confidence": null
  },
  {
   "text": " open",
-  "startMs": 42800,
-  "endMs": 43000,
-  "timestampMs": 42900,
+  "startMs": 41660,
+  "endMs": 41840,
+  "timestampMs": 41750,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 43000,
-  "endMs": 43140,
-  "timestampMs": 43070,
+  "startMs": 41840,
+  "endMs": 42040,
+  "timestampMs": 41940,
   "confidence": null
  },
  {
   "text": " trunk.",
-  "startMs": 43140,
-  "endMs": 43400,
-  "timestampMs": 43270,
+  "startMs": 42040,
+  "endMs": 42300,
+  "timestampMs": 42170,
   "confidence": null
  },
  {
   "text": " Tailgate",
-  "startMs": 43740,
-  "endMs": 44000,
-  "timestampMs": 43870,
+  "startMs": 42740,
+  "endMs": 42920,
+  "timestampMs": 42830,
   "confidence": null
  },
  {
   "text": " party?",
-  "startMs": 44000,
-  "endMs": 44260,
-  "timestampMs": 44130,
+  "startMs": 42920,
+  "endMs": 43160,
+  "timestampMs": 43040,
   "confidence": null
  },
  {
   "text": " Nah.",
-  "startMs": 44800,
-  "endMs": 45020,
-  "timestampMs": 44910,
+  "startMs": 43740,
+  "endMs": 43980,
+  "timestampMs": 43860,
   "confidence": null
  },
  {
   "text": " Cocktail",
-  "startMs": 45340,
-  "endMs": 45620,
-  "timestampMs": 45480,
+  "startMs": 44520,
+  "endMs": 44780,
+  "timestampMs": 44650,
   "confidence": null
  },
  {
   "text": " suite.",
-  "startMs": 45620,
-  "endMs": 45860,
-  "timestampMs": 45740,
+  "startMs": 44780,
+  "endMs": 45040,
+  "timestampMs": 44910,
   "confidence": null
  },
  {
   "text": " Leather",
-  "startMs": 46260,
-  "endMs": 46420,
-  "timestampMs": 46340,
+  "startMs": 45380,
+  "endMs": 45380,
+  "timestampMs": 45380,
   "confidence": null
  },
  {
   "text": " seats,",
-  "startMs": 46420,
-  "endMs": 46580,
-  "timestampMs": 46500,
+  "startMs": 45380,
+  "endMs": 45700,
+  "timestampMs": 45540,
   "confidence": null
  },
  {
   "text": " straight",
-  "startMs": 46580,
-  "endMs": 46920,
-  "timestampMs": 46750,
+  "startMs": 46020,
+  "endMs": 46060,
+  "timestampMs": 46040,
   "confidence": null
  },
  {
   "text": " out",
-  "startMs": 46920,
-  "endMs": 47060,
-  "timestampMs": 46990,
+  "startMs": 46060,
+  "endMs": 46180,
+  "timestampMs": 46120,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 47060,
-  "endMs": 47200,
-  "timestampMs": 47130,
+  "startMs": 46180,
+  "endMs": 46300,
+  "timestampMs": 46240,
   "confidence": null
  },
  {
   "text": " back.",
-  "startMs": 47200,
-  "endMs": 47420,
-  "timestampMs": 47310,
+  "startMs": 46300,
+  "endMs": 46540,
+  "timestampMs": 46420,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 47700,
-  "endMs": 47960,
-  "timestampMs": 47830,
+  "startMs": 46880,
+  "endMs": 46960,
+  "timestampMs": 46920,
   "confidence": null
  },
  {
   "text": " 8:",
-  "startMs": 47960,
-  "endMs": 48280,
-  "timestampMs": 48120,
+  "startMs": 46960,
+  "endMs": 47280,
+  "timestampMs": 47120,
   "confidence": null
  },
  {
   "text": " flex",
-  "startMs": 48780,
-  "endMs": 48780,
-  "timestampMs": 48780,
+  "startMs": 47760,
+  "endMs": 47760,
+  "timestampMs": 47760,
   "confidence": null
  },
  {
   "text": " your",
-  "startMs": 48780,
-  "endMs": 49040,
-  "timestampMs": 48910,
+  "startMs": 47760,
+  "endMs": 48040,
+  "timestampMs": 47900,
   "confidence": null
  },
  {
   "text": " British",
-  "startMs": 49040,
-  "endMs": 49340,
-  "timestampMs": 49190,
+  "startMs": 48040,
+  "endMs": 48300,
+  "timestampMs": 48170,
   "confidence": null
  },
  {
   "text": " icon.",
-  "startMs": 49340,
-  "endMs": 49780,
-  "timestampMs": 49560,
+  "startMs": 48300,
+  "endMs": 48740,
+  "timestampMs": 48520,
   "confidence": null
  },
  {
   "text": " Plot",
-  "startMs": 50560,
-  "endMs": 50580,
-  "timestampMs": 50570,
+  "startMs": 48740,
+  "endMs": 49420,
+  "timestampMs": 49080,
   "confidence": null
  },
  {
   "text": " twist:",
-  "startMs": 50580,
-  "endMs": 50880,
-  "timestampMs": 50730,
+  "startMs": 49420,
+  "endMs": 49740,
+  "timestampMs": 49580,
   "confidence": null
  },
  {
   "text": " owned",
-  "startMs": 51240,
-  "endMs": 51480,
-  "timestampMs": 51360,
+  "startMs": 50200,
+  "endMs": 50440,
+  "timestampMs": 50320,
   "confidence": null
  },
  {
   "text": " by",
-  "startMs": 51480,
-  "endMs": 51580,
-  "timestampMs": 51530,
+  "startMs": 50440,
+  "endMs": 50540,
+  "timestampMs": 50490,
   "confidence": null
  },
  {
   "text": " BMW",
-  "startMs": 51580,
-  "endMs": 51880,
-  "timestampMs": 51730,
+  "startMs": 50540,
+  "endMs": 50860,
+  "timestampMs": 50700,
   "confidence": null
  },
  {
   "text": " since",
-  "startMs": 51880,
-  "endMs": 52280,
-  "timestampMs": 52080,
+  "startMs": 50860,
+  "endMs": 51320,
+  "timestampMs": 51090,
   "confidence": null
  },
  {
   "text": " 2003.",
-  "startMs": 52280,
-  "endMs": 53060,
-  "timestampMs": 52670,
+  "startMs": 51320,
+  "endMs": 52140,
+  "timestampMs": 51730,
   "confidence": null
  },
  {
   "text": " It's",
-  "startMs": 53440,
-  "endMs": 53620,
-  "timestampMs": 53530,
+  "startMs": 52560,
+  "endMs": 52680,
+  "timestampMs": 52620,
   "confidence": null
  },
  {
   "text": " giving",
-  "startMs": 53620,
-  "endMs": 53880,
-  "timestampMs": 53750,
+  "startMs": 52680,
+  "endMs": 52880,
+  "timestampMs": 52780,
   "confidence": null
  },
  {
   "text": " Bavaria.",
-  "startMs": 53880,
-  "endMs": 54580,
-  "timestampMs": 54230,
+  "startMs": 52880,
+  "endMs": 53380,
+  "timestampMs": 53130,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 54580,
-  "endMs": 54980,
-  "timestampMs": 54780,
+  "startMs": 53760,
+  "endMs": 53940,
+  "timestampMs": 53850,
   "confidence": null
  },
  {
   "text": " 9:",
-  "startMs": 54980,
-  "endMs": 55480,
-  "timestampMs": 55230,
+  "startMs": 53940,
+  "endMs": 54440,
+  "timestampMs": 54190,
   "confidence": null
  },
  {
   "text": " flex",
-  "startMs": 55920,
-  "endMs": 55960,
-  "timestampMs": 55940,
+  "startMs": 54780,
+  "endMs": 54820,
+  "timestampMs": 54800,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 55960,
-  "endMs": 56260,
-  "timestampMs": 56110,
+  "startMs": 54820,
+  "endMs": 55080,
+  "timestampMs": 54950,
   "confidence": null
  },
  {
   "text": " Cullinan",
-  "startMs": 56260,
-  "endMs": 56660,
-  "timestampMs": 56460,
+  "startMs": 55080,
+  "endMs": 55460,
+  "timestampMs": 55270,
   "confidence": null
  },
  {
   "text": " in",
-  "startMs": 56660,
-  "endMs": 56840,
-  "timestampMs": 56750,
+  "startMs": 55460,
+  "endMs": 55580,
+  "timestampMs": 55520,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 56840,
-  "endMs": 57000,
-  "timestampMs": 56920,
+  "startMs": 55580,
+  "endMs": 55720,
+  "timestampMs": 55650,
   "confidence": null
  },
  {
   "text": " US.",
-  "startMs": 57000,
-  "endMs": 57600,
-  "timestampMs": 57300,
+  "startMs": 55720,
+  "endMs": 56200,
+  "timestampMs": 55960,
   "confidence": null
  },
  {
   "text": " Twist",
-  "startMs": 58380,
-  "endMs": 58480,
-  "timestampMs": 58430,
+  "startMs": 56680,
+  "endMs": 56820,
+  "timestampMs": 56750,
   "confidence": null
  },
  {
   "text": " 2:",
-  "startMs": 58480,
-  "endMs": 58800,
-  "timestampMs": 58640,
+  "startMs": 56820,
+  "endMs": 57180,
+  "timestampMs": 57000,
   "confidence": null
  },
  {
   "text": " it's",
-  "startMs": 59160,
-  "endMs": 59300,
-  "timestampMs": 59230,
+  "startMs": 57540,
+  "endMs": 57660,
+  "timestampMs": 57600,
   "confidence": null
  },
  {
   "text": " classified",
-  "startMs": 59300,
-  "endMs": 59560,
-  "timestampMs": 59430,
+  "startMs": 57660,
+  "endMs": 57940,
+  "timestampMs": 57800,
   "confidence": null
  },
  {
   "text": " as",
-  "startMs": 59560,
-  "endMs": 60000,
-  "timestampMs": 59780,
+  "startMs": 57940,
+  "endMs": 58440,
+  "timestampMs": 58190,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 60000,
-  "endMs": 60140,
-  "timestampMs": 60070,
+  "startMs": 58440,
+  "endMs": 58600,
+  "timestampMs": 58520,
   "confidence": null
  },
  {
   "text": " station",
-  "startMs": 60140,
-  "endMs": 60340,
-  "timestampMs": 60240,
+  "startMs": 58600,
+  "endMs": 58820,
+  "timestampMs": 58710,
   "confidence": null
  },
  {
   "text": " wagon.",
-  "startMs": 60340,
-  "endMs": 60680,
-  "timestampMs": 60510,
+  "startMs": 58820,
+  "endMs": 59180,
+  "timestampMs": 59000,
   "confidence": null
  },
  {
   "text": " Gas",
-  "startMs": 61040,
-  "endMs": 61180,
-  "timestampMs": 61110,
+  "startMs": 59520,
+  "endMs": 59640,
+  "timestampMs": 59580,
   "confidence": null
  },
  {
   "text": " Guzzler",
-  "startMs": 61180,
-  "endMs": 61620,
-  "timestampMs": 61400,
+  "startMs": 59640,
+  "endMs": 60020,
+  "timestampMs": 59830,
   "confidence": null
  },
  {
   "text": " Tax?",
-  "startMs": 61620,
-  "endMs": 61920,
-  "timestampMs": 61770,
+  "startMs": 60020,
+  "endMs": 60340,
+  "timestampMs": 60180,
   "confidence": null
  },
  {
   "text": " Not",
-  "startMs": 62400,
-  "endMs": 62540,
-  "timestampMs": 62470,
+  "startMs": 60760,
+  "endMs": 60860,
+  "timestampMs": 60810,
   "confidence": null
  },
  {
   "text": " exempt.",
-  "startMs": 62540,
-  "endMs": 62860,
-  "timestampMs": 62700,
+  "startMs": 60860,
+  "endMs": 61180,
+  "timestampMs": 61020,
   "confidence": null
  },
  {
   "text": " Step",
-  "startMs": 63600,
-  "endMs": 63640,
-  "timestampMs": 63620,
+  "startMs": 61600,
+  "endMs": 61620,
+  "timestampMs": 61610,
   "confidence": null
  },
  {
   "text": " 10:",
-  "startMs": 63640,
-  "endMs": 63920,
-  "timestampMs": 63780,
+  "startMs": 61620,
+  "endMs": 61940,
+  "timestampMs": 61780,
   "confidence": null
  },
  {
   "text": " go",
-  "startMs": 64320,
-  "endMs": 64400,
-  "timestampMs": 64360,
+  "startMs": 62320,
+  "endMs": 62440,
+  "timestampMs": 62380,
   "confidence": null
  },
  {
   "text": " custom.",
-  "startMs": 64400,
-  "endMs": 64760,
-  "timestampMs": 64580,
+  "startMs": 62440,
+  "endMs": 62900,
+  "timestampMs": 62670,
   "confidence": null
  },
  {
   "text": " Sweptail:",
-  "startMs": 65180,
-  "endMs": 65540,
-  "timestampMs": 65360,
+  "startMs": 63320,
+  "endMs": 63680,
+  "timestampMs": 63500,
   "confidence": null
  },
  {
   "text": " 12.8",
-  "startMs": 65800,
-  "endMs": 66360,
-  "timestampMs": 66080,
+  "startMs": 63940,
+  "endMs": 64900,
+  "timestampMs": 64420,
   "confidence": null
  },
  {
   "text": " million",
-  "startMs": 66360,
-  "endMs": 66600,
-  "timestampMs": 66480,
+  "startMs": 64900,
+  "endMs": 65360,
+  "timestampMs": 65130,
   "confidence": null
  },
  {
   "text": " dollars,",
-  "startMs": 67000,
-  "endMs": 67090,
-  "timestampMs": 67045,
+  "startMs": 66100,
+  "endMs": 66270,
+  "timestampMs": 66185,
   "confidence": null
  },
  {
   "text": " 4",
-  "startMs": 67090,
-  "endMs": 67180,
-  "timestampMs": 67135,
+  "startMs": 66270,
+  "endMs": 66440,
+  "timestampMs": 66355,
   "confidence": null
  },
  {
   "text": " years",
-  "startMs": 67180,
-  "endMs": 67360,
-  "timestampMs": 67270,
+  "startMs": 66440,
+  "endMs": 66780,
+  "timestampMs": 66610,
   "confidence": null
  },
  {
   "text": " to",
-  "startMs": 67360,
-  "endMs": 67540,
-  "timestampMs": 67450,
+  "startMs": 66780,
+  "endMs": 67060,
+  "timestampMs": 66920,
   "confidence": null
  },
  {
   "text": " build.",
-  "startMs": 67540,
-  "endMs": 67740,
-  "timestampMs": 67640,
+  "startMs": 67060,
+  "endMs": 67320,
+  "timestampMs": 67190,
   "confidence": null
  },
  {
   "text": " You",
-  "startMs": 68380,
-  "endMs": 68520,
-  "timestampMs": 68450,
+  "startMs": 67880,
+  "endMs": 68020,
+  "timestampMs": 67950,
   "confidence": null
  },
  {
   "text": " had",
-  "startMs": 68520,
-  "endMs": 68680,
-  "timestampMs": 68600,
+  "startMs": 68020,
+  "endMs": 68240,
+  "timestampMs": 68130,
   "confidence": null
  },
  {
   "text": " 1",
-  "startMs": 68680,
-  "endMs": 68880,
-  "timestampMs": 68780,
+  "startMs": 68240,
+  "endMs": 68680,
+  "timestampMs": 68460,
   "confidence": null
  },
  {
   "text": " minute.",
-  "startMs": 68880,
-  "endMs": 69160,
-  "timestampMs": 69020,
+  "startMs": 68680,
+  "endMs": 69140,
+  "timestampMs": 68910,
   "confidence": null
  },
  {
   "text": " The",
-  "startMs": 69440,
-  "endMs": 69540,
-  "timestampMs": 69490,
+  "startMs": 69540,
+  "endMs": 69660,
+  "timestampMs": 69600,
   "confidence": null
  },
  {
   "text": " math",
-  "startMs": 69540,
-  "endMs": 69760,
-  "timestampMs": 69650,
+  "startMs": 69660,
+  "endMs": 69920,
+  "timestampMs": 69790,
   "confidence": null
  },
  {
   "text": " ain't",
-  "startMs": 69760,
-  "endMs": 70020,
-  "timestampMs": 69890,
+  "startMs": 69920,
+  "endMs": 70180,
+  "timestampMs": 70050,
   "confidence": null
  },
  {
   "text": " mathing.",
-  "startMs": 70020,
-  "endMs": 70420,
-  "timestampMs": 70220,
+  "startMs": 70180,
+  "endMs": 70620,
+  "timestampMs": 70400,
   "confidence": null
  },
  {
   "text": " Which",
-  "startMs": 70920,
-  "endMs": 71120,
-  "timestampMs": 71020,
+  "startMs": 70960,
+  "endMs": 71240,
+  "timestampMs": 71100,
   "confidence": null
  },
  {
   "text": " brings",
-  "startMs": 71120,
-  "endMs": 71360,
-  "timestampMs": 71240,
+  "startMs": 71240,
+  "endMs": 71440,
+  "timestampMs": 71340,
   "confidence": null
  },
  {
   "text": " us",
-  "startMs": 71360,
-  "endMs": 71540,
-  "timestampMs": 71450,
+  "startMs": 71440,
+  "endMs": 71660,
+  "timestampMs": 71550,
   "confidence": null
  },
  {
   "text": " back",
-  "startMs": 71540,
-  "endMs": 71800,
-  "timestampMs": 71670,
+  "startMs": 71660,
+  "endMs": 71900,
+  "timestampMs": 71780,
   "confidence": null
  },
  {
   "text": " to\u2026",
-  "startMs": 71800,
-  "endMs": 72360,
-  "timestampMs": 72080,
+  "startMs": 71900,
+  "endMs": 72400,
+  "timestampMs": 72150,
   "confidence": null
  }
 ]
