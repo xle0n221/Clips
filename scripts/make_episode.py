@@ -27,7 +27,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
 from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, post_process, resolve_voice, speakable, write_wav  # noqa: E402
-from voice_fx import DELIVERY, STYLES, accent_gain  # noqa: E402
+from voice_fx import DELIVERY, EMOTIONS, STYLES, accent_gain  # noqa: E402
 
 PAUSE_MARK = "|"  # im Sprechtext: dramatische Pause (Länge: Preset bzw. Drehbuch-Feld pauseMs)
 
@@ -107,48 +107,120 @@ def make_voice(ep: dict, override: bool = False) -> Voice:
     return Voice(resolve_voice(spec), ep.get("speed", 1.0))
 
 
+SENT_SPLIT = re.compile(r"(?<=[.!?…])\s+(?=\S)")
+
+
+def sentences(text: str, min_words: int = 4) -> list[str]:
+    """Stück in Sätze teilen; sehr kurze Sätze (< min_words, z. B. „Brooklyn.“, „Done? Cool.“) an den nächsten
+    hängen – Chatterbox erzeugt bei 1–2 Wörtern eher Aussetzer."""
+    out: list[str] = []
+    carry = ""
+    for s in SENT_SPLIT.split(text.strip()):
+        s = (carry + " " + s).strip() if carry else s
+        if len(s.split()) < min_words:
+            carry = s
+            continue
+        out.append(s)
+        carry = ""
+    if carry:
+        if out and len(carry.split()) < min_words:
+            out[-1] = out[-1] + " " + carry
+        else:
+            out.append(carry)
+    return out
+
+
+def trim_silence(y: np.ndarray, thr_db: float = -40.0, keep_s: float = 0.03) -> np.ndarray:
+    """Stille am Anfang/Ende eines Satzes abschneiden (Satz-Modus setzt die Atempausen selbst)."""
+    hop = SAMPLE_RATE // 100
+    n = len(y) // hop
+    if n < 3:
+        return y
+    loud = np.nonzero(20 * np.log10(np.sqrt(np.mean(y[: n * hop].reshape(n, hop) ** 2, axis=1)) + 1e-9) >= thr_db)[0]
+    if not len(loud):
+        return y
+    k = int(keep_s * SAMPLE_RATE)
+    return y[max(0, loud[0] * hop - k): min(len(y), (loud[-1] + 1) * hop + k)]
+
+
 def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tuple[str, int], np.ndarray]:
     """Alle Szenen-Stücke (an „ | “ getrennt) in EINEM Chatterbox-Lauf erzeugen (Modell lädt nur einmal).
-    Stärke: exaggeration/cfg des Sprechstils (voicePreset) + Zuschlag der Szenen-Sprechweise (delivery)."""
+    Ohne `emotion`: exaggeration/cfg des Sprechstils (voicePreset) + Zuschlag der Szenen-Sprechweise (delivery),
+    ein Stück am Stück (Stand bis 11.11.2026).
+    Mit Szenen-Feld `emotion` (EMOTIONS in voice_fx.py, Vorgabe „wie ein Synchronsprecher“ 12.11.2026): jedes Stück
+    SATZ FÜR SATZ mit exaggeration/cfg/temperature der Emotion und festem Seed, Atempausen je Satzzeichen und Emotion,
+    Lautstärke und Tempo-Faktor je Emotion (Tempo zusätzlich zu `speed`, die W/s-Kalibrierung bleibt gültig)."""
     import soundfile as sf
 
     base = preset or STYLES["lebendig"]
     jobs, keys = [], []
     cache = ROOT / "out" / "cb-cache"
     cache.mkdir(parents=True, exist_ok=True)
+
+    def job_file(job: dict) -> Path:
+        # Zwischenspeicher je Stück (out/cb-cache): nach einer Textkorrektur werden nur geänderte Stücke neu erzeugt
+        out = cache / (hashlib.sha1(json.dumps(job, sort_keys=True).encode()).hexdigest()[:16] + ".wav")
+        if not out.exists() and not any(j["out"] == str(out) for j in jobs):
+            jobs.append({**job, "out": str(out)})
+        return out
+
     with tempfile.TemporaryDirectory() as tmp:
         for sc in ep["scenes"]:
             spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
-            d = sc.get("delivery", base["delivery"])
-            d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
-            ex = min(1.2, max(0.25, base["exaggeration"] + d.get("exag", 0.0)))
-            for i, p in enumerate(x.strip() for x in spoken.split(PAUSE_MARK) if x.strip()):
-                job = {"text": speakable(p), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]}
-                # Zwischenspeicher je Stück (out/cb-cache): nach einer Textkorrektur werden nur geänderte Stücke neu erzeugt
-                out = cache / (hashlib.sha1(json.dumps(job, sort_keys=True).encode()).hexdigest()[:16] + ".wav")
-                if not out.exists():
-                    jobs.append({**job, "out": str(out)})
-                keys.append((sc["id"], i, out))
+            pieces = [x.strip() for x in spoken.split(PAUSE_MARK) if x.strip()]
+            emo = sc.get("emotion")
+            if emo:
+                e = EMOTIONS.get(emo) if isinstance(emo, str) else {**EMOTIONS["calm"], **emo}
+                if e is None:
+                    raise SystemExit(f"Szene {sc['id']}: unbekannte emotion {emo!r} – erlaubt: {', '.join(EMOTIONS)}")
+                for i, p in enumerate(pieces):
+                    parts = []
+                    for s in sentences(p):
+                        text = speakable(s)
+                        seed = int(hashlib.sha1(text.encode()).hexdigest()[:8], 16)
+                        job = {"text": text, "voice": voice_id, "exaggeration": e["exag"], "cfg": e["cfg"],
+                               "temperature": e["temp"], "seed": seed}
+                        gap = e["gap_ms"] + (60 if s.endswith("?") else -40 if s.endswith("!") else 0)
+                        parts.append((job_file(job), gap / 1000))
+                    keys.append((sc["id"], i, parts, e))
+            else:
+                d = sc.get("delivery", base["delivery"])
+                d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
+                ex = min(1.2, max(0.25, base["exaggeration"] + d.get("exag", 0.0)))
+                for i, p in enumerate(pieces):
+                    job = {"text": speakable(p), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]}
+                    keys.append((sc["id"], i, [(job_file(job), 0.0)], None))
         (Path(tmp) / "jobs.json").write_text(json.dumps(jobs))
         py = ROOT / ".venv-cb" / "bin" / "python"
         if not py.exists():
             raise SystemExit("Chatterbox fehlt: einmalig `bash scripts/setup_chatterbox.sh` ausführen")
-        print(f"Chatterbox: {len(jobs)} von {len(keys)} Stücken neu, Stimme {voice_id}, Stil {ep.get('voicePreset', 'lebendig')!r}")
+        n_files = sum(len(k[2]) for k in keys)
+        print(f"Chatterbox: {len(jobs)} von {n_files} Stücken neu, Stimme {voice_id}, Stil {ep.get('voicePreset', 'lebendig')!r}")
         if jobs:
             subprocess.run([str(py), "-W", "ignore", str(ROOT / "scripts" / "tts_chatterbox.py"), str(Path(tmp) / "jobs.json")], check=True)
         cap = ep.get("maxPauseMs", 300) / 1000  # Chatterbox macht nach Satzende ~0,5 s Pause, Vorbild ricksclip ~0,22 s
         tempo = float(ep.get("speed", 1.0))  # Chatterbox hat kein Tempo-Feld: tonhöhenneutral strecken (ffmpeg atempo)
 
-        def load(i: int, out: Path) -> np.ndarray:
-            y = tighten_pauses(sf.read(str(out), dtype="float32")[0], cap)
-            if abs(tempo - 1.0) < 0.005:
+        def load(i: int, parts: list[tuple[Path, float]], e: dict | None) -> np.ndarray:
+            if e is None:
+                y = tighten_pauses(sf.read(str(parts[0][0]), dtype="float32")[0], cap)
+                t = tempo
+            else:
+                segs = []
+                for k, (f, gap) in enumerate(parts):
+                    segs.append(tighten_pauses(trim_silence(sf.read(str(f), dtype="float32")[0]), cap))
+                    if k < len(parts) - 1:
+                        segs.append(np.zeros(int(gap * SAMPLE_RATE), np.float32))
+                y = np.concatenate(segs) * np.float32(10 ** (e["gain_db"] / 20))
+                t = tempo * e["speed"]
+            if abs(t - 1.0) < 0.005:
                 return y
             a, b = Path(tmp) / f"t{i}a.wav", Path(tmp) / f"t{i}b.wav"
             sf.write(str(a), y, SAMPLE_RATE)
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(a), "-af", f"atempo={tempo:.3f}", str(b)], check=True)
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(a), "-af", f"atempo={t:.3f}", str(b)], check=True)
             return sf.read(str(b), dtype="float32")[0]
 
-        return {(sid, i): load(n, out) for n, (sid, i, out) in enumerate(keys)}
+        return {(sid, i): load(n, parts, e) for n, (sid, i, parts, e) in enumerate(keys)}
 
 
 def tighten_pauses(y: np.ndarray, max_s: float = 0.30, keep_s: float = 0.25, thr_db: float = -40.0) -> np.ndarray:

@@ -42,6 +42,10 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - **Stimme lebendig machen** (verbindlich, `docs/clip-regeln.md` → „Stimme“): je Szene `delivery`
   (punch | normal | hype | tense | calm) passend zur Story-Stelle, 1–2 `*Akzentwörter*` pro Satz,
   ` | ` als dramatische Pause vor Pointe/Twist, `voicePreset` des Videos (aus dem Dashboard, Standard `lebendig`).
+- **Stimme wie ein Synchronsprecher** (Pflicht seit 12.11.2026, `docs/clip-regeln.md` → gleichnamiger Abschnitt): je Szene
+  `"emotion"` (calm | warm | serious | sad | awe | tense | ironic | playful | indignant | excited | triumphant) passend zum
+  Inhalt – Chatterbox spricht die Szene dann Satz für Satz mit eigener Stärke, Pausen und Lautstärke (`EMOTIONS` in
+  `scripts/voice_fx.py`). Hörprobe mit zwei kontrastierenden Szenen; Messung + Lern-Kreislauf `docs/agenten/stimme.md`.
 - Zahlen als Ziffern schreiben (die Sprachausgabe schreibt sie automatisch aus).
 - **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter. Direkt danach eine
   **Hörprobe** (erste ~20 s der Sprachspur, Tempo 2,3–2,6 W/s) zur Freigabe schicken – Tempo und Stimme

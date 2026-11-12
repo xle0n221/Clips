@@ -179,6 +179,35 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   gleichförmiges Vorlesen. Tempo-Regel 2,3–2,6 W/s bleibt.
 - Prüfen vor Freigabe: Hörprobe mit mindestens zwei kontrastierenden Szenen (z. B. ruhig + dramatisch); Claude misst
   Tonhöhen- und Lautstärke-Spannweite je Szene, das Urteil „klingt echt“ trifft der Nutzer.
+- **Umsetzung (seit 12.11.2026):** Drehbuch-Feld **`emotion` je Szene** (Pflicht bei `"engine": "chatterbox"`). Gesetzt →
+  `make_episode.py` erzeugt die Szene **Satz für Satz** (Sätze < 4 Wörter werden angehängt), mit festem Seed je Satz
+  (gleicher Text = gleiche Aufnahme), setzt eigene Atempausen und ersetzt `exaggeration`/`cfg` aus `voicePreset`/`delivery`.
+  Werte in `EMOTIONS` (`scripts/voice_fx.py`), auch als Objekt überschreibbar (`"emotion": {"exag": 0.7, "gap_ms": 300}`).
+  Belegte Chatterbox-Regler (Quellcode chatterbox-tts 0.1.7, `ChatterboxTTS.generate`): `exaggeration`, `cfg_weight`,
+  `temperature` (dazu `repetition_penalty`, `min_p`, `top_p`, ungenutzt). README „Original Chatterbox Tips“
+  (https://huggingface.co/ResembleAI/chatterbox): „Higher `exaggeration` tends to speed up speech; reducing `cfg_weight`
+  helps compensate with slower, more deliberate pacing.“
+
+  | `emotion` | wofür | exag | cfg | temp | Tempo × | Atempause nach Satz | Lautstärke |
+  | --- | --- | --- | --- | --- | --- | --- | --- |
+  | `calm` | ruhige Erklärung | 0,40 | 0,50 | 0,75 | 0,98 | 300 ms | −0,5 dB |
+  | `warm` | Hoffnung, Zuwendung | 0,50 | 0,45 | 0,80 | 0,98 | 280 ms | 0 |
+  | `serious` | ernst, Skandal, Urteil | 0,45 | 0,45 | 0,75 | 0,97 | 340 ms | −0,5 dB |
+  | `sad` | Tod, Verlust | 0,35 | 0,35 | 0,70 | 0,94 | 420 ms | −2 dB |
+  | `awe` | Ehrfurcht, Rekord | 0,60 | 0,35 | 0,85 | 0,95 | 380 ms | 0 |
+  | `tense` | Spannung vor Wendepunkt | 0,55 | 0,30 | 0,80 | 0,96 | 340 ms | −1 dB |
+  | `ironic` | Satire, trockene Pointe | 0,70 | 0,35 | 0,90 | 1,00 | 260 ms | 0 |
+  | `playful` | verschmitzt, Witz | 0,80 | 0,30 | 0,90 | 1,02 | 240 ms | +0,5 dB |
+  | `indignant` (`angry`) | Empörung | 0,85 | 0,35 | 0,85 | 1,02 | 260 ms | +1,5 dB |
+  | `excited` | Aufbruch, Eskalation | 0,90 | 0,30 | 0,90 | 1,04 | 220 ms | +1 dB |
+  | `triumphant` | Erfolg, große Zahl | 0,95 | 0,35 | 0,85 | 1,00 | 300 ms | +2 dB |
+
+  Frage +60 ms, Ausruf −40 ms Pause. Der Tempo-Faktor wirkt zusätzlich zu `speed` (Mittel ≈ 1); danach W/s des ganzen
+  Videos wie immer mit `npm run calibrate` auf 2,3–2,6 bringen. Keine Tonhöhen-Bearbeitung (Regel 09.11.2026 gilt weiter).
+  Startwerte, nur gemessen (A/B in `docs/agenten/stimme.md`); Hörurteil des Nutzers einholen und Tabelle danach anpassen.
+  Nicht übernommen: Chatterbox-Turbo (MIT, https://huggingface.co/ResembleAI/chatterbox-turbo) kennt Tags wie `[laugh]`,
+  `[chuckle]`, ignoriert aber laut Quellcode `exaggeration`/`cfg` („CFG, min_p and exaggeration are not supported by Turbo
+  version and will be ignored.“) – also weniger Emotions-Steuerung; nicht installiert, nicht getestet.
 
 ## Stimme: lebendig, charakteristisch, mit Druck (Vorgabe des Nutzers, 08.11.2026)
 Vorgabe: **„Die Stimmen sollen lebendiger, charakteristischer und mehr Power haben und Betonungen passend zum Clip.“**

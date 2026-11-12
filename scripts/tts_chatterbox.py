@@ -9,7 +9,8 @@ Aufruf (macht scripts/make_episode.py automatisch bei "engine": "chatterbox"):
 
     .venv-cb/bin/python scripts/tts_chatterbox.py jobs.json
 
-jobs.json: [{"text": "...", "out": "a.wav", "voice": "af_heart", "exaggeration": 0.6, "cfg": 0.4}, ...]
+jobs.json: [{"text": "...", "out": "a.wav", "voice": "af_heart", "exaggeration": 0.6, "cfg": 0.4,
+            "temperature": 0.8, "seed": 123}, ...]   (temperature/seed optional; Satz-Modus mit Szenen-`emotion`)
 
 Klangvorlage je Stimme: assets/stimmvorlagen/<id>.wav (10 s unbearbeitetes Kokoro derselben Stimme),
 damit Lily/Bella/Finn/Max ihren Klang behalten. Jede Ausgabe trägt das unhörbare PerTh-Wasserzeichen
@@ -42,16 +43,23 @@ def main(jobs_path: Path) -> None:
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = ChatterboxTTS.from_pretrained(device=device)
     jobs = json.loads(jobs_path.read_text())
+    loaded = None  # Klangvorlage nur bei Stimmwechsel neu einlesen; generate() setzt exaggeration selbst neu
     for i, job in enumerate(jobs, 1):
         t = time.time()
         ref = REF_DIR / f"{job['voice']}.wav"
         if not ref.exists():
             raise SystemExit(f"Keine Klangvorlage {ref} – erlaubt: " + ", ".join(p.stem for p in REF_DIR.glob("*.wav")))
+        ex = float(job.get("exaggeration", 0.6))
+        if loaded != job["voice"]:
+            model.prepare_conditionals(str(ref), exaggeration=ex)
+            loaded = job["voice"]
+        if "seed" in job:  # reproduzierbar (Satz-Modus mit `emotion`); sonst würfelt Chatterbox jede Aufnahme neu
+            torch.manual_seed(int(job["seed"]))
         wav = model.generate(
             job["text"],
-            audio_prompt_path=str(ref),
-            exaggeration=float(job.get("exaggeration", 0.6)),
+            exaggeration=ex,
             cfg_weight=float(job.get("cfg", 0.4)),
+            temperature=float(job.get("temperature", 0.8)),  # 0.8 = Standard in chatterbox-tts 0.1.7
         )
         if model.sr != SAMPLE_RATE:
             wav = ta.functional.resample(wav, model.sr, SAMPLE_RATE)

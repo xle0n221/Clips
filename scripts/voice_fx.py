@@ -47,6 +47,32 @@ STYLES = {
     "ruhig": {"delivery": "calm", "speed": 0.90, "scale": 0.55, "shift": -0.7, "emph_st": 1.2, "emph_db": 1.5, "pause_ms": 450, "power": "soft", "exaggeration": 0.3, "cfg": 0.5},
 }
 
+# Emotion je Szene (Drehbuch-Feld `emotion`, Vorgabe des Nutzers 12.11.2026 „wie ein Synchronsprecher“) – nur Chatterbox.
+# Gesetzt -> die Szene wird SATZ FÜR SATZ erzeugt und die Werte ersetzen exaggeration/cfg aus voicePreset/delivery.
+# Parameter belegt im Quellcode chatterbox-tts 0.1.7 (`ChatterboxTTS.generate(exaggeration, cfg_weight, temperature, …)`)
+# und README „Original Chatterbox Tips“: höheres exaggeration = ausdrucksstärker (spricht dabei schneller), niedrigeres
+# cfg_weight = langsamer, bedachter. temperature = Streuung beim Ziehen der Sprach-Token (Standard 0.8).
+#   exag/cfg/temp  Chatterbox     speed  Tempo-Faktor der Szene (atempo, × Drehbuch-`speed`; Mittel ≈ 1, damit die
+#                                        kalibrierte W/s-Rate bleibt)
+#   gap_ms  Atempause nach Satzende (Frage +60 ms, Ausruf −40 ms, Komma-Stücke bleiben im Satz)
+#   gain_db Lautstärke der Szene relativ (leise bei Trauer, lauter bei Triumph)
+# Startwerte (12.11.2026) – nur gemessen, nicht gehört; Urteil „klingt echt“ trifft der Nutzer (docs/agenten/stimme.md).
+EMOTIONS = {
+    "calm":        {"exag": 0.40, "cfg": 0.50, "temp": 0.75, "speed": 0.98, "gap_ms": 300, "gain_db": -0.5},
+    "warm":        {"exag": 0.50, "cfg": 0.45, "temp": 0.80, "speed": 0.98, "gap_ms": 280, "gain_db": 0.0},
+    "serious":     {"exag": 0.45, "cfg": 0.45, "temp": 0.75, "speed": 0.97, "gap_ms": 340, "gain_db": -0.5},
+    "sad":         {"exag": 0.35, "cfg": 0.35, "temp": 0.70, "speed": 0.94, "gap_ms": 420, "gain_db": -2.0},
+    "awe":         {"exag": 0.60, "cfg": 0.35, "temp": 0.85, "speed": 0.95, "gap_ms": 380, "gain_db": 0.0},
+    "tense":       {"exag": 0.55, "cfg": 0.30, "temp": 0.80, "speed": 0.96, "gap_ms": 340, "gain_db": -1.0},
+    "ironic":      {"exag": 0.70, "cfg": 0.35, "temp": 0.90, "speed": 1.00, "gap_ms": 260, "gain_db": 0.0},
+    "playful":     {"exag": 0.80, "cfg": 0.30, "temp": 0.90, "speed": 1.02, "gap_ms": 240, "gain_db": 0.5},
+    "indignant":   {"exag": 0.85, "cfg": 0.35, "temp": 0.85, "speed": 1.02, "gap_ms": 260, "gain_db": 1.5},
+    "excited":     {"exag": 0.90, "cfg": 0.30, "temp": 0.90, "speed": 1.04, "gap_ms": 220, "gain_db": 1.0},
+    "triumphant":  {"exag": 0.95, "cfg": 0.35, "temp": 0.85, "speed": 1.00, "gap_ms": 300, "gain_db": 2.0},
+}
+EMOTIONS["angry"] = EMOTIONS["indignant"]
+EMOTIONS["dramatic"] = EMOTIONS["tense"]
+
 
 def scene_expr(delivery_expr: float, style: dict) -> float:
     """Melodie-Faktor einer Szene: Sprechweise, skaliert mit dem Stil des Videos."""

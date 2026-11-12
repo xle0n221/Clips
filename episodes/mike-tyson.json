@@ -47,6 +47,7 @@
     {
       "id": "hook",
       "delivery": "punch",
+      "emotion": "serious",
       "text": "Mike Tyson: a *hard* life, or his own fault? Score it.",
       "visual": "2D Paper-Cut, dunkle Halle, ein Boxring im Spotlicht. Cover (0–0,5 s): MIKE sitzt erschöpft auf dem Hocker in der Ecke, weißes Handtuch um den Hals, schwarze Trunks, schwarze Schuhe ohne Socken, Kopf gesenkt; großer Titel 'HARD LIFE OR HIS FAULT?' in Gelb oben-mitte. Danach ohne Schnitt: MIKE hebt den Kopf zur Kamera; auf 'score' fährt eine Punktrichter-Karte ins Bild (leere Zeilen ROUND 1–10).",
       "sources": [
@@ -78,6 +79,7 @@
     {
       "id": "brooklyn",
       "delivery": "calm",
+      "emotion": "sad",
       "text": "Brooklyn. Dad leaves. Mom raises the kids *alone*. Money trouble drags them into high-crime Brownsville.",
       "visual": "Kulisse fällt hinter die Seile: Paper-Cut-Straße Brooklyn, warmes, verblasstes Gold. Kind-MIKE klein in der Ringmitte. Ein Mann-Umriss geht aus dem Bild (nur Rücken), eine Mutter-Silhouette hält drei kleine Kinder an der Hand. Auf 'Brownsville' rutscht die Kulisse nach rechts weg (Whip), dunklere Häuser, Polizei-Blaulicht als flacher Schimmer.",
       "sources": [
@@ -122,6 +124,7 @@
     {
       "id": "streets",
       "delivery": "tense",
+      "emotion": "serious",
       "text": "His first fight, he says: a bigger kid pulled the head off his *pigeon*. By thirteen, reportedly *thirty-eight* arrests.",
       "visual": "Flaches Dach in Brownsville, Taubenschlag. Kind-MIKE hält eine Taube; ein größerer Junge (Silhouette) greift zu, Schnitt auf leere Hände + eine einzelne Feder (keine Gewalt gezeigt). Auf 'thirteen' Strichliste an einer Ziegelwand, Striche zählen hoch bis 38. Etikett 'HE SAYS' klein neben der Taube.",
       "sources": [
@@ -176,6 +179,7 @@
     {
       "id": "detention",
       "delivery": "normal",
+      "emotion": "warm",
       "text": "Juvenile detention. A counselor, an ex-boxer, spots his *talent* and leads him to Cus D'Amato.",
       "visual": "Kulisse: schlichter Flur einer Jugendanstalt (keine Uniformen, Kleidung unbelegt). Ein Betreuer mit Boxhandschuhen über der Schulter sieht Kind-MIKE auf einen Sandsack schlagen; Augen-Pop beim Betreuer auf 'talent'. Match Cut: Handschlag → Hand von CUS (ältere Silhouette mit Mantel) vor einer Holz-Trainingshalle.",
       "sources": [
@@ -210,6 +214,7 @@
     {
       "id": "mother",
       "delivery": "calm",
+      "emotion": "sad",
       "text": "At sixteen, his mom dies. Cus becomes his legal guardian. | How hard so far? *Brutal*. | And he's not champion yet.",
       "visual": "Kühles Licht. Die Mutter-Silhouette aus 'brooklyn' verblasst aus einem Bilderrahmen. CUS legt Teen-MIKE die Hand auf die Schulter, ein Dokument 'LEGAL GUARDIAN' (kein Adoptions-Wort). Re-Hook: Spotlight-Bühne, alles dunkel, MIKE allein in der Ringmitte, Punktrichter-Karte vom Hook kommt zurück, Zeilen 1–4 rot ausgefüllt.",
       "sources": [
@@ -257,6 +262,7 @@
     {
       "id": "champion",
       "delivery": "tense",
+      "emotion": "awe",
       "text": "At nineteen, he loses Cus. Some say his later troubles start there. About a year later: *youngest* heavyweight champion ever.",
       "visual": "CUS' Mantel hängt leer am Ringpfosten. Etikett 'SOME SAY' klein. Dann Wipe (Form: Boxhandschuh) in Gold: großer Arena-Ring, MIKE jetzt erwachsen in schwarzen Trunks, schwarzen Schuhen ohne Socken, weißes Handtuch um den Hals; tigert vor dem Kampf durch den Ring (belegt Z39); Gürtel wird hochgehalten (Gürtel-Farbe unbelegt → neutral Gold).",
       "sources": [
@@ -314,6 +320,7 @@
     {
       "id": "douglas",
       "delivery": "tense",
+      "emotion": "sad",
       "text": "Then a forty-two-to-one long shot knocks him down for the first time. Title gone. That month, his sister dies.",
       "visual": "Kühles Blau-Grau, Kulisse 'TOKYO 1990'. Gegner = gesichtslose graue Silhouette. MIKE fällt in Zeitlupe auf die Matte (Squash beim Aufprall), Ringrichter-Hand zählt. Gürtel rollt aus dem Bild. Dann Stille: MIKE sitzt auf dem Hocker, ein zweiter Bilderrahmen (Schwester) erscheint neben dem der Mutter. Kein Pfeil, keine Verbindung zwischen Niederlage und Tod (Gleichzeitigkeit, kein Kausalzusammenhang).",
       "sources": [
@@ -364,6 +371,7 @@
     {
       "id": "conviction",
       "delivery": "calm",
+      "emotion": "serious",
       "text": "Two years later, a jury convicts him of rape. He serves nearly three years. He denies it; appeals fail. | This one *isn't* bad luck.",
       "visual": "Entsättigtes Grau, keine Musik-Akzente. Kulisse: leerer Gerichtssaal in flachen Formen, Richterhammer, Geschworenenbank als Reihe grauer Kreise (Anzahl unbelegt, nicht zählbar darstellen). MIKE ohne Handtuch, steht. Keine Darstellung der Tat, kein Opfer, kein Name. Auf 'years' Gitterstäbe-Schatten über dem Ring. Auf 'luck': der Balken LIFE HITS bleibt sichtbar stehen (Kamera-Zoom auf den unveränderten Balken), Sticker 'NOT BAD LUCK'.",
       "sources": [
@@ -413,6 +421,7 @@
     {
       "id": "ear",
       "delivery": "normal",
+      "emotion": "tense",
       "text": "He bites off a piece of Holyfield's ear. Later: bankrupt, reportedly *twenty-three million* in debt.",
       "visual": "Kulisse Arena, harter Schnitt. Gegner-Silhouette hält sich das Ohr; ein kleines Stück fliegt als Comic-Symbol (kein Blut), Lizenz-Karte wird zerrissen (Z32, nicht gesprochen). Whip in den Ring bei Nacht: Geldscheine flattern aus dem Ring hinaus, ein rotes Schild 'BANKRUPT 2003'. MIKE sitzt auf dem Hocker, Handtuch über dem Kopf.",
       "sources": [
@@ -464,6 +473,7 @@
     {
       "id": "exodus",
       "delivery": "calm",
+      "emotion": "sad",
       "text": "His four-year-old daughter, Exodus, is found tangled in a cord. | She dies the next day.",
       "visual": "Fast schwarz, ein einziges warmes Licht. Keine Darstellung des Unfalls, kein Laufband, kein Kind im Bild. MIKE sitzt allein auf der Ringkante, eine kleine Papierblume fällt langsam auf die Matte. Keine Sticker außer der Rundenkarte, kein sfx außer der leisen Glocke.",
       "sources": [
@@ -493,6 +503,7 @@
     {
       "id": "ending",
       "delivery": "punch",
+      "emotion": "serious",
       "text": "Fifteen years on, at fifty-eight, he's still fighting. He loses. | Hard? *Brutally*. Blameless? *No*. You score it. Again:",
       "visual": "Licht kommt zurück, gedimmter Spot. Riesige Stadion-Kulisse (Arlington 2024), MIKE älter (graue Schläfen = Stil), gleiche Kampfkleidung, weißes Handtuch (STIL-ENTSCHEIDUNG zur Wiedererkennung, für 2024 unbelegt); junge Gegner-Silhouette. Punktrichter-Karte schließt: Zeile 'HARD' rot, Zeile 'BLAMELESS' grau 'NO'. Auf 'score' dreht sich die Karte zur Kamera (leere Zeile, Stift). Auf 'Again' Form-Wipe zurück zum Ring aus dem Hook, Zähler springt auf 'AGE 0', MIKE auf dem Hocker (Loop in 'Mike Tyson: a hard life, or his own fault?').",
       "sources": [

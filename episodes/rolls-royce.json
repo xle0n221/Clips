@@ -53,6 +53,7 @@
     {
       "id": "hook",
       "delivery": "punch",
+      "emotion": "playful",
       "text": "Step 1: be *rich*. | Done? Cool. Rolls-Royce driver in 1 minute. Go!",
       "visual": "2D-Sticker/Paper-Cut. Cover (0–0,5 s, Bilder 0–14): YOU (limettengrüner Hoodie) auf dem Sofa mit Cup-Nudeln, hinter ihm durchs Fenster die eigene stilisierte Luxuslimousine im Goldlicht (ohne Emblem/Kühlerfigur); großer Titel 'ROLLS-ROYCE IN 1 MINUTE?' in Akzentgelb oben-mitte, Timer '1:00' als Sticker, kein Untertitel. Danach ohne Schnitt: oben weiße Meme-Zeile 'POV: you want a Rolls-Royce' (eigenes Text-Layout). Auf 'rich' Checklisten-Karte 'STEP 1: BE RICH' mit Haken-Stempel, Geldregen aus Papier-Scheinen ohne Währungsbild, YOU bekommt eine riesige Papp-Sonnenbrille. Auf 'Cool' lässig-zufriedenes Nicken. Auf 'Go' Startpistole, HUD-Timer beginnt zu laufen.",
       "sources": [
@@ -95,6 +96,7 @@
     {
       "id": "pick",
       "delivery": "hype",
+      "emotion": "ironic",
       "text": "Step 2: pick your ride. Phantom: the flagship. Ghost: the *entry model*. | It's giving starter pack.",
       "visual": "Champagner-Gold. Showroom-Drehbühne mit zwei eigenen stilisierten Limousinen, Etiketten 'PHANTOM · FLAGSHIP' (größer, Krone-Sticker) und 'GHOST · ENTRY MODEL'. Auf 'entry' blinkt ein Supermarkt-Schild 'ENTRY LEVEL' über dem Ghost, YOU zieht die Augenbrauen hoch. Auf 'pack' Starter-Pack-Raster (eigenes 2×2-Layout): Papp-Sonnenbrille · Lederhandschuhe · Champagnerglas · ein Ghost – Titel 'ENTRY-LEVEL GHOST STARTER PACK'.",
       "sources": [
@@ -143,6 +145,7 @@
     {
       "id": "wait",
       "delivery": "tense",
+      "emotion": "ironic",
       "text": "Step 3: wait. Rumor says you need an *invite*. | Unconfirmed. In 2019, the company claimed: not enough Cullinans for established buyers.",
       "visual": "Warteschlange vor einer Showroom-Samtkordel; YOU ganz hinten mit Nudelbecher. Auf 'invite' flattert ein goldener Umschlag 'INVITE ONLY?' herein – auf 'Unconfirmed' bekommt er einen roten Stempel 'RUMOR – UNCONFIRMED' und fällt um. Auf 'Cullinans' eigene stilisierte große Luxus-SUV-Silhouette (Etikett 'CULLINAN'), davor eine Schlange gesichtsloser Anzug-Silhouetten mit Etikett 'ESTABLISHED BUYERS'; Schild 'SOLD OUT' (Sticker '2019').",
       "sources": [
@@ -188,6 +191,7 @@
     {
       "id": "stitch",
       "delivery": "hype",
+      "emotion": "playful",
       "text": "Step 4: sit down. Nobody: | Rolls-Royce: *2.2 million* stitches in the Ghost's bamboo fabric. Over 11 miles of thread! | Still here? 2 plot twists incoming.",
       "visual": "Innenraum-Nahaufnahme, YOU sinkt in einen Sitz. Auf 'Nobody' Meme-Layout als eigene Textkarte, weiß auf schwarz: 'nobody:' (leer) / 'Rolls-Royce:' – darunter wirbelt eine Nähmaschinen-Nadel, Zähler rast auf '2,200,000 STITCHES'. Auf 'thread' Garnrolle rollt aus dem Bild, Faden spannt sich über eine Mini-Karte 'OVER 11 MILES', kleiner Sticker '+20 HOURS TO BUILD'. Auf 'Still' friert das Bild ein, Timer-Sticker pulsiert, zwei verdeckte Karten 'PLOT TWIST 1' / 'PLOT TWIST 2' legen sich ins Bild (Re-Hook).",
       "sources": [
@@ -235,6 +239,7 @@
     {
       "id": "stars",
       "delivery": "normal",
+      "emotion": "ironic",
       "text": "Step 5: look up. Stars in the ceiling. On the Cullinan? *Optional*.",
       "visual": "YOU legt den Kopf in den Nacken: Dachhimmel wird zum Nachthimmel aus vielen kleinen Lichtpunkten (Anzahl nicht zählbar, keine Zahl im Bild), Sternschnuppe. Auf 'Optional' erscheint ein Preisschild-Häkchen 'OPTIONAL EXTRA' an einem Stern, YOU schaut auf sein leeres Portemonnaie (Motten flattern heraus).",
       "sources": [
@@ -274,6 +279,7 @@
     {
       "id": "hood",
       "delivery": "punch",
+      "emotion": "playful",
       "text": "Step 6: check the Spectre's hood. Those aren't wings. | They're *robes*.",
       "visual": "Haube einer eigenen stilisierten Elektro-Coupé-Silhouette (Etikett 'SPECTRE'), darauf KEINE Figur, sondern ein abstraktes flatterndes Stoffband ohne Körper auf neutralem Sockel (keine menschliche Gestalt, keine Pose 'Bein nach vorn' – Kühlerfigur ist Markenzeichen, Faktenprüfer 12.11.2026). Auf 'wings' YOU zeigt begeistert hin, Sticker 'WINGS?' – auf 'robes' Zoom, das Stoffband flattert im Wind, Sticker 'NOPE: ROBES', YOU tut so, als habe er das immer gewusst.",
       "sources": [
@@ -317,6 +323,7 @@
     {
       "id": "suite",
       "delivery": "hype",
+      "emotion": "playful",
       "text": "Step 7: open the trunk. Tailgate party? | Nah. *Cocktail suite*. Leather seats, straight out the back.",
       "visual": "Heck der eigenen Luxus-SUV-Silhouette (Etikett 'CULLINAN') öffnet sich. Auf 'Tailgate' Gedankenblase: Plastikstühle, Kühlbox, Grill. Auf 'Nah' platzt die Blase, auf 'suite' fahren zwei Leder-Klappsitze aus dem Gepäckraum, kleines Tischchen, Champagnerglas für YOU; Glasscheibe zwischen Gepäck- und Innenraum glitzert kurz.",
       "sources": [
@@ -359,6 +366,7 @@
     {
       "id": "bmw",
       "delivery": "punch",
+      "emotion": "ironic",
       "text": "Step 8: flex your British icon. | Plot twist: owned by *BMW* since 2003. It's giving Bavaria.",
       "visual": "YOU posiert vor der Limousine mit Teetasse, Fabrik-Kulisse 'GOODWOOD, ENGLAND' im Hintergrund. Auf 'twist' Record-Scratch, Bild ruckelt (Glitch-Rot), verdeckte Karte 'PLOT TWIST 1' dreht sich um: schlichte Schrift 'BMW AG' (kein Logo) über einem Eigentums-Stempel 'SINCE 2003'. Auf 'Bavaria' tauscht YOU die Teetasse gegen eine Brezel aus Papier; Teetasse kippt.",
       "sources": [
@@ -409,6 +417,7 @@
     {
       "id": "wagon",
       "delivery": "punch",
+      "emotion": "ironic",
       "text": "Step 9: flex the Cullinan in the US. | Twist 2: it's classified as a *station wagon*. Gas Guzzler Tax? Not exempt.",
       "visual": "YOU fährt die Luxus-SUV-Silhouette stolz an einer US-Highway-Kulisse vorbei (Schild-Form generisch, ohne echtes Verkehrszeichen-Design). Auf 'Twist' Record-Scratch, Karte 'PLOT TWIST 2' dreht sich: Amtsstempel 'CLASSIFIED: STATION WAGON', über die SUV legt sich der Umriss eines Familien-Kombis mit Holzdekor. Auf 'Tax' Zapfsäule frisst Münzen, Sticker 'GAS GUZZLER TAX: NOT EXEMPT'; YOU nimmt die Sonnenbrille ab.",
       "sources": [
@@ -460,6 +469,7 @@
     {
       "id": "ending",
       "delivery": "punch",
+      "emotion": "playful",
       "text": "Step 10: go custom. Sweptail: *12.8 million* dollars, 4 years to build. | You had 1 minute. The math ain't mathing. | Which brings us back to…",
       "visual": "Gold-Bühne: eine eigene einmalige Coupé-Silhouette unter Tuch (Etikett 'SWEPTAIL · ONE-OFF · 2017'). Auf 'million' schießt ein selbst gezeichneter grüner Zickzack-Pfeil nach oben aus dem Bild (Stonks-Pfeil als eigene Grafik, keine Meme-Figur), Sticker '$12.8M'. Auf 'build' Kalenderblätter fliegen '4 YEARS'. Auf 'minute' HUD-Timer springt auf '0:00'. Auf 'mathing' eigene Formel-Kritzeleien und ein Taschenrechner um YOUs Kopf (eigene Zeichnung), Balken DRIVER LEVEL fällt auf 0, Auswahlkarte. Auf 'back' Rückspul-Effekt zurück aufs Sofa mit Cup-Nudeln (Loop in 'Step 1: be rich.').",
       "sources": [

@@ -61,6 +61,7 @@
     {
       "id": "hook",
       "delivery": "punch",
+      "emotion": "tense",
       "text": "*Human cockfighting*, a senator called it. | By 2023: valued at *12 billion* dollars. | Who paid the price?",
       "visual": "2D Fight-Poster/Paper-Cut, schwarz-rote Halle, ein Oktagon von schräg oben im Spotlicht. Cover (0–0,5 s, Bilder 0–14): DER KÄMPFER (fiktive Hauptfigur, rote Handschuhe, rote Shorts) steht allein im Käfig, Maschendraht im Vordergrund; außerhalb des Käfigs wächst ein Berg Goldmünzen bis über den Zaun; großer Titel 'BANNED TO BILLIONS. WHO PAID?' in Akzentgelb oben-mitte, kein Untertitel. Danach ohne Schnitt: auf 'cockfighting' fährt ein vergilbter Zeitungsausschnitt 'HUMAN COCKFIGHTING' ins Bild; auf 'billion' Kamera-Zoom-out, der Goldberg wird zur Skyline; auf 'price' dreht DER KÄMPFER den Kopf zur Kamera, Preisschild baumelt an seinem Handschuh mit '?'.",
       "sources": [
@@ -94,6 +95,7 @@
     {
       "id": "start",
       "delivery": "hype",
+      "emotion": "excited",
       "text": "1993, Denver. Eight fighters, one cage, *almost no rules*. Winner takes 50,000 dollars.",
       "visual": "Whip zurück: Paper-Cut-Arena 'DENVER 1993', halbleere Ränge (belegt Z9). Acht Kämpfer-Silhouetten in bunt gemischten Kampfstilen und Größen marschieren durchs Bild (keine echten Personen); einer trägt nur EINEN Boxhandschuh (Z8, Bild-Gag). Oktagon mit Maschendraht senkt sich herab (Z4). Auf 'rules' ein Regelzettel, auf dem fast alles durchgestrichen ist – drei Zeilen bleiben: NO BITING · NO EYE-GOUGING · NO GROIN SHOTS. Auf 'dollars' Riesen-Scheck $50,000.",
       "sources": [
@@ -138,6 +140,7 @@
     {
       "id": "ban",
       "delivery": "tense",
+      "emotion": "indignant",
       "text": "Senator John McCain sees a tape. *Human cockfighting*, he says, and writes to every governor. | 36 states ban no-holds-barred fighting.",
       "visual": "Kühles Blau-Grau. SENATOR = gesichtslose Paper-Cut-Silhouette im Anzug mit Etikett 'SEN. JOHN McCAIN' (keine Porträtähnlichkeit), sieht auf einen alten Röhrenfernseher mit VHS-Kassette. Auf 'cockfighting' Zeitungsausschnitt aus dem Hook kehrt zurück. Auf 'governor' fliegen viele Briefumschläge über eine flache USA-Karte (Anzahl der Umschläge nicht zählbar). Auf 'ban' färben sich Bundesstaaten nacheinander rot, Zähler '36 STATES'; DER KÄMPFER drückt sich am Käfigzaun ab, Käfigtür bekommt ein Vorhängeschloss.",
       "sources": [
@@ -183,6 +186,7 @@
     {
       "id": "rules",
       "delivery": "normal",
+      "emotion": "tense",
       "text": "The UFC tames itself: weight classes, gloves, rounds. | Still, its owners are nearly *bankrupt*.",
       "visual": "Regelzettel aus 'start' kommt zurück; neue Zeilen stempeln sich darauf: WEIGHT CLASSES · GLOVES · ROUNDS. DER KÄMPFER zieht dünne Handschuhe an (rot), Rundenuhr '5:00' erscheint am Käfig. Dann Licht-Abfall: Büro-Kulisse, leere Kasse, rote Mahnungen stapeln sich, ein Schild 'SEG' am Bürofenster (Firmenname nur Bild); Kurve fällt ins Minus.",
       "sources": [
@@ -222,6 +226,7 @@
     {
       "id": "zuffa",
       "delivery": "normal",
+      "emotion": "tense",
       "text": "2001: two brothers buy the UFC for just *2 million* dollars. | Hold that number.",
       "visual": "Warmes Gold kommt zurück. Zwei Anzug-Silhouetten (Etikett 'THE FERTITTA BROTHERS', keine Porträtähnlichkeit) schieben einen kleinen Geldkoffer über den Tisch; im Gegenzug bekommen sie nur drei große Buchstaben U · F · C und einen ramponierten Käfig (Z15, Bild). Auf 'number' friert das Bild ein, HUD-Zähler '$2M' pulsiert und wird mit einem gelben Rahmen 'markiert' (Re-Hook auf die Geldspur).",
       "sources": [
@@ -263,6 +268,7 @@
     {
       "id": "tuf",
       "delivery": "tense",
+      "emotion": "tense",
       "text": "By 2004, they've poured in over 40 million. | Last shot: a reality show. Its finale goes toe-to-toe, live on *free* TV.",
       "visual": "Geldkoffer leert sich: Münzen rieseln in ein Loch, Etikett '$40M+ IN'. Dann TV-Studio-Kulisse 'THE ULTIMATE FIGHTER' als Leuchtschrift (Sendungsname nur Bild), Kamera-Rotlicht 'LIVE'. Im Käfig zwei generische Kämpfer-Silhouetten (keine Ähnlichkeit zu Griffin/Bonnar, Etikett 'GRIFFIN vs. BONNAR' klein) schlagen synchron aufeinander ein, Schweiß-Tropfen als Paper-Cut-Formen, kein Blut. Auf 'free' springt ein Preisschild '$0' auf den Fernseher.",
       "sources": [
@@ -307,6 +313,7 @@
     {
       "id": "boom",
       "delivery": "hype",
+      "emotion": "excited",
       "text": "From there, it *booms*. The boss said women in the UFC? *Never ever*. 2013: the first women's fight.",
       "visual": "Montage-Schnitt alle ~1 s in Gold: Arena-Ränge füllen sich, Logo-Schilder 'PRIDE' werden übermalt (2007, Z21, nur Bild), Umsatzbalken '$609M (2015)' wächst (Z24, nur Sticker). Auf 'boss': Anzug-Silhouette 'THE BOSS' (Etikett 'DANA WHITE', keine Porträtähnlichkeit) mit Sprechblase 'NEVER EVER' (2011). Auf 'fight': Sprechblase zerplatzt, zwei generische Kämpferinnen-Silhouetten betreten den Käfig, Sticker 'FIRST WOMEN'S BOUT: 2013'.",
       "sources": [
@@ -356,6 +363,7 @@
     {
       "id": "sale",
       "delivery": "punch",
+      "emotion": "triumphant",
       "text": "2016: sold for about *4 billion* dollars. | From 2 million. In 15 years.",
       "visual": "Auktionshammer fällt (Comic-Schlag). HUD-Zähler springt von '$2M' (gelb markiert aus 'zuffa') auf '≈$4B'; Infografik: winziger Münzstapel '$2M' neben einem Münzturm, der oben aus dem Bild ragt. Auf '15' Zeitleisten-Pfeil 2001 → 2016.",
       "sources": [
@@ -390,6 +398,7 @@
     {
       "id": "price",
       "delivery": "punch",
+      "emotion": "indignant",
       "text": "But who paid the price? | Fighters' estimated share: about a *fifth* of revenue. NBA players? About *half*. In 2014, fighters sued, claiming suppressed pay.",
       "visual": "Wendepunkt: Musik dünnt aus, Gold wird kalt. Spotlicht auf DER KÄMPFER allein im Käfig, Preisschild aus dem Hook hängt an seinem Handschuh. Kreisdiagramm wird auf den Käfigboden projiziert: kleines rotes Stück 'FIGHTERS ≈ 1/5 (EST.)'; daneben ein zweites Kreisdiagramm mit Basketball-Symbol halb gefüllt 'NBA ≈ 1/2'. HUD-Balken 'FIGHTERS' SHARE (EST.)' erscheint und bleibt bei ~19 %. Auf 'sued': Kämpfer-Silhouetten mit Aktenordnern vor einem Gerichtsgebäude, Etikett 'CLASS ACTION, 2014'.",
       "sources": [
@@ -437,6 +446,7 @@
     {
       "id": "empire",
       "delivery": "hype",
+      "emotion": "triumphant",
       "text": "2023: a WWE merger values the UFC at *12.1 billion*. 2025: a judge approves a *375-million-dollar* settlement. | Months later: a *7.7-billion-dollar* media deal.",
       "visual": "Zwei Logo-Blöcke 'UFC' und 'WWE' krachen zu einem Turm 'TKO' zusammen (Firmenlogos nur als schlichte Schrift, kein Original-Logo). HUD-Zähler springt auf '$12.1B'. Richterhammer: Scheck '$375M SETTLEMENT' – klein neben dem Turm. Dann Streaming-Bildschirm mit Vertrag '$7.7B · 7 YEARS', ein PPV-Schild wird durchgestrichen. DER KÄMPFER sieht vom Käfig aus zu, der Balken bleibt unverändert.",
       "sources": [
@@ -482,6 +492,7 @@
     {
       "id": "ending",
       "delivery": "punch",
+      "emotion": "indignant",
       "text": "Banned to billions. The fighters? A settlement. | Fair? You decide. | Not bad for what a senator called…",
       "visual": "Split-Screen vertikal: oben der Goldturm mit HUD '$12.1B', unten DER KÄMPFER mit dem kleinen Settlement-Scheck. Auf 'Fair' Waage in der Bildmitte, kippt Richtung Gold; Auswahlkarte 'FAIR DEAL?' mit 'A · YES' / 'B · NO'. Auf 'senator' Form-Wipe (Oktagon-Form) zurück zum vergilbten Zeitungsausschnitt und Käfig aus dem Hook, Zähler zurück auf 'UFC: ?' (Loop in 'Human cockfighting, a senator called it.').",
       "sources": [
