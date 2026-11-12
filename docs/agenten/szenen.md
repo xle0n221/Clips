@@ -24,6 +24,14 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · UFC (2D) v1 · **Ruhiges Tempo von Anfang an:** 11 Szenen, 26 Einstellungen bei 80,6 s → im Mittel ≈ 3,1 s,
+  kürzeste ≈ 1,9 s (boom „2013“) außer Loop-Wipe am Ende (≈ 0,9 s); Ortswechsel in einer Szene als Prospekt, der hinter dem
+  Käfig herabfällt (rules: Büro), statt Schnitt – die Pill bleibt dabei korrekt an der Figur. Alle Zeiten aus Beats/Wörtern
+  (`useBeats` in `scenes/ufcSets.tsx`). Neu im Motor (additiv): `EpisodeConfig.labelUntilWord` (Pill endet am ersten Vorkommen
+  eines Worts aus captions.json, nur Pills davor) – nötig, wenn kein Beat am Einstellungswechsel liegt (boom: Boss-Pill vs.
+  Kämpferinnen). Fallen: Pill (x 0.5/y 0.36) verdeckt alles zwischen y ≈ 600–691 → Schilder darüber oder darunter; Auswahlkarten
+  (594–1266) verdecken Bildmitte bis Szenenende → Motiv dahinter nur als Rahmen. Cues am Szenenende (boom „fight“, 0,4 s vor
+  Schnitt) erzeugen Sticker/Pill mit < 0,5 s Standzeit – Drehbuch-Cue früher legen. Beleg `out/ufc-contactsheet.jpg`.
 - 12.11.2026 · Mike Tyson (2D) v3 · **Nutzer empfindet 1–3-s-Schnitte als zu hektisch** (Freigabe 2 „Nicht OK“:
   „etwas langsamer … angenehmer zum Schauen“). Umbau: 33 → 24 Einstellungen, im Mittel ≈ 3,0 s (vorher ≈ 2,2 s);
   Ortswechsel innerhalb einer Szene als Überblendung (zwei `Stage2D` übereinander mit Deckkraft, z. B. Gold-Arena,
@@ -108,6 +116,7 @@
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 08.11.2026 | Sonnensystem v2 | – | 3 Anschnitte |
+| 12.11.2026 | UFC (2D) v1 | – (Selbstprüfung 7–8) | Regie-Kritik steht aus |
 | 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |

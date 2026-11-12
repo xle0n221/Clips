@@ -81,6 +81,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „The rise of the UFC“: 2D Fight-Poster/Paper-Cut (kit2d/fight.tsx, scenes/ufc*.tsx) */}
+      <Composition
+        id="Ufc"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 90}
+        schema={episodeSchema}
+        defaultProps={{ episode: "ufc" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* Prüf-Komposition des 2D-Bau-Kits (src/episode/kit2d/) */}
       <Composition
         id="Kit2DTest"
