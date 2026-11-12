@@ -160,12 +160,12 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   im Dashboard-Feld `voice` gewählte Stimme.
   Alternativen: **Bella** `af_bella` (A-), **Finn** `am_fenrir`, **Max** `am_puck` (C+).
   Zentrale Liste `scripts/voices.json`, Hörproben `assets/stimmproben/` (aus dem Dashboard übernommen).
-- **Ziel-Sprechtempo 2,6–3,0 Wörter/s** (Entscheidung des Nutzers 09.11.2026: „Das Video ist zu schnell,
+- **Ziel-Sprechtempo 2,3–2,6 Wörter/s** (Entscheidung des Nutzers 09.11.2026: „Das Video ist zu schnell,
   unnatürlich schnell. Angenehme Sprechgeschwindigkeit; wenn es sein muss, sollen die Videos länger sein oder
   das Thema nicht so extrem ausgeführt werden. Der Zuschauer soll maximal unterhalten werden.“).
   Orientierung: R3-Erzähler 152 / 54,2 s = 2,81 W/s (`stimme-casting.md`). Zu schnell waren: Rom 319 / 90,0 s
   = 3,54 W/s, Sonnensystem 3,26 W/s. Gezählt werden **Skriptwörter** (wie die Untertitel).
-  Folgen: Wortbudget ≈ 2,8 × Sekunden (60 s ≈ 170 Wörter, 90 s ≈ 250, 120 s ≈ 335). Passt der Stoff nicht,
+  Folgen: Wortbudget ≈ 2,4 × Sekunden (60 s ≈ 145 Wörter, 90 s ≈ 215, 120 s ≈ 290; seit 12.11.2026 ruhiger). Passt der Stoff nicht,
   **erst kürzen** (weniger Stationen, dafür jede mit Pointe), dann länger werden – nie schneller sprechen.
   Kokoro-Tempo nie über 1,33 (darüber Sprung um ~10 %, unnatürlich); Tempo mit `npm run calibrate` wählen.
 
@@ -232,7 +232,7 @@ Verständlichkeit geprüft: Whisper erkennt vorher und nachher gleich viele Wör
   Satzende; **keine „…“- und kaum „ | “-Pausen** (Kokoro-Pausen „natürlich“ mit 0,32–0,55 s fand der Nutzer „sehr unnatürlich“);
   Zahlen ausschreiben („one ninety-three“). Chatterbox-Pausen > 0,3 s kürzt `make_episode.py` automatisch auf 0,25 s
   (`maxPauseMs`, 0 = aus). Probe Finn danach 115 Wörter / 37,8 s = 3,05 W/s.
-- Offen: Tempo-Ziel (2,6–3,0 nach Rom-Rückmeldung vs. 3,8 Vorbild) – vom Nutzer nicht entschieden; die gelobte Probe hat 3,05.
+- Offen: Tempo-Ziel (2,3–2,6 nach Rom-Rückmeldung vs. 3,8 Vorbild) – vom Nutzer nicht entschieden; die gelobte Probe hat 3,05.
 
 **Grenze:** Kokoro-82M hat keine Steuerung für Emotionen; `voice_fx` verstärkt nur die vorhandene Melodie und kann
 keinen echten Schauspieler ersetzen. Für mehr Charakter wäre ein anderes Sprachmodell nötig (nicht getestet).

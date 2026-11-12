@@ -55,7 +55,7 @@ Während der Arbeit `updatedAt` mindestens alle 30 Minuten erneuern (zusammen mi
 
 Neue Videos mit `"engine": "chatterbox"` (Freigabe des Nutzers 09.11.2026). Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID = Klangvorlage) und Sprechstil `voicePreset` (Standard `lebendig`; alte Einträge: `voiceStyle` als Text) → ins Drehbuch
 `episodes/<slug>.json` übernehmen; je Szene `delivery`, `*Akzentwörter*` und ` | `-Pausen nach `docs/clip-regeln.md` („Stimme“).
-Wunschlänge `lengthSec` → Wortzahl (Skriptwörter) mit 2,6–3,0 Wörtern/s planen (≈ 2,8 × Sekunden); Zahlen werden beim
+Wunschlänge `lengthSec` → Wortzahl (Skriptwörter) mit 2,3–2,6 Wörtern/s planen (≈ 2,4 × Sekunden); Zahlen werden beim
 Sprechen länger, Tempo nach dem ersten Sprachlauf kalibrieren (`playbook-themen.md`, Tempo-Abkürzungen). `note` und `inspiration` (Dateien:
 Artifact-Tool `action: "read"`, `path` = `id`) beim Drehbuch berücksichtigen.
 **Inspiration ist ein Angebot, keine Vorgabe** (Nutzer, 11.11.2026: „nicht unbedingt das nutzen, was ich als Inspo gebe, nur wenn es

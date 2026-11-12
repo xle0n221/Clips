@@ -317,8 +317,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   const VOICE_NAME = { af_heart: "Lily", af_bella: "Bella", am_fenrir: "Finn", am_puck: "Max" };
   const voiceName = (v) => VOICE_NAME[v] ? "Stimme " + VOICE_NAME[v] : "Stimme " + v;
   const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
-  const WPS_MIN = 2.6, WPS_MAX = 3.0; // Ziel-Sprechtempo inkl. Pausen seit 09.11.2026 (Nutzer: schneller klang „zu schnell, unnatürlich“)
-  const WPS_LOW_OK = 2.6;
+  const WPS_MIN = 2.3, WPS_MAX = 2.6; // Ziel-Sprechtempo inkl. Pausen seit 12.11.2026 (Nutzer: Videos insgesamt langsamer, angenehm zu schauen)
+  const WPS_LOW_OK = 2.3;
   const STYLE_NAME = { lebendig: "lebendig", spannend: "spannend", witzig: "witzig", ruhig: "ruhig", aus: "unbearbeitet" };
   const de = (n, d) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
   const sceneDrafts = {};

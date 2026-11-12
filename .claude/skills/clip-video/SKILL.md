@@ -37,14 +37,14 @@ Format wie `episodes/solar-system.json`: `id`, `title`, `voice`, `speed`, `scene
 mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom|pop|whoosh|ding, `beat`).
 - Struktur nach `docs/clip-regeln.md`: zentrale Frage in den ersten 2 s → Einsatz → Kausalkette →
   Eskalation → Wendepunkt → Auflösung → Loop zum ersten Satz.
-- ~2,6–3,0 Skriptwörter/s (natürlich, nicht schneller!) ⇒ 60 s ≈ 170 Wörter, 90 s ≈ 250 Wörter (Zielwert und Messungen:
+- ~2,3–2,6 Skriptwörter/s (natürlich, nicht schneller!) ⇒ 60 s ≈ 145 Wörter, 90 s ≈ 215 Wörter (Zielwert und Messungen:
   `docs/clip-regeln.md`, Sprache & Stimme).
 - **Stimme lebendig machen** (verbindlich, `docs/clip-regeln.md` → „Stimme“): je Szene `delivery`
   (punch | normal | hype | tense | calm) passend zur Story-Stelle, 1–2 `*Akzentwörter*` pro Satz,
   ` | ` als dramatische Pause vor Pointe/Twist, `voicePreset` des Videos (aus dem Dashboard, Standard `lebendig`).
 - Zahlen als Ziffern schreiben (die Sprachausgabe schreibt sie automatisch aus).
 - **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter. Direkt danach eine
-  **Hörprobe** (erste ~20 s der Sprachspur, Tempo 2,6–3,0 W/s) zur Freigabe schicken – Tempo und Stimme
+  **Hörprobe** (erste ~20 s der Sprachspur, Tempo 2,3–2,6 W/s) zur Freigabe schicken – Tempo und Stimme
   werden VOR dem Szenenbau abgenommen (Rom: „zu schnell“ kam erst nach dem Render → ein Render verloren).
 - **Musik je Thema** (Pflicht, `docs/clip-regeln.md` → „Musik je Thema“): im Drehbuch
   `"music": {"mood": "dark|hype|funny|epic|chill", "why": "Thema + Trend aus docs/trends/aktuell.md"}`; Rap-/R&B-Grundcharakter,
@@ -55,7 +55,7 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - Prüfen: Ausgabe „Abgleich: N/M Wörter“ (Ziel ≥ 98 %); Gesamtlänge und Wörter/s notieren.
 - **Tempo vorher kalibrieren:** `npm run calibrate -- episodes/<thema>.json` erzeugt nur die Stimme für
   ~5 Tempo-Werte (ohne Whisper/Musik, nichts in `public/`), misst Dauer + W/s und empfiehlt einen Wert im
-  Zielband 2,6–3,0 W/s, Kokoro-Tempo ≤ 1,33. Kokoro wirkt nicht linear: zwischen 1,33 und 1,34 wird die Tonspur ~10 % kürzer
+  Zielband 2,3–2,6 W/s, Kokoro-Tempo ≤ 1,33. Kokoro wirkt nicht linear: zwischen 1,33 und 1,34 wird die Tonspur ~10 % kürzer
   (beide getesteten Stimmen) – nie linear hochrechnen. Rom: 5 Werte in 89 s (ruhige CPU) bzw. 351 s (geteilt).
 - `make_episode.py` bearbeitet die Stimme automatisch mit `scripts/voice_fx.py` (Ausgabe „Stimme: Stil …,
   N Akzentwörter betont“); Rohfassung liegt in `out/<id>-voice-raw.wav` zum Vergleich.
