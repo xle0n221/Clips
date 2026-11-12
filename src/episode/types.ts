@@ -70,7 +70,11 @@ export type Timeline = {
   cues: Cue[];
   /** Einsatz-Anzeige oben (optional, aus dem Drehbuch-Feld `hud`) */
   hud?: HudSpec;
+  /** Thumbnail-Cover in den ersten Bildern (Drehbuch-Feld `cover`, docs/clip-regeln.md → „Thumbnail im Video“) */
+  cover?: CoverSpec;
 };
+
+export type CoverSpec = { text: string; sub?: string; frames?: number };
 
 export type EpisodeData = {
   timeline: Timeline;

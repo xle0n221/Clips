@@ -2,7 +2,7 @@ import React from "react";
 import { Earth, Hook, Launch, Mercury, Sun, Venus } from "./part1";
 import { Jupiter, Mars, Neptune, Outro, Saturn, Uranus } from "./part2";
 import type { TransitionSpec } from "../kit/transitions";
-import { EARTH_SCENES, EARTH_TRANSITIONS } from "./earth";
+import { EARTH_SCENES, EARTH_TRANSITIONS, EarthCoverArt } from "./earth";
 import { ROME_SCENES } from "./rome1";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -42,8 +42,10 @@ export type EpisodeConfig = {
   readonly look?: "2d";
   readonly transitions?: Record<string, TransitionSpec>;
   readonly hud2d?: { readonly freezeBeat?: string };
+  /** Motiv hinter dem Cover-Titel (overlays/Cover.tsx); ohne = erste Szene bleibt sichtbar */
+  readonly coverArt?: React.FC;
 };
 export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
-  "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" } },
+  "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" }, coverArt: EarthCoverArt },
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

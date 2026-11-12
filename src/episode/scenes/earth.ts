@@ -2,6 +2,7 @@ import type React from "react";
 import type { TransitionSpec } from "../kit/transitions";
 import { Blackout, Darkness, Hook, Lights, Nuclear, Satellites, StarsScene, Swift } from "./earth1";
 import { Carbon, Comeback, Ending, Hubble, MoonScene, Rushmore, Rust, VoyagerScene } from "./earth2";
+export { EarthCoverArt } from "./earthCover";
 
 /** Szenen-IDs = "id" in episodes/earth-without-humans.json */
 export const EARTH_SCENES: Record<string, React.FC> = {

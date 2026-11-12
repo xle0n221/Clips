@@ -255,6 +255,8 @@ def retime(path: Path) -> None:
     tl["cues"] = bind_cues(ep, words, captions)
     if "hud" in ep:
         tl["hud"] = ep["hud"]
+    if "cover" in ep:
+        tl["cover"] = ep["cover"]
     (out_dir / "timeline.json").write_text(json.dumps(tl, indent=1) + "\n")
     print(f"Cues neu gebunden: {len(tl['cues'])} ({out_dir.relative_to(ROOT)}/timeline.json)")
 
@@ -326,6 +328,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     }
     if "hud" in ep:  # Einsatz-Anzeige (src/episode/overlays/Hud.tsx)
         timeline["hud"] = ep["hud"]
+    if "cover" in ep:  # Thumbnail-Cover in den ersten Bildern (src/episode/overlays/Cover.tsx)
+        timeline["cover"] = ep["cover"]
     (out_dir / "timeline.json").write_text(json.dumps(timeline, indent=1) + "\n")
 
     make_music(out_dir / "music.wav", seconds=timeline["durationMs"] / 1000 + 1)

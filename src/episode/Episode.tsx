@@ -13,6 +13,7 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { Captions } from "./overlays/Captions";
+import { Cover, coverFrames } from "./overlays/Cover";
 import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
 import { hudBottom } from "./overlays/Hud";
@@ -219,11 +220,11 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
       )}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="below" />
-      {cfg?.hud2d && rawTimeline ? (
+      {cfg?.hud2d && rawTimeline && frame >= coverFrames(timeline.cover) ? (
         <TimelineHUD timeline={rawTimeline} freezeBeat={cfg.hud2d.freezeBeat} />
       ) : null}
 
-      {stickers.map((c, i) => {
+      {frame < coverFrames(timeline.cover) ? null : stickers.map((c, i) => {
         const from = toF(c.atMs);
         const next = stickers[i + 1] ? toF(stickers[i + 1].atMs) : Infinity;
         // Sticker enden spätestens mit ihrer Szene (kein Überlappen in den nächsten Ort)
@@ -255,8 +256,11 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
       })}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="above" />
-      <Captions captions={captions} emph={emph.size ? emph : undefined} mode={timeline.captionMode} />
+      {frame >= coverFrames(timeline.cover) ? (
+        <Captions captions={captions} emph={emph.size ? emph : undefined} mode={timeline.captionMode} />
+      ) : null}
       <Grade />
+      {timeline.cover ? <Cover cover={timeline.cover} art={cfg?.coverArt} /> : null}
 
       {/* Ton: Stimme, Musikbett, Effekte */}
       <Audio src={staticFile(`${base}/voice.wav`)} />
