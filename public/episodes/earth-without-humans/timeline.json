@@ -1,0 +1,849 @@
+{
+ "id": "earth-without-humans",
+ "title": "Every human vanished tonight. You're the only witness.",
+ "durationMs": 176445,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 12342
+  },
+  {
+   "id": "lights",
+   "startMs": 12342,
+   "endMs": 20677
+  },
+  {
+   "id": "blackout",
+   "startMs": 20677,
+   "endMs": 34170
+  },
+  {
+   "id": "darkness",
+   "startMs": 34170,
+   "endMs": 40399
+  },
+  {
+   "id": "stars",
+   "startMs": 40399,
+   "endMs": 51546
+  },
+  {
+   "id": "nuclear",
+   "startMs": 51546,
+   "endMs": 65492
+  },
+  {
+   "id": "satellites",
+   "startMs": 65492,
+   "endMs": 80494
+  },
+  {
+   "id": "swift",
+   "startMs": 80494,
+   "endMs": 91485
+  },
+  {
+   "id": "hubble",
+   "startMs": 91485,
+   "endMs": 100519
+  },
+  {
+   "id": "rust",
+   "startMs": 100519,
+   "endMs": 115461
+  },
+  {
+   "id": "comeback",
+   "startMs": 115461,
+   "endMs": 126029
+  },
+  {
+   "id": "carbon",
+   "startMs": 126029,
+   "endMs": 136146
+  },
+  {
+   "id": "rushmore",
+   "startMs": 136146,
+   "endMs": 146756
+  },
+  {
+   "id": "moon",
+   "startMs": 146756,
+   "endMs": 159203
+  },
+  {
+   "id": "voyager",
+   "startMs": 159203,
+   "endMs": 169001
+  },
+  {
+   "id": "ending",
+   "startMs": 169001,
+   "endMs": 175845
+  }
+ ],
+ "cues": [
+  {
+   "sticker": "EVERY HUMAN: GONE",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "hud": {
+    "id": "time",
+    "value": "HOUR 0"
+   },
+   "scene": "hook",
+   "atMs": 0
+  },
+  {
+   "beat": "poof",
+   "sfx": "pop",
+   "scene": "hook",
+   "atMs": 1940
+  },
+  {
+   "beat": "ghostIn",
+   "sfx": "whoosh",
+   "label": {
+    "text": "YOU",
+    "color": "#FFD23F",
+    "x": 0.5,
+    "y": 0.42
+   },
+   "scene": "hook",
+   "atMs": 5120
+  },
+  {
+   "beat": "eyePop",
+   "sticker": "HOW LONG?",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "hook",
+   "atMs": 10400
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1940
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 10400
+  },
+  {
+   "beat": "whipToOrbit",
+   "sfx": "whoosh",
+   "scene": "lights",
+   "atMs": 12560
+  },
+  {
+   "beat": "cityDots",
+   "sfx": "ding",
+   "scene": "lights",
+   "atMs": 15240
+  },
+  {
+   "beat": "glowPulse",
+   "scene": "lights",
+   "atMs": 18080
+  },
+  {
+   "beat": "flicker",
+   "sfx": "pop",
+   "scene": "lights",
+   "atMs": 20020
+  },
+  {
+   "emph": true,
+   "scene": "lights",
+   "atMs": 15240
+  },
+  {
+   "emph": true,
+   "scene": "lights",
+   "atMs": 18080
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "HOUR 1"
+   },
+   "sfx": "whoosh",
+   "scene": "blackout",
+   "atMs": 21360
+  },
+  {
+   "sticker": "SPAIN, APRIL 2025",
+   "color": "#B0BEC5",
+   "sfx": "pop",
+   "scene": "blackout",
+   "atMs": 22730
+  },
+  {
+   "beat": "trainHalt",
+   "sfx": "boom",
+   "scene": "blackout",
+   "atMs": 25220
+  },
+  {
+   "beat": "noBars",
+   "scene": "blackout",
+   "atMs": 27600
+  },
+  {
+   "beat": "emptyTruck",
+   "sticker": "NOBODY'S COMING",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "bar": {
+    "id": "traces",
+    "value": 0.9
+   },
+   "scene": "blackout",
+   "atMs": 33100
+  },
+  {
+   "emph": true,
+   "scene": "blackout",
+   "atMs": 25220
+  },
+  {
+   "emph": true,
+   "scene": "blackout",
+   "atMs": 30700
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "DAY 1"
+   },
+   "sfx": "whoosh",
+   "scene": "darkness",
+   "atMs": 34560
+  },
+  {
+   "beat": "globeDark",
+   "sfx": "boom",
+   "bar": {
+    "id": "traces",
+    "value": 0.8
+   },
+   "scene": "darkness",
+   "atMs": 35120
+  },
+  {
+   "beat": "lastDotOff",
+   "sfx": "pop",
+   "scene": "darkness",
+   "atMs": 39380
+  },
+  {
+   "emph": true,
+   "scene": "darkness",
+   "atMs": 35120
+  },
+  {
+   "emph": true,
+   "scene": "darkness",
+   "atMs": 39380
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "DAY 2"
+   },
+   "beat": "starsFill",
+   "sfx": "ding",
+   "scene": "stars",
+   "atMs": 41500
+  },
+  {
+   "sticker": "1/3 OF US NEVER SEE IT",
+   "color": "#B0BEC5",
+   "scene": "stars",
+   "atMs": 44640
+  },
+  {
+   "beat": "milkyWay",
+   "sfx": "whoosh",
+   "scene": "stars",
+   "atMs": 47700
+  },
+  {
+   "beat": "slowClap",
+   "sfx": "pop",
+   "scene": "stars",
+   "atMs": 50700
+  },
+  {
+   "emph": true,
+   "scene": "stars",
+   "atMs": 41500
+  },
+  {
+   "emph": true,
+   "scene": "stars",
+   "atMs": 47380
+  },
+  {
+   "emph": true,
+   "scene": "stars",
+   "atMs": 47700
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "WEEK 1"
+   },
+   "sfx": "whoosh",
+   "scene": "nuclear",
+   "atMs": 51760
+  },
+  {
+   "sticker": "20 FT OF WATER",
+   "color": "#4FC3F7",
+   "sfx": "pop",
+   "scene": "nuclear",
+   "atMs": 56020
+  },
+  {
+   "beat": "emptyChair",
+   "sfx": "boom",
+   "scene": "nuclear",
+   "atMs": 57460
+  },
+  {
+   "beat": "casks",
+   "scene": "nuclear",
+   "atMs": 62700
+  },
+  {
+   "beat": "warmHands",
+   "sfx": "ding",
+   "scene": "nuclear",
+   "atMs": 64960
+  },
+  {
+   "emph": true,
+   "scene": "nuclear",
+   "atMs": 54560
+  },
+  {
+   "emph": true,
+   "scene": "nuclear",
+   "atMs": 56020
+  },
+  {
+   "emph": true,
+   "scene": "nuclear",
+   "atMs": 56340
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "MONTH 1"
+   },
+   "beat": "lookUp",
+   "sfx": "whoosh",
+   "scene": "satellites",
+   "atMs": 65700
+  },
+  {
+   "beat": "nearMiss",
+   "sfx": "ding",
+   "scene": "satellites",
+   "atMs": 68400
+  },
+  {
+   "beat": "emptyJoystick",
+   "sticker": "NO PILOTS",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "satellites",
+   "atMs": 72700
+  },
+  {
+   "beat": "spotlight",
+   "sticker": "HOW LONG?",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "satellites",
+   "atMs": 75320
+  },
+  {
+   "beat": "airSwell",
+   "scene": "satellites",
+   "atMs": 78380
+  },
+  {
+   "beat": "satDip",
+   "sfx": "pop",
+   "bar": {
+    "id": "traces",
+    "value": 0.7
+   },
+   "scene": "satellites",
+   "atMs": 79820
+  },
+  {
+   "emph": true,
+   "scene": "satellites",
+   "atMs": 75320
+  },
+  {
+   "emph": true,
+   "scene": "satellites",
+   "atMs": 79820
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "YEAR 1"
+   },
+   "sfx": "whoosh",
+   "scene": "swift",
+   "atMs": 80600
+  },
+  {
+   "beat": "swiftFace",
+   "scene": "swift",
+   "atMs": 83260
+  },
+  {
+   "sticker": "BELOW 250 MILES",
+   "color": "#FF8A3D",
+   "sfx": "pop",
+   "scene": "swift",
+   "atMs": 84980
+  },
+  {
+   "beat": "swiftBurn",
+   "sticker": "RE-ENTERED NOV 2026",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "swift",
+   "atMs": 88040
+  },
+  {
+   "beat": "hubbleTease",
+   "sfx": "whoosh",
+   "scene": "swift",
+   "atMs": 91120
+  },
+  {
+   "emph": true,
+   "scene": "swift",
+   "atMs": 84500
+  },
+  {
+   "emph": true,
+   "scene": "swift",
+   "atMs": 84740
+  },
+  {
+   "emph": true,
+   "scene": "swift",
+   "atMs": 84980
+  },
+  {
+   "emph": true,
+   "scene": "swift",
+   "atMs": 85220
+  },
+  {
+   "emph": true,
+   "scene": "swift",
+   "atMs": 88040
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "YEAR 10"
+   },
+   "beat": "counterRoll",
+   "sfx": "whoosh",
+   "scene": "hubble",
+   "atMs": 91780
+  },
+  {
+   "sticker": "MID-2030s (AT THE EARLIEST)",
+   "color": "#B0BEC5",
+   "scene": "hubble",
+   "atMs": 94780
+  },
+  {
+   "beat": "furnace",
+   "sfx": "boom",
+   "bar": {
+    "id": "traces",
+    "value": 0.6
+   },
+   "scene": "hubble",
+   "atMs": 97280
+  },
+  {
+   "beat": "salute",
+   "scene": "hubble",
+   "atMs": 99980
+  },
+  {
+   "beat": "hubbleSink",
+   "sfx": "ding",
+   "scene": "hubble",
+   "atMs": 92640
+  },
+  {
+   "emph": true,
+   "scene": "hubble",
+   "atMs": 94640
+  },
+  {
+   "emph": true,
+   "scene": "hubble",
+   "atMs": 94780
+  },
+  {
+   "emph": true,
+   "scene": "hubble",
+   "atMs": 97280
+  },
+  {
+   "beat": "whipDown",
+   "sfx": "whoosh",
+   "scene": "rust",
+   "atMs": 100840
+  },
+  {
+   "sticker": "PAINTED NON-STOP",
+   "color": "#FF5A5A",
+   "scene": "rust",
+   "atMs": 102260
+  },
+  {
+   "beat": "rustSpread",
+   "sfx": "boom",
+   "scene": "rust",
+   "atMs": 106960
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "YEAR 15"
+   },
+   "scene": "rust",
+   "atMs": 112720
+  },
+  {
+   "beat": "bottle",
+   "sfx": "pop",
+   "scene": "rust",
+   "atMs": 110320
+  },
+  {
+   "beat": "crack",
+   "sfx": "ding",
+   "bar": {
+    "id": "traces",
+    "value": 0.5
+   },
+   "scene": "rust",
+   "atMs": 114320
+  },
+  {
+   "emph": true,
+   "scene": "rust",
+   "atMs": 102260
+  },
+  {
+   "emph": true,
+   "scene": "rust",
+   "atMs": 112720
+  },
+  {
+   "emph": true,
+   "scene": "rust",
+   "atMs": 113180
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "YEAR 25"
+   },
+   "sfx": "whoosh",
+   "scene": "comeback",
+   "atMs": 115720
+  },
+  {
+   "sticker": "116,000 PEOPLE LEFT",
+   "color": "#B0BEC5",
+   "sfx": "pop",
+   "scene": "comeback",
+   "atMs": 117630
+  },
+  {
+   "beat": "greenGrow",
+   "sfx": "ding",
+   "bar": {
+    "id": "traces",
+    "value": 0.4
+   },
+   "scene": "comeback",
+   "atMs": 121720
+  },
+  {
+   "beat": "foxLook",
+   "scene": "comeback",
+   "atMs": 125100
+  },
+  {
+   "emph": true,
+   "scene": "comeback",
+   "atMs": 121160
+  },
+  {
+   "emph": true,
+   "scene": "comeback",
+   "atMs": 121420
+  },
+  {
+   "emph": true,
+   "scene": "comeback",
+   "atMs": 121620
+  },
+  {
+   "emph": true,
+   "scene": "comeback",
+   "atMs": 121720
+  },
+  {
+   "beat": "hazeIn",
+   "sfx": "boom",
+   "scene": "carbon",
+   "atMs": 126800
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "YEAR 300"
+   },
+   "scene": "carbon",
+   "atMs": 131420
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "YEAR 1,000"
+   },
+   "sticker": "300\u20131,000 YEARS",
+   "color": "#B0BEC5",
+   "sfx": "pop",
+   "scene": "carbon",
+   "atMs": 132060
+  },
+  {
+   "beat": "hazeStays",
+   "sfx": "ding",
+   "scene": "carbon",
+   "atMs": 135420
+  },
+  {
+   "emph": true,
+   "scene": "carbon",
+   "atMs": 126800
+  },
+  {
+   "emph": true,
+   "scene": "carbon",
+   "atMs": 131940
+  },
+  {
+   "emph": true,
+   "scene": "carbon",
+   "atMs": 132060
+  },
+  {
+   "emph": true,
+   "scene": "carbon",
+   "atMs": 132300
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "YEAR 10,000"
+   },
+   "beat": "counterSlam",
+   "sfx": "boom",
+   "scene": "rushmore",
+   "atMs": 136520
+  },
+  {
+   "sticker": "1 INCH / 10,000 YEARS",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "rushmore",
+   "atMs": 139720
+  },
+  {
+   "beat": "squint",
+   "scene": "rushmore",
+   "atMs": 144560
+  },
+  {
+   "beat": "handLook",
+   "sfx": "ding",
+   "bar": {
+    "id": "traces",
+    "value": 0.3
+   },
+   "scene": "rushmore",
+   "atMs": 145440
+  },
+  {
+   "emph": true,
+   "scene": "rushmore",
+   "atMs": 139420
+  },
+  {
+   "emph": true,
+   "scene": "rushmore",
+   "atMs": 139720
+  },
+  {
+   "beat": "barFreeze",
+   "scene": "moon",
+   "atMs": 147340
+  },
+  {
+   "beat": "matchCutMoon",
+   "sfx": "whoosh",
+   "sticker": "BUT THE MOON?",
+   "color": "#E0E0E0",
+   "scene": "moon",
+   "atMs": 149300
+  },
+  {
+   "beat": "footprints",
+   "scene": "moon",
+   "atMs": 151420
+  },
+  {
+   "sticker": "TRACKS SEEN 39 YEARS LATER",
+   "color": "#B0BEC5",
+   "sfx": "pop",
+   "scene": "moon",
+   "atMs": 154480
+  },
+  {
+   "beat": "flagShadow",
+   "sfx": "ding",
+   "scene": "moon",
+   "atMs": 157720
+  },
+  {
+   "emph": true,
+   "scene": "moon",
+   "atMs": 154480
+  },
+  {
+   "emph": true,
+   "scene": "moon",
+   "atMs": 154980
+  },
+  {
+   "emph": true,
+   "scene": "moon",
+   "atMs": 157720
+  },
+  {
+   "beat": "voyagerCross",
+   "sfx": "whoosh",
+   "scene": "voyager",
+   "atMs": 160640
+  },
+  {
+   "sticker": "LEFT THE SUN'S BUBBLE: 2012",
+   "color": "#B0BEC5",
+   "scene": "voyager",
+   "atMs": 162910
+  },
+  {
+   "beat": "recordGlint",
+   "sfx": "ding",
+   "scene": "voyager",
+   "atMs": 164480
+  },
+  {
+   "sticker": "\"A BILLION YEARS\" (HOPE)",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "voyager",
+   "atMs": 167760
+  },
+  {
+   "emph": true,
+   "scene": "voyager",
+   "atMs": 167500
+  },
+  {
+   "emph": true,
+   "scene": "voyager",
+   "atMs": 167760
+  },
+  {
+   "emph": true,
+   "scene": "voyager",
+   "atMs": 168000
+  },
+  {
+   "beat": "voyagerDot",
+   "scene": "ending",
+   "atMs": 169740
+  },
+  {
+   "beat": "skyToStreet",
+   "sfx": "whoosh",
+   "scene": "ending",
+   "atMs": 171960
+  },
+  {
+   "beat": "loopToStreet",
+   "hud": {
+    "id": "time",
+    "value": "HOUR 0"
+   },
+   "sfx": "boom",
+   "scene": "ending",
+   "atMs": 174280
+  },
+  {
+   "emph": true,
+   "scene": "ending",
+   "atMs": 174280
+  }
+ ],
+ "hud": {
+  "title": "EARTH WITHOUT US",
+  "counters": [
+   {
+    "id": "time",
+    "label": "",
+    "value": "HOUR 0"
+   }
+  ],
+  "bars": [
+   {
+    "id": "traces",
+    "label": "HUMAN TRACES",
+    "value": 1.0,
+    "color": "#FFD23F"
+   }
+  ]
+ },
+ "cover": {
+  "text": "EARTH WITHOUT US?",
+  "sub": "How long until it forgets us?",
+  "frames": 15
+ }
+}
