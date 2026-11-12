@@ -1,4 +1,5 @@
 import React from "react";
+import { AbsoluteFill } from "remotion";
 import { anticipate, hop } from "../kit/motion";
 import {
   Belt,
@@ -62,33 +63,30 @@ export const Champion: React.FC = () => {
   const some = 71;
   const wipe = B("gloveWipe", 130);
   const belt = B("beltUp", 152);
-  const shot = shotIndex(f, [loses, some, wipe, 185]);
-  const gold = f >= wipe;
-  const pace = gold && f < belt ? Math.sin((f - wipe) * 0.16) * 110 : 0;
-  const mx = gold ? 540 + pace : 400;
-  const up = ease(f, belt - 4, belt + 8);
+  // drei ruhige Einstellungen; der Wechsel in die Gold-Arena ist eine weiche Überblendung (kein Wipe in der Szene)
+  const shot = shotIndex(f, [some]);
+  const mix = ease(f, wipe - 8, wipe + 12, "inOut");
+  const pace = f < belt ? Math.sin((f - wipe) * 0.1) * 80 : 0;
+  const gx = 540 + pace;
+  const up = ease(f, belt - 6, belt + 14, "inOut");
   const hy = FEET + headY("adult");
-  const cam =
+  const camA =
     shot === 0
-      ? frameOn(620, 780, 540, 880, lerp(1.18, 1.26, ease(f, 0, loses)))
-      : shot === 1
-        ? frameOn(RING.rx, 980, 640, 880, lerp(1.7, 1.85, ease(f, loses, some)))
-        : shot === 2
-          ? frameOn(400, hy, 540, 790, lerp(1.28, 1.4, ease(f, some, wipe)))
-          : shot === 3
-            ? frameOn(540, 740, 540, 900, lerp(1.0, 1.08, ease(f, wipe, 185)))
-            : frameOn(540, 520, 540, 800, lerp(1.6, 1.72, ease(f, 185, 214)));
-  const cloud = ease(f, some, some + 30);
+      ? frameOn(700, 800, 540, 880, lerp(1.0, 1.12, ease(f, 0, some, "inOut")))
+      : frameOn(400, hy, 540, 790, lerp(1.22, 1.36, ease(f, some, wipe + 12, "inOut")));
+  const camB = frameOn(540, lerp(700, 600, ease(f, wipe, 214, "inOut")), 540, 860, lerp(1.0, 1.28, ease(f, wipe, 214, "inOut")));
+  const cloud = ease(f, some, some + 40, "inOut");
+  const coatSwing = f >= loses ? Math.sin((f - loses) * 0.15) * 5 * Math.exp(-(f - loses) * 0.03) : 0;
   return (
-    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, belt, 10) }} mood="night" noSky>
-      <Layer>
-        <Arena phase={gold ? "gold" : "warm"} tone={RING_TONES.warm} f={f} flashes={gold ? 1 : 0} lights={gold ? 1 : 0.3} drop={gold ? null : <GymDrop down={1} tint={shot === 2 ? "#1A1420" : undefined} />} />
-        {!gold ? (
-          <>
-            <HangingCoat x={RING.rx + 6} y={RING.back - 300} s={0.8} swing={f >= loses ? Math.sin((f - loses) * 0.2) * 6 * Math.exp(-(f - loses) * 0.03) : 0} color={SIL.cus} />
-            {f < loses ? <Figure x={760} y={FEET} s={1.05} frame={f} sil={SIL.cus} outfit="coat" coatColor={SIL.cus} o={1 - ease(f, loses - 10, loses)} armL={[40, 60]} /> : null}
+    <AbsoluteFill>
+      {mix < 1 ? (
+        <Stage2D cam={camA} mood="night" noSky>
+          <Layer>
+            <Arena phase="warm" tone={RING_TONES.warm} f={f} lights={0.3} drop={<GymDrop down={1} tint={shot === 1 ? "#1A1420" : undefined} />} />
+            <HangingCoat x={RING.rx + 6} y={RING.back - 300} s={0.8} swing={coatSwing} color={SIL.cus} />
+            {f < loses + 14 ? <Figure x={760} y={FEET} s={1.05} frame={f} sil={SIL.cus} outfit="coat" coatColor={SIL.cus} o={1 - ease(f, loses - 12, loses + 12, "inOut")} armL={[40, 60]} /> : null}
             {/* dunkle Papierwolken an Fäden: „spätere Probleme“ (Spekulation) */}
-            {shot === 2
+            {shot === 1
               ? [180, 420, 660].map((cx, i) => (
                   <g key={cx} transform={`translate(${cx} ${lerp(-260, 330 + i * 30, cloud)})`} filter="url(#paper)">
                     <line x1={0} y1={-2000} x2={0} y2={-40} stroke="#0B0B0B" strokeWidth={4} />
@@ -97,44 +95,48 @@ export const Champion: React.FC = () => {
                 ))
               : null}
             <Figure
-              x={mx}
+              x={400}
               y={FEET}
               s={1.0}
               frame={f}
               gloves
               armL={[20, 150]}
               armR={[20, 150]}
-              headDown={f > loses ? 0.6 : 0}
+              headDown={ease(f, loses, loses + 16, "inOut") * 0.6}
               eyes={f > loses ? "down" : "open"}
               brows="sad"
               mouth={f > loses ? "frown" : "flat"}
               blinkSeed={3}
             />
-          </>
-        ) : (
-          <Figure
-            x={mx}
-            y={FEET}
-            s={1.0}
-            frame={f}
-            towel="neck"
-            gloves={false}
-            pose={f < belt ? "walk" : "stand"}
-            step={Math.sin((f - wipe) * 0.32)}
-            armL={[lerp(14, 160, up), lerp(10, 178, up)]}
-            armR={[lerp(14, 160, up), lerp(10, 178, up)]}
-            eyes={f >= belt ? "up" : "open"}
-            mouth={f >= belt ? "smile" : "grit"}
-            brows={f >= belt ? "up" : "angry"}
-            blinkSeed={3}
-          />
-        )}
-        {gold ? <Belt x={mx} y={lerp(1150, FEET - 676, up)} s={0.55} shine={Math.max(0, Math.sin(f * 0.3))} r={lerp(30, 0, up)} /> : null}
-      </Layer>
-      <Layer depth={0}>
-        <GloveWipe local={f - wipe} color={PAPER.gold} />
-      </Layer>
-    </Stage2D>
+          </Layer>
+        </Stage2D>
+      ) : null}
+      {mix > 0 ? (
+        <AbsoluteFill style={{ opacity: mix }}>
+          <Stage2D cam={{ ...camB, y: camB.y + jolt(f, belt, 5) }} mood="night" noSky>
+            <Layer>
+              <Arena phase="gold" tone={RING_TONES.warm} f={f} flashes={0.6} lights={1} />
+              <Figure
+                x={gx}
+                y={FEET}
+                s={1.0}
+                frame={f}
+                towel="neck"
+                pose={f < belt ? "walk" : "stand"}
+                step={Math.sin((f - wipe) * 0.2)}
+                armL={[lerp(14, 160, up), lerp(10, 178, up)]}
+                armR={[lerp(14, 160, up), lerp(10, 178, up)]}
+                eyes={f >= belt ? "up" : "open"}
+                mouth={f >= belt ? "smile" : "grit"}
+                brows={f >= belt ? "up" : "angry"}
+                blinkSeed={3}
+              />
+              <Belt x={gx} y={lerp(1150, FEET - 676, up)} s={0.55} shine={Math.max(0, Math.sin(f * 0.15))} r={lerp(30, 0, up)} />
+            </Layer>
+          </Stage2D>
+        </AbsoluteFill>
+      ) : null}
+    </AbsoluteFill>
   );
 };
 

@@ -1,5 +1,4 @@
-import React from "react";
-import { anticipate } from "../kit/motion";
+import React, { useContext } from "react";
 import {
   Bag,
   beatOr,
@@ -26,6 +25,7 @@ import {
   Stool,
   Tally,
   Belt,
+  Kit2DContext,
 } from "../kit2d";
 import { shotIndex, useScene } from "../types";
 import { Arena, BrickDrop, BrooklynDrop, BrownsvilleDrop, GymDrop, Handshake, HallwayDrop, RoomDrop, RooftopDrop } from "./tysonSets";
@@ -40,34 +40,42 @@ import { Arena, BrickDrop, BrooklynDrop, BrownsvilleDrop, GymDrop, Handshake, Ha
 export const FEET = 1220;
 export const SIL = { dad: "#3A3330", mom: "#4A3B36", kid: "#40363A", big: "#2A2428", cus: "#2B2F38", staff: "#3E4450", opp: "#7C828C" } as const;
 
+/**
+ * Zeiten je Szene: Beats aus timeline.json (`B`) und Wort-Zeiten aus captions.json (`W`, lokaler Frame des
+ * n-ten Vorkommens eines Worts in dieser Szene). Keine fest kodierten Sekunden – bei neuer Tonspur passt alles mit.
+ * Ersatzwerte gelten nur, wenn Beat/Wort fehlt; sie sind als Anteil der Szenendauer angegeben.
+ */
 export const useBeats = () => {
   const s = useScene();
-  return { f: s.frame, d: s.duration, B: (n: string, fb: number) => beatOr(s.beat, n, fb) };
+  const { captions, fps, start } = useContext(Kit2DContext);
+  const d = s.duration;
+  const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9'-]/g, "");
+  const W = (word: string, frac: number, nth = 1) => {
+    const t0 = (start / fps) * 1000;
+    const t1 = ((start + d) / fps) * 1000;
+    const hits = captions.filter((c) => c.startMs >= t0 - 60 && c.startMs < t1 && norm(c.text) === norm(word));
+    const c = hits[nth - 1];
+    return c ? Math.max(0, Math.round((c.startMs / 1000) * fps) - start) : Math.round(frac * d);
+  };
+  return { f: s.frame, d, B: (n: string, frac: number) => beatOr(s.beat, n, Math.round(frac * d)), W };
 };
 
 /* ------------------------------------------------------------------ */
 
 /** Hook: MIKE erschöpft auf dem Hocker in der Ecke, hebt den Kopf; Punktrichter-Karte fährt ein. */
 export const Hook: React.FC = () => {
-  const { f, B } = useBeats();
-  const hard = 34;
-  const look = B("lookUp", 73);
-  const card = B("scorecardIn", 93);
-  const c1 = 52;
-  const c2 = card - 3;
-  const shot = shotIndex(f, [c1, c2]);
+  const { f, d, B, W } = useBeats();
+  const hard = W("hard", 0.3);
+  const look = B("lookUp", 0.66);
+  const card = B("scorecardIn", 0.84);
+  // eine ruhige Einstellung (Nutzer: Schnitte alle 1–3 s zu hektisch): langsame Ranfahrt, MIKE rechts, Karte links
   const mx = 820;
   const s = 1.1;
   const hy = FEET + headY("adult", true) * s;
-  const cam =
-    shot === 0
-      ? frameOn(mx, hy, 540, 830, lerp(1.32, 1.46, ease(f, 0, c1)))
-      : shot === 1
-        ? frameOn(mx, hy - 10, 540, 860, anticipate(f, look, 2.1, 2.0, 2.45, { pre: 4, dur: 10 }))
-        : frameOn(mx, hy + 40, 700, 900, lerp(1.02, 1.08, ease(f, c2, c2 + 30)));
-  const headDown = f < look ? 1 : 1 - ease(f, look, look + 9);
-  const shake = jolt(f, hard, 10);
-  const cardX = lerp(-420, 290, ease(f, card - 2, card + 9));
+  const cam = frameOn(mx, hy, lerp(560, 700, ease(f, d * 0.18, d * 0.9, "inOut")), 860, lerp(1.3, 1.55, ease(f, 0, d, "inOut")));
+  const headDown = f < look ? 1 : 1 - ease(f, look, look + 16, "inOut");
+  const shake = jolt(f, hard, 6);
+  const cardX = lerp(-420, 260, ease(f, card - 4, card + 12, "inOut"));
   return (
     <Stage2D cam={{ ...cam, y: cam.y + shake }} mood="night" noSky>
       <Layer>
@@ -88,9 +96,9 @@ export const Hook: React.FC = () => {
         />
         <SpotCone x={mx} y={FEET + 10} o={1} w={330} dim={0.5} />
       </Layer>
-      {shot === 2 ? (
+      {f >= card - 4 ? (
         <Layer depth={0}>
-          <ScoreCard x={cardX} y={830} s={0.72} r={-6} rows={Array.from({ length: 10 }, (_, i) => ({ label: `ROUND ${i + 1}` }))} title="SCORE IT" />
+          <ScoreCard x={cardX} y={830} s={0.62} r={-6} rows={Array.from({ length: 10 }, (_, i) => ({ label: `ROUND ${i + 1}` }))} title="SCORE IT" />
         </Layer>
       ) : null}
     </Stage2D>
@@ -101,30 +109,22 @@ export const Hook: React.FC = () => {
 
 /** Brooklyn: Kulisse fällt, Vater geht, Mutter mit drei Kindern, Geldsorgen ziehen sie nach Brownsville (Whip). */
 export const Brooklyn: React.FC = () => {
-  const { f, B } = useBeats();
-  const leaves = B("dadWalksOut", 34);
-  const alone = B("momKids", 78);
-  const whip = B("whipBrownsville", 160);
-  const c1 = leaves - 5;
-  const c2 = 56;
-  const c3 = 98;
-  const c4 = whip - 8;
-  const shot = shotIndex(f, [c1, c2, c3, c4]);
+  const { f, d, B, W } = useBeats();
+  const leaves = B("dadWalksOut", 0.19);
+  const alone = B("momKids", 0.43);
+  const whip = B("whipBrownsville", 0.89);
+  const c3 = W("Money", 0.54);
+  const shot = shotIndex(f, [c3]);
   const walk = f > c3 ? (f - c3) * 2.2 : 0;
-  const dadX = f < leaves ? 300 : 300 - (f - leaves) * 12;
+  const dadX = f < leaves ? 300 : 300 - (f - leaves) * 8;
   const kidX = 520 + walk;
   const momX = 700 + walk;
-  const slide = ease(f, whip - 8, whip + 4, "inOut");
+  // Ortswechsel Brooklyn → Brownsville als weiche Überblendung (kein Whip innerhalb der Szene)
+  const fade = ease(f, whip - 14, whip + 10, "inOut");
   const cam =
     shot === 0
-      ? frameOn(540, 900, 540, 900, lerp(1.0, 1.06, ease(f, 0, c1)))
-      : shot === 1
-        ? frameOn(lerp(340, 300, ease(f, c1, c2)), 700, 560, 840, 1.55)
-        : shot === 2
-          ? frameOn(700, 840, 540, 880, lerp(1.32, 1.5, ease(f, alone - 6, alone + 10)))
-          : shot === 3
-            ? frameOn(720 + walk, 860, 540, 900, 1.18)
-            : frameOn(700 + walk, 860, 540, 900, lerp(1.25, 1.05, ease(f, whip - 8, whip + 10)));
+      ? frameOn(lerp(540, 640, ease(f, 0, c3, "inOut")), 880, 540, 900, lerp(1.0, 1.14, ease(f, 0, c3, "inOut")))
+      : frameOn(720 + walk, 860, 540, 900, lerp(1.18, 1.08, ease(f, c3, d, "inOut")));
   const momArm: [number, number] = [38, 28];
   return (
     <Stage2D cam={cam} mood="night" noSky>
@@ -136,8 +136,12 @@ export const Brooklyn: React.FC = () => {
           lights={0.4}
           drop={
             <>
-              <BrooklynDrop down={ease(f, -6, 20, "linear")} dx={-walk * 0.6 - slide * 1400} />
-              {slide > 0 ? <BrownsvilleDrop down={1} dx={(1 - slide) * 1400} f={f} blue={ease(f, whip, whip + 10)} /> : null}
+              <BrooklynDrop down={ease(f, -6, 24, "linear")} dx={-walk * 0.6} />
+              {fade > 0 ? (
+                <g opacity={fade}>
+                  <BrownsvilleDrop down={1} dx={-walk * 0.6} f={f} blue={fade} />
+                </g>
+              ) : null}
             </>
           }
         />
@@ -158,8 +162,8 @@ export const Brooklyn: React.FC = () => {
           armR={[40, 34]}
           pose={walk ? "walk" : "stand"}
           step={Math.sin(f * 0.35 + 0.5)}
-          eyes={shot === 1 ? "side" : f > alone && f < c3 ? "up" : "open"}
-          flip={shot === 1}
+          eyes={f > leaves && f < alone - 10 ? "side" : f > alone && f < c3 ? "up" : "open"}
+          flip={f > leaves && f < alone - 10}
           brows={f > leaves ? "sad" : "neutral"}
           mouth={f > leaves ? "frown" : "flat"}
           blinkSeed={3}
@@ -182,36 +186,28 @@ export const Brooklyn: React.FC = () => {
 /** Streets: Dach mit Tauben, größerer Junge greift zu → leere Hände + Feder; Strichliste bis 38. */
 export const Streets: React.FC = () => {
   const { f, B } = useBeats();
-  const says = 40;
-  const grab = 70;
-  const feather = B("featherFall", 104);
-  const tally = B("tallyMarks", 122);
-  const arrests = 177;
-  const shot = shotIndex(f, [says, grab, feather, tally, 160]);
+  const grab = W("bigger", 0.36);
+  const feather = B("featherFall", 0.53);
+  const tally = B("tallyMarks", 0.63);
+  const arrests = W("arrests", 0.9);
+  // zwei ruhige Einstellungen: Dach (Taube, Zugriff) → leere Hände, Feder, Ziegelwand senkt sich, Strichliste
+  const shot = shotIndex(f, [feather]);
   const kx = 330;
   const ks = 1.25;
   const birdX = 483;
   const birdY = 759;
   const reach = ease(f, grab + 2, feather - 2, "inOut");
-  const bigX = lerp(1000, 780, ease(f, grab - 4, grab + 14));
-  const n = Math.floor(ease(f, tally + 2, tally + 46, "linear") * 38);
-  const brick = ease(f, tally - 6, tally + 6, "linear");
+  const bigX = f < feather ? lerp(1000, 780, ease(f, grab - 10, grab + 16, "inOut")) : lerp(780, 1250, ease(f, feather + 6, feather + 40, "inOut"));
+  const n = Math.floor(ease(f, tally + 4, tally + 52, "linear") * 38);
+  const brick = ease(f, tally - 8, tally + 8, "linear");
   const cam =
     shot === 0
-      ? frameOn(480, 820, 540, 880, lerp(1.15, 1.25, ease(f, 0, says)))
-      : shot === 1
-        ? frameOn(birdX, birdY, 540, 770, lerp(1.45, 1.55, ease(f, says, grab)))
-        : shot === 2
-          ? frameOn(620, 800, 540, 860, 1.12)
-          : shot === 3
-            ? frameOn(birdX - 10, 800, 540, 760, lerp(2.0, 2.15, ease(f, feather, tally)))
-            : shot === 4
-              ? frameOn(600, 760, 540, 860, lerp(1.0, 1.06, ease(f, tally, 160)))
-              : frameOn(760, 700, 540, 820, lerp(1.35, 1.45, ease(f, 160, 195)));
+      ? frameOn(birdX, birdY, 540, 770, lerp(1.1, 1.32, ease(f, 0, feather, "inOut")))
+      : frameOn(lerp(birdX, 640, ease(f, feather, tally + 20, "inOut")), lerp(birdY, 790, ease(f, feather, tally + 20, "inOut")), 540, lerp(770, 860, ease(f, feather, tally + 20, "inOut")), lerp(1.32, 1.05, ease(f, feather, tally + 30, "inOut")));
   const hasBird = f < feather;
   const fT = f - feather;
   return (
-    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, arrests, 10) }} mood="night" noSky>
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, arrests, 5) }} mood="night" noSky>
       <Layer>
         <Arena
           phase="dusk"
@@ -227,48 +223,46 @@ export const Streets: React.FC = () => {
             </>
           }
         />
-        {f < tally ? (
+        {brick < 0.5 ? (
           <>
             {/* Tauben auf der Kulisse */}
-            <Pigeon x={150} y={505} s={0.6} flap={bump(f, 30, 8)} />
-            <Pigeon x={300} y={500} s={0.55} flip flap={bump(f, 90, 8)} />
-            <Figure
-              x={bigX}
-              y={FEET}
-              s={1.25}
-              frame={f}
-              age="teen"
-              sil={SIL.big}
-              outfit="plain"
-              armL={[lerp(30, 95, reach), lerp(30, 100, reach)]}
-              lean={-6 * reach}
-              o={ease(f, grab - 6, grab)}
-            />
-            <Figure
-              x={kx}
-              y={FEET}
-              s={ks}
-              frame={f}
-              age="kid"
-              outfit="shirt"
-              armR={hasBird || fT < 30 ? [120, 160] : [20, 20]}
-              armL={[14, 10]}
-              lean={-5 * reach}
-              eyes={f >= feather ? "up" : shot === 2 ? "side" : "open"}
-              brows={f >= grab ? "sad" : "neutral"}
-              mouth={f >= feather ? "o" : f > grab ? "frown" : "smile"}
-              blinkSeed={3}
-            />
-            {hasBird ? <Pigeon x={birdX + reach * 10} y={birdY - 10} s={0.9} flap={Math.max(0, Math.sin(f * 0.6)) * reach} /> : null}
-            {fT >= 0 ? <Feather x={birdX + Math.sin(fT * 0.18) * 34} y={762 + fT * 2.6} s={0.9} r={Math.sin(fT * 0.2) * 35} /> : null}
+            <Pigeon x={150} y={505} s={0.6} flap={bump(f, 30, 12)} />
+            <Pigeon x={300} y={500} s={0.55} flip flap={bump(f, 90, 12)} />
           </>
-        ) : (
-          <>
-            <Figure x={250} y={FEET} s={1.2} frame={f} age="kid" outfit="shirt" eyes="side" brows="sad" mouth="flat" headTilt={4} blinkSeed={3} />
-            {/* Blaulicht als flacher Schimmer */}
-            <rect x={-600} y={-600} width={2400} height={3200} fill="#3D6BFF" opacity={shot === 5 ? 0.12 * (Math.sin(f * 0.6) + 1) : 0} />
-          </>
-        )}
+        ) : null}
+        <Figure
+          x={bigX}
+          y={FEET}
+          s={1.25}
+          frame={f}
+          age="teen"
+          sil={SIL.big}
+          outfit="plain"
+          pose={f > feather + 6 ? "walk" : "stand"}
+          step={Math.sin(f * 0.3)}
+          armL={f < feather ? [lerp(30, 95, reach), lerp(30, 100, reach)] : [20, 20]}
+          lean={f < feather ? -6 * reach : 0}
+          o={ease(f, grab - 10, grab)}
+        />
+        <Figure
+          x={kx}
+          y={FEET}
+          s={ks}
+          frame={f}
+          age="kid"
+          outfit="shirt"
+          armR={[lerp(120, 20, ease(f, feather + 20, feather + 44, "inOut")), lerp(160, 20, ease(f, feather + 20, feather + 44, "inOut"))]}
+          armL={[14, 10]}
+          lean={f < feather ? -5 * reach : 0}
+          eyes={f >= tally + 10 ? "side" : f >= feather ? "up" : "open"}
+          brows={f >= grab ? "sad" : "neutral"}
+          mouth={f >= tally ? "flat" : f >= feather ? "o" : f > grab ? "frown" : "smile"}
+          blinkSeed={3}
+        />
+        {hasBird ? <Pigeon x={birdX + reach * 10} y={birdY - 10} s={0.9} flap={Math.max(0, Math.sin(f * 0.4)) * reach} /> : null}
+        {fT >= 0 && fT < 70 ? <Feather x={birdX + Math.sin(fT * 0.12) * 34} y={762 + fT * 2.2} s={0.9} r={Math.sin(fT * 0.14) * 35} /> : null}
+        {/* Blaulicht als flacher, langsamer Schimmer */}
+        <rect x={-600} y={-600} width={2400} height={3200} fill="#3D6BFF" opacity={f > arrests - 18 ? 0.08 * (Math.sin(f * 0.25) + 1) * ease(f, arrests - 18, arrests) : 0} />
       </Layer>
     </Stage2D>
   );
@@ -279,34 +273,27 @@ export const Streets: React.FC = () => {
 /** Detention: Flur, Kind schlägt auf Sandsack, Betreuer staunt (Augen-Pop), Handschlag → Match Cut auf CUS. */
 export const Detention: React.FC = () => {
   const { f, B } = useBeats();
-  const talent = B("eyePop", 103);
-  const cus = B("matchCutHandshake", 146);
-  const c1 = 45;
-  const c2 = talent - 12;
-  const c3 = 120;
-  const shot = shotIndex(f, [c1, c2, c3, cus]);
+  const talent = B("eyePop", 0.62);
+  const cus = B("matchCutHandshake", 0.88);
+  // zwei ruhige Einstellungen: Sandsack (weit) → Zweier-Einstellung Betreuer/Kind; CUS wird weich eingeblendet
+  const c1 = talent - 14;
+  const shot = shotIndex(f, [c1]);
   const kx = 360;
   const ks = 1.25;
-  const cyc = (f % 18) / 18;
-  const punch = shot <= 2 ? Math.max(0, Math.sin(cyc * Math.PI * 2)) : 0;
-  const hitAt = f - (f % 18) + 4;
-  const bagSwing = Math.sin((f - hitAt) * 0.25) * 9 * Math.exp(-Math.max(0, f - hitAt) * 0.08);
+  const cyc = (f % 24) / 24;
+  const punch = shot === 0 ? Math.max(0, Math.sin(cyc * Math.PI * 2)) : 0;
+  const hitAt = f - (f % 24) + 5;
+  const bagSwing = Math.sin((f - hitAt) * 0.2) * 8 * Math.exp(-Math.max(0, f - hitAt) * 0.06);
   const staffX = 880;
-  const eyeP = 1 + 0.9 * pop(f, talent, 8) * (1 - ease(f, talent + 22, talent + 36));
-  // Handschlag-Punkt (Welt), gleiche Bildstelle vor und nach dem Match Cut
+  const eyeP = 1 + 0.8 * pop(f, talent, 10) * (1 - ease(f, talent + 24, talent + 40));
   const hsX = 520;
   const hsY = 930;
+  const shake = ease(f, talent + 13, talent + 33, "inOut");
+  const cusIn = ease(f, cus - 4, cus + 14, "inOut");
   const cam =
     shot === 0
-      ? frameOn(600, 820, 540, 880, lerp(1.02, 1.1, ease(f, 0, c1)))
-      : shot === 1
-        ? frameOn(470, 820, 540, 860, lerp(1.55, 1.65, ease(f, c1, c2)))
-        : shot === 2
-          ? frameOn(staffX, FEET + headY("adult") * 1.0, 540, 820, anticipate(f, talent, 2.1, 2.0, 2.5, { pre: 4, dur: 8 }))
-          : shot === 3
-            ? frameOn(hsX, hsY, 540, 1000, lerp(1.8, 1.95, ease(f, c3, cus)))
-            : frameOn(hsX, hsY, lerp(540, 400, ease(f, cus, cus + 16)), lerp(1000, 1060, ease(f, cus, cus + 16)), lerp(1.95, 1.2, ease(f, cus, cus + 16, "inOut")));
-  const afterCut = shot === 4;
+      ? frameOn(600, 820, 540, 880, lerp(1.0, 1.16, ease(f, 0, c1, "inOut")))
+      : frameOn(hsX, 760, 360, 860, lerp(1.05, 1.16, ease(f, c1, d, "inOut")));
   return (
     <Stage2D cam={cam} mood="night" noSky>
       <Layer>
@@ -315,14 +302,23 @@ export const Detention: React.FC = () => {
           tone={RING_TONES.warm}
           f={f}
           lights={0.3}
-          drop={afterCut ? <GymDrop down={1} /> : <HallwayDrop down={ease(f, -10, 14, "linear")} />}
+          drop={
+            <>
+              <HallwayDrop down={ease(f, -10, 16, "linear")} />
+              {cusIn > 0 ? (
+                <g opacity={cusIn}>
+                  <GymDrop down={1} />
+                </g>
+              ) : null}
+            </>
+          }
         />
-        {shot <= 2 ? (
+        {shot === 0 ? (
           <>
             <Bag x={610} y={560} swing={bagSwing} s={0.95} />
-            <ImpactLines x={560} y={800} t={(f - hitAt) / 8} s={0.6} />
+            <ImpactLines x={560} y={800} t={(f - hitAt) / 10} s={0.6} />
             {/* Betreuer: Ex-Boxer, Handschuhe über der Schulter */}
-            <Figure x={staffX} y={FEET} s={1.0} frame={f} sil={SIL.staff} silEyes outfit="plain" eyePop={eyeP} armL={[20, 150]} armR={[10, 6]} />
+            <Figure x={staffX} y={FEET} s={1.0} frame={f} sil={SIL.staff} silEyes outfit="plain" armL={[20, 150]} armR={[10, 6]} />
             <g transform={`translate(${staffX - 70} ${FEET - 470})`}>
               <ellipse cx={0} cy={60} rx={30} ry={34} fill={PAPER.glove} stroke={PAPER.ink} strokeWidth={5} />
               <ellipse cx={30} cy={84} rx={30} ry={34} fill={PAPER.glove} stroke={PAPER.ink} strokeWidth={5} />
@@ -336,7 +332,7 @@ export const Detention: React.FC = () => {
               outfit="shirt"
               armR={[lerp(40, 92, punch), lerp(150, 92, punch)]}
               armL={[30, 150]}
-              lean={punch * 6}
+              lean={punch * 5}
               eyes="side"
               brows="angry"
               mouth="grit"
@@ -345,21 +341,23 @@ export const Detention: React.FC = () => {
           </>
         ) : (
           <>
-            {/* Betreuer bzw. CUS rechts, Kind links; Hände treffen sich bei (hsX, hsY) */}
+            {/* Betreuer (Augen-Pop) → CUS (Mantel) weich überblendet; Hände treffen sich bei (hsX, hsY) */}
+            <Figure x={hsX + 200} y={FEET} s={1.0} frame={f} sil={SIL.staff} outfit="plain" silEyes eyePop={eyeP} armL={[lerp(10, 34, shake), lerp(8, 40, shake)]} o={1 - cusIn} />
+            {cusIn > 0 ? <Figure x={hsX + 200} y={FEET} s={1.0} frame={f} sil={SIL.cus} outfit="coat" coatColor={SIL.cus} armL={[34, 40]} lean={-3} o={cusIn} /> : null}
             <Figure
-              x={hsX + 200}
+              x={hsX - 210}
               y={FEET}
-              s={1.0}
+              s={ks}
               frame={f}
-              sil={afterCut ? SIL.cus : SIL.staff}
-              outfit={afterCut ? "coat" : "plain"}
-              coatColor={SIL.cus}
-              silEyes={!afterCut}
-              armL={[34, 40]}
-              lean={afterCut ? -3 : 0}
+              age="kid"
+              outfit="shirt"
+              armR={[lerp(14, 66, shake), lerp(10, 78, shake)]}
+              eyes="open"
+              brows={f > talent + 27 ? "up" : "neutral"}
+              mouth={f > talent + 27 ? "smile" : "flat"}
+              blinkSeed={3}
             />
-            <Figure x={hsX - 210} y={FEET} s={ks} frame={f} age="kid" outfit="shirt" armR={[66, 78]} eyes="open" brows="up" mouth="smile" blinkSeed={3} />
-            <Handshake x={hsX} y={hsY + Math.sin(f * 0.5) * 6} other={afterCut ? SIL.cus : SIL.staff} sleeve={afterCut ? SIL.cus : undefined} />
+            {shake > 0.95 ? <Handshake x={hsX} y={hsY + Math.sin(f * 0.3) * 5} other={cusIn > 0.5 ? SIL.cus : SIL.staff} sleeve={cusIn > 0.5 ? SIL.cus : undefined} /> : null}
           </>
         )}
       </Layer>
@@ -372,33 +370,30 @@ export const Detention: React.FC = () => {
 /** Mother: Bild der Mutter verblasst, CUS wird Vormund; Re-Hook im Spotlicht mit Punktrichter-Karte. */
 export const Mother: React.FC = () => {
   const { f, B } = useBeats();
-  const dies = B("frameFade", 45);
-  const guard = B("guardianDoc", 109);
-  const spot = B("spotlight", 138);
-  const brutal = B("scorecardRed", 174);
-  const yet = 208;
-  const shot = shotIndex(f, [dies, 66, guard, spot, yet]);
-  const tx = shot <= 2 ? 400 : 540;
+  const dies = B("frameFade", 0.17);
+  const guard = B("guardianDoc", 0.42);
+  const spot = B("spotlight", 0.53);
+  const brutal = B("scorecardRed", 0.67);
+  const yet = W("And", 0.8);
+  const cusW = W("Cus", 0.25);
+  // zwei ruhige Einstellungen: Zimmer (Bild verblasst, CUS kommt, Dokument) → Spotlicht mit Karte, Blick nach oben
+  const shot = shotIndex(f, [spot]);
+  const tx = shot === 0 ? 400 : 540;
   const ts = 1.15;
-  const fade = ease(f, dies, dies + 22);
+  const fade = ease(f, dies, dies + 30, "inOut");
   const roomUp = 1 - ease(f, spot - 2, spot + 8, "linear");
+  const cusX = lerp(1250, 660, ease(f, cusW - 14, cusW + 20, "inOut"));
+  const hand = ease(f, cusW + 20, cusW + 36, "inOut");
+  const tilt = ease(f, yet - 10, yet + 30, "inOut");
   const cam =
     shot === 0
-      ? frameOn(560, 760, 540, 860, lerp(1.22, 1.3, ease(f, 0, dies)))
-      : shot === 1
-        ? frameOn(720, 700, 540, 800, lerp(1.9, 2.05, ease(f, dies, 66)))
-        : shot === 2
-          ? frameOn(540, 760, 540, 880, lerp(1.32, 1.4, ease(f, 66, guard)))
-          : shot === 3
-            ? frameOn(540, 800, 540, 860, 1.1)
-            : shot === 4
-              ? frameOn(tx, 760, 330, 880, lerp(1.2, 1.32, ease(f, spot, yet)))
-              : frameOn(tx, 640, 540, 900, lerp(1.25, 1.4, ease(f, yet, yet + 50)));
+      ? frameOn(lerp(620, 560, ease(f, 0, spot, "inOut")), 780, 540, 870, lerp(1.12, 1.28, ease(f, 0, spot, "inOut")))
+      : frameOn(tx, lerp(760, 640, tilt), lerp(330, 540, tilt), lerp(880, 900, tilt), lerp(1.2, 1.32, ease(f, spot, d, "inOut")));
   const rows = Array.from({ length: 10 }, (_, i) => ({
     label: `ROUND ${i + 1}`,
-    fill: i < 4 ? ease(f, brutal + i * 4, brutal + i * 4 + 8) : 0,
+    fill: i < 4 ? ease(f, brutal + i * 5, brutal + i * 5 + 10) : 0,
   }));
-  const cardIn = ease(f, spot + 8, spot + 20);
+  const cardX = lerp(1400, 770, ease(f, spot + 6, spot + 28, "inOut")) + ease(f, yet - 8, yet + 10, "inOut") * 700;
   return (
     <Stage2D cam={cam} mood="night" noSky>
       <Layer>
@@ -406,7 +401,7 @@ export const Mother: React.FC = () => {
           phase="cool"
           tone={RING_TONES.cool}
           f={f}
-          lights={shot >= 4 ? 0 : 0.3}
+          lights={shot === 1 ? 0 : 0.3}
           drop={
             roomUp > 0 ? (
               <RoomDrop down={roomUp}>
@@ -415,8 +410,8 @@ export const Mother: React.FC = () => {
             ) : null
           }
         />
-        {shot === 2 || shot === 3 ? (
-          <Figure x={660} y={FEET} s={1.05} frame={f} sil={SIL.cus} outfit="coat" coatColor={SIL.cus} armL={[lerp(10, 66, ease(f, 66, 84)), lerp(10, 96, ease(f, 66, 84))]} />
+        {shot === 0 && f > cusW - 16 ? (
+          <Figure x={cusX} y={FEET} s={1.05} frame={f} sil={SIL.cus} outfit="coat" coatColor={SIL.cus} pose={f < cusW + 20 ? "walk" : "stand"} step={Math.sin(f * 0.3)} armL={[lerp(10, 66, hand), lerp(10, 96, hand)]} />
         ) : null}
         <Figure
           x={tx}
@@ -425,19 +420,19 @@ export const Mother: React.FC = () => {
           frame={f}
           age="teen"
           outfit="shirt"
-          eyes={shot <= 1 ? "side" : shot === 5 ? "up" : shot === 4 ? "open" : "down"}
-          headDown={shot === 2 ? 0.4 : 0}
+          eyes={shot === 0 ? (f < dies + 30 ? "side" : "down") : tilt > 0.3 ? "up" : "open"}
+          headDown={shot === 0 && f > dies + 30 ? 0.4 : 0}
           brows="sad"
-          mouth={shot === 5 ? "flat" : "frown"}
+          mouth={tilt > 0.3 ? "flat" : "frown"}
           blinkSeed={3}
         />
-        {shot === 3 ? <Doc x={540} y={790} s={0.9 * pop(f, guard, 10)} r={-4} title="LEGAL GUARDIAN" stamp={ease(f, guard + 12, guard + 18)} /> : null}
-        {shot >= 4 ? <SpotCone x={tx} y={FEET + 10} o={1} w={300} dim={0.72} /> : null}
-        {shot === 5 ? <Belt x={tx} y={410} s={0.72} outline /> : null}
+        {shot === 0 && f >= guard ? <Doc x={540} y={790} s={0.9 * pop(f, guard, 14)} r={-4} title="LEGAL GUARDIAN" stamp={ease(f, guard + 14, guard + 22)} /> : null}
+        {shot === 1 ? <SpotCone x={tx} y={FEET + 10} o={1} w={300} dim={0.72} /> : null}
+        {shot === 1 ? <Belt x={tx} y={410} s={0.72} outline o={ease(f, yet, yet + 20)} /> : null}
       </Layer>
-      {shot === 4 ? (
+      {shot === 1 && cardX < 1400 ? (
         <Layer depth={0}>
-          <ScoreCard x={lerp(1400, 770, cardIn)} y={840} s={0.66} r={4} rows={rows} title="SCORE IT" />
+          <ScoreCard x={cardX} y={840} s={0.66} r={4} rows={rows} title="SCORE IT" />
         </Layer>
       ) : null}
     </Stage2D>

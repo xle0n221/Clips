@@ -659,15 +659,16 @@ export const ScoreCard: React.FC<{
 };
 
 /** Meisterschaftsgürtel (neutral Gold, ohne Logo). Mitte (x, y). */
-export const Belt: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly r?: number; readonly shine?: number; readonly outline?: boolean }> = ({
+export const Belt: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly r?: number; readonly shine?: number; readonly outline?: boolean; readonly o?: number }> = ({
   x,
   y,
   s = 1,
   r = 0,
   shine = 0,
   outline = false,
+  o = 1,
 }) => (
-  <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`} filter={outline ? undefined : "url(#paper)"}>
+  <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`} filter={outline ? undefined : "url(#paper)"} opacity={o}>
     {outline ? (
       <g fill="none" stroke={PAPER.gold} strokeWidth={6} strokeDasharray="18 14">
         <rect x={-260} y={-34} width={520} height={68} rx={30} />
