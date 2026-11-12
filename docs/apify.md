@@ -14,3 +14,6 @@
   keine Primärquelle für Fakten im Video.
 - **Stand Test 11.11.2026:** Handshake an `mcp.apify.com` lieferte **401 invalid_token**, auch 2 min nach dem Speichern des
   Secrets. Mögliche Ursachen: Token falsch/ohne Rechte oder Secret greift nicht. Ich kann die Verbindung noch nicht bestätigen.
+- **Stand 12.11.2026:** Der Connector-Token für `mcp.apify.com` ist ungültig (Proxy: „upstream auth failed“). Neu: Apify-API-Token
+  als Netzwerk-Secret für **`api.apify.com`** (vom Nutzer gespeichert) → REST-API per curl/Python mit Platzhalter-Header
+  `Authorization: Bearer proxy-injected`; geprüft: `/v2/users/me` → Plan FREE, Limit 5 $/Monat. Genutzt von `scripts/trends_fetch.py`.

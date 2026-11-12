@@ -6,9 +6,7 @@ Animationen viral gehen und gut ankommen, und das soll dann hier bei uns umgeset
 ## Wer, wann
 - Geplante Aufgabe **„Clips Trend-Analyse (täglich)“**, jeden Tag 12:41 Uhr (Europe/Berlin), frische Sitzung je Lauf,
   Modell `sonnet` (Rolle wie Recherche, `docs/agenten/README.md` → „Modellwahl je Aufgabe“).
-- Geplante Aufgabe `trig_01RL4qV9UiaUyitJqmuxtAPN`. Hinweis beim Anlegen (12.11.2026): Die frische Sitzung bekommt **keine
-  MCP-Connectoren** mit (also kein Apify-MCP). TikTok über Apify braucht daher zusätzlich, dass der Nutzer die Aufgabe in den
-  claude.ai-Routinen mit dem Apify-Connector verknüpft.
+- Geplante Aufgabe `trig_01RL4qV9UiaUyitJqmuxtAPN` (frische Sitzung ohne MCP-Connectoren; Apify läuft deshalb über die REST-API, s. u.).
 - Rollen-Gedächtnis: [`agenten/trend-scout.md`](agenten/trend-scout.md) (Checkliste, Gelernt, Experimente).
 - Läuft vor der täglichen Verbesserungsrunde (14:23 Uhr), damit die Runde die Befunde gleich umsetzen kann.
 
@@ -27,15 +25,26 @@ Animationen viral gehen und gut ankommen, und das soll dann hier bei uns umgeset
   Verbindung abgelehnt) → Daten kommen über die folgenden Wege.
 
 ### Datenwege TikTok + YouTube Shorts (Vorgabe Nutzer 12.11.2026: „TikTok und YouTube Shorts nehmen und dort analysieren“)
-| Plattform | Weg | Kosten (Quelle) | Status 12.11.2026 |
-| --- | --- | --- | --- |
-| YouTube Shorts | **YouTube Data API v3** (`search.list` mit `videoDuration=short`, `order=viewCount`, `publishedAfter` = vor 7 Tagen; dann `videos.list` für Aufrufe/Likes/Kommentare/Dauer) – offizielle Plattform-Daten | kostenlos mit Tageskontingent. **Ich kann die Zahlen nicht bestätigen**: Die Kontingent-Seite (https://developers.google.com/youtube/v3/determine_quota_cost) ist aus dem Container gesperrt; nach Erinnerung 10.000 Einheiten/Tag, `search.list` = 100, `videos.list` = 1 – beim ersten Lauf an der Antwort/Konsole messen und hier eintragen | `www.googleapis.com` erreichbar, aber **Schlüssel fehlt** (Antwort 403 „Permission denied“). Nutzer trägt ihn in den Umgebungs-Einstellungen als Netzwerk-Secret ein: Host `www.googleapis.com`, Header `X-goog-api-key` (Header-Name aus Erinnerung, nicht an der Google-Doku geprüft; erster Lauf testet ihn). |
-| YouTube Shorts (Ersatz) | Apify `streamers/youtube-shorts-scraper` | 0,004 $ je Short + 0,0013 $ Datumsfilter (Apify-Store-API, Stufe FREE, abgerufen 12.11.2026) | nur mit Kostenfreigabe |
-| TikTok | Apify `clockworks/tiktok-scraper` (Suche nach Hashtags/Stichworten, Aufrufe/Likes/Shares/Dauer je Video) | 0,0037 $ je Ergebnis + 0,0013 $ Datumsfilter + 0,001 $ je Start (Apify-Store-API, Stufe FREE, 12.11.2026) | **wartet auf Kostenfreigabe des Nutzers** (Regel `docs/apify.md`) |
+**Werkzeug:** `python3 scripts/trends_fetch.py` (Standard: 25 TikTok-Videos + 25 YouTube Shorts der letzten Woche zu
+englischen Erklär-/Animations-Suchbegriffen) → `out/trends/<datum>/summary.json` (sortiert nach Aufrufen) + Rohdaten.
+Läuft über die **Apify-REST-API** (`api.apify.com`); der Apify-API-Token ist seit 12.11.2026 Netzwerk-Secret der Umgebung
+„Clips“ und wird vom Proxy eingesetzt – funktioniert daher auch in frischen Sitzungen ohne Connector. Daten = **Drittanbieter**
+(Apify-Scraper der öffentlichen Plattform-Seiten), keine offizielle Plattform-Statistik.
 
-Kostenrechnung je Lauf (Stufe FREE): TikTok 25 Videos × (0,0037 + 0,0013) $ + 0,001 $ = **0,126 $**; YouTube über die API 0 $.
-Täglich ≈ 0,13 $ → 30 Tage ≈ **3,8 $** (Apify-Gratisguthaben 5 $/Monat laut `docs/apify.md`). Deckel je Lauf:
-`callOptions.maxTotalChargeUsd: 0.15`. Ohne Freigabe oder ohne Apify-Werkzeuge: TikTok-Teil auslassen und das im Bericht sagen.
+| Plattform | Actor | Preis Stufe FREE (Apify-Store-API, 12.11.2026) |
+| --- | --- | --- |
+| TikTok | `clockworks/tiktok-scraper` (Suche, Filter „letzte Woche“) | 0,0037 $ je Video + 0,0013 $ Datumsfilter + 0,001 $ je Start; Actor verlangt Deckel ≥ 0,50 $ je Lauf |
+| YouTube Shorts | `streamers/youtube-scraper` (Suche, `maxResultsShorts`, Filter „week“) | 0,004 $ je Short + 0,0013 $ Datumsfilter |
+
+**Kostenfreigabe des Nutzers: 12.11.2026** („Mach das es geht“ auf die Rechnung unten). Rechnung je Lauf: TikTok 25 × 0,005 $
++ 0,001 $ = 0,126 $; YouTube 25 × 0,0053 $ = 0,133 $; zusammen ≈ **0,26 $/Tag** ≈ 7,8 $/30 Tage – **mehr als das
+Gratisguthaben von 5 $/Monat**; ist es aufgebraucht, pausiert Apify bis zum Monatswechsel (keine Rechnung, `docs/apify.md`).
+Deshalb täglich nur **je 12** Videos (≈ 0,13 $/Tag ≈ 3,9 $/Monat). Monatsverbrauch prüfen:
+`curl -s https://api.apify.com/v2/users/me/limits` → `current.monthlyUsageUsd`; ab 4,5 $ nur noch YouTube.
+Test 12.11.2026: Abruf klappt (u. a. YouTube „Why the SHARPEST Sword is actually the WORST Sword“, 148.838 Aufrufe;
+TikTok @the_bonezone2, 384.781 Aufrufe, 60,7 s). Lange synchrone Anfragen bricht der Proxy mit 502 ab → Skript startet
+asynchron und fragt den Status ab. Suchtreffer enthalten auch Themenfremdes (z. B. Hindi-Diwali-Clip) → beim Auswerten filtern.
+Die YouTube Data API (Google) ist damit nicht nötig.
 
 - Zusätzlich erlaubt: WebSearch (Artikel, Tracker – als Drittanbieter kennzeichnen).
 - Videos ansehen (Animation, Schnitt, Tempo): nur wenn ein Download-Weg erlaubt ist; sonst aus Metadaten (Dauer,
