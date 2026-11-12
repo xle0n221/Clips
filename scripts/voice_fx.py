@@ -52,23 +52,41 @@ STYLES = {
 # Parameter belegt im Quellcode chatterbox-tts 0.1.7 (`ChatterboxTTS.generate(exaggeration, cfg_weight, temperature, …)`)
 # und README „Original Chatterbox Tips“: höheres exaggeration = ausdrucksstärker (spricht dabei schneller), niedrigeres
 # cfg_weight = langsamer, bedachter. temperature = Streuung beim Ziehen der Sprach-Token (Standard 0.8).
-#   exag/cfg/temp  Chatterbox     speed  Tempo-Faktor der Szene (atempo, × Drehbuch-`speed`; Mittel ≈ 1, damit die
-#                                        kalibrierte W/s-Rate bleibt)
-#   gap_ms  Atempause nach Satzende (Frage +60 ms, Ausruf −40 ms, Komma-Stücke bleiben im Satz)
-#   gain_db Lautstärke der Szene relativ (leise bei Trauer, lauter bei Triumph)
-# Startwerte (12.11.2026) – nur gemessen, nicht gehört; Urteil „klingt echt“ trifft der Nutzer (docs/agenten/stimme.md).
+#   exag/cfg/temp  Chatterbox
+#   speed    Tempo-Faktor (atempo) – seit 12.11.2026 abends überall 1.0: kein Beschleunigen (Nutzer: „rattert alles durch“)
+#   gap_ms   Pause nach Satzende (gemessene Stille, 450–800 ms; Frage +60 ms). Zwischen „ | “-Stücken + NARRATOR.piece_extra_ms
+#   comma_ms Pause an Komma/Doppelpunkt/Gedankenstrich im Satz (150–250 ms; Doppelpunkt/Strich + 80 ms)
+#   end_db   Absenkung der letzten ~0,45 s jedes Satzes („zum Satzende leiser“), Frage nur die Hälfte (Frage steigt)
+#   gain_db  Lautstärke der Szene relativ (leise bei Trauer, lauter bei Triumph)
+# Stand 12.11.2026 abends („wie ein echter Geschichtenerzähler“): exaggeration höchstens 0,70 – gemessen fielen die
+# Satzenden in den Szenen mit exag 0,55–0,95 (UFC) nur um −1,4 HT (62 % fallend), mit 0,35–0,45 (Tyson) um −4,5 HT
+# (92 % fallend), docs/agenten/stimme.md. Urteil „klingt echt“ trifft der Nutzer.
 EMOTIONS = {
-    "calm":        {"exag": 0.40, "cfg": 0.50, "temp": 0.75, "speed": 0.98, "gap_ms": 300, "gain_db": -0.5},
-    "warm":        {"exag": 0.50, "cfg": 0.45, "temp": 0.80, "speed": 0.98, "gap_ms": 280, "gain_db": 0.0},
-    "serious":     {"exag": 0.45, "cfg": 0.45, "temp": 0.75, "speed": 0.97, "gap_ms": 340, "gain_db": -0.5},
-    "sad":         {"exag": 0.35, "cfg": 0.35, "temp": 0.70, "speed": 0.94, "gap_ms": 420, "gain_db": -2.0},
-    "awe":         {"exag": 0.60, "cfg": 0.35, "temp": 0.85, "speed": 0.95, "gap_ms": 380, "gain_db": 0.0},
-    "tense":       {"exag": 0.55, "cfg": 0.30, "temp": 0.80, "speed": 0.96, "gap_ms": 340, "gain_db": -1.0},
-    "ironic":      {"exag": 0.70, "cfg": 0.35, "temp": 0.90, "speed": 1.00, "gap_ms": 260, "gain_db": 0.0},
-    "playful":     {"exag": 0.80, "cfg": 0.30, "temp": 0.90, "speed": 1.02, "gap_ms": 240, "gain_db": 0.5},
-    "indignant":   {"exag": 0.85, "cfg": 0.35, "temp": 0.85, "speed": 1.02, "gap_ms": 260, "gain_db": 1.5},
-    "excited":     {"exag": 0.90, "cfg": 0.30, "temp": 0.90, "speed": 1.04, "gap_ms": 220, "gain_db": 1.0},
-    "triumphant":  {"exag": 0.95, "cfg": 0.35, "temp": 0.85, "speed": 1.00, "gap_ms": 300, "gain_db": 2.0},
+    "calm":        {"exag": 0.40, "cfg": 0.50, "temp": 0.75, "speed": 1.0, "gap_ms": 500, "comma_ms": 190, "end_db": 2.0, "gain_db": -0.5},
+    "warm":        {"exag": 0.45, "cfg": 0.45, "temp": 0.80, "speed": 1.0, "gap_ms": 480, "comma_ms": 190, "end_db": 2.0, "gain_db": 0.0},
+    "serious":     {"exag": 0.45, "cfg": 0.45, "temp": 0.75, "speed": 1.0, "gap_ms": 540, "comma_ms": 210, "end_db": 2.0, "gain_db": -0.5},
+    "sad":         {"exag": 0.35, "cfg": 0.40, "temp": 0.70, "speed": 1.0, "gap_ms": 640, "comma_ms": 240, "end_db": 3.0, "gain_db": -2.0},
+    "awe":         {"exag": 0.55, "cfg": 0.40, "temp": 0.80, "speed": 1.0, "gap_ms": 580, "comma_ms": 220, "end_db": 2.5, "gain_db": 0.0},
+    "tense":       {"exag": 0.50, "cfg": 0.40, "temp": 0.80, "speed": 1.0, "gap_ms": 560, "comma_ms": 220, "end_db": 2.5, "gain_db": -1.0},
+    "ironic":      {"exag": 0.60, "cfg": 0.40, "temp": 0.85, "speed": 1.0, "gap_ms": 470, "comma_ms": 180, "end_db": 1.5, "gain_db": 0.0},
+    "playful":     {"exag": 0.65, "cfg": 0.40, "temp": 0.85, "speed": 1.0, "gap_ms": 450, "comma_ms": 170, "end_db": 1.5, "gain_db": 0.5},
+    "indignant":   {"exag": 0.70, "cfg": 0.40, "temp": 0.80, "speed": 1.0, "gap_ms": 470, "comma_ms": 180, "end_db": 1.5, "gain_db": 1.5},
+    "excited":     {"exag": 0.70, "cfg": 0.40, "temp": 0.85, "speed": 1.0, "gap_ms": 450, "comma_ms": 160, "end_db": 1.0, "gain_db": 1.0},
+    "triumphant":  {"exag": 0.70, "cfg": 0.40, "temp": 0.80, "speed": 1.0, "gap_ms": 500, "comma_ms": 190, "end_db": 1.5, "gain_db": 2.0},
+}
+# Erzähler-Standard für alle Chatterbox-Videos (Nutzer 12.11.2026 abends: „Pausen … natürlicher … Wenn ein Satz endet,
+# muss es sich auch danach anhören … zum Satzende leiser … wie ein echter Geschichtenerzähler“):
+NARRATOR = {
+    "max_speed": 1.05,       # Drehbuch-`speed` wird darauf begrenzt (vorher 1,02–1,22 → „gerattert“)
+    "piece_extra_ms": 250,   # „ | “-Pause = Satzpause + 250 ms
+    "scene_gap_ms": 600,     # Szenenwechsel: Ausklang + 600 ms Stille (Mindestwert, Drehbuch `sceneGapMs` darf mehr; gemessen ≈ 0,85–1,0 s)
+    "head_keep_s": 0.06,     # vor dem ersten Laut behalten (10-ms-Einblendung)
+    "tail_thr_db": -45.0,    # Satzende = letzter 10-ms-Block über Satzpegel −45 dB (vorher −40 dBFS + 30 ms → Ausklang gekappt)
+    "tail_keep_s": 0.18,     # danach Ausklang behalten, als weiche Ausblendung (kein harter Schnitt)
+    "end_win_s": 0.45,       # Absenkung end_db über die letzten 0,45 s Sprache (≈ letzte Silbe/letztes Wort)
+    "inner_max_s": 0.9,      # nur Stillen > 0,9 s im Satz kürzen (auf 0,7 s); vorher > 0,3 s → 0,25 s (abgehackt)
+    "inner_keep_s": 0.7,
+    "qc_tries": 3,           # Aussprache-Prüfung je Satz (faster-whisper small.en): bis zu 3 Aufnahmen, beste gewinnt
 }
 EMOTIONS["angry"] = EMOTIONS["indignant"]
 EMOTIONS["dramatic"] = EMOTIONS["tense"]

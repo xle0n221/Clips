@@ -1,57 +1,57 @@
 {
  "id": "rolls-royce",
  "title": "How to become a Rolls-Royce driver in 1 minute",
- "durationMs": 73030,
+ "durationMs": 92660,
  "scenes": [
   {
    "id": "hook",
    "startMs": 150,
-   "endMs": 4524
+   "endMs": 6580
   },
   {
    "id": "pick",
-   "startMs": 4524,
-   "endMs": 10673
+   "startMs": 6580,
+   "endMs": 15270
   },
   {
    "id": "wait",
-   "startMs": 10673,
-   "endMs": 18962
+   "startMs": 15270,
+   "endMs": 25590
   },
   {
    "id": "stitch",
-   "startMs": 18962,
-   "endMs": 30929
+   "startMs": 25590,
+   "endMs": 40240
   },
   {
    "id": "stars",
-   "startMs": 30929,
-   "endMs": 35438
+   "startMs": 40240,
+   "endMs": 46410
   },
   {
    "id": "hood",
-   "startMs": 35438,
-   "endMs": 40777
+   "startMs": 46410,
+   "endMs": 52230
   },
   {
    "id": "suite",
-   "startMs": 40777,
-   "endMs": 46736
+   "startMs": 52230,
+   "endMs": 60310
   },
   {
    "id": "bmw",
-   "startMs": 46736,
-   "endMs": 53597
+   "startMs": 60310,
+   "endMs": 68940
   },
   {
    "id": "wagon",
-   "startMs": 53597,
-   "endMs": 61499
+   "startMs": 68940,
+   "endMs": 79390
   },
   {
    "id": "ending",
-   "startMs": 61499,
-   "endMs": 72430
+   "startMs": 79390,
+   "endMs": 92060
   }
  ],
  "cues": [
@@ -72,12 +72,12 @@
     "value": 0.1
    },
    "scene": "hook",
-   "atMs": 800
+   "atMs": 1420
   },
   {
    "beat": "shadesOn",
    "scene": "hook",
-   "atMs": 2200
+   "atMs": 3460
   },
   {
    "beat": "startPistol",
@@ -87,18 +87,18 @@
     "value": "TIME LEFT 0:58"
    },
    "scene": "hook",
-   "atMs": 4120
+   "atMs": 5520
   },
   {
    "emph": true,
    "scene": "hook",
-   "atMs": 800
+   "atMs": 1420
   },
   {
    "beat": "showroomSpin",
    "sfx": "whoosh",
    "scene": "pick",
-   "atMs": 5660
+   "atMs": 8240
   },
   {
    "label": {
@@ -108,7 +108,7 @@
     "y": 0.36
    },
    "scene": "pick",
-   "atMs": 6840
+   "atMs": 9700
   },
   {
    "beat": "entryLevelSign",
@@ -116,7 +116,7 @@
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "pick",
-   "atMs": 8140
+   "atMs": 11640
   },
   {
    "beat": "starterPack",
@@ -132,30 +132,30 @@
     "value": "TIME LEFT 0:52"
    },
    "scene": "pick",
-   "atMs": 10000
+   "atMs": 14040
   },
   {
    "emph": true,
    "scene": "pick",
-   "atMs": 8140
+   "atMs": 11640
   },
   {
    "emph": true,
    "scene": "pick",
-   "atMs": 8420
+   "atMs": 11980
   },
   {
    "beat": "queueRope",
    "sfx": "whoosh",
    "scene": "wait",
-   "atMs": 11280
+   "atMs": 16300
   },
   {
    "beat": "goldEnvelope",
    "sticker": "INVITE ONLY?",
    "color": "#FFD23F",
    "scene": "wait",
-   "atMs": 13000
+   "atMs": 18300
   },
   {
    "beat": "rumorStamp",
@@ -163,7 +163,7 @@
    "color": "#FF5A5A",
    "sfx": "pop",
    "scene": "wait",
-   "atMs": 14140
+   "atMs": 19600
   },
   {
    "beat": "soldOutSign",
@@ -179,12 +179,12 @@
     "value": "TIME LEFT 0:45"
    },
    "scene": "wait",
-   "atMs": 17200
+   "atMs": 23260
   },
   {
    "emph": true,
    "scene": "wait",
-   "atMs": 13000
+   "atMs": 18300
   },
   {
    "beat": "nobodyMeme",
@@ -192,7 +192,7 @@
    "color": "#FFFFFF",
    "sfx": "pop",
    "scene": "stitch",
-   "atMs": 20940
+   "atMs": 27540
   },
   {
    "beat": "needleCounter",
@@ -200,7 +200,7 @@
    "color": "#FFD23F",
    "sfx": "whoosh",
    "scene": "stitch",
-   "atMs": 22760
+   "atMs": 30280
   },
   {
    "beat": "spoolRoll",
@@ -211,7 +211,7 @@
     "value": 0.4
    },
    "scene": "stitch",
-   "atMs": 26580
+   "atMs": 35180
   },
   {
    "beat": "freezeTwistCards",
@@ -223,23 +223,23 @@
     "value": "TIME LEFT 0:30"
    },
    "scene": "stitch",
-   "atMs": 28800
+   "atMs": 36660
   },
   {
    "emph": true,
    "scene": "stitch",
-   "atMs": 22260
+   "atMs": 29410
   },
   {
    "emph": true,
    "scene": "stitch",
-   "atMs": 22760
+   "atMs": 30280
   },
   {
    "beat": "headTilt",
    "sfx": "whoosh",
    "scene": "stars",
-   "atMs": 31940
+   "atMs": 41600
   },
   {
    "beat": "starCeiling",
@@ -247,7 +247,7 @@
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "stars",
-   "atMs": 33380
+   "atMs": 43280
   },
   {
    "beat": "emptyWallet",
@@ -263,12 +263,12 @@
     "value": "TIME LEFT 0:24"
    },
    "scene": "stars",
-   "atMs": 34860
+   "atMs": 45220
   },
   {
    "emph": true,
    "scene": "stars",
-   "atMs": 34860
+   "atMs": 45220
   },
   {
    "beat": "hoodZoom",
@@ -280,13 +280,13 @@
     "y": 0.36
    },
    "scene": "hood",
-   "atMs": 37200
+   "atMs": 48440
   },
   {
    "sticker": "WINGS?",
    "color": "#FFFFFF",
    "scene": "hood",
-   "atMs": 37980
+   "atMs": 49520
   },
   {
    "beat": "robesFlutter",
@@ -302,31 +302,31 @@
     "value": "TIME LEFT 0:20"
    },
    "scene": "hood",
-   "atMs": 39000
+   "atMs": 50900
   },
   {
    "emph": true,
    "scene": "hood",
-   "atMs": 39000
+   "atMs": 50900
   },
   {
    "beat": "trunkOpen",
    "sfx": "whoosh",
    "scene": "suite",
-   "atMs": 42040
+   "atMs": 53620
   },
   {
    "beat": "tailgateBubble",
    "sticker": "TAILGATE PARTY?",
    "color": "#FFFFFF",
    "scene": "suite",
-   "atMs": 42740
+   "atMs": 54580
   },
   {
    "beat": "bubblePop",
    "sfx": "pop",
    "scene": "suite",
-   "atMs": 43740
+   "atMs": 55880
   },
   {
    "beat": "seatsDeploy",
@@ -342,17 +342,17 @@
     "value": "TIME LEFT 0:14"
    },
    "scene": "suite",
-   "atMs": 44780
+   "atMs": 57360
   },
   {
    "emph": true,
    "scene": "suite",
-   "atMs": 44520
+   "atMs": 56880
   },
   {
    "emph": true,
    "scene": "suite",
-   "atMs": 44780
+   "atMs": 57360
   },
   {
    "beat": "teaPose",
@@ -363,7 +363,7 @@
     "y": 0.36
    },
    "scene": "bmw",
-   "atMs": 48300
+   "atMs": 61920
   },
   {
    "beat": "recordScratch",
@@ -371,7 +371,7 @@
    "color": "#FF5A5A",
    "sfx": "boom",
    "scene": "bmw",
-   "atMs": 49420
+   "atMs": 63180
   },
   {
    "beat": "cardFlipBMW",
@@ -379,7 +379,7 @@
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "bmw",
-   "atMs": 50540
+   "atMs": 64660
   },
   {
    "beat": "pretzelSwap",
@@ -393,12 +393,12 @@
     "value": "TIME LEFT 0:09"
    },
    "scene": "bmw",
-   "atMs": 52880
+   "atMs": 67500
   },
   {
    "emph": true,
    "scene": "bmw",
-   "atMs": 50540
+   "atMs": 64660
   },
   {
    "beat": "highwayFlex",
@@ -410,7 +410,7 @@
     "y": 0.36
    },
    "scene": "wagon",
-   "atMs": 55080
+   "atMs": 70620
   },
   {
    "beat": "recordScratch",
@@ -418,7 +418,7 @@
    "color": "#FF5A5A",
    "sfx": "boom",
    "scene": "wagon",
-   "atMs": 56680
+   "atMs": 72880
   },
   {
    "beat": "wagonStamp",
@@ -426,7 +426,7 @@
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "wagon",
-   "atMs": 58820
+   "atMs": 75300
   },
   {
    "beat": "pumpEatsCoins",
@@ -442,17 +442,17 @@
     "value": "TIME LEFT 0:03"
    },
    "scene": "wagon",
-   "atMs": 60860
+   "atMs": 78040
   },
   {
    "emph": true,
    "scene": "wagon",
-   "atMs": 58600
+   "atMs": 74980
   },
   {
    "emph": true,
    "scene": "wagon",
-   "atMs": 58820
+   "atMs": 75300
   },
   {
    "beat": "unveilSweptail",
@@ -464,7 +464,7 @@
     "y": 0.36
    },
    "scene": "ending",
-   "atMs": 62440
+   "atMs": 80800
   },
   {
    "beat": "stonksArrow",
@@ -472,14 +472,14 @@
    "color": "#B6FF3B",
    "sfx": "boom",
    "scene": "ending",
-   "atMs": 64900
+   "atMs": 83460
   },
   {
    "beat": "calendarFly",
    "sticker": "4 YEARS TO BUILD",
    "color": "#FFFFFF",
    "scene": "ending",
-   "atMs": 67060
+   "atMs": 85220
   },
   {
    "hud": {
@@ -488,7 +488,7 @@
    },
    "sfx": "ding",
    "scene": "ending",
-   "atMs": 68680
+   "atMs": 87060
   },
   {
    "beat": "mathConfusion",
@@ -507,7 +507,7 @@
     ]
    },
    "scene": "ending",
-   "atMs": 70180
+   "atMs": 88760
   },
   {
    "beat": "rewindToCouch",
@@ -517,17 +517,17 @@
     "value": "TIME LEFT 1:00"
    },
    "scene": "ending",
-   "atMs": 71660
+   "atMs": 90500
   },
   {
    "emph": true,
    "scene": "ending",
-   "atMs": 63940
+   "atMs": 82660
   },
   {
    "emph": true,
    "scene": "ending",
-   "atMs": 64900
+   "atMs": 83460
   }
  ],
  "hud": {

@@ -27,7 +27,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_audio import make_music, make_sfx  # noqa: E402
 from tts import SAMPLE_RATE, VOICE_INFO, Voice, apply_say, post_process, resolve_voice, speakable, write_wav  # noqa: E402
-from voice_fx import DELIVERY, EMOTIONS, STYLES, accent_gain  # noqa: E402
+from voice_fx import DELIVERY, EMOTIONS, NARRATOR, STYLES, accent_gain  # noqa: E402
 
 PAUSE_MARK = "|"  # im Sprechtext: dramatische Pause (Länge: Preset bzw. Drehbuch-Feld pauseMs)
 
@@ -130,87 +130,232 @@ def sentences(text: str, min_words: int = 4) -> list[str]:
     return out
 
 
-def trim_silence(y: np.ndarray, thr_db: float = -40.0, keep_s: float = 0.03) -> np.ndarray:
-    """Stille am Anfang/Ende eines Satzes abschneiden (Satz-Modus setzt die Atempausen selbst)."""
-    hop = SAMPLE_RATE // 100
+def emotion_of(sc: dict) -> dict | None:
+    emo = sc.get("emotion")
+    if not emo:
+        return None
+    e = EMOTIONS.get(emo) if isinstance(emo, str) else {**EMOTIONS["calm"], **emo}
+    if e is None:
+        raise SystemExit(f"Szene {sc['id']}: unbekannte emotion {emo!r} – erlaubt: {', '.join(EMOTIONS)}")
+    return e
+
+
+def _frames_db(y: np.ndarray, hop: int) -> np.ndarray:
     n = len(y) // hop
-    if n < 3:
+    return 20 * np.log10(np.sqrt(np.mean(y[: n * hop].reshape(n, hop).astype(np.float64) ** 2, axis=1)) + 1e-9)
+
+
+def narrate_sentence(y: np.ndarray, text: str, e: dict) -> np.ndarray:
+    """Ein Chatterbox-Satz wie ein Erzähler (Nutzer 12.11.2026 abends): Anfang/Ende sauber, Ausklang behalten und weich
+    ausblenden (kein harter Schnitt), Pausen an Komma/Doppelpunkt/inneren Satzenden auf Sollwert verlängern (nie kürzen),
+    letzte ~0,45 s um end_db leiser. Keine Tonhöhen-Bearbeitung."""
+    sr, hop = SAMPLE_RATE, SAMPLE_RATE // 100
+    y = tighten_pauses(y, NARRATOR["inner_max_s"], NARRATOR["inner_keep_s"])
+    db = _frames_db(y, hop)
+    if len(db) < 5:
         return y
-    loud = np.nonzero(20 * np.log10(np.sqrt(np.mean(y[: n * hop].reshape(n, hop) ** 2, axis=1)) + 1e-9) >= thr_db)[0]
+    level = float(np.median(db[db > np.percentile(db, 40)]))
+    loud = np.nonzero(db >= level + NARRATOR["tail_thr_db"])[0]
     if not len(loud):
         return y
-    k = int(keep_s * SAMPLE_RATE)
-    return y[max(0, loud[0] * hop - k): min(len(y), (loud[-1] + 1) * hop + k)]
+    head, tail = int(NARRATOR["head_keep_s"] * sr), int(NARRATOR["tail_keep_s"] * sr)
+    s0 = max(0, loud[0] * hop - head)
+    es = min(len(y), (loud[-1] + 1) * hop)  # Ende der Sprache
+    y = y[s0: min(len(y), es + tail)].astype(np.float32).copy()
+    es -= s0
+    # innere Pausen (Komma, Doppelpunkt, Strich, Satzende im gebündelten Satz) an der erwarteten Stelle suchen
+    db = _frames_db(y, hop)
+    quiet = db < level - 30
+    runs, i = [], 0
+    while i < len(quiet):
+        if quiet[i]:
+            j = i
+            while j < len(quiet) and quiet[j]:
+                j += 1
+            if j - i >= 3 and i * hop > head and j * hop < es:
+                runs.append((i, j))
+            i = j
+        else:
+            i += 1
+    span = max(1, es - head)
+    marks = [(m.start(), m.group(1)) for m in re.finditer(r"([,;:—–.!?…])\s+(?=\S)", text)]
+    used, inserts = set(), []
+    for pos, ch in marks:
+        rel = pos / max(1, len(text))
+        if ch in ".!?…":
+            target = e["gap_ms"] - 1000 * (NARRATOR["tail_keep_s"] + NARRATOR["head_keep_s"]) / 2 + (60 if ch == "?" else 0)
+        else:
+            target = e["comma_ms"] + (80 if ch in ":—–" else 0)
+        cands = [r for r in runs if r not in used and abs(((r[0] + r[1]) / 2 * hop - head) / span - rel) <= 0.15]
+        if not cands:
+            continue
+        r = max(cands, key=lambda r: r[1] - r[0])
+        used.add(r)
+        add = int((target - (r[1] - r[0]) * 10) / 1000 * sr)
+        if add > 0:
+            inserts.append(((r[0] + r[1]) // 2 * hop, add))
+    for at, add in sorted(inserts, reverse=True):
+        y = np.concatenate([y[:at], np.zeros(add, np.float32), y[at:]])
+        if at < es:
+            es += add
+    # Satzende leiser (Frage nur halb, weil die Frage oben endet); Ausklang weich ausblenden
+    drop = e["end_db"] * (0.5 if text.rstrip().endswith("?") else 1.0)
+    g = np.zeros(len(y))
+    w = int(NARRATOR["end_win_s"] * sr)
+    ws = max(0, es - w)
+    g[ws:es] = -drop * (1 - np.cos(np.linspace(0, np.pi, es - ws))) / 2
+    g[es:] = -drop
+    y = y * (10 ** (g / 20)).astype(np.float32)
+    fi = min(len(y), int(0.01 * sr))
+    y[:fi] *= np.linspace(0, 1, fi, dtype=np.float32)
+    # Ausblendung über den Ausklang; endet die Aufnahme kurz nach dem letzten Laut (Chatterbox schneidet manchmal selbst),
+    # beginnt sie früher, damit kein harter Schnitt entsteht (mind. 120 ms)
+    f0 = min(es, len(y) - int(0.12 * sr))
+    fo = len(y) - max(0, f0)
+    if fo > 0:
+        y[len(y) - fo:] *= ((1 + np.cos(np.linspace(0, np.pi, fo))) / 2).astype(np.float32)
+    return y
+
+
+_WHISPER = None
+
+
+def spoken_tokens(text: str, ep: dict) -> list[str]:
+    """Gesprochene Form zum Vergleich mit Whisper: „$50,000“ → „fifty thousand dollars“, Jahre, Bindestriche getrennt."""
+    text = re.sub(r"\$([\d.,]*\d)((?:\s+(?:thousand|million|billion))?)(?!\s*(?:dollar|thousand|million|billion))", r"\1\2 dollars", text.replace("*", ""))
+    text = speakable(apply_say(text, ep.get("years"), ep.get("say")))
+    return [t for t in (norm(x) for x in re.split(r"[\s\-–—]+", text)) if t]
+
+
+def qc_score(path: Path, tts_text: str, ep: dict, cache: dict) -> int:
+    """Aussprache-Prüfung eines Satzes: fehlende + zusätzliche Wörter laut faster-whisper small.en (0 = alles erkannt)."""
+    global _WHISPER
+    key = path.name
+    if key in cache:
+        return cache[key]
+    import soundfile as sf
+
+    if _WHISPER is None:
+        import os
+
+        os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
+        from faster_whisper import WhisperModel
+
+        _WHISPER = WhisperModel("small.en", device="cpu", compute_type="int8")
+    y = sf.read(str(path), dtype="float32")[0]
+    t16 = np.arange(0, len(y) / SAMPLE_RATE, 1 / 16000)
+    y16 = np.interp(t16, np.arange(len(y)) / SAMPLE_RATE, np.convolve(y, np.ones(3) / 3, mode="same")).astype(np.float32)
+    segs, _ = _WHISPER.transcribe(y16, language="en", beam_size=5)
+    heard = "".join(s.text for s in segs)
+    a, b = spoken_tokens(tts_text, ep), spoken_tokens(heard, ep)
+    m = sum(x.size for x in difflib.SequenceMatcher(a=a, b=b, autojunk=False).get_matching_blocks())
+    cache[key] = (len(a) - m) + (len(b) - m)
+    return cache[key]
 
 
 def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tuple[str, int], np.ndarray]:
-    """Alle Szenen-Stücke (an „ | “ getrennt) in EINEM Chatterbox-Lauf erzeugen (Modell lädt nur einmal).
+    """Alle Szenen-Stücke (an „ | “ getrennt) mit Chatterbox erzeugen (Modell lädt je Lauf nur einmal).
     Ohne `emotion`: exaggeration/cfg des Sprechstils (voicePreset) + Zuschlag der Szenen-Sprechweise (delivery),
     ein Stück am Stück (Stand bis 11.11.2026).
-    Mit Szenen-Feld `emotion` (EMOTIONS in voice_fx.py, Vorgabe „wie ein Synchronsprecher“ 12.11.2026): jedes Stück
-    SATZ FÜR SATZ mit exaggeration/cfg/temperature der Emotion und festem Seed, Atempausen je Satzzeichen und Emotion,
-    Lautstärke und Tempo-Faktor je Emotion (Tempo zusätzlich zu `speed`, die W/s-Kalibrierung bleibt gültig)."""
+    Mit Szenen-Feld `emotion` (EMOTIONS in voice_fx.py): jedes Stück SATZ FÜR SATZ mit exaggeration/cfg/temperature der
+    Emotion und festem Seed. Seit 12.11.2026 abends („wie ein echter Geschichtenerzähler“): Aussprache-Prüfung je Satz
+    (Whisper; bis NARRATOR.qc_tries Aufnahmen, die beste gewinnt), Erzähler-Pausen und Satzende-Absenkung
+    (narrate_sentence), kein Beschleunigen über NARRATOR.max_speed."""
     import soundfile as sf
 
     base = preset or STYLES["lebendig"]
-    jobs, keys = [], []
     cache = ROOT / "out" / "cb-cache"
     cache.mkdir(parents=True, exist_ok=True)
+    py = ROOT / ".venv-cb" / "bin" / "python"
+    if not py.exists():
+        raise SystemExit("Chatterbox fehlt: einmalig `bash scripts/setup_chatterbox.sh` ausführen")
 
-    def job_file(job: dict) -> Path:
+    def job_path(job: dict) -> Path:
         # Zwischenspeicher je Stück (out/cb-cache): nach einer Textkorrektur werden nur geänderte Stücke neu erzeugt
-        out = cache / (hashlib.sha1(json.dumps(job, sort_keys=True).encode()).hexdigest()[:16] + ".wav")
-        if not out.exists() and not any(j["out"] == str(out) for j in jobs):
-            jobs.append({**job, "out": str(out)})
-        return out
+        return cache / (hashlib.sha1(json.dumps(job, sort_keys=True).encode()).hexdigest()[:16] + ".wav")
 
-    with tempfile.TemporaryDirectory() as tmp:
-        for sc in ep["scenes"]:
-            spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
-            pieces = [x.strip() for x in spoken.split(PAUSE_MARK) if x.strip()]
-            emo = sc.get("emotion")
-            if emo:
-                e = EMOTIONS.get(emo) if isinstance(emo, str) else {**EMOTIONS["calm"], **emo}
-                if e is None:
-                    raise SystemExit(f"Szene {sc['id']}: unbekannte emotion {emo!r} – erlaubt: {', '.join(EMOTIONS)}")
-                for i, p in enumerate(pieces):
-                    parts = []
-                    for s in sentences(p):
-                        text = speakable(s)
-                        seed = int(hashlib.sha1(text.encode()).hexdigest()[:8], 16)
-                        job = {"text": text, "voice": voice_id, "exaggeration": e["exag"], "cfg": e["cfg"],
-                               "temperature": e["temp"], "seed": seed}
-                        gap = e["gap_ms"] + (60 if s.endswith("?") else -40 if s.endswith("!") else 0)
-                        parts.append((job_file(job), gap / 1000))
-                    keys.append((sc["id"], i, parts, e))
+    def run(jobs: list[dict]) -> None:
+        jobs = [j for j in jobs if not Path(j["out"]).exists()]
+        if not jobs:
+            return
+        with tempfile.TemporaryDirectory() as tmp:
+            (Path(tmp) / "jobs.json").write_text(json.dumps(jobs))
+            subprocess.run([str(py), "-W", "ignore", str(ROOT / "scripts" / "tts_chatterbox.py"), str(Path(tmp) / "jobs.json")], check=True)
+
+    keys = []  # (scene, piece, [(sentence_text, job_without_seed, seed0)] | job, emotion)
+    for sc in ep["scenes"]:
+        spoken = apply_say(sc["text"].replace("*", ""), ep.get("years"), ep.get("say"))
+        pieces = [x.strip() for x in spoken.split(PAUSE_MARK) if x.strip()]
+        e = emotion_of(sc)
+        for i, p in enumerate(pieces):
+            if e:
+                sents = []
+                for s in sentences(p):
+                    text = speakable(s)
+                    seed = int(hashlib.sha1(text.encode()).hexdigest()[:8], 16)
+                    job = {"text": text, "voice": voice_id, "exaggeration": e["exag"], "cfg": e["cfg"], "temperature": e["temp"]}
+                    sents.append((text, job, seed))
+                keys.append((sc["id"], i, sents, e))
             else:
                 d = sc.get("delivery", base["delivery"])
                 d = DELIVERY.get(d, DELIVERY["normal"]) if isinstance(d, str) else {**DELIVERY["normal"], **d}
                 ex = min(1.2, max(0.25, base["exaggeration"] + d.get("exag", 0.0)))
-                for i, p in enumerate(pieces):
-                    job = {"text": speakable(p), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]}
-                    keys.append((sc["id"], i, [(job_file(job), 0.0)], None))
-        (Path(tmp) / "jobs.json").write_text(json.dumps(jobs))
-        py = ROOT / ".venv-cb" / "bin" / "python"
-        if not py.exists():
-            raise SystemExit("Chatterbox fehlt: einmalig `bash scripts/setup_chatterbox.sh` ausführen")
-        n_files = sum(len(k[2]) for k in keys)
-        print(f"Chatterbox: {len(jobs)} von {n_files} Stücken neu, Stimme {voice_id}, Stil {ep.get('voicePreset', 'lebendig')!r}")
-        if jobs:
-            subprocess.run([str(py), "-W", "ignore", str(ROOT / "scripts" / "tts_chatterbox.py"), str(Path(tmp) / "jobs.json")], check=True)
-        cap = ep.get("maxPauseMs", 300) / 1000  # Chatterbox macht nach Satzende ~0,5 s Pause, Vorbild ricksclip ~0,22 s
-        tempo = float(ep.get("speed", 1.0))  # Chatterbox hat kein Tempo-Feld: tonhöhenneutral strecken (ffmpeg atempo)
+                job = {"text": speakable(p), "voice": voice_id, "exaggeration": ex, "cfg": base["cfg"]}
+                keys.append((sc["id"], i, {**job, "out": str(job_path(job))}, None))
 
-        def load(i: int, parts: list[tuple[Path, float]], e: dict | None) -> np.ndarray:
+    # Runde 0: alle Sätze mit Seed 0; dann Aussprache-Prüfung, durchgefallene Sätze mit neuem Seed erneut
+    qc_file = cache / "qc.json"
+    qc = json.loads(qc_file.read_text()) if qc_file.exists() else {}
+    first = [k[2] for k in keys if k[3] is None]
+    for k in keys:
+        if k[3] is not None:
+            first += [{**job, "seed": seed, "out": str(job_path({**job, "seed": seed}))} for _, job, seed in k[2]]
+    print(f"Chatterbox: {sum(not Path(j['out']).exists() for j in first)} von {len(first)} Stücken neu, Stimme {voice_id}")
+    run(first)
+    chosen: dict[str, Path] = {}
+    pending = [(text, job, seed) for k in keys if k[3] is not None for text, job, seed in k[2]]
+    tries = {text: [] for text, _, _ in pending}
+    for attempt in range(NARRATOR["qc_tries"]):
+        retry = []
+        for text, job, seed in pending:
+            f = job_path({**job, "seed": seed + attempt})
+            bad = qc_score(f, text, ep, qc)
+            tries[text].append((bad, attempt, f))
+            if bad == 0 or attempt == NARRATOR["qc_tries"] - 1:
+                chosen[text] = min(tries[text], key=lambda t: (t[0], t[1]))[2]
+            else:
+                retry.append((text, job, seed))
+        qc_file.write_text(json.dumps(qc, indent=0))
+        if not retry:
+            break
+        print(f"Aussprache-Prüfung: {len(retry)} Sätze neu (Versuch {attempt + 2}): " + " · ".join(t[:40] for t, _, _ in retry))
+        run([{**job, "seed": seed + attempt + 1, "out": str(job_path({**job, "seed": seed + attempt + 1}))} for _, job, seed in retry])
+        pending = retry
+    n_bad = sum(1 for t in tries.values() if min(x[0] for x in t) > 0)
+    print(f"Aussprache-Prüfung: {len(tries) - n_bad}/{len(tries)} Sätze ohne Abweichung")
+    for text, t in tries.items():
+        if min(x[0] for x in t) > 0:
+            print(f"   Rest-Abweichung {min(x[0] for x in t)} Wort/Wörter: {text}")
+
+    tempo = float(ep.get("speed", 1.0))  # Chatterbox hat kein Tempo-Feld: tonhöhenneutral strecken (ffmpeg atempo)
+    if tempo > NARRATOR["max_speed"]:
+        print(f"speed {tempo} > {NARRATOR['max_speed']} – begrenzt (Erzähler-Regel 12.11.2026: nicht beschleunigen)")
+        tempo = NARRATOR["max_speed"]
+    cap = ep.get("maxPauseMs", 300) / 1000  # nur Modus ohne emotion (Stand bis 11.11.2026)
+
+    with tempfile.TemporaryDirectory() as tmp:
+        def load(i: int, parts, e: dict | None) -> np.ndarray:
             if e is None:
-                y = tighten_pauses(sf.read(str(parts[0][0]), dtype="float32")[0], cap)
+                y = tighten_pauses(sf.read(parts["out"], dtype="float32")[0], cap)
                 t = tempo
             else:
                 segs = []
-                for k, (f, gap) in enumerate(parts):
-                    segs.append(tighten_pauses(trim_silence(sf.read(str(f), dtype="float32")[0]), cap))
+                for k, (text, _, _) in enumerate(parts):
+                    segs.append(narrate_sentence(sf.read(str(chosen[text]), dtype="float32")[0], text, e))
                     if k < len(parts) - 1:
-                        segs.append(np.zeros(int(gap * SAMPLE_RATE), np.float32))
+                        gap = e["gap_ms"] / 1000 + (0.06 if text.rstrip().endswith("?") else 0) \
+                            - NARRATOR["tail_keep_s"] - NARRATOR["head_keep_s"]
+                        segs.append(np.zeros(int(max(0.0, gap) * SAMPLE_RATE), np.float32))
                 y = np.concatenate(segs) * np.float32(10 ** (e["gain_db"] / 20))
                 t = tempo * e["speed"]
             if abs(t - 1.0) < 0.005:
@@ -282,10 +427,16 @@ def synth_track(ep: dict, voice: Voice | None, post: bool = True, log=print) -> 
             sp = (sp or base_speed) * d["speed"] * (preset["speed"] if preset else 1.0)
         pieces = [p.strip() for p in spoken.split(PAUSE_MARK) if p.strip()]
         synth = (lambda i, p: cb_audio[(sc["id"], i)]) if engine == "chatterbox" else (lambda i, p: voice.synth(p, sp))
-        audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((pause,) if i else ()) + (synth(i, p),)])
+        p_gap, s_gap = pause, gap
+        e = emotion_of(sc) if engine == "chatterbox" else None
+        if e:  # Erzähler-Pausen (12.11.2026 abends): „ | “ = Satzpause + 250 ms, Szenenwechsel mindestens NARRATOR.scene_gap_ms Stille
+            edge = NARRATOR["tail_keep_s"] + NARRATOR["head_keep_s"]
+            p_gap = np.zeros(int(SAMPLE_RATE * max(0.0, (e["gap_ms"] + NARRATOR["piece_extra_ms"]) / 1000 - edge)), np.float32)
+            s_gap = np.zeros(int(SAMPLE_RATE * max(ep.get("sceneGapMs", 0), NARRATOR["scene_gap_ms"]) / 1000), np.float32)
+        audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((p_gap,) if i else ()) + (synth(i, p),)])
         start = cursor / SAMPLE_RATE * 1000
-        parts += [audio, gap]
-        cursor += len(audio) + len(gap)
+        parts += [audio, s_gap]
+        cursor += len(audio) + len(s_gap)
         scenes.append({"id": sc["id"], "startMs": round(start), "endMs": round(cursor / SAMPLE_RATE * 1000)})
         words += split_words(sc["id"], sc["text"])
         if log:

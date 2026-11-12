@@ -132,7 +132,7 @@ def main() -> None:
         return float(np.median(12 * np.log2(seg))) if len(seg) else float("nan")
 
     pauses = {"sent": [], "comma": [], "scene": []}
-    edges = 0
+    edges, edge_at = 0, []
     for i in range(len(words) - 1):
         kind = words[i]["end"]
         if not kind:
@@ -141,6 +141,7 @@ def main() -> None:
         pauses[kind].append(p)
         if kind in ("sent", "scene") and p >= 150 and ps > 0 and db[ps - 1] > speech - 25:
             edges += 1
+            edge_at.append(round(ps * HOP_S, 2))
     # Sätze
     sents, cur = [], []
     for i, w in enumerate(words):
@@ -176,6 +177,18 @@ def main() -> None:
     matched = sum(b.size for b in sm.get_matching_blocks())
     diffs = [f"{' '.join(w['w'] for w in words[i1:i2])!r} → {' '.join(c['text'].strip() for c in wsp[j1:j2])!r}"
              for tag, i1, i2, j1, j2 in sm.get_opcodes() if tag != "equal"]
+    # Gesprochene Form (Zahlen/Jahre ausgeschrieben, Bindestriche getrennt): zählt echte Aussprache-Fehler statt
+    # Schreibweisen-Unterschiede („13“ vs „thirteen“, „no -holds -barred“).
+    def spoken_tokens(text: str) -> list[str]:
+        text = re.sub(r"\$([\d.,]*\d)((?:\s+(?:thousand|million|billion))?)(?!\s*(?:dollar|thousand|million|billion))", r"\1\2 dollars", text)
+        text = speakable(apply_say(text.replace("$", "").replace("*", "").replace(" | ", " "), ep.get("years"), ep.get("say")))
+        return [t for t in (norm(x) for x in re.split(r"[\s\-–—]+", text)) if t]
+
+    SA = spoken_tokens(" ".join(sc["text"] for sc in ep["scenes"]))
+    SB = spoken_tokens("".join(c["text"] for c in wsp))
+    sm2 = difflib.SequenceMatcher(a=SA, b=SB, autojunk=False)
+    matched2 = sum(b.size for b in sm2.get_matching_blocks())
+    diffs2 = [f"{' '.join(SA[i1:i2])!r} → {' '.join(SB[j1:j2])!r}" for tag, i1, i2, j1, j2 in sm2.get_opcodes() if tag != "equal"]
     med = lambda v: round(float(np.median(v)), 1) if len(v) else None  # noqa: E731
     res = {
         "id": a.id, "durationSec": round(dur_s, 1), "words": len(words), "wpsTotal": round(len(words) / dur_s, 2),
@@ -184,13 +197,14 @@ def main() -> None:
         "pauseCommaMs": med(pauses["comma"]), "pauseSceneMs": med(pauses["scene"]),
         "sentEndDropDb": round(float(np.mean(drops)), 1), "sentEndQuieterShare": round(float(np.mean(np.array(drops) < -1)), 2),
         "sentEndPitchSt": round(float(np.mean(fdrops)), 1), "sentEndFallingShare": round(float(np.mean(np.array(fdrops) < -0.5)), 2),
-        "hardEdges": edges, "sentEnds": len(pauses["sent"]) + len(pauses["scene"]),
+        "hardEdges": edges, "hardEdgesAtS": edge_at, "sentEnds": len(pauses["sent"]) + len(pauses["scene"]),
         "whisperMatched": matched, "whisperPct": round(100 * matched / len(words), 1), "whisperDiffs": diffs,
+        "spokenTokens": len(SA), "whisperSpokenPct": round(100 * matched2 / len(SA), 1), "whisperSpokenDiffs": diffs2,
     }
     if a.json:
         a.json.write_text(json.dumps(res, ensure_ascii=False, indent=1))
-    print(json.dumps({k: v for k, v in res.items() if k != "whisperDiffs"}, ensure_ascii=False))
-    for x in diffs:
+    print(json.dumps({k: v for k, v in res.items() if not k.endswith("Diffs")}, ensure_ascii=False))
+    for x in diffs2:
         print("   ", x)
 
 

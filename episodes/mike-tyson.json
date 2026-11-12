@@ -7,9 +7,9 @@
   "music": {
     "mood": "dark"
   },
-  "speed": 1.02,
+  "speed": 1.0,
   "pauseMs": 450,
-  "sceneGapMs": 120,
+  "sceneGapMs": 600,
   "lengthSec": 68,
   "cover": {
     "text": "HARD LIFE OR HIS FAULT?",
@@ -180,7 +180,7 @@
       "id": "detention",
       "delivery": "normal",
       "emotion": "warm",
-      "text": "Juvenile detention. A counselor, an ex-boxer, spots his *talent* and leads him to Cus D'Amato.",
+      "text": "Juvenile detention. A counselor, a former boxer, spots his *talent* and leads him to Cus D'Amato.",
       "visual": "Kulisse: schlichter Flur einer Jugendanstalt (keine Uniformen, Kleidung unbelegt). Ein Betreuer mit Boxhandschuhen über der Schulter sieht Kind-MIKE auf einen Sandsack schlagen; Augen-Pop beim Betreuer auf 'talent'. Match Cut: Handschlag → Hand von CUS (ältere Silhouette mit Mantel) vor einer Holz-Trainingshalle.",
       "sources": [
         "Z7: \"He ended up at the Tryon School for Boys in Johnstown, New York.\" · \"Tyson's emerging boxing ability was discovered there by Bobby Stewart, a juvenile detention center counselor and former boxer.\"",
@@ -557,5 +557,8 @@
         }
       ]
     }
-  ]
+  ],
+  "say": {
+    "Cus": "Cuss"
+  }
 }

@@ -4,9 +4,9 @@
   "engine": "chatterbox",
   "voice": "am_fenrir",
   "voicePreset": "spannend",
-  "speed": 1.22,
+  "speed": 1.0,
   "pauseMs": 450,
-  "sceneGapMs": 120,
+  "sceneGapMs": 600,
   "lengthSec": 70,
   "years": [
     1993,

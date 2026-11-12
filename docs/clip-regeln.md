@@ -43,7 +43,7 @@ Themenunabhängiger Ablauf und Muster je Themen-Art: [`playbook-themen.md`](play
 3. **Durchgehende Bewegungsrichtung** bei Reisen (z. B. immer von links nach rechts / nach außen).
 4. **Laufendes Element** über das ganze Video (Zähler, Punktestand, Karte mit Fortschritt),
    damit der Fortschritt sichtbar ist und man das Ende erreichen will.
-5. **Tempo-Regel für jedes Video (Nutzer 12.11.2026):** Sprechtempo 2,3–2,6 W/s (Ziel 2,4), Einstellungen 3–4 s, sanfte Übergänge; Länge **mindestens 62 s** (Nutzer 12.11.2026: „Mind 62 Sekunden“), ohne Wunschangabe ~62–70 s. Beleg: `docs/trends/benchmark-tempo.md` (31 virale Shorts, 9 mit messbarem Tempo; ruhige Top-Videos 2,2–2,6 W/s, Erzähl-Shorts Median 56 s). Tempo beim ersten Stimmlauf messen und `speed` per Rückrechnung (alt × Dauer / (Wörter/2,4)) setzen.
+5. **Tempo-Regel für jedes Video (Nutzer 12.11.2026):** Sprechtempo 2,3–2,6 W/s (Ziel 2,4), Einstellungen 3–4 s, sanfte Übergänge; Länge **mindestens 62 s** (Nutzer 12.11.2026: „Mind 62 Sekunden“), ohne Wunschangabe ~62–70 s. Beleg: `docs/trends/benchmark-tempo.md` (31 virale Shorts, 9 mit messbarem Tempo; ruhige Top-Videos 2,2–2,6 W/s, Erzähl-Shorts Median 56 s). Tempo beim ersten Stimmlauf messen; bei Chatterbox **nicht** per `speed` beschleunigen (max. 1,05, Regel „Wie ein echter Geschichtenerzähler“) – Rate zu niedrig → weniger, längere Sätze.
    **Nutzer-Feedback 12.11.2026 (Tyson, Freigabe 2): „Video soll etwas langsamer sein, um es angenehmer zum Schauen zu machen.“** → ruhigeres Bildtempo: Einstellungen eher 3–4 s, Kamerafahrten langsamer, Whip-/Wipe-Übergänge nur an Kapitelgrenzen, keine Schnitte unter 1,5 s; die Werte darunter sind dafür überholt.
    Bisher: Neue Einstellung etwa alle 2–3 s, aber **innerhalb derselben Handlung** (Nah/Total/Detail),
    nicht als Sprung zu etwas Neuem. Messwerte (ffmpeg `scene` > 0,12, `referenz-analyse-2.md`):
@@ -170,6 +170,41 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   **erst kürzen** (weniger Stationen, dafür jede mit Pointe), dann länger werden – nie schneller sprechen.
   Kokoro-Tempo nie über 1,33 (darüber Sprung um ~10 %, unnatürlich); Tempo mit `npm run calibrate` wählen.
 
+## Wie ein echter Geschichtenerzähler (Vorgabe des Nutzers, 12.11.2026 abends – gilt für jedes Video, geht den Stimm-Regeln darunter vor)
+> „In der Hörprobe sind die Pausen zwischen den Wörtern und den Sätzen noch unnatürlich. Sie müssen natürlicher klingen
+> bzw. wie ein normaler Mensch. Sie sind noch so extrem schnell. Der rattert alles durch. Bessere Aussprache. Wenn ein Satz
+> endet, muss es sich auch danach anhören. Es muss sich menschlicher anhören und zum Satzende muss es ebenfalls leiser
+> werden. Wie ein echter Geschichtenerzähler.“
+
+**Ursache (gemessen an Tyson/UFC/Rolls-Royce vor der Änderung, `scripts/stimm_messung.py`):** Chatterbox-Spur global mit
+ffmpeg `atempo` beschleunigt (`speed` 1,02 / 1,22 / 1,11), Pausen nach Satzende Median 355 / 235 / 210 ms (10 % unter
+120 ms), Komma 60 / 65 / 100 ms, Szenenwechsel 130–140 ms; Satzanfang/-ende bei −40 dBFS + 30 ms abgeschnitten (bis
+6 harte Kanten je Video); Satzende im Mittel nur −1,5 bis −1,9 dB leiser (UFC/Rolls), Satzende fallend nur 62–75 %.
+
+**Regeln (Standard in `make_episode.py` + `NARRATOR`/`EMOTIONS` in `scripts/voice_fx.py`):**
+- **Nicht beschleunigen:** Drehbuch-`speed` 1,0; `make_episode.py` begrenzt Chatterbox auf höchstens **1,05**. Wird das
+  Video länger, ist das richtig (≥ 62 s). Fällt die Gesamtrate unter 2,3 W/s: **melden, nicht schneller machen** – Abhilfe sind
+  weniger, längere Sätze (weniger Pausen je Wort), nicht schnelleres Sprechen.
+- **Pausen (gemessene Stille):** Satzende **450–640 ms** je Emotion (Tabelle unten; Frage +60 ms), „ | “ = Satzpause +
+  250 ms, Komma **160–240 ms**, Doppelpunkt/Gedankenstrich +80 ms, **Szenenwechsel ≈ 0,85–1,0 s** (Ausklang + 600 ms).
+  Gebündelte Kurzsätze („Brooklyn. Dad leaves.“) bekommen innen dieselbe Satzpause. Innere Stillen werden nur verlängert,
+  nie unter den Sollwert gekürzt (nur > 0,9 s → 0,7 s).
+- **Satzende hörbar:** letzte ~0,45 s jedes Satzes weich um **1–3 dB** abgesenkt (Emotion; Frage halb), Ausklang nie
+  kappen: 180 ms nach dem letzten Laut (Satzpegel −45 dB) behalten und weich ausblenden, 10 ms Einblendung am Anfang.
+- **Fallende Satzmelodie erhalten:** exaggeration höchstens **0,70**, cfg 0,40–0,50 (hohe exaggeration 0,85–0,95 ging
+  mit flacheren Satzenden einher, s. `docs/agenten/stimme.md`). Keine Tonhöhen-Bearbeitung.
+- **Aussprache-Prüfung je Satz:** faster-whisper small.en hört jeden Satz; fehlt oder kommt ein Wort hinzu, bis zu 3
+  Aufnahmen (neuer Seed), die beste gewinnt (`out/cb-cache/qc.json`). Rest-Abweichungen druckt `make_episode.py`.
+  Zahlen bleiben Ziffern im Skript (`speakable`/`years` sprechen sie aus); Problemwörter umformulieren ohne Faktenänderung
+  (z. B. „ex-boxer“ → „former boxer“, so steht es auch in der Quelle).
+- **Messen vor jeder Freigabe:** `.venv/bin/python scripts/stimm_messung.py <id>` → W/s gesamt, Satzrate (W/s und Silben/s
+  ohne Pausen), Pausen Satz/Komma/Szene, Pegelabfall und Tonhöhe am Satzende, harte Kanten, Whisper-Treffer (Schreibweise
+  und gesprochene Form). Ziel: Whisper gesprochen ≥ 98 %, 0 harte Kanten, Satzende im Mittel ≥ 3 dB leiser. Dazu earshot
+  (`measure`) für LUFS.
+- **Ergebnis der Umstellung** (Tyson/UFC/Rolls, Einzelwerte `docs/agenten/stimme.md`): Satzpause 210–355 → 390–520 ms,
+  Komma 60–100 → 200–240 ms, Szene 130–140 → 755–845 ms, Satzende −1,5…−3,9 → −3,0…−4,5 dB, Whisper gesprochen
+  96,7–98,2 → 97,8–99,5 %. Gesamtrate fiel auf 1,75–2,06 W/s (Dauer 93–111 s); nicht beschleunigen – höhere Rate nur über weniger, längere Sätze (weniger Pausen je Wort), Entscheidung Nutzer/Orchestrator.
+
 ## Stimme wie ein Synchronsprecher (Vorgabe des Nutzers, 12.11.2026 – gilt für jedes Video, geht den älteren Stimm-Regeln vor)
 > „Dazu sollen die Stimmen lebensecht klingen und so klingen wie echte Menschen. Es heißt, das, was gesagt wird,
 > thematisch soll auch so emotional ausgedrückt werden. Als würde ein Skript ein Synchronsprecher sprechen.“
@@ -188,22 +223,23 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   (https://huggingface.co/ResembleAI/chatterbox): „Higher `exaggeration` tends to speed up speech; reducing `cfg_weight`
   helps compensate with slower, more deliberate pacing.“
 
-  | `emotion` | wofür | exag | cfg | temp | Tempo × | Atempause nach Satz | Lautstärke |
-  | --- | --- | --- | --- | --- | --- | --- | --- |
-  | `calm` | ruhige Erklärung | 0,40 | 0,50 | 0,75 | 0,98 | 300 ms | −0,5 dB |
-  | `warm` | Hoffnung, Zuwendung | 0,50 | 0,45 | 0,80 | 0,98 | 280 ms | 0 |
-  | `serious` | ernst, Skandal, Urteil | 0,45 | 0,45 | 0,75 | 0,97 | 340 ms | −0,5 dB |
-  | `sad` | Tod, Verlust | 0,35 | 0,35 | 0,70 | 0,94 | 420 ms | −2 dB |
-  | `awe` | Ehrfurcht, Rekord | 0,60 | 0,35 | 0,85 | 0,95 | 380 ms | 0 |
-  | `tense` | Spannung vor Wendepunkt | 0,55 | 0,30 | 0,80 | 0,96 | 340 ms | −1 dB |
-  | `ironic` | Satire, trockene Pointe | 0,70 | 0,35 | 0,90 | 1,00 | 260 ms | 0 |
-  | `playful` | verschmitzt, Witz | 0,80 | 0,30 | 0,90 | 1,02 | 240 ms | +0,5 dB |
-  | `indignant` (`angry`) | Empörung | 0,85 | 0,35 | 0,85 | 1,02 | 260 ms | +1,5 dB |
-  | `excited` | Aufbruch, Eskalation | 0,90 | 0,30 | 0,90 | 1,04 | 220 ms | +1 dB |
-  | `triumphant` | Erfolg, große Zahl | 0,95 | 0,35 | 0,85 | 1,00 | 300 ms | +2 dB |
+  | `emotion` | wofür | exag | cfg | temp | Satzpause | Komma | Satzende leiser | Lautstärke |
+  | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  | `calm` | ruhige Erklärung | 0,40 | 0,50 | 0,75 | 500 ms | 190 ms | −2 dB | −0,5 dB |
+  | `warm` | Hoffnung, Zuwendung | 0,45 | 0,45 | 0,80 | 480 ms | 190 ms | −2 dB | 0 |
+  | `serious` | ernst, Skandal, Urteil | 0,45 | 0,45 | 0,75 | 540 ms | 210 ms | −2 dB | −0,5 dB |
+  | `sad` | Tod, Verlust | 0,35 | 0,40 | 0,70 | 640 ms | 240 ms | −3 dB | −2 dB |
+  | `awe` | Ehrfurcht, Rekord | 0,55 | 0,40 | 0,80 | 580 ms | 220 ms | −2,5 dB | 0 |
+  | `tense` | Spannung vor Wendepunkt | 0,50 | 0,40 | 0,80 | 560 ms | 220 ms | −2,5 dB | −1 dB |
+  | `ironic` | Satire, trockene Pointe | 0,60 | 0,40 | 0,85 | 470 ms | 180 ms | −1,5 dB | 0 |
+  | `playful` | verschmitzt, Witz | 0,65 | 0,40 | 0,85 | 450 ms | 170 ms | −1,5 dB | +0,5 dB |
+  | `indignant` (`angry`) | Empörung | 0,70 | 0,40 | 0,80 | 470 ms | 180 ms | −1,5 dB | +1,5 dB |
+  | `excited` | Aufbruch, Eskalation | 0,70 | 0,40 | 0,85 | 450 ms | 160 ms | −1 dB | +1 dB |
+  | `triumphant` | Erfolg, große Zahl | 0,70 | 0,40 | 0,80 | 500 ms | 190 ms | −1,5 dB | +2 dB |
 
-  Frage +60 ms, Ausruf −40 ms Pause. Der Tempo-Faktor wirkt zusätzlich zu `speed` (Mittel ≈ 1); danach W/s des ganzen
-  Videos wie immer mit `npm run calibrate` auf 2,3–2,6 bringen. Keine Tonhöhen-Bearbeitung (Regel 09.11.2026 gilt weiter).
+  Stand 12.11.2026 abends (Abschnitt „Wie ein echter Geschichtenerzähler“): kein Tempo-Faktor mehr (alle 1,0), Pausen
+  sind gemessene Stille. Frage +60 ms Pause und nur halbe Absenkung; Doppelpunkt/Gedankenstrich +80 ms auf die Komma-Pause.
+  Keine Tonhöhen-Bearbeitung (Regel 09.11.2026 gilt weiter).
   Startwerte, nur gemessen (A/B in `docs/agenten/stimme.md`); Hörurteil des Nutzers einholen und Tabelle danach anpassen.
   Nicht übernommen: Chatterbox-Turbo (MIT, https://huggingface.co/ResembleAI/chatterbox-turbo) kennt Tags wie `[laugh]`,
   `[chuckle]`, ignoriert aber laut Quellcode `exaggeration`/`cfg` („CFG, min_p and exaggeration are not supported by Turbo
