@@ -58,7 +58,7 @@ const RopeTowel: React.FC<{ readonly x: number; readonly f: number }> = ({ x, f 
 
 /** Champion: CUS geht – Mantel bleibt am Pfosten; „some say“; Handschuh-Wipe in Gold → jüngster Champion. */
 export const Champion: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const loses = B("emptyCoat", 51);
   const some = 71;
   const wipe = B("gloveWipe", 130);
@@ -144,7 +144,7 @@ export const Champion: React.FC = () => {
 
 /** Douglas: Tokio 1990, gesichtslose Silhouette schlägt MIKE erstmals nieder, Gürtel rollt weg, Stille, zweiter Bilderrahmen. */
 export const Douglas: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const odds = 21;
   const down = B("knockdown", 70);
   const gone = B("beltRollsAway", 122);
@@ -234,7 +234,7 @@ export const Douglas: React.FC = () => {
 
 /** Conviction: leerer Gerichtssaal, Hammer, Gitter-Schatten; der Balken LIFE HITS bewegt sich NICHT. */
 export const Conviction: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const strike = 58;
   const serves = 80;
   const denies = 131;
@@ -305,7 +305,7 @@ export const Conviction: React.FC = () => {
 
 /** Ear: Clinch, Biss als Comic-Symbol (kein Blut), Whip in den Ring bei Nacht: Geld fliegt, BANKRUPT 2003. */
 export const Ear: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const ear = B("earPiece", 56);
   const money = B("moneyFly", 83);
   const lic = ear + 13;
@@ -392,7 +392,7 @@ export const Ear: React.FC = () => {
 
 /** Exodus: fast schwarz, ein warmes Licht, MIKE allein auf der Ringkante, eine Papierblume fällt. Kein Kind, kein Unfall. */
 export const Exodus: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const flower = B("flowerFall", 141);
   const shot = shotIndex(f, [60, 125, flower - 2]);
   const sy = RING.front + 150;
@@ -429,7 +429,7 @@ export const Exodus: React.FC = () => {
 
 /** Ending: Stadion 2024, älterer MIKE verliert; Karte: HARD rot, BLAMELESS „NO“; Karte dreht sich zum Zuschauer; Wipe zurück zum Hook. */
 export const Ending: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const fight = 48;
   const loses = 88;
   const hard = B("scorecardHard", 127);

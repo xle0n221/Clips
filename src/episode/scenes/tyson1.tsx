@@ -185,7 +185,7 @@ export const Brooklyn: React.FC = () => {
 
 /** Streets: Dach mit Tauben, größerer Junge greift zu → leere Hände + Feder; Strichliste bis 38. */
 export const Streets: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const grab = W("bigger", 0.36);
   const feather = B("featherFall", 0.53);
   const tally = B("tallyMarks", 0.63);
@@ -272,7 +272,7 @@ export const Streets: React.FC = () => {
 
 /** Detention: Flur, Kind schlägt auf Sandsack, Betreuer staunt (Augen-Pop), Handschlag → Match Cut auf CUS. */
 export const Detention: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const talent = B("eyePop", 0.62);
   const cus = B("matchCutHandshake", 0.88);
   // zwei ruhige Einstellungen: Sandsack (weit) → Zweier-Einstellung Betreuer/Kind; CUS wird weich eingeblendet
@@ -369,7 +369,7 @@ export const Detention: React.FC = () => {
 
 /** Mother: Bild der Mutter verblasst, CUS wird Vormund; Re-Hook im Spotlicht mit Punktrichter-Karte. */
 export const Mother: React.FC = () => {
-  const { f, B } = useBeats();
+  const { f, d, B, W } = useBeats();
   const dies = B("frameFade", 0.17);
   const guard = B("guardianDoc", 0.42);
   const spot = B("spotlight", 0.53);
