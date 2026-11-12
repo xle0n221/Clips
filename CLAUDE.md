@@ -23,6 +23,7 @@ Stil: **je Video passend zum Thema entscheiden** (Vorgabe Nutzer 11.11.2026) –
 2D (flach/SVG/Paper-Cut) oder Mischung; Figuren dürfen je Video anders aussehen. Entscheidung + Begründung im
 Drehbuch-Feld `style`; Regeln: `docs/clip-regeln.md` → „Stilwahl“. Format immer 1080×1920.
 Themenunabhängiger Ablauf und Muster je Themen-Art: `docs/playbook-themen.md`.
+**Musik je Thema** (Vorgabe Nutzer 12.11.2026, gilt für alle künftigen Videos): nie dieselbe Musik – passend zum Thema und zeitgemäß, „ähnlich was momentan im Trend ist“ (düster → trendiger düsterer Sound usw.); Preset `music.mood` im Drehbuch, Sound-Trends aus `docs/trends/aktuell.md`, zusätzlich immer eine Fassung ohne Musik für Trend-Sounds in der App – Regeln `docs/clip-regeln.md` → „Musik je Thema“.
 **Trends täglich** (Vorgabe 12.11.2026): was bei Cartoon-Shorts viral geht → `docs/trends/aktuell.md` vor Drehbuch und Szenenbau lesen; Ablauf `docs/trend-analyse.md`.
 Letzter Rückblick + Kurzablauf für den nächsten Clip: `docs/rueckblick-roemisches-reich.md`.
 
