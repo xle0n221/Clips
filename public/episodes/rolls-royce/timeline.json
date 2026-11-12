@@ -1,0 +1,556 @@
+{
+ "id": "rolls-royce",
+ "title": "How to become a Rolls-Royce driver in 1 minute",
+ "durationMs": 72418,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 5840
+  },
+  {
+   "id": "pick",
+   "startMs": 5840,
+   "endMs": 12094
+  },
+  {
+   "id": "wait",
+   "startMs": 12094,
+   "endMs": 21439
+  },
+  {
+   "id": "stitch",
+   "startMs": 21439,
+   "endMs": 32972
+  },
+  {
+   "id": "stars",
+   "startMs": 32972,
+   "endMs": 37319
+  },
+  {
+   "id": "hood",
+   "startMs": 37319,
+   "endMs": 41470
+  },
+  {
+   "id": "suite",
+   "startMs": 41470,
+   "endMs": 47240
+  },
+  {
+   "id": "bmw",
+   "startMs": 47240,
+   "endMs": 54413
+  },
+  {
+   "id": "wagon",
+   "startMs": 54413,
+   "endMs": 62751
+  },
+  {
+   "id": "ending",
+   "startMs": 62751,
+   "endMs": 71818
+  }
+ ],
+ "cues": [
+  {
+   "sticker": "POV: you want a Rolls-Royce",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "hook",
+   "atMs": 0
+  },
+  {
+   "beat": "checkStamp",
+   "sticker": "STEP 1: BE RICH \u2713",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "bar": {
+    "id": "level",
+    "value": 0.1
+   },
+   "scene": "hook",
+   "atMs": 1140
+  },
+  {
+   "beat": "shadesOn",
+   "scene": "hook",
+   "atMs": 2960
+  },
+  {
+   "beat": "startPistol",
+   "sfx": "boom",
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:58"
+   },
+   "scene": "hook",
+   "atMs": 5180
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1140
+  },
+  {
+   "beat": "showroomSpin",
+   "sfx": "whoosh",
+   "scene": "pick",
+   "atMs": 6760
+  },
+  {
+   "label": {
+    "text": "PHANTOM \u00b7 FLAGSHIP",
+    "color": "#FFD23F",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "pick",
+   "atMs": 7880
+  },
+  {
+   "beat": "entryLevelSign",
+   "sticker": "GHOST = ENTRY MODEL",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "pick",
+   "atMs": 9120
+  },
+  {
+   "beat": "starterPack",
+   "sticker": "ENTRY-LEVEL GHOST STARTER PACK",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "bar": {
+    "id": "level",
+    "value": 0.2
+   },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:52"
+   },
+   "scene": "pick",
+   "atMs": 11600
+  },
+  {
+   "emph": true,
+   "scene": "pick",
+   "atMs": 9120
+  },
+  {
+   "emph": true,
+   "scene": "pick",
+   "atMs": 9380
+  },
+  {
+   "beat": "queueRope",
+   "sfx": "whoosh",
+   "scene": "wait",
+   "atMs": 13240
+  },
+  {
+   "beat": "goldEnvelope",
+   "sticker": "INVITE ONLY?",
+   "color": "#FFD23F",
+   "scene": "wait",
+   "atMs": 14740
+  },
+  {
+   "beat": "rumorStamp",
+   "sticker": "RUMOR \u2013 UNCONFIRMED",
+   "color": "#FF5A5A",
+   "sfx": "pop",
+   "scene": "wait",
+   "atMs": 15940
+  },
+  {
+   "beat": "soldOutSign",
+   "sticker": "2019: NOT ENOUGH CULLINANS",
+   "color": "#FFFFFF",
+   "sfx": "ding",
+   "bar": {
+    "id": "level",
+    "value": 0.3
+   },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:45"
+   },
+   "scene": "wait",
+   "atMs": 19480
+  },
+  {
+   "emph": true,
+   "scene": "wait",
+   "atMs": 14740
+  },
+  {
+   "beat": "nobodyMeme",
+   "sticker": "nobody:",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "stitch",
+   "atMs": 23560
+  },
+  {
+   "beat": "needleCounter",
+   "sticker": "2,200,000 STITCHES",
+   "color": "#FFD23F",
+   "sfx": "whoosh",
+   "scene": "stitch",
+   "atMs": 25880
+  },
+  {
+   "beat": "spoolRoll",
+   "sticker": "+20 HOURS TO BUILD",
+   "color": "#FFFFFF",
+   "bar": {
+    "id": "level",
+    "value": 0.4
+   },
+   "scene": "stitch",
+   "atMs": 30050
+  },
+  {
+   "beat": "freezeTwistCards",
+   "sticker": "2 PLOT TWISTS INCOMING",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:30"
+   },
+   "scene": "stitch",
+   "atMs": 30200
+  },
+  {
+   "emph": true,
+   "scene": "stitch",
+   "atMs": 25310
+  },
+  {
+   "emph": true,
+   "scene": "stitch",
+   "atMs": 25880
+  },
+  {
+   "beat": "headTilt",
+   "sfx": "whoosh",
+   "scene": "stars",
+   "atMs": 33800
+  },
+  {
+   "beat": "starCeiling",
+   "sticker": "STARLIGHT HEADLINER",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "stars",
+   "atMs": 35180
+  },
+  {
+   "beat": "emptyWallet",
+   "sticker": "OPTIONAL EXTRA",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "bar": {
+    "id": "level",
+    "value": 0.5
+   },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:24"
+   },
+   "scene": "stars",
+   "atMs": 36620
+  },
+  {
+   "emph": true,
+   "scene": "stars",
+   "atMs": 36620
+  },
+  {
+   "beat": "hoodZoom",
+   "sfx": "whoosh",
+   "label": {
+    "text": "SPIRIT OF ECSTASY",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "hood",
+   "atMs": 39000
+  },
+  {
+   "sticker": "WINGS?",
+   "color": "#FFFFFF",
+   "scene": "hood",
+   "atMs": 39700
+  },
+  {
+   "beat": "robesFlutter",
+   "sticker": "NOPE: ROBES",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "bar": {
+    "id": "level",
+    "value": 0.6
+   },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:20"
+   },
+   "scene": "hood",
+   "atMs": 40840
+  },
+  {
+   "emph": true,
+   "scene": "hood",
+   "atMs": 40840
+  },
+  {
+   "beat": "trunkOpen",
+   "sfx": "whoosh",
+   "scene": "suite",
+   "atMs": 42840
+  },
+  {
+   "beat": "tailgateBubble",
+   "sticker": "TAILGATE PARTY?",
+   "color": "#FFFFFF",
+   "scene": "suite",
+   "atMs": 43420
+  },
+  {
+   "beat": "bubblePop",
+   "sfx": "pop",
+   "scene": "suite",
+   "atMs": 44460
+  },
+  {
+   "beat": "seatsDeploy",
+   "sticker": "\"COCKTAIL SUITE\"",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "bar": {
+    "id": "level",
+    "value": 0.7
+   },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:14"
+   },
+   "scene": "suite",
+   "atMs": 45280
+  },
+  {
+   "emph": true,
+   "scene": "suite",
+   "atMs": 45000
+  },
+  {
+   "emph": true,
+   "scene": "suite",
+   "atMs": 45280
+  },
+  {
+   "beat": "teaPose",
+   "label": {
+    "text": "GOODWOOD, ENGLAND",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "bmw",
+   "atMs": 48960
+  },
+  {
+   "beat": "recordScratch",
+   "sticker": "PLOT TWIST #1",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "bmw",
+   "atMs": 50200
+  },
+  {
+   "beat": "cardFlipBMW",
+   "sticker": "OWNED BY BMW SINCE 2003",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "bmw",
+   "atMs": 51200
+  },
+  {
+   "beat": "pretzelSwap",
+   "sfx": "pop",
+   "bar": {
+    "id": "level",
+    "value": 0.8
+   },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:09"
+   },
+   "scene": "bmw",
+   "atMs": 53480
+  },
+  {
+   "emph": true,
+   "scene": "bmw",
+   "atMs": 51200
+  },
+  {
+   "beat": "highwayFlex",
+   "sfx": "whoosh",
+   "label": {
+    "text": "CULLINAN",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "wagon",
+   "atMs": 55820
+  },
+  {
+   "beat": "recordScratch",
+   "sticker": "PLOT TWIST #2",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "wagon",
+   "atMs": 57540
+  },
+  {
+   "beat": "wagonStamp",
+   "sticker": "CLASSIFIED: STATION WAGON",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "wagon",
+   "atMs": 59880
+  },
+  {
+   "beat": "pumpEatsCoins",
+   "sticker": "GAS GUZZLER TAX: NOT EXEMPT",
+   "color": "#FF5A5A",
+   "sfx": "pop",
+   "bar": {
+    "id": "level",
+    "value": 0.9
+   },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:03"
+   },
+   "scene": "wagon",
+   "atMs": 62060
+  },
+  {
+   "emph": true,
+   "scene": "wagon",
+   "atMs": 59680
+  },
+  {
+   "emph": true,
+   "scene": "wagon",
+   "atMs": 59880
+  },
+  {
+   "beat": "unveilSweptail",
+   "sfx": "whoosh",
+   "label": {
+    "text": "SWEPTAIL \u00b7 ONE-OFF \u00b7 2017",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "ending",
+   "atMs": 63900
+  },
+  {
+   "beat": "stonksArrow",
+   "sticker": "$12.8M",
+   "color": "#B6FF3B",
+   "sfx": "boom",
+   "scene": "ending",
+   "atMs": 65840
+  },
+  {
+   "beat": "calendarFly",
+   "sticker": "4 YEARS TO BUILD",
+   "color": "#FFFFFF",
+   "scene": "ending",
+   "atMs": 67020
+  },
+  {
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:00"
+   },
+   "sfx": "ding",
+   "scene": "ending",
+   "atMs": 68340
+  },
+  {
+   "beat": "mathConfusion",
+   "sticker": "THE MATH AIN'T MATHING",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "bar": {
+    "id": "level",
+    "value": 0.0
+   },
+   "choice": {
+    "title": "YOUR ROLLS?",
+    "options": [
+     "A \u00b7 ENTRY GHOST",
+     "B \u00b7 STATION WAGON"
+    ]
+   },
+   "scene": "ending",
+   "atMs": 69440
+  },
+  {
+   "beat": "rewindToCouch",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 1:00"
+   },
+   "scene": "ending",
+   "atMs": 71000
+  },
+  {
+   "emph": true,
+   "scene": "ending",
+   "atMs": 65300
+  },
+  {
+   "emph": true,
+   "scene": "ending",
+   "atMs": 65840
+  }
+ ],
+ "hud": {
+  "title": "ROLLS-ROYCE SPEEDRUN",
+  "counters": [
+   {
+    "id": "time",
+    "label": "",
+    "value": "TIME LEFT 1:00"
+   }
+  ],
+  "bars": [
+   {
+    "id": "level",
+    "label": "DRIVER LEVEL",
+    "value": 0.0,
+    "color": "#B6FF3B"
+   }
+  ]
+ },
+ "cover": {
+  "text": "ROLLS-ROYCE IN 1 MINUTE?",
+  "sub": "A totally serious step-by-step guide (satire)",
+  "frames": 15
+ }
+}
