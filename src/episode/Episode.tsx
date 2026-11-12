@@ -13,7 +13,7 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { Captions } from "./overlays/Captions";
-import { Cover, coverFrames } from "./overlays/Cover";
+import { Cover, coverClear, coverFrames } from "./overlays/Cover";
 import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
 import { hudBottom } from "./overlays/Hud";
@@ -244,7 +244,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
       )}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="below" />
-      {cfg?.hud2d && rawTimeline && frame >= coverFrames(timeline.cover) ? (
+      {cfg?.hud2d && rawTimeline && frame >= coverClear(timeline.cover) ? (
         <TimelineHUD
           timeline={rawTimeline}
           freezeBeat={cfg.hud2d.freezeBeat}
@@ -253,7 +253,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
         />
       ) : null}
 
-      {frame < coverFrames(timeline.cover) ? null : stickers.map((c, i) => {
+      {frame < coverClear(timeline.cover) ? null : stickers.map((c, i) => {
         // Dauer eines Stickers j (und ob er wegen `stickerStack` trotz Folge-Sticker stehen bleibt)
         const durOf = (j: number) => {
           const cj = stickers[j];

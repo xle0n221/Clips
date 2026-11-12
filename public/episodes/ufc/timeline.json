@@ -69,19 +69,19 @@
     "value": "UFC: ?"
    },
    "scene": "hook",
-   "atMs": 580
+   "atMs": 1800
   },
   {
    "beat": "goldSkyline",
    "sfx": "whoosh",
    "scene": "hook",
-   "atMs": 5960
+   "atMs": 5080
   },
   {
    "beat": "priceTag",
    "sfx": "ding",
    "scene": "hook",
-   "atMs": 8300
+   "atMs": 7680
   },
   {
    "emph": true,
@@ -114,12 +114,6 @@
    "beat": "eightMarch",
    "scene": "start",
    "atMs": 11920
-  },
-  {
-   "beat": "octagonDrop",
-   "sfx": "boom",
-   "scene": "start",
-   "atMs": 12940
   },
   {
    "beat": "rulesCrossedOut",
@@ -170,12 +164,6 @@
    "atMs": 20520
   },
   {
-   "beat": "clippingBack",
-   "sfx": "boom",
-   "scene": "ban",
-   "atMs": 21720
-  },
-  {
    "beat": "lettersFly",
    "sfx": "whoosh",
    "scene": "ban",
@@ -203,12 +191,7 @@
    "beat": "rulesStamp",
    "sfx": "pop",
    "scene": "rules",
-   "atMs": 29560
-  },
-  {
-   "beat": "glovesOn",
-   "scene": "rules",
-   "atMs": 32180
+   "atMs": 31000
   },
   {
    "beat": "roundClock",
@@ -227,7 +210,7 @@
    "color": "#FF5A5A",
    "sfx": "boom",
    "scene": "rules",
-   "atMs": 36100
+   "atMs": 35160
   },
   {
    "emph": true,
@@ -263,7 +246,7 @@
    "color": "#FFD23F",
    "sfx": "boom",
    "scene": "zuffa",
-   "atMs": 42180
+   "atMs": 42780
   },
   {
    "emph": true,
@@ -288,7 +271,7 @@
    "sticker": "2005",
    "color": "#FFFFFF",
    "scene": "tuf",
-   "atMs": 49920
+   "atMs": 48800
   },
   {
    "beat": "slugfest",
@@ -297,7 +280,7 @@
     "text": "GRIFFIN vs. BONNAR",
     "color": "#B0BEC5",
     "x": 0.5,
-    "y": 0.36
+    "y": 0.42
    },
    "scene": "tuf",
    "atMs": 51900
@@ -320,7 +303,7 @@
    "color": "#FFD23F",
    "sfx": "boom",
    "scene": "boom",
-   "atMs": 55920
+   "atMs": 55060
   },
   {
    "beat": "bossBubble",
@@ -338,7 +321,7 @@
    "color": "#B0BEC5",
    "sfx": "pop",
    "scene": "boom",
-   "atMs": 61080
+   "atMs": 60400
   },
   {
    "beat": "bubblePop",
@@ -352,7 +335,7 @@
     "y": 0.36
    },
    "scene": "boom",
-   "atMs": 63360
+   "atMs": 62640
   },
   {
    "emph": true,
@@ -410,7 +393,7 @@
    "color": "#FFD23F",
    "sfx": "boom",
    "scene": "price",
-   "atMs": 73040
+   "atMs": 72100
   },
   {
    "beat": "pieFifth",
@@ -476,7 +459,7 @@
    "color": "#FF5A5A",
    "sfx": "ding",
    "scene": "empire",
-   "atMs": 94700
+   "atMs": 92620
   },
   {
    "beat": "streamDeal",
@@ -484,7 +467,7 @@
    "color": "#FFD23F",
    "sfx": "whoosh",
    "scene": "empire",
-   "atMs": 99620
+   "atMs": 97340
   },
   {
    "emph": true,
@@ -510,12 +493,12 @@
    "beat": "splitScreen",
    "sfx": "whoosh",
    "scene": "ending",
-   "atMs": 101440
+   "atMs": 100780
   },
   {
    "beat": "smallCheck",
    "scene": "ending",
-   "atMs": 103860
+   "atMs": 102700
   },
   {
    "beat": "scaleTilt",
@@ -527,6 +510,7 @@
      "B \u00b7 NO"
     ]
    },
+   "untilBeat": "loopToCage",
    "scene": "ending",
    "atMs": 105120
   },
@@ -538,7 +522,7 @@
     "value": "UFC: ?"
    },
    "scene": "ending",
-   "atMs": 108680
+   "atMs": 108000
   }
  ],
  "hud": {

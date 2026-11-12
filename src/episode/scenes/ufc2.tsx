@@ -85,7 +85,7 @@ export const Tuf: React.FC = () => {
       ) : (
         <Layer>
           <FightHall phase="red" f={f} fill={0.6} flashes={0.6} lights={0.9} />
-          <NeonSign x={540} y={465} lines={["THE ULTIMATE FIGHTER"]} size={54} on={ease(f, studio, studio + 8) > 0.5 && (f - studio) % 23 !== 3 ? 1 : 0} />
+          <NeonSign x={540} y={600} lines={["THE ULTIMATE FIGHTER"]} size={54} on={ease(f, studio, studio + 8) > 0.5 && (f - studio) % 23 !== 3 ? 1 : 0} />
           <Octagon g={{ cx: 540, cy: 1170, rx: 520, ry: 160, h: 300 }} frontO={0.5}>
             {(() => {
               const pA = Math.max(0, Math.sin((f - slug) * 0.45)) * (f >= slug - 20 ? 1 : 0.3);
@@ -171,7 +171,7 @@ export const Boom: React.FC = () => {
         {shot === 0 ? <Suit x={540} y={by} s={0.95} f={f} armR={f > never ? [lerp(10, 100, ease(f, never, never + 8)), 100] : [14, 10]} /> : null}
       </Layer>
       <Layer depth={0}>
-        {f >= never - 4 ? <Bubble x={lerp(760, 790, ease(f, never, d))} y={640} s={0.6 * Math.min(1, pop(f, never - 4, 10))} lines={["NEVER", "EVER"]} burst={ease(f, y13, y13 + 14)} /> : null}
+        {f >= never - 4 ? <Bubble x={lerp(800, 820, ease(f, never, d))} y={960} s={0.6 * Math.min(1, pop(f, never - 4, 10))} lines={["NEVER", "EVER"]} burst={ease(f, y13, y13 + 14)} /> : null}
         {f >= fight ? <rect x={0} y={0} width={1080} height={1920} fill="#FFF3C8" opacity={0.25 * (1 - ease(f, fight, fight + 8))} /> : null}
       </Layer>
     </Stage2D>
@@ -398,14 +398,14 @@ export const Ending: React.FC = () => {
         <Layer>
           <FightHall phase="dim" f={f} fill={0.6} lights={0.5} />
           <Scale
-            x={540}
-            y={1300}
-            s={1.15}
+            x={400}
+            y={590}
+            s={0.3}
             tilt={tl}
             left={<CoinStack x={0} y={-10} n={14} w={140} />}
             right={<BigCheck x={0} y={-50} s={0.16} amount="$375M" />}
           />
-          <Hero x={930} y={1300} s={0.6} f={f} eyes="up" brows="sad" flip />
+          <Hero x={800} y={590} s={0.28} f={f} eyes="up" brows="sad" flip />
         </Layer>
         <Layer depth={0}>
           <OctagonWipe local={f - loop} color={FIGHT.red} />

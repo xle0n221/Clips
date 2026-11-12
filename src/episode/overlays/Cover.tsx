@@ -5,6 +5,8 @@ import { CoverSpec } from "../types";
 /** Bilder, die das Cover voll zeigt (danach 6 Bilder Ausblenden) – Regel: 0,5 s bei 30 fps. */
 export const coverFrames = (c?: CoverSpec) => (c ? Math.max(1, c.frames ?? 15) : 0);
 const FADE = 6;
+/** Erstes Bild ohne Cover: HUD und Sticker erst ab hier (kein Textbrei beim Ausblenden). */
+export const coverClear = (c?: CoverSpec) => (c ? coverFrames(c) + FADE : 0);
 
 /**
  * Thumbnail-Cover (docs/clip-regeln.md → „Thumbnail im Video“): liegt über der ersten Szene,

@@ -71,7 +71,7 @@
       ],
       "cues": [
         {
-          "word": "cockfighting",
+          "word": "senator",
           "sticker": "\"HUMAN COCKFIGHTING\"",
           "color": "#FFD23F",
           "sfx": "boom",
@@ -81,12 +81,12 @@
           }
         },
         {
-          "word": "billion",
+          "word": "valued",
           "beat": "goldSkyline",
           "sfx": "whoosh"
         },
         {
-          "word": "price",
+          "word": "Who",
           "beat": "priceTag",
           "sfx": "ding"
         }
@@ -116,11 +116,6 @@
         {
           "word": "Eight",
           "beat": "eightMarch"
-        },
-        {
-          "word": "cage",
-          "beat": "octagonDrop",
-          "sfx": "boom"
         },
         {
           "word": "rules",
@@ -165,11 +160,6 @@
           "beat": "tvTape"
         },
         {
-          "word": "cockfighting",
-          "beat": "clippingBack",
-          "sfx": "boom"
-        },
-        {
           "word": "governor",
           "beat": "lettersFly",
           "sfx": "whoosh"
@@ -196,13 +186,9 @@
       ],
       "cues": [
         {
-          "word": "tames",
+          "word": "weight",
           "beat": "rulesStamp",
           "sfx": "pop"
-        },
-        {
-          "word": "gloves",
-          "beat": "glovesOn"
         },
         {
           "word": "rounds",
@@ -215,7 +201,7 @@
           }
         },
         {
-          "word": "bankrupt",
+          "word": "owners",
           "beat": "redBills",
           "sticker": "NEARLY BANKRUPT",
           "color": "#FF5A5A",
@@ -257,7 +243,7 @@
           }
         },
         {
-          "word": "Hold",
+          "word": "that",
           "beat": "freezeMark",
           "sticker": "$2,000,000",
           "color": "#FFD23F",
@@ -285,7 +271,7 @@
           "sfx": "pop"
         },
         {
-          "word": "show",
+          "word": "shot",
           "beat": "tvStudio",
           "sfx": "whoosh",
           "sticker": "2005",
@@ -299,7 +285,7 @@
             "text": "GRIFFIN vs. BONNAR",
             "color": "#B0BEC5",
             "x": 0.5,
-            "y": 0.36
+            "y": 0.42
           }
         },
         {
@@ -323,7 +309,7 @@
       ],
       "cues": [
         {
-          "word": "booms",
+          "word": "From",
           "beat": "montageGold",
           "sticker": "$609M REVENUE (2015)",
           "color": "#FFD23F",
@@ -340,13 +326,13 @@
           }
         },
         {
-          "word": "ever",
+          "word": "Never",
           "sticker": "\"NEVER EVER\"",
           "color": "#B0BEC5",
           "sfx": "pop"
         },
         {
-          "word": "fight",
+          "word": "first",
           "beat": "bubblePop",
           "sticker": "FIRST WOMEN'S BOUT: 2013",
           "color": "#FFD23F",
@@ -408,7 +394,7 @@
       ],
       "cues": [
         {
-          "word": "price",
+          "word": "But",
           "beat": "spotlightFighter",
           "sticker": "WHO PAID?",
           "color": "#FFD23F",
@@ -474,14 +460,14 @@
           "color": "#FFD23F"
         },
         {
-          "word": "settlement",
+          "word": "375-million-dollar",
           "beat": "settlementCheck",
           "sticker": "$375M SETTLEMENT (2025)",
           "color": "#FF5A5A",
           "sfx": "ding"
         },
         {
-          "word": "deal",
+          "word": "7.7-billion-dollar",
           "beat": "streamDeal",
           "sticker": "$7.7B · 7 YEARS",
           "color": "#FFD23F",
@@ -502,12 +488,12 @@
       ],
       "cues": [
         {
-          "word": "billions",
+          "word": "Banned",
           "beat": "splitScreen",
           "sfx": "whoosh"
         },
         {
-          "word": "settlement",
+          "word": "fighters",
           "beat": "smallCheck"
         },
         {
@@ -520,10 +506,11 @@
               "A · YES",
               "B · NO"
             ]
-          }
+          },
+          "untilBeat": "loopToCage"
         },
         {
-          "word": "senator",
+          "word": "Not",
           "beat": "loopToCage",
           "sfx": "whoosh",
           "hud": {

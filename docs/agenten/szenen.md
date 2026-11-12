@@ -24,6 +24,17 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · UFC (2D) v2 nach Regie-Kritik 6/10 (neue Erzähler-Tonspur 110,7 s) · **Ereignis-Abstände misst man an
+  den Cues, nicht an den Schnitten:** Schnitte lagen schon bei ≈ 3–4 s, unruhig machten die Cue-Ereignisse (Sticker/Label/
+  Beat + SFX). Cues nur im Drehbuch auf andere Wörter gelegt bzw. zusammengelegt (5 Cues entfernt, Animation im Code an
+  den Nachbar-Beat gekoppelt, z. B. `drop = march + 10`, `clip = tape + 14`), Text unverändert, `--retime` ohne Neuvertonung.
+  Abstände (Szenenstart + Cues > 0,3 s nach Start + Szenenende): vorher n 49, Ø 2,24 s, Median 2,10, 16 < 1,5 s, max 5,98 →
+  nachher n 43, Ø 2,56 s, Median 2,35, **0 < 1,5 s**, max 4,72. Weitere Fixes: Auswahlkarte `untilBeat: loopToCage`
+  (Endbild = Hook-Bild), Waage s 0,3 ins Band y ≈ 590; HUD/Sticker erst nach Cover-Ausblendung (`coverClear` in
+  `overlays/Cover.tsx`, gilt für alle Clips); Sprechblase aus dem Label-Stapel (y 960); Label tuf y 0,42 + Leuchtschrift
+  y 600; RULES-Blatt y 640/s 0,6. Rest: Start-Oktagon in den ersten ≈ 1 s noch fast leer (Kämpfer laufen erst ein) ·
+  `out/ufc-kontakt-v2.jpg`, `out/ufc-fix-v2.jpg`. Hinweis: `make_episode.py --retime` importiert kokoro – ohne Paket
+  per Stub-Modul `tts` aufrufbar.
 - 12.11.2026 · UFC (2D) v1 · **Ruhiges Tempo von Anfang an:** 11 Szenen, 26 Einstellungen bei 80,6 s → im Mittel ≈ 3,1 s,
   kürzeste ≈ 1,9 s (boom „2013“) außer Loop-Wipe am Ende (≈ 0,9 s); Ortswechsel in einer Szene als Prospekt, der hinter dem
   Käfig herabfällt (rules: Büro), statt Schnitt – die Pill bleibt dabei korrekt an der Figur. Alle Zeiten aus Beats/Wörtern
@@ -123,7 +134,8 @@
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 08.11.2026 | Sonnensystem v2 | – | 3 Anschnitte |
-| 12.11.2026 | UFC (2D) v1 | – (Selbstprüfung 7–8) | Regie-Kritik steht aus |
+| 12.11.2026 | UFC (2D) v1 | 6,0 (Regie) | Cue-Abstände Ø 1,7 s, Karten bis Loop-Ende, Label-Stapel |
+| 12.11.2026 | UFC (2D) v2 | – (Selbstnote 7,5, Regie offen) | 0 Cue-Abstände < 1,5 s, 7 Befunde umgesetzt; Start-Oktagon anfangs leer |
 | 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |

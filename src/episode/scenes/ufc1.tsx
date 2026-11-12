@@ -43,7 +43,7 @@ const RULES_KEEP = ["NO BITING", "NO EYE-GOUGING", "NO GROIN SHOTS"] as const;
 /** Hook: Käfig im Spotlicht, Goldberg wächst; Zeitungsausschnitt; Zoom-out zur Gold-Skyline; Preisschild „?“. */
 export const Hook: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const cock = W("cockfighting", 0.09);
+  const cock = W("called", 0.2); // erst nach dem Cover (Befund Cover-Ende)
   const gold = B("goldSkyline", 0.64);
   const price = B("priceTag", 0.9);
   const pile = 0.75 + 0.25 * ease(f, 0, gold, "inOut");
@@ -96,7 +96,7 @@ const MARCH = [
 export const Start: React.FC = () => {
   const { f, d, B } = useBeats();
   const march = B("eightMarch", 0.31);
-  const drop = B("octagonDrop", 0.45);
+  const drop = march + 10; // Käfig senkt sich, wenn die Kämpfer ankommen (ein Ereignis statt zwei)
   const rules = B("rulesCrossedOut", 0.58);
   const check = B("bigCheck", 0.83);
   const cut = rules - 8;
@@ -115,8 +115,8 @@ export const Start: React.FC = () => {
           {MARCH.map((m, i) => {
             const k = m.row ? i - 4 : i;
             const tx = 160 + k * 250 + (m.row ? 0 : 120);
-            const startX = -700 - k * 170 - (m.row ? 0 : 300);
-            const t = ease(f, march - 50 + k * 6, march + 22 + k * 6, "inOut");
+            const startX = -160 - k * 110 - (m.row ? 0 : 120);
+            const t = ease(f, k * 4, march + 22 + k * 6, "inOut"); // marschieren ab Bild 0 (kein leeres Oktagon)
             const x = lerp(startX, tx, t);
             const walking = t > 0 && t < 1;
             const y = m.row ? 1235 : 1075;
@@ -144,8 +144,8 @@ export const Start: React.FC = () => {
       {shot === 1 ? (
         <Layer depth={0}>
           <rect x={0} y={0} width={1080} height={1920} fill="#000" opacity={0.45 * ease(f, cut, cut + 10)} />
-          <RuleSheet x={lerp(440, 450, ease(f, cut, d))} y={lerp(1500, 790, ease(f, cut, cut + 14, "inOut"))} s={0.7} r={-4} cross={ease(f, rules, rules + 22, "inOut")} keep={RULES_KEEP} />
-          {f >= check - 6 ? <BigCheck x={lerp(1500, 640, ease(f, check - 6, check + 10, "inOut"))} y={1110} s={0.62} r={-5} amount="$50,000" memo="WINNER TAKES IT" /> : null}
+          <RuleSheet x={lerp(440, 450, ease(f, cut, d))} y={lerp(1500, 640, ease(f, cut, cut + 14, "inOut"))} s={0.6} r={-4} cross={ease(f, rules, rules + 22, "inOut")} keep={RULES_KEEP} />
+          {f >= check - 6 ? <BigCheck x={lerp(1500, 540, ease(f, check - 6, check + 10, "inOut"))} y={1080} s={0.56} r={-5} amount="$50,000" memo="WINNER TAKES IT" /> : null}
         </Layer>
       ) : null}
     </Stage2D>
@@ -158,7 +158,7 @@ export const Start: React.FC = () => {
 export const Ban: React.FC = () => {
   const { f, d, B } = useBeats();
   const tape = B("tvTape", 0.2);
-  const clip = B("clippingBack", 0.3);
+  const clip = tape + 14; // Ausschnitt kommt mit dem Band (ein Beat)
   const letters = B("lettersFly", 0.53);
   const red = B("statesRed", 0.78);
   const shot = shotIndex(f, [letters]);
@@ -298,8 +298,8 @@ export const Rules: React.FC = () => {
         <Layer depth={0}>
           <RuleSheet
             x={440}
-            y={lerp(1500, 790, ease(f, 0, 12, "inOut"))}
-            s={0.7}
+            y={lerp(1500, 640, ease(f, 0, 12, "inOut"))}
+            s={0.6}
             r={-4}
             cross={1}
             keep={RULES_KEEP}
