@@ -31,6 +31,13 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
   (Tyson unverändert). Fallen: Zeitungs-Schlagzeile breiter als das Papier → Schriftgröße aus Zeichenzahl (`780/len`);
   Leuchtschrift unter der Pill-Zone verschwindet → über y ≈ 600 legen; Firmen nur als `TextBlock`-Schrift (kein Logo).
   Beleg `out/ufc-contactsheet.jpg`.
+- 12.11.2026 · Rolls-Royce (2D Sticker/Paper-Cut) · **Experiment Sticker-Kante per Filter** (`feMorphology` dilate 7 +
+  weiße Fläche + harter Schatten, `kit2d/luxury.tsx` → `LuxDefs` filter `sticker`): Figuren, Autos, Karten lesen sich im
+  Kontaktabzug klar als ausgeschnittene Sticker, auch vor ähnlich hellem Grund; Kosten ≈ 4–6 s/Bild im Kontaktabzug
+  (nicht sauber gegen ohne gemessen). Markenrecht: Autos als eigene Seitenansichten (`LuxCar` sedan/suv/coupe/sweptail)
+  – Seitenansicht zeigt keinen Grill, keine Emblem-Fläche; Kühlerfigur nur als abstraktes Stoffband (`RibbonOrnament`).
+  Erkennungsfarbe Limette exklusiv am Hoodie (HUD-Balken gleiche Farbe = Absicht, gehört zu YOU). Cover: Titel bricht auf
+  4 Zeilen um (Overlay-Schrift) und verdeckte das Gesicht → Motiv 180 px tiefer legen. Beleg `out/rolls-royce-cover.png`.
 - 12.11.2026 · Mike Tyson (2D Paper-Cut) · **Experiment Papierschatten per `feDropShadow` (dx 7, dy 9, ohne Unschärfe)**
   auf Figuren/Prospekten statt doppelter Schattenkopie: liest sich im Kontaktabzug klar als ausgeschnittenes Papier,
   Standbild 3,8 s/Bild (halbe CPU, parallele Stimm-Erzeugung; kein sauberer Vergleichswert). Neu `kit2d/boxing.tsx`:
@@ -80,3 +87,4 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 | --- | --- | --- | --- |
 | 08.11.2026 | Rom-Kit | – | Monumentalität und Kontrast schwach → behoben |
 | 09.11.2026 | Common-Kit | – (Prüfung Design-Kritiker offen) | Erstausgabe, 4 Prüfrunden selbst |
+| 12.11.2026 | Rolls-Royce (2D) v1 | – (Design-Kritiker offen) | Sticker-Look, eigene Autos ohne Markenzeichen |

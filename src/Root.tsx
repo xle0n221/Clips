@@ -94,6 +94,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „How to become a Rolls-Royce driver in 1 minute“: 2D-Sticker/Paper-Cut (kit2d/luxury.tsx, scenes/rolls*.tsx) */}
+      <Composition
+        id="RollsRoyce"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 90}
+        schema={episodeSchema}
+        defaultProps={{ episode: "rolls-royce" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* Prüf-Komposition des 2D-Bau-Kits (src/episode/kit2d/) */}
       <Composition
         id="Kit2DTest"

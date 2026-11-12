@@ -6,3 +6,4 @@ export * from "./props";
 export * from "./world";
 export * from "./boxing";
 export * from "./fight";
+export * from "./luxury";

@@ -6,6 +6,7 @@ import { EARTH_SCENES, EARTH_TRANSITIONS, EarthCoverArt } from "./earth";
 import { ROME_SCENES } from "./rome1";
 import { TYSON_CONFIG, TYSON_SCENES } from "./tyson";
 import { UFC_CONFIG, UFC_SCENES } from "./ufc";
+import { ROLLS_CONFIG, ROLLS_SCENES } from "./rolls";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
 export const SCENES: Record<string, React.FC> = {
@@ -32,6 +33,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "earth-without-humans": EARTH_SCENES,
   "mike-tyson": TYSON_SCENES,
   ufc: UFC_SCENES,
+  "rolls-royce": ROLLS_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -61,5 +63,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" }, coverArt: EarthCoverArt },
   "mike-tyson": TYSON_CONFIG,
   ufc: UFC_CONFIG,
+  "rolls-royce": ROLLS_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];
