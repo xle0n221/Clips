@@ -12,5 +12,5 @@ if [ -d .venv-cb ]; then
   echo "$CB" > "$SP/zz-venv-cb.pth"
 fi
 .venv-earshot/bin/pip install -q --no-cache-dir "earshot[mcp] @ git+https://github.com/Leonxlnx/earshot@4ac3d2ac2b151e1c23376f9ce7f3047a17050013"
-.venv-earshot/bin/python -m earshot doctor --fetch > /dev/null || true
+HF_HUB_DISABLE_XET=1 .venv-earshot/bin/python -m earshot doctor --fetch > /dev/null || true
 echo "earshot bereit: .venv-earshot/bin/python -m earshot"
