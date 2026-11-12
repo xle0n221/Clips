@@ -59,10 +59,10 @@ const RopeTowel: React.FC<{ readonly x: number; readonly f: number }> = ({ x, f 
 /** Champion: CUS geht – Mantel bleibt am Pfosten; „some say“; Handschuh-Wipe in Gold → jüngster Champion. */
 export const Champion: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const loses = B("emptyCoat", 51);
-  const some = 71;
-  const wipe = B("gloveWipe", 130);
-  const belt = B("beltUp", 152);
+  const loses = B("emptyCoat", 0.24);
+  const some = W("Some", 0.33);
+  const wipe = B("gloveWipe", 0.61);
+  const belt = B("beltUp", 0.71);
   // drei ruhige Einstellungen; der Wechsel in die Gold-Arena ist eine weiche Überblendung (kein Wipe in der Szene)
   const shot = shotIndex(f, [some]);
   const mix = ease(f, wipe - 8, wipe + 12, "inOut");
@@ -74,7 +74,7 @@ export const Champion: React.FC = () => {
     shot === 0
       ? frameOn(700, 800, 540, 880, lerp(1.0, 1.12, ease(f, 0, some, "inOut")))
       : frameOn(400, hy, 540, 790, lerp(1.22, 1.36, ease(f, some, wipe + 12, "inOut")));
-  const camB = frameOn(540, lerp(700, 600, ease(f, wipe, 214, "inOut")), 540, 860, lerp(1.0, 1.28, ease(f, wipe, 214, "inOut")));
+  const camB = frameOn(540, lerp(700, 600, ease(f, wipe, d, "inOut")), 540, 860, lerp(1.0, 1.28, ease(f, wipe, d, "inOut")));
   const cloud = ease(f, some, some + 40, "inOut");
   const coatSwing = f >= loses ? Math.sin((f - loses) * 0.15) * 5 * Math.exp(-(f - loses) * 0.03) : 0;
   return (
@@ -145,35 +145,29 @@ export const Champion: React.FC = () => {
 /** Douglas: Tokio 1990, gesichtslose Silhouette schlägt MIKE erstmals nieder, Gürtel rollt weg, Stille, zweiter Bilderrahmen. */
 export const Douglas: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const odds = 21;
-  const down = B("knockdown", 70);
-  const gone = B("beltRollsAway", 122);
-  const sister = B("secondFrame", 170);
-  const c1 = odds + 9;
-  const c2 = down - 12;
-  const c3 = gone - 10;
-  const c4 = 140;
-  const shot = shotIndex(f, [c1, c2, c3, c4]);
+  const down = B("knockdown", 0.37);
+  const gone = B("beltRollsAway", 0.64);
+  const sister = B("secondFrame", 0.89);
+  // drei ruhige Einstellungen: beide Boxer (weit) → Niederschlag + Gürtel rollt (eine Einstellung) → Stille
+  const c2 = down - 16;
+  const c4 = W("That", 0.73);
+  const shot = shotIndex(f, [c2, c4]);
   const mx = 720;
   const ox = 960;
-  const fall = ease(f, down + 2, down + 24, "inOut");
-  const land = hop(f, down + 24, 0, 1);
-  const bounce = Math.sin(f * 0.3) * 8;
+  const fall = ease(f, down + 2, down + 28, "inOut");
+  const land = hop(f, down + 28, 0, 1);
+  const bounce = Math.sin(f * 0.2) * 6;
   const wind = anticipate(f, down, 20, 70, 100, { pre: 8, dur: 5 });
   const cam =
     shot === 0
-      ? frameOn(840, 820, 540, 880, lerp(1.0, 1.06, ease(f, 0, c1)))
+      ? frameOn(840, 820, 540, 880, lerp(1.0, 1.1, ease(f, 0, c2, "inOut")))
       : shot === 1
-        ? frameOn(ox - 120, FEET + headY("adult"), 560, 820, lerp(1.38, 1.48, ease(f, c1, c2)))
-        : shot === 2
-          ? frameOn(520, 1050, 540, 900, lerp(0.86, 0.9, ease(f, c2, c3)))
-          : shot === 3
-            ? frameOn(lerp(760, 920, ease(f, c3, c4)), 1080, 540, 960, 1.35)
-            : frameOn(540, 760, 540, 860, lerp(1.12, 1.22, ease(f, c4, c4 + 50)));
-  const quiet = shot === 4;
-  const dropDown = quiet ? 1 - ease(f, c4, c4 + 10, "linear") : 1;
+        ? frameOn(lerp(520, 600, ease(f, gone - 10, c4, "inOut")), 1050, 540, 900, lerp(0.86, 0.92, ease(f, c2, c4, "inOut")))
+        : frameOn(540, 760, 540, 860, lerp(1.08, 1.2, ease(f, c4, d, "inOut")));
+  const quiet = shot === 2;
+  const dropDown = quiet ? 1 - ease(f, c4, c4 + 14, "linear") : 1;
   return (
-    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, down + 24, 18) }} mood="night" noSky>
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, down + 24, 9) }} mood="night" noSky>
       <Layer>
         <Arena phase="cool" tone={RING_TONES.cool} f={f} lights={quiet ? 0 : 0.6} drop={dropDown > 0 ? <TokyoDrop down={dropDown} /> : null} />
         {!quiet ? (
@@ -188,8 +182,8 @@ export const Douglas: React.FC = () => {
               gloves
               flip
               armL={[20, 160]}
-              armR={shot >= 2 ? [wind, wind + 10] : [20, 160]}
-              lean={shot === 2 ? lerp(0, -6, ease(f, down - 4, down + 4)) : 0}
+              armR={shot >= 1 ? [wind, wind + 10] : [20, 160]}
+              lean={shot === 1 ? lerp(0, -6, ease(f, down - 4, down + 4)) : 0}
               step={bounce}
             />
             <Figure
@@ -208,9 +202,9 @@ export const Douglas: React.FC = () => {
               blinkSeed={3}
             />
             <ImpactLines x={mx - 20} y={FEET - 560} t={(f - down) / 10} s={0.9} />
-            {shot >= 2 && f > down + 26 ? <CountHand x={1000} y={660} n={Math.min(5, 1 + Math.floor((f - down - 26) / 7))} s={0.8} /> : null}
+            {shot === 1 && f > down + 26 && f < gone ? <CountHand x={1000} y={660} n={Math.min(5, 1 + Math.floor((f - down - 26) / 7))} s={0.8} /> : null}
             {/* Gürtel rollt aus dem Bild */}
-            {shot === 3 ? <Belt x={lerp(830, 1560, ease(f, gone - 4, gone + 22, "linear"))} y={1170} s={0.4} r={(f - gone) * 14} /> : null}
+            {shot === 1 && f >= gone - 4 ? <Belt x={lerp(830, 1560, ease(f, gone - 4, gone + 30, "linear"))} y={1170} s={0.4} r={(f - gone) * 10} /> : null}
           </>
         ) : (
           <>
@@ -235,28 +229,26 @@ export const Douglas: React.FC = () => {
 /** Conviction: leerer Gerichtssaal, Hammer, Gitter-Schatten; der Balken LIFE HITS bewegt sich NICHT. */
 export const Conviction: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const strike = 58;
-  const serves = 80;
-  const denies = 131;
-  const luck = B("barStill", 227);
-  const shot = shotIndex(f, [37, 74, denies, 190]);
+  const strike = W("rape", 0.25) - 2;
+  const serves = W("serves", 0.33);
+  const denies = W("denies", 0.57);
+  const luck = B("barStill", 0.95);
+  const thisW = W("This", 0.8);
+  // drei ruhige Einstellungen: Saal + Hammer (weit) → MIKE nah mit Gitter-Schatten → Balken steht still
+  const shot = shotIndex(f, [serves - 8, thisW]);
   const gr = anticipate(f, strike, -20, -62, 8, { pre: 7, dur: 5, over: 0.02 });
-  const bars = ease(f, serves, serves + 22);
-  const shake = f >= denies && f < denies + 40 ? Math.sin((f - denies) * 0.5) * 9 : 0;
+  const bars = ease(f, serves + 4, serves + 34, "inOut");
+  const shake = f >= denies && f < denies + 40 ? Math.sin((f - denies) * 0.3) * 7 : 0;
   const hy = FEET + headY("adult");
   const cam =
     shot === 0
-      ? frameOn(560, 780, 540, 860, lerp(1.0, 1.06, ease(f, 0, 37)))
+      ? frameOn(lerp(560, 660, ease(f, 0, serves, "inOut")), 790, 540, 870, lerp(1.0, 1.14, ease(f, 0, serves, "inOut")))
       : shot === 1
-        ? frameOn(700, 800, 540, 880, lerp(1.12, 1.2, ease(f, 37, 74)))
-        : shot === 2
-          ? frameOn(540, 780, 540, 860, lerp(1.3, 1.42, ease(f, 74, denies)))
-          : shot === 3
-            ? frameOn(540, hy, 540, 790, lerp(1.4, 1.48, ease(f, denies, 190)))
-            : frameOn(540, 900, 540, 900, lerp(1.0, 1.1, ease(f, luck - 10, luck + 8, "inOut")));
-  const ruled = shot === 4;
+        ? frameOn(540, hy, 540, 790, lerp(1.28, 1.42, ease(f, serves - 8, thisW, "inOut")))
+        : frameOn(540, 900, 540, 900, lerp(1.0, 1.1, ease(f, thisW, d, "inOut")));
+  const ruled = shot === 2;
   return (
-    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, strike + 1, 12) }} mood="night" noSky>
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, strike + 1, 6) }} mood="night" noSky>
       <Layer>
         <Arena phase="grey" tone={RING_TONES.grey} f={f} lights={0.2} drop={<CourtDrop down={ease(f, -8, 14, "linear")} f={f} />} />
         {!ruled ? (
@@ -268,9 +260,9 @@ export const Conviction: React.FC = () => {
               y={FEET}
               s={1.0}
               frame={f}
-              headDown={shot === 2 ? 0.5 : 0}
+              headDown={shot === 1 && f < denies ? 0.5 : 0}
               headTilt={shake}
-              eyes={shot === 2 ? "down" : "open"}
+              eyes={shot === 1 && f < denies ? "down" : "open"}
               brows="sad"
               mouth="flat"
               blinkSeed={3}
@@ -483,8 +475,8 @@ export const Ending: React.FC = () => {
               gloves
               armL={shot === 2 ? [10, 10] : [20, 150]}
               armR={shot === 2 ? [10, 10] : [24, 150]}
-              headDown={shot === 2 ? 0.5 : 0}
-              eyes={shot === 2 ? "down" : "open"}
+              headDown={shot === 1 && f < denies ? 0.5 : 0}
+              eyes={shot === 1 && f < denies ? "down" : "open"}
               brows={shot === 2 ? "sad" : "angry"}
               mouth={shot === 2 ? "flat" : "grit"}
               blinkSeed={3}
