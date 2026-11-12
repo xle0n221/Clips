@@ -68,7 +68,7 @@
           "sfx": "pop"
         },
         {
-          "word": "rich",
+          "word": "Done",
           "beat": "checkStamp",
           "sticker": "STEP 1: BE RICH ✓",
           "color": "#FFD23F",
@@ -79,11 +79,7 @@
           }
         },
         {
-          "word": "Cool",
-          "beat": "shadesOn"
-        },
-        {
-          "word": "Go",
+          "word": "minute",
           "beat": "startPistol",
           "sfx": "boom",
           "hud": {
@@ -105,11 +101,6 @@
       ],
       "cues": [
         {
-          "word": "ride",
-          "beat": "showroomSpin",
-          "sfx": "whoosh"
-        },
-        {
           "word": "flagship",
           "label": {
             "text": "PHANTOM · FLAGSHIP",
@@ -126,7 +117,7 @@
           "sfx": "ding"
         },
         {
-          "word": "pack",
+          "word": "It's",
           "beat": "starterPack",
           "sticker": "ENTRY-LEVEL GHOST STARTER PACK",
           "color": "#FFFFFF",
@@ -154,12 +145,7 @@
       ],
       "cues": [
         {
-          "word": "wait",
-          "beat": "queueRope",
-          "sfx": "whoosh"
-        },
-        {
-          "word": "invite",
+          "word": "Rumor",
           "beat": "goldEnvelope",
           "sticker": "INVITE ONLY?",
           "color": "#FFD23F"
@@ -214,13 +200,17 @@
           "sfx": "whoosh"
         },
         {
-          "word": "thread",
+          "word": "Over",
           "beat": "spoolRoll",
           "sticker": "+20 HOURS TO BUILD",
           "color": "#FFFFFF",
           "bar": {
             "id": "level",
             "value": 0.4
+          },
+          "hud": {
+            "id": "time",
+            "value": "TIME LEFT 0:30"
           }
         },
         {
@@ -228,11 +218,7 @@
           "beat": "freezeTwistCards",
           "sticker": "2 PLOT TWISTS INCOMING",
           "color": "#FF5A5A",
-          "sfx": "boom",
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:30"
-          }
+          "sfx": "boom"
         }
       ]
     },
@@ -248,19 +234,14 @@
       ],
       "cues": [
         {
-          "word": "look",
-          "beat": "headTilt",
-          "sfx": "whoosh"
-        },
-        {
-          "word": "ceiling",
+          "word": "Stars",
           "beat": "starCeiling",
           "sticker": "STARLIGHT HEADLINER",
           "color": "#FFD23F",
           "sfx": "ding"
         },
         {
-          "word": "Optional",
+          "word": "Cullinan",
           "beat": "emptyWallet",
           "sticker": "OPTIONAL EXTRA",
           "color": "#FFFFFF",
@@ -288,7 +269,7 @@
       ],
       "cues": [
         {
-          "word": "hood",
+          "word": "Step",
           "beat": "hoodZoom",
           "sfx": "whoosh",
           "label": {
@@ -299,12 +280,13 @@
           }
         },
         {
-          "word": "wings",
+          "word": "Those",
           "sticker": "WINGS?",
-          "color": "#FFFFFF"
+          "color": "#FFFFFF",
+          "beat": "wingsPoint"
         },
         {
-          "word": "robes",
+          "word": "They're",
           "beat": "robesFlutter",
           "sticker": "NOPE: ROBES",
           "color": "#FFD23F",
@@ -331,20 +313,10 @@
       ],
       "cues": [
         {
-          "word": "trunk",
-          "beat": "trunkOpen",
-          "sfx": "whoosh"
-        },
-        {
           "word": "Tailgate",
           "beat": "tailgateBubble",
           "sticker": "TAILGATE PARTY?",
           "color": "#FFFFFF"
-        },
-        {
-          "word": "Nah",
-          "beat": "bubblePop",
-          "sfx": "pop"
         },
         {
           "word": "suite",
@@ -376,7 +348,7 @@
       ],
       "cues": [
         {
-          "word": "icon",
+          "word": "Step",
           "beat": "teaPose",
           "label": {
             "text": "GOODWOOD, ENGLAND",
@@ -393,14 +365,14 @@
           "sfx": "boom"
         },
         {
-          "word": "BMW",
+          "word": "since",
           "beat": "cardFlipBMW",
           "sticker": "OWNED BY BMW SINCE 2003",
           "color": "#FFD23F",
           "sfx": "ding"
         },
         {
-          "word": "Bavaria",
+          "word": "It's",
           "beat": "pretzelSwap",
           "sfx": "pop",
           "bar": {
@@ -450,7 +422,7 @@
           "sfx": "ding"
         },
         {
-          "word": "exempt",
+          "word": "Not",
           "beat": "pumpEatsCoins",
           "sticker": "GAS GUZZLER TAX: NOT EXEMPT",
           "color": "#FF5A5A",
@@ -479,7 +451,7 @@
       ],
       "cues": [
         {
-          "word": "custom",
+          "word": "Step",
           "beat": "unveilSweptail",
           "sfx": "whoosh",
           "label": {
@@ -526,7 +498,8 @@
               "A · ENTRY GHOST",
               "B · STATION WAGON"
             ]
-          }
+          },
+          "untilBeat": "rewindToCouch"
         },
         {
           "word": "back",

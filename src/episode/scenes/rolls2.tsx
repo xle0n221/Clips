@@ -57,13 +57,13 @@ import {
 /** Hood: Coupé im Abendlicht, Kamera fährt an die Haube; YOU zeigt („WINGS?“) → Stoffband flattert („ROBES“), YOU tut wissend. */
 export const Hood: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const hood = B("hoodZoom", 0.4);
+  const hood = W("hood", 0.4);
   const wings = W("wings", 0.58);
   const robes = B("robesFlutter", 0.85);
-  const push = ease(f, hood - 6, hood + 22, "inOut");
+  const push = ease(f, 6, hood + 12, "inOut");
   const orn = { x: 220, y: 1063 };
-  const wide = frameOn(560, 1000, 540, 960, lerp(0.84, 0.88, ease(f, 0, hood, "inOut")));
-  const close = frameOn(orn.x, orn.y, 600, 960, lerp(1.5, 1.6, ease(f, hood + 22, d, "inOut")));
+  const wide = frameOn(470, 1000, 540, 960, 0.84);
+  const close = frameOn(orn.x, orn.y, 640, 980, lerp(1.4, 1.48, ease(f, hood + 12, d, "inOut")));
   const cam = { x: lerp(wide.x, close.x, push), y: lerp(wide.y, close.y, push), zoom: wide.zoom * Math.pow(close.zoom / wide.zoom, push) };
   const point = ease(f, wings - 6, wings + 6, "inOut");
   const know = ease(f, robes + 4, robes + 14, "inOut");
@@ -84,7 +84,7 @@ export const Hood: React.FC = () => {
             })
           : null}
         <Dude
-          x={40}
+          x={100}
           y={1250}
           s={0.75}
           frame={f}
@@ -106,18 +106,18 @@ export const Hood: React.FC = () => {
 
 /** Suite: SUV-Heck öffnet sich; Gedankenblase Tailgate-Party (Plastikstühle, Kühlbox, Grill) platzt → Leder-Sitze fahren aus, Champagner. */
 export const Suite: React.FC = () => {
-  const { f, d, B } = useBeats();
-  const trunk = B("trunkOpen", 0.23);
+  const { f, d, B, W } = useBeats();
+  const trunk = W("trunk", 0.23);
   const tail = B("tailgateBubble", 0.34);
-  const nah = B("bubblePop", 0.52);
+  const nah = W("Nah", 0.52);
   const suite = B("seatsDeploy", 0.66);
   const shot = shotIndex(f, [nah]);
-  const carX = 900;
+  const carX = 860;
   const hatch = ease(f, trunk - 4, trunk + 14, "inOut");
   const deploy = ease(f, suite - 4, suite + 16, "inOut");
   const cam =
     shot === 0
-      ? frameOn(600, 960, 540, 960, lerp(0.92, 0.97, ease(f, 0, nah, "inOut")))
+      ? frameOn(680, 960, 540, 960, lerp(0.84, 0.87, ease(f, 0, nah, "inOut")))
       : frameOn(380, 1000, 540, 1000, lerp(1.22, 1.3, ease(f, nah, d, "inOut")));
   const seat = (x: number, k: number) => (
     <g transform={`translate(${lerp(carX - 380, x, k)} 1180)`} filter="url(#sticker)" opacity={k > 0.02 ? 1 : 0}>
@@ -146,7 +146,7 @@ export const Suite: React.FC = () => {
           </>
         ) : null}
         <Dude
-          x={140}
+          x={200}
           y={1185}
           s={0.86}
           frame={f}
@@ -186,11 +186,11 @@ export const Suite: React.FC = () => {
 
 /** BMW: YOU posiert mit Teetasse vor der Fabrik („GOODWOOD, ENGLAND“) → Glitch-Rot, Karte PLOT TWIST #1 dreht sich: „BMW AG · SINCE 2003“ → Brezel statt Tee. */
 export const Bmw: React.FC = () => {
-  const { f, d, B } = useBeats();
-  const icon = B("teaPose", 0.24);
+  const { f, d, B, W } = useBeats();
+  const icon = W("icon", 0.24);
   const plot = B("recordScratch", 0.41);
-  const bmw = B("cardFlipBMW", 0.55);
-  const bav = B("pretzelSwap", 0.87);
+  const bmw = W("BMW", 0.55);
+  const bav = W("Bavaria", 0.87);
   const shot = shotIndex(f, [plot]);
   const yx = 170;
   const ys = 0.9;
@@ -274,7 +274,7 @@ export const Wagon: React.FC = () => {
   const classified = W("classified", 0.53);
   const wag = B("wagonStamp", 0.66);
   const gas = W("Gas", 0.74);
-  const exempt = B("pumpEatsCoins", 0.92);
+  const exempt = W("exempt", 0.92);
   const shot = shotIndex(f, [twist, gas]);
   if (shot < 2) {
     const slow = shot === 0 ? 1 : 1 - 0.7 * ease(f, twist, twist + 20);
@@ -360,7 +360,7 @@ export const Wagon: React.FC = () => {
 /** Ending: Enthüllung Sweptail (Spotlicht, Tuch fliegt) → Zickzack-Pfeil, Kalenderblätter → YOU mit Taschenrechner (Mathe-Kritzel) → Rückspulen aufs Sofa (Loop). */
 export const Ending: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const custom = B("unveilSweptail", 0.13);
+  const custom = W("custom", 0.13);
   const mil = B("stonksArrow", 0.34);
   const build = B("calendarFly", 0.47);
   const you = W("You", 0.56);
@@ -407,16 +407,18 @@ export const Ending: React.FC = () => {
   }
   if (shot === 1) {
     const cam = frameOn(540, 990, 540, 900, lerp(1.18, 1.26, ease(f, you, back, "inOut")));
+    const shrink = ease(f, math - 2, math + 12, "inOut");
     return (
       <Stage2D cam={cam} mood="night" noSky>
         <LuxDefs />
         <Layer>
           <GoldStage f={f} />
           <rect x={-2000} y={-2000} width={6000} height={6000} fill="#3A3D48" opacity={0.55 + 0.25 * bump(f, math, 6)} />
+          {/* Ab „mathing“ liegt die Auswahlkarte (y 594–1266) im Bild → YOU klein ins freie Band y ≈ 400–594 */}
           <Dude
             x={540}
-            y={1500}
-            s={1}
+            y={lerp(1500, 742, shrink)}
+            s={lerp(1, 0.3, shrink)}
             frame={f}
             armA={[20, 70]}
             armB={[22, -118]}

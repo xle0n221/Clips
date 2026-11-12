@@ -72,12 +72,7 @@
     "value": 0.1
    },
    "scene": "hook",
-   "atMs": 1420
-  },
-  {
-   "beat": "shadesOn",
-   "scene": "hook",
-   "atMs": 3460
+   "atMs": 2960
   },
   {
    "beat": "startPistol",
@@ -87,18 +82,12 @@
     "value": "TIME LEFT 0:58"
    },
    "scene": "hook",
-   "atMs": 5520
+   "atMs": 4960
   },
   {
    "emph": true,
    "scene": "hook",
    "atMs": 1420
-  },
-  {
-   "beat": "showroomSpin",
-   "sfx": "whoosh",
-   "scene": "pick",
-   "atMs": 8240
   },
   {
    "label": {
@@ -132,7 +121,7 @@
     "value": "TIME LEFT 0:52"
    },
    "scene": "pick",
-   "atMs": 14040
+   "atMs": 13140
   },
   {
    "emph": true,
@@ -145,17 +134,11 @@
    "atMs": 11980
   },
   {
-   "beat": "queueRope",
-   "sfx": "whoosh",
-   "scene": "wait",
-   "atMs": 16300
-  },
-  {
    "beat": "goldEnvelope",
    "sticker": "INVITE ONLY?",
    "color": "#FFD23F",
    "scene": "wait",
-   "atMs": 18300
+   "atMs": 17180
   },
   {
    "beat": "rumorStamp",
@@ -210,18 +193,18 @@
     "id": "level",
     "value": 0.4
    },
+   "hud": {
+    "id": "time",
+    "value": "TIME LEFT 0:30"
+   },
    "scene": "stitch",
-   "atMs": 35180
+   "atMs": 33560
   },
   {
    "beat": "freezeTwistCards",
    "sticker": "2 PLOT TWISTS INCOMING",
    "color": "#FF5A5A",
    "sfx": "boom",
-   "hud": {
-    "id": "time",
-    "value": "TIME LEFT 0:30"
-   },
    "scene": "stitch",
    "atMs": 36660
   },
@@ -236,18 +219,12 @@
    "atMs": 30280
   },
   {
-   "beat": "headTilt",
-   "sfx": "whoosh",
-   "scene": "stars",
-   "atMs": 41600
-  },
-  {
    "beat": "starCeiling",
    "sticker": "STARLIGHT HEADLINER",
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "stars",
-   "atMs": 43280
+   "atMs": 42560
   },
   {
    "beat": "emptyWallet",
@@ -263,7 +240,7 @@
     "value": "TIME LEFT 0:24"
    },
    "scene": "stars",
-   "atMs": 45220
+   "atMs": 44380
   },
   {
    "emph": true,
@@ -280,13 +257,14 @@
     "y": 0.36
    },
    "scene": "hood",
-   "atMs": 48440
+   "atMs": 46580
   },
   {
    "sticker": "WINGS?",
    "color": "#FFFFFF",
+   "beat": "wingsPoint",
    "scene": "hood",
-   "atMs": 49520
+   "atMs": 49120
   },
   {
    "beat": "robesFlutter",
@@ -302,7 +280,7 @@
     "value": "TIME LEFT 0:20"
    },
    "scene": "hood",
-   "atMs": 50900
+   "atMs": 50580
   },
   {
    "emph": true,
@@ -310,23 +288,11 @@
    "atMs": 50900
   },
   {
-   "beat": "trunkOpen",
-   "sfx": "whoosh",
-   "scene": "suite",
-   "atMs": 53620
-  },
-  {
    "beat": "tailgateBubble",
    "sticker": "TAILGATE PARTY?",
    "color": "#FFFFFF",
    "scene": "suite",
    "atMs": 54580
-  },
-  {
-   "beat": "bubblePop",
-   "sfx": "pop",
-   "scene": "suite",
-   "atMs": 55880
   },
   {
    "beat": "seatsDeploy",
@@ -363,7 +329,7 @@
     "y": 0.36
    },
    "scene": "bmw",
-   "atMs": 61920
+   "atMs": 60400
   },
   {
    "beat": "recordScratch",
@@ -379,7 +345,7 @@
    "color": "#FFD23F",
    "sfx": "ding",
    "scene": "bmw",
-   "atMs": 64660
+   "atMs": 65080
   },
   {
    "beat": "pretzelSwap",
@@ -393,7 +359,7 @@
     "value": "TIME LEFT 0:09"
    },
    "scene": "bmw",
-   "atMs": 67500
+   "atMs": 67100
   },
   {
    "emph": true,
@@ -442,7 +408,7 @@
     "value": "TIME LEFT 0:03"
    },
    "scene": "wagon",
-   "atMs": 78040
+   "atMs": 77860
   },
   {
    "emph": true,
@@ -464,7 +430,7 @@
     "y": 0.36
    },
    "scene": "ending",
-   "atMs": 80800
+   "atMs": 79400
   },
   {
    "beat": "stonksArrow",
@@ -506,6 +472,7 @@
      "B \u00b7 STATION WAGON"
     ]
    },
+   "untilBeat": "rewindToCouch",
    "scene": "ending",
    "atMs": 88760
   },

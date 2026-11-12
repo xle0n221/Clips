@@ -66,7 +66,7 @@ export const ROLLS_CONFIG: EpisodeConfig = {
   look: "2d",
   transitions: ROLLS_TRANSITIONS,
   hud2d: { counterId: "time", barId: "level" },
-  labelUntil: { pick: "entryLevelSign", bmw: "recordScratch", wagon: "recordScratch", ending: "stonksArrow" },
+  labelUntil: { pick: "entryLevelSign", hood: "wingsPoint", bmw: "recordScratch", wagon: "recordScratch", ending: "stonksArrow" },
   stickerStack: true,
   coverArt: RollsCoverArt,
 };

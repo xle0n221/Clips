@@ -369,11 +369,18 @@ export const StitchPanel: React.FC<{ readonly x: number; readonly y: number; rea
           <path key={i} d={`M ${x - w / 2 + i * 26} ${y - 146} l 40 292`} stroke="#D6C7A6" strokeWidth={6} />
         ))}
       </g>
-      <path d={`M ${x - w / 2 + 40} ${y} L ${nx} ${y}`} stroke="#8A5A34" strokeWidth={8} strokeDasharray="22 12" />
-      <path d={`M ${x - w / 2 + 40} ${y + 70} L ${x - w / 2 + 40 + (w - 80) * Math.max(0, t - 0.15)} ${y + 70}`} stroke="#8A5A34" strokeWidth={8} strokeDasharray="22 12" />
-      <path d={`M ${x - w / 2 + 40} ${y - 70} L ${x - w / 2 + 40 + (w - 80) * Math.max(0, t - 0.3)} ${y - 70}`} stroke="#8A5A34" strokeWidth={8} strokeDasharray="22 12" />
-      {/* Nadel */}
-      <g transform={`translate(${nx} ${y - 30 - up})`} filter="url(#sticker)">
+      {/* Stichreihen groß und kontrastreich (Regie-Kritik: Stiche waren nicht lesbar) */}
+      {[0, -80, 80].map((dy, i) => {
+        const x1 = i === 0 ? nx : x - w / 2 + 40 + (w - 80) * Math.max(0, t - 0.15 * i);
+        return (
+          <g key={dy}>
+            <path d={`M ${x - w / 2 + 40} ${y + dy} L ${x1} ${y + dy}`} stroke={LUX.ink} strokeWidth={22} strokeDasharray="34 18" strokeLinecap="round" opacity={0.35} />
+            <path d={`M ${x - w / 2 + 40} ${y + dy} L ${x1} ${y + dy}`} stroke="#8E1B2C" strokeWidth={14} strokeDasharray="34 18" strokeLinecap="round" />
+          </g>
+        );
+      })}
+      {/* Nadel (groß) */}
+      <g transform={`translate(${nx} ${y - 30 - up}) scale(1.35)`} filter="url(#sticker)">
         <path d="M -8 -260 L 8 -260 L 6 0 L 0 26 L -6 0 Z" fill={LUX.chrome} stroke={LUX.ink} strokeWidth={5} />
         <ellipse cx={0} cy={-230} rx={4} ry={14} fill={LUX.ink} />
         <rect x={-40} y={-330} width={80} height={80} rx={12} fill="#5A6070" stroke={LUX.ink} strokeWidth={5} />

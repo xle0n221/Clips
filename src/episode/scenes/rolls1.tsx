@@ -57,10 +57,12 @@ import {
 /** Hook: Sofa + Cup-Nudeln, Limousine im Fenster. „rich“ → Haken + Geldregen + Goldlicht; „Cool“ → Brille + Nicken; „Go“ → Startpistole. */
 export const Hook: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const rich = B("checkStamp", 0.18);
-  const cool = B("shadesOn", 0.5);
-  const go = B("startPistol", 0.9);
-  const minute = W("minute", 0.79);
+  const rich = W("rich", 0.18);
+  const check = B("checkStamp", 0.44);
+  const cool = W("Cool", 0.5);
+  // Startschuss auf „1 minute“ (Cue/Knall dort, ruhiger Abstand zum Szenenende)
+  const go = B("startPistol", 0.75);
+  const minute = W("driver", 0.66);
   const shot = shotIndex(f, [cool]);
   const sx = ROOM.sofaX;
   const fy = ROOM.floor + 10;
@@ -101,7 +103,7 @@ export const Hook: React.FC = () => {
       </Layer>
       <Layer depth={0}>
         <CashRain t={f - rich} />
-        <CheckBurst x={shot === 0 ? 870 : 880} y={shot === 0 ? 1010 : 1060} t={shot === 0 ? ease(f, rich, rich + 10) : 1} s={0.9} />
+        <CheckBurst x={shot === 0 ? 870 : 880} y={shot === 0 ? 1010 : 1060} t={ease(f, check, check + 10)} s={0.9} />
       </Layer>
     </Stage2D>
   );
@@ -112,7 +114,7 @@ export const Hook: React.FC = () => {
 /** Pick: Drehbühne Phantom (Flaggschiff, Krone) → Schwenk zum Ghost mit Supermarkt-Schild → Starter-Pack-Raster. */
 export const Pick: React.FC = () => {
   const { f, B, W } = useBeats();
-  const ride = B("showroomSpin", 0.15);
+  const ride = W("ride", 0.15);
   const flag = W("flagship", 0.33);
   const entry = B("entryLevelSign", 0.52);
   const its = W("It's", 0.78);
@@ -121,7 +123,7 @@ export const Pick: React.FC = () => {
   const gx = 1720;
   const cam = frameOn(lerp(540, gx + 40, pan), 930, 540, 960, lerp(lerp(0.96, 1.02, ease(f, 0, entry, "inOut")), 1.04, pan));
   const spin = Math.cos(ease(f, ride, ride + 36, "inOut") * Math.PI * 2);
-  const grid = clamp01((f - its) / Math.max(1, pack - its)) * 0.96;
+  const grid = ease(f, Math.min(its, pack), Math.min(its, pack) + 24, "inOut") * 0.96;
   return (
     <Stage2D cam={cam} mood="night" noSky>
       <LuxDefs />
@@ -161,7 +163,7 @@ export const Pick: React.FC = () => {
 /** Wait: Schlange an der Samtkordel, YOU ganz hinten; Umschlag „INVITE ONLY?“ → Stempel UNCONFIRMED, fällt. Dann SUV, Käufer-Schlange, SOLD OUT. */
 export const Wait: React.FC = () => {
   const { f, d, B, W } = useBeats();
-  const waitB = B("queueRope", 0.12);
+  const waitB = W("wait", 0.12);
   const invite = B("goldEnvelope", 0.28);
   const unconf = B("rumorStamp", 0.41);
   const inB = W("In", 0.5);
@@ -323,16 +325,20 @@ export const Stitch: React.FC = () => {
         <Layer depth={0}>
           <Wash id="meme" a="#141218" b="#1E1A24" />
           <rect x={40} y={560} width={1000} height={720} rx={18} fill="#000000" stroke="#FFFFFF" strokeWidth={6} />
+          {/* Meme-Layout von Anfang an gefüllt: „nobody:“ (leer) / „Rolls-Royce:“ + Nadel (Regie-Kritik: kein leeres Schwarzbild) */}
+          <text x={90} y={650} fontFamily={FONT} fontWeight={900} fontSize={64} fill="#FFFFFF" opacity={ease(f, nobody, nobody + 5)}>
+            nobody:
+          </text>
           {f >= rr ? (
-            <text x={90} y={660} fontFamily={FONT} fontWeight={900} fontSize={72} fill="#FFFFFF" opacity={ease(f, rr, rr + 5)}>
+            <text x={90} y={745} fontFamily={FONT} fontWeight={900} fontSize={72} fill="#FFFFFF" opacity={ease(f, rr, rr + 5)}>
               Rolls-Royce:
             </text>
           ) : null}
           {f >= rr ? (
             <g opacity={ease(f, rr, rr + 8)}>
-              <StitchPanel x={540} y={930} w={900} t={ease(f, rr, over, "linear")} f={f} />
+              <StitchPanel x={540} y={985} w={940} t={ease(f, rr, over, "linear")} f={f} />
               {f >= mil - 2 ? (
-                <text x={540} y={1215} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={96} fill={LUX.gold} stroke={LUX.ink} strokeWidth={10} paintOrder="stroke">
+                <text x={540} y={1250} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={96} fill={LUX.gold} stroke={LUX.ink} strokeWidth={10} paintOrder="stroke">
                   {count.toLocaleString("en-US")}
                 </text>
               ) : null}
@@ -359,17 +365,19 @@ export const Stitch: React.FC = () => {
 /** Stars: Kopf in den Nacken, Kamera kippt hoch zum Sternenhimmel im Dach; „Optional“ → Preisschild + leeres Portemonnaie mit Motten. */
 export const Stars: React.FC = () => {
   const { f, B, W } = useBeats();
-  const look = B("headTilt", 0.19);
+  const look = W("look", 0.19);
   const starsW = W("Stars", 0.42);
   const ceil = B("starCeiling", 0.51);
-  const opt = B("emptyWallet", 0.84);
+  // Preisschild mit Sticker (Cue auf „Cullinan?“), Portemonnaie/Motten erst auf „Optional“
+  const tagAt = B("emptyWallet", 0.67);
+  const opt = W("Optional", 0.84);
   const tilt = ease(f, look, starsW + 12, "inOut");
   const fy = 1500;
   const cam = frameOn(540, 1050, 540, lerp(880, 1170, tilt), lerp(1.06, 1.0, tilt));
   const on = ease(f, starsW - 6, ceil + 14, "inOut");
   const shoot = clamp01((f - ceil - 4) / 18);
   const wallet = ease(f, opt - 10, opt + 4, "inOut");
-  const tagSwing = Math.sin((f - opt) * 0.25) * 10 * (1 - clamp01((f - opt) / 30));
+  const tagSwing = Math.sin((f - tagAt) * 0.25) * 10 * (1 - clamp01((f - tagAt) / 30));
   return (
     <Stage2D cam={cam} mood="night" noSky>
       <LuxDefs />
@@ -381,10 +389,10 @@ export const Stars: React.FC = () => {
         {shoot > 0 && shoot < 1 ? (
           <path d={`M ${lerp(-100, 900, shoot)} ${lerp(120, 380, shoot)} l -160 -46`} stroke="#FFF7DA" strokeWidth={8} strokeLinecap="round" opacity={1 - shoot} />
         ) : null}
-        {f >= opt - 2 ? (
+        {f >= tagAt - 2 ? (
           <g transform={`translate(800 560) rotate(${tagSwing})`}>
             <path d="M 0 0 L 0 90" stroke={LUX.paper} strokeWidth={4} />
-            <g transform={`translate(0 ${90 + (1 - pop(f, opt - 2, 10)) * -60})`} filter="url(#sticker)">
+            <g transform={`translate(0 ${90 + (1 - pop(f, tagAt - 2, 10)) * -60})`} filter="url(#sticker)">
               <path d="M -110 0 L 110 0 L 110 90 L -110 90 L -140 45 Z" fill={LUX.paper} stroke={LUX.ink} strokeWidth={6} />
               <circle cx={-112} cy={45} r={8} fill="none" stroke={LUX.ink} strokeWidth={4} />
               <text x={10} y={60} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={LUX.ink}>
