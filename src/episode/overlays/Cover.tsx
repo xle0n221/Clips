@@ -69,7 +69,9 @@ export const Cover: React.FC<{ readonly cover: CoverSpec; readonly art?: React.F
           <div
             style={{
               marginTop: 34,
-              fontSize: 52,
+              // lange Unterzeilen in einer Zeile halten (kein einzelnes Wort in Zeile 2)
+              fontSize: Math.min(52, Math.floor(1520 / Math.max(1, cover.sub.length))),
+              whiteSpace: "nowrap",
               fontWeight: 800,
               color: "#FFFFFF",
               lineHeight: 1.15,

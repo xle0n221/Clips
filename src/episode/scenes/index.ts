@@ -46,6 +46,8 @@ export type EpisodeConfig = {
   readonly hud2d?: { readonly freezeBeat?: string; readonly counterId?: string; readonly barId?: string };
   /** Pill (label) einer Szene endet am Beat dieses Namens statt am Szenenende (Szenen-ID → Beat) */
   readonly labelUntil?: Record<string, string>;
+  /** Sticker (Text → Beat derselben Szene) endet an diesem Beat statt nach 54 Bildern */
+  readonly stickerUntil?: Record<string, string>;
   /** Motiv hinter dem Cover-Titel (overlays/Cover.tsx); ohne = erste Szene bleibt sichtbar */
   readonly coverArt?: React.FC;
 };

@@ -117,8 +117,8 @@ export const Figure: React.FC<{
   pose = "stand",
   step = 0,
   lean = 0,
-  armL = [12, 8],
-  armR = [12, 8],
+  armL: armLIn,
+  armR: armRIn,
   gloves = false,
   headDown = 0,
   headTilt = 0,
@@ -141,6 +141,9 @@ export const Figure: React.FC<{
   const dark = sil ?? PAPER.trunks;
   const br = breathe ? Math.sin(frame * 0.11) * 3 : 0;
   const sit = pose === "sit";
+  // Sitzend: Hände vor dem Bauch gefaltet, damit die Knie frei bleiben
+  const armL: Arm = armLIn ?? (sit ? [-6, -24] : [12, 8]);
+  const armR: Arm = armRIn ?? (sit ? [-6, -24] : [12, 8]);
   const hipY = -(sit ? p.leg * 0.62 : p.leg);
   const sh = hipY - p.torso + br;
   const headC = sh - 22 - p.head + headDown * p.head * 0.3;
@@ -152,8 +155,8 @@ export const Figure: React.FC<{
       const hx = side * p.hipW * 0.62;
       return [
         [hx, hipY],
-        [side * (p.hipW + 62), hipY + 34],
-        [side * (p.hipW + 44), 0],
+        [side * (p.hipW + 74), hipY + 22],
+        [side * (p.hipW + 60), 0],
       ];
     }
     const fx = side * p.hipW * 0.78 + side * sw * 36;
@@ -169,10 +172,20 @@ export const Figure: React.FC<{
   const leg = (side: -1 | 1) => {
     const pts = legPts(side);
     const f = pts[2];
+    const thigh = sit ? poly(pts.slice(0, 2)) : "";
     return (
       <g key={`leg${side}`}>
         <path d={poly(pts)} stroke={ink} strokeWidth={p.limb + 10} fill="none" strokeLinecap="round" strokeLinejoin="round" />
         <path d={poly(pts)} stroke={legColor} strokeWidth={p.limb} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        {sit ? (
+          <>
+            {/* verkürzter Oberschenkel (zeigt zur Kamera) + Kniescheibe */}
+            <path d={thigh} stroke={ink} strokeWidth={p.limb * 1.55 + 10} fill="none" strokeLinecap="round" />
+            <path d={thigh} stroke={legColor} strokeWidth={p.limb * 1.55} fill="none" strokeLinecap="round" />
+            <ellipse cx={pts[1][0]} cy={pts[1][1] + 4} rx={p.limb * 0.82} ry={p.limb * 0.7} fill={legColor} stroke={ink} strokeWidth={5} />
+            <path d={`M ${pts[1][0] - p.limb * 0.4} ${pts[1][1] + 8} Q ${pts[1][0]} ${pts[1][1] + 18} ${pts[1][0] + p.limb * 0.4} ${pts[1][1] + 8}`} stroke={PAPER.skinShade} strokeWidth={4} fill="none" />
+          </>
+        ) : null}
         {/* Schuh: schwarz, hoch geschnitten; darüber nackte Haut (keine Socken) */}
         <path
           d={`M ${f[0] - p.limb * 0.62} ${f[1] - p.limb * 1.1} L ${f[0] + p.limb * 0.62} ${f[1] - p.limb * 1.1} L ${f[0] + p.limb * 0.7 + side * 14} ${f[1] + 6} L ${f[0] - p.limb * 0.7 + side * 14} ${f[1] + 6} Z`}
@@ -364,7 +377,11 @@ export const Figure: React.FC<{
     outfit === "trunks" ? (
       <g>
         <path
-          d={`M ${-p.hipW - 8} ${hipY - 34} L ${p.hipW + 8} ${hipY - 34} L ${p.hipW + 16} ${hipY + 70} L ${8} ${hipY + 74} L 0 ${hipY + 30} L ${-8} ${hipY + 74} L ${-p.hipW - 16} ${hipY + 70} Z`}
+          d={
+            sit
+              ? `M ${-p.hipW - 8} ${hipY - 34} L ${p.hipW + 8} ${hipY - 34} L ${p.hipW + 40} ${hipY + 12} L ${p.hipW + 30} ${hipY + 34} L 0 ${hipY + 20} L ${-p.hipW - 30} ${hipY + 34} L ${-p.hipW - 40} ${hipY + 12} Z`
+              : `M ${-p.hipW - 8} ${hipY - 34} L ${p.hipW + 8} ${hipY - 34} L ${p.hipW + 16} ${hipY + 70} L ${8} ${hipY + 74} L 0 ${hipY + 30} L ${-8} ${hipY + 74} L ${-p.hipW - 16} ${hipY + 70} Z`
+          }
           fill={dark}
           stroke={ink}
           strokeWidth={5}
@@ -921,3 +938,46 @@ export const ImpactLines: React.FC<{ readonly x: number; readonly y: number; rea
   );
 };
 
+
+/** Ausweis-/Lizenzkarte (ohne echtes Logo), reißt bei `tear` 0..1 entlang einer Zickzack-Linie auseinander. Mitte (x, y). */
+export const LicenseCard: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly r?: number; readonly tear?: number; readonly title?: string }> = ({
+  x,
+  y,
+  s = 1,
+  r = 0,
+  tear = 0,
+  title = "LICENSE",
+}) => {
+  const half = (side: -1 | 1) => {
+    const outer = side < 0 ? "M 0 -130 L -260 -130 L -260 130 L -8 130" : "M 0 -130 L 260 -130 L 260 130 L -8 130";
+    const d = `${outer} L -8 130 L 16 80 L -16 30 L 18 -20 L -14 -70 L 20 -120 L 0 -130 Z`;
+    return (
+      <g key={side} transform={`translate(${side * tear * 70} ${tear * 30}) rotate(${side * tear * 14})`}>
+        <defs>
+          <clipPath id={`lic-${side}`}>
+            <path d={d} />
+          </clipPath>
+        </defs>
+        <g clipPath={`url(#lic-${side})`}>
+          <rect x={-260} y={-130} width={520} height={260} rx={22} fill={PAPER.paper} />
+          <rect x={-260} y={-130} width={520} height={70} fill="#2E3A55" />
+          <text x={0} y={-80} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={44} letterSpacing={6} fill={PAPER.paper}>
+            {title}
+          </text>
+          <rect x={-220} y={-30} width={130} height={140} rx={10} fill="#B9B2A4" />
+          <circle cx={-155} cy={20} r={30} fill="#8E877A" />
+          {[-20, 30, 80].map((ly) => (
+            <rect key={ly} x={-60} y={ly} width={ly === 80 ? 200 : 270} height={18} rx={9} fill="#C9C1AF" />
+          ))}
+        </g>
+        <path d={d} fill="none" stroke={PAPER.ink} strokeWidth={7} strokeLinejoin="round" />
+      </g>
+    );
+  };
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`} filter="url(#paper)">
+      {half(-1)}
+      {half(1)}
+    </g>
+  );
+};

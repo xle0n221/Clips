@@ -51,7 +51,7 @@ export const TysonCoverArt: React.FC = () => {
       <Layer>
         <Arena phase="warm" tone={RING_TONES.warm} f={frame} lights={0.5} />
         <Stool x={mx} y={fy + 4} s={s} />
-        <Figure x={mx} y={fy} s={s} frame={frame} pose="sit" towel="neck" armL={[18, 2]} armR={[18, 2]} headDown={1} eyes="down" brows="sad" blinkSeed={3} />
+        <Figure x={mx} y={fy} s={s} frame={frame} pose="sit" towel="neck" headDown={1} eyes="down" brows="sad" blinkSeed={3} />
         <SpotCone x={mx} y={fy + 10} o={1} w={430} dim={0.5} />
       </Layer>
     </Stage2D>
@@ -63,5 +63,6 @@ export const TYSON_CONFIG: EpisodeConfig = {
   transitions: TYSON_TRANSITIONS,
   hud2d: { counterId: "age", barId: "hits" },
   labelUntil: { streets: "tallyMarks", champion: "gloveWipe", conviction: "barStill" },
+  stickerUntil: { "A PIECE OF HIS EAR": "moneyFly" },
   coverArt: TysonCoverArt,
 };

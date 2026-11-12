@@ -80,8 +80,6 @@ export const Hook: React.FC = () => {
           frame={f}
           pose="sit"
           towel="neck"
-          armL={[18, 2]}
-          armR={[18, 2]}
           headDown={headDown}
           eyes={f < look ? "down" : "open"}
           brows={f < look ? "sad" : "neutral"}

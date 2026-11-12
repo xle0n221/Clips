@@ -13,6 +13,7 @@ import {
   headY,
   HangingCoat,
   ImpactLines,
+  LicenseCard,
   jolt,
   Label,
   Layer,
@@ -151,21 +152,21 @@ export const Douglas: React.FC = () => {
   const c3 = gone - 10;
   const c4 = 140;
   const shot = shotIndex(f, [c1, c2, c3, c4]);
-  const mx = 650;
-  const ox = 900;
+  const mx = 720;
+  const ox = 960;
   const fall = ease(f, down + 2, down + 24, "inOut");
   const land = hop(f, down + 24, 0, 1);
   const bounce = Math.sin(f * 0.3) * 8;
   const wind = anticipate(f, down, 20, 70, 100, { pre: 8, dur: 5 });
   const cam =
     shot === 0
-      ? frameOn(780, 820, 540, 880, lerp(1.0, 1.06, ease(f, 0, c1)))
+      ? frameOn(840, 820, 540, 880, lerp(1.0, 1.06, ease(f, 0, c1)))
       : shot === 1
         ? frameOn(ox - 120, FEET + headY("adult"), 560, 820, lerp(1.38, 1.48, ease(f, c1, c2)))
         : shot === 2
-          ? frameOn(480, 1000, 540, 960, lerp(1.0, 1.04, ease(f, c2, c3)))
+          ? frameOn(520, 1050, 540, 900, lerp(0.86, 0.9, ease(f, c2, c3)))
           : shot === 3
-            ? frameOn(lerp(700, 860, ease(f, c3, c4)), 1080, 540, 960, 1.35)
+            ? frameOn(lerp(760, 920, ease(f, c3, c4)), 1080, 540, 960, 1.35)
             : frameOn(540, 760, 540, 860, lerp(1.12, 1.22, ease(f, c4, c4 + 50)));
   const quiet = shot === 4;
   const dropDown = quiet ? 1 - ease(f, c4, c4 + 10, "linear") : 1;
@@ -205,9 +206,9 @@ export const Douglas: React.FC = () => {
               blinkSeed={3}
             />
             <ImpactLines x={mx - 20} y={FEET - 560} t={(f - down) / 10} s={0.9} />
-            {shot >= 2 && f > down + 26 ? <CountHand x={980} y={760} n={Math.min(5, 1 + Math.floor((f - down - 26) / 7))} s={0.8} /> : null}
+            {shot >= 2 && f > down + 26 ? <CountHand x={1000} y={660} n={Math.min(5, 1 + Math.floor((f - down - 26) / 7))} s={0.8} /> : null}
             {/* Gürtel rollt aus dem Bild */}
-            {shot === 3 ? <Belt x={lerp(760, 1500, ease(f, gone - 4, gone + 22, "linear"))} y={1170} s={0.4} r={(f - gone) * 14} /> : null}
+            {shot === 3 ? <Belt x={lerp(830, 1560, ease(f, gone - 4, gone + 22, "linear"))} y={1170} s={0.4} r={(f - gone) * 14} /> : null}
           </>
         ) : (
           <>
@@ -245,12 +246,12 @@ export const Conviction: React.FC = () => {
     shot === 0
       ? frameOn(560, 780, 540, 860, lerp(1.0, 1.06, ease(f, 0, 37)))
       : shot === 1
-        ? frameOn(860, 760, 540, 860, lerp(1.55, 1.65, ease(f, 37, 74)))
+        ? frameOn(700, 800, 540, 880, lerp(1.12, 1.2, ease(f, 37, 74)))
         : shot === 2
           ? frameOn(540, 780, 540, 860, lerp(1.3, 1.42, ease(f, 74, denies)))
           : shot === 3
             ? frameOn(540, hy, 540, 790, lerp(1.4, 1.48, ease(f, denies, 190)))
-            : frameOn(lerp(540, 650, ease(f, luck - 10, luck + 8)), 880, 540, 900, lerp(1.0, 1.4, ease(f, luck - 10, luck + 8, "inOut")));
+            : frameOn(540, 900, 540, 900, lerp(1.0, 1.1, ease(f, luck - 10, luck + 8, "inOut")));
   const ruled = shot === 4;
   return (
     <Stage2D cam={{ ...cam, y: cam.y + jolt(f, strike + 1, 12) }} mood="night" noSky>
@@ -265,7 +266,6 @@ export const Conviction: React.FC = () => {
               y={FEET}
               s={1.0}
               frame={f}
-              o={shot === 1 ? 0 : 1}
               headDown={shot === 2 ? 0.5 : 0}
               headTilt={shake}
               eyes={shot === 2 ? "down" : "open"}
@@ -282,16 +282,16 @@ export const Conviction: React.FC = () => {
           </>
         ) : (
           <>
-            {/* großer Balken LIFE HITS: bleibt stehen */}
-            <Label x={930} y={790} size={58} anchor="end" color="#F4F4F4">
+            <Figure x={540} y={FEET} s={0.95} frame={f} headDown={0.5} eyes="down" brows="sad" mouth="flat" blinkSeed={3} />
+            {/* großer Balken LIFE HITS (vor MIKE): bleibt stehen */}
+            <Label x={150} y={1022} size={54} anchor="start" color="#F4F4F4">
               LIFE HITS
             </Label>
             <g filter="url(#paper)">
-              <rect x={170} y={826} width={760} height={84} rx={42} fill="#1E1E1E" stroke={PAPER.ink} strokeWidth={8} />
-              <rect x={178} y={834} width={744 * 0.72} height={68} rx={34} fill="#FF5A5A" />
+              <rect x={150} y={1044} width={780} height={76} rx={38} fill="#1E1E1E" stroke={PAPER.ink} strokeWidth={8} />
+              <rect x={158} y={1052} width={764 * 0.72} height={60} rx={30} fill="#FF5A5A" />
             </g>
-            <line x1={178 + 744 * 0.72} y1={806} x2={178 + 744 * 0.72} y2={930} stroke="#F4F4F4" strokeWidth={8} strokeDasharray="12 10" />
-            <Figure x={860} y={FEET + 30} s={0.6} frame={f} headDown={0.6} eyes="down" brows="sad" mouth="flat" blinkSeed={3} />
+            <line x1={158 + 764 * 0.72} y1={1026} x2={158 + 764 * 0.72} y2={1138} stroke="#F4F4F4" strokeWidth={8} strokeDasharray="12 10" />
           </>
         )}
       </Layer>
@@ -306,32 +306,37 @@ export const Ear: React.FC = () => {
   const { f, B } = useBeats();
   const ear = B("earPiece", 56);
   const money = B("moneyFly", 83);
-  const shot = shotIndex(f, [25, ear, money, 120]);
+  const lic = ear + 13;
+  const shot = shotIndex(f, [25, ear, lic, money, 120]);
   const night = f >= money;
-  const whipX = night ? (1 - ease(f, money, money + 6)) * 380 : 0;
+  const whipX = night ? (1 - ease(f, money, money + 6)) * 200 : 0;
   const ox = 660;
+  const oy = FEET + headY("adult");
   const cam =
     shot === 0
       ? frameOn(570, 700, 540, 860, lerp(1.32, 1.42, ease(f, 0, 25)))
       : shot === 1
-        ? frameOn(600, FEET + headY("adult"), 540, 830, lerp(2.0, 2.15, ease(f, 25, ear)))
+        ? frameOn(600, oy, 540, 830, lerp(2.0, 2.15, ease(f, 25, ear)))
         : shot === 2
-          ? frameOn(620, 760, 540, 860, lerp(1.4, 1.3, ease(f, ear, money)))
+          ? frameOn(600, oy + 40, 540, 850, lerp(1.6, 1.7, ease(f, ear, lic)))
           : shot === 3
-            ? frameOn(540 + whipX, 800, 540, 880, 1.0)
-            : frameOn(560, 780, 540, 860, lerp(1.3, 1.4, ease(f, 120, 166)));
+            ? frameOn(560, 860, 540, 900, 1.0)
+            : shot === 4
+              ? frameOn(560 + whipX, 800, 540, 880, 1.0)
+              : frameOn(560, 780, 540, 860, lerp(1.3, 1.4, ease(f, 120, 166)));
   const pieceT = f - ear;
   const bills = React.useMemo(() => {
     const r = seeded(5);
     return Array.from({ length: 16 }, () => ({ a: r() * Math.PI - Math.PI, v: 8 + r() * 10, s: 0.5 + r() * 0.5, d: Math.floor(r() * 20) }));
   }, []);
   return (
-    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, ear, 14) }} mood="night" noSky>
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, ear, 14) + jolt(f, lic + 6, 8) }} mood="night" noSky>
       <Layer>
-        <Arena phase={night ? "black" : "red"} tone={night ? RING_TONES.dark : RING_TONES.warm} f={f} flashes={night ? 0 : 0.7} lights={night ? 0 : 0.6} drop={night ? <NightDrop down={1} /> : null} />
-        {!night ? (
+        <Arena phase={night ? "black" : "red"} tone={night ? RING_TONES.dark : RING_TONES.warm} f={f} flashes={night ? 0 : 0.7} lights={night ? 0 : shot === 3 ? 0.2 : 0.6} drop={night ? <NightDrop down={1} /> : null} />
+        {!night && shot !== 3 ? (
           <>
             <RopeTowel x={RING.lx + 60} f={f} />
+            {/* Gegner (gesichtslos): nach dem Biss Handschuh ans Ohr auf MIKEs Seite */}
             <Figure
               x={ox}
               y={FEET}
@@ -340,28 +345,32 @@ export const Ear: React.FC = () => {
               sil={SIL.opp}
               gloves
               flip
-              armL={f >= ear ? [150, 170] : [40, 120]}
-              armR={[30, 130]}
-              lean={f >= ear ? 6 : 0}
+              armL={[40, 120]}
+              armR={f >= ear ? [110, 232] : [30, 130]}
+              lean={f >= ear ? 7 : 0}
+              headTilt={f >= ear ? -6 : 0}
             />
             <Figure x={470} y={FEET} s={1.0} frame={f} gloves armL={[40, 110]} armR={[60, 110]} lean={shot === 1 ? lerp(0, 9, ease(f, 25, ear)) : 4} brows="angry" mouth="grit" eyes="side" blinkSeed={3} />
-            {pieceT >= 0 && pieceT < 30 ? (
+            {pieceT >= 0 ? (
               <g>
+                {/* Ohrstück als Comic-Symbol (kein Blut), schwebt langsam nach oben rechts */}
                 <path
                   d="M 0 -14 Q 16 -12 14 6 Q 4 16 -8 10 Q -16 -2 0 -14 Z"
-                  transform={`translate(${ox + 70 + pieceT * 6} ${FEET + headY("adult") - 10 - pieceT * 9 + pieceT * pieceT * 0.4}) rotate(${pieceT * 25})`}
-                  fill={SIL.opp}
+                  transform={`translate(${ox - 40 + pieceT * 4} ${oy - 70 - pieceT * 3}) rotate(${pieceT * 9}) scale(2.4)`}
+                  fill="#9AA1AC"
                   stroke={PAPER.ink}
-                  strokeWidth={4}
+                  strokeWidth={2.5}
                 />
-                <ImpactLines x={ox + 60} y={FEET + headY("adult")} t={pieceT / 12} s={0.6} />
+                <ImpactLines x={ox - 62} y={oy + 6} t={pieceT / 14} s={0.7} />
               </g>
             ) : null}
           </>
-        ) : (
+        ) : null}
+        {shot === 3 ? <LicenseCard x={560} y={860} s={1.2} r={-4} tear={ease(f, lic + 6, lic + 16)} /> : null}
+        {night ? (
           <>
             <Stool x={420} y={FEET + 4} s={1.1} />
-            <Figure x={420} y={FEET} s={1.1} frame={f} pose="sit" towel="head" headDown={0.8} eyes="down" brows="sad" mouth="frown" blinkSeed={3} />
+            <Figure x={420} y={FEET} s={1.1} frame={f} pose="sit" towel="neck" headDown={1} eyes="down" brows="sad" mouth="frown" blinkSeed={3} />
             {bills.map((b, i) => {
               const t = f - money - b.d;
               if (t < 0) return null;
@@ -371,7 +380,7 @@ export const Ear: React.FC = () => {
             })}
             <Sign x={760} y={lerp(-200, 960, ease(f, money + 6, money + 18))} s={0.6} r={-6 + Math.sin(f * 0.1) * 2} lines={["BANKRUPT", "2003"]} />
           </>
-        )}
+        ) : null}
       </Layer>
     </Stage2D>
   );
@@ -389,7 +398,7 @@ export const Exodus: React.FC = () => {
   const fl = ease(f, flower, flower + 38, "inOut");
   const cam =
     shot === 0
-      ? frameOn(540, 980, 540, 860, lerp(1.0, 1.08, ease(f, 0, 60)))
+      ? frameOn(540, 1060, 540, 900, lerp(1.32, 1.42, ease(f, 0, 60)))
       : shot === 1
         ? frameOn(540, hy, 540, 800, lerp(1.5, 1.68, ease(f, 60, 125)))
         : shot === 2
@@ -407,7 +416,7 @@ export const Exodus: React.FC = () => {
         {motes.map((m, i) => (
           <circle key={i} cx={m.x + Math.sin(f * 0.02 + i) * 20} cy={m.y - ((f * (0.4 + m.k * 0.6)) % 200)} r={2.5} fill="#FFE2A8" opacity={0.35} />
         ))}
-        <Figure x={540} y={sy} s={1.0} frame={f} pose="sit" towel="neck" headDown={0.95} eyes="down" brows="sad" mouth="frown" armL={[8, 28]} armR={[8, 28]} blinkSeed={3} breathe />
+        <Figure x={540} y={sy} s={1.0} frame={f} pose="sit" towel="neck" headDown={0.95} eyes="down" brows="sad" mouth="frown" blinkSeed={3} breathe />
         {f >= flower - 2 ? <PaperFlower x={lerp(560, 720, fl) + Math.sin(f * 0.12) * 30 * (1 - fl)} y={lerp(600, RING.front - 20, fl)} s={0.75} r={lerp(-40, 80, fl) + Math.sin(f * 0.15) * 12 * (1 - fl)} /> : null}
       </Layer>
     </Stage2D>
@@ -484,7 +493,7 @@ export const Ending: React.FC = () => {
           <>
             <Arena phase="warm" tone={RING_TONES.warm} f={f} lights={0.5} />
             <Stool x={820} y={FEET + 4} s={1.1} />
-            <Figure x={820} y={FEET} s={1.1} frame={f} pose="sit" towel="neck" armL={[18, 2]} armR={[18, 2]} headDown={1} eyes="down" brows="sad" blinkSeed={3} />
+            <Figure x={820} y={FEET} s={1.1} frame={f} pose="sit" towel="neck" headDown={1} eyes="down" brows="sad" blinkSeed={3} />
             <SpotCone x={820} y={FEET + 10} o={1} w={330} dim={0.5} />
           </>
         )}

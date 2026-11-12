@@ -239,7 +239,11 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
         // Sticker enden spätestens mit ihrer Szene (kein Überlappen in den nächsten Ort)
         const sceneIdx = timeline.scenes.findIndex((s) => s.id === c.scene);
         const sceneEnd = ends[sceneIdx] ?? durationInFrames;
-        const dur = Math.max(10, Math.min(next - from, sceneEnd - from, 54));
+        // optional: Sticker endet am Beat (scenes/index.ts `stickerUntil`, z. B. vor einem Ortswechsel)
+        const untilName = cfg?.stickerUntil?.[c.sticker!];
+        const untilCue = untilName ? timeline.cues.find((x) => x.scene === c.scene && x.beat === untilName) : undefined;
+        const until = untilCue ? toF(untilCue.atMs) - from : Infinity;
+        const dur = Math.max(10, Math.min(next - from, sceneEnd - from, 54, until));
         return (
           <Sequence
             key={`st-${i}`}

@@ -24,6 +24,11 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Mike Tyson (2D) Runde 2 nach Regie-Kritik 6,5 · 8 Befunde: Sticker lief in den nächsten Ort →
+  `stickerUntil` (Sticker-Text → Beat); Sitzpose frontal „auf Stelzen“ → verkürzte dicke Oberschenkel + Kniescheiben,
+  Hände gefaltet (Standard bei `pose="sit"`); Biss unlesbar → Gegner-Handschuh am Ohr, Ohrstück 2,4×, eigene
+  Einstellung Lizenzkarte reißt; liegende KO-Figur: Ausschnitt um 15 % weiter (Zoom 0,86). Selbstprüfung hatte
+  Ränder-Anschnitte bei Whip/KO als „vertretbar“ durchgelassen → künftig jeden Anschnitt korrigieren.
 - 12.11.2026 · Mike Tyson (2D) · **Experiment Pill-Ende auf Beat** (`EPISODE_CONFIG.labelUntil`, Szene → Beat):
   „HE SAYS“/„SOME SAY“/„HE DENIES IT“ verschwinden vor der nächsten Einstellung, statt auf Strichliste/Balken zu zeigen
   – timeline.json bleibt unverändert. Weitere Funde: Beat-Wörter, die im Satz doppelt vorkommen („years“ in conviction),
@@ -96,6 +101,6 @@
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 08.11.2026 | Sonnensystem v2 | – | 3 Anschnitte |
-| 12.11.2026 | Mike Tyson (2D) v1 | – (Regie-Kritiker offen; Selbstnote 7–8) | 3 Prüfrunden, 9 Korrekturen |
+| 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |
