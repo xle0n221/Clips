@@ -18,9 +18,11 @@ Ergebnis `docs/trends/<datum>.md` + `docs/trends/aktuell.md`. Prüfer: Retention
 - Noch keine erprobten Punkte (Rolle angelegt 12.11.2026).
 
 ## Gelernt (neueste oben; Datum · Befund · Beleg)
-- (noch leer)
+- 12.11.2026 · Benchmark Tempo: n=9 Erzähl-Shorts mit Untertiteln, Median 3,43 W/s; ruhige Spitzenreiter (AumSum 40/52 s, 26–42 Mio.) 2,4–2,6 W/s · `docs/trends/benchmark-tempo.md` (Apify 0,175 $)
+- 12.11.2026 · Apify-Suche liefert ~50 % Themenfremdes und nur ~30 % TikTok-Treffer mit Untertiteln; YouTube-Untertitel kommen mit dem Lauf (`transcriptionAndSubtitle: ALWAYS_SUBTITLES`), TikTok `downloadSubtitlesOptions: DOWNLOAD_SUBTITLES` (vtt-Links über api.apify.com)
 
 ## Nächste Experimente
+- Tempo-Benchmark erweitern: gezielt Kanäle per `profiles`/`startUrls` (AumSum, cardboard_cinema, explainedhistory9) statt Suchbegriffe, dazu Schnitte/Minute per ffmpeg, falls Download erlaubt.
 - Erster Lauf: messen, welche Quellen ohne Apify überhaupt belastbare Zahlen liefern (Anzahl Zahlen mit URL je Quelle).
 - Vergleichen, ob die Referenz-Werte aus `docs/referenz-analyse-4.md` (z. B. W/s, Schnitte) bei aktuell viralen Clips noch gelten.
 
