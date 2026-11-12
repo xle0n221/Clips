@@ -414,11 +414,11 @@ export const Ending: React.FC = () => {
         <Layer>
           <GoldStage f={f} />
           <rect x={-2000} y={-2000} width={6000} height={6000} fill="#3A3D48" opacity={0.55 + 0.25 * bump(f, math, 6)} />
-          {/* Ab „mathing“ liegt die Auswahlkarte (y 594–1266) im Bild → YOU klein ins freie Band y ≈ 400–594 */}
+          {/* Ab „mathing“ liegen Auswahlkarte (y ≥ 594) und Sticker (y ≈ 400–470) im Bild → YOU klein links neben den Kartentitel (Bild ≈ x 170, Füße y 700) */}
           <Dude
-            x={540}
-            y={lerp(1500, 742, shrink)}
-            s={lerp(1, 0.3, shrink)}
+            x={lerp(540, 244, shrink)}
+            y={lerp(1500, 830, shrink)}
+            s={lerp(1, 0.25, shrink)}
             frame={f}
             armA={[20, 70]}
             armB={[22, -118]}

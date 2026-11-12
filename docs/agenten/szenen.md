@@ -24,6 +24,17 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Rolls-Royce (2D) v2 nach Regie-Kritik 6/10 (neue Erzähler-Tonspur 92,7 s) · **Experiment UFC-Methode
+  übernommen (Cues verlegen statt Schnitte ändern):** 7 reine Beat-/SFX-Cues entfernt (Animation per `W("wort")` aus
+  captions.json), 15 Cues auf Nachbarwörter gelegt (z. B. Startschuss „minute“ statt „Go!“ am Szenenende, Haken auf „Done?“),
+  `--retime` ohne Neuvertonung, Text unverändert. Abstände (Szenenstart + Cues > 0,3 s + Szenenende): vorher n 49, Ø 1,88 s,
+  Median 1,68, 21 < 1,5 s → nachher n 40, Ø 2,30, Median 2,08, **1 < 1,5 s** (hood 1,46 s), max 4,07. Fallen: Wenn ein Cue
+  vom Wort wegrückt, muss die Animation getrennt am Wort bleiben (Preisschild am Cue, Portemonnaie auf „Optional“); Freeze
+  und HUD-Wechsel im selben Bild = Flip-Animation liest sich als „doppeltes HUD“ → HUD-Wechsel auf einen anderen Cue;
+  Auswahlkarte + Sticker belegen y ≈ 400–1266 → kleine Figur (s 0,25) links neben den Kartentitel statt ins Band.
+  Weitere Fixes: Label hood endet am neuen Beat `wingsPoint`, Kamera fährt ab Szenenstart an die Haube, Figur/Auto im Bild
+  (hood, suite), Meme-Karte „nobody:“ gefüllt, Stichreihen groß (burgund auf Twill) + Nadel 1,35× · `out/rr-kontakt-v2.jpg`,
+  `out/rr-fix-v2.jpg`.
 - 12.11.2026 · UFC (2D) v2 nach Regie-Kritik 6/10 (neue Erzähler-Tonspur 110,7 s) · **Ereignis-Abstände misst man an
   den Cues, nicht an den Schnitten:** Schnitte lagen schon bei ≈ 3–4 s, unruhig machten die Cue-Ereignisse (Sticker/Label/
   Beat + SFX). Cues nur im Drehbuch auf andere Wörter gelegt bzw. zusammengelegt (5 Cues entfernt, Animation im Code an
@@ -140,3 +151,4 @@
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |
 | 12.11.2026 | Rolls-Royce (2D) v1 | – (Selbstprüfung 7–8, Regie-Kritiker offen) | 2 Kontaktabzüge, 5 Korrekturen |
+| 12.11.2026 | Rolls-Royce (2D) v2 | – (Selbstnote 7,5, Regie offen) | 1 Cue-Abstand < 1,5 s (vorher 21), 6 Befunde umgesetzt; Cover-Auto weiter klein |
