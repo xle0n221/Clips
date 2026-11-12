@@ -81,6 +81,7 @@ Entscheidung in einem Satz im Drehbuch-Feld `style.why` bzw. `note` festhalten.
 Hashtags aus `hashtags/current` (Kombi passend zum Thema, 1–2 Tags themenspezifisch ersetzen),
 Grenzen und Quellen: `dashboard/README.md`, Abschnitt „Veröffentlichen“.
 YouTube: `title` ≤ 100 Zeichen, `description`, `hashtags`; TikTok: `caption`, höchstens 5 `hashtags`. Englisch.
+Zusätzlich `thumbnail` (Hinweis, welches Bild im Video als Thumbnail/Cover zu wählen ist) – Regel: `docs/clip-regeln.md` → „Thumbnail im Video“. Das Cover-Standbild gehört in den Kontaktabzug zu Freigabe 2.
 
 ## 7. Wenn etwas blockiert
 Netzwerk-Sperre, fehlender Schlüssel, Freigabe in der Claude-App nötig → `actionNeeded` mit einem

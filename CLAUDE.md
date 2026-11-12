@@ -18,6 +18,7 @@ Jeder beauftragte Agent bekommt seine Rollen-Datei aus `docs/agenten/` mit (Lern
 
 ## Ein Video herstellen
 Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regeln `docs/clip-regeln.md`.
+**Thumbnail Pflicht** (Vorgabe 12.11.2026): erste 0,5 s jedes Clips = gestaltetes Cover zum Auswählen auf den Plattformen – `docs/clip-regeln.md` → „Thumbnail im Video“.
 Stil: **je Video passend zum Thema entscheiden** (Vorgabe Nutzer 11.11.2026) – 3D (Bau-Kit `src/episode/kit/`),
 2D (flach/SVG/Paper-Cut) oder Mischung; Figuren dürfen je Video anders aussehen. Entscheidung + Begründung im
 Drehbuch-Feld `style`; Regeln: `docs/clip-regeln.md` → „Stilwahl“. Format immer 1080×1920.

@@ -92,6 +92,23 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Unverändert für jeden Stil: Themen-Treue (Standbild ohne Ton verrät das Thema), unteres Drittel frei für Untertitel,
   Schnitt auf Beats, Qualitäts-Tor Note ≥ 7.
 
+## Thumbnail im Video (Vorgabe des Nutzers 12.11.2026)
+> „ab jetzt für jeden clip ein Thumbnail einarbeiten das zum clip passt, das ich auf den plattformen in den
+> schneide einstellungen das eine bild Auswählen kann als ‚thumbnail‘“
+
+- Grund: Bei Shorts lässt sich kein eigenes Bild hochladen, nur ein **Bild aus dem Video** wählen („Select a frame
+  … to use as your thumbnail“, https://support.google.com/youtube/answer/10343433). TikTok-App: „Select cover“, den
+  Rahmen auf die gewünschte Stelle ziehen (https://support.tiktok.com/en/using-tiktok/creating-videos/making-a-post).
+- Jeder Clip bekommt deshalb **ein eigens gestaltetes Cover-Bild als echte Bilder im Video**: die ersten **0,5 s
+  (Bilder 0–14 bei 30 fps)** zeigen das Hook-Motiv mit großem Titel (2–5 Wörter, Akzentgelb, mittig im sicheren
+  Bereich, nicht im unteren Drittel), ohne Untertitel. Danach geht der Hook ohne Schnitt weiter (Stimme läuft ab 0,15 s).
+- Inhalt: Hauptfigur + Kernbild des Themas + Neugier-Frage (passt zum Titel, kein Clickbait, der nicht eingelöst wird).
+  Lesbar auch als kleines Vorschaubild (Kontrast, max. 5 Wörter).
+- Drehbuch-Feld `"cover": {"text": "...", "frames": 15}`; zusätzlich Standbild `out/<id>-cover.png` (für
+  Kontaktabzug/Freigabe 2 und für TikTok-Web, wo ein Bild gewählt werden kann).
+- In `publish` steht `thumbnail: "Bild bei 0:00 (erste 0,5 s) wählen"`, damit der Nutzer die Stelle findet.
+- Ich kann nicht bestätigen, wie bildgenau der Schieberegler der YouTube-App ist; deshalb 0,5 s statt eines Einzelbilds.
+
 ## Sprache & Stimme (Vorgaben des Nutzers)
 - Clips sind **auf Englisch**, mit einer **angenehmen Stimme**.
 - **Zeitgemäßer, lockerer Slang**, aber so, dass **jede Altersgruppe** sich abgeholt fühlt

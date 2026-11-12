@@ -74,6 +74,8 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - Komposition in `src/Root.tsx` registrieren (wie `SolarSystem`, Prop `episode`).
 - `npm run lint` muss sauber sein.
 
+- **Thumbnail/Cover** (Pflicht): Bilder 0–14 = gestaltetes Cover (`cover` im Drehbuch), Standbild `out/<id>-cover.png`; Regel `docs/clip-regeln.md` → „Thumbnail im Video“.
+
 ## 5. Prüfbilder (Pflicht vor dem Render)
 - `npm run contactsheet -- --comp <Komposition> --per-scene 3` (oder `--every 2`, `--at 0.8,7.7`; `--scale 0.25`,
   `--out out/x.jpg`): bündelt einmal, ein Browser für alle Bilder, beschriftet (Szene, Sekunde, Frame), ffmpeg

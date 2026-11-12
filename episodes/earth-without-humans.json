@@ -7,6 +7,7 @@
   "speed": 1.07,
   "pauseMs": 450,
   "sceneGapMs": 120,
+  "cover": {"text": "EARTH WITHOUT US?", "sub": "How long until it forgets we existed?", "frames": 15},
   "sources": "docs/quellen-erde-ohne-menschen.md",
   "factcheck": "docs/quellen-erde-ohne-menschen.md → Prüfvermerke Faktenprüfer (11.11.2026)",
   "version": "v2 (nach Faktencheck 7/10 + Retention 7/10, 11.11.2026)",
