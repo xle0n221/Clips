@@ -48,6 +48,8 @@ export type EpisodeConfig = {
   readonly labelUntil?: Record<string, string>;
   /** Sticker (Text → Beat derselben Szene) endet an diesem Beat statt nach 54 Bildern */
   readonly stickerUntil?: Record<string, string>;
+  /** Folgt ein Sticker zu schnell (< 45 Bilder), bleibt der vorige stehen und der neue rutscht 150 px tiefer */
+  readonly stickerStack?: boolean;
   /** Motiv hinter dem Cover-Titel (overlays/Cover.tsx); ohne = erste Szene bleibt sichtbar */
   readonly coverArt?: React.FC;
 };

@@ -234,16 +234,25 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
       ) : null}
 
       {frame < coverFrames(timeline.cover) ? null : stickers.map((c, i) => {
-        const from = toF(c.atMs);
-        const next = stickers[i + 1] ? toF(stickers[i + 1].atMs) : Infinity;
-        // Sticker enden spätestens mit ihrer Szene (kein Überlappen in den nächsten Ort)
-        const sceneIdx = timeline.scenes.findIndex((s) => s.id === c.scene);
-        const sceneEnd = ends[sceneIdx] ?? durationInFrames;
-        // optional: Sticker endet am Beat (scenes/index.ts `stickerUntil`, z. B. vor einem Ortswechsel)
-        const untilName = cfg?.stickerUntil?.[c.sticker!];
-        const untilCue = untilName ? timeline.cues.find((x) => x.scene === c.scene && x.beat === untilName) : undefined;
-        const until = untilCue ? toF(untilCue.atMs) - from : Infinity;
-        const dur = Math.max(10, Math.min(next - from, sceneEnd - from, 54, until));
+        // Dauer eines Stickers j (und ob er wegen `stickerStack` trotz Folge-Sticker stehen bleibt)
+        const durOf = (j: number) => {
+          const cj = stickers[j];
+          const fromJ = toF(cj.atMs);
+          const nextJ = stickers[j + 1] ? toF(stickers[j + 1].atMs) : Infinity;
+          // Sticker enden spätestens mit ihrer Szene (kein Überlappen in den nächsten Ort)
+          const sceneIdx = timeline.scenes.findIndex((s) => s.id === cj.scene);
+          const sceneEnd = ends[sceneIdx] ?? durationInFrames;
+          // optional: Sticker endet am Beat (scenes/index.ts `stickerUntil`, z. B. vor einem Ortswechsel)
+          const untilName = cfg?.stickerUntil?.[cj.sticker!];
+          const untilCue = untilName ? timeline.cues.find((x) => x.scene === cj.scene && x.beat === untilName) : undefined;
+          const until = untilCue ? toF(untilCue.atMs) - fromJ : Infinity;
+          // optional (`stickerStack`): folgt der nächste Sticker zu schnell (< 45 Bilder), bleibt dieser stehen
+          const keep = Boolean(cfg?.stickerStack) && nextJ - fromJ < 45;
+          return { from: fromJ, keep, dur: Math.max(10, Math.min(keep ? Infinity : nextJ - fromJ, sceneEnd - fromJ, 54, until)) };
+        };
+        const { from, dur } = durOf(i);
+        const prev = i > 0 ? durOf(i - 1) : undefined;
+        const shift = prev && prev.keep && prev.from + prev.dur > from ? 150 : 0;
         return (
           <Sequence
             key={`st-${i}`}
@@ -257,11 +266,11 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
               duration={dur}
               tilt={i % 2 ? 3 : -3}
               top={
-                timeline.hud
+                (timeline.hud
                   ? hudBottom(timeline.hud) + 30
                   : cfg?.hud2d
                     ? TIMELINE_HUD_BOTTOM + 30
-                    : undefined
+                    : 300) + shift
               }
             />
           </Sequence>

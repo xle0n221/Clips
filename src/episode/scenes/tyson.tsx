@@ -64,5 +64,6 @@ export const TYSON_CONFIG: EpisodeConfig = {
   hud2d: { counterId: "age", barId: "hits" },
   labelUntil: { streets: "tallyMarks", champion: "gloveWipe", conviction: "barStill" },
   stickerUntil: { "A PIECE OF HIS EAR": "moneyFly" },
+  stickerStack: true,
   coverArt: TysonCoverArt,
 };
