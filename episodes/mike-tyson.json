@@ -6,21 +6,21 @@
   "voicePreset": "ruhig",
   "pauseMs": 450,
   "sceneGapMs": 120,
-  "lengthSec": 65,
+  "lengthSec": 68,
   "cover": {
-    "text": "HOW HARD WAS TYSON'S LIFE?",
-    "sub": "Scored round by round",
+    "text": "HARD LIFE OR HIS FAULT?",
+    "sub": "Mike Tyson, scored round by round",
     "frames": 15
   },
   "sources": "docs/quellen-mike-tyson.md",
-  "factcheck": "offen (Faktenprüfer) – alle Belege Tertiär (Wikipedia), Freigabeliste in docs/quellen-mike-tyson.md",
-  "version": "v1 (Drehbuch-Entwurf 12.11.2026)",
+  "factcheck": "docs/quellen-mike-tyson.md → Prüfvermerke Drehbuch v1 (12.11.2026), P1–P4 umgesetzt; alle Belege Tertiär (Wikipedia)",
+  "version": "v2 (nach Faktencheck 9/10 + Retention 7/10, 12.11.2026)",
   "style": {
     "look": "2d",
     "why": "Lebenslauf als Zeitleiste in Runden mit Altersanzeige, Bühnen-Kulissen statt realer Orte und symbolische Bilder für Verurteilung und Exodus' Tod: flacher 2D-Paper-Cut erzählt das klarer und würdiger als 3D, vermeidet jede fotonahe Nachbildung einer realen Person und nutzt den Text-Zähler aus src/episode/kit2d/hud.tsx (TimelineHUD).",
-    "characters": "MIKE = flache Paper-Cut-Cartoonfigur ohne Porträtähnlichkeit, erkennbar nur über die belegte Kampfkleidung (Z39): schwarze Trunks, schwarze Schuhe ohne Socken, weißes Handtuch um den Hals statt Bademantel; das weiße Handtuch ist sein Erkennungsmerkmal ab der Szene 'champion'. Kind-MIKE (Szenen brooklyn–mother): kleiner, schlichtes graues Shirt = STIL-ENTSCHEIDUNG (Kinderkleidung unbelegt). CUS = ältere Figur, nur Silhouette mit Mantel (Aussehen unbelegt, Stil). Keine Darstellung der Frau aus dem Strafverfahren, keine Darstellung von Exodus oder des Unfalls. Gegner (Douglas, Holyfield, Paul) nur als gesichtslose Silhouetten in Grau."
+    "characters": "MIKE = flache Paper-Cut-Cartoonfigur ohne Porträtähnlichkeit, erkennbar nur über die belegte Kampfkleidung (Z39): schwarze Trunks, schwarze Schuhe ohne Socken, weißes Handtuch um den Hals statt Bademantel; das weiße Handtuch ist sein Erkennungsmerkmal ab der Szene 'champion'; in 'ending' (2024) tragen Kampfkleidung und Handtuch = STIL-ENTSCHEIDUNG zur Wiedererkennung, für 2024 unbelegt (Z39 beschreibt seine Karriere, Faktenprüfer P4). Kind-MIKE (Szenen brooklyn–mother): kleiner, schlichtes graues Shirt = STIL-ENTSCHEIDUNG (Kinderkleidung unbelegt). CUS = ältere Figur, nur Silhouette mit Mantel (Aussehen unbelegt, Stil). Keine Darstellung der Frau aus dem Strafverfahren, keine Darstellung von Exodus oder des Unfalls. Gegner (Douglas, Holyfield, Paul) nur als gesichtslose Silhouetten in Grau."
   },
-  "note": "Themen-Art: Geschichte/Person (C1), Lebensanalyse. Klammer: 'Let's score it like a fight' – das Leben als Kampf in 10 Runden (Sticker ROUND 1…9, FINAL BELL), Glocke = sfx 'ding'. Keine Du-Perspektive (Zuschauer soll nicht in die Rolle eines verurteilten Täters schlüpfen); 'you' erst am Ende als Punktrichter ('You score it'). HUD: Text-Zähler AGE (AGE 0 → 10 → 13 → 16 → 19 → 20 → 23 → 25 → 30 → 37 → 42 → 58; Herleitung aus Geburtsdatum 30.06.1966, Z1) + Balken LIFE HITS (steigt mit jedem Schicksalsschlag). WICHTIG: In 'conviction' bewegt sich der Balken NICHT – die Tat, für die er verurteilt wurde, ist kein Schlag, den er einstecken musste ('This one isn't bad luck'); auch 'ear' (Biss) bewegt ihn nicht, erst der Bankrott. Ton: ruhig, traurig, ehrlich; kein Humor, besonders nicht in 'conviction' und 'exodus'. Re-Hook ('How hard so far? Brutal.') in 'mother' bei ~39 % der Wörter (Experiment). Wendepunkt der Analyse: 'conviction' (ab hier nicht nur Opfer). Loop: letzte Worte 'You score it. Again:' → erster Satz 'How hard was Mike Tyson's life, really?'. Color Script: warm-gold (Kindheit, Aufstieg) → kühles Blau-Grau (Douglas) → entsättigtes Grau (conviction) → fast schwarz mit einem warmen Licht (exodus) → gedimmter Spot (ending). Ort: ein Boxring als durchgehende Bühne; jede Lebensstation wird als Paper-Cut-Kulisse hinter den Seilen heruntergelassen (Ortswechsel gezeigt). Sticker mit Ziffern, Sprechtext ausgeschrieben (Chatterbox).",
+  "note": "Themen-Art: Geschichte/Person (C1), Lebensanalyse. Klammer: 'Score it' (Hook) – das Leben als Kampf in 10 Runden (Sticker ROUND 1…9, FINAL BELL), Glocke = sfx 'ding'. Keine Du-Perspektive (Zuschauer soll nicht in die Rolle eines verurteilten Täters schlüpfen); 'you' erst am Ende als Punktrichter ('You score it'). HUD: Text-Zähler AGE (AGE 0 → 10 → 13 → 16 → 19 → 20 → 23 → 25 → 30 → 37 → 42 → 58; Herleitung aus Geburtsdatum 30.06.1966, Z1) + Balken LIFE HITS (steigt mit jedem Schicksalsschlag). WICHTIG: In 'conviction' bewegt sich der Balken NICHT – die Tat, für die er verurteilt wurde, ist kein Schlag, den er einstecken musste ('This one isn't bad luck'); auch 'ear' (Biss) bewegt ihn nicht, erst der Bankrott. Ton: ruhig, traurig, ehrlich; kein Humor, besonders nicht in 'conviction' und 'exodus'. Re-Hook ('How hard so far? Brutal. | And he's not champion yet.') in 'mother' bei ~39 % der Wörter (Experiment). Wendepunkt der Analyse: 'conviction' (ab hier nicht nur Opfer). Loop: letzte Worte 'You score it. Again:' → erster Satz 'Mike Tyson: a hard life, or his own fault? Score it.' (Hook-Frage ohne Sachbehauptung; Fazit 'Hard? Brutally. Blameless? No.' beantwortet beide Hälften). Color Script: warm-gold (Kindheit, Aufstieg) → kühles Blau-Grau (Douglas) → entsättigtes Grau (conviction) → fast schwarz mit einem warmen Licht (exodus) → gedimmter Spot (ending). Ort: ein Boxring als durchgehende Bühne; jede Lebensstation wird als Paper-Cut-Kulisse hinter den Seilen heruntergelassen (Ortswechsel gezeigt). Sticker mit Ziffern, Sprechtext ausgeschrieben (Chatterbox).",
   "hud": {
     "title": "TYSON vs. LIFE",
     "counters": [
@@ -43,8 +43,8 @@
     {
       "id": "hook",
       "delivery": "punch",
-      "text": "How hard was Mike Tyson's life, *really*? Let's score it like a fight.",
-      "visual": "2D Paper-Cut, dunkle Halle, ein Boxring im Spotlicht. Cover (0–0,5 s): MIKE sitzt erschöpft auf dem Hocker in der Ecke, weißes Handtuch um den Hals, schwarze Trunks, schwarze Schuhe ohne Socken, Kopf gesenkt; großer Titel 'HOW HARD WAS TYSON'S LIFE?' in Gelb oben-mitte. Danach ohne Schnitt: MIKE hebt den Kopf zur Kamera; auf 'score' fährt eine Punktrichter-Karte ins Bild (leere Zeilen ROUND 1–10).",
+      "text": "Mike Tyson: a *hard* life, or his own fault? Score it.",
+      "visual": "2D Paper-Cut, dunkle Halle, ein Boxring im Spotlicht. Cover (0–0,5 s): MIKE sitzt erschöpft auf dem Hocker in der Ecke, weißes Handtuch um den Hals, schwarze Trunks, schwarze Schuhe ohne Socken, Kopf gesenkt; großer Titel 'HARD LIFE OR HIS FAULT?' in Gelb oben-mitte. Danach ohne Schnitt: MIKE hebt den Kopf zur Kamera; auf 'score' fährt eine Punktrichter-Karte ins Bild (leere Zeilen ROUND 1–10).",
       "sources": [
         "Z39: \"black trunks, black shoes with no socks, and a plain white towel fit around his neck in place of a traditional robe\" (nur Bild)",
         "Frage/Rahmen ohne Faktenaussage"
@@ -52,7 +52,7 @@
       "cues": [
         {
           "word": "hard",
-          "sticker": "HOW HARD?",
+          "sticker": "HARD LIFE OR HIS FAULT?",
           "color": "#FFD23F",
           "sfx": "boom",
           "hud": {
@@ -61,11 +61,11 @@
           }
         },
         {
-          "word": "really",
+          "word": "fault",
           "beat": "lookUp"
         },
         {
-          "word": "score",
+          "word": "Score",
           "beat": "scorecardIn",
           "sfx": "ding"
         }
@@ -206,7 +206,7 @@
     {
       "id": "mother",
       "delivery": "calm",
-      "text": "At sixteen, his mom dies. Cus becomes his legal guardian. | How hard so far? *Brutal*.",
+      "text": "At sixteen, his mom dies. Cus becomes his legal guardian. | How hard so far? *Brutal*. | And he's not champion yet.",
       "visual": "Kühles Licht. Die Mutter-Silhouette aus 'brooklyn' verblasst aus einem Bilderrahmen. CUS legt Teen-MIKE die Hand auf die Schulter, ein Dokument 'LEGAL GUARDIAN' (kein Adoptions-Wort). Re-Hook: Spotlight-Bühne, alles dunkel, MIKE allein in der Ringmitte, Punktrichter-Karte vom Hook kommt zurück, Zeilen 1–4 rot ausgefüllt.",
       "sources": [
         "Z9: \"Tyson's mother died when he was 16, leaving him in the care of D'Amato, who would become his legal guardian.\" ('legal guardian', nicht 'adopted')",
@@ -252,8 +252,8 @@
     },
     {
       "id": "champion",
-      "delivery": "hype",
-      "text": "At nineteen, he loses Cus. Some say his troubles start there. About a year later: *youngest* heavyweight champion ever.",
+      "delivery": "tense",
+      "text": "At nineteen, he loses Cus. Some say his later troubles start there. About a year later: *youngest* heavyweight champion ever.",
       "visual": "CUS' Mantel hängt leer am Ringpfosten. Etikett 'SOME SAY' klein. Dann Wipe (Form: Boxhandschuh) in Gold: großer Arena-Ring, MIKE jetzt erwachsen in schwarzen Trunks, schwarzen Schuhen ohne Socken, weißes Handtuch um den Hals; tigert vor dem Kampf durch den Ring (belegt Z39); Gürtel wird hochgehalten (Gürtel-Farbe unbelegt → neutral Gold).",
       "sources": [
         "Z12: \"D'Amato died of pneumonia at Mount Sinai Hospital in Manhattan on November 4, 1985.\" · \"D'Amato died a little over a year before Tyson became the youngest world heavyweight titleholder in history\" (Alter 19: Herleitung 30.06.1966 → 04.11.1985)",
@@ -301,7 +301,7 @@
         {
           "word": "youngest",
           "beat": "beltUp",
-          "sticker": "YOUNGEST CHAMP EVER: 20",
+          "sticker": "YOUNGEST HEAVYWEIGHT CHAMP: 20",
           "color": "#FFD23F",
           "sfx": "boom"
         }
@@ -360,8 +360,8 @@
     {
       "id": "conviction",
       "delivery": "calm",
-      "text": "Two years later, a jury convicts him of *rape*. He serves nearly three years. He denies it; appeals fail. | This one isn't bad luck.",
-      "visual": "Entsättigtes Grau, keine Musik-Akzente. Kulisse: leerer Gerichtssaal in flachen Formen, Richterhammer, Geschworenenbank als zwölf graue Kreise. MIKE ohne Handtuch, steht. Keine Darstellung der Tat, kein Opfer, kein Name. Auf 'years' Gitterstäbe-Schatten über dem Ring. Auf 'luck': der Balken LIFE HITS bleibt sichtbar stehen (Kamera-Zoom auf den unveränderten Balken), Sticker 'NOT BAD LUCK'.",
+      "text": "Two years later, a jury convicts him of rape. He serves nearly three years. He denies it; appeals fail. | This one *isn't* bad luck.",
+      "visual": "Entsättigtes Grau, keine Musik-Akzente. Kulisse: leerer Gerichtssaal in flachen Formen, Richterhammer, Geschworenenbank als Reihe grauer Kreise (Anzahl unbelegt, nicht zählbar darstellen). MIKE ohne Handtuch, steht. Keine Darstellung der Tat, kein Opfer, kein Name. Auf 'years' Gitterstäbe-Schatten über dem Ring. Auf 'luck': der Balken LIFE HITS bleibt sichtbar stehen (Kamera-Zoom auf den unveränderten Balken), Sticker 'NOT BAD LUCK'.",
       "sources": [
         "Z24: \"Tyson was convicted of the rape charge on February 10, 1992, after the jury deliberated for nearly 10 hours.\" (zwei Jahre nach 11.02.1990)",
         "Z25: \"he was released in March 1995 after serving less than three years of the sentence\" (→ 'nearly three years')",
@@ -460,7 +460,7 @@
     {
       "id": "exodus",
       "delivery": "calm",
-      "text": "His four-year-old daughter, Exodus, is found tangled in a cord. She dies the next day.",
+      "text": "His four-year-old daughter, Exodus, is found tangled in a cord. | She dies the next day.",
       "visual": "Fast schwarz, ein einziges warmes Licht. Keine Darstellung des Unfalls, kein Laufband, kein Kind im Bild. MIKE sitzt allein auf der Ringkante, eine kleine Papierblume fällt langsam auf die Matte. Keine Sticker außer der Rundenkarte, kein sfx außer der leisen Glocke.",
       "sources": [
         "Z36: \"On May 25, 2009, Tyson's four-year-old daughter, Exodus, was found by her seven-year-old brother, unconscious and tangled in a cord, dangling from an exercise treadmill.\" · \"She died of her injuries on May 26, 2009.\" (Alter 42: Herleitung; Details bewusst weggelassen)"
@@ -489,12 +489,13 @@
     {
       "id": "ending",
       "delivery": "punch",
-      "text": "At fifty-eight, he's still fighting. He loses. | Hard? *Brutally*. Blameless? No. You score it. Again:",
-      "visual": "Licht kommt zurück, gedimmter Spot. Riesige Stadion-Kulisse (Arlington 2024), MIKE älter (graue Schläfen = Stil), gleiche Kampfkleidung, weißes Handtuch; junge Gegner-Silhouette. Punktrichter-Karte schließt: Zeile 'HARD' rot, Zeile 'BLAMELESS' grau 'NO'. Auf 'score' dreht sich die Karte zur Kamera (leere Zeile, Stift). Auf 'Again' Form-Wipe zurück zum Ring aus dem Hook, Zähler springt auf 'AGE 0', MIKE auf dem Hocker (Loop in 'How hard was Mike Tyson's life, really?').",
+      "text": "Fifteen years on, at fifty-eight, he's still fighting. He loses. | Hard? *Brutally*. Blameless? *No*. You score it. Again:",
+      "visual": "Licht kommt zurück, gedimmter Spot. Riesige Stadion-Kulisse (Arlington 2024), MIKE älter (graue Schläfen = Stil), gleiche Kampfkleidung, weißes Handtuch (STIL-ENTSCHEIDUNG zur Wiedererkennung, für 2024 unbelegt); junge Gegner-Silhouette. Punktrichter-Karte schließt: Zeile 'HARD' rot, Zeile 'BLAMELESS' grau 'NO'. Auf 'score' dreht sich die Karte zur Kamera (leere Zeile, Stift). Auf 'Again' Form-Wipe zurück zum Ring aus dem Hook, Zähler springt auf 'AGE 0', MIKE auf dem Hocker (Loop in 'Mike Tyson: a hard life, or his own fault?').",
       "sources": [
         "Z37: \"took place on November 15, 2024, at the AT&T Stadium in Arlington, Texas\" · \"Paul defeated Tyson via unanimous decision\" (Alter 58: Herleitung 30.06.1966 → 15.11.2024)",
         "Z38: \"The 31-year age difference between Tyson and Paul is the largest age difference in professional boxing history.\" (nur Sticker)",
-        "'Hard? Brutally. Blameless? No.' = Fazit der Analyse aus Z2–Z36, keine neue Faktenaussage; Loop zum ersten Satz"
+        "'Hard? Brutally. Blameless? No.' = Fazit der Analyse aus Z2–Z36, keine neue Faktenaussage; Loop zum ersten Satz",
+        "Fifteen years on: Herleitung 25.05.2009 (Z36) → 15.11.2024 (Z37) = 15 Jahre 6 Monate; Alter 58: 30.06.1966 → 15.11.2024"
       ],
       "cues": [
         {
