@@ -1,6 +1,6 @@
 # Quellen: „How hard was Mike Tyson's life really?“ (65-s-Short, Lebensanalyse)
 
-Recherche-Rolle, Abrufdatum aller Zeilen: **12.11.2026**. Prüfer: Faktenprüfer – noch offen.
+Recherche-Rolle, Abrufdatum aller Zeilen: **12.11.2026**. Prüfer: Faktenprüfer – Drehbuch v1 geprüft 12.11.2026, siehe „Prüfvermerke Drehbuch v1“ unten.
 
 ## Quellenlage (ehrlich)
 Erreichbarkeit per curl-Schleife (ehrlicher User-Agent „ClipsResearch/1.0“, 12.11.2026):
@@ -99,3 +99,38 @@ Freigabe-Vorschlag = Zitat wörtlich im Wikipedia-Text gefunden (Typ Tertiär). 
 - **Mit Vorbehalt sprechen** („reportedly“, „he says“, „some say“): Zeilen 4, 5, 13, 21, 31, 33, 38, 40.
 - **Nicht ins Drehbuch ohne neue Recherche:** Urteilstext Tyson v. State, BoxRec-Zahlen, Hall-of-Fame-Biografie, jeder Satz aus „Lücken“.
 - Bitte Faktenprüfer: jede Zeile auch in Primärquellen gegenprüfen, sobald ein Host (ibhof, boxrec, justia) erreichbar ist.
+
+## Prüfvermerke Drehbuch v1 (Faktenprüfer, 12.11.2026)
+Geprüft: `episodes/mike-tyson.json` v1 (11 Szenen, 184 Wörter) – jeder Sprechtext-Satz, Sticker, Label, HUD-Wert, Cover und Bild-Hinweis gegen die Freigabeliste. **Erneut geladen** am 12.11.2026 über die MediaWiki-API (`action=query&prop=extracts&explaintext=1`, User-Agent „ClipsFactCheck/1.0 (fact-check script)“; mehrere HTTP 429 der API, nach Wartezeit 200 – keine Umgehung): [Mike Tyson](https://en.wikipedia.org/wiki/Mike_Tyson), [Cus D'Amato](https://en.wikipedia.org/wiki/Cus_D%27Amato) (Rev. 1377408696), [Buster Douglas](https://en.wikipedia.org/wiki/Buster_Douglas) (Rev. 1384319146), [Jake Paul vs. Mike Tyson](https://en.wikipedia.org/wiki/Jake_Paul_vs._Mike_Tyson) (Rev. 1383610773). Alle in `sources` zitierten Stellen sind dort weiterhin wörtlich vorhanden. Primärquellen (justia, BoxRec, IBHOF) weiter nicht geprüft → alles bleibt **Tertiär**.
+
+### Befunde mit Änderung
+| # | Szene | Originaltext | Problem (Beleg) | Ersatztext | Wörter |
+| --- | --- | --- | --- | --- | --- |
+| P1 | champion (Sprechtext) | „Some say his troubles start there.“ | Quelle: „some speculate that his death was the catalyst to **many of the troubles** Tyson was to experience **as his life and career progressed**“ (Mike Tyson, Abschnitt Amateur career). Ohne Einschränkung klingt es, als begännen *alle* Probleme dort – widerspricht Szene `streets` (38 Festnahmen bis 13, Z4). | „Some say his **later** troubles start there.“ | +1 |
+| P2 | champion (Sticker) | „YOUNGEST CHAMP EVER: 20“ | Absolut-Wort ohne Gewichtsklasse: Z14 belegt nur „youngest **heavyweight** champion in history“. „Champ ever“ behauptet den Rekord über alle Klassen. | „YOUNGEST HEAVYWEIGHT CHAMP: 20“ | ±0 (Sticker; „EVER“ → „HEAVYWEIGHT“) |
+| P3 | conviction (Bild-Hinweis) | „Geschworenenbank als zwölf graue Kreise“ | Zahl der Geschworenen steht in keinem gelesenen Artikel (Suche „jury“, „twelve“, „12 jurors“ im Tyson-Artikel: nur „the jury deliberated for nearly 10 hours“). Unbelegtes Zahl-Detail im Bild. | „Geschworenenbank als Reihe grauer Kreise (Anzahl unbelegt, nicht zählbar darstellen)“ | 0 (Bild) |
+| P4 | ending (Bild-Hinweis) | „gleiche Kampfkleidung, weißes Handtuch“ (Arlington 2024) | Z39 beschreibt, woran man ihn aus seiner Karriere erinnert („He is remembered for his attire…“), nicht seine Kleidung 2024. Für 2024 unbelegt. | Unverändert lassen, aber im Feld `style` als **Stil-Entscheidung (Wiedererkennung), für 2024 unbelegt** markieren. | 0 (Bild) |
+
+### Offene Fragen des Drehbuch-Autors – Entscheid
+| Szene | Text | Ergebnis |
+| --- | --- | --- |
+| brooklyn | „Dad leaves.“ | **Freigegeben.** Quelle: Geburtsurkunde nennt „Purcell Tyson“, aber „the man Tyson had known as his father“ war Kirkpatrick; Tyson selbst: „My father was just a regular street guy“. „Dad“ = sozialer Vater, den Tyson so nennt; keine Aussage über Biologie. „around the time Mike was born“ passt zur Szene direkt nach „Brooklyn“ (Sticker 1966). |
+| brooklyn | „Money trouble drags them into high-crime Brownsville.“ | Freigegeben: „financial burdens necessitated a move to Brownsville“ (aus Bedford-Stuyvesant), „neighborhoods with a high rate of crime“. HUD AGE 10 = „when Tyson was 10 years old“. |
+| champion | „About a year later“ | **Freigegeben.** Herleitung: 04.11.1985 → 22.11.1986 = 383 Tage (1 Jahr 18 Tage); Cus-Artikel: „a little over a year“. „About“ deckt das. |
+| douglas | „a forty-two-to-one long shot“ (Casino nur im Sticker) | **Freigegeben.** Neu geladen: Tyson-Artikel „the Mirage, **the only casino to put out odds** for the fight, made Tyson a 42/1 favorite“; Douglas-Artikel „That lone casino, the Mirage, made Douglas a 42-to-1 underdog“. Es gab keine andere veröffentlichte Quote – der Satz stimmt auch ohne Zusatz; Sticker „42–1 (ODDS AT ONE CASINO)“ liefert den Kontext. |
+| douglas | „knocks him down for the first time. Title gone. That month, his sister dies.“ | Freigegeben: „knocked Tyson down for the first time in his career. He was counted out“; Denise „died … in February 1990“ = Monat des Kampfes (11.02.1990). Bild ohne Verbindung beider Ereignisse – korrekt (Z22). |
+| conviction | „Two years later, a jury convicts him of rape.“ | Freigegeben: 11.02.1990 → 10.02.1992 = 729 Tage (1 Tag unter 2 Jahren); „convicted of the rape charge on February 10, 1992, after the jury deliberated“. |
+| conviction | „He serves nearly three years.“ | Freigegeben: Haft ab April 1992, „released in March 1995 after serving less than three years“. Einleitung sagt „released on parole after three years“ – „nearly“ ist die genauere der beiden Wikipedia-Angaben. |
+| conviction | „He denies it; appeals fail.“ | **Freigegeben.** „Tyson has continued to maintain his innocence“ (Präsens passt). Plural gedeckt: Indiana Court of Appeals „ruled against Tyson in a 2–1 vote“, Indiana Supreme Court „let the lower court opinion stand due to a 2–2 split“ = zwei erfolglose Instanzen. Label „HE DENIES IT · APPEALS FAILED“ ebenso. |
+| conviction | Verharmlosung? | **Nein, Formulierung korrekt und nicht verharmlosend.** „a jury convicts him of rape“ nennt Gericht und Delikt ohne Weichmacher („accused“, „mistake“, „troubled“); Bestreiten und gescheiterte Berufung stehen zusammen (Z26-Regel), Satz endet auf „appeals fail“, nicht auf dem Bestreiten. „This one isn't bad luck“ + Balken bleibt stehen trennt die Tat klar von den Schicksalsschlägen. Kein Opfername, keine Tatdetails, Erinn-Cosby-Vorwurf (im Artikel, ohne Anklage) zu Recht nicht erwähnt. |
+| ear | „He bites off a piece of Holyfield's ear.“ | Freigegeben (Z31 „remove a piece of Holyfield's right ear“). |
+| ear | „bankrupt, reportedly twenty-three million in debt“ | Freigegeben, „reportedly“ ist jetzt sogar wörtlich gedeckt: „At the time, **the media reported** that he had approximately $23 million in debt“ (Anmerkung Z33 entsprechend schärfer: die Zahl ist Medienangabe laut Wikipedia). |
+| exodus | „is found tangled in a cord. She dies the next day.“ | **Freigegeben.** „found by her seven-year-old brother, unconscious and tangled in a cord“; 25.05. → „died of her injuries on May 26, 2009“ = nächster Tag. Weglassen von Laufband/Finder ist Auslassung, keine Verfälschung. |
+| ending | „At fifty-eight, he's still fighting. He loses.“ · Sticker „LOST TO JAKE PAUL, 31 YEARS YOUNGER“ | Freigegeben: 15.11.2024, „Paul defeated Tyson via unanimous decision“; „The 31-year age difference …“ (Paul-Geburtsdatum nicht geladen, Zahl nur Wikipedia). |
+| HUD | AGE 0/10/13/16/19/20/23/25/30/37/42/58 | **Alle korrekt** (Skript, Geburt 30.06.1966): D'Amato 04.11.1985 → 19 · Berbick 22.11.1986 → 20 · Douglas 11.02.1990 → 23 · Urteil 10.02.1992 → 25 · Holyfield II 28.06.1997 → 30 (zwei Tage vor dem 31.) · Bankrott Aug. 2003 → 37 · Exodus 25.05.2009 → 42 · Paul 15.11.2024 → 58. AGE 10/13/16 direkt aus Z3/Z4/Z9. |
+
+### Ohne Befund
+hook, streets („he says“/„reportedly“ korrekt nach Z4/Z5), detention (Z7/Z8; „juvenile detention“ = Wortlaut der Quelle für Stewarts Einrichtung), mother („legal guardian“, nicht „adopted“ – Cus-Artikel sagt an anderer Stelle weiter „He adopted Tyson“, Widerspruch bleibt, Drehbuch nimmt die sichere Variante), Cover, Bewertungen „Brutal(ly)“/„Blameless? No.“ (Analyse, keine Faktenaussage). Bild-Hinweis brooklyn „drei kleine Kinder“: gedeckt (Tertiär) durch „older brother named Rodney“ + „older sister named Denise“ + Mike.
+
+### Note fürs Drehbuch: **9/10**
+Faktentreu, Vorbehalte („he says“, „reportedly“, „some say“) sitzen genau dort, wo die Quelle sie verlangt; Verurteilung sachlich und unmissverständlich. Abzug für zwei Zuspitzungen (P1 ohne „later“, P2 ohne „heavyweight“). Mit P1–P2 freigegeben (Tertiär-Vorbehalt bleibt bis Primärquellen erreichbar).
