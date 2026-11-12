@@ -13,11 +13,11 @@ SR = 44100
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def _write(path: Path, x: np.ndarray) -> None:
+def _write(path: Path, x: np.ndarray, normalize: bool = True) -> None:
     import soundfile as sf
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    peak = np.max(np.abs(x)) or 1.0
+    peak = (np.max(np.abs(x)) or 1.0) if normalize else 0.9
     sf.write(str(path), (x / peak * 0.9).astype(np.float32), SR)
 
 
@@ -62,7 +62,24 @@ def make_sfx(folder: Path) -> None:
     _write(folder / "ding.wav", ding)
 
 
-def make_music(path: Path, seconds: float, bpm: float = 104) -> None:
+def make_music(path: Path, seconds: float, bpm: float | None = None, mood: str = "upbeat", seed: int | str = 0) -> None:
+    """Musikbett je Stimmung (Presets in scripts/music.py). "upbeat" = alter Loop, bitgleich wie bisher.
+
+    seed: Zahl oder Text (Episoden-ID) – variiert Tonart, Akkordfolge und Motiv, damit kein Video wie das andere klingt.
+    """
+    if mood in ("upbeat", "", None):
+        _music_upbeat(path, seconds, bpm or 104)
+        return
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import music
+
+    s = music.seed_from(seed) if isinstance(seed, str) else int(seed)
+    _write(path, music.render(seconds, mood, bpm, s), normalize=False)  # Lautheit regelt music.py
+
+
+def _music_upbeat(path: Path, seconds: float, bpm: float = 104) -> None:
     """Leichter, positiver Loop: Akkorde C–G–Am–F, gezupfte Arpeggios, Kick, Hi-Hat, Bass."""
     rng = np.random.default_rng(3)
     n = int(SR * seconds)

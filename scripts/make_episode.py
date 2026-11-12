@@ -332,7 +332,9 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         timeline["cover"] = ep["cover"]
     (out_dir / "timeline.json").write_text(json.dumps(timeline, indent=1) + "\n")
 
-    make_music(out_dir / "music.wav", seconds=timeline["durationMs"] / 1000 + 1)
+    mus = ep.get("music") or {}  # {"mood": "dark", "bpm": 140, "why": "..."} – fehlt: alter Loop "upbeat"
+    make_music(out_dir / "music.wav", seconds=timeline["durationMs"] / 1000 + 1, bpm=mus.get("bpm"),
+               mood=mus.get("mood", "upbeat"), seed=mus.get("seed", ep["id"]))
     make_sfx(ROOT / "public" / "sfx")
     print(f"Fertig: {out_dir.relative_to(ROOT)}")
 
