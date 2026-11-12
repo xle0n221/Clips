@@ -8,6 +8,7 @@ import {
   Bridge,
   C,
   Cam2D,
+  CO2,
   Deer,
   ease,
   FlagShadow,
@@ -106,14 +107,33 @@ export const Rust: React.FC = () => {
   const bottle = B("bottle", Math.round(d * 0.6));
   const crack = B("crack", d - 30);
   const rust = ease(f, spread - 6, bottle);
-  const down = ease(f, bottle - 6, bottle + 26, "inOut");
-  // Fahrt auf den linken Turm, dann Neigung nach unten unter die Brücke zur Flasche
-  const towerCam = frameOn(280, 760, 540, 820, lerp(1, 1.55, ease(f, 0, bottle - 6)));
+  // Einstellungen: Brücke total → Detail Stahl + Salzluft → Farbeimer ohne Maler (YOU) → Rost wächst (Turm)
+  // → Neigung unter die Brücke zur Flasche → Flasche halbnah → Flasche nah (Riss)
+  const cSalt = Math.round(spread * 0.38);
+  const cPaint = spread - 43;
+  const cUnder = bottle - 49;
+  const cRobust = bottle + 38;
+  const cBreak = crack - 15;
+  const shot = shotIndex(f, [cSalt, cPaint, spread, cUnder, cRobust, cBreak]);
+  const down = shot < 4 ? 0 : ease(f, cUnder, cUnder + 34, "inOut");
+  const towerCam = frameOn(280, 760, 540, 820, lerp(1.4, 1.55, ease(f, spread, cUnder)));
   const waterCam = frameOn(560, 1720, 540, 900, 1.25);
-  const cam: Cam2D = { x: lerp(towerCam.x, waterCam.x, down), y: lerp(towerCam.y, waterCam.y, down), zoom: lerp(towerCam.zoom, waterCam.zoom, down) };
+  const cam: Cam2D =
+    shot === 0
+      ? { x: 540, y: 900, zoom: lerp(1, 1.08, ease(f, 0, cSalt)) }
+      : shot === 1
+        ? frameOn(280, 720, 540, 860, lerp(2.2, 2.35, ease(f, cSalt, cPaint)))
+        : shot === 2
+          ? frameOn(330, 860, 540, 860, lerp(2, 2.08, ease(f, cPaint, spread)))
+          : shot === 5
+            ? frameOn(600, 1700, 540, 900, lerp(1.25, 1.35, ease(f, cRobust, cBreak)))
+            : shot === 6
+              ? frameOn(600, 1650, 540, 860, lerp(2, 2.1, ease(f, cBreak, d)))
+              : { x: lerp(towerCam.x, waterCam.x, down), y: lerp(towerCam.y, waterCam.y, down), zoom: lerp(towerCam.zoom, waterCam.zoom, down) };
   const gx = lerp(360, 720, down);
   const gy = lerp(935, 1700, down);
-  const motion = (k: number) => lerp(360, 720, ease(k, bottle - 6, bottle + 26, "inOut"));
+  const motion = (k: number) => lerp(360, 720, shot < 4 ? 0 : ease(k, cUnder, cUnder + 34, "inOut"));
+  const salt = shot === 1 ? 1 : 0;
   return (
     <Stage2D cam={cam} mood="night">
       <Layer depth={0.2}>
@@ -135,6 +155,13 @@ export const Rust: React.FC = () => {
         ))}
         <Bridge x={540} y={1150} s={0.65} rust={rust} />
         <PaintKit x={300} y={936} s={0.75} />
+        {/* Salzluft: weiße Körnchen treiben gegen den Stahl */}
+        {salt
+          ? Array.from({ length: 26 }, (_, i) => {
+              const t = ((f * 2.2 + i * 37) % 260) / 260;
+              return <circle key={i} cx={60 + t * 300 + (i % 5) * 20} cy={560 + ((i * 53) % 360) + Math.sin(f * 0.1 + i) * 10} r={4 + (i % 3) * 2} fill={C.white} opacity={0.75 * (1 - Math.abs(t - 0.5) * 1.6)} />;
+            })
+          : null}
         <Bottle x={560} y={1700 + Math.sin(f * 0.12) * 14} r={Math.sin(f * 0.08) * 10} s={1.05} crack={ease(f, crack, crack + 12)} />
         <Ghost x={gx} y={gy} s={0.62} frame={f} motion={motion} eyes={f >= crack ? "wide" : f > spread ? "squint" : "normal"} mouth={f >= crack ? "o" : "flat"} flip={down > 0.5} blinkSeed={3} />
       </Layer>
@@ -203,19 +230,48 @@ export const Carbon: React.FC = () => {
   const { f, d, B } = useBeats();
   const hazeIn = B("hazeIn", 10);
   const stays = B("hazeStays", d - 45);
-  const shot = shotIndex(f, [stays - 10]);
+  // Einstellungen: Erde + Dunst total → Detail CO₂ am Rand → Ranschnitt YOU → Erde total voller CO₂ → YOU wedelt
+  const cAir = hazeIn + 76;
+  const cLook = cAir + 56;
+  const cGone = stays - 72;
+  const shot = shotIndex(f, [cAir, cLook, cGone, stays - 10]);
   const hz = ease(f, hazeIn, hazeIn + 30);
-  if (shot === 0) {
+  if (shot < 4) {
+    const cam: Cam2D =
+      shot === 0
+        ? { x: 540, y: 900, zoom: lerp(1, 1.08, ease(f, 0, cAir)) }
+        : shot === 1
+          ? { x: lerp(470, 520, ease(f, cAir, cLook)), y: 520, zoom: 2.3 }
+          : shot === 2
+            ? frameOn(800, 1290 - 262 * 0.72, 540, 820, lerp(1.75, 1.85, ease(f, cLook, cGone)))
+            : { x: 540, y: 880, zoom: lerp(0.94, 1.02, ease(f, cGone, stays)) };
+    const mol = shot === 0 ? ease(f, cAir - 30, cAir) * 0.6 : 1;
     return (
-      <Stage2D cam={{ x: 540, y: 900, zoom: lerp(1, 1.1, ease(f, 0, stays)) }} mood="haze">
+      <Stage2D cam={cam} mood="haze">
         <SpaceBack f={f} seed={81} />
         <Layer depth={0.85}>
           <NightEarth x={540} y={780} s={1.12} rot={f * 0.05} frame={f} lit={() => false} green={1} rim="#9AA0AA" />
           <circle cx={540} cy={780} r={420} fill="none" stroke={C.haze} strokeWidth={110} opacity={0.55 * hz} />
           <Haze y0={560} y1={1000} o={hz * 0.9} frame={f} />
+          {/* CO₂-Moleküle in der Lufthülle (bleiben: langsame Drift) */}
+          {Array.from({ length: 22 }, (_, i) => {
+            const th = (i / 22) * Math.PI * 2 + f * 0.004 * (i % 2 ? 1 : -1);
+            const r = 430 + ((i * 37) % 70);
+            return <CO2 key={i} x={540 + r * Math.sin(th)} y={780 - r * Math.cos(th)} s={0.32 + (i % 3) * 0.06} r={f * 0.8 + i * 40} o={mol} />;
+          })}
         </Layer>
         <Layer depth={1.1}>
-          <Ghost x={830} y={1290} s={0.72} frame={f} eyes="side" mouth="frown" blinkSeed={3} />
+          <Ghost
+            x={830}
+            y={1290}
+            s={0.72}
+            frame={f}
+            eyes={shot === 2 ? "squint" : "side"}
+            mouth="frown"
+            armL={shot === 2 ? 70 : 18}
+            tilt={shot === 2 ? -6 : 0}
+            blinkSeed={3}
+          />
         </Layer>
       </Stage2D>
     );
@@ -242,11 +298,26 @@ export const Rushmore: React.FC = () => {
   const { f, d, B } = useBeats();
   const squint = B("squint", Math.round(d * 0.55));
   const hand = B("handLook", d - 45);
+  const cInch = Math.round(d * 0.28);
+  const cLost = cInch + 70;
+  const cSq = squint - 22;
+  // Einstellungen: Fels total → Detail Zoll-Lineal am Gesicht → Köpfe + YOU → YOU blinzelt (Ranfahrt) → Hand
+  const sub = shotIndex(f, [cInch, cLost, cSq]);
   const shot = shotIndex(f, [hand - 4]);
-  const ruler = ease(f, Math.round(d * 0.28), Math.round(d * 0.28) + 10);
+  const ruler = ease(f, cInch, cInch + 10);
   if (shot === 0) {
-    const z = anticipate(f, 2, 1, 0.94, 1.06, { pre: 2, dur: 8 }) * lerp(1, 1.18, ease(f, squint - 4, squint + 20, "inOut"));
-    const cam = frameOn(lerp(540, 600, ease(f, squint - 4, squint + 20)), 860, 540, 900, z);
+    const z =
+      sub === 0
+        ? anticipate(f, 2, 1, 0.94, 1.06, { pre: 2, dur: 8 })
+        : sub === 2
+          ? lerp(1.12, 1.18, ease(f, cLost, cSq))
+          : lerp(1.18, 1.32, ease(f, squint - 4, squint + 20, "inOut"));
+    const cam =
+      sub === 1
+        ? frameOn(lerp(410, 425, ease(f, cInch, cLost)), 880, 540, 860, lerp(2.4, 2.55, ease(f, cInch, cLost)))
+        : sub === 3
+          ? frameOn(lerp(640, 700, ease(f, cSq, hand)), 900, 540, 900, z)
+          : frameOn(540, 860, 540, 900, z);
     return (
       <Stage2D cam={{ ...cam, y: cam.y + jolt(f, 2, 16) }} mood="night">
         <Layer depth={0.2}>
@@ -258,7 +329,7 @@ export const Rushmore: React.FC = () => {
             <Tree key={x} x={x} y={1240} grow={1} s={0.9 + (i % 2) * 0.3} color={C.nature} />
           ))}
           <rect x={-800} y={1230} width={2600} height={900} fill="#0E1A16" />
-          <Ruler x={330} y={720} len={140} label="1 INCH" o={ruler} />
+          <Ruler x={350} y={940} len={140} label="1 INCH" o={ruler} />
           <Ghost x={880} y={1250} s={0.62} frame={f} eyes={f >= squint ? "squint" : "normal"} mouth="flat" tilt={f >= squint ? -8 : 0} flip blinkSeed={3} />
         </Layer>
       </Stage2D>
@@ -345,9 +416,10 @@ export const VoyagerScene: React.FC = () => {
   const cross = B("voyagerCross", Math.round(d * 0.35));
   const glint = B("recordGlint", Math.round(d * 0.7));
   const vy = lerp(1150, 700, Math.min(1, f / Math.max(1, cross))) - Math.max(0, f - cross) * 1.2;
-  const zoom = lerp(1.5, 0.8, ease(f, 0, d, "inOut"));
+  const zoom = lerp(1.3, 1.05, ease(f, 0, d, "inOut"));
   const cam = { x: 540, y: vy + 60 / zoom, zoom };
   const wave = f >= glint;
+  // Sonde links, YOU rechts, HELIOSPHERE mittig über der Grenze dazwischen (nichts überdeckt sich)
   return (
     <Stage2D cam={cam} mood="space">
       <SpaceBack f={f} seed={111} />
@@ -361,11 +433,11 @@ export const VoyagerScene: React.FC = () => {
       <Layer depth={1}>
         <circle cx={540} cy={3600} r={2900} fill="none" stroke="#7FD4FF" strokeWidth={8} strokeDasharray="30 20" opacity={0.75} />
         <circle cx={540} cy={3600} r={2900} fill="#7FD4FF" opacity={0.05} />
-        <Label x={260} y={760} size={40} color="#BFE6FF">
+        <Label x={580} y={655} size={32} color="#BFE6FF" o={ease(f, 15, 27)}>
           HELIOSPHERE
         </Label>
-        <Voyager x={540} y={vy} s={0.62} r={-8} glint={bump(f, glint + 4, 10)} />
-        <Ghost x={700} y={vy + 120} s={0.42} frame={f} armR={wave ? 130 + 20 * Math.sin(f * 0.5) : 20} eyes="normal" mouth={wave ? "smile" : "flat"} blinkSeed={3} />
+        <Voyager x={290} y={vy} s={0.8} r={-8} glint={bump(f, glint + 4, 10)} />
+        <Ghost x={850} y={vy + 100} s={0.62} frame={f} armL={wave ? 130 + 20 * Math.sin(f * 0.5) : 20} eyes="normal" mouth={wave ? "smile" : "flat"} blinkSeed={3} flip />
       </Layer>
     </Stage2D>
   );

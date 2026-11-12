@@ -35,6 +35,8 @@ import {
   Stars,
   Telescope,
   FireTrail,
+  TrafficLight,
+  Train,
   TrainIcon,
   Cam2D,
 } from "../kit2d";
@@ -62,18 +64,31 @@ export const Hook: React.FC = () => {
   const poof = B("poof", 50);
   const ghostIn = B("ghostIn", 120);
   const eyeAt = B("eyePop", d - 60);
+  // Schnitte innerhalb der Handlung: ghostIn (Ranschnitt halbnah), „And you get one question“ (Ranschnitt YOU), „how long …“ (Detail leere Straße → Pointe)
+  const c1 = ghostIn + 54;
+  const c2 = Math.min(eyeAt - 40, c1 + 60);
+  const shot = shotIndex(f, [c1, c2]);
   const gx = 540;
   const gy = 1120;
   const gs = 1.1;
   const ht = headTop(gy, gs);
   // Kamera: langsame Fahrt die Straße entlang, dann auf YOU (Kopf unter der YOU-Pill bei y 0,42)
-  const zIn = f < ghostIn ? 1 : anticipate(f, eyeAt, lerp(1, 1.15, ease(f, ghostIn, ghostIn + 24)), 1.1, 1.38, { pre: 5, dur: 10 });
-  const pan = lerp(470, 540, ease(f, 0, ghostIn + 20));
+  const zIn =
+    shot === 0
+      ? f < ghostIn
+        ? 1
+        : lerp(1.28, 1.36, ease(f, ghostIn, c1))
+      : shot === 1
+        ? lerp(1.75, 1.9, ease(f, c1, c2))
+        : anticipate(f, eyeAt, lerp(0.92, 1.02, ease(f, c2, eyeAt)), 0.98, 1.38, { pre: 5, dur: 10 });
+  const pan = shot === 2 ? lerp(470, 540, ease(f, c2, eyeAt)) : lerp(470, 540, ease(f, 0, ghostIn + 20));
   const cam = frameOn(pan, ht, 540, 850, zIn);
   const shake = jolt(f, poof, 12);
   const o = ease(f, ghostIn - 4, ghostIn + 12);
   const wide = f >= eyeAt;
   const eyePop = 1 + 0.55 * pop(f, eyeAt, 8) * (1 - ease(f, eyeAt + 18, eyeAt + 34));
+  // „one question“: Zeigefinger hoch (Ausholen kurz nach dem Schnitt)
+  const oneUp = shot === 1 ? anticipate(f, c1 + 8, 14, 6, 150, { pre: 4, dur: 8 }) : 14;
   return (
     <Stage2D cam={{ ...cam, y: cam.y + shake }} mood="night">
       <StreetSet f={f} lit={1} />
@@ -95,7 +110,7 @@ export const Hook: React.FC = () => {
           [760, 25],
         ].map(([x, r], i) => {
           const t = ease(f, poof + 2 + i * 3, poof + 14 + i * 3, "inOut");
-          return f > poof ? <Phone key={i} x={x + 30} y={lerp(1080, 1215, t)} r={r + t * 70} s={0.45} /> : null;
+          return f > poof ? <Phone key={i} x={x + 30} y={lerp(1080, 1215, t)} r={r + t * 70} s={0.45} screen={shot !== 2 || Math.floor(f / 10) % 2 === 0} /> : null;
         })}
         <Ghost
           x={gx}
@@ -103,11 +118,11 @@ export const Hook: React.FC = () => {
           s={gs}
           frame={f}
           o={o}
-          eyes={wide ? "wide" : f > eyeAt - 5 ? "squint" : "normal"}
+          eyes={wide ? "wide" : f > eyeAt - 5 ? "squint" : shot === 2 ? "side" : "normal"}
           eyePop={eyePop}
-          mouth={wide ? "o" : "flat"}
+          mouth={wide ? "o" : shot === 1 ? "smile" : "flat"}
           armL={wide ? 40 : 14}
-          armR={wide ? 40 : 14}
+          armR={wide ? 40 : oneUp}
           blinkSeed={3}
         />
       </Layer>
@@ -167,14 +182,25 @@ export const Blackout: React.FC = () => {
   const bars = B("noBars", Math.round(d * 0.55));
   const truck = B("emptyTruck", d - 70);
   const hosp = Math.round((train + bars) / 2);
-  const shot = shotIndex(f, [bars, truck]);
+  // Einstellungen (je 1–3 s): Karte total → Karte nah (Zug) → Krankenhaus → Handy → dunkle Stadt (Zug/Ampel, Trupps) → „Tonight?“ → leerer Wagen
+  const hit = Math.max(30, train - 49);
+  const cHosp = hosp - 9;
+  const cCity = bars + 40;
+  const cTonight = truck - 34;
+  const shot = shotIndex(f, [hit, cHosp, bars, cCity, cTonight, truck]);
   const front = lerp(240, -260, ease(f, 12, bars - 10, "linear"));
   const sil = MOODS.danger.sil;
 
-  if (shot === 0) {
-    const cam = { x: 540, y: lerp(900, 860, ease(f, 0, bars)) + jolt(f, train, 10), zoom: lerp(1, 1.12, ease(f, 0, bars)) };
+  if (shot <= 2) {
+    // Karte Spanien: At(540, 880, 1.35) → Zug-Badge bei Welt (365, 1028), Krankenhaus bei (729, 840)
+    const cam =
+      shot === 0
+        ? { x: 540, y: lerp(900, 880, ease(f, 0, hit)), zoom: lerp(1, 1.06, ease(f, 0, hit)) }
+        : shot === 1
+          ? frameOn(430, 990, 540, 860, lerp(1.55, 1.68, ease(f, hit, cHosp)))
+          : frameOn(729, 840, 540, 820, lerp(2.1, 2.25, ease(f, cHosp, bars)));
     return (
-      <Stage2D cam={cam} mood="danger">
+      <Stage2D cam={{ ...cam, y: cam.y + jolt(f, train, 10) }} mood="danger">
         <Layer depth={0.3}>
           <Stars frame={f} seed={8} count={60} x={-200} y={0} w={1500} h={1700} reveal={0.4} />
         </Layer>
@@ -189,7 +215,7 @@ export const Blackout: React.FC = () => {
                 return <PowerLine key={`${i}-${k}`} d={`M ${a[0]} ${a[1]} L ${p[0]} ${p[1]}`} on={midY > front ? 0 : 1} />;
               }),
             )}
-            <Label x={-10} y={-250} size={40} color={C.white}>
+            <Label x={-10} y={-250} size={40} color={C.white} o={shot === 0 ? 1 : 0}>
               SPAIN
             </Label>
             <Badge x={-130} y={110} s={0.62 * pop(f, train)} color={C.white}>
@@ -201,15 +227,21 @@ export const Blackout: React.FC = () => {
             </Badge>
           </At>
         </Layer>
-        <Layer depth={1.1}>
-          <Ghost x={900} y={1290} s={0.58} frame={f} eyes="side" mouth="frown" blinkSeed={3} />
-        </Layer>
+        {shot === 0 ? (
+          <Layer depth={1.1}>
+            <Ghost x={900} y={1290} s={0.58} frame={f} eyes="side" mouth="frown" blinkSeed={3} />
+          </Layer>
+        ) : null}
       </Stage2D>
     );
   }
-  if (shot === 1) {
-    const g = f - bars;
-    const cam = frameOn(540, 1250 - 262 * 1.5, 540, 760, lerp(1, 1.08, ease(g, 0, truck - bars)));
+  if (shot === 3 || shot === 5) {
+    // Handy ohne Netz (halbnah) bzw. „Tonight?“ (Ranschnitt aufs Gesicht)
+    const g = f - (shot === 3 ? bars : cTonight);
+    const close = shot === 5;
+    const cam = close
+      ? frameOn(500, 1250 - 262 * 1.5, 540, 760, lerp(1.7, 1.8, ease(g, 0, truck - cTonight)))
+      : frameOn(540, 1250 - 262 * 1.5, 540, 760, lerp(1, 1.06, ease(g, 0, cCity - bars)));
     return (
       <Stage2D cam={cam} mood="danger">
         <Layer depth={0.35}>
@@ -220,8 +252,43 @@ export const Blackout: React.FC = () => {
         </Layer>
         <Layer depth={1}>
           <rect x={-800} y={1250} width={2600} height={900} fill={sil[2]} />
-          <Ghost x={500} y={1250} s={1.5} frame={f} eyes="side" mouth="frown" armR={64} blinkSeed={3} />
-          <Phone x={700} y={1000 + Math.sin(g * 0.4) * 4} r={-12 + Math.sin(g * 0.9) * 6 * (1 - ease(g, 0, 20))} s={1.05} bars={0} screen={false} noSignal />
+          <Ghost x={500} y={1250} s={1.5} frame={f} eyes={close ? "wide" : "side"} mouth={close ? "o" : "frown"} armR={close ? 20 : 64} blinkSeed={3} />
+          {close ? null : <Phone x={700} y={1000 + Math.sin(g * 0.4) * 4} r={-12 + Math.sin(g * 0.9) * 6 * (1 - ease(g, 0, 20))} s={1.05} bars={0} screen={false} noSignal />}
+        </Layer>
+      </Stage2D>
+    );
+  }
+  if (shot === 4) {
+    // „The south stayed dark all night … with crews fixing it“: Stadt, Zug, Ampel dunkel; Trupps mit Lampen
+    const g = f - cCity;
+    const crews = ease(g, 30, 44);
+    const cam = { x: lerp(470, 610, ease(g, 0, cTonight - cCity, "linear")), y: 930, zoom: 1.05 };
+    return (
+      <Stage2D cam={cam} mood="danger">
+        <Layer depth={0.35}>
+          <Skyline seed={14} baseY={1060} minH={260} maxH={640} color={sil[0]} litFrac={0} />
+        </Layer>
+        <Layer depth={0.7}>
+          <Skyline seed={23} baseY={1120} minH={160} maxH={420} color={sil[1]} litFrac={0} />
+          {/* Hochbahn mit stehendem Zug, Fenster dunkel */}
+          <rect x={-600} y={1000} width={2400} height={26} fill="#1A1222" stroke={C.ink} strokeWidth={5} />
+          {[-300, 200, 700, 1200].map((x) => (
+            <rect key={x} x={x} y={1026} width={30} height={120} fill="#1A1222" />
+          ))}
+          <Train x={-120} y={1000} cars={4} s={0.8} />
+        </Layer>
+        <Layer depth={1}>
+          <rect x={-800} y={1230} width={2600} height={900} fill={sil[2]} />
+          <TrafficLight x={860} y={1240} s={0.95} on={0} />
+          {/* Reparaturtrupps mit Stirnlampen (Lichtkegel) */}
+          {[420, 560].map((x, i) => (
+            <g key={x} opacity={crews}>
+              <path d={`M ${x} ${1070} L ${x + 260 - i * 520} ${1240} L ${x + 120 - i * 240} ${1240} Z`} fill={C.window} opacity={0.22} />
+              <Person x={x} y={1240} color={C.fire} s={0.8} step={Math.sin(g * 0.3 + i) * 0.4} />
+              <rect x={x - 22} y={1240 - 0.8 * 212} width={44} height={14} rx={6} fill={C.window} />
+            </g>
+          ))}
+          <Ghost x={220} y={1230} s={0.7} frame={f} eyes="side" mouth="frown" blinkSeed={3} />
         </Layer>
       </Stage2D>
     );
@@ -271,12 +338,24 @@ export const StarsScene: React.FC = () => {
   const fill = B("starsFill", 25);
   const mw = B("milkyWay", Math.round(d * 0.6));
   const clap = B("slowClap", d - 50);
-  const shot = shotIndex(f, [clap - 6]);
-  const tilt = ease(f, fill - 5, mw + 15, "inOut");
+  // Einstellungen: YOU auf dem Auto (nah) → Schwenk hoch, Milchstraße schwach bei „Milky Way“ → Ranschnitt Gesicht
+  // → Himmel voll („full blast“) → Klatschen
+  const c1 = fill + 22;
+  const mention = fill + 57;
+  const c2 = fill + 105;
+  const shot = shotIndex(f, [c1, c2, mw, clap - 6]);
+  const tilt = ease(f, c1, mention + 4, "inOut");
   const cam: Cam2D =
     shot === 0
-      ? { x: 540, y: lerp(1010, 660, tilt), zoom: lerp(1.35, 0.85, tilt) }
-      : frameOn(560, 982, 540, 900, lerp(1.5, 1.62, ease(f, clap, d)));
+      ? frameOn(700, 960, 540, 980, lerp(1.55, 1.65, ease(f, 0, c1)))
+      : shot === 1
+        ? { x: 540, y: lerp(1010, 640, tilt), zoom: lerp(1.25, 0.9, tilt) }
+        : shot === 2
+          ? frameOn(760, 960, 540, 900, lerp(1.7, 1.8, ease(f, c2, mw)))
+          : shot === 3
+            ? { x: 540, y: lerp(700, 620, ease(f, mw, clap)), zoom: lerp(0.86, 0.8, ease(f, mw, clap)) }
+            : frameOn(560, 982, 540, 900, lerp(1.5, 1.62, ease(f, clap, d)));
+  const mwO = Math.max(0.6 * ease(f, mention - 12, mention + 6), ease(f, mw - 4, mw + 24));
   const h = hop(f, 4, 1.2, 12);
   const clapping = f >= clap;
   const arm = clapping ? 70 + 45 * Math.abs(Math.sin((f - clap) * 0.22)) : 20;
@@ -285,7 +364,7 @@ export const StarsScene: React.FC = () => {
     <Stage2D cam={cam} mood="night">
       <Layer depth={0.2}>
         <Stars frame={f} seed={51} count={260} x={-700} y={-700} w={2500} h={1900} reveal={0.15 + 0.85 * ease(f, fill, mw)} />
-        <MilkyWay o={ease(f, mw - 4, mw + 24)} frame={f} cx={540} cy={250} />
+        <MilkyWay o={mwO} frame={f} cx={540} cy={250} />
       </Layer>
       <Layer depth={0.45}>
         <Skyline seed={3} baseY={1150} minH={300} maxH={700} color={sil[0]} litFrac={0} />
@@ -304,8 +383,8 @@ export const StarsScene: React.FC = () => {
           lying
           bob={false}
           frame={f}
-          eyes={clapping ? "squint" : "normal"}
-          mouth={clapping ? "flat" : "smile"}
+          eyes={clapping ? "squint" : shot === 2 ? "wide" : "normal"}
+          mouth={clapping ? "flat" : shot === 2 ? "o" : "smile"}
           armL={arm}
           armR={arm}
           blinkSeed={3}
@@ -322,9 +401,21 @@ export const Nuclear: React.FC = () => {
   const chair = B("emptyChair", Math.round(d * 0.4));
   const casks = B("casks", Math.round(d * 0.6));
   const warm = B("warmHands", d - 40);
-  const shot = shotIndex(f, [chair, casks]);
-  if (shot === 0) {
-    const cam = { x: 540, y: lerp(880, 960, ease(f, 0, chair)), zoom: lerp(1, 1.06, ease(f, 0, chair)) };
+  // Einstellungen: Becken total → Messlatte/Brennelemente nah → leerer Stuhl → YOU („Operators. Right.“)
+  // → Brennelemente („Other fuel“) → Behälter total → YOU wärmt sich
+  const cDepth = chair - 71;
+  const cOps = chair + 89;
+  const cFuel = casks - 33;
+  const cWarm = casks + 45;
+  const shot0 = shotIndex(f, [cDepth, chair, cOps, cFuel, casks, cWarm]);
+  // Becken-Einstellungen 0, 1, 4 teilen sich die Kulisse; Stuhl 2/3, Behälter 5/6
+  if (shot0 === 0 || shot0 === 1 || shot0 === 4) {
+    const cam =
+      shot0 === 0
+        ? { x: 540, y: lerp(880, 940, ease(f, 0, cDepth)), zoom: lerp(1, 1.06, ease(f, 0, cDepth)) }
+        : shot0 === 1
+          ? frameOn(690, 860, 540, 900, lerp(1.9, 2.05, ease(f, cDepth, chair)))
+          : frameOn(530, 1070, 540, 860, lerp(2.3, 2.45, ease(f, cFuel, casks)));
     return (
       <Stage2D cam={cam} mood="night">
         <Layer depth={1}>
@@ -337,9 +428,13 @@ export const Nuclear: React.FC = () => {
       </Stage2D>
     );
   }
+  const shot = shot0 === 2 || shot0 === 3 ? 1 : 2;
   if (shot === 1) {
     const g = f - chair;
-    const cam = { x: 540, y: 960, zoom: lerp(1, 1.12, ease(g, 0, casks - chair)) + jolt(g, 0, 0.02) };
+    const cam =
+      shot0 === 3
+        ? frameOn(170, 1150 - 262 * 0.7, 540, 820, lerp(1.9, 2, ease(f, cOps, cFuel)))
+        : { x: 540, y: 960, zoom: lerp(1, 1.12, ease(g, 0, cOps - chair)) + jolt(g, 0, 0.02) };
     const blink = Math.floor(g / 8) % 2 === 0;
     return (
       <Stage2D cam={cam} mood="night">
@@ -361,13 +456,16 @@ export const Nuclear: React.FC = () => {
           <rect x={-400} y={1000} width={1900} height={1100} fill="#0A0E1E" />
           <rect x={-100} y={880} width={1300} height={70} fill="#2A3150" stroke={C.ink} strokeWidth={6} />
           <Chair x={540} y={1200} spin={g * 9} s={1.1} />
-          <Ghost x={170} y={1150} s={0.7} frame={f} eyes="side" mouth="o" blinkSeed={3} />
+          <Ghost x={170} y={1150} s={0.7} frame={f} eyes={shot0 === 3 ? "squint" : "side"} mouth={shot0 === 3 ? "flat" : "o"} tilt={shot0 === 3 ? -8 : 0} blinkSeed={3} />
         </Layer>
       </Stage2D>
     );
   }
   const g = f - casks;
-  const cam = { x: lerp(420, 640, ease(g, 0, d - casks, "linear")), y: 900, zoom: 1.05 };
+  const cam =
+    shot0 === 6
+      ? frameOn(lerp(560, 600, ease(f, cWarm, d)), 1150 - 210, 540, 820, 1.7)
+      : { x: lerp(420, 560, ease(g, 0, cWarm - casks, "linear")), y: 900, zoom: 1.05 };
   const warming = f >= warm;
   return (
     <Stage2D cam={cam} mood="night">
@@ -417,9 +515,18 @@ export const Satellites: React.FC = () => {
   const swell = B("airSwell", Math.round(d * 0.7));
   const dip = B("satDip", d - 30);
   const shot = shotIndex(f, [stick, spot, swell]);
+  // Einstellung 0 geteilt: Bahnen total → Beinahe-Zusammenstoß nah (Zoom ≥ 1,6) → YOU nah („Not you.“)
+  const cSelf = Math.min(stick - 30, near + 83);
+  const sub = shotIndex(f, [near, cSelf]);
 
   if (shot === 0) {
-    const cam = { x: 540, y: 960 + Math.sin(f * 0.03) * 8, zoom: lerp(1, 1.08, ease(f, 0, stick)) };
+    const base =
+      sub === 0
+        ? { x: 540, y: 960 + Math.sin(f * 0.03) * 8, zoom: lerp(1, 1.08, ease(f, 0, near)) }
+        : sub === 1
+          ? frameOn(500, 860, 540, 800, lerp(1.6, 1.72, ease(f, near, cSelf)))
+          : frameOn(400, 1050 - 262 * 0.6, 540, 820, lerp(2, 2.1, ease(f, cSelf, stick)));
+    const cam = base;
     const sat = (r: number, th: number) => [EARTH_C[0] + r * Math.sin(th), EARTH_C[1] - r * Math.cos(th)] as const;
     const t1 = (f - near - 8) * 0.0035;
     const a = sat(1150, t1);
@@ -440,7 +547,18 @@ export const Satellites: React.FC = () => {
             const p = sat(r, th + f * 0.002 * (i % 2 ? -1 : 1));
             return <Satellite key={i} x={p[0]} y={p[1]} s={0.6} r={i * 30} />;
           })}
-          <Ghost x={200} y={1090} s={0.6} frame={f} armR={warn > 0 ? 150 : 120} eyes={warn > 0 ? "wide" : "normal"} mouth={warn > 0 ? "o" : "flat"} blinkSeed={3} />
+          <Ghost
+            x={400}
+            y={1050}
+            s={0.6}
+            frame={f}
+            armR={sub === 2 ? 30 : warn > 0 ? 150 : 120}
+            armL={sub === 2 ? 30 : 18}
+            tilt={sub === 2 ? 10 * Math.sin((f - cSelf) * 0.35) : 0}
+            eyes={sub === 2 ? "side" : warn > 0 ? "wide" : "normal"}
+            mouth={sub === 2 ? "frown" : warn > 0 ? "o" : "flat"}
+            blinkSeed={3}
+          />
         </Layer>
       </Stage2D>
     );
@@ -508,7 +626,8 @@ export const Swift: React.FC = () => {
   const burn = B("swiftBurn", Math.round(d * 0.65));
   const tease = B("hubbleTease", d - 45);
   // Swift sinkt am Höhen-Lineal vorbei (300 → 250 MI), dann Feuer
-  const sy = lerp(520, 1000, ease(f, 0, burn, "linear")) + lerp(0, 700, ease(f, burn, burn + 40, "smooth"));
+  // Absturz endet bei Welt-y 1200 → Bild-y ≈ 1220 (Untertitelband ab ≈ 1300 bleibt frei)
+  const sy = lerp(520, 1000, ease(f, 0, burn, "linear")) + lerp(0, 200, ease(f, burn, burn + 40, "smooth"));
   const sx = 600 + lerp(0, -260, ease(f, burn, burn + 40));
   const pan = ease(f, tease - 2, tease + 14, "inOut");
   const cam: Cam2D = { x: lerp(540, 1640, pan), y: lerp(Math.min(sy, 1000) - 60, 900, pan), zoom: 1 };

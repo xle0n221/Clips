@@ -150,6 +150,47 @@ export const HospitalIcon: React.FC = () => (
   </g>
 );
 
+/** Ampel (Fußpunkt Mitte), `on` 0..1 = Lampen an (0 = dunkel, Stromausfall). */
+export const TrafficLight: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly on?: number }> = ({ x, y, s = 1, on = 0 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <rect x={-9} y={-420} width={18} height={420} fill="#2A3150" {...K} />
+    <rect x={-46} y={-600} width={92} height={210} rx={18} fill="#1A1F33" {...K} />
+    {[C.danger, C.window, "#4CD964"].map((c, i) => (
+      <g key={i}>
+        <circle cy={-560 + i * 64} r={24} fill="#0B0F1C" stroke="#30384F" strokeWidth={4} />
+        {on > 0 ? <circle cy={-560 + i * 64} r={24} fill={c} opacity={on} /> : null}
+      </g>
+    ))}
+  </g>
+);
+
+/** Stehender Zug (Fußpunkt links unten), `cars` Wagen à 300 px, Fenster dunkel oder `lit` 0..1. */
+export const Train: React.FC<{ readonly x: number; readonly y: number; readonly cars?: number; readonly s?: number; readonly lit?: number }> = ({ x, y, cars = 3, s = 1, lit = 0 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    {Array.from({ length: cars }, (_, i) => (
+      <g key={i} transform={`translate(${i * 310} 0)`}>
+        <path d={i === 0 ? "M 0 -40 L 0 -170 Q 0 -200 40 -200 L 300 -200 L 300 -40 Z" : "M 0 -40 L 0 -200 L 300 -200 L 300 -40 Z"} fill="#3A4466" {...K} />
+        {[0, 1, 2, 3].map((k) => (
+          <rect key={k} x={30 + k * 66} y={-170} width={48} height={56} rx={6} fill={lit > 0 ? C.window : "#0B0F1C"} opacity={lit > 0 ? 0.3 + 0.7 * lit : 1} />
+        ))}
+        <rect x={0} y={-90} width={300} height={14} fill={C.scarfDark} opacity={0.5} />
+        <circle cx={70} cy={-34} r={20} fill="#0A0D1C" {...K} />
+        <circle cx={230} cy={-34} r={20} fill="#0A0D1C" {...K} />
+      </g>
+    ))}
+  </g>
+);
+
+/** CO₂-Molekül (Mitte): O–C–O, Breite ≈ 150. */
+export const CO2: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly r?: number; readonly o?: number }> = ({ x, y, s = 1, r = 0, o = 1 }) => (
+  <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`} opacity={o}>
+    <path d="M -50 0 L 50 0" stroke={C.ink} strokeWidth={10} />
+    <circle cx={-52} r={26} fill="#D9DDE6" {...K} />
+    <circle cx={52} r={26} fill="#D9DDE6" {...K} />
+    <circle r={32} fill="#3A3F4C" {...K} />
+  </g>
+);
+
 /** Reparaturwagen (Fußpunkt Mitte), Fahrertür offen, niemand drin. */
 export const RepairTruck: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly door?: number }> = ({ x, y, s = 1, door = 1 }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
