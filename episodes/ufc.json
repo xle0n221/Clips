@@ -1,0 +1,526 @@
+{
+  "id": "ufc",
+  "title": "The rise of the UFC",
+  "engine": "chatterbox",
+  "voice": "am_fenrir",
+  "voicePreset": "spannend",
+  "speed": 1.12,
+  "pauseMs": 450,
+  "sceneGapMs": 120,
+  "lengthSec": 70,
+  "years": [
+    1993,
+    2001,
+    2004,
+    2013,
+    2014,
+    2016,
+    2023,
+    2025
+  ],
+  "say": {
+    "WWE": "W-W-E"
+  },
+  "cover": {
+    "text": "BANNED TO BILLIONS. WHO PAID?",
+    "sub": "The rise of the UFC, 1993 to today",
+    "frames": 15
+  },
+  "sources": "docs/quellen-ufc.md",
+  "factcheck": "offen – alle Belege Tertiär (Wikipedia, Abruf 12.11.2026); Primärprüfung von Z14, Z26, Z31, Z33–Z36, Z40 ausstehend",
+  "version": "v1 (Drehbuch, 12.11.2026)",
+  "music": {
+    "mood": "hype",
+    "why": "Sport- und Erfolgsgeschichte mit Aufstieg und Geld: Drill/Trap-Bett (scripts/music.py 'hype', 144 half-time) trägt Kampf-Energie und passt zum Nutzerwunsch nach Rap-/R&B-lastiger, angenehmer, trendiger Musik; im Wendepunkt 'price' dünnt die Musik aus (Szenen-Hinweis), damit die Kämpfer-Frage ernst wirkt."
+  },
+  "style": {
+    "look": "2d",
+    "why": "Geldspur (Zähler $2M → ≈$4B → $12.1B), Kreisdiagramme, Karten und Zeitleiste sind Infografik-Stoff: ein flacher 2D-Fight-Poster/Paper-Cut-Look (schwarz, Rot, Gold) erklärt das am klarsten, hält das Oktagon als durchgehende Bühne und vermeidet jede fotonahe Nachbildung realer Personen.",
+    "characters": "DER KÄMPFER = fiktive Hauptfigur (keine reale Person), flache Paper-Cut-Figur mit roten Handschuhen + roten Shorts als exklusivem Erkennungsmerkmal (Rot trägt sonst niemand), bleibt von 1993 bis 2025 im Käfig = roter Faden. Reale Personen (John McCain, die Fertitta-Brüder, Dana White, Griffin/Bonnar, Rousey/Carmouche) NUR als gesichtslose, stilisierte Cartoon-Silhouetten mit Namens-Etikett, ohne Porträtähnlichkeit, ohne nachgebildete Gesichter, Tattoos oder Markenzeichen; keine Stimmimitation – alle Sätze spricht nur die Erzählstimme (Finn), Zitate nur als Zeitungsausschnitt/Sprechblase. Firmen (UFC, WWE, TKO, Paramount) nur als schlichte Schrift, keine Original-Logos."
+  },
+  "note": "Themen-Art: Geschichte/Firma + Sport (C1-Variante, Aufstieg einer Organisation). Roter Faden: vom verbotenen 'human cockfighting' zum 12-Milliarden-Imperium – aber zu welchem Preis für die Kämpfer? Kausalkette: Turnier fast ohne Regeln → Senator, Briefe → 36 Staaten verbieten → UFC zähmt sich → Besitzer fast pleite → Kauf für 2 Mio. → 40 Mio. versenkt → letzte Chance TV-Show → Boom → Verkauf ≈4 Mrd. → Wendepunkt: wer zahlte? Kämpfer ≈1/5 (geschätzt), Klage → Fusion 12,1 Mrd. vs. Vergleich 375 Mio. vs. 7,7-Mrd.-Vertrag → offene Frage. Keine Du-Perspektive (reale Organisation, Skandale); der Zuschauer urteilt am Ende ('You decide', Auswahlkarte FAIR DEAL?). HUD: Zähler 'UFC: ?' → $2M → ≈$4B → $12.1B (Geldspur) + Balken FIGHTERS' SHARE (EST.) erst ab 'price' bei 0,19, bewegt sich danach bewusst nicht. Re-Hook 1 'Hold that number.' (Geldspur) bei Wort 77/195 (39,5 %); Re-Hook 2 = Leitfrage 'But who paid the price?' als Wendepunkt bei Wort 136/195 (69,7 %, letztes Drittel). Loop: letzte Worte 'Not bad for what a senator called…' → erster Satz 'Human cockfighting, a senator called it.' Skandale: Kartellklage + Vergleich (ohne Schuld-Aussage), Umsatzanteil nur 'estimated'; Wett-Skandal 2022, USADA-Ende, McMahon-Klage und Dana-White-Vorfall bewusst weggelassen (Länge; Vorfall nicht nötig für die Leitfrage). Verdienste: Regeln/Unified Rules, Frauen-Division 2013, Free-TV. Color Script: vergilbtes Rot-Schwarz (1993) → kaltes Blau-Grau (Verbot, Pleite) → Gold (Kauf bis Verkauf) → kaltes Spotlicht (price) → Gold vs. Rot im Split (ending). Zahlen im Sprechtext als Ziffern (speakable/years schreiben für die Stimme aus), Sticker mit Ziffern.",
+  "hud": {
+    "title": "UFC: BANNED → BILLIONS",
+    "counters": [
+      {
+        "id": "value",
+        "label": "",
+        "value": "UFC: ?"
+      }
+    ],
+    "bars": [
+      {
+        "id": "share",
+        "label": "FIGHTERS' SHARE (EST.)",
+        "value": 0.0,
+        "color": "#FF5A5A"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "delivery": "punch",
+      "text": "*Human cockfighting*, a senator called it. | Then the UFC became a *12-billion-dollar* empire. | Who paid the price?",
+      "visual": "2D Fight-Poster/Paper-Cut, schwarz-rote Halle, ein Oktagon von schräg oben im Spotlicht. Cover (0–0,5 s, Bilder 0–14): DER KÄMPFER (fiktive Hauptfigur, rote Handschuhe, rote Shorts) steht allein im Käfig, Maschendraht im Vordergrund; außerhalb des Käfigs wächst ein Berg Goldmünzen bis über den Zaun; großer Titel 'BANNED TO BILLIONS. WHO PAID?' in Akzentgelb oben-mitte, kein Untertitel. Danach ohne Schnitt: auf 'cockfighting' fährt ein vergilbter Zeitungsausschnitt 'HUMAN COCKFIGHTING' ins Bild; auf 'empire' Kamera-Zoom-out, der Goldberg wird zur Skyline; auf 'price' dreht DER KÄMPFER den Kopf zur Kamera, Preisschild baumelt an seinem Handschuh mit '?'.",
+      "sources": [
+        "Z10: \"calling it \\\"human cockfighting\\\"\" (Zitat, Zuschreibung im Szene 'ban')",
+        "Z31: \"the merger agreement valued UFC at $12.1 billion\" (gerundet auf 12, Herleitung 12,1 ≈ 12)",
+        "'Who paid the price?' = Leitfrage ohne Faktenaussage"
+      ],
+      "cues": [
+        {
+          "word": "cockfighting",
+          "sticker": "\"HUMAN COCKFIGHTING\"",
+          "color": "#FFD23F",
+          "sfx": "boom",
+          "hud": {
+            "id": "value",
+            "value": "UFC: ?"
+          }
+        },
+        {
+          "word": "12-billion-dollar",
+          "beat": "goldSkyline",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "price",
+          "beat": "priceTag",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "start",
+      "delivery": "hype",
+      "text": "1993, Denver. Eight fighters, one cage, *almost no rules*. Winner takes 50,000 dollars.",
+      "visual": "Whip zurück: Paper-Cut-Arena 'DENVER 1993', halbleere Ränge (belegt Z9). Acht Kämpfer-Silhouetten in bunt gemischten Kampfstilen und Größen marschieren durchs Bild (keine echten Personen); einer trägt nur EINEN Boxhandschuh (Z8, Bild-Gag). Oktagon mit Maschendraht senkt sich herab (Z4). Auf 'rules' ein Regelzettel, auf dem fast alles durchgestrichen ist – drei Zeilen bleiben: NO BITING · NO EYE-GOUGING · NO GROIN SHOTS. Auf 'dollars' Riesen-Scheck $50,000.",
+      "sources": [
+        "Z1: \"on November 12, 1993\" · \"McNichols Sports Arena in Denver, Colorado\"",
+        "Z2: \"eight-man tournament format, with the winner receiving $50,000\"",
+        "Z3: \"no weight classes, rounds, or judges\" · \"enforced only by a $1,500 fine\" (→ 'almost no rules', nicht 'no rules')",
+        "Z4: \"the first ever martial-arts event to use the octagon\" (Bild)",
+        "Z8: \"which he fought with one boxing glove\" (nur Bild)",
+        "Z9: \"The venue was less than half-packed\" (nur Bild)"
+      ],
+      "cues": [
+        {
+          "word": "1993",
+          "sticker": "DENVER, 1993",
+          "color": "#FFFFFF",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "Eight",
+          "beat": "eightMarch"
+        },
+        {
+          "word": "cage",
+          "beat": "octagonDrop",
+          "sfx": "boom"
+        },
+        {
+          "word": "rules",
+          "beat": "rulesCrossedOut",
+          "sticker": "ALMOST NO RULES",
+          "color": "#FF5A5A",
+          "sfx": "pop"
+        },
+        {
+          "word": "dollars",
+          "beat": "bigCheck",
+          "sticker": "$50,000",
+          "color": "#FFD23F"
+        }
+      ]
+    },
+    {
+      "id": "ban",
+      "delivery": "tense",
+      "text": "Senator John McCain sees a tape. *Human cockfighting*, he says, and writes to every governor. | 36 states ban no-holds-barred fighting.",
+      "visual": "Kühles Blau-Grau. SENATOR = gesichtslose Paper-Cut-Silhouette im Anzug mit Etikett 'SEN. JOHN McCAIN' (keine Porträtähnlichkeit), sieht auf einen alten Röhrenfernseher mit VHS-Kassette. Auf 'cockfighting' Zeitungsausschnitt aus dem Hook kehrt zurück. Auf 'governor' fliegen viele Briefumschläge über eine flache USA-Karte (Anzahl der Umschläge nicht zählbar). Auf 'ban' färben sich Bundesstaaten nacheinander rot, Zähler '36 STATES'; DER KÄMPFER drückt sich am Käfigzaun ab, Käfigtür bekommt ein Vorhängeschloss.",
+      "sources": [
+        "Z10: \"John McCain saw a tape of the first UFC events and immediately found it abhorrent\" · \"calling it \\\"human cockfighting\\\"\" · \"sent letters to the governors of all 50 US states asking them to ban it\" (Jahr 1996 laut Wikipedia → Sticker)",
+        "Z11: \"Thirty-six states enacted laws that banned \\\"no-holds-barred\\\" fighting\" (welche 36 Staaten: unbelegt → Karte nur als Muster, nicht als genaue Liste)"
+      ],
+      "cues": [
+        {
+          "word": "Senator",
+          "sticker": "1996",
+          "color": "#FFFFFF",
+          "sfx": "ding",
+          "label": {
+            "text": "SEN. JOHN McCAIN",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "tape",
+          "beat": "tvTape"
+        },
+        {
+          "word": "cockfighting",
+          "beat": "clippingBack",
+          "sfx": "boom"
+        },
+        {
+          "word": "governor",
+          "beat": "lettersFly",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "ban",
+          "beat": "statesRed",
+          "sticker": "36 STATES BAN IT",
+          "color": "#FF5A5A",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "rules",
+      "delivery": "normal",
+      "text": "So the UFC tames itself: weight classes, gloves, rounds. | Still, its owners are nearly *bankrupt*.",
+      "visual": "Regelzettel aus 'start' kommt zurück; neue Zeilen stempeln sich darauf: WEIGHT CLASSES · GLOVES · ROUNDS. DER KÄMPFER zieht dünne Handschuhe an (rot), Rundenuhr '5:00' erscheint am Käfig. Dann Licht-Abfall: Büro-Kulisse, leere Kasse, rote Mahnungen stapeln sich, ein Schild 'SEG' am Bürofenster (Firmenname nur Bild); Kurve fällt ins Minus.",
+      "sources": [
+        "Z12: \"Starting with UFC 12, bouts were divided into weight classes\" · \"In UFC 14, gloves became mandatory\" · \"Five-minute rounds were introduced at UFC 21\" ('So' = Wikipedia-Darstellung als Antwort auf die Verbote, Z12-Aussage; Faktenprüfer prüfen)",
+        "Z13: \"first sanctioned event, UFC 28, under the New Jersey State Athletic Control Board's \\\"Unified Rules\\\"\" (nur Bild-Etikett 'UNIFIED RULES 2000')",
+        "Z14: \"SEG stood on the brink of bankruptcy\" (→ 'nearly bankrupt')"
+      ],
+      "cues": [
+        {
+          "word": "tames",
+          "beat": "rulesStamp",
+          "sfx": "pop"
+        },
+        {
+          "word": "gloves",
+          "beat": "glovesOn"
+        },
+        {
+          "word": "rounds",
+          "beat": "roundClock",
+          "label": {
+            "text": "UNIFIED RULES · 2000",
+            "color": "#FFFFFF",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "bankrupt",
+          "beat": "redBills",
+          "sticker": "NEARLY BANKRUPT",
+          "color": "#FF5A5A",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "zuffa",
+      "delivery": "normal",
+      "text": "2001: two brothers buy the UFC for just *2 million* dollars. | Hold that number.",
+      "visual": "Warmes Gold kommt zurück. Zwei Anzug-Silhouetten (Etikett 'THE FERTITTA BROTHERS', keine Porträtähnlichkeit) schieben einen kleinen Geldkoffer über den Tisch; im Gegenzug bekommen sie nur drei große Buchstaben U · F · C und einen ramponierten Käfig (Z15, Bild). Auf 'number' friert das Bild ein, HUD-Zähler '$2M' pulsiert und wird mit einem gelben Rahmen 'markiert' (Re-Hook auf die Geldspur).",
+      "sources": [
+        "Z14: \"in January 2001, the Fertittas bought the UFC for $2 million and created Zuffa, LLC\" (Preis nur Wikipedia/Fighters-Only-Zitat)",
+        "Z15: \"those three letters: UFC\" (nur Bild, nicht gesprochen); White: nur Markenname und ein altes Oktagon (Aussage Z15)",
+        "'Hold that number' = Erzähl-Klammer (Re-Hook der Geldspur bei ~37 % der Wörter), keine Faktenaussage"
+      ],
+      "cues": [
+        {
+          "word": "2001",
+          "sticker": "2001",
+          "color": "#FFFFFF",
+          "sfx": "ding",
+          "label": {
+            "text": "THE FERTITTA BROTHERS",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "million",
+          "beat": "suitcase",
+          "sfx": "pop",
+          "hud": {
+            "id": "value",
+            "value": "UFC: $2M"
+          }
+        },
+        {
+          "word": "Hold",
+          "beat": "freezeMark",
+          "sticker": "$2,000,000",
+          "color": "#FFD23F",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "tuf",
+      "delivery": "tense",
+      "text": "By 2004, they've poured in over 40 million. | Last shot: a reality show. Its finale goes toe-to-toe, live on *free* TV.",
+      "visual": "Geldkoffer leert sich: Münzen rieseln in ein Loch, Etikett '$40M+ IN'. Dann TV-Studio-Kulisse 'THE ULTIMATE FIGHTER' als Leuchtschrift (Sendungsname nur Bild), Kamera-Rotlicht 'LIVE'. Im Käfig zwei generische Kämpfer-Silhouetten (keine Ähnlichkeit zu Griffin/Bonnar, Etikett 'GRIFFIN vs. BONNAR' klein) schlagen synchron aufeinander ein, Schweiß-Tropfen als Paper-Cut-Formen, kein Blut. Auf 'free' springt ein Preisschild '$0' auf den Fernseher.",
+      "sources": [
+        "Z17: \"the Fertittas had invested over $40 million\" (bis 2004, laut Dana-White-Artikel)",
+        "Z20: \"financed by the former owners of the Ultimate Fighting Championship (UFC), Lorenzo and Frank Fertitta III\" ('last shot' = Aussage Z20 'last-resort bid', ohne wörtliches Zitat in der Tabelle → Faktenprüfer) · \"the first ever MMA event on live and free television\"",
+        "Z18: \"In January 2005, Spike TV launched The Ultimate Fighter 1\" · \"Forrest Griffin and Stephan Bonnar going toe-to-toe for the right to earn the six-figure contract\"",
+        "Mythos 'McMahon musste TUF genehmigen' bewusst NICHT verwendet (Z20-Anmerkung)"
+      ],
+      "cues": [
+        {
+          "word": "2004",
+          "sticker": "$40M+ IN, 2004",
+          "color": "#FF5A5A",
+          "sfx": "pop"
+        },
+        {
+          "word": "show",
+          "beat": "tvStudio",
+          "sfx": "whoosh",
+          "sticker": "2005",
+          "color": "#FFFFFF"
+        },
+        {
+          "word": "toe-to-toe",
+          "beat": "slugfest",
+          "sfx": "boom",
+          "label": {
+            "text": "GRIFFIN vs. BONNAR",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "free",
+          "beat": "priceZero",
+          "sticker": "LIVE ON FREE TV",
+          "color": "#FFD23F"
+        }
+      ]
+    },
+    {
+      "id": "boom",
+      "delivery": "hype",
+      "text": "From there, it *booms*. The boss said women in the UFC? *Never ever*. 2013: the first women's fight.",
+      "visual": "Montage-Schnitt alle ~1 s in Gold: Arena-Ränge füllen sich, Logo-Schilder 'PRIDE' werden übermalt (2007, Z21, nur Bild), Umsatzbalken '$609M (2015)' wächst (Z24, nur Sticker). Auf 'boss': Anzug-Silhouette 'THE BOSS' (Etikett 'DANA WHITE', keine Porträtähnlichkeit) mit Sprechblase 'NEVER EVER' (2011). Auf 'fight': Sprechblase zerplatzt, zwei generische Kämpferinnen-Silhouetten betreten den Käfig, Sticker 'FIRST WOMEN'S BOUT: 2013'.",
+      "sources": [
+        "Z21: \"acquiring the assets of Pride Fighting Championships, the UFC's largest rival\" (nur Bild)",
+        "Z24: \"a year-to-year high of $609 million in revenue during 2015\" (nur Sticker; 'booms' = Einordnung der Erzählstimme aus Z21–Z24)",
+        "Z23: \"\\\"never ever\\\"\" · \"in February 2013 the UFC held its first women's bout, featuring Ronda Rousey and Liz Carmouche\" (2011-Aussage Whites laut Wikipedia; Namen nur im Etikett)"
+      ],
+      "cues": [
+        {
+          "word": "booms",
+          "beat": "montageGold",
+          "sticker": "$609M REVENUE (2015)",
+          "color": "#FFD23F",
+          "sfx": "boom"
+        },
+        {
+          "word": "boss",
+          "beat": "bossBubble",
+          "label": {
+            "text": "DANA WHITE, 2011",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "ever",
+          "sticker": "\"NEVER EVER\"",
+          "color": "#B0BEC5",
+          "sfx": "pop"
+        },
+        {
+          "word": "fight",
+          "beat": "bubblePop",
+          "sticker": "FIRST WOMEN'S BOUT: 2013",
+          "color": "#FFD23F",
+          "sfx": "ding",
+          "label": {
+            "text": "ROUSEY vs. CARMOUCHE",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        }
+      ]
+    },
+    {
+      "id": "sale",
+      "delivery": "punch",
+      "text": "2016: sold for about *4 billion* dollars. | From 2 million. In 15 years.",
+      "visual": "Auktionshammer fällt (Comic-Schlag). HUD-Zähler springt von '$2M' (gelb markiert aus 'zuffa') auf '≈$4B'; Infografik: winziger Münzstapel '$2M' neben einem Münzturm, der oben aus dem Bild ragt. Auf '15' Zeitleisten-Pfeil 2001 → 2016.",
+      "sources": [
+        "Z26: \"for $4.025 billion\" (UFC-Artikel) vs. \"$4.2 billion\" (Zuffa-Artikel) – Wikipedia widerspricht sich → gesprochen 'about 4 billion'; Sticker '≈$4B'",
+        "Herleitung '15 years': 01/2001 (Z14) → 07/2016 (Z26) = 15,5 Jahre; Faktor ≈ 4.000 / 2 ≈ 2.000 (nur Größenordnung, nicht gesprochen)"
+      ],
+      "cues": [
+        {
+          "word": "2016",
+          "sticker": "SOLD, 2016",
+          "color": "#FFFFFF",
+          "sfx": "boom",
+          "beat": "gavel"
+        },
+        {
+          "word": "billion",
+          "hud": {
+            "id": "value",
+            "value": "UFC: ≈$4B"
+          },
+          "beat": "coinTower",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "15",
+          "beat": "timelineArrow",
+          "sticker": "$2M → ≈$4B",
+          "color": "#FFD23F"
+        }
+      ]
+    },
+    {
+      "id": "price",
+      "delivery": "punch",
+      "text": "But who paid the price? | The fighters. Estimated share: about a *fifth* of revenue. NBA players? About *half*. In 2014, fighters sued, claiming suppressed pay.",
+      "visual": "Wendepunkt: Musik dünnt aus, Gold wird kalt. Spotlicht auf DER KÄMPFER allein im Käfig, Preisschild aus dem Hook hängt an seinem Handschuh. Kreisdiagramm wird auf den Käfigboden projiziert: kleines rotes Stück 'FIGHTERS ≈ 1/5 (EST.)'; daneben ein zweites Kreisdiagramm mit Basketball-Symbol halb gefüllt 'NBA ≈ 1/2'. HUD-Balken 'FIGHTERS' SHARE (EST.)' erscheint und bleibt bei ~19 %. Auf 'sued': Kämpfer-Silhouetten mit Aktenordnern vor einem Gerichtsgebäude, Etikett 'CLASS ACTION, 2014'.",
+      "sources": [
+        "Z33: \"It is estimated that the UFC shares between 16% and 22% of its revenue with fighters\" (nur Schätzung → 'estimated … about a fifth'; Balken 0,19 = Mitte 16–22 %) · \"share approximately half of the revenue with their athletes\" (NBA/MLB/NHL; NBA als ein Beispiel)",
+        "Z34: \"On December 16, 2014, a class action lawsuit was filed against UFC by fighters Cung Le, Jon Fitch and Nate Quarry\" (Inhalt: Kartellklage wegen gedrückter Bezahlung = Behauptung → 'claiming')",
+        "Wendepunkt + Wiederholung der Leitfrage aus dem Hook"
+      ],
+      "cues": [
+        {
+          "word": "price",
+          "beat": "spotlightFighter",
+          "sticker": "WHO PAID?",
+          "color": "#FFD23F",
+          "sfx": "boom"
+        },
+        {
+          "word": "fifth",
+          "beat": "pieFifth",
+          "sticker": "≈ 1/5 (ESTIMATED)",
+          "color": "#FF5A5A",
+          "bar": {
+            "id": "share",
+            "value": 0.19
+          }
+        },
+        {
+          "word": "half",
+          "beat": "pieHalf",
+          "sticker": "NBA: ≈ 1/2",
+          "color": "#B0BEC5"
+        },
+        {
+          "word": "sued",
+          "beat": "courthouse",
+          "sfx": "ding",
+          "label": {
+            "text": "CLASS ACTION, 2014",
+            "color": "#FFFFFF",
+            "x": 0.5,
+            "y": 0.36
+          }
+        }
+      ]
+    },
+    {
+      "id": "empire",
+      "delivery": "hype",
+      "text": "2023: a WWE merger values the UFC at *12.1 billion*. 2025: a judge approves a *375-million-dollar* settlement. | Then a 7.7-billion-dollar media deal.",
+      "visual": "Zwei Logo-Blöcke 'UFC' und 'WWE' krachen zu einem Turm 'TKO' zusammen (Firmenlogos nur als schlichte Schrift, kein Original-Logo). HUD-Zähler springt auf '$12.1B'. Richterhammer: Scheck '$375M SETTLEMENT' – klein neben dem Turm. Dann Streaming-Bildschirm mit Vertrag '$7.7B · 7 YEARS', ein PPV-Schild wird durchgestrichen. DER KÄMPFER sieht vom Käfig aus zu, der Balken bleibt unverändert.",
+      "sources": [
+        "Z30: \"The new entity went public on September 12, 2023\"",
+        "Z31: \"the merger agreement valued UFC at $12.1 billion\"",
+        "Z36: \"granted final approval for a $375 million settlement\" (06.02.2025; kein Schuldeingeständnis behauptet – nicht belegt, daher nicht erwähnt) · \"around $240 million to $260 million will be distributed to eligible fighters\" (nur Bild-Etikett möglich)",
+        "Z40: \"On August 11, 2025, UFC announced a seven-year, $7.7 billion media rights agreement with Paramount Skydance\" ('Then' = Feb. → Aug. 2025)",
+        "Z41: PPV 'outdated' (nur Bild: PPV-Schild durchgestrichen)"
+      ],
+      "cues": [
+        {
+          "word": "merger",
+          "beat": "logoCrash",
+          "sfx": "boom",
+          "sticker": "2023",
+          "color": "#FFFFFF"
+        },
+        {
+          "word": "12.1",
+          "hud": {
+            "id": "value",
+            "value": "UFC: $12.1B"
+          },
+          "sticker": "VALUED AT $12.1B",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "settlement",
+          "beat": "settlementCheck",
+          "sticker": "$375M SETTLEMENT (2025)",
+          "color": "#FF5A5A",
+          "sfx": "ding"
+        },
+        {
+          "word": "deal",
+          "beat": "streamDeal",
+          "sticker": "$7.7B · 7 YEARS",
+          "color": "#FFD23F",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "delivery": "punch",
+      "text": "Banned to billions. The fighters? A settlement. | Fair? You decide. | Not bad for what a senator called…",
+      "visual": "Split-Screen vertikal: oben der Goldturm mit HUD '$12.1B', unten DER KÄMPFER mit dem kleinen Settlement-Scheck. Auf 'Fair' Waage in der Bildmitte, kippt Richtung Gold; Auswahlkarte 'FAIR DEAL?' mit 'A · YES' / 'B · NO'. Auf 'senator' Form-Wipe (Oktagon-Form) zurück zum vergilbten Zeitungsausschnitt und Käfig aus dem Hook, Zähler zurück auf 'UFC: ?' (Loop in 'Human cockfighting, a senator called it.').",
+      "sources": [
+        "Z11 + Z31: 'Banned to billions' = Zusammenfassung (36 Staaten verboten; Bewertung 12,1 Mrd.)",
+        "Z36: Vergleich als 'settlement' (keine Wertung über Schuld)",
+        "'Fair? You decide.' = offene Frage ohne Faktenaussage; Loop zum ersten Satz"
+      ],
+      "cues": [
+        {
+          "word": "billions",
+          "beat": "splitScreen",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "settlement",
+          "beat": "smallCheck"
+        },
+        {
+          "word": "Fair",
+          "beat": "scaleTilt",
+          "sfx": "pop",
+          "choice": {
+            "title": "FAIR DEAL?",
+            "options": [
+              "A · YES",
+              "B · NO"
+            ]
+          }
+        },
+        {
+          "word": "senator",
+          "beat": "loopToCage",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "value",
+            "value": "UFC: ?"
+          }
+        }
+      ]
+    }
+  ]
+}
