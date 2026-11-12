@@ -47,6 +47,7 @@ Während der Arbeit `updatedAt` mindestens alle 30 Minuten erneuern (zusammen mi
 | Recherche (1) | `research` | `statusText` |
 | Drehbuch fertig, Freigabe 1 (2) | `script` | `review: { kind: "script", title, text, sources: [{claim, quote, url}], corrections?, scenes? }`, `decision: null`, `busy: false` |
 | Audio + Timing (3) | `scenes` | `metrics: { durationSec, words, wordsPerSec, whisperMatch, voice }` |
+| Hörprobe (3, nach Freigabe 1) | `scenes` | erste ~20 s als MP4 (Wellenform + Ton) per Artifact-Asset hochladen → `review: { kind: "audio", title, mediaUrl, text }`, `decision: null`, `busy: false` |
 | Szenen + Prüfbilder, Freigabe 2 (4–5) | `scenes` | Kontaktabzug als Asset hochladen → `review: { kind: "contactsheet", title, imageUrl, scenes }`, `decision: null`, `busy: false` |
 | Render (6) | `render` | `renderProgress` (0..1) und `renderEta` aus dem Remotion-Log, mind. alle 10 Min. |
 | Fertig | `done` | `review: null`, `busy: false`, `previewUrl` (verkleinerte Vorschau, < 15 MB), `fileSizeBytes`, `publish` (siehe unten) |

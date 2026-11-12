@@ -428,8 +428,10 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   function reviewBlock(v) {
     const r = v.review;
     const box = el("div", { class: "review" });
-    box.append(el("h3", { text: r.kind === "contactsheet" ? "Stufe 2 · Kontaktabzug prüfen (vor dem finalen Render)" : "Stufe 1 · Drehbuch und Quellen prüfen" }));
+    box.append(el("h3", { text: r.kind === "contactsheet" ? "Stufe 2 · Kontaktabzug prüfen (vor dem finalen Render)" : r.kind === "audio" ? "Hörprobe · Stimme und Tempo prüfen (vor dem Szenenbau)" : "Stufe 1 · Drehbuch und Quellen prüfen" }));
     if (r.title) box.append(el("p", { class: "rtitle", text: r.title }));
+    const media = safeUrl(r.mediaUrl);
+    if (media) box.append(el("video", { src: media, controls: true, preload: "metadata", playsinline: true, style: "width:100%;max-height:360px" }));
     const img = safeUrl(r.imageUrl);
     if (img) box.append(el("a", { href: img, target: "_blank", rel: "noopener" }, el("img", { src: img, alt: r.title || "Kontaktabzug", loading: "lazy" })));
     if (r.text) box.append(el("pre", { class: "script", text: r.text }));

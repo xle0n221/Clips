@@ -24,7 +24,7 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `note` | string | Seite | freie Notiz des Nutzers |
 | `stage` | `"queued"` \| `"research"` \| `"script"` \| `"scenes"` \| `"render"` \| `"done"` \| `"error"` | Seite: nur `queued` beim Anlegen; danach die bearbeitende Sitzung | Arbeitsschritt |
 | `statusText` | string | Sitzung | kurzer Klartext, was gerade passiert / Fehlertext bei `error` |
-| `review` | null \| `{ kind: "script" \| "contactsheet", title, text?, imageUrl?, sources? }` | Sitzung | Prüfinhalt, solange eine Freigabe gebraucht wird; `sources` = Liste `{ claim, quote, url }` |
+| `review` | null \| `{ kind: "script" \| "audio" \| "contactsheet", title, text?, imageUrl?, mediaUrl?, sources? }` | Sitzung | Prüfinhalt, solange eine Freigabe gebraucht wird; `sources` = Liste `{ claim, quote, url }` |
 | `decision` | null \| `{ value: "ok" \| "not_ok", feedback, at }` | **nur die Seite / der Nutzer** | Entscheidung zum aktuellen `review`; `at` = ISO-Zeit |
 | `branch` | string \| null | Sitzung | Git-Branch des Videos (Link auf github.com/xle0n221/clips) |
 | `sessionId` | string \| null | Sitzung | ID der bearbeitenden Cloud-Sitzung |
