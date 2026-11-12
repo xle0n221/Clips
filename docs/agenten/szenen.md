@@ -24,6 +24,13 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Rolls-Royce (2D) v1 · **Experiment ruhiges Bildtempo von Anfang an:** 22 Einstellungen auf 72,2 s
+  (Mittel ≈ 3,3 s; nur der Rückspul-Loop am Ende < 1,5 s), Pointen über Requisiten-Timing (Stempel, fallendes Schild,
+  Karte dreht sich, Brille fällt) statt Schnitt; Ortswechsel in einer Szene als weiche Kamerafahrt (pick: Schwenk
+  Phantom → Ghost, hood: Ranfahrt an die Haube). Fallen: Pill (label) zeigte nach Schwenk auf das falsche Auto →
+  Schwenk erst am Beat starten, an dem die Pill endet (`labelUntil`); Preisschild im Dach lag unter dem Sticker
+  (y < 560 im Bild) → tiefer; Auswahlkarte (choice) deckt im Finale Figur + Kritzel → Kritzel ab dem Beat ausblenden.
+  Alle Zeiten aus `useBeats` (B/W, scenes/rollsSets.tsx). Beleg `out/rolls-royce-contactsheet.jpg`.
 - 12.11.2026 · Mike Tyson (2D) v3 · **Nutzer empfindet 1–3-s-Schnitte als zu hektisch** (Freigabe 2 „Nicht OK“:
   „etwas langsamer … angenehmer zum Schauen“). Umbau: 33 → 24 Einstellungen, im Mittel ≈ 3,0 s (vorher ≈ 2,2 s);
   Ortswechsel innerhalb einer Szene als Überblendung (zwei `Stage2D` übereinander mit Deckkraft, z. B. Gold-Arena,
@@ -111,3 +118,4 @@
 | 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |
+| 12.11.2026 | Rolls-Royce (2D) v1 | – (Selbstprüfung 7–8, Regie-Kritiker offen) | 2 Kontaktabzüge, 5 Korrekturen |
