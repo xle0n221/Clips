@@ -19,7 +19,7 @@
     "frames": 15
   },
   "sources": "docs/quellen-rolls-royce.md",
-  "factcheck": "offen – Faktenprüfer prüft gegen quellen-rolls-royce.md (alle Belege Tertiär/Wikipedia, keine Primärquelle erreichbar); Gerücht 'invite' nur als 'Rumor says … Unconfirmed.'; 'Bavaria' = Allgemeinwissen, nicht in der Quellendatei (zur Prüfung markiert)",
+  "factcheck": "geprüft 12.11.2026 (Faktenprüfer) – alle Aussagen gegen quellen-rolls-royce.md + zwischengespeicherte Wikipedia-Texte; Belege nur tertiär (Herstellerseiten gesperrt); Details out/rolls-royce-review.json",
   "version": "v1 (Drehbuch, 12.11.2026)",
   "music": {
     "mood": "funny",
@@ -28,9 +28,9 @@
   "style": {
     "look": "2d",
     "why": "Meme-Formate (POV-Zeile, 'Nobody:/Rolls-Royce:', Starter-Pack-Raster, Checkliste, Stonks-Pfeil) sind flache Text-/Sticker-Grafik: ein greller 2D-Sticker/Paper-Cut-Look mit Schritt-Checkliste erzählt die Anleitung am klarsten und hält Pointen auf dem Punkt.",
-    "characters": "YOU = fiktive Hauptfigur (POV-Zuschauer), flache Cartoon-Figur, normaler Typ mit Cup-Nudeln, exklusives Erkennungsmerkmal limettengrüner Hoodie (Limette trägt sonst niemand); ab 'rich' kommt eine viel zu große Papp-Sonnenbrille dazu. Das Auto ist eine EIGENE stilisierte Luxuslimousine (lange Haube, hoher Kühler ohne Markenform, kein Emblem, keine Kühlerfigur-Replik): Name 'Rolls-Royce' und Modellnamen nur als Text-Etikett. Kühlerfigur in 'hood' = eigene generische Figur mit wehendem Gewand, nicht dem Original nachgezeichnet. Keine echten Personen, keine geschützten Meme-Bilder (Meme-Formate nur als eigene Text-Layouts und eigene Zeichnungen)."
+    "characters": "YOU = fiktive Hauptfigur (POV-Zuschauer), flache Cartoon-Figur, normaler Typ mit Cup-Nudeln, exklusives Erkennungsmerkmal limettengrüner Hoodie (Limette trägt sonst niemand); ab 'rich' kommt eine viel zu große Papp-Sonnenbrille dazu. Das Auto ist eine EIGENE stilisierte Luxuslimousine (lange Haube, hoher Kühler ohne Markenform, kein Emblem, keine Kühlerfigur-Replik): Name 'Rolls-Royce' und Modellnamen nur als Text-Etikett. Kühlerfigur in 'hood' = nur abstraktes flatterndes Stoffband ohne Körper (keine Figur, keine Pose – Markenzeichen). Keine echten Personen, keine geschützten Meme-Bilder (Meme-Formate nur als eigene Text-Layouts und eigene Zeichnungen)."
   },
-  "note": "Themen-Art: Satire/Alltag (C6-Variante, Comedy-Anleitung). Roter Faden: POV – DU willst in 1 Minute Rolls-Royce-Fahrer werden; Erzähl-Klammer = nummerierte Schritte (Step 1–10) als Checkliste + HUD-Timer, der satirisch herunterzählt (kein Echtzeit-Anspruch). Kausalkette/Eskalation: reich sein → Modell wählen → warten → einsteigen (Stiche) → hochschauen (Sterne) → Haube (Gewand) → Kofferraum (Cocktail suite) → Re-Hook 'Still here? 2 plot twists incoming.' bei Wort 70/177 (39,5 %) → Twist 1 BMW seit 2003 → Twist 2 Kombi/Gas Guzzler Tax (Wendepunkt im letzten Drittel) → Sweptail 12,8 Mio./4 Jahre vs. 1 Minute ('the math ain't mathing'). Loop: letzte Worte 'Which brings us back to…' → erster Satz 'Step 1: be rich.' Meme-Formate (eigene Gags, US-Slang allgemein verständlich): POV-Zeile, 'starter pack', 'it's giving', 'Nobody: / Rolls-Royce:', 'Tailgate party? Nah.', 'plot twist', 'the math ain't mathing', Stonks-Pfeil als eigene Zeichnung. Unbelegtes: 'Einladung nötig' nur als 'Rumor says … Unconfirmed.'; Preise ohne Jahr (Cullinan ~325.000 $), Lichtpunkt-Zahlen, Regenschirme, versenkbare Figur, 'handgefertigt', Wartezeiten bewusst weggelassen. Stationen: 10 Schritte (≤ 11). Wortzahl 177 Skriptwörter (Ziel 170–180, ≈ 59–68 s bei 2,6–3,0 W/s; Zahlen-Szenen stitch/ending sprechen länger → beim Stimm-Lauf messen). HUD: Zähler 'TIME LEFT' 1:00 → 0:00 (Satire-Uhr) + Balken DRIVER LEVEL steigt je Schritt, fällt bei 'mathing' auf 0 (Loop). Color Script: Wohnzimmer-Grau (hook) → Gold/Champagner (Schritte 2–7) → Glitch-Rot-Blitz bei Plot twists → Gold mit grauem Taschenrechner-Blitz (ending) → zurück ins Wohnzimmer.",
+  "note": "Themen-Art: Satire/Alltag (C6-Variante, Comedy-Anleitung). Roter Faden: POV – DU willst in 1 Minute Rolls-Royce-Fahrer werden; Erzähl-Klammer = nummerierte Schritte (Step 1–10) als Checkliste + HUD-Timer, der satirisch herunterzählt (kein Echtzeit-Anspruch). Kausalkette/Eskalation: reich sein → Modell wählen → warten → einsteigen (Stiche) → hochschauen (Sterne) → Haube (Gewand) → Kofferraum (Cocktail suite) → Re-Hook 'Still here? 2 plot twists incoming.' bei Wort 68/175 (38,9 %) → Twist 1 BMW seit 2003 → Twist 2 Kombi/Gas Guzzler Tax (Wendepunkt im letzten Drittel) → Sweptail 12,8 Mio./4 Jahre vs. 1 Minute ('the math ain't mathing'). Loop: letzte Worte 'Which brings us back to…' → erster Satz 'Step 1: be rich.' Meme-Formate (eigene Gags, US-Slang allgemein verständlich): POV-Zeile, 'starter pack', 'it's giving', 'Nobody: / Rolls-Royce:', 'Tailgate party? Nah.', 'plot twist', 'the math ain't mathing', Stonks-Pfeil als eigene Zeichnung. Unbelegtes: 'Einladung nötig' nur als 'Rumor says … Unconfirmed.'; Preise ohne Jahr (Cullinan ~325.000 $), Lichtpunkt-Zahlen, Regenschirme, versenkbare Figur, 'handgefertigt', Wartezeiten bewusst weggelassen. Stationen: 10 Schritte (≤ 11). Wortzahl 175 Skriptwörter (nach Faktencheck 12.11.2026: 'Entry-level Ghost.' gestrichen, −2) (Ziel 170–180, ≈ 59–68 s bei 2,6–3,0 W/s; Zahlen-Szenen stitch/ending sprechen länger → beim Stimm-Lauf messen). HUD: Zähler 'TIME LEFT' 1:00 → 0:00 (Satire-Uhr) + Balken DRIVER LEVEL steigt je Schritt, fällt bei 'mathing' auf 0 (Loop). Color Script: Wohnzimmer-Grau (hook) → Gold/Champagner (Schritte 2–7) → Glitch-Rot-Blitz bei Plot twists → Gold mit grauem Taschenrechner-Blitz (ending) → zurück ins Wohnzimmer.",
   "hud": {
     "title": "ROLLS-ROYCE SPEEDRUN",
     "counters": [
@@ -95,7 +95,7 @@
     {
       "id": "pick",
       "delivery": "hype",
-      "text": "Step 2: pick your ride. Phantom: the flagship. Ghost: the *entry model*. | Entry-level Ghost. It's giving starter pack.",
+      "text": "Step 2: pick your ride. Phantom: the flagship. Ghost: the *entry model*. | It's giving starter pack.",
       "visual": "Champagner-Gold. Showroom-Drehbühne mit zwei eigenen stilisierten Limousinen, Etiketten 'PHANTOM · FLAGSHIP' (größer, Krone-Sticker) und 'GHOST · ENTRY MODEL'. Auf 'entry' blinkt ein Supermarkt-Schild 'ENTRY LEVEL' über dem Ghost, YOU zieht die Augenbrauen hoch. Auf 'pack' Starter-Pack-Raster (eigenes 2×2-Layout): Papp-Sonnenbrille · Lederhandschuhe · Champagnerglas · ein Ghost – Titel 'ENTRY-LEVEL GHOST STARTER PACK'.",
       "sources": [
         "Z7: \"the most expensive production car made by Rolls-Royce Motor Cars\" (Phantom = Flaggschiff) · \"Rolls-Royce's current entry model\" (Ghost)",
@@ -189,10 +189,10 @@
       "id": "stitch",
       "delivery": "hype",
       "text": "Step 4: sit down. Nobody: | Rolls-Royce: *2.2 million* stitches in the Ghost's bamboo fabric. Over 11 miles of thread! | Still here? 2 plot twists incoming.",
-      "visual": "Innenraum-Nahaufnahme, YOU sinkt in einen Sitz. Auf 'Nobody' Meme-Layout als eigene Textkarte, weiß auf schwarz: 'nobody:' (leer) / 'Rolls-Royce:' – darunter wirbelt eine Nähmaschinen-Nadel, Zähler rast auf '2,200,000 STITCHES'. Auf 'thread' Garnrolle rollt aus dem Bild, Faden spannt sich über eine Mini-Karte 'OVER 11 MILES', kleiner Sticker '+20 HOURS PER CAR'. Auf 'Still' friert das Bild ein, Timer-Sticker pulsiert, zwei verdeckte Karten 'PLOT TWIST 1' / 'PLOT TWIST 2' legen sich ins Bild (Re-Hook).",
+      "visual": "Innenraum-Nahaufnahme, YOU sinkt in einen Sitz. Auf 'Nobody' Meme-Layout als eigene Textkarte, weiß auf schwarz: 'nobody:' (leer) / 'Rolls-Royce:' – darunter wirbelt eine Nähmaschinen-Nadel, Zähler rast auf '2,200,000 STITCHES'. Auf 'thread' Garnrolle rollt aus dem Bild, Faden spannt sich über eine Mini-Karte 'OVER 11 MILES', kleiner Sticker '+20 HOURS TO BUILD'. Auf 'Still' friert das Bild ein, Timer-Sticker pulsiert, zwei verdeckte Karten 'PLOT TWIST 1' / 'PLOT TWIST 2' legen sich ins Bild (Re-Hook).",
       "sources": [
         "Z11: \"over 11 miles of thread and 2.2 million stiches\" (Original-Tippfehler) · \"adds 20 hours to the building process of each model\" (nur Sticker) – Ghost Series II, Stoff 'Duality Twill' aus Bambus",
-        "'Nobody: / Rolls-Royce:' = Meme-Format als eigenes Text-Layout; 'Still here? 2 plot twists incoming.' = Re-Hook ohne Faktenaussage (Wort 70/177 = 39,5 %)"
+        "'Nobody: / Rolls-Royce:' = Meme-Format als eigenes Text-Layout; 'Still here? 2 plot twists incoming.' = Re-Hook ohne Faktenaussage (Wort 68/175 = 38,9 %)"
       ],
       "cues": [
         {
@@ -212,7 +212,7 @@
         {
           "word": "thread",
           "beat": "spoolRoll",
-          "sticker": "+20 HOURS PER CAR",
+          "sticker": "+20 HOURS TO BUILD",
           "color": "#FFFFFF",
           "bar": {
             "id": "level",
@@ -235,7 +235,7 @@
     {
       "id": "stars",
       "delivery": "normal",
-      "text": "Step 5: look up. Stars in the *ceiling*. On the Cullinan? Optional.",
+      "text": "Step 5: look up. Stars in the ceiling. On the Cullinan? *Optional*.",
       "visual": "YOU legt den Kopf in den Nacken: Dachhimmel wird zum Nachthimmel aus vielen kleinen Lichtpunkten (Anzahl nicht zählbar, keine Zahl im Bild), Sternschnuppe. Auf 'Optional' erscheint ein Preisschild-Häkchen 'OPTIONAL EXTRA' an einem Stern, YOU schaut auf sein leeres Portemonnaie (Motten flattern heraus).",
       "sources": [
         "Z10: \"a choice of an optional \\\"Starlight\\\" fiber optic headliner or panoramic sunroof\" (Cullinan)",
@@ -275,7 +275,7 @@
       "id": "hood",
       "delivery": "punch",
       "text": "Step 6: check the Spectre's hood. Those aren't wings. | They're *robes*.",
-      "visual": "Haube einer eigenen stilisierten Elektro-Coupé-Silhouette (Etikett 'SPECTRE'), darauf eine EIGENE generische kleine Figur mit wehendem Gewand, ein Bein nach vorn (keine Nachzeichnung der Original-Kühlerfigur). Auf 'wings' YOU zeigt begeistert hin, Sticker 'WINGS?' – auf 'robes' Zoom, das Gewand flattert im Wind, Sticker 'NOPE: ROBES', YOU tut so, als habe er das immer gewusst.",
+      "visual": "Haube einer eigenen stilisierten Elektro-Coupé-Silhouette (Etikett 'SPECTRE'), darauf KEINE Figur, sondern ein abstraktes flatterndes Stoffband ohne Körper auf neutralem Sockel (keine menschliche Gestalt, keine Pose 'Bein nach vorn' – Kühlerfigur ist Markenzeichen, Faktenprüfer 12.11.2026). Auf 'wings' YOU zeigt begeistert hin, Sticker 'WINGS?' – auf 'robes' Zoom, das Stoffband flattert im Wind, Sticker 'NOPE: ROBES', YOU tut so, als habe er das immer gewusst.",
       "sources": [
         "Z12: \"a redesigned Spirit of Ecstasy, with one leg forward\" · \"commonly mistaken as wings\" (aerodynamische Gewänder, Spectre)",
         "Name 'Spirit of Ecstasy' nur als kleines Etikett, Figur nicht nachgezeichnet; Versenkbarkeit NICHT belegt → weggelassen"
@@ -363,8 +363,8 @@
       "visual": "YOU posiert vor der Limousine mit Teetasse, Fabrik-Kulisse 'GOODWOOD, ENGLAND' im Hintergrund. Auf 'twist' Record-Scratch, Bild ruckelt (Glitch-Rot), verdeckte Karte 'PLOT TWIST 1' dreht sich um: schlichte Schrift 'BMW AG' (kein Logo) über einem Eigentums-Stempel 'SINCE 2003'. Auf 'Bavaria' tauscht YOU die Teetasse gegen eine Brezel aus Papier; Teetasse kippt.",
       "sources": [
         "Z1: \"a wholly owned subsidiary of BMW AG since 2003\"",
-        "Z3: \"42-acre (17 ha) Goodwood plant, close to Goodwood Estate in West Sussex\" (nur Bild 'GOODWOOD, ENGLAND') · Z20: \"probably one of the most recognised icons in the world\" (BBC laut Wikipedia → 'British icon')",
-        "'It's giving Bavaria' = Gag; BMW mit Sitz in Bayern ist Allgemeinwissen, NICHT in quellen-rolls-royce.md – Faktenprüfer: belegen oder Zeile in 'It's giving… *German*?' ändern"
+        "Z3: \"42-acre (17 ha) Goodwood plant, close to Goodwood Estate in West Sussex\" (nur Bild 'GOODWOOD, ENGLAND') · Z20: \"probably one of the most recognised icons in the world\" (BBC laut Wikipedia → 'British icon') · 'British': \"a British luxury automobile maker\" (Rolls-Royce Motor Cars)",
+        "'It's giving Bavaria' = erkennbarer Gag (Brezel-Bild); belegt ist nur die BMW-Zugehörigkeit (Z1: \"a wholly owned subsidiary of BMW AG since 2003\"); BMW-Sitz Bayern = Allgemeinwissen, nicht in den Quellen, wird nicht als Tatsache gesprochen – Faktenprüfer 12.11.2026 freigegeben"
       ],
       "cues": [
         {
