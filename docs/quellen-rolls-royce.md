@@ -59,3 +59,11 @@ Methode: Klartext per MediaWiki-API (`prop=extracts&explaintext=1`), Zitate per 
 
 ## Freigabeliste für den Faktenprüfer (noch nichts freigegeben)
 Alle 23 Zeilen sind Tertiär und wörtlich im Artikeltext gefunden. Vor Freigabe nötig: Primärquellen (rolls-roycemotorcars.com / press.rolls-roycemotorcars.com) für Preise, Lichtpunkte, Regenschirme, Bespoke, Rekordzahlen; zusätzlich die Wikipedia-Artikel Spectre, Phantom VIII, Spirit of Ecstasy, Goodwood-Werk nachladen, sobald das API-Limit (HTTP 429) vorbei ist.
+
+## Nachtrag 12.11.2026 (Drehbuch v3, Wikipedia-Rohtext per `?action=raw`, API weiter HTTP 429; rolls-roycemotorcars.com weiter `connect_rejected`)
+| # | Aussage | Wörtliches Zitat | URL | Typ | Anmerkung |
+| --- | --- | --- | --- | --- | --- |
+| 24 | Phantom (VIII) ist das Flaggschiff, zwei Radstände | „This is the current flagship model made by Rolls-Royce Motor Cars, and is offered in two wheelbase lengths.“ | https://en.wikipedia.org/wiki/Rolls-Royce_Phantom_VIII | Tertiär | Wikipedia zitiert Herstellerseite (gesperrt). |
+| 25 | Phantom Extended: Trennwand, schalldichter Fond „Privacy Suite“ | „The interior features a partition between the front cockpit and the rear passenger compartment, and the rear passenger compartment has been made soundproof for privacy and is known as the "Privacy Suite"“ | https://en.wikipedia.org/wiki/Rolls-Royce_Phantom_VIII | Tertiär | Beleg in Wikipedia: rolls-roycemotorcars.com „Phantom Extended – In Detail“ (nicht erreichbar). Ob die Trennwand Serie oder Option ist: Ich kann das nicht bestätigen. |
+| 26 | Phantom Extended: Fond vergrößert | „The car's rear passenger compartment has been enlarged“ | https://en.wikipedia.org/wiki/Rolls-Royce_Phantom_VIII | Tertiär | Basis für den Satire-Schluss „the money sits in the back“ – wie viele Besitzer selbst fahren: Ich kann das nicht bestätigen. |
+| 27 | Chauffeur = Berufsfahrer, besonders von Luxusautos | „is a professional driver of a passenger motor vehicle, especially a luxury vehicle such as a large sedan, SUV or a limousine“ | https://en.wikipedia.org/wiki/Chauffeur | Tertiär | – |

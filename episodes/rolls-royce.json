@@ -7,20 +7,19 @@
   "speed": 1.0,
   "pauseMs": 350,
   "sceneGapMs": 600,
-  "lengthSec": 65,
+  "lengthSec": 78,
   "years": [
-    2003,
-    2019
+    2017
   ],
   "say": {},
   "cover": {
-    "text": "ROLLS-ROYCE IN 1 MINUTE?",
-    "sub": "A totally serious step-by-step guide (satire)",
+    "text": "ROLLS-ROYCE DRIVER IN 1 MINUTE?",
+    "sub": "$12 budget. 4 plans. 1 plot twist.",
     "frames": 15
   },
-  "sources": "docs/quellen-rolls-royce.md",
-  "factcheck": "geprüft 12.11.2026 (Faktenprüfer) – alle Aussagen gegen quellen-rolls-royce.md + zwischengespeicherte Wikipedia-Texte; Belege nur tertiär (Herstellerseiten gesperrt); Details out/rolls-royce-review.json",
-  "version": "v1 (Drehbuch, 12.11.2026)",
+  "sources": "docs/quellen-rolls-royce.md + je Szene 'sources' (neu: Phantom VIII 'Privacy Suite', Chauffeur-Definition)",
+  "factcheck": "offen – Drehbuch v3 vom Drehbuch-Agenten selbst geprüft (12.11.2026): 6 Faktenaussagen, alle wörtlich in Wikipedia (Tertiär); Primärquellen gesperrt. Faktenprüfer muss noch freigeben. Details out/rr-script-review.json",
+  "version": "v3 (Drehbuch neu, 12.11.2026 – nach Nutzer-Urteil v2 'kein Sinn, nicht witzig')",
   "music": {
     "mood": "funny",
     "why": "Satire/Comedy-Anleitung mit Memes: bouncy R&B-Pop mit Offbeat-Stabs, rundem Bass und Snaps (scripts/music.py 'funny', ~100 BPM) trägt die Step-Gags locker und angenehm und passt zum Nutzerwunsch nach trendiger, gut hörbarer Rap-/R&B-Musik; Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'Plot twist' (Szenen bmw/wagon) kurzer Record-Scratch-Stopp, danach Beat zurück."
@@ -30,7 +29,7 @@
     "why": "Meme-Formate (POV-Zeile, 'Nobody:/Rolls-Royce:', Starter-Pack-Raster, Checkliste, Stonks-Pfeil) sind flache Text-/Sticker-Grafik: ein greller 2D-Sticker/Paper-Cut-Look mit Schritt-Checkliste erzählt die Anleitung am klarsten und hält Pointen auf dem Punkt.",
     "characters": "YOU = fiktive Hauptfigur (POV-Zuschauer), flache Cartoon-Figur, normaler Typ mit Cup-Nudeln, exklusives Erkennungsmerkmal limettengrüner Hoodie (Limette trägt sonst niemand); ab 'rich' kommt eine viel zu große Papp-Sonnenbrille dazu. Das Auto ist eine EIGENE stilisierte Luxuslimousine (lange Haube, hoher Kühler ohne Markenform, kein Emblem, keine Kühlerfigur-Replik): Name 'Rolls-Royce' und Modellnamen nur als Text-Etikett. Kühlerfigur in 'hood' = nur abstraktes flatterndes Stoffband ohne Körper (keine Figur, keine Pose – Markenzeichen). Keine echten Personen, keine geschützten Meme-Bilder (Meme-Formate nur als eigene Text-Layouts und eigene Zeichnungen)."
   },
-  "note": "Themen-Art: Satire/Alltag (C6-Variante, Comedy-Anleitung). Roter Faden: POV – DU willst in 1 Minute Rolls-Royce-Fahrer werden; Erzähl-Klammer = nummerierte Schritte (Step 1–10) als Checkliste + HUD-Timer, der satirisch herunterzählt (kein Echtzeit-Anspruch). Kausalkette/Eskalation: reich sein → Modell wählen → warten → einsteigen (Stiche) → hochschauen (Sterne) → Haube (Gewand) → Kofferraum (Cocktail suite) → Re-Hook 'Still here? 2 plot twists incoming.' bei Wort 68/175 (38,9 %) → Twist 1 BMW seit 2003 → Twist 2 Kombi/Gas Guzzler Tax (Wendepunkt im letzten Drittel) → Sweptail 12,8 Mio./4 Jahre vs. 1 Minute ('the math ain't mathing'). Loop: letzte Worte 'Which brings us back to…' → erster Satz 'Step 1: be rich.' Meme-Formate (eigene Gags, US-Slang allgemein verständlich): POV-Zeile, 'starter pack', 'it's giving', 'Nobody: / Rolls-Royce:', 'Tailgate party? Nah.', 'plot twist', 'the math ain't mathing', Stonks-Pfeil als eigene Zeichnung. Unbelegtes: 'Einladung nötig' nur als 'Rumor says … Unconfirmed.'; Preise ohne Jahr (Cullinan ~325.000 $), Lichtpunkt-Zahlen, Regenschirme, versenkbare Figur, 'handgefertigt', Wartezeiten bewusst weggelassen. Stationen: 10 Schritte (≤ 11). Wortzahl 175 Skriptwörter (nach Faktencheck 12.11.2026: 'Entry-level Ghost.' gestrichen, −2) (Ziel 170–180, ≈ 59–68 s bei 2,6–3,0 W/s; Zahlen-Szenen stitch/ending sprechen länger → beim Stimm-Lauf messen). HUD: Zähler 'TIME LEFT' 1:00 → 0:00 (Satire-Uhr) + Balken DRIVER LEVEL steigt je Schritt, fällt bei 'mathing' auf 0 (Loop). Color Script: Wohnzimmer-Grau (hook) → Gold/Champagner (Schritte 2–7) → Glitch-Rot-Blitz bei Plot twists → Gold mit grauem Taschenrechner-Blitz (ending) → zurück ins Wohnzimmer.",
+  "note": "Themen-Art: Satire/Alltag (C6, POV-Comedy). v3 neu geschrieben nach Nutzer-Urteil v2 'Wo ist der Sinn des Videos? Video ist auch nicht witzig'. Pointe in einem Satz: Rolls-Royce-FAHRER wird man nicht durch Kaufen, sondern indem man sich als Chauffeur anstellen lässt – im Flaggschiff sitzt das Geld hinten, schalldicht. Roter Faden: POV mit Einsatz ($12 + 1 Minute) → Plan A kaufen (entry model, Wallet stirbt) → Plan B custom (Sweptail, math ain't mathing) → Plan C fake it (Selfie im Flaggschiff) → Re-Hook 'notice something weird' (Wort 79/159 = 49.7 %) → Entdeckung Trennwand/schalldicht → Plot twist (62.9 %) → Plan D Chauffeur (Lösung, Wallet lebt) → Callback 'boss can't hear you' → Loop 'Next applicant? You've got one minute…' → 'POV: you've got one minute…'. Witz-Technik: jede Szene Setup → Punchline am Satzende; Running Gag YOUR WALLET (schwitzt → stirbt → steht auf, fragt nach Dental); Callback soundproof; Meme-Formate: POV, 'the math ain't mathing', 'Tell me you're rich without telling me' (nur Bild), Expectation vs Reality (Bild), Plot twist, Wörterbuch-Karte, 'does it come with dental'-Job-Witz. Gestrichen ggü. v2: BMW-Besitz, Kombi/Gas-Guzzler, Spirit-of-Ecstasy-Gewand, Sternenhimmel, Cocktail suite, 2,2 Mio. Stiche (für Länge/Re-Hook), Einladungs-Gerücht (hatten nichts mit 'Fahrer werden' zu tun). Wortzahl 159 Skriptwörter ≈ 76–84 s bei 1,9–2,1 W/s (Erzähler-Tempo inkl. Pausen) → lengthSec 78. Zahl 12.8 im Sprechtext als Ziffern: Stimme liest 'twelve point eight million' → beim Stimm-Lauf messen.",
   "hud": {
     "title": "ROLLS-ROYCE SPEEDRUN",
     "counters": [
@@ -54,32 +53,27 @@
       "id": "hook",
       "delivery": "punch",
       "emotion": "playful",
-      "text": "Step 1: be *rich*. | Done? Cool. Rolls-Royce driver in 1 minute. Go!",
-      "visual": "2D-Sticker/Paper-Cut. Cover (0–0,5 s, Bilder 0–14): YOU (limettengrüner Hoodie) auf dem Sofa mit Cup-Nudeln, hinter ihm durchs Fenster die eigene stilisierte Luxuslimousine im Goldlicht (ohne Emblem/Kühlerfigur); großer Titel 'ROLLS-ROYCE IN 1 MINUTE?' in Akzentgelb oben-mitte, Timer '1:00' als Sticker, kein Untertitel. Danach ohne Schnitt: oben weiße Meme-Zeile 'POV: you want a Rolls-Royce' (eigenes Text-Layout). Auf 'rich' Checklisten-Karte 'STEP 1: BE RICH' mit Haken-Stempel, Geldregen aus Papier-Scheinen ohne Währungsbild, YOU bekommt eine riesige Papp-Sonnenbrille. Auf 'Cool' lässig-zufriedenes Nicken. Auf 'Go' Startpistole, HUD-Timer beginnt zu laufen.",
+      "text": "POV: you've got one minute and twelve dollars to become a Rolls-Royce *driver*.",
+      "visual": "2D-Sticker/Paper-Cut wie v1 (LivingRoom/SofaFront). Cover 0–0,5 s: YOU (limettengrüner Hoodie) auf dem Sofa mit Cup-Nudeln, Fenster mit eigener stilisierter Limousine; Titel 'BECOME A ROLLS-ROYCE DRIVER IN 1 MINUTE?' + Timer '1:00'. Ab 0,3 s Meme-Zeile oben 'POV: you have $12 and 1 minute'. NEU Running Gag: YOUR WALLET = eigene Figur (zerknautschtes Portemonnaie mit Knopfaugen) neben YOU, schwitzt sichtbar (Schweißtropfen) – auf 'twelve' kippen 3 Münzen + 12-$-Schein heraus. Auf 'driver' Startpistole, HUD-Timer läuft.",
       "sources": [
-        "keine Faktenaussage (Satire-Prämisse; 'be rich' = Witz, kein Preis genannt – Preise ohne Jahr bewusst weggelassen, Z6/Z7)",
-        "'Rolls-Royce' nur als Text, kein Logo"
+        "Satire-Prämisse, keine Faktenaussage ('twelve dollars' = erfundener Kontostand der Figur)"
       ],
       "cues": [
         {
-          "word": "Step",
-          "sticker": "POV: you want a Rolls-Royce",
+          "word": "POV",
+          "sticker": "POV: you have $12 and 1 minute",
           "color": "#FFFFFF",
           "sfx": "pop"
         },
         {
-          "word": "Done",
-          "beat": "checkStamp",
-          "sticker": "STEP 1: BE RICH ✓",
+          "word": "twelve",
+          "beat": "walletSweat",
+          "sticker": "BALANCE: $12",
           "color": "#FFD23F",
-          "sfx": "ding",
-          "bar": {
-            "id": "level",
-            "value": 0.1
-          }
+          "sfx": "ding"
         },
         {
-          "word": "minute",
+          "word": "driver",
           "beat": "startPistol",
           "sfx": "boom",
           "hud": {
@@ -93,365 +87,63 @@
       "id": "pick",
       "delivery": "hype",
       "emotion": "ironic",
-      "text": "Step 2: pick your ride. Phantom: the flagship. Ghost: the *entry model*. | It's giving starter pack.",
-      "visual": "Champagner-Gold. Showroom-Drehbühne mit zwei eigenen stilisierten Limousinen, Etiketten 'PHANTOM · FLAGSHIP' (größer, Krone-Sticker) und 'GHOST · ENTRY MODEL'. Auf 'entry' blinkt ein Supermarkt-Schild 'ENTRY LEVEL' über dem Ghost, YOU zieht die Augenbrauen hoch. Auf 'pack' Starter-Pack-Raster (eigenes 2×2-Layout): Papp-Sonnenbrille · Lederhandschuhe · Champagnerglas · ein Ghost – Titel 'ENTRY-LEVEL GHOST STARTER PACK'.",
+      "text": "Plan A: buy one. The Ghost is the *entry model*, like calling a private jet a starter bike. | Your wallet plays dead.",
+      "visual": "Showroom + DealSign (v1). Checklisten-Karte 'PLAN A: BUY ONE'. Schild 'ENTRY MODEL' über dem Auto (Etikett 'GHOST' nur als Text). Auf 'jet' Split-Bild: Privatjet mit Stützrädern + Klingel ('STARTER BIKE?'). Auf 'dead' WALLET kippt um, X-Augen, kleine Blume auf dem Bauch (Running Gag 1). Balken DRIVER LEVEL bleibt 0.",
       "sources": [
-        "Z7: \"the most expensive production car made by Rolls-Royce Motor Cars\" (Phantom = Flaggschiff) · \"Rolls-Royce's current entry model\" (Ghost)",
-        "'It's giving starter pack' = Meme-Gag, keine Faktenaussage"
+        "The Ghost is Rolls-Royce's entry model – „Rolls-Royce's current entry model“ – https://en.wikipedia.org/wiki/Rolls-Royce_Motor_Cars (Tertiär (Wikipedia, Stand Abruf 12.11.2026); Primärquelle rolls-roycemotorcars.com vom Proxy gesperrt (connect_rejected) – Ich kann das nicht an der Primärquelle bestätigen.)",
+        "'like calling a private jet a starter bike' = Witz-Vergleich, keine Faktenaussage; kein Preis genannt (Preise ohne Jahr bewusst weggelassen)"
       ],
       "cues": [
         {
-          "word": "flagship",
-          "label": {
-            "text": "PHANTOM · FLAGSHIP",
-            "color": "#FFD23F",
-            "x": 0.5,
-            "y": 0.36
-          }
+          "word": "Plan",
+          "beat": "checkStamp",
+          "sticker": "PLAN A: BUY ONE",
+          "color": "#FFD23F",
+          "sfx": "pop"
         },
         {
           "word": "entry",
           "beat": "entryLevelSign",
-          "sticker": "GHOST = ENTRY MODEL",
-          "color": "#FFD23F",
+          "sticker": "ENTRY MODEL",
+          "color": "#FFFFFF",
           "sfx": "ding"
         },
         {
-          "word": "It's",
-          "beat": "starterPack",
-          "sticker": "ENTRY-LEVEL GHOST STARTER PACK",
+          "word": "jet",
+          "beat": "jetTrainingWheels",
+          "sticker": "STARTER BIKE?",
           "color": "#FFFFFF",
-          "sfx": "pop",
-          "bar": {
-            "id": "level",
-            "value": 0.2
-          },
+          "sfx": "whoosh"
+        },
+        {
+          "word": "dead",
+          "beat": "walletFaint",
+          "sfx": "boom",
           "hud": {
             "id": "time",
-            "value": "TIME LEFT 0:52"
+            "value": "TIME LEFT 0:49"
           }
         }
       ]
     },
     {
       "id": "wait",
-      "delivery": "tense",
+      "delivery": "punch",
       "emotion": "ironic",
-      "text": "Step 3: wait. Rumor says you need an *invite*. | Unconfirmed. In 2019, the company claimed: not enough Cullinans for established buyers.",
-      "visual": "Warteschlange vor einer Showroom-Samtkordel; YOU ganz hinten mit Nudelbecher. Auf 'invite' flattert ein goldener Umschlag 'INVITE ONLY?' herein – auf 'Unconfirmed' bekommt er einen roten Stempel 'RUMOR – UNCONFIRMED' und fällt um. Auf 'Cullinans' eigene stilisierte große Luxus-SUV-Silhouette (Etikett 'CULLINAN'), davor eine Schlange gesichtsloser Anzug-Silhouetten mit Etikett 'ESTABLISHED BUYERS'; Schild 'SOLD OUT' (Sticker '2019').",
+      "text": "Plan B: go custom. The one-off Sweptail took four years to build and sold for *12.8 million* dollars. The math ain't mathing.",
+      "visual": "GoldStage + MathScribbles + Stonks-Pfeil aus v1-Ending (unveilSweptail/stonksArrow/calendarFly/mathConfusion) hierher verschoben. Karte 'PLAN B: GO CUSTOM'. Tuch fällt von stilisiertem Einzelstück, Etikett 'SWEPTAIL · ONE-OFF · 2017'. Kalender fliegt 4 Jahre, daneben HUD 'TIME LEFT 0:41'. Auf 'mathing' YOU mit Formeln um den Kopf: '4 YEARS ≠ 1 MINUTE', '$12 ≠ $12.8M'. WALLET liegt weiter tot im Bildrand (Running Gag).",
       "sources": [
-        "Mythos-Zeile (quellen-rolls-royce.md, 'Einladung nötig'): in keiner gelesenen Quelle → nur als 'Rumor says … Unconfirmed.', nie als Tatsache",
-        "Z15: \"there were insufficient vehicles to satisfy the demand by established buyers\" (Firmenaussage 2019 laut Wikipedia → 'the company claimed')"
+        "The one-off Sweptail sold for $12.8 million after a four-year build (2017) – „sold for $12.8 million after a 4-year build making it the most expensive new car ever sold at the time“ – https://en.wikipedia.org/wiki/Rolls-Royce_Motor_Cars (Tertiär (Wikipedia, Stand Abruf 12.11.2026); Primärquelle rolls-roycemotorcars.com vom Proxy gesperrt (connect_rejected) – Ich kann das nicht an der Primärquelle bestätigen.)"
       ],
       "cues": [
         {
-          "word": "Rumor",
-          "beat": "goldEnvelope",
-          "sticker": "INVITE ONLY?",
-          "color": "#FFD23F"
-        },
-        {
-          "word": "Unconfirmed",
-          "beat": "rumorStamp",
-          "sticker": "RUMOR – UNCONFIRMED",
-          "color": "#FF5A5A",
+          "word": "Plan",
+          "sticker": "PLAN B: GO CUSTOM",
+          "color": "#FFD23F",
           "sfx": "pop"
         },
         {
-          "word": "Cullinans",
-          "beat": "soldOutSign",
-          "sticker": "2019: NOT ENOUGH CULLINANS",
-          "color": "#FFFFFF",
-          "sfx": "ding",
-          "bar": {
-            "id": "level",
-            "value": 0.3
-          },
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:45"
-          }
-        }
-      ]
-    },
-    {
-      "id": "stitch",
-      "delivery": "hype",
-      "emotion": "playful",
-      "text": "Step 4: sit down. Nobody: | Rolls-Royce: *2.2 million* stitches in the Ghost's bamboo fabric. Over 11 miles of thread! | Still here? 2 plot twists incoming.",
-      "visual": "Innenraum-Nahaufnahme, YOU sinkt in einen Sitz. Auf 'Nobody' Meme-Layout als eigene Textkarte, weiß auf schwarz: 'nobody:' (leer) / 'Rolls-Royce:' – darunter wirbelt eine Nähmaschinen-Nadel, Zähler rast auf '2,200,000 STITCHES'. Auf 'thread' Garnrolle rollt aus dem Bild, Faden spannt sich über eine Mini-Karte 'OVER 11 MILES', kleiner Sticker '+20 HOURS TO BUILD'. Auf 'Still' friert das Bild ein, Timer-Sticker pulsiert, zwei verdeckte Karten 'PLOT TWIST 1' / 'PLOT TWIST 2' legen sich ins Bild (Re-Hook).",
-      "sources": [
-        "Z11: \"over 11 miles of thread and 2.2 million stiches\" (Original-Tippfehler) · \"adds 20 hours to the building process of each model\" (nur Sticker) – Ghost Series II, Stoff 'Duality Twill' aus Bambus",
-        "'Nobody: / Rolls-Royce:' = Meme-Format als eigenes Text-Layout; 'Still here? 2 plot twists incoming.' = Re-Hook ohne Faktenaussage (Wort 68/175 = 38,9 %)"
-      ],
-      "cues": [
-        {
-          "word": "Nobody",
-          "beat": "nobodyMeme",
-          "sticker": "nobody:",
-          "color": "#FFFFFF",
-          "sfx": "pop"
-        },
-        {
-          "word": "million",
-          "beat": "needleCounter",
-          "sticker": "2,200,000 STITCHES",
-          "color": "#FFD23F",
-          "sfx": "whoosh"
-        },
-        {
-          "word": "Over",
-          "beat": "spoolRoll",
-          "sticker": "+20 HOURS TO BUILD",
-          "color": "#FFFFFF",
-          "bar": {
-            "id": "level",
-            "value": 0.4
-          },
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:30"
-          }
-        },
-        {
-          "word": "Still",
-          "beat": "freezeTwistCards",
-          "sticker": "2 PLOT TWISTS INCOMING",
-          "color": "#FF5A5A",
-          "sfx": "boom"
-        }
-      ]
-    },
-    {
-      "id": "stars",
-      "delivery": "normal",
-      "emotion": "ironic",
-      "text": "Step 5: look up. Stars in the ceiling. On the Cullinan? *Optional*.",
-      "visual": "YOU legt den Kopf in den Nacken: Dachhimmel wird zum Nachthimmel aus vielen kleinen Lichtpunkten (Anzahl nicht zählbar, keine Zahl im Bild), Sternschnuppe. Auf 'Optional' erscheint ein Preisschild-Häkchen 'OPTIONAL EXTRA' an einem Stern, YOU schaut auf sein leeres Portemonnaie (Motten flattern heraus).",
-      "sources": [
-        "Z10: \"a choice of an optional \\\"Starlight\\\" fiber optic headliner or panoramic sunroof\" (Cullinan)",
-        "Z9: Starlight headliner im Ghost (nur Bild-Hintergrund) – Lichtpunkt-Zahl (1.340/1.600) NICHT belegt → nicht gesprochen, nicht im Bild"
-      ],
-      "cues": [
-        {
-          "word": "Stars",
-          "beat": "starCeiling",
-          "sticker": "STARLIGHT HEADLINER",
-          "color": "#FFD23F",
-          "sfx": "ding"
-        },
-        {
-          "word": "Cullinan",
-          "beat": "emptyWallet",
-          "sticker": "OPTIONAL EXTRA",
-          "color": "#FFFFFF",
-          "sfx": "pop",
-          "bar": {
-            "id": "level",
-            "value": 0.5
-          },
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:24"
-          }
-        }
-      ]
-    },
-    {
-      "id": "hood",
-      "delivery": "punch",
-      "emotion": "playful",
-      "text": "Step 6: check the Spectre's hood. Those aren't wings. | They're *robes*.",
-      "visual": "Haube einer eigenen stilisierten Elektro-Coupé-Silhouette (Etikett 'SPECTRE'), darauf KEINE Figur, sondern ein abstraktes flatterndes Stoffband ohne Körper auf neutralem Sockel (keine menschliche Gestalt, keine Pose 'Bein nach vorn' – Kühlerfigur ist Markenzeichen, Faktenprüfer 12.11.2026). Auf 'wings' YOU zeigt begeistert hin, Sticker 'WINGS?' – auf 'robes' Zoom, das Stoffband flattert im Wind, Sticker 'NOPE: ROBES', YOU tut so, als habe er das immer gewusst.",
-      "sources": [
-        "Z12: \"a redesigned Spirit of Ecstasy, with one leg forward\" · \"commonly mistaken as wings\" (aerodynamische Gewänder, Spectre)",
-        "Name 'Spirit of Ecstasy' nur als kleines Etikett, Figur nicht nachgezeichnet; Versenkbarkeit NICHT belegt → weggelassen"
-      ],
-      "cues": [
-        {
-          "word": "Step",
-          "beat": "hoodZoom",
-          "sfx": "whoosh",
-          "label": {
-            "text": "SPIRIT OF ECSTASY",
-            "color": "#B0BEC5",
-            "x": 0.5,
-            "y": 0.36
-          }
-        },
-        {
-          "word": "Those",
-          "sticker": "WINGS?",
-          "color": "#FFFFFF",
-          "beat": "wingsPoint"
-        },
-        {
-          "word": "They're",
-          "beat": "robesFlutter",
-          "sticker": "NOPE: ROBES",
-          "color": "#FFD23F",
-          "sfx": "ding",
-          "bar": {
-            "id": "level",
-            "value": 0.6
-          },
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:20"
-          }
-        }
-      ]
-    },
-    {
-      "id": "suite",
-      "delivery": "hype",
-      "emotion": "playful",
-      "text": "Step 7: open the trunk. Tailgate party? | Nah. *Cocktail suite*. Leather seats, straight out the back.",
-      "visual": "Heck der eigenen Luxus-SUV-Silhouette (Etikett 'CULLINAN') öffnet sich. Auf 'Tailgate' Gedankenblase: Plastikstühle, Kühlbox, Grill. Auf 'Nah' platzt die Blase, auf 'suite' fahren zwei Leder-Klappsitze aus dem Gepäckraum, kleines Tischchen, Champagnerglas für YOU; Glasscheibe zwischen Gepäck- und Innenraum glitzert kurz.",
-      "sources": [
-        "Z16: \"leather camping seats, known as the \\\"cocktail suite\\\"\" (aus dem Gepäckraum) · \"the only Rolls-Royce to have a glass partition\" (nur Bild)"
-      ],
-      "cues": [
-        {
-          "word": "Tailgate",
-          "beat": "tailgateBubble",
-          "sticker": "TAILGATE PARTY?",
-          "color": "#FFFFFF"
-        },
-        {
-          "word": "suite",
-          "beat": "seatsDeploy",
-          "sticker": "\"COCKTAIL SUITE\"",
-          "color": "#FFD23F",
-          "sfx": "ding",
-          "bar": {
-            "id": "level",
-            "value": 0.7
-          },
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:14"
-          }
-        }
-      ]
-    },
-    {
-      "id": "bmw",
-      "delivery": "punch",
-      "emotion": "ironic",
-      "text": "Step 8: flex your British icon. | Plot twist: owned by *BMW* since 2003. It's giving Bavaria.",
-      "visual": "YOU posiert vor der Limousine mit Teetasse, Fabrik-Kulisse 'GOODWOOD, ENGLAND' im Hintergrund. Auf 'twist' Record-Scratch, Bild ruckelt (Glitch-Rot), verdeckte Karte 'PLOT TWIST 1' dreht sich um: schlichte Schrift 'BMW AG' (kein Logo) über einem Eigentums-Stempel 'SINCE 2003'. Auf 'Bavaria' tauscht YOU die Teetasse gegen eine Brezel aus Papier; Teetasse kippt.",
-      "sources": [
-        "Z1: \"a wholly owned subsidiary of BMW AG since 2003\"",
-        "Z3: \"42-acre (17 ha) Goodwood plant, close to Goodwood Estate in West Sussex\" (nur Bild 'GOODWOOD, ENGLAND') · Z20: \"probably one of the most recognised icons in the world\" (BBC laut Wikipedia → 'British icon') · 'British': \"a British luxury automobile maker\" (Rolls-Royce Motor Cars)",
-        "'It's giving Bavaria' = erkennbarer Gag (Brezel-Bild); belegt ist nur die BMW-Zugehörigkeit (Z1: \"a wholly owned subsidiary of BMW AG since 2003\"); BMW-Sitz Bayern = Allgemeinwissen, nicht in den Quellen, wird nicht als Tatsache gesprochen – Faktenprüfer 12.11.2026 freigegeben"
-      ],
-      "cues": [
-        {
-          "word": "Step",
-          "beat": "teaPose",
-          "label": {
-            "text": "GOODWOOD, ENGLAND",
-            "color": "#B0BEC5",
-            "x": 0.5,
-            "y": 0.36
-          }
-        },
-        {
-          "word": "twist",
-          "beat": "recordScratch",
-          "sticker": "PLOT TWIST #1",
-          "color": "#FF5A5A",
-          "sfx": "boom"
-        },
-        {
-          "word": "since",
-          "beat": "cardFlipBMW",
-          "sticker": "OWNED BY BMW SINCE 2003",
-          "color": "#FFD23F",
-          "sfx": "ding"
-        },
-        {
-          "word": "It's",
-          "beat": "pretzelSwap",
-          "sfx": "pop",
-          "bar": {
-            "id": "level",
-            "value": 0.8
-          },
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:09"
-          }
-        }
-      ]
-    },
-    {
-      "id": "wagon",
-      "delivery": "punch",
-      "emotion": "ironic",
-      "text": "Step 9: flex the Cullinan in the US. | Twist 2: it's classified as a *station wagon*. Gas Guzzler Tax? Not exempt.",
-      "visual": "YOU fährt die Luxus-SUV-Silhouette stolz an einer US-Highway-Kulisse vorbei (Schild-Form generisch, ohne echtes Verkehrszeichen-Design). Auf 'Twist' Record-Scratch, Karte 'PLOT TWIST 2' dreht sich: Amtsstempel 'CLASSIFIED: STATION WAGON', über die SUV legt sich der Umriss eines Familien-Kombis mit Holzdekor. Auf 'Tax' Zapfsäule frisst Münzen, Sticker 'GAS GUZZLER TAX: NOT EXEMPT'; YOU nimmt die Sonnenbrille ab.",
-      "sources": [
-        "Z18: \"it is not exempt from the Gas Guzzler Tax because it is classified as a station wagon rather than an SUV\" (USA; Höhe der Steuer nicht gefunden → nicht genannt)"
-      ],
-      "cues": [
-        {
-          "word": "Cullinan",
-          "beat": "highwayFlex",
-          "sfx": "whoosh",
-          "label": {
-            "text": "CULLINAN",
-            "color": "#B0BEC5",
-            "x": 0.5,
-            "y": 0.36
-          }
-        },
-        {
-          "word": "Twist",
-          "beat": "recordScratch",
-          "sticker": "PLOT TWIST #2",
-          "color": "#FF5A5A",
-          "sfx": "boom"
-        },
-        {
-          "word": "wagon",
-          "beat": "wagonStamp",
-          "sticker": "CLASSIFIED: STATION WAGON",
-          "color": "#FFD23F",
-          "sfx": "ding"
-        },
-        {
-          "word": "Not",
-          "beat": "pumpEatsCoins",
-          "sticker": "GAS GUZZLER TAX: NOT EXEMPT",
-          "color": "#FF5A5A",
-          "sfx": "pop",
-          "bar": {
-            "id": "level",
-            "value": 0.9
-          },
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:03"
-          }
-        }
-      ]
-    },
-    {
-      "id": "ending",
-      "delivery": "punch",
-      "emotion": "playful",
-      "text": "Step 10: go custom. Sweptail: *12.8 million* dollars, 4 years to build. | You had 1 minute. The math ain't mathing. | Which brings us back to…",
-      "visual": "Gold-Bühne: eine eigene einmalige Coupé-Silhouette unter Tuch (Etikett 'SWEPTAIL · ONE-OFF · 2017'). Auf 'million' schießt ein selbst gezeichneter grüner Zickzack-Pfeil nach oben aus dem Bild (Stonks-Pfeil als eigene Grafik, keine Meme-Figur), Sticker '$12.8M'. Auf 'build' Kalenderblätter fliegen '4 YEARS'. Auf 'minute' HUD-Timer springt auf '0:00'. Auf 'mathing' eigene Formel-Kritzeleien und ein Taschenrechner um YOUs Kopf (eigene Zeichnung), Balken DRIVER LEVEL fällt auf 0, Auswahlkarte. Auf 'back' Rückspul-Effekt zurück aufs Sofa mit Cup-Nudeln (Loop in 'Step 1: be rich.').",
-      "sources": [
-        "Z8: \"sold for $12.8 million after a 4-year build making it the most expensive new car ever sold at the time\" (2017, Einzelstück; 'at the time' nicht gesprochen, nur Jahr im Etikett)",
-        "'The math ain't mathing' = Meme-Gag: 4 Jahre Bauzeit vs. 1 Minute (Herleitung ohne weitere Zahl)",
-        "Loop zum ersten Satz, keine Faktenaussage"
-      ],
-      "cues": [
-        {
-          "word": "Step",
+          "word": "Sweptail",
           "beat": "unveilSweptail",
           "sfx": "whoosh",
           "label": {
@@ -462,6 +154,12 @@
           }
         },
         {
+          "word": "years",
+          "beat": "calendarFly",
+          "sticker": "4 YEARS TO BUILD",
+          "color": "#FFFFFF"
+        },
+        {
           "word": "million",
           "beat": "stonksArrow",
           "sticker": "$12.8M",
@@ -469,40 +167,208 @@
           "sfx": "boom"
         },
         {
-          "word": "build",
-          "beat": "calendarFly",
-          "sticker": "4 YEARS TO BUILD",
-          "color": "#FFFFFF"
-        },
-        {
-          "word": "minute",
-          "hud": {
-            "id": "time",
-            "value": "TIME LEFT 0:00"
-          },
-          "sfx": "ding"
-        },
-        {
           "word": "mathing",
           "beat": "mathConfusion",
           "sticker": "THE MATH AIN'T MATHING",
           "color": "#FFD23F",
           "sfx": "pop",
+          "hud": {
+            "id": "time",
+            "value": "TIME LEFT 0:41"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stitch",
+      "delivery": "tense",
+      "emotion": "playful",
+      "text": "Plan C: fake it. You sneak into the flagship for a rich-guy *selfie*, | and that's when you notice something weird.",
+      "visual": "VelvetHall/Rope (v1): Karte 'PLAN C: FAKE IT'. YOU steigt in Socken über das Absperrseil zu einem sehr langen Auto (Etikett 'PHANTOM · FLAGSHIP'), Meme-Zeile oben 'Tell me you're rich without telling me you're rich' (nur Text-Layout). Auf 'selfie' Handy-Rahmen, YOU mit Papp-Sonnenbrille und Duckface, Blitz. Auf 'weird' Freeze + Record-Scratch + langsamer Zoom auf eine Trennwand hinter dem Fahrersitz (Re-Hook). WALLET liegt weiter tot im Bildrand.",
+      "sources": [
+        "Satire-Handlung, keine Faktenaussage ('flagship' = Phantom, belegt in Szene stars)"
+      ],
+      "cues": [
+        {
+          "word": "Plan",
+          "beat": "checkStamp",
+          "sticker": "PLAN C: FAKE IT",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        },
+        {
+          "word": "sneak",
+          "beat": "sneakIn",
+          "sticker": "Tell me you're rich without telling me you're rich",
+          "color": "#FFFFFF",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "time",
+            "value": "TIME LEFT 0:30"
+          }
+        },
+        {
+          "word": "selfie",
+          "beat": "selfieFlash",
+          "sfx": "ding"
+        },
+        {
+          "word": "weird",
+          "beat": "recordScratch",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "stars",
+      "delivery": "tense",
+      "emotion": "tense",
+      "text": "The extended Phantom has a partition, and the back is *soundproof*. Soundproof from who? From the guy up front.",
+      "visual": "Cabin/SeatBack (v1), Schnitt-Ansicht des langen Autos von der Seite (Puppenhaus-Querschnitt): vorne kleiner Fahrersitz, Trennwand fährt hoch, hinten riesige Lounge mit Sternenhimmel (Etikett 'PHANTOM EXTENDED', 'PRIVACY SUITE'). Auf 'soundproof' Stummschalt-Symbol über der Rückbank, Schallwellen prallen an der Wand ab. Auf 'front' Spotlight auf den leeren Fahrersitz (SpotlightStage).",
+      "sources": [
+        "The Phantom is the flagship, offered in two wheelbase lengths – „This is the current flagship model made by Rolls-Royce Motor Cars, and is offered in two wheelbase lengths.“ – https://en.wikipedia.org/wiki/Rolls-Royce_Phantom_VIII (Tertiär (Wikipedia, Stand Abruf 12.11.2026); Primärquelle rolls-roycemotorcars.com vom Proxy gesperrt (connect_rejected) – Ich kann das nicht an der Primärquelle bestätigen.)",
+        "Phantom Extended: partition between front and rear; rear compartment soundproof ('Privacy Suite') – „The interior features a partition between the front cockpit and the rear passenger compartment, and the rear passenger compartment has been made soundproof for privacy and is known as the \"Privacy Suite\"“ – https://en.wikipedia.org/wiki/Rolls-Royce_Phantom_VIII (Tertiär (Wikipedia, Stand Abruf 12.11.2026); Primärquelle rolls-roycemotorcars.com vom Proxy gesperrt (connect_rejected) – Ich kann das nicht an der Primärquelle bestätigen.)"
+      ],
+      "cues": [
+        {
+          "word": "partition",
+          "beat": "partitionRise",
+          "label": {
+            "text": "PHANTOM EXTENDED",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.3
+          },
+          "sfx": "whoosh"
+        },
+        {
+          "word": "soundproof",
+          "beat": "muteWaves",
+          "sticker": "PRIVACY SUITE 🔇",
+          "color": "#FFFFFF",
+          "sfx": "ding"
+        },
+        {
+          "word": "front",
+          "beat": "spotDriverSeat",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "hood",
+      "delivery": "punch",
+      "emotion": "excited",
+      "text": "Plot twist: the money sits in the back, and the *driver* up front gets paid.",
+      "visual": "Match Cut + Augen-Pop: YOU schaut durch die Trennwand. Expectation-vs-Reality-Raster (eigenes Layout): links 'EXPECTATION: rich guy at the wheel', rechts 'REALITY: rich guy in the back, someone else drives'. Auf 'money' Geldsack mit Sonnenbrille fläzt sich hinten. Auf 'paid' Gehaltsscheck fliegt nach vorne zum Fahrersitz, Glühbirne über YOU.",
+      "sources": [
+        "Phantom Extended: rear passenger compartment enlarged (basis for the satirical 'built around the back seat') – „The car's rear passenger compartment has been enlarged“ – https://en.wikipedia.org/wiki/Rolls-Royce_Phantom_VIII (Tertiär (Wikipedia, Stand Abruf 12.11.2026); Primärquelle rolls-roycemotorcars.com vom Proxy gesperrt (connect_rejected) – Ich kann das nicht an der Primärquelle bestätigen.)",
+        "Satire-Schluss aus dem Aufbau (vergrößerter, schalldichter Fond): 'the money sits in the back' ist keine Statistik über Besitzer; wie viele Besitzer selbst fahren, kann ich nicht bestätigen – bewusst nicht behauptet"
+      ],
+      "cues": [
+        {
+          "word": "twist",
+          "beat": "eyePopTwist",
+          "sticker": "PLOT TWIST",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        },
+        {
+          "word": "money",
+          "beat": "expectationReality",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "paid",
+          "beat": "paycheckFly",
+          "sticker": "💡",
+          "color": "#FFD23F",
+          "sfx": "ding",
           "bar": {
             "id": "level",
-            "value": 0.0
-          },
+            "value": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "suite",
+      "delivery": "hype",
+      "emotion": "triumphant",
+      "text": "Plan D: become a chauffeur. You don't buy the Rolls-Royce, you get *hired* to drive it. | Your wallet wakes up and asks about dental.",
+      "visual": "Suit-Set (v1): Wörterbuch-Karte (eigenes Layout) 'chauffeur (n.): a professional driver, especially of luxury vehicles'. YOU wirft Hoodie ab → Anzug + Chauffeur-Mütze (Hoodie-Limette bleibt als Krawatte = Erkennungsfarbe). Auf 'hired' Stempel 'HIRED ✓', Balken springt hoch. Auf 'dental' WALLET steht wieder auf (Running Gag aufgelöst), hält Schild 'DENTAL??'.",
+      "sources": [
+        "A chauffeur is a professional driver, especially of luxury vehicles – „is a professional driver of a passenger motor vehicle, especially a luxury vehicle such as a large sedan, SUV or a limousine“ – https://en.wikipedia.org/wiki/Chauffeur (Tertiär (Wikipedia, Stand Abruf 12.11.2026); Primärquelle rolls-roycemotorcars.com vom Proxy gesperrt (connect_rejected) – Ich kann das nicht an der Primärquelle bestätigen.)",
+        "'asks about dental' = US-Job-Witz, keine Aussage über Arbeitsbedingungen"
+      ],
+      "cues": [
+        {
+          "word": "chauffeur",
+          "beat": "dictionaryCard",
+          "sticker": "PLAN D: GET HIRED",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        },
+        {
+          "word": "hired",
+          "beat": "suitUp",
+          "sticker": "HIRED ✓",
+          "color": "#B6FF3B",
+          "sfx": "boom",
+          "bar": {
+            "id": "level",
+            "value": 1.0
+          }
+        },
+        {
+          "word": "dental",
+          "beat": "walletRevive",
+          "sticker": "DENTAL??",
+          "color": "#FFFFFF",
+          "sfx": "ding",
+          "hud": {
+            "id": "time",
+            "value": "TIME LEFT 0:08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "delivery": "punch",
+      "emotion": "playful",
+      "text": "Zero cars bought, and you're a Rolls-Royce driver. Your boss just can't *hear* you. | Next applicant? You've got one minute…",
+      "visual": "SunsetRoad/Highway (v1): YOU in Uniform am Steuer der stilisierten Limousine, grinsend; hinter der hochgefahrenen Trennwand gestikuliert ein Geldsack mit Sonnenbrille stumm (Callback 'soundproof'), Stumm-Symbol. Checkliste: 'ROLLS-ROYCE DRIVER ✓'. Auswahlkarte als Kommentar-Köder. Auf 'applicant' Rewind/Glitch zurück zum Sofa, nächster YOU im limettengrünen Hoodie sitzt da – Loop in den ersten Satz.",
+      "sources": [
+        "Callback auf 'soundproof' (Quelle Szene stars); Satire-Schluss, keine neue Faktenaussage"
+      ],
+      "cues": [
+        {
+          "word": "driver",
+          "beat": "driverCheck",
+          "sticker": "ROLLS-ROYCE DRIVER ✓",
+          "color": "#B6FF3B",
+          "sfx": "ding",
+          "hud": {
+            "id": "time",
+            "value": "TIME LEFT 0:00"
+          }
+        },
+        {
+          "word": "hear",
+          "beat": "bossMuted",
+          "sfx": "pop",
           "choice": {
-            "title": "YOUR ROLLS?",
+            "title": "OWN IT OR DRIVE IT?",
             "options": [
-              "A · ENTRY GHOST",
-              "B · STATION WAGON"
+              "A · OWN IT",
+              "B · DRIVE IT"
             ]
           },
           "untilBeat": "rewindToCouch"
         },
         {
-          "word": "back",
+          "word": "applicant",
           "beat": "rewindToCouch",
           "sfx": "whoosh",
           "hud": {
@@ -512,5 +378,6 @@
         }
       ]
     }
-  ]
+  ],
+  "pointe": "The fastest way to become a Rolls-Royce DRIVER isn't buying one – it's getting hired, because in the flagship the money sits in the soundproof back seat."
 }
