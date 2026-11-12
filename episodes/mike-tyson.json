@@ -4,6 +4,7 @@
   "engine": "chatterbox",
   "voice": "am_fenrir",
   "voicePreset": "ruhig",
+  "music": {"mood": "dark"},
   "speed": 1.12,
   "pauseMs": 450,
   "sceneGapMs": 120,

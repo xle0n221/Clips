@@ -46,6 +46,9 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
 - **Freigabe 1:** Drehbuch + Quellen dem Nutzer vorlegen, erst nach OK weiter. Direkt danach eine
   **Hörprobe** (erste ~20 s der Sprachspur, Tempo 2,6–3,0 W/s) zur Freigabe schicken – Tempo und Stimme
   werden VOR dem Szenenbau abgenommen (Rom: „zu schnell“ kam erst nach dem Render → ein Render verloren).
+- **Musik je Thema** (Pflicht, `docs/clip-regeln.md` → „Musik je Thema“): im Drehbuch
+  `"music": {"mood": "dark|hype|funny|epic|chill", "why": "Thema + Trend aus docs/trends/aktuell.md"}`; Rap-/R&B-Grundcharakter,
+  Seed = Episoden-ID (nie zweimal gleich). Musik-Hörprobe (20 s) **zusammen mit der Stimm-Hörprobe** vorlegen.
 
 ## 3. Audio + Timing
 `npm run episode -- episodes/<thema>.json` (Optionen: `--voice <name>`, `--speed <x>`, `--save`)

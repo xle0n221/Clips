@@ -16,6 +16,11 @@ Animationen viral gehen und gut ankommen, und das soll dann hier bei uns umgeset
 2. **Themen:** welche Themen-Arten (Playbook C1–C6, plus neue) gerade hohe Aufrufe/Engagement bekommen.
 3. **Machart:** Animationsstil (2D/3D/Paper-Cut), Hook-Formulierung, Länge, Tempo (W/s), Schnitte, Untertitel-Stil,
    Cover/Thumbnail, Ton/Musik.
+4. **Sound/Musik** (Vorgabe Nutzer 12.11.2026, „ähnlich was momentan im Trend ist“): welche Musikstile, Tempi und
+   Stimmungen virale Shorts unterlegen (z. B. dunkles R&B/Trap bei True-Crime, Lo-fi bei Erklärstücken), soweit aus
+   Metadaten belegbar (Sound-/Musik-Titel im Scraper-Ergebnis, Beschreibung). In `aktuell.md` als eigene Erkenntnis
+   mit Beleg → Umsetzung: welches Preset von `scripts/music.py` (`docs/clip-regeln.md` → „Musik je Thema“) passt.
+   Nur Stil notieren, nie Titel zum Nachbauen; ohne Beleg „Ich kann das nicht bestätigen“.
 
 ## Quellen und Wahrheit (verbindlich)
 - Nur Zahlen, die in einer Quelle stehen; jede Zahl mit URL, Datum und Art der Kennzahl (Aufrufe, Likes, Abonnenten).

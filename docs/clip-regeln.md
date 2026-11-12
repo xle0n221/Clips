@@ -109,6 +109,44 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - In `publish` steht `thumbnail: "Bild bei 0:00 (erste 0,5 s) wählen"`, damit der Nutzer die Stelle findet.
 - Ich kann nicht bestätigen, wie bildgenau der Schieberegler der YouTube-App ist; deshalb 0,5 s statt eines Einzelbilds.
 
+## Musik je Thema (Vorgaben des Nutzers 12.11.2026)
+> „Die hintergrund musik soll passend sein und zeitgemäss … Bei düsteren themen einen trendigen zeitgemässen sound
+> und bei anderen themen eben entsprechende.“ – „ab jetzt in allen videos nicht immer die selbe musik sondern passend
+> zum thema und zeitgemässe melodien, eben ähnlich was momentan im trend ist“ – „ich will das du alles machst, trendige
+> musik musst du dich von insperieren lassen bzw, es soll zum thema passen“ – „Es kann gerne rap & r&b lastig sein
+> eben das was angenehm zu hören ist“
+
+- **Claude macht die Musik komplett selbst** (`scripts/music.py`, nur numpy/ffmpeg, lizenzfrei). Nie fremde Melodien
+  oder Beats kopieren – übernommen werden nur Stilmerkmale (Tempo, Instrumente, Groove). Eine Fassung **ohne Musik**
+  gibt es nicht (vom Nutzer abgelehnt).
+- **Grundcharakter:** moderne Rap-/R&B-Produktion, angenehm hörbar – warme Rhodes/E-Piano/Gitarre mit Neo-Soul-Akkorden
+  (maj7, m9, m11, 9, 13), weicher 808 mit Glide, knackige, nicht aggressive Drums, Swing auf den Hi-Hats, Hat-Rolls
+  sparsam, keine harte Verzerrung.
+- **Preset wählen** im Drehbuch: `"music": {"mood": "<preset>", "why": "<Begründung: Thema + Musik-Trend>"}`.
+  Optional `"bpm"` (sonst Standard ± Seed-Nuance) und `"seed"` (sonst die Episoden-ID).
+
+  | Preset | Thema-Art | Sound | Zähl-BPM | Grundtonart |
+  | --- | --- | --- | --- | --- |
+  | `dark` | düster, Tragik, Verbrechen, Krieg, Abstürze | dunkles Moll-R&B/Trap, Rhodes-Flächen, Bell-Motiv, 808-Glide, Clap auf 3 | 140 (half-time 70) | f-Moll |
+  | `hype` | Sport, Rekorde, Wettkampf, Aufstieg | treibender Rap-Beat, Gitarren-/Rhodes-Stabs, hüpfender 808, Ghost-Snares | 148 (half-time 74) | g-Moll |
+  | `funny` | kurios, Tiere, Alltag, „wusstest du“ | bouncy R&B-Pop, Offbeat-Stabs, runder Bass, Snaps | 100 | F-Dur |
+  | `epic` (`cinematic`) | Geschichte, Weltall, große Ereignisse | cineastischer Rap-Beat, Klavier + Streicherfläche, Boom-Bap, Taikos | 88 | d-Moll |
+  | `chill` | Wissenschaft, Natur, ruhige Erklärstücke | R&B/Lo-fi, verschleppte Rhodes, Gitarre, Knistern | 82 | Es-Dur |
+  | `upbeat` | nur alte Drehbücher ohne `music` (Rückfall) | alter Loop C–G–Am–F | 104 | C-Dur |
+
+- **Trends einbeziehen:** vor der Wahl `docs/trends/aktuell.md` lesen (Abschnitt Sound/Musik der täglichen Analyse,
+  `docs/trend-analyse.md`). Passt ein belegter Musik-Trend zum Thema, Preset/BPM danach wählen und im `why` mit Quelle
+  nennen; fehlt ein Beleg, steht dort „Trend nicht belegt, Wahl nach Thema“.
+- **Nie zweimal gleich:** der Seed aus der Episoden-ID wählt Tonart (±2 Halbtöne), Akkordfolge aus der Preset-Bank,
+  Motiv und Tempo-Nuance (±3 %). `make_episode.py` druckt die Wahl („Musik: dark, 139.8 BPM, G minor, …“) – diese
+  Zeile ins Freigabe-Paket. Klingt ein neues Video zu nah an einem früheren, anderen `seed` setzen.
+- **Aufbau:** Akkord ab 0 s, Drums spätestens nach 2 s; Abschnitte à 4 Takte (A · B mit Motiv · A2 mit Variation ·
+  Breakdown) → Variation alle 4–8 Takte. Stimmband **1–4 kHz bleibt frei** (Senke −7 dB), Lautheit wie der alte Loop
+  (≈ −19 LUFS, `volume={0.13}` in `Episode.tsx`).
+- **Hörprobe:** die Musik-Hörprobe (20 s, `out/musik-proben/` bzw. Anfang von `music.wav`) **zusammen mit der
+  Stimm-Hörprobe** zur Freigabe 1 vorlegen. Claude kann nicht hören, nur messen (LUFS, Bandanteile) – das Urteil
+  „passt / angenehm“ trifft der Nutzer.
+
 ## Sprache & Stimme (Vorgaben des Nutzers)
 - Clips sind **auf Englisch**, mit einer **angenehmen Stimme**.
 - **Zeitgemäßer, lockerer Slang**, aber so, dass **jede Altersgruppe** sich abgeholt fühlt

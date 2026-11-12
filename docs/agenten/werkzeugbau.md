@@ -15,6 +15,14 @@ Macht künftige Videos **schneller und themenunabhängig**: wiederverwendbare Sk
 _noch leer_
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Musik je Thema · **`scripts/music.py`: 5 Rap-/R&B-Presets** (dark/hype/funny/epic/chill, `upbeat` = alter
+  Loop unverändert als Rückfall), gewählt per Drehbuch `"music": {"mood": …}`, Seed = CRC32 der Episoden-ID (Tonart ±2,
+  Akkordfolge aus Bank, Motiv, Tempo ±3 %). Proben `out/musik-proben/<mood>.mp3` (20 s), je 0,6–1,2 s Rechenzeit.
+  Gemessen (ffmpeg ebur128 / FFT-Energieanteile): alle −18,9…−19,5 LUFS (alter Loop −19,2), True Peak ≤ −1,1 dBFS;
+  1–4 kHz 0,2–0,6 % (alter Loop 2,1 %); < 150 Hz 55–82 % (alter Loop 72 %). Erster Versuch hatte < 150 Hz 89–93 %
+  (808 deckte Rhodes zu, Handy-Lautsprecher geben < 100 Hz kaum wieder) → Bass-Bus je Preset 0,5–0,9 (`BASS_GAIN`).
+  Zwei IDs im selben Preset (mike-tyson / roman-empire): Korrelation −0,04, Tonart G-Moll vs. Es-Moll. Grenze: ich kann
+  nicht hören – „angenehm/zeitgemäß“ beurteilt nur der Nutzer.
 - 09.11.2026 · Rom/Sonnensystem · **Kontaktabzug** `npm run contactsheet`: ein Bundle + ein Browser für alle Bilder.
   Gemessen: 9 Bilder (scale 0,25) in 31,3 s gesamt (3,3 s/Bild), 12 Bilder `--per-scene 1` (scale 0,2) in 49,2 s
   (4,0 s/Bild, CPU geteilt); Vergleich: ein `npx remotion still` = 5,7 s. Bundle mit warmem rspack-Cache 0,5–0,8 s
@@ -32,6 +40,9 @@ _noch leer_
   Test ohne timeline/Beats ebenfalls sauber; zweiter Aufruf bricht ab statt zu überschreiben (Exit 1). Testdateien gelöscht.
 
 ## Nächste Experimente
+- Musik: Nutzer-Urteil zu den 5 Proben abwarten; danach je Preset eine Stellschraube (z. B. Motiv-Lautstärke, Swing).
+- Musik: Mischprobe Stimme + Musik (volume 0.13) messen – Abstand Stimme/Musik in LUFS im Band 1–4 kHz.
+- Musik: Sound-Trends aus der täglichen Analyse (`trend-analyse.md` Punkt 4) in BPM/Preset-Standards übertragen.
 - ~~Kontaktabzug-Skript~~, ~~Tempo-Kalibrierung~~, ~~Episoden-Gerüst~~ gebaut 09.11.2026 (siehe Gelernt).
 - Kontaktabzug parallel: 2 Browser-Tabs/`concurrency` – misst, ob 4 Kerne mit swangle schneller werden (nur wenn kein Render läuft).
 - Kontaktabzug `--cues`: je Sticker/Choice ein Bild im **ersten** Frame (Regel aus clip-regeln) automatisch.
