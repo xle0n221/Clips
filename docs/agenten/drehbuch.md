@@ -23,12 +23,15 @@ Englisches Sprechskript mit Szenen, Cues, HUD, Auswahlkarten. Ergebnis `episodes
 - Von Stimme: Länge in **Skriptwörtern** planen und Zahlen sparsam setzen – Zahlen-Szenen sprechen langsamer (Rom hook–stones 3,0 W/s bei 1,25, `stimme-casting.md`) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Mike Tyson v1 · Experiment Wortbudget je Szene vorab (Ziel 180 bei 65 s): Erstentwurf trotzdem 235 Wörter (+31 %), weil Sätze ohne Mitzählen geschrieben wurden → ein Kürzungsdurchgang (−51), Endstand 184 (= 61–71 s bei 2,6–3,0 W/s). Lehre: Budget je **Satz** (≈ 5–7 Wörter) mitzählen, Jahreszahlen dem HUD-Zähler überlassen statt sprechen (sparte ~12 Wörter). Re-Hook über Wortindex gesetzt: Wort 73/184 = 39,7 % ('How hard so far? Brutal.'). Reale Person mit Verurteilung: keine Du-Perspektive, 'you' nur als Punktrichter am Schluss; Fortschrittsbalken bewegt sich bei selbst verursachten Taten bewusst nicht · `episodes/mike-tyson.json` Feld `note`.
 - 11.11.2026 · Erde ohne Menschen v2 · Faktenprüfer 7/10: Quellenzeile zu Swift war nach 9 Monaten veraltet (Boost abgesagt, Absturz Nov. 2026) → bei Ereignissen „in progress“ die neueste Seite derselben Quelle prüfen; Abschwächer der Quelle wörtlich übernehmen („appeared to“, „most of“, „often“). Retention 7/10: Re-Hook-Position über Wortindex steuern (Ziel 40–44 %, erreicht 203/470 = 43 % durch Verlegen in 'satellites') · `episodes/earth-without-humans.json` v2.
 - 11.11.2026 · Erde ohne Menschen v1 · Erster Entwurf 558 Wörter (≈ 199 s) → 496 durch Kürzen je Szene auf eine Pointe; Zählskript (Wörter ohne `*`/`|` + Cue-Wort-Abgleich) fand 0 fehlende Cue-Wörter. Gedankenexperiment-Thema: heutige Ereignisse (Spanien-Blackout, Tschernobyl) als „preview“ markieren, statt Folgen ohne Menschen mit Zahlen zu behaupten · `episodes/earth-without-humans.json`, Feld `sources` je Szene.
 - 08.11.2026 · Rom v1 · Retention 7/10: Goten/Vandalen ohne „you“, zu viele Zahlen → v2 behoben.
 - 08.11.2026 · Sonnensystem · wirkte wie Liste statt Kausalkette → Regel „roter Faden“.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- Mike Tyson (läuft): Re-Hook bei 39,7 % + Balken, der bei der Verurteilung stehen bleibt ('This one isn't bad luck') – Retention-Kritiker: trägt die Mitte, wirkt der Stillstand als Wendepunkt?
+- Nächster Clip: Wortbudget je Satz beim Schreiben mitzählen (Ziel: Erstentwurf ≤ +10 % über Budget).
 - Erde ohne Menschen (läuft): Re-Hook der zentralen Frage bei ~40 % (Szene `swift`, „how long until Earth forgets us?“) + gleicher Sticker „HOW LONG?“ wie im Hook – Retention-Kritiker/Kontaktabzug bewerten, ob die Mitte (Satelliten→Hubble) trägt.
 - Nächster Clip: erst Wortbudget je Szene festlegen (Summe = Ziel), dann schreiben – hier kostete Nachkürzen einen Durchgang.
 - Rom: erster EMPIRE-Balken-Abfall auf „hates“ – nach dem Render prüfen, ob die Grafik den Satz trägt.

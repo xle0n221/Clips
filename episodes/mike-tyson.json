@@ -1,0 +1,545 @@
+{
+  "id": "mike-tyson",
+  "title": "How hard was Mike Tyson's life, really?",
+  "engine": "chatterbox",
+  "voice": "am_fenrir",
+  "voicePreset": "ruhig",
+  "pauseMs": 450,
+  "sceneGapMs": 120,
+  "lengthSec": 65,
+  "cover": {
+    "text": "HOW HARD WAS TYSON'S LIFE?",
+    "sub": "Scored round by round",
+    "frames": 15
+  },
+  "sources": "docs/quellen-mike-tyson.md",
+  "factcheck": "offen (Faktenprüfer) – alle Belege Tertiär (Wikipedia), Freigabeliste in docs/quellen-mike-tyson.md",
+  "version": "v1 (Drehbuch-Entwurf 12.11.2026)",
+  "style": {
+    "look": "2d",
+    "why": "Lebenslauf als Zeitleiste in Runden mit Altersanzeige, Bühnen-Kulissen statt realer Orte und symbolische Bilder für Verurteilung und Exodus' Tod: flacher 2D-Paper-Cut erzählt das klarer und würdiger als 3D, vermeidet jede fotonahe Nachbildung einer realen Person und nutzt den Text-Zähler aus src/episode/kit2d/hud.tsx (TimelineHUD).",
+    "characters": "MIKE = flache Paper-Cut-Cartoonfigur ohne Porträtähnlichkeit, erkennbar nur über die belegte Kampfkleidung (Z39): schwarze Trunks, schwarze Schuhe ohne Socken, weißes Handtuch um den Hals statt Bademantel; das weiße Handtuch ist sein Erkennungsmerkmal ab der Szene 'champion'. Kind-MIKE (Szenen brooklyn–mother): kleiner, schlichtes graues Shirt = STIL-ENTSCHEIDUNG (Kinderkleidung unbelegt). CUS = ältere Figur, nur Silhouette mit Mantel (Aussehen unbelegt, Stil). Keine Darstellung der Frau aus dem Strafverfahren, keine Darstellung von Exodus oder des Unfalls. Gegner (Douglas, Holyfield, Paul) nur als gesichtslose Silhouetten in Grau."
+  },
+  "note": "Themen-Art: Geschichte/Person (C1), Lebensanalyse. Klammer: 'Let's score it like a fight' – das Leben als Kampf in 10 Runden (Sticker ROUND 1…9, FINAL BELL), Glocke = sfx 'ding'. Keine Du-Perspektive (Zuschauer soll nicht in die Rolle eines verurteilten Täters schlüpfen); 'you' erst am Ende als Punktrichter ('You score it'). HUD: Text-Zähler AGE (AGE 0 → 10 → 13 → 16 → 19 → 20 → 23 → 25 → 30 → 37 → 42 → 58; Herleitung aus Geburtsdatum 30.06.1966, Z1) + Balken LIFE HITS (steigt mit jedem Schicksalsschlag). WICHTIG: In 'conviction' bewegt sich der Balken NICHT – die Tat, für die er verurteilt wurde, ist kein Schlag, den er einstecken musste ('This one isn't bad luck'); auch 'ear' (Biss) bewegt ihn nicht, erst der Bankrott. Ton: ruhig, traurig, ehrlich; kein Humor, besonders nicht in 'conviction' und 'exodus'. Re-Hook ('How hard so far? Brutal.') in 'mother' bei ~39 % der Wörter (Experiment). Wendepunkt der Analyse: 'conviction' (ab hier nicht nur Opfer). Loop: letzte Worte 'You score it. Again:' → erster Satz 'How hard was Mike Tyson's life, really?'. Color Script: warm-gold (Kindheit, Aufstieg) → kühles Blau-Grau (Douglas) → entsättigtes Grau (conviction) → fast schwarz mit einem warmen Licht (exodus) → gedimmter Spot (ending). Ort: ein Boxring als durchgehende Bühne; jede Lebensstation wird als Paper-Cut-Kulisse hinter den Seilen heruntergelassen (Ortswechsel gezeigt). Sticker mit Ziffern, Sprechtext ausgeschrieben (Chatterbox).",
+  "hud": {
+    "title": "TYSON vs. LIFE",
+    "counters": [
+      {
+        "id": "age",
+        "label": "",
+        "value": "AGE 0"
+      }
+    ],
+    "bars": [
+      {
+        "id": "hits",
+        "label": "LIFE HITS",
+        "value": 0.0,
+        "color": "#FF5A5A"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "delivery": "punch",
+      "text": "How hard was Mike Tyson's life, *really*? Let's score it like a fight.",
+      "visual": "2D Paper-Cut, dunkle Halle, ein Boxring im Spotlicht. Cover (0–0,5 s): MIKE sitzt erschöpft auf dem Hocker in der Ecke, weißes Handtuch um den Hals, schwarze Trunks, schwarze Schuhe ohne Socken, Kopf gesenkt; großer Titel 'HOW HARD WAS TYSON'S LIFE?' in Gelb oben-mitte. Danach ohne Schnitt: MIKE hebt den Kopf zur Kamera; auf 'score' fährt eine Punktrichter-Karte ins Bild (leere Zeilen ROUND 1–10).",
+      "sources": [
+        "Z39: \"black trunks, black shoes with no socks, and a plain white towel fit around his neck in place of a traditional robe\" (nur Bild)",
+        "Frage/Rahmen ohne Faktenaussage"
+      ],
+      "cues": [
+        {
+          "word": "hard",
+          "sticker": "HOW HARD?",
+          "color": "#FFD23F",
+          "sfx": "boom",
+          "hud": {
+            "id": "age",
+            "value": "AGE 0"
+          }
+        },
+        {
+          "word": "really",
+          "beat": "lookUp"
+        },
+        {
+          "word": "score",
+          "beat": "scorecardIn",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "brooklyn",
+      "delivery": "calm",
+      "text": "Brooklyn. Dad leaves. Mom raises the kids *alone*. Money trouble drags them into high-crime Brownsville.",
+      "visual": "Kulisse fällt hinter die Seile: Paper-Cut-Straße Brooklyn, warmes, verblasstes Gold. Kind-MIKE klein in der Ringmitte. Ein Mann-Umriss geht aus dem Bild (nur Rücken), eine Mutter-Silhouette hält drei kleine Kinder an der Hand. Auf 'Brownsville' rutscht die Kulisse nach rechts weg (Whip), dunklere Häuser, Polizei-Blaulicht als flacher Schimmer.",
+      "sources": [
+        "Z1: \"born on June 30, 1966, at Cumberland Hospital in Fort Greene, Brooklyn\"",
+        "Z2: \"Kirkpatrick abandoned the Tyson family around the time Mike was born, leaving Tyson's mother to care for the children on her own.\" ('Dad' = der Mann, den Tyson als Vater kannte; Vaterschaft uneindeutig, Z2-Anmerkung)",
+        "Z3: \"necessitated a move to Brownsville when Tyson was 10 years old\" · \"neighborhoods with a high rate of crime\""
+      ],
+      "cues": [
+        {
+          "word": "Brooklyn",
+          "sticker": "ROUND 1: BROOKLYN, 1966",
+          "color": "#F5F5F5",
+          "sfx": "ding"
+        },
+        {
+          "word": "leaves",
+          "beat": "dadWalksOut",
+          "bar": {
+            "id": "hits",
+            "value": 0.08
+          }
+        },
+        {
+          "word": "alone",
+          "beat": "momKids"
+        },
+        {
+          "word": "Brownsville",
+          "beat": "whipBrownsville",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "age",
+            "value": "AGE 10"
+          },
+          "bar": {
+            "id": "hits",
+            "value": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "id": "streets",
+      "delivery": "tense",
+      "text": "His first fight, he says: a bigger kid pulled the head off his *pigeon*. By thirteen, reportedly *thirty-eight* arrests.",
+      "visual": "Flaches Dach in Brownsville, Taubenschlag. Kind-MIKE hält eine Taube; ein größerer Junge (Silhouette) greift zu, Schnitt auf leere Hände + eine einzelne Feder (keine Gewalt gezeigt). Auf 'thirteen' Strichliste an einer Ziegelwand, Striche zählen hoch bis 38. Etikett 'HE SAYS' klein neben der Taube.",
+      "sources": [
+        "Z5: \"his first fight was with a bigger youth who had pulled the head off one of Tyson's pigeons\" · \"According to an interview in Details\" (Selbstangabe → 'he says')",
+        "Z4: \"By the age of 13, he had been arrested 38 times.\" (ohne Primärbeleg → 'reportedly')"
+      ],
+      "cues": [
+        {
+          "word": "fight",
+          "sticker": "ROUND 2",
+          "color": "#F5F5F5",
+          "sfx": "ding"
+        },
+        {
+          "word": "says",
+          "label": {
+            "text": "HE SAYS",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "pigeon",
+          "beat": "featherFall",
+          "sfx": "pop",
+          "bar": {
+            "id": "hits",
+            "value": 0.25
+          }
+        },
+        {
+          "word": "thirteen",
+          "hud": {
+            "id": "age",
+            "value": "AGE 13"
+          },
+          "beat": "tallyMarks"
+        },
+        {
+          "word": "arrests",
+          "sticker": "38 ARRESTS (REPORTEDLY)",
+          "color": "#FF5A5A",
+          "sfx": "boom",
+          "bar": {
+            "id": "hits",
+            "value": 0.32
+          }
+        }
+      ]
+    },
+    {
+      "id": "detention",
+      "delivery": "normal",
+      "text": "Juvenile detention. A counselor, an ex-boxer, spots his *talent* and leads him to Cus D'Amato.",
+      "visual": "Kulisse: schlichter Flur einer Jugendanstalt (keine Uniformen, Kleidung unbelegt). Ein Betreuer mit Boxhandschuhen über der Schulter sieht Kind-MIKE auf einen Sandsack schlagen; Augen-Pop beim Betreuer auf 'talent'. Match Cut: Handschlag → Hand von CUS (ältere Silhouette mit Mantel) vor einer Holz-Trainingshalle.",
+      "sources": [
+        "Z7: \"He ended up at the Tryon School for Boys in Johnstown, New York.\" · \"Tyson's emerging boxing ability was discovered there by Bobby Stewart, a juvenile detention center counselor and former boxer.\"",
+        "Z8: \"through Stewart, Tyson met boxing manager and trainer Cus D'Amato.\""
+      ],
+      "cues": [
+        {
+          "word": "Juvenile",
+          "sticker": "ROUND 3",
+          "color": "#F5F5F5",
+          "sfx": "ding"
+        },
+        {
+          "word": "talent",
+          "beat": "eyePop",
+          "sfx": "pop"
+        },
+        {
+          "word": "Cus",
+          "beat": "matchCutHandshake",
+          "sfx": "whoosh",
+          "label": {
+            "text": "CUS D'AMATO",
+            "color": "#F5F5F5",
+            "x": 0.5,
+            "y": 0.4
+          }
+        }
+      ]
+    },
+    {
+      "id": "mother",
+      "delivery": "calm",
+      "text": "At sixteen, his mom dies. Cus becomes his legal guardian. | How hard so far? *Brutal*.",
+      "visual": "Kühles Licht. Die Mutter-Silhouette aus 'brooklyn' verblasst aus einem Bilderrahmen. CUS legt Teen-MIKE die Hand auf die Schulter, ein Dokument 'LEGAL GUARDIAN' (kein Adoptions-Wort). Re-Hook: Spotlight-Bühne, alles dunkel, MIKE allein in der Ringmitte, Punktrichter-Karte vom Hook kommt zurück, Zeilen 1–4 rot ausgefüllt.",
+      "sources": [
+        "Z9: \"Tyson's mother died when he was 16, leaving him in the care of D'Amato, who would become his legal guardian.\" ('legal guardian', nicht 'adopted')",
+        "Z10: \"established legal guardianship\" (Bild Dokument)",
+        "'Brutal' = Wertung der Erzählstimme (Analyse), keine Faktenaussage",
+        "Re-Hook der zentralen Frage bei ~39 % der Wörter (Experiment)"
+      ],
+      "cues": [
+        {
+          "word": "sixteen",
+          "sticker": "ROUND 4",
+          "color": "#F5F5F5",
+          "sfx": "ding",
+          "hud": {
+            "id": "age",
+            "value": "AGE 16"
+          }
+        },
+        {
+          "word": "dies",
+          "beat": "frameFade",
+          "bar": {
+            "id": "hits",
+            "value": 0.45
+          }
+        },
+        {
+          "word": "guardian",
+          "beat": "guardianDoc"
+        },
+        {
+          "word": "How",
+          "beat": "spotlight",
+          "sticker": "HOW HARD?",
+          "color": "#FFD23F",
+          "sfx": "boom"
+        },
+        {
+          "word": "Brutal",
+          "beat": "scorecardRed"
+        }
+      ]
+    },
+    {
+      "id": "champion",
+      "delivery": "hype",
+      "text": "At nineteen, he loses Cus. Some say his troubles start there. About a year later: *youngest* heavyweight champion ever.",
+      "visual": "CUS' Mantel hängt leer am Ringpfosten. Etikett 'SOME SAY' klein. Dann Wipe (Form: Boxhandschuh) in Gold: großer Arena-Ring, MIKE jetzt erwachsen in schwarzen Trunks, schwarzen Schuhen ohne Socken, weißes Handtuch um den Hals; tigert vor dem Kampf durch den Ring (belegt Z39); Gürtel wird hochgehalten (Gürtel-Farbe unbelegt → neutral Gold).",
+      "sources": [
+        "Z12: \"D'Amato died of pneumonia at Mount Sinai Hospital in Manhattan on November 4, 1985.\" · \"D'Amato died a little over a year before Tyson became the youngest world heavyweight titleholder in history\" (Alter 19: Herleitung 30.06.1966 → 04.11.1985)",
+        "Z13: \"some speculate that his death was the catalyst to many of the troubles Tyson was to experience\" (SPEKULATION → 'Some say')",
+        "Z14: \"at the age of 20 years and 4 months became the youngest heavyweight champion in history\"",
+        "Z39: Kampfkleidung + \"his habit of rapidly pacing the ring\" (Bild)"
+      ],
+      "cues": [
+        {
+          "word": "nineteen",
+          "sticker": "ROUND 5",
+          "color": "#F5F5F5",
+          "sfx": "ding",
+          "hud": {
+            "id": "age",
+            "value": "AGE 19"
+          }
+        },
+        {
+          "word": "Cus",
+          "beat": "emptyCoat",
+          "bar": {
+            "id": "hits",
+            "value": 0.55
+          }
+        },
+        {
+          "word": "Some",
+          "label": {
+            "text": "SOME SAY",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "year",
+          "beat": "gloveWipe",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "age",
+            "value": "AGE 20"
+          }
+        },
+        {
+          "word": "youngest",
+          "beat": "beltUp",
+          "sticker": "YOUNGEST CHAMP EVER: 20",
+          "color": "#FFD23F",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "douglas",
+      "delivery": "tense",
+      "text": "Then a forty-two-to-one long shot knocks him down for the first time. Title gone. That month, his sister dies.",
+      "visual": "Kühles Blau-Grau, Kulisse 'TOKYO 1990'. Gegner = gesichtslose graue Silhouette. MIKE fällt in Zeitlupe auf die Matte (Squash beim Aufprall), Ringrichter-Hand zählt. Gürtel rollt aus dem Bild. Dann Stille: MIKE sitzt auf dem Hocker, ein zweiter Bilderrahmen (Schwester) erscheint neben dem der Mutter. Kein Pfeil, keine Verbindung zwischen Niederlage und Tod (Gleichzeitigkeit, kein Kausalzusammenhang).",
+      "sources": [
+        "Z17: \"In a fight on February 11, 1990, he lost the undisputed championship to Douglas in Tokyo.\" (Alter 23: Herleitung)",
+        "Z18: \"A 42 to 1 underdog against Tyson\" · \"only one Las Vegas betting parlor even bothered to establish odds for the fight\" (Quote eines Casinos → Sticker)",
+        "Z19: \"knocked Tyson down for the first time in his career. He was counted out\"",
+        "Z22: \"had an older sister named Denise, who died of a heart attack at age 24 in February 1990\" (kein Kausalzusammenhang, Z22-Anmerkung)"
+      ],
+      "cues": [
+        {
+          "word": "Then",
+          "sticker": "ROUND 6: TOKYO, 1990",
+          "color": "#F5F5F5",
+          "sfx": "ding",
+          "hud": {
+            "id": "age",
+            "value": "AGE 23"
+          }
+        },
+        {
+          "word": "forty-two-to-one",
+          "sticker": "42–1 (ODDS AT ONE CASINO)",
+          "color": "#B0BEC5"
+        },
+        {
+          "word": "down",
+          "beat": "knockdown",
+          "sfx": "boom",
+          "bar": {
+            "id": "hits",
+            "value": 0.65
+          }
+        },
+        {
+          "word": "gone",
+          "beat": "beltRollsAway"
+        },
+        {
+          "word": "sister",
+          "beat": "secondFrame",
+          "bar": {
+            "id": "hits",
+            "value": 0.72
+          }
+        }
+      ]
+    },
+    {
+      "id": "conviction",
+      "delivery": "calm",
+      "text": "Two years later, a jury convicts him of *rape*. He serves nearly three years. He denies it; appeals fail. | This one isn't bad luck.",
+      "visual": "Entsättigtes Grau, keine Musik-Akzente. Kulisse: leerer Gerichtssaal in flachen Formen, Richterhammer, Geschworenenbank als zwölf graue Kreise. MIKE ohne Handtuch, steht. Keine Darstellung der Tat, kein Opfer, kein Name. Auf 'years' Gitterstäbe-Schatten über dem Ring. Auf 'luck': der Balken LIFE HITS bleibt sichtbar stehen (Kamera-Zoom auf den unveränderten Balken), Sticker 'NOT BAD LUCK'.",
+      "sources": [
+        "Z24: \"Tyson was convicted of the rape charge on February 10, 1992, after the jury deliberated for nearly 10 hours.\" (zwei Jahre nach 11.02.1990)",
+        "Z25: \"he was released in March 1995 after serving less than three years of the sentence\" (→ 'nearly three years')",
+        "Z26: \"Tyson has continued to maintain his innocence.\" · \"The Indiana Court of Appeals ruled against Tyson in a 2–1 vote.\" (Indiana Supreme Court 2–2 laut Z26-Aussage)",
+        "Z23: Festnahme Juli 1991 (nicht gesprochen); Name der Frau bewusst nicht genannt",
+        "'This one isn't bad luck' = Einordnung der Erzählstimme (Verurteilung ≠ Schicksalsschlag), keine Faktenaussage"
+      ],
+      "cues": [
+        {
+          "word": "Two",
+          "sticker": "ROUND 7: 1992",
+          "color": "#F5F5F5",
+          "sfx": "ding",
+          "hud": {
+            "id": "age",
+            "value": "AGE 25"
+          }
+        },
+        {
+          "word": "rape",
+          "sticker": "CONVICTED OF RAPE",
+          "color": "#F5F5F5"
+        },
+        {
+          "word": "years",
+          "beat": "barShadows"
+        },
+        {
+          "word": "denies",
+          "label": {
+            "text": "HE DENIES IT · APPEALS FAILED",
+            "color": "#B0BEC5",
+            "x": 0.5,
+            "y": 0.36
+          }
+        },
+        {
+          "word": "luck",
+          "beat": "barStill",
+          "sticker": "NOT BAD LUCK",
+          "color": "#B0BEC5"
+        }
+      ]
+    },
+    {
+      "id": "ear",
+      "delivery": "normal",
+      "text": "He bites off a piece of Holyfield's ear. Later: bankrupt, reportedly *twenty-three million* in debt.",
+      "visual": "Kulisse Arena, harter Schnitt. Gegner-Silhouette hält sich das Ohr; ein kleines Stück fliegt als Comic-Symbol (kein Blut), Lizenz-Karte wird zerrissen (Z32, nicht gesprochen). Whip in den Ring bei Nacht: Geldscheine flattern aus dem Ring hinaus, ein rotes Schild 'BANKRUPT 2003'. MIKE sitzt auf dem Hocker, Handtuch über dem Kopf.",
+      "sources": [
+        "Z30: \"Tyson disqualified for biting Holyfield on both ears\" (28.06.1997, Alter 30: Herleitung)",
+        "Z31: \"The first bite was severe enough to remove a piece of Holyfield's right ear\" (Stück, nicht ganzes Ohr)",
+        "Z32: Lizenz entzogen 09.07.1997 (nur Bild)",
+        "Z33: \"In August 2003, after years of financial struggles, Tyson filed for bankruptcy.\" · \"he had approximately $23 million in debt\" (→ 'reportedly')",
+        "Balken steigt erst beim Bankrott, nicht beim Biss (selbst verursacht)"
+      ],
+      "cues": [
+        {
+          "word": "bites",
+          "sticker": "ROUND 8: 1997",
+          "color": "#F5F5F5",
+          "sfx": "ding",
+          "hud": {
+            "id": "age",
+            "value": "AGE 30"
+          }
+        },
+        {
+          "word": "ear",
+          "beat": "earPiece",
+          "sfx": "pop",
+          "sticker": "A PIECE OF HIS EAR",
+          "color": "#FF5A5A"
+        },
+        {
+          "word": "bankrupt",
+          "beat": "moneyFly",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "age",
+            "value": "AGE 37"
+          }
+        },
+        {
+          "word": "million",
+          "sticker": "$23M DEBT (REPORTEDLY)",
+          "color": "#FF5A5A",
+          "sfx": "boom",
+          "bar": {
+            "id": "hits",
+            "value": 0.82
+          }
+        }
+      ]
+    },
+    {
+      "id": "exodus",
+      "delivery": "calm",
+      "text": "His four-year-old daughter, Exodus, is found tangled in a cord. She dies the next day.",
+      "visual": "Fast schwarz, ein einziges warmes Licht. Keine Darstellung des Unfalls, kein Laufband, kein Kind im Bild. MIKE sitzt allein auf der Ringkante, eine kleine Papierblume fällt langsam auf die Matte. Keine Sticker außer der Rundenkarte, kein sfx außer der leisen Glocke.",
+      "sources": [
+        "Z36: \"On May 25, 2009, Tyson's four-year-old daughter, Exodus, was found by her seven-year-old brother, unconscious and tangled in a cord, dangling from an exercise treadmill.\" · \"She died of her injuries on May 26, 2009.\" (Alter 42: Herleitung; Details bewusst weggelassen)"
+      ],
+      "cues": [
+        {
+          "word": "daughter",
+          "sticker": "ROUND 9: 2009",
+          "color": "#F5F5F5",
+          "sfx": "ding",
+          "hud": {
+            "id": "age",
+            "value": "AGE 42"
+          }
+        },
+        {
+          "word": "dies",
+          "beat": "flowerFall",
+          "bar": {
+            "id": "hits",
+            "value": 0.95
+          }
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "delivery": "punch",
+      "text": "At fifty-eight, he's still fighting. He loses. | Hard? *Brutally*. Blameless? No. You score it. Again:",
+      "visual": "Licht kommt zurück, gedimmter Spot. Riesige Stadion-Kulisse (Arlington 2024), MIKE älter (graue Schläfen = Stil), gleiche Kampfkleidung, weißes Handtuch; junge Gegner-Silhouette. Punktrichter-Karte schließt: Zeile 'HARD' rot, Zeile 'BLAMELESS' grau 'NO'. Auf 'score' dreht sich die Karte zur Kamera (leere Zeile, Stift). Auf 'Again' Form-Wipe zurück zum Ring aus dem Hook, Zähler springt auf 'AGE 0', MIKE auf dem Hocker (Loop in 'How hard was Mike Tyson's life, really?').",
+      "sources": [
+        "Z37: \"took place on November 15, 2024, at the AT&T Stadium in Arlington, Texas\" · \"Paul defeated Tyson via unanimous decision\" (Alter 58: Herleitung 30.06.1966 → 15.11.2024)",
+        "Z38: \"The 31-year age difference between Tyson and Paul is the largest age difference in professional boxing history.\" (nur Sticker)",
+        "'Hard? Brutally. Blameless? No.' = Fazit der Analyse aus Z2–Z36, keine neue Faktenaussage; Loop zum ersten Satz"
+      ],
+      "cues": [
+        {
+          "word": "fifty-eight",
+          "sticker": "FINAL BELL: 2024",
+          "color": "#F5F5F5",
+          "sfx": "ding",
+          "hud": {
+            "id": "age",
+            "value": "AGE 58"
+          }
+        },
+        {
+          "word": "loses",
+          "sticker": "LOST TO JAKE PAUL, 31 YEARS YOUNGER",
+          "color": "#B0BEC5"
+        },
+        {
+          "word": "Hard",
+          "beat": "scorecardHard",
+          "bar": {
+            "id": "hits",
+            "value": 1.0
+          }
+        },
+        {
+          "word": "Blameless",
+          "beat": "scorecardNo",
+          "sfx": "pop"
+        },
+        {
+          "word": "score",
+          "beat": "cardToCamera",
+          "sfx": "ding"
+        },
+        {
+          "word": "Again",
+          "beat": "loopToRing",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "age",
+            "value": "AGE 0"
+          }
+        }
+      ]
+    }
+  ]
+}
