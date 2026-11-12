@@ -17,6 +17,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 - Untertitel-Zone mit den Werten aus dem Code prüfen: Unterkante y 1520 (`Captions.tsx` `paddingBottom: 400`), eine Zeile ≈ 1420–1520, zwei Zeilen ab ≈ 1325 (`design-system.md` §4.6) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Mike Tyson (2D) · `pose="sit"` in `kit2d/boxing.tsx` zeigt frontal keine Oberschenkel: Beine hängen gerade unter den Trunks zwischen den Hocker-Beinen → liest sich als Stehen auf Stelzen (Cover, Hook, ear 55,2 s, exodus 59,5 s); Sitzfiguren frontal brauchen sichtbare verkürzte Oberschenkel/Knie oder ¾-Ansicht. `towel="head"` mit dunklem Gesicht liest sich als Kapuze/Kopftuch, nicht als Boxerhandtuch. Keine Porträtähnlichkeit, keine Logos – bestanden. Cover-Untertitel mit Einzelwort-Umbruch („round“) → Zeilenbreite prüfen · `out/tyson-check.jpg`, `out/mike-tyson-cover.png`
 - 12.11.2026 · Earth Without Us (2D) · Beschriftungen in 2D-Sets an festen x-Werten laufen bei Kamerafahrt aus dem Bild (HELIOSPHERE `Label x=260` in `earth2.tsx` → „LIOSPHERE“, f4850); Prüfregel: jedes Label in jedem Standbild ganz im Bild? Cover-PNG in `out/` war älter als das Drehbuch (Untertext abweichend) → Cover immer aus Bild 5 des aktuellen Bundles neu ziehen · `scratchpad/v4850.png`, `c5.png`
 - 08.11.2026 · Overlays · 13 Fehler behoben.
 - 08.11.2026 · Rom-Kit · Kontrast weißer Kopf/Sandstein nur 1,1–1,3 : 1 → Platzierungsregel.
@@ -29,3 +30,4 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 12.11.2026 | Earth Without Us (2D, Kontaktabzug + 2 Standbilder) | 7,5 (Selbstbewertung Design-Kritiker) | Stil 2D passend und konsistent; abgeschnittenes Label, veraltetes Cover-PNG, Kleinteile (Satelliten, Voyager) zu klein |
+| 12.11.2026 | Mike Tyson (2D, Kontaktabzug + Cover + 8 Einzelbilder) | 6,5 (Selbstbewertung Design-Kritiker) | Sitzpose ohne Oberschenkel, Kopf-Handtuch als Kapuze, abgeschnittene LIFE-HITS-Leiste conviction |
