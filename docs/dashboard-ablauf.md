@@ -77,6 +77,9 @@ Entscheidung in einem Satz im Drehbuch-Feld `style.why` bzw. `note` festhalten.
   vorlegen (neues `review`, `decision: null`). Feedback nie stillschweigend übergehen.
 - Die Seite schreibt `decision` – die Sitzung setzt es nur auf `null` zurück.
 
+**Fertige Clips immer zum Herunterladen schicken** (Vorgabe Nutzer 12.11.2026): die finale MP4 (`out/<id>.mp4`) mit
+`SendUserFile` und `display: "attach"` an den Nutzer senden – vor jedem Sitzungswechsel, weil `out/` nur im Container liegt.
+
 ## 6. Veröffentlichen-Texte (`publish`)
 Hashtags aus `hashtags/current` (Kombi passend zum Thema, 1–2 Tags themenspezifisch ersetzen),
 Grenzen und Quellen: `dashboard/README.md`, Abschnitt „Veröffentlichen“.
