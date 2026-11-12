@@ -43,7 +43,7 @@ Themenunabhängiger Ablauf und Muster je Themen-Art: [`playbook-themen.md`](play
 3. **Durchgehende Bewegungsrichtung** bei Reisen (z. B. immer von links nach rechts / nach außen).
 4. **Laufendes Element** über das ganze Video (Zähler, Punktestand, Karte mit Fortschritt),
    damit der Fortschritt sichtbar ist und man das Ende erreichen will.
-5. **Tempo-Regel für jedes Video (Nutzer 12.11.2026):** Sprechtempo 2,3–2,6 W/s (Ziel 2,4), Einstellungen 3–4 s, sanfte Übergänge; Länge ohne Wunschangabe ~55–65 s. Beleg: `docs/trends/benchmark-tempo.md` (31 virale Shorts, 9 mit messbarem Tempo; ruhige Top-Videos 2,2–2,6 W/s, Erzähl-Shorts Median 56 s). Tempo beim ersten Stimmlauf messen und `speed` per Rückrechnung (alt × Dauer / (Wörter/2,4)) setzen.
+5. **Tempo-Regel für jedes Video (Nutzer 12.11.2026):** Sprechtempo 2,3–2,6 W/s (Ziel 2,4), Einstellungen 3–4 s, sanfte Übergänge; Länge **mindestens 62 s** (Nutzer 12.11.2026: „Mind 62 Sekunden“), ohne Wunschangabe ~62–70 s. Beleg: `docs/trends/benchmark-tempo.md` (31 virale Shorts, 9 mit messbarem Tempo; ruhige Top-Videos 2,2–2,6 W/s, Erzähl-Shorts Median 56 s). Tempo beim ersten Stimmlauf messen und `speed` per Rückrechnung (alt × Dauer / (Wörter/2,4)) setzen.
    **Nutzer-Feedback 12.11.2026 (Tyson, Freigabe 2): „Video soll etwas langsamer sein, um es angenehmer zum Schauen zu machen.“** → ruhigeres Bildtempo: Einstellungen eher 3–4 s, Kamerafahrten langsamer, Whip-/Wipe-Übergänge nur an Kapitelgrenzen, keine Schnitte unter 1,5 s; die Werte darunter sind dafür überholt.
    Bisher: Neue Einstellung etwa alle 2–3 s, aber **innerhalb derselben Handlung** (Nah/Total/Detail),
    nicht als Sprung zu etwas Neuem. Messwerte (ffmpeg `scene` > 0,12, `referenz-analyse-2.md`):
