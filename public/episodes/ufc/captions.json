@@ -2,1359 +2,1359 @@
  {
   "text": "Human",
   "startMs": 0,
-  "endMs": 660,
-  "timestampMs": 330,
+  "endMs": 600,
+  "timestampMs": 300,
   "confidence": null
  },
  {
   "text": " cockfighting,",
-  "startMs": 660,
-  "endMs": 1300,
-  "timestampMs": 980,
+  "startMs": 600,
+  "endMs": 1200,
+  "timestampMs": 900,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 1440,
-  "endMs": 1580,
-  "timestampMs": 1510,
+  "startMs": 1320,
+  "endMs": 1460,
+  "timestampMs": 1390,
   "confidence": null
  },
  {
   "text": " senator",
-  "startMs": 1580,
-  "endMs": 1760,
-  "timestampMs": 1670,
+  "startMs": 1460,
+  "endMs": 1640,
+  "timestampMs": 1550,
   "confidence": null
  },
  {
   "text": " called",
-  "startMs": 1760,
-  "endMs": 2080,
-  "timestampMs": 1920,
+  "startMs": 1640,
+  "endMs": 1920,
+  "timestampMs": 1780,
   "confidence": null
  },
  {
   "text": " it.",
-  "startMs": 2080,
-  "endMs": 2540,
-  "timestampMs": 2310,
+  "startMs": 1920,
+  "endMs": 2360,
+  "timestampMs": 2140,
   "confidence": null
  },
  {
   "text": " By",
-  "startMs": 2800,
-  "endMs": 2900,
-  "timestampMs": 2850,
+  "startMs": 2600,
+  "endMs": 2700,
+  "timestampMs": 2650,
   "confidence": null
  },
  {
   "text": " 2023:",
-  "startMs": 2900,
-  "endMs": 3740,
-  "timestampMs": 3320,
+  "startMs": 2700,
+  "endMs": 3480,
+  "timestampMs": 3090,
   "confidence": null
  },
  {
   "text": " valued",
-  "startMs": 4080,
-  "endMs": 4300,
-  "timestampMs": 4190,
+  "startMs": 3780,
+  "endMs": 4000,
+  "timestampMs": 3890,
   "confidence": null
  },
  {
   "text": " at",
-  "startMs": 4300,
-  "endMs": 4520,
-  "timestampMs": 4410,
+  "startMs": 4000,
+  "endMs": 4180,
+  "timestampMs": 4090,
   "confidence": null
  },
  {
   "text": " 12",
-  "startMs": 4520,
-  "endMs": 4840,
-  "timestampMs": 4680,
+  "startMs": 4180,
+  "endMs": 4480,
+  "timestampMs": 4330,
   "confidence": null
  },
  {
   "text": " billion",
-  "startMs": 4840,
-  "endMs": 5160,
-  "timestampMs": 5000,
+  "startMs": 4480,
+  "endMs": 4800,
+  "timestampMs": 4640,
   "confidence": null
  },
  {
   "text": " dollars.",
-  "startMs": 5160,
-  "endMs": 6060,
-  "timestampMs": 5610,
+  "startMs": 4800,
+  "endMs": 5640,
+  "timestampMs": 5220,
   "confidence": null
  },
  {
   "text": " Who",
-  "startMs": 6060,
-  "endMs": 6360,
-  "timestampMs": 6210,
+  "startMs": 5640,
+  "endMs": 5920,
+  "timestampMs": 5780,
   "confidence": null
  },
  {
   "text": " paid",
+  "startMs": 5920,
+  "endMs": 6180,
+  "timestampMs": 6050,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 6180,
+  "endMs": 6360,
+  "timestampMs": 6270,
+  "confidence": null
+ },
+ {
+  "text": " price?",
   "startMs": 6360,
   "endMs": 6640,
   "timestampMs": 6500,
   "confidence": null
  },
  {
-  "text": " the",
-  "startMs": 6640,
-  "endMs": 6820,
-  "timestampMs": 6730,
-  "confidence": null
- },
- {
-  "text": " price?",
-  "startMs": 6820,
-  "endMs": 7140,
-  "timestampMs": 6980,
-  "confidence": null
- },
- {
   "text": " 1993,",
-  "startMs": 8320,
-  "endMs": 8320,
-  "timestampMs": 8320,
+  "startMs": 7720,
+  "endMs": 7720,
+  "timestampMs": 7720,
   "confidence": null
  },
  {
   "text": " Denver.",
-  "startMs": 9100,
-  "endMs": 9340,
-  "timestampMs": 9220,
+  "startMs": 8440,
+  "endMs": 8660,
+  "timestampMs": 8550,
   "confidence": null
  },
  {
   "text": " Eight",
-  "startMs": 9640,
-  "endMs": 9800,
-  "timestampMs": 9720,
+  "startMs": 8940,
+  "endMs": 9080,
+  "timestampMs": 9010,
   "confidence": null
  },
  {
   "text": " fighters,",
-  "startMs": 9800,
-  "endMs": 10180,
-  "timestampMs": 9990,
+  "startMs": 9080,
+  "endMs": 9440,
+  "timestampMs": 9260,
   "confidence": null
  },
  {
   "text": " one",
-  "startMs": 10480,
-  "endMs": 10600,
-  "timestampMs": 10540,
+  "startMs": 9700,
+  "endMs": 9820,
+  "timestampMs": 9760,
   "confidence": null
  },
  {
   "text": " cage,",
-  "startMs": 10600,
-  "endMs": 10920,
-  "timestampMs": 10760,
+  "startMs": 9820,
+  "endMs": 10120,
+  "timestampMs": 9970,
   "confidence": null
  },
  {
   "text": " almost",
-  "startMs": 11160,
-  "endMs": 11360,
-  "timestampMs": 11260,
+  "startMs": 10340,
+  "endMs": 10500,
+  "timestampMs": 10420,
   "confidence": null
  },
  {
   "text": " no",
-  "startMs": 11360,
-  "endMs": 11620,
-  "timestampMs": 11490,
+  "startMs": 10500,
+  "endMs": 10760,
+  "timestampMs": 10630,
   "confidence": null
  },
  {
   "text": " rules.",
-  "startMs": 11620,
-  "endMs": 11960,
-  "timestampMs": 11790,
+  "startMs": 10760,
+  "endMs": 11080,
+  "timestampMs": 10920,
   "confidence": null
  },
  {
   "text": " Winner",
-  "startMs": 12480,
-  "endMs": 12480,
-  "timestampMs": 12480,
+  "startMs": 11560,
+  "endMs": 11560,
+  "timestampMs": 11560,
   "confidence": null
  },
  {
   "text": " takes",
-  "startMs": 12480,
-  "endMs": 12740,
-  "timestampMs": 12610,
+  "startMs": 11560,
+  "endMs": 11820,
+  "timestampMs": 11690,
   "confidence": null
  },
  {
   "text": " 50,000",
-  "startMs": 12740,
-  "endMs": 13150,
-  "timestampMs": 12945,
+  "startMs": 11820,
+  "endMs": 12180,
+  "timestampMs": 12000,
   "confidence": null
  },
  {
   "text": " dollars.",
-  "startMs": 13150,
-  "endMs": 13560,
-  "timestampMs": 13355,
+  "startMs": 12180,
+  "endMs": 12540,
+  "timestampMs": 12360,
   "confidence": null
  },
  {
   "text": " Senator",
-  "startMs": 14400,
-  "endMs": 14820,
-  "timestampMs": 14610,
+  "startMs": 13320,
+  "endMs": 13700,
+  "timestampMs": 13510,
   "confidence": null
  },
  {
   "text": " John",
-  "startMs": 14820,
-  "endMs": 15200,
-  "timestampMs": 15010,
+  "startMs": 13700,
+  "endMs": 14060,
+  "timestampMs": 13880,
   "confidence": null
  },
  {
   "text": " McCain",
-  "startMs": 15200,
-  "endMs": 15580,
-  "timestampMs": 15390,
+  "startMs": 14060,
+  "endMs": 14420,
+  "timestampMs": 14240,
   "confidence": null
  },
  {
   "text": " sees",
-  "startMs": 15580,
-  "endMs": 16060,
-  "timestampMs": 15820,
+  "startMs": 14420,
+  "endMs": 14840,
+  "timestampMs": 14630,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 16060,
-  "endMs": 16240,
-  "timestampMs": 16150,
+  "startMs": 14840,
+  "endMs": 15020,
+  "timestampMs": 14930,
   "confidence": null
  },
  {
   "text": " tape.",
-  "startMs": 16240,
-  "endMs": 16500,
-  "timestampMs": 16370,
+  "startMs": 15020,
+  "endMs": 15260,
+  "timestampMs": 15140,
   "confidence": null
  },
  {
   "text": " Human",
-  "startMs": 16800,
-  "endMs": 17020,
-  "timestampMs": 16910,
+  "startMs": 15540,
+  "endMs": 15720,
+  "timestampMs": 15630,
   "confidence": null
  },
  {
   "text": " cockfighting,",
-  "startMs": 17020,
-  "endMs": 17580,
-  "timestampMs": 17300,
+  "startMs": 15720,
+  "endMs": 16220,
+  "timestampMs": 15970,
   "confidence": null
  },
  {
   "text": " he",
-  "startMs": 17680,
-  "endMs": 17780,
-  "timestampMs": 17730,
+  "startMs": 16320,
+  "endMs": 16420,
+  "timestampMs": 16370,
   "confidence": null
  },
  {
   "text": " says,",
-  "startMs": 17780,
-  "endMs": 18040,
-  "timestampMs": 17910,
+  "startMs": 16420,
+  "endMs": 16660,
+  "timestampMs": 16540,
   "confidence": null
  },
  {
   "text": " and",
-  "startMs": 18320,
-  "endMs": 18460,
-  "timestampMs": 18390,
+  "startMs": 16920,
+  "endMs": 17040,
+  "timestampMs": 16980,
   "confidence": null
  },
  {
   "text": " writes",
-  "startMs": 18460,
-  "endMs": 18660,
-  "timestampMs": 18560,
+  "startMs": 17040,
+  "endMs": 17240,
+  "timestampMs": 17140,
   "confidence": null
  },
  {
   "text": " to",
-  "startMs": 18660,
-  "endMs": 18900,
-  "timestampMs": 18780,
+  "startMs": 17240,
+  "endMs": 17440,
+  "timestampMs": 17340,
   "confidence": null
  },
  {
   "text": " every",
-  "startMs": 18900,
-  "endMs": 19140,
-  "timestampMs": 19020,
+  "startMs": 17440,
+  "endMs": 17680,
+  "timestampMs": 17560,
   "confidence": null
  },
  {
   "text": " governor.",
-  "startMs": 19140,
-  "endMs": 19420,
-  "timestampMs": 19280,
+  "startMs": 17680,
+  "endMs": 17920,
+  "timestampMs": 17800,
   "confidence": null
  },
  {
   "text": " 36",
-  "startMs": 20380,
-  "endMs": 20860,
-  "timestampMs": 20620,
+  "startMs": 18860,
+  "endMs": 19240,
+  "timestampMs": 19050,
   "confidence": null
  },
  {
   "text": " states",
-  "startMs": 20860,
-  "endMs": 21360,
-  "timestampMs": 21110,
+  "startMs": 19240,
+  "endMs": 19760,
+  "timestampMs": 19500,
   "confidence": null
  },
  {
   "text": " ban",
-  "startMs": 21360,
-  "endMs": 21760,
-  "timestampMs": 21560,
+  "startMs": 19760,
+  "endMs": 20120,
+  "timestampMs": 19940,
   "confidence": null
  },
  {
   "text": " no-holds-barred",
-  "startMs": 21760,
-  "endMs": 22680,
-  "timestampMs": 22220,
+  "startMs": 20120,
+  "endMs": 20960,
+  "timestampMs": 20540,
   "confidence": null
  },
  {
   "text": " fighting.",
-  "startMs": 22680,
-  "endMs": 22960,
-  "timestampMs": 22820,
+  "startMs": 20960,
+  "endMs": 21200,
+  "timestampMs": 21080,
   "confidence": null
  },
  {
   "text": " The",
-  "startMs": 23480,
-  "endMs": 23640,
-  "timestampMs": 23560,
+  "startMs": 21720,
+  "endMs": 21860,
+  "timestampMs": 21790,
   "confidence": null
  },
  {
   "text": " UFC",
-  "startMs": 23640,
-  "endMs": 23940,
-  "timestampMs": 23790,
+  "startMs": 21860,
+  "endMs": 22140,
+  "timestampMs": 22000,
   "confidence": null
  },
  {
   "text": " tames",
-  "startMs": 23940,
-  "endMs": 24400,
-  "timestampMs": 24170,
+  "startMs": 22140,
+  "endMs": 22540,
+  "timestampMs": 22340,
   "confidence": null
  },
  {
   "text": " itself:",
-  "startMs": 24400,
-  "endMs": 24780,
-  "timestampMs": 24590,
+  "startMs": 22540,
+  "endMs": 22900,
+  "timestampMs": 22720,
   "confidence": null
  },
  {
   "text": " weight",
-  "startMs": 25120,
-  "endMs": 25260,
-  "timestampMs": 25190,
+  "startMs": 23200,
+  "endMs": 23320,
+  "timestampMs": 23260,
   "confidence": null
  },
  {
   "text": " classes,",
-  "startMs": 25260,
-  "endMs": 25660,
-  "timestampMs": 25460,
+  "startMs": 23320,
+  "endMs": 23720,
+  "timestampMs": 23520,
   "confidence": null
  },
  {
   "text": " gloves,",
-  "startMs": 26100,
-  "endMs": 26320,
-  "timestampMs": 26210,
+  "startMs": 24060,
+  "endMs": 24320,
+  "timestampMs": 24190,
   "confidence": null
  },
  {
   "text": " rounds.",
-  "startMs": 26860,
-  "endMs": 26980,
-  "timestampMs": 26920,
+  "startMs": 24920,
+  "endMs": 24920,
+  "timestampMs": 24920,
   "confidence": null
  },
  {
   "text": " Still,",
-  "startMs": 27780,
-  "endMs": 28340,
-  "timestampMs": 28060,
+  "startMs": 25880,
+  "endMs": 26260,
+  "timestampMs": 26070,
   "confidence": null
  },
  {
   "text": " its",
-  "startMs": 28700,
-  "endMs": 28840,
-  "timestampMs": 28770,
+  "startMs": 26540,
+  "endMs": 26660,
+  "timestampMs": 26600,
   "confidence": null
  },
  {
   "text": " owners",
-  "startMs": 28840,
-  "endMs": 29080,
-  "timestampMs": 28960,
+  "startMs": 26660,
+  "endMs": 26920,
+  "timestampMs": 26790,
   "confidence": null
  },
  {
   "text": " are",
-  "startMs": 29080,
-  "endMs": 29420,
-  "timestampMs": 29250,
+  "startMs": 26920,
+  "endMs": 27180,
+  "timestampMs": 27050,
   "confidence": null
  },
  {
   "text": " nearly",
-  "startMs": 29420,
-  "endMs": 29660,
-  "timestampMs": 29540,
+  "startMs": 27180,
+  "endMs": 27420,
+  "timestampMs": 27300,
   "confidence": null
  },
  {
   "text": " bankrupt.",
-  "startMs": 29660,
-  "endMs": 30120,
-  "timestampMs": 29890,
+  "startMs": 27420,
+  "endMs": 27800,
+  "timestampMs": 27610,
   "confidence": null
  },
  {
   "text": " 2001:",
-  "startMs": 30800,
-  "endMs": 31360,
-  "timestampMs": 31080,
+  "startMs": 28460,
+  "endMs": 28980,
+  "timestampMs": 28720,
   "confidence": null
  },
  {
   "text": " two",
-  "startMs": 31740,
-  "endMs": 31860,
-  "timestampMs": 31800,
+  "startMs": 29240,
+  "endMs": 29440,
+  "timestampMs": 29340,
   "confidence": null
  },
  {
   "text": " brothers",
-  "startMs": 31860,
-  "endMs": 32120,
-  "timestampMs": 31990,
+  "startMs": 29440,
+  "endMs": 29700,
+  "timestampMs": 29570,
   "confidence": null
  },
  {
   "text": " buy",
-  "startMs": 32120,
-  "endMs": 32420,
-  "timestampMs": 32270,
+  "startMs": 29700,
+  "endMs": 29960,
+  "timestampMs": 29830,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 32420,
-  "endMs": 32560,
-  "timestampMs": 32490,
+  "startMs": 29960,
+  "endMs": 30080,
+  "timestampMs": 30020,
   "confidence": null
  },
  {
   "text": " UFC",
-  "startMs": 32560,
-  "endMs": 32860,
-  "timestampMs": 32710,
+  "startMs": 30080,
+  "endMs": 30380,
+  "timestampMs": 30230,
   "confidence": null
  },
  {
   "text": " for",
-  "startMs": 32860,
-  "endMs": 33160,
-  "timestampMs": 33010,
+  "startMs": 30380,
+  "endMs": 30640,
+  "timestampMs": 30510,
   "confidence": null
  },
  {
   "text": " just",
-  "startMs": 33160,
-  "endMs": 33340,
-  "timestampMs": 33250,
+  "startMs": 30640,
+  "endMs": 30820,
+  "timestampMs": 30730,
   "confidence": null
  },
  {
   "text": " 2",
-  "startMs": 33340,
-  "endMs": 33580,
-  "timestampMs": 33460,
+  "startMs": 30820,
+  "endMs": 31020,
+  "timestampMs": 30920,
   "confidence": null
  },
  {
   "text": " million",
-  "startMs": 33580,
-  "endMs": 33840,
-  "timestampMs": 33710,
+  "startMs": 31020,
+  "endMs": 31280,
+  "timestampMs": 31150,
   "confidence": null
  },
  {
   "text": " dollars.",
-  "startMs": 33840,
-  "endMs": 34840,
-  "timestampMs": 34340,
+  "startMs": 31280,
+  "endMs": 32200,
+  "timestampMs": 31740,
   "confidence": null
  },
  {
   "text": " Hold",
-  "startMs": 34840,
-  "endMs": 35360,
-  "timestampMs": 35100,
+  "startMs": 32200,
+  "endMs": 32720,
+  "timestampMs": 32460,
   "confidence": null
  },
  {
   "text": " that",
-  "startMs": 35360,
-  "endMs": 35600,
-  "timestampMs": 35480,
+  "startMs": 32720,
+  "endMs": 32920,
+  "timestampMs": 32820,
   "confidence": null
  },
  {
   "text": " number.",
-  "startMs": 35600,
-  "endMs": 35940,
-  "timestampMs": 35770,
+  "startMs": 32920,
+  "endMs": 33240,
+  "timestampMs": 33080,
   "confidence": null
  },
  {
   "text": " By",
-  "startMs": 36280,
-  "endMs": 36420,
-  "timestampMs": 36350,
+  "startMs": 33560,
+  "endMs": 33700,
+  "timestampMs": 33630,
   "confidence": null
  },
  {
   "text": " 2004,",
-  "startMs": 36420,
-  "endMs": 37100,
-  "timestampMs": 36760,
+  "startMs": 33700,
+  "endMs": 34380,
+  "timestampMs": 34040,
   "confidence": null
  },
  {
   "text": " they've",
-  "startMs": 37580,
-  "endMs": 37740,
-  "timestampMs": 37660,
+  "startMs": 34760,
+  "endMs": 34920,
+  "timestampMs": 34840,
   "confidence": null
  },
  {
   "text": " poured",
-  "startMs": 37740,
-  "endMs": 37920,
-  "timestampMs": 37830,
+  "startMs": 34920,
+  "endMs": 35080,
+  "timestampMs": 35000,
   "confidence": null
  },
  {
   "text": " in",
-  "startMs": 37920,
-  "endMs": 38160,
-  "timestampMs": 38040,
+  "startMs": 35080,
+  "endMs": 35280,
+  "timestampMs": 35180,
   "confidence": null
  },
  {
   "text": " over",
-  "startMs": 38160,
-  "endMs": 38440,
-  "timestampMs": 38300,
+  "startMs": 35280,
+  "endMs": 35560,
+  "timestampMs": 35420,
   "confidence": null
  },
  {
   "text": " 40",
-  "startMs": 38440,
-  "endMs": 38760,
-  "timestampMs": 38600,
+  "startMs": 35560,
+  "endMs": 35860,
+  "timestampMs": 35710,
   "confidence": null
  },
  {
   "text": " million.",
-  "startMs": 38760,
-  "endMs": 39080,
-  "timestampMs": 38920,
+  "startMs": 35860,
+  "endMs": 36140,
+  "timestampMs": 36000,
   "confidence": null
  },
  {
   "text": " Last",
-  "startMs": 40020,
-  "endMs": 40260,
-  "timestampMs": 40140,
+  "startMs": 36980,
+  "endMs": 37260,
+  "timestampMs": 37120,
   "confidence": null
  },
  {
   "text": " shot:",
-  "startMs": 40260,
-  "endMs": 40540,
-  "timestampMs": 40400,
+  "startMs": 37260,
+  "endMs": 37520,
+  "timestampMs": 37390,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 40780,
-  "endMs": 40860,
-  "timestampMs": 40820,
+  "startMs": 37740,
+  "endMs": 37800,
+  "timestampMs": 37770,
   "confidence": null
  },
  {
   "text": " reality",
-  "startMs": 40860,
-  "endMs": 41180,
-  "timestampMs": 41020,
+  "startMs": 37800,
+  "endMs": 38080,
+  "timestampMs": 37940,
   "confidence": null
  },
  {
   "text": " show.",
-  "startMs": 41180,
-  "endMs": 41560,
-  "timestampMs": 41370,
+  "startMs": 38080,
+  "endMs": 38460,
+  "timestampMs": 38270,
   "confidence": null
  },
  {
   "text": " Its",
-  "startMs": 41840,
-  "endMs": 41980,
-  "timestampMs": 41910,
+  "startMs": 38680,
+  "endMs": 38840,
+  "timestampMs": 38760,
   "confidence": null
  },
  {
   "text": " finale",
-  "startMs": 41980,
-  "endMs": 42280,
-  "timestampMs": 42130,
+  "startMs": 38840,
+  "endMs": 39120,
+  "timestampMs": 38980,
   "confidence": null
  },
  {
   "text": " goes",
-  "startMs": 42280,
-  "endMs": 42640,
-  "timestampMs": 42460,
+  "startMs": 39120,
+  "endMs": 39480,
+  "timestampMs": 39300,
   "confidence": null
  },
  {
   "text": " toe-to-toe,",
-  "startMs": 42640,
-  "endMs": 43340,
-  "timestampMs": 42990,
+  "startMs": 39480,
+  "endMs": 40060,
+  "timestampMs": 39770,
   "confidence": null
  },
  {
   "text": " live",
-  "startMs": 43560,
-  "endMs": 43800,
-  "timestampMs": 43680,
+  "startMs": 40260,
+  "endMs": 40520,
+  "timestampMs": 40390,
   "confidence": null
  },
  {
   "text": " on",
-  "startMs": 43800,
-  "endMs": 44040,
-  "timestampMs": 43920,
+  "startMs": 40520,
+  "endMs": 40720,
+  "timestampMs": 40620,
   "confidence": null
  },
  {
   "text": " free",
-  "startMs": 44040,
-  "endMs": 44220,
-  "timestampMs": 44130,
+  "startMs": 40720,
+  "endMs": 40900,
+  "timestampMs": 40810,
   "confidence": null
  },
  {
   "text": " TV.",
-  "startMs": 44220,
-  "endMs": 44540,
-  "timestampMs": 44380,
+  "startMs": 40900,
+  "endMs": 41180,
+  "timestampMs": 41040,
   "confidence": null
  },
  {
   "text": " From",
-  "startMs": 45040,
-  "endMs": 45160,
-  "timestampMs": 45100,
+  "startMs": 41640,
+  "endMs": 41760,
+  "timestampMs": 41700,
   "confidence": null
  },
  {
   "text": " there,",
-  "startMs": 45160,
-  "endMs": 45460,
-  "timestampMs": 45310,
+  "startMs": 41760,
+  "endMs": 42000,
+  "timestampMs": 41880,
   "confidence": null
  },
  {
   "text": " it",
-  "startMs": 45620,
-  "endMs": 45680,
-  "timestampMs": 45650,
+  "startMs": 42180,
+  "endMs": 42260,
+  "timestampMs": 42220,
   "confidence": null
  },
  {
   "text": " booms.",
-  "startMs": 45680,
-  "endMs": 46100,
-  "timestampMs": 45890,
+  "startMs": 42260,
+  "endMs": 42620,
+  "timestampMs": 42440,
   "confidence": null
  },
  {
   "text": " The",
-  "startMs": 46340,
-  "endMs": 46420,
-  "timestampMs": 46380,
+  "startMs": 42840,
+  "endMs": 42920,
+  "timestampMs": 42880,
   "confidence": null
  },
  {
   "text": " boss",
-  "startMs": 46420,
-  "endMs": 46560,
-  "timestampMs": 46490,
+  "startMs": 42920,
+  "endMs": 43060,
+  "timestampMs": 42990,
   "confidence": null
  },
  {
   "text": " said",
-  "startMs": 46560,
-  "endMs": 46820,
-  "timestampMs": 46690,
+  "startMs": 43060,
+  "endMs": 43260,
+  "timestampMs": 43160,
   "confidence": null
  },
  {
   "text": " women",
-  "startMs": 46820,
-  "endMs": 47020,
-  "timestampMs": 46920,
+  "startMs": 43260,
+  "endMs": 43480,
+  "timestampMs": 43370,
   "confidence": null
  },
  {
   "text": " in",
-  "startMs": 47020,
-  "endMs": 47240,
-  "timestampMs": 47130,
+  "startMs": 43480,
+  "endMs": 43660,
+  "timestampMs": 43570,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 47240,
-  "endMs": 47320,
-  "timestampMs": 47280,
+  "startMs": 43660,
+  "endMs": 43740,
+  "timestampMs": 43700,
   "confidence": null
  },
  {
   "text": " UFC?",
-  "startMs": 47320,
-  "endMs": 47660,
-  "timestampMs": 47490,
+  "startMs": 43740,
+  "endMs": 44080,
+  "timestampMs": 43910,
   "confidence": null
  },
  {
   "text": " Never",
-  "startMs": 48060,
-  "endMs": 48240,
-  "timestampMs": 48150,
+  "startMs": 44420,
+  "endMs": 44580,
+  "timestampMs": 44500,
   "confidence": null
  },
  {
   "text": " ever.",
-  "startMs": 48240,
-  "endMs": 48500,
-  "timestampMs": 48370,
+  "startMs": 44580,
+  "endMs": 44860,
+  "timestampMs": 44720,
   "confidence": null
  },
  {
   "text": " 2013:",
-  "startMs": 48760,
-  "endMs": 49240,
-  "timestampMs": 49000,
+  "startMs": 45040,
+  "endMs": 45540,
+  "timestampMs": 45290,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 49620,
-  "endMs": 49700,
-  "timestampMs": 49660,
+  "startMs": 45880,
+  "endMs": 45940,
+  "timestampMs": 45910,
   "confidence": null
  },
  {
   "text": " first",
-  "startMs": 49700,
-  "endMs": 49960,
-  "timestampMs": 49830,
+  "startMs": 45940,
+  "endMs": 46160,
+  "timestampMs": 46050,
   "confidence": null
  },
  {
   "text": " women's",
-  "startMs": 49960,
-  "endMs": 50360,
-  "timestampMs": 50160,
+  "startMs": 46160,
+  "endMs": 46540,
+  "timestampMs": 46350,
   "confidence": null
  },
  {
   "text": " fight.",
-  "startMs": 50360,
-  "endMs": 50500,
-  "timestampMs": 50430,
+  "startMs": 46540,
+  "endMs": 46680,
+  "timestampMs": 46610,
   "confidence": null
  },
  {
   "text": " 2016:",
-  "startMs": 50740,
-  "endMs": 51200,
-  "timestampMs": 50970,
+  "startMs": 46860,
+  "endMs": 47320,
+  "timestampMs": 47090,
   "confidence": null
  },
  {
   "text": " sold",
-  "startMs": 52000,
-  "endMs": 52020,
-  "timestampMs": 52010,
+  "startMs": 48040,
+  "endMs": 48060,
+  "timestampMs": 48050,
   "confidence": null
  },
  {
   "text": " for",
-  "startMs": 52020,
-  "endMs": 52260,
-  "timestampMs": 52140,
+  "startMs": 48060,
+  "endMs": 48280,
+  "timestampMs": 48170,
   "confidence": null
  },
  {
   "text": " about",
-  "startMs": 52260,
-  "endMs": 52460,
-  "timestampMs": 52360,
+  "startMs": 48280,
+  "endMs": 48480,
+  "timestampMs": 48380,
   "confidence": null
  },
  {
   "text": " 4",
-  "startMs": 52460,
-  "endMs": 52860,
-  "timestampMs": 52660,
+  "startMs": 48480,
+  "endMs": 48840,
+  "timestampMs": 48660,
   "confidence": null
  },
  {
   "text": " billion",
-  "startMs": 52860,
-  "endMs": 53240,
-  "timestampMs": 53050,
+  "startMs": 48840,
+  "endMs": 49220,
+  "timestampMs": 49030,
   "confidence": null
  },
  {
   "text": " dollars.",
-  "startMs": 53240,
-  "endMs": 54280,
-  "timestampMs": 53760,
+  "startMs": 49220,
+  "endMs": 50280,
+  "timestampMs": 49750,
   "confidence": null
  },
  {
   "text": " From",
-  "startMs": 54280,
-  "endMs": 54760,
-  "timestampMs": 54520,
+  "startMs": 50280,
+  "endMs": 50620,
+  "timestampMs": 50450,
   "confidence": null
  },
  {
   "text": " 2",
-  "startMs": 54760,
-  "endMs": 55120,
-  "timestampMs": 54940,
+  "startMs": 50620,
+  "endMs": 50940,
+  "timestampMs": 50780,
   "confidence": null
  },
  {
   "text": " million.",
-  "startMs": 55120,
-  "endMs": 55420,
-  "timestampMs": 55270,
+  "startMs": 50940,
+  "endMs": 51240,
+  "timestampMs": 51090,
   "confidence": null
  },
  {
   "text": " In",
-  "startMs": 55420,
-  "endMs": 55800,
-  "timestampMs": 55610,
+  "startMs": 51500,
+  "endMs": 51580,
+  "timestampMs": 51540,
   "confidence": null
  },
  {
   "text": " 15",
-  "startMs": 55800,
-  "endMs": 56200,
-  "timestampMs": 56000,
+  "startMs": 51580,
+  "endMs": 51960,
+  "timestampMs": 51770,
   "confidence": null
  },
  {
   "text": " years.",
-  "startMs": 56200,
-  "endMs": 56580,
-  "timestampMs": 56390,
+  "startMs": 51960,
+  "endMs": 52300,
+  "timestampMs": 52130,
   "confidence": null
  },
  {
   "text": " But",
-  "startMs": 57280,
-  "endMs": 57380,
-  "timestampMs": 57330,
+  "startMs": 52860,
+  "endMs": 53040,
+  "timestampMs": 52950,
   "confidence": null
  },
  {
   "text": " who",
-  "startMs": 57380,
-  "endMs": 57500,
-  "timestampMs": 57440,
+  "startMs": 53040,
+  "endMs": 53160,
+  "timestampMs": 53100,
   "confidence": null
  },
  {
   "text": " paid",
-  "startMs": 57500,
-  "endMs": 57680,
-  "timestampMs": 57590,
+  "startMs": 53160,
+  "endMs": 53300,
+  "timestampMs": 53230,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 57680,
-  "endMs": 57820,
-  "timestampMs": 57750,
+  "startMs": 53300,
+  "endMs": 53420,
+  "timestampMs": 53360,
   "confidence": null
  },
  {
   "text": " price?",
-  "startMs": 57820,
-  "endMs": 58120,
-  "timestampMs": 57970,
+  "startMs": 53420,
+  "endMs": 53660,
+  "timestampMs": 53540,
   "confidence": null
  },
  {
   "text": " Fighters'",
-  "startMs": 59460,
-  "endMs": 59460,
-  "timestampMs": 59460,
+  "startMs": 54360,
+  "endMs": 54960,
+  "timestampMs": 54660,
   "confidence": null
  },
  {
   "text": " estimated",
-  "startMs": 59460,
-  "endMs": 59920,
-  "timestampMs": 59690,
+  "startMs": 54960,
+  "endMs": 55420,
+  "timestampMs": 55190,
   "confidence": null
  },
  {
   "text": " share:",
-  "startMs": 59920,
-  "endMs": 60320,
-  "timestampMs": 60120,
+  "startMs": 55420,
+  "endMs": 55760,
+  "timestampMs": 55590,
   "confidence": null
  },
  {
   "text": " about",
-  "startMs": 60320,
-  "endMs": 60620,
-  "timestampMs": 60470,
+  "startMs": 55760,
+  "endMs": 56040,
+  "timestampMs": 55900,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 60620,
-  "endMs": 60780,
-  "timestampMs": 60700,
+  "startMs": 56040,
+  "endMs": 56200,
+  "timestampMs": 56120,
   "confidence": null
  },
  {
   "text": " fifth",
-  "startMs": 60780,
-  "endMs": 60960,
-  "timestampMs": 60870,
+  "startMs": 56200,
+  "endMs": 56360,
+  "timestampMs": 56280,
   "confidence": null
  },
  {
   "text": " of",
-  "startMs": 60960,
-  "endMs": 61180,
-  "timestampMs": 61070,
+  "startMs": 56360,
+  "endMs": 56560,
+  "timestampMs": 56460,
   "confidence": null
  },
  {
   "text": " revenue.",
-  "startMs": 61180,
-  "endMs": 61520,
-  "timestampMs": 61350,
+  "startMs": 56560,
+  "endMs": 56860,
+  "timestampMs": 56710,
   "confidence": null
  },
  {
   "text": " NBA",
-  "startMs": 61840,
-  "endMs": 62060,
-  "timestampMs": 61950,
+  "startMs": 57180,
+  "endMs": 57360,
+  "timestampMs": 57270,
   "confidence": null
  },
  {
   "text": " players?",
-  "startMs": 62060,
-  "endMs": 62480,
-  "timestampMs": 62270,
+  "startMs": 57360,
+  "endMs": 57740,
+  "timestampMs": 57550,
   "confidence": null
  },
  {
   "text": " About",
-  "startMs": 62740,
-  "endMs": 62920,
-  "timestampMs": 62830,
+  "startMs": 58000,
+  "endMs": 58160,
+  "timestampMs": 58080,
   "confidence": null
  },
  {
   "text": " half.",
-  "startMs": 62920,
-  "endMs": 63160,
-  "timestampMs": 63040,
+  "startMs": 58160,
+  "endMs": 58380,
+  "timestampMs": 58270,
   "confidence": null
  },
  {
   "text": " In",
-  "startMs": 63340,
-  "endMs": 63460,
-  "timestampMs": 63400,
+  "startMs": 58580,
+  "endMs": 58660,
+  "timestampMs": 58620,
   "confidence": null
  },
  {
   "text": " 2014,",
-  "startMs": 63460,
-  "endMs": 63900,
-  "timestampMs": 63680,
+  "startMs": 58660,
+  "endMs": 59060,
+  "timestampMs": 58860,
   "confidence": null
  },
  {
   "text": " fighters",
-  "startMs": 64400,
-  "endMs": 64400,
-  "timestampMs": 64400,
+  "startMs": 59480,
+  "endMs": 59520,
+  "timestampMs": 59500,
   "confidence": null
  },
  {
   "text": " sued,",
-  "startMs": 64400,
-  "endMs": 64760,
-  "timestampMs": 64580,
+  "startMs": 59520,
+  "endMs": 59860,
+  "timestampMs": 59690,
   "confidence": null
  },
  {
   "text": " claiming",
-  "startMs": 64940,
-  "endMs": 65160,
-  "timestampMs": 65050,
+  "startMs": 60020,
+  "endMs": 60220,
+  "timestampMs": 60120,
   "confidence": null
  },
  {
   "text": " suppressed",
-  "startMs": 65160,
-  "endMs": 65540,
-  "timestampMs": 65350,
+  "startMs": 60220,
+  "endMs": 60560,
+  "timestampMs": 60390,
   "confidence": null
  },
  {
   "text": " pay.",
-  "startMs": 65540,
-  "endMs": 65880,
-  "timestampMs": 65710,
+  "startMs": 60560,
+  "endMs": 60880,
+  "timestampMs": 60720,
   "confidence": null
  },
  {
   "text": " 2023:",
-  "startMs": 66420,
-  "endMs": 67100,
-  "timestampMs": 66760,
+  "startMs": 61440,
+  "endMs": 62040,
+  "timestampMs": 61740,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 67400,
-  "endMs": 67440,
-  "timestampMs": 67420,
+  "startMs": 62280,
+  "endMs": 62320,
+  "timestampMs": 62300,
   "confidence": null
  },
  {
   "text": " WWE",
-  "startMs": 67440,
-  "endMs": 68020,
-  "timestampMs": 67730,
+  "startMs": 62320,
+  "endMs": 62880,
+  "timestampMs": 62600,
   "confidence": null
  },
  {
   "text": " merger",
-  "startMs": 68020,
-  "endMs": 68700,
-  "timestampMs": 68360,
+  "startMs": 62880,
+  "endMs": 63480,
+  "timestampMs": 63180,
   "confidence": null
  },
  {
   "text": " values",
-  "startMs": 68700,
-  "endMs": 69340,
-  "timestampMs": 69020,
+  "startMs": 63480,
+  "endMs": 64060,
+  "timestampMs": 63770,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 69340,
-  "endMs": 69540,
-  "timestampMs": 69440,
+  "startMs": 64060,
+  "endMs": 64240,
+  "timestampMs": 64150,
   "confidence": null
  },
  {
   "text": " UFC",
-  "startMs": 69540,
-  "endMs": 69880,
-  "timestampMs": 69710,
+  "startMs": 64240,
+  "endMs": 64540,
+  "timestampMs": 64390,
   "confidence": null
  },
  {
   "text": " at",
-  "startMs": 69880,
-  "endMs": 70240,
-  "timestampMs": 70060,
+  "startMs": 64540,
+  "endMs": 64900,
+  "timestampMs": 64720,
   "confidence": null
  },
  {
   "text": " 12.1",
-  "startMs": 70240,
-  "endMs": 71060,
-  "timestampMs": 70650,
+  "startMs": 64900,
+  "endMs": 65660,
+  "timestampMs": 65280,
   "confidence": null
  },
  {
   "text": " billion.",
-  "startMs": 71060,
-  "endMs": 71300,
-  "timestampMs": 71180,
+  "startMs": 65660,
+  "endMs": 65860,
+  "timestampMs": 65760,
   "confidence": null
  },
  {
   "text": " 2025:",
-  "startMs": 71520,
-  "endMs": 71960,
-  "timestampMs": 71740,
+  "startMs": 66080,
+  "endMs": 66500,
+  "timestampMs": 66290,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 72440,
-  "endMs": 72520,
-  "timestampMs": 72480,
+  "startMs": 66960,
+  "endMs": 67000,
+  "timestampMs": 66980,
   "confidence": null
  },
  {
   "text": " judge",
-  "startMs": 72520,
-  "endMs": 72700,
-  "timestampMs": 72610,
+  "startMs": 67000,
+  "endMs": 67160,
+  "timestampMs": 67080,
   "confidence": null
  },
  {
   "text": " approves",
-  "startMs": 72700,
-  "endMs": 73140,
-  "timestampMs": 72920,
+  "startMs": 67160,
+  "endMs": 67580,
+  "timestampMs": 67370,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 73140,
-  "endMs": 73420,
-  "timestampMs": 73280,
+  "startMs": 67580,
+  "endMs": 67820,
+  "timestampMs": 67700,
   "confidence": null
  },
  {
   "text": " 375-million-dollar",
-  "startMs": 73420,
-  "endMs": 75040,
-  "timestampMs": 74230,
+  "startMs": 67820,
+  "endMs": 69320,
+  "timestampMs": 68570,
   "confidence": null
  },
  {
   "text": " settlement.",
-  "startMs": 75040,
-  "endMs": 75700,
-  "timestampMs": 75370,
+  "startMs": 69320,
+  "endMs": 69860,
+  "timestampMs": 69590,
   "confidence": null
  },
  {
   "text": " Months",
-  "startMs": 76740,
-  "endMs": 76900,
-  "timestampMs": 76820,
+  "startMs": 70900,
+  "endMs": 71040,
+  "timestampMs": 70970,
   "confidence": null
  },
  {
   "text": " later:",
-  "startMs": 76900,
-  "endMs": 77340,
-  "timestampMs": 77120,
+  "startMs": 71040,
+  "endMs": 71460,
+  "timestampMs": 71250,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 77500,
-  "endMs": 77640,
-  "timestampMs": 77570,
+  "startMs": 71620,
+  "endMs": 71720,
+  "timestampMs": 71670,
   "confidence": null
  },
  {
   "text": " 7.7-billion-dollar",
-  "startMs": 77640,
-  "endMs": 78900,
-  "timestampMs": 78270,
+  "startMs": 71720,
+  "endMs": 72920,
+  "timestampMs": 72320,
   "confidence": null
  },
  {
   "text": " media",
-  "startMs": 78900,
-  "endMs": 79640,
-  "timestampMs": 79270,
+  "startMs": 72920,
+  "endMs": 73560,
+  "timestampMs": 73240,
   "confidence": null
  },
  {
   "text": " deal.",
-  "startMs": 79640,
-  "endMs": 80140,
-  "timestampMs": 79890,
+  "startMs": 73560,
+  "endMs": 74040,
+  "timestampMs": 73800,
   "confidence": null
  },
  {
   "text": " Banned",
-  "startMs": 80140,
-  "endMs": 80660,
-  "timestampMs": 80400,
+  "startMs": 74280,
+  "endMs": 74500,
+  "timestampMs": 74390,
   "confidence": null
  },
  {
   "text": " to",
-  "startMs": 80660,
-  "endMs": 80840,
-  "timestampMs": 80750,
+  "startMs": 74500,
+  "endMs": 74680,
+  "timestampMs": 74590,
   "confidence": null
  },
  {
   "text": " billions.",
-  "startMs": 80840,
-  "endMs": 81180,
-  "timestampMs": 81010,
+  "startMs": 74680,
+  "endMs": 74980,
+  "timestampMs": 74830,
   "confidence": null
  },
  {
   "text": " The",
-  "startMs": 81400,
-  "endMs": 81560,
-  "timestampMs": 81480,
+  "startMs": 75200,
+  "endMs": 75340,
+  "timestampMs": 75270,
   "confidence": null
  },
  {
   "text": " fighters?",
-  "startMs": 81560,
-  "endMs": 81820,
-  "timestampMs": 81690,
+  "startMs": 75340,
+  "endMs": 75600,
+  "timestampMs": 75470,
   "confidence": null
  },
  {
   "text": " A",
-  "startMs": 82140,
-  "endMs": 82220,
-  "timestampMs": 82180,
+  "startMs": 75860,
+  "endMs": 75920,
+  "timestampMs": 75890,
   "confidence": null
  },
  {
   "text": " settlement.",
-  "startMs": 82220,
-  "endMs": 82540,
-  "timestampMs": 82380,
+  "startMs": 75920,
+  "endMs": 76220,
+  "timestampMs": 76070,
   "confidence": null
  },
  {
   "text": " Fair?",
-  "startMs": 83260,
-  "endMs": 83700,
-  "timestampMs": 83480,
+  "startMs": 77100,
+  "endMs": 77360,
+  "timestampMs": 77230,
   "confidence": null
  },
  {
   "text": " You",
-  "startMs": 84060,
-  "endMs": 84160,
-  "timestampMs": 84110,
+  "startMs": 77700,
+  "endMs": 77780,
+  "timestampMs": 77740,
   "confidence": null
  },
  {
   "text": " decide.",
-  "startMs": 84160,
-  "endMs": 84520,
-  "timestampMs": 84340,
+  "startMs": 77780,
+  "endMs": 78100,
+  "timestampMs": 77940,
   "confidence": null
  },
  {
   "text": " Not",
-  "startMs": 85440,
-  "endMs": 85660,
-  "timestampMs": 85550,
+  "startMs": 78760,
+  "endMs": 79140,
+  "timestampMs": 78950,
   "confidence": null
  },
  {
   "text": " bad",
-  "startMs": 85660,
-  "endMs": 85880,
-  "timestampMs": 85770,
+  "startMs": 79140,
+  "endMs": 79360,
+  "timestampMs": 79250,
   "confidence": null
  },
  {
   "text": " for",
-  "startMs": 85880,
-  "endMs": 86040,
-  "timestampMs": 85960,
+  "startMs": 79360,
+  "endMs": 79520,
+  "timestampMs": 79440,
   "confidence": null
  },
  {
   "text": " what",
-  "startMs": 86040,
-  "endMs": 86160,
-  "timestampMs": 86100,
+  "startMs": 79520,
+  "endMs": 79640,
+  "timestampMs": 79580,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 86160,
-  "endMs": 86300,
-  "timestampMs": 86230,
+  "startMs": 79640,
+  "endMs": 79760,
+  "timestampMs": 79700,
   "confidence": null
  },
  {
   "text": " senator",
-  "startMs": 86300,
-  "endMs": 86460,
-  "timestampMs": 86380,
+  "startMs": 79760,
+  "endMs": 79900,
+  "timestampMs": 79830,
   "confidence": null
  },
  {
   "text": " called\u2026",
-  "startMs": 86460,
-  "endMs": 86920,
-  "timestampMs": 86690,
+  "startMs": 79900,
+  "endMs": 80320,
+  "timestampMs": 80110,
   "confidence": null
  }
 ]
