@@ -13,6 +13,7 @@ Englisches Sprechskript mit Szenen, Cues, HUD, Auswahlkarten. Ergebnis `episodes
 - Klingt gesprochen lebendig (kurze Sätze, Ausrufe, Fragen)
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Vor dem Auftrag `docs/trends/aktuell.md` lesen (tägliche Trend-Analyse, Vorgabe Nutzer 12.11.2026) und passende Erkenntnis als Experiment nutzen.
 - Du-Perspektive + Spiel-Logik (Respawn, Hard/Nightmare mode) trägt Geschichte als Abenteuer.
 - Legenden mit „Legend says / One story says / As the story goes“ einleiten.
 - Jahreszahlen in `years`, schwierige Namen in `say` (nur für die Stimme).

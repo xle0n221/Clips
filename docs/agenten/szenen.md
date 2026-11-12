@@ -13,6 +13,7 @@
 - Kamera: Wechsel Halbnah ↔ Totale, Ranfahrten bei Pointen
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Vor dem Auftrag `docs/trends/aktuell.md` lesen (tägliche Trend-Analyse, Vorgabe Nutzer 12.11.2026) und passende Erkenntnis als Experiment nutzen.
 - Alles aus `useCurrentFrame()`, nie `useEffect`.
 - Hochformat: vertikaler Bildwinkel klein → Objekte enger staffeln.
 - Liegende/gekippte Figuren: Körperlänge nach der Drehung berechnen.

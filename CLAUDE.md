@@ -23,6 +23,7 @@ Stil: **je Video passend zum Thema entscheiden** (Vorgabe Nutzer 11.11.2026) –
 2D (flach/SVG/Paper-Cut) oder Mischung; Figuren dürfen je Video anders aussehen. Entscheidung + Begründung im
 Drehbuch-Feld `style`; Regeln: `docs/clip-regeln.md` → „Stilwahl“. Format immer 1080×1920.
 Themenunabhängiger Ablauf und Muster je Themen-Art: `docs/playbook-themen.md`.
+**Trends täglich** (Vorgabe 12.11.2026): was bei Cartoon-Shorts viral geht → `docs/trends/aktuell.md` vor Drehbuch und Szenenbau lesen; Ablauf `docs/trend-analyse.md`.
 Letzter Rückblick + Kurzablauf für den nächsten Clip: `docs/rueckblick-roemisches-reich.md`.
 
 ## Nicht anfassen ohne Auftrag

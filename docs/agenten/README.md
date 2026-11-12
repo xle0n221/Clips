@@ -20,6 +20,7 @@ Rolle**. Ein Agent startet ohne Erinnerung; was er gelernt hat, existiert nur, w
 | Werkzeugbau (Tempo, Wiederverwendung) | [werkzeugbau.md](werkzeugbau.md) | Wissensverwalter + nutzende Rolle |
 | Wissensverwalter (Querschnitt) | [wissensverwalter.md](wissensverwalter.md) | Orchestrator |
 | Veröffentlichung | [veroeffentlichung.md](veroeffentlichung.md) | Retention-Kritiker + Faktenprüfer |
+| Trend-Scout (täglich, `../trend-analyse.md`) | [trend-scout.md](trend-scout.md) | Retention-Kritiker + Faktenprüfer |
 
 ## Der Lern-Kreislauf (Pflicht für jeden Auftrag)
 1. **Vorher lesen:** Der Orchestrator gibt jedem Agenten im Auftrag den Pfad seiner Rollen-Datei mit.
@@ -62,7 +63,7 @@ Der Orchestrator gibt jedem Agenten beim Start das Modell mit (`Agent`-Parameter
 | Modell | Wann | Rollen / Aufgaben |
 |---|---|---|
 | `haiku` | mechanisch, klar vorgegeben, leicht nachprüfbar | Webseite abrufen/zusammenfassen (`web-fetch`), Dateien suchen/auflisten, Messungen ausführen und berichten (ffprobe, LUFS, W/s), Endkontrolle nach Checkliste, Dashboard-Status übertragen |
-| `sonnet` | Standardarbeit mit Urteil, aber gut eingegrenzt | Recherche (Quellen finden + zitieren), Retention-Kritiker, Design-Kritiker, Werkzeugbau (Skripte), Wissensverwalter, Veröffentlichung (Titel/Texte/Hashtags), Hashtag-Analyse |
+| `sonnet` | Standardarbeit mit Urteil, aber gut eingegrenzt | Recherche (Quellen finden + zitieren), Trend-Scout, Retention-Kritiker, Design-Kritiker, Werkzeugbau (Skripte), Wissensverwalter, Veröffentlichung (Titel/Texte/Hashtags), Hashtag-Analyse |
 | `opus` | schwer, kreativ oder fehlerteuer | Drehbuch, Faktenprüfer (Wahrheit vor Tempo), Szenen/Animation (3D-Code), Art Direction, Regie-Kritiker (Bildurteil), Stimme/Casting, Orchestrator selbst, alles mit unklarer Ursache (Fehlersuche) |
 
 Regeln:
