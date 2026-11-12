@@ -104,6 +104,14 @@ export const Figure: React.FC<{
   readonly flip?: boolean;
   readonly coatColor?: string;
   readonly breathe?: boolean;
+  /** Handschuhfarbe (Standard PAPER.glove) – z. B. rote MMA-Handschuhe */
+  readonly gloveColor?: string;
+  /** nur eine Seite mit Handschuh (−1 links, 1 rechts); ohne = beide, wenn `gloves` */
+  readonly gloveSide?: -1 | 1;
+  /** Hosenfarbe bei outfit "trunks" (Standard PAPER.trunks) */
+  readonly trunksColor?: string;
+  /** Hautton (Standard PAPER.skin / skinShade) */
+  readonly skinTone?: readonly [string, string];
 }> = ({
   x,
   y,
@@ -134,11 +142,17 @@ export const Figure: React.FC<{
   flip = false,
   coatColor,
   breathe = true,
+  gloveColor,
+  gloveSide,
+  trunksColor,
+  skinTone,
 }) => {
   const p = PROP[age];
   const ink = PAPER.ink;
-  const skin = sil ?? PAPER.skin;
-  const dark = sil ?? PAPER.trunks;
+  const skin = sil ?? skinTone?.[0] ?? PAPER.skin;
+  const shade = skinTone?.[1] ?? PAPER.skinShade;
+  const dark = sil ?? trunksColor ?? PAPER.trunks;
+  const gc = sil ?? gloveColor ?? PAPER.glove;
   const br = breathe ? Math.sin(frame * 0.11) * 3 : 0;
   const sit = pose === "sit";
   // Sitzend: Hände vor dem Bauch gefaltet, damit die Knie frei bleiben
@@ -183,7 +197,7 @@ export const Figure: React.FC<{
             <path d={thigh} stroke={ink} strokeWidth={p.limb * 1.55 + 10} fill="none" strokeLinecap="round" />
             <path d={thigh} stroke={legColor} strokeWidth={p.limb * 1.55} fill="none" strokeLinecap="round" />
             <ellipse cx={pts[1][0]} cy={pts[1][1] + 4} rx={p.limb * 0.82} ry={p.limb * 0.7} fill={legColor} stroke={ink} strokeWidth={5} />
-            <path d={`M ${pts[1][0] - p.limb * 0.4} ${pts[1][1] + 8} Q ${pts[1][0]} ${pts[1][1] + 18} ${pts[1][0] + p.limb * 0.4} ${pts[1][1] + 8}`} stroke={PAPER.skinShade} strokeWidth={4} fill="none" />
+            <path d={`M ${pts[1][0] - p.limb * 0.4} ${pts[1][1] + 8} Q ${pts[1][0]} ${pts[1][1] + 18} ${pts[1][0] + p.limb * 0.4} ${pts[1][1] + 8}`} stroke={shade} strokeWidth={4} fill="none" />
           </>
         ) : null}
         {/* Schuh: schwarz, hoch geschnitten; darüber nackte Haut (keine Socken) */}
@@ -218,10 +232,10 @@ export const Figure: React.FC<{
         {outfit === "shirt" ? (
           <path d={poly([pts[0], [lerp2(pts[0][0], pts[1][0], 0.55), lerp2(pts[0][1], pts[1][1], 0.55)]])} stroke={sleeve} strokeWidth={p.limb + 6} strokeLinecap="round" />
         ) : null}
-        {gloves ? (
+        {gloves && (gloveSide === undefined || gloveSide === side) ? (
           <g transform={`translate(${hand[0]} ${hand[1]})`}>
-            <ellipse rx={p.limb * 1.08} ry={p.limb * 1.18} fill={sil ?? PAPER.glove} stroke={ink} strokeWidth={6} />
-            <ellipse cx={side * -p.limb * 0.55} cy={-p.limb * 0.2} rx={p.limb * 0.42} ry={p.limb * 0.6} fill={sil ?? PAPER.glove} stroke={ink} strokeWidth={5} />
+            <ellipse rx={p.limb * 1.08} ry={p.limb * 1.18} fill={gc} stroke={ink} strokeWidth={6} />
+            <ellipse cx={side * -p.limb * 0.55} cy={-p.limb * 0.2} rx={p.limb * 0.42} ry={p.limb * 0.6} fill={gc} stroke={ink} strokeWidth={5} />
             {sil ? null : <ellipse cx={side * 6} cy={-p.limb * 0.5} rx={p.limb * 0.35} ry={p.limb * 0.2} fill="#FFFFFF" opacity={0.25} />}
           </g>
         ) : (
@@ -297,7 +311,7 @@ export const Figure: React.FC<{
               ))
             : null}
           {/* Wangenschatten (Papierlage) */}
-          <path d={`M ${-hr * 0.9} ${headC + hr * 0.25} Q 0 ${headC + hr * 1.15} ${hr * 0.9} ${headC + hr * 0.25} Q 0 ${headC + hr * 0.92} ${-hr * 0.9} ${headC + hr * 0.25} Z`} fill={PAPER.skinShade} opacity={0.5} />
+          <path d={`M ${-hr * 0.9} ${headC + hr * 0.25} Q 0 ${headC + hr * 1.15} ${hr * 0.9} ${headC + hr * 0.25} Q 0 ${headC + hr * 0.92} ${-hr * 0.9} ${headC + hr * 0.25} Z`} fill={shade} opacity={0.5} />
           {eye(-1)}
           {eye(1)}
           {[-1, 1].map((sd) => (
@@ -310,7 +324,7 @@ export const Figure: React.FC<{
             />
           ))}
           {/* Nase als kleiner Punkt (eine Kurve über dem Mund las sich als Schnurrbart) */}
-          <ellipse cx={0} cy={eyeY + 24} rx={6} ry={4} fill={PAPER.skinShade} />
+          <ellipse cx={0} cy={eyeY + 24} rx={6} ry={4} fill={shade} />
           {mouthEl}
         </>
       )}
@@ -426,7 +440,7 @@ export const Figure: React.FC<{
       {leg(1)}
       <path d={torsoD} fill={torsoFill} stroke={ink} strokeWidth={6} strokeLinejoin="round" />
       {outfit === "trunks" && !sil ? (
-        <path d={`M -22 ${sh + 52} Q 0 ${sh + 62} 22 ${sh + 52}`} stroke={PAPER.skinShade} strokeWidth={5} fill="none" strokeLinecap="round" />
+        <path d={`M -22 ${sh + 52} Q 0 ${sh + 62} 22 ${sh + 52}`} stroke={shade} strokeWidth={5} fill="none" strokeLinecap="round" />
       ) : null}
       {trunks}
       {towelNeck}

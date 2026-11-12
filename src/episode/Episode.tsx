@@ -96,9 +96,29 @@ const withConfig = (t: Timeline, cfg: EpisodeConfig): Timeline => ({
     : t.cues,
 });
 
+/** `labelUntilWord`: Pill endet am ersten Vorkommen eines Worts in der Szene (Zeit aus captions.json). */
+const withLabelWords = (t: Timeline, caps: Caption[], cfg: EpisodeConfig): Timeline => {
+  const map = cfg.labelUntilWord;
+  if (!map) return t;
+  const norm = (w: string) => w.toLowerCase().replace(/[^a-z0-9'-]/g, "");
+  const extra: Timeline["cues"] = [];
+  let cues = t.cues;
+  for (const scene of Object.keys(map)) {
+    const word = map[scene];
+    const s = t.scenes.find((x) => x.id === scene);
+    if (!s) continue;
+    const hit = caps.find((c) => c.startMs >= s.startMs - 60 && c.startMs < s.endMs && norm(c.text) === norm(word));
+    if (!hit) continue;
+    const name = `untilWord-${norm(word)}`;
+    extra.push({ scene, atMs: hit.startMs, beat: name });
+    cues = cues.map((c) => (c.scene === scene && c.label && !c.untilBeat && c.atMs < hit.startMs ? { ...c, untilBeat: name } : c));
+  }
+  return { ...t, cues: [...cues, ...extra] };
+};
+
 export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, captions }) => {
   const cfg = configFor(episode);
-  const timeline = rawTimeline && cfg ? withConfig(rawTimeline, cfg) : rawTimeline;
+  const timeline = rawTimeline && cfg ? withLabelWords(withConfig(rawTimeline, cfg), captions ?? [], cfg) : rawTimeline;
   const frame = useCurrentFrame();
   const { fps, width, height, durationInFrames } = useVideoConfig();
   useState(() => loadCaptionFont());

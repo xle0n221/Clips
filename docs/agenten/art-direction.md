@@ -22,6 +22,15 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · UFC (2D Fight-Poster) · **Experiment Oktagon in drei Lagen** (`kit2d/fight.tsx` `Octagon`: Boden + hintere
+  Zaunhälfte, Kinder, vorderes Gitter mit Deckkraft 0,4–0,6): Käfig liest sich im Kontaktabzug sofort als MMA, Figur bleibt
+  hinter dem Gitter lesbar; Rautenmuster per SVG-`pattern` (30 px, 45°) ohne messbare Mehrkosten (3,2 s/Bild, wie Tyson 3,8 s).
+  Neu wiederverwendbar: `FightHall` (Füllgrad der Ränge = „halb leer 1993“ ohne Text), `Clipping`, `PriceTag`, `RuleSheet` mit
+  Stempeln, `BigCheck`, `USMap` (Muster-Karte, keine echte Staatenliste), `GoldTower`/`CoinStack`/`CoinPile`, `Pie`, `Scale`,
+  `RetroTV`, `NeonSign`, `StreamScreen`, `OctagonWipe`. `Figure` additiv um `gloveColor`, `gloveSide`, `trunksColor`, `skinTone`
+  (Tyson unverändert). Fallen: Zeitungs-Schlagzeile breiter als das Papier → Schriftgröße aus Zeichenzahl (`780/len`);
+  Leuchtschrift unter der Pill-Zone verschwindet → über y ≈ 600 legen; Firmen nur als `TextBlock`-Schrift (kein Logo).
+  Beleg `out/ufc-contactsheet.jpg`.
 - 12.11.2026 · Mike Tyson (2D Paper-Cut) · **Experiment Papierschatten per `feDropShadow` (dx 7, dy 9, ohne Unschärfe)**
   auf Figuren/Prospekten statt doppelter Schattenkopie: liest sich im Kontaktabzug klar als ausgeschnittenes Papier,
   Standbild 3,8 s/Bild (halbe CPU, parallele Stimm-Erzeugung; kein sauberer Vergleichswert). Neu `kit2d/boxing.tsx`:
@@ -50,6 +59,7 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - 08.11.2026 · Rom-Kit · 10 Befunde behoben (Kolosseum, Bart, Thron, Halstuch, Gefahrenlicht, Stimmungen) · Kontaktabzug vorher/nachher in `verbesserungen.md`.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- NEU: Split-Screen links/rechts (zwei `Stage2D` mit CSS-`clipPath`, UFC-Ende) gegen oben/unten testen – oben/unten kollidiert mit Untertitel-Drittel.
 - NEU: Papierschatten-Kosten messen: gleiche Szene mit/ohne `filter="url(#paper)"`, s/Bild bei freier CPU.
 - NEU: Sitzende Figur frontal (`Figure pose="sit"`) liest sich nur mäßig (Arme verdecken Knie) – Dreiviertel-Ansicht der Beine testen.
 - NEU: Fresnel-Rim als Option in `Toon` (onBeforeCompile, nur mit Prop) – Kopf-Kontrast vor dunklem Grund messen, Renderzeit vorher/nachher.
