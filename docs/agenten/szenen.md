@@ -24,6 +24,13 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Mike Tyson (2D) v3 · **Nutzer empfindet 1–3-s-Schnitte als zu hektisch** (Freigabe 2 „Nicht OK“:
+  „etwas langsamer … angenehmer zum Schauen“). Umbau: 33 → 24 Einstellungen, im Mittel ≈ 3,0 s (vorher ≈ 2,2 s);
+  Ortswechsel innerhalb einer Szene als Überblendung (zwei `Stage2D` übereinander mit Deckkraft, z. B. Gold-Arena,
+  Bankrott-Nacht) bzw. Prospekt-Überblendung statt Whip/Wipe; Kamera nur noch `ease(…, "inOut")` über die ganze
+  Einstellung, Rucke halbiert, `anticipate`-Zooms entfernt; exodus als eine durchgehende Fahrt. Alle Zeiten aus
+  Beats (`B`, Ersatz als Anteil der Szenendauer) und Wort-Zeiten aus captions.json (`W` in `useBeats`, tyson1.tsx),
+  damit eine neue, langsamere Tonspur ohne Code-Änderung passt. Noch ungeprüft im Kontaktabzug (Tonspur wird neu erzeugt).
 - 12.11.2026 · Mike Tyson (2D) Runde 2 nach Regie-Kritik 6,5 · 8 Befunde: Sticker lief in den nächsten Ort →
   `stickerUntil` (Sticker-Text → Beat); Sitzpose frontal „auf Stelzen“ → verkürzte dicke Oberschenkel + Kniescheiben,
   Hände gefaltet (Standard bei `pose="sit"`); Biss unlesbar → Gegner-Handschuh am Ohr, Ohrstück 2,4×, eigene

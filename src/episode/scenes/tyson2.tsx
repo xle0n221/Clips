@@ -228,7 +228,7 @@ export const Douglas: React.FC = () => {
 
 /** Conviction: leerer Gerichtssaal, Hammer, Gitter-Schatten; der Balken LIFE HITS bewegt sich NICHT. */
 export const Conviction: React.FC = () => {
-  const { f, d, B, W } = useBeats();
+  const { f, B, W } = useBeats();
   const strike = W("rape", 0.25) - 2;
   const serves = W("serves", 0.33);
   const denies = W("denies", 0.57);
@@ -245,7 +245,7 @@ export const Conviction: React.FC = () => {
       ? frameOn(lerp(560, 660, ease(f, 0, serves, "inOut")), 790, 540, 870, lerp(1.0, 1.14, ease(f, 0, serves, "inOut")))
       : shot === 1
         ? frameOn(540, hy, 540, 790, lerp(1.28, 1.42, ease(f, serves - 8, thisW, "inOut")))
-        : frameOn(540, 900, 540, 900, lerp(1.0, 1.1, ease(f, thisW, d, "inOut")));
+        : frameOn(540, 900, 540, 900, lerp(1.0, 1.1, ease(f, Math.min(thisW + 10, luck - 20), luck + 6, "inOut")));
   const ruled = shot === 2;
   return (
     <Stage2D cam={{ ...cam, y: cam.y + jolt(f, strike + 1, 6) }} mood="night" noSky>
@@ -386,7 +386,7 @@ export const Ear: React.FC = () => {
 
 /** Exodus: fast schwarz, ein warmes Licht, MIKE allein auf der Ringkante, eine Papierblume fällt. Kein Kind, kein Unfall. */
 export const Exodus: React.FC = () => {
-  const { f, d, B, W } = useBeats();
+  const { f, d, B } = useBeats();
   const flower = B("flowerFall", 0.78);
   // eine durchgehende, langsame Kamerafahrt (kein Schnitt): weit → nah → der Blume nach unten folgen
   const sy = RING.front + 150;
@@ -422,7 +422,7 @@ export const Exodus: React.FC = () => {
 
 /** Ending: Stadion 2024, älterer MIKE verliert; Karte: HARD rot, BLAMELESS „NO“; Karte dreht sich zum Zuschauer; Wipe zurück zum Hook. */
 export const Ending: React.FC = () => {
-  const { f, d, B, W } = useBeats();
+  const { f, B, W } = useBeats();
   const loses = W("loses", 0.36);
   const hard = B("scorecardHard", 0.52);
   const no = B("scorecardNo", 0.69);
