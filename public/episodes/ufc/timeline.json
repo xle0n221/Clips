@@ -1,0 +1,567 @@
+{
+ "id": "ufc",
+ "title": "The rise of the UFC",
+ "durationMs": 87846,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 7553
+  },
+  {
+   "id": "start",
+   "startMs": 7553,
+   "endMs": 14275
+  },
+  {
+   "id": "ban",
+   "startMs": 14275,
+   "endMs": 23357
+  },
+  {
+   "id": "rules",
+   "startMs": 23357,
+   "endMs": 30549
+  },
+  {
+   "id": "zuffa",
+   "startMs": 30549,
+   "endMs": 36237
+  },
+  {
+   "id": "tuf",
+   "startMs": 36237,
+   "endMs": 44910
+  },
+  {
+   "id": "boom",
+   "startMs": 44910,
+   "endMs": 50753
+  },
+  {
+   "id": "sale",
+   "startMs": 50753,
+   "endMs": 57126
+  },
+  {
+   "id": "price",
+   "startMs": 57126,
+   "endMs": 66281
+  },
+  {
+   "id": "empire",
+   "startMs": 66281,
+   "endMs": 80336
+  },
+  {
+   "id": "ending",
+   "startMs": 80336,
+   "endMs": 87246
+  }
+ ],
+ "cues": [
+  {
+   "sticker": "\"HUMAN COCKFIGHTING\"",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "hud": {
+    "id": "value",
+    "value": "UFC: ?"
+   },
+   "scene": "hook",
+   "atMs": 660
+  },
+  {
+   "beat": "goldSkyline",
+   "sfx": "whoosh",
+   "scene": "hook",
+   "atMs": 4840
+  },
+  {
+   "beat": "priceTag",
+   "sfx": "ding",
+   "scene": "hook",
+   "atMs": 6820
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 0
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 660
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4520
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4840
+  },
+  {
+   "sticker": "DENVER, 1993",
+   "color": "#FFFFFF",
+   "sfx": "whoosh",
+   "scene": "start",
+   "atMs": 8320
+  },
+  {
+   "beat": "eightMarch",
+   "scene": "start",
+   "atMs": 9640
+  },
+  {
+   "beat": "octagonDrop",
+   "sfx": "boom",
+   "scene": "start",
+   "atMs": 10600
+  },
+  {
+   "beat": "rulesCrossedOut",
+   "sticker": "ALMOST NO RULES",
+   "color": "#FF5A5A",
+   "sfx": "pop",
+   "scene": "start",
+   "atMs": 11620
+  },
+  {
+   "beat": "bigCheck",
+   "sticker": "$50,000",
+   "color": "#FFD23F",
+   "scene": "start",
+   "atMs": 13150
+  },
+  {
+   "emph": true,
+   "scene": "start",
+   "atMs": 11160
+  },
+  {
+   "emph": true,
+   "scene": "start",
+   "atMs": 11360
+  },
+  {
+   "emph": true,
+   "scene": "start",
+   "atMs": 11620
+  },
+  {
+   "sticker": "1996",
+   "color": "#FFFFFF",
+   "sfx": "ding",
+   "label": {
+    "text": "SEN. JOHN McCAIN",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "ban",
+   "atMs": 14400
+  },
+  {
+   "beat": "tvTape",
+   "scene": "ban",
+   "atMs": 16240
+  },
+  {
+   "beat": "clippingBack",
+   "sfx": "boom",
+   "scene": "ban",
+   "atMs": 17020
+  },
+  {
+   "beat": "lettersFly",
+   "sfx": "whoosh",
+   "scene": "ban",
+   "atMs": 19140
+  },
+  {
+   "beat": "statesRed",
+   "sticker": "36 STATES BAN IT",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "ban",
+   "atMs": 21360
+  },
+  {
+   "emph": true,
+   "scene": "ban",
+   "atMs": 16800
+  },
+  {
+   "emph": true,
+   "scene": "ban",
+   "atMs": 17020
+  },
+  {
+   "beat": "rulesStamp",
+   "sfx": "pop",
+   "scene": "rules",
+   "atMs": 23940
+  },
+  {
+   "beat": "glovesOn",
+   "scene": "rules",
+   "atMs": 26100
+  },
+  {
+   "beat": "roundClock",
+   "label": {
+    "text": "UNIFIED RULES \u00b7 2000",
+    "color": "#FFFFFF",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "rules",
+   "atMs": 26860
+  },
+  {
+   "beat": "redBills",
+   "sticker": "NEARLY BANKRUPT",
+   "color": "#FF5A5A",
+   "sfx": "boom",
+   "scene": "rules",
+   "atMs": 29660
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 29660
+  },
+  {
+   "sticker": "2001",
+   "color": "#FFFFFF",
+   "sfx": "ding",
+   "label": {
+    "text": "THE FERTITTA BROTHERS",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "zuffa",
+   "atMs": 30800
+  },
+  {
+   "beat": "suitcase",
+   "sfx": "pop",
+   "hud": {
+    "id": "value",
+    "value": "UFC: $2M"
+   },
+   "scene": "zuffa",
+   "atMs": 33580
+  },
+  {
+   "beat": "freezeMark",
+   "sticker": "$2,000,000",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "zuffa",
+   "atMs": 34840
+  },
+  {
+   "emph": true,
+   "scene": "zuffa",
+   "atMs": 33340
+  },
+  {
+   "emph": true,
+   "scene": "zuffa",
+   "atMs": 33580
+  },
+  {
+   "sticker": "$40M+ IN, 2004",
+   "color": "#FF5A5A",
+   "sfx": "pop",
+   "scene": "tuf",
+   "atMs": 36420
+  },
+  {
+   "beat": "tvStudio",
+   "sfx": "whoosh",
+   "sticker": "2005",
+   "color": "#FFFFFF",
+   "scene": "tuf",
+   "atMs": 41180
+  },
+  {
+   "beat": "slugfest",
+   "sfx": "boom",
+   "label": {
+    "text": "GRIFFIN vs. BONNAR",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "tuf",
+   "atMs": 42640
+  },
+  {
+   "beat": "priceZero",
+   "sticker": "LIVE ON FREE TV",
+   "color": "#FFD23F",
+   "scene": "tuf",
+   "atMs": 44040
+  },
+  {
+   "emph": true,
+   "scene": "tuf",
+   "atMs": 44040
+  },
+  {
+   "beat": "montageGold",
+   "sticker": "$609M REVENUE (2015)",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "boom",
+   "atMs": 45680
+  },
+  {
+   "beat": "bossBubble",
+   "label": {
+    "text": "DANA WHITE, 2011",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "boom",
+   "atMs": 46420
+  },
+  {
+   "sticker": "\"NEVER EVER\"",
+   "color": "#B0BEC5",
+   "sfx": "pop",
+   "scene": "boom",
+   "atMs": 48240
+  },
+  {
+   "beat": "bubblePop",
+   "sticker": "FIRST WOMEN'S BOUT: 2013",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "label": {
+    "text": "ROUSEY vs. CARMOUCHE",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "boom",
+   "atMs": 50360
+  },
+  {
+   "emph": true,
+   "scene": "boom",
+   "atMs": 45680
+  },
+  {
+   "emph": true,
+   "scene": "boom",
+   "atMs": 48060
+  },
+  {
+   "emph": true,
+   "scene": "boom",
+   "atMs": 48240
+  },
+  {
+   "sticker": "SOLD, 2016",
+   "color": "#FFFFFF",
+   "sfx": "boom",
+   "beat": "gavel",
+   "scene": "sale",
+   "atMs": 50740
+  },
+  {
+   "hud": {
+    "id": "value",
+    "value": "UFC: \u2248$4B"
+   },
+   "beat": "coinTower",
+   "sfx": "whoosh",
+   "scene": "sale",
+   "atMs": 52860
+  },
+  {
+   "beat": "timelineArrow",
+   "sticker": "$2M \u2192 \u2248$4B",
+   "color": "#FFD23F",
+   "scene": "sale",
+   "atMs": 55800
+  },
+  {
+   "emph": true,
+   "scene": "sale",
+   "atMs": 52460
+  },
+  {
+   "emph": true,
+   "scene": "sale",
+   "atMs": 52860
+  },
+  {
+   "beat": "spotlightFighter",
+   "sticker": "WHO PAID?",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "scene": "price",
+   "atMs": 57820
+  },
+  {
+   "beat": "pieFifth",
+   "sticker": "\u2248 1/5 (ESTIMATED)",
+   "color": "#FF5A5A",
+   "bar": {
+    "id": "share",
+    "value": 0.19
+   },
+   "scene": "price",
+   "atMs": 60780
+  },
+  {
+   "beat": "pieHalf",
+   "sticker": "NBA: \u2248 1/2",
+   "color": "#B0BEC5",
+   "scene": "price",
+   "atMs": 62920
+  },
+  {
+   "beat": "courthouse",
+   "sfx": "ding",
+   "label": {
+    "text": "CLASS ACTION, 2014",
+    "color": "#FFFFFF",
+    "x": 0.5,
+    "y": 0.36
+   },
+   "scene": "price",
+   "atMs": 64400
+  },
+  {
+   "emph": true,
+   "scene": "price",
+   "atMs": 60780
+  },
+  {
+   "emph": true,
+   "scene": "price",
+   "atMs": 62920
+  },
+  {
+   "beat": "logoCrash",
+   "sfx": "boom",
+   "sticker": "2023",
+   "color": "#FFFFFF",
+   "scene": "empire",
+   "atMs": 68020
+  },
+  {
+   "hud": {
+    "id": "value",
+    "value": "UFC: $12.1B"
+   },
+   "sticker": "VALUED AT $12.1B",
+   "color": "#FFD23F",
+   "scene": "empire",
+   "atMs": 70240
+  },
+  {
+   "beat": "settlementCheck",
+   "sticker": "$375M SETTLEMENT (2025)",
+   "color": "#FF5A5A",
+   "sfx": "ding",
+   "scene": "empire",
+   "atMs": 75040
+  },
+  {
+   "beat": "streamDeal",
+   "sticker": "$7.7B \u00b7 7 YEARS",
+   "color": "#FFD23F",
+   "sfx": "whoosh",
+   "scene": "empire",
+   "atMs": 79640
+  },
+  {
+   "emph": true,
+   "scene": "empire",
+   "atMs": 70240
+  },
+  {
+   "emph": true,
+   "scene": "empire",
+   "atMs": 71060
+  },
+  {
+   "emph": true,
+   "scene": "empire",
+   "atMs": 73420
+  },
+  {
+   "emph": true,
+   "scene": "empire",
+   "atMs": 77640
+  },
+  {
+   "beat": "splitScreen",
+   "sfx": "whoosh",
+   "scene": "ending",
+   "atMs": 80840
+  },
+  {
+   "beat": "smallCheck",
+   "scene": "ending",
+   "atMs": 82220
+  },
+  {
+   "beat": "scaleTilt",
+   "sfx": "pop",
+   "choice": {
+    "title": "FAIR DEAL?",
+    "options": [
+     "A \u00b7 YES",
+     "B \u00b7 NO"
+    ]
+   },
+   "scene": "ending",
+   "atMs": 83260
+  },
+  {
+   "beat": "loopToCage",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "value",
+    "value": "UFC: ?"
+   },
+   "scene": "ending",
+   "atMs": 86300
+  }
+ ],
+ "hud": {
+  "title": "UFC: BANNED \u2192 BILLIONS",
+  "counters": [
+   {
+    "id": "value",
+    "label": "",
+    "value": "UFC: ?"
+   }
+  ],
+  "bars": [
+   {
+    "id": "share",
+    "label": "FIGHTERS' SHARE (EST.)",
+    "value": 0.0,
+    "color": "#FF5A5A"
+   }
+  ]
+ },
+ "cover": {
+  "text": "BANNED TO BILLIONS. WHO PAID?",
+  "sub": "The rise of the UFC, 1993 to today",
+  "frames": 15
+ }
+}
