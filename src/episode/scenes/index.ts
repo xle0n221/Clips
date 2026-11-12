@@ -4,6 +4,7 @@ import { Jupiter, Mars, Neptune, Outro, Saturn, Uranus } from "./part2";
 import type { TransitionSpec } from "../kit/transitions";
 import { EARTH_SCENES, EARTH_TRANSITIONS, EarthCoverArt } from "./earth";
 import { ROME_SCENES } from "./rome1";
+import { TYSON_CONFIG, TYSON_SCENES } from "./tyson";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
 export const SCENES: Record<string, React.FC> = {
@@ -28,6 +29,7 @@ export const SCENES: Record<string, React.FC> = {
 export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "roman-empire": ROME_SCENES,
   "earth-without-humans": EARTH_SCENES,
+  "mike-tyson": TYSON_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -41,11 +43,14 @@ export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
 export type EpisodeConfig = {
   readonly look?: "2d";
   readonly transitions?: Record<string, TransitionSpec>;
-  readonly hud2d?: { readonly freezeBeat?: string };
+  readonly hud2d?: { readonly freezeBeat?: string; readonly counterId?: string; readonly barId?: string };
+  /** Pill (label) einer Szene endet am Beat dieses Namens statt am Szenenende (Szenen-ID → Beat) */
+  readonly labelUntil?: Record<string, string>;
   /** Motiv hinter dem Cover-Titel (overlays/Cover.tsx); ohne = erste Szene bleibt sichtbar */
   readonly coverArt?: React.FC;
 };
 export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" }, coverArt: EarthCoverArt },
+  "mike-tyson": TYSON_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

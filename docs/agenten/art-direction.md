@@ -22,6 +22,14 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Mike Tyson (2D Paper-Cut) · **Experiment Papierschatten per `feDropShadow` (dx 7, dy 9, ohne Unschärfe)**
+  auf Figuren/Prospekten statt doppelter Schattenkopie: liest sich im Kontaktabzug klar als ausgeschnittenes Papier,
+  Standbild 3,8 s/Bild (halbe CPU, parallele Stimm-Erzeugung; kein sauberer Vergleichswert). Neu `kit2d/boxing.tsx`:
+  `Figure` (Kind/Teen/Erwachsen, Silhouette `sil` ohne Gesicht, Handtuch Hals/Kopf), `RingBack`, `Drop` (Prospekt
+  fällt mit Nachfedern), `ScoreCard`, `GloveWipe` u. a. Fallen: Nasen-Bogen direkt über flachem Mund las sich als
+  Schnurrbart → Nase als Punkt; Handtuch über dem Kopf ohne Stirnkante las sich als weiße Haare → Stoffkante +
+  Falten; Prospekt-Schrift („TOKYO 1990“) kollidiert mit HUD/Stickern/Köpfen → Ort nur im Sticker.
+  Sticker-Farben #F5F5F5/#B0BEC5 hatten weiße Schrift (unlesbar) → `Effects.tsx` Luminanz-Regel. Beleg `out/tyson-contactsheet.jpg`.
 - 09.11.2026 · MotionKitTest 9–12 · **Experiment Flur + Ort-Licht:** `Hallway` mit 3 Punktlichtern à 18 färbte
   weiße Haut braun und überstrahlte die Wände; mit 6 + Fülllicht von vorn (1,4) Gesicht RGB 222/213/196, Wand
   201/150/95 – Trennung über INK-Kontur, nicht über Helligkeit (Kontrast nicht gemessen). Halbschalen-Gewölbe:
@@ -42,6 +50,8 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - 08.11.2026 · Rom-Kit · 10 Befunde behoben (Kolosseum, Bart, Thron, Halstuch, Gefahrenlicht, Stimmungen) · Kontaktabzug vorher/nachher in `verbesserungen.md`.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- NEU: Papierschatten-Kosten messen: gleiche Szene mit/ohne `filter="url(#paper)"`, s/Bild bei freier CPU.
+- NEU: Sitzende Figur frontal (`Figure pose="sit"`) liest sich nur mäßig (Arme verdecken Knie) – Dreiviertel-Ansicht der Beine testen.
 - NEU: Fresnel-Rim als Option in `Toon` (onBeforeCompile, nur mit Prop) – Kopf-Kontrast vor dunklem Grund messen, Renderzeit vorher/nachher.
 - NEU: Spot-Stärke der `SpotlightStage` so wählen, dass die Hautfarbe nicht kippt (Farbwert Gesicht messen).
 - NEU: Color Script im echten Clip: Akte je Szene setzen, Kontaktabzug ohne Ton – Phase erkennbar?

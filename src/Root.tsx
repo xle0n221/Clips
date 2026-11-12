@@ -68,6 +68,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „Mike Tyson – hard life or his own fault?“: 2D-Paper-Cut (kit2d/boxing.tsx, scenes/tyson*.tsx) */}
+      <Composition
+        id="MikeTyson"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 90}
+        schema={episodeSchema}
+        defaultProps={{ episode: "mike-tyson" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* Prüf-Komposition des 2D-Bau-Kits (src/episode/kit2d/) */}
       <Composition
         id="Kit2DTest"

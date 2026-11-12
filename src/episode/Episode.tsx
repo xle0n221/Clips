@@ -90,6 +90,10 @@ const withConfig = (t: Timeline, cfg: EpisodeConfig): Timeline => ({
   }),
   // Text-Zähler zeichnet kit2d/TimelineHUD; das Zahlen-HUD bleibt aus
   hud: cfg.hud2d ? undefined : t.hud,
+  // Pill-Ende je Szene auf einen Beat legen (optional, ohne Eintrag unverändert)
+  cues: cfg.labelUntil
+    ? t.cues.map((c) => (c.label && !c.untilBeat && cfg.labelUntil?.[c.scene] ? { ...c, untilBeat: cfg.labelUntil[c.scene] } : c))
+    : t.cues,
 });
 
 export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, captions }) => {
@@ -221,7 +225,12 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="below" />
       {cfg?.hud2d && rawTimeline && frame >= coverFrames(timeline.cover) ? (
-        <TimelineHUD timeline={rawTimeline} freezeBeat={cfg.hud2d.freezeBeat} />
+        <TimelineHUD
+          timeline={rawTimeline}
+          freezeBeat={cfg.hud2d.freezeBeat}
+          counterId={cfg.hud2d.counterId}
+          barId={cfg.hud2d.barId}
+        />
       ) : null}
 
       {frame < coverFrames(timeline.cover) ? null : stickers.map((c, i) => {

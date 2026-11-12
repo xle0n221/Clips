@@ -24,6 +24,13 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 12.11.2026 · Mike Tyson (2D) · **Experiment Pill-Ende auf Beat** (`EPISODE_CONFIG.labelUntil`, Szene → Beat):
+  „HE SAYS“/„SOME SAY“/„HE DENIES IT“ verschwinden vor der nächsten Einstellung, statt auf Strichliste/Balken zu zeigen
+  – timeline.json bleibt unverändert. Weitere Funde: Beat-Wörter, die im Satz doppelt vorkommen („years“ in conviction),
+  landen auf dem ersten Vorkommen → Zeit aus captions.json ablesen und fest setzen. Liegende Figur (lean −88) ist
+  Körperhöhe breit → Kamera vorher auf Kopfposition rechnen (erster Versuch: Kopf außerhalb). Wipe-/Whip-Mitte
+  im Kontaktabzug erwischt = leeres Bild; Whip kurz halten (6 Bilder, Versatz ≤ 400). In-Szene-Form-Wipe
+  (`GloveWipe`, Bildraum-Ebene depth 0) funktioniert ohne Engine-Änderung. Beleg `out/tyson-contactsheet.jpg`.
 - 12.11.2026 · Earth Without Us (2D) · **Standeinstellungen brechen ohne neue Kulisse:** je Szene `shotIndex` mit
   Schnitten auf Wort-Cues und nur die Kamera (`frameOn`, Zoom 1,6–2,5 auf Detail/Gesicht) neu gesetzt – hook, blackout,
   stars, nuclear, satellites, rust, carbon, rushmore jetzt 1,1–3,3 s je Einstellung (vorher bis 9,6 s). Neu: Ampel, Zug,
@@ -89,5 +96,6 @@
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 08.11.2026 | Sonnensystem v2 | – | 3 Anschnitte |
+| 12.11.2026 | Mike Tyson (2D) v1 | – (Regie-Kritiker offen; Selbstnote 7–8) | 3 Prüfrunden, 9 Korrekturen |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |

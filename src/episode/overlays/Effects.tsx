@@ -36,8 +36,12 @@ export const Sticker: React.FC<{
     96,
     fitText({ text, withinWidth: 620, fontFamily: CAPTION_FONT, fontWeight: 900, letterSpacing: "-2px" }).fontSize,
   );
+  // Helle Flächen (auch Weiß-/Grautöne wie #F5F5F5, #B0BEC5) bekommen dunkle Schrift
+  const lum = /^#[0-9A-Fa-f]{6}$/.test(color)
+    ? [1, 3, 5].map((i) => parseInt(color.slice(i, i + 2), 16) / 255).reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0)
+    : 0;
   const dark =
-    color === "#FFFFFF" || color.startsWith("#FF") || color.startsWith("#FFE");
+    color === "#FFFFFF" || color.startsWith("#FF") || color.startsWith("#FFE") || lum > 0.55;
   return (
     <AbsoluteFill style={{ alignItems: "center", paddingTop: top }}>
       <div

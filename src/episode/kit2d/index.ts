@@ -4,3 +4,4 @@ export * from "./ghost";
 export * from "./hud";
 export * from "./props";
 export * from "./world";
+export * from "./boxing";

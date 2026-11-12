@@ -1,0 +1,518 @@
+import React from "react";
+import { anticipate, hop } from "../kit/motion";
+import {
+  Belt,
+  Bill,
+  Bulb,
+  CountHand,
+  ease,
+  Figure,
+  frameOn,
+  Gavel,
+  GloveWipe,
+  headY,
+  HangingCoat,
+  ImpactLines,
+  jolt,
+  Label,
+  Layer,
+  lerp,
+  PAPER,
+  PaperFlower,
+  PictureFrame,
+  pop,
+  RING,
+  RING_TONES,
+  ScoreCard,
+  seeded,
+  Sign,
+  SpotCone,
+  Stage2D,
+  Stool,
+} from "../kit2d";
+import { shotIndex } from "../types";
+import { FEET, SIL, useBeats } from "./tyson1";
+import { Arena, CourtDrop, GymDrop, NightDrop, StadiumDrop, TokyoDrop } from "./tysonSets";
+
+/**
+ * „Mike Tyson“ Teil 2 (champion … ending). Gleiche Bildregeln wie tyson1.tsx.
+ * Ernste Szenen (conviction, exodus) symbolisch: keine Tat, kein Opfer, kein Kind, kein Unfall im Bild.
+ */
+
+/** Handtuch über dem Seil in MIKEs Ecke (Erkennungsmerkmal in Kampf-Einstellungen). */
+const RopeTowel: React.FC<{ readonly x: number; readonly f: number }> = ({ x, f }) => (
+  <g filter="url(#paperSoft)">
+    <path
+      d={`M ${x - 40} ${RING.back - 168} L ${x + 40} ${RING.back - 168} L ${x + 36 + Math.sin(f * 0.07) * 4} ${RING.back - 40} L ${x - 44 + Math.sin(f * 0.07) * 4} ${RING.back - 44} Z`}
+      fill={PAPER.towel}
+      stroke={PAPER.ink}
+      strokeWidth={5}
+      strokeLinejoin="round"
+    />
+  </g>
+);
+
+/* ------------------------------------------------------------------ */
+
+/** Champion: CUS geht – Mantel bleibt am Pfosten; „some say“; Handschuh-Wipe in Gold → jüngster Champion. */
+export const Champion: React.FC = () => {
+  const { f, B } = useBeats();
+  const loses = B("emptyCoat", 51);
+  const some = 71;
+  const wipe = B("gloveWipe", 130);
+  const belt = B("beltUp", 152);
+  const shot = shotIndex(f, [loses, some, wipe, 185]);
+  const gold = f >= wipe;
+  const pace = gold && f < belt ? Math.sin((f - wipe) * 0.16) * 110 : 0;
+  const mx = gold ? 540 + pace : 400;
+  const up = ease(f, belt - 4, belt + 8);
+  const hy = FEET + headY("adult");
+  const cam =
+    shot === 0
+      ? frameOn(620, 780, 540, 880, lerp(1.18, 1.26, ease(f, 0, loses)))
+      : shot === 1
+        ? frameOn(RING.rx, 980, 640, 880, lerp(1.7, 1.85, ease(f, loses, some)))
+        : shot === 2
+          ? frameOn(400, hy, 540, 790, lerp(1.28, 1.4, ease(f, some, wipe)))
+          : shot === 3
+            ? frameOn(540, 740, 540, 900, lerp(1.0, 1.08, ease(f, wipe, 185)))
+            : frameOn(540, 520, 540, 800, lerp(1.6, 1.72, ease(f, 185, 214)));
+  const cloud = ease(f, some, some + 30);
+  return (
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, belt, 10) }} mood="night" noSky>
+      <Layer>
+        <Arena phase={gold ? "gold" : "warm"} tone={RING_TONES.warm} f={f} flashes={gold ? 1 : 0} lights={gold ? 1 : 0.3} drop={gold ? null : <GymDrop down={1} tint={shot === 2 ? "#1A1420" : undefined} />} />
+        {!gold ? (
+          <>
+            <HangingCoat x={RING.rx + 6} y={RING.back - 300} s={0.8} swing={f >= loses ? Math.sin((f - loses) * 0.2) * 6 * Math.exp(-(f - loses) * 0.03) : 0} color={SIL.cus} />
+            {f < loses ? <Figure x={760} y={FEET} s={1.05} frame={f} sil={SIL.cus} outfit="coat" coatColor={SIL.cus} o={1 - ease(f, loses - 10, loses)} armL={[40, 60]} /> : null}
+            {/* dunkle Papierwolken an Fäden: „spätere Probleme“ (Spekulation) */}
+            {shot === 2
+              ? [180, 420, 660].map((cx, i) => (
+                  <g key={cx} transform={`translate(${cx} ${lerp(-260, 330 + i * 30, cloud)})`} filter="url(#paper)">
+                    <line x1={0} y1={-2000} x2={0} y2={-40} stroke="#0B0B0B" strokeWidth={4} />
+                    <path d="M -120 40 Q -130 -30 -60 -30 Q -40 -80 20 -60 Q 90 -80 110 -10 Q 150 10 120 40 Z" fill="#3A3442" stroke={PAPER.ink} strokeWidth={6} />
+                  </g>
+                ))
+              : null}
+            <Figure
+              x={mx}
+              y={FEET}
+              s={1.0}
+              frame={f}
+              gloves
+              armL={[20, 150]}
+              armR={[20, 150]}
+              headDown={f > loses ? 0.6 : 0}
+              eyes={f > loses ? "down" : "open"}
+              brows="sad"
+              mouth={f > loses ? "frown" : "flat"}
+              blinkSeed={3}
+            />
+          </>
+        ) : (
+          <Figure
+            x={mx}
+            y={FEET}
+            s={1.0}
+            frame={f}
+            towel="neck"
+            gloves={false}
+            pose={f < belt ? "walk" : "stand"}
+            step={Math.sin((f - wipe) * 0.32)}
+            armL={[lerp(14, 160, up), lerp(10, 178, up)]}
+            armR={[lerp(14, 160, up), lerp(10, 178, up)]}
+            eyes={f >= belt ? "up" : "open"}
+            mouth={f >= belt ? "smile" : "grit"}
+            brows={f >= belt ? "up" : "angry"}
+            blinkSeed={3}
+          />
+        )}
+        {gold ? <Belt x={mx} y={lerp(1150, FEET - 676, up)} s={0.55} shine={Math.max(0, Math.sin(f * 0.3))} r={lerp(30, 0, up)} /> : null}
+      </Layer>
+      <Layer depth={0}>
+        <GloveWipe local={f - wipe} color={PAPER.gold} />
+      </Layer>
+    </Stage2D>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+
+/** Douglas: Tokio 1990, gesichtslose Silhouette schlägt MIKE erstmals nieder, Gürtel rollt weg, Stille, zweiter Bilderrahmen. */
+export const Douglas: React.FC = () => {
+  const { f, B } = useBeats();
+  const odds = 21;
+  const down = B("knockdown", 70);
+  const gone = B("beltRollsAway", 122);
+  const sister = B("secondFrame", 170);
+  const c1 = odds + 9;
+  const c2 = down - 12;
+  const c3 = gone - 10;
+  const c4 = 140;
+  const shot = shotIndex(f, [c1, c2, c3, c4]);
+  const mx = 650;
+  const ox = 900;
+  const fall = ease(f, down + 2, down + 24, "inOut");
+  const land = hop(f, down + 24, 0, 1);
+  const bounce = Math.sin(f * 0.3) * 8;
+  const wind = anticipate(f, down, 20, 70, 100, { pre: 8, dur: 5 });
+  const cam =
+    shot === 0
+      ? frameOn(780, 820, 540, 880, lerp(1.0, 1.06, ease(f, 0, c1)))
+      : shot === 1
+        ? frameOn(ox - 120, FEET + headY("adult"), 560, 820, lerp(1.38, 1.48, ease(f, c1, c2)))
+        : shot === 2
+          ? frameOn(480, 1000, 540, 960, lerp(1.0, 1.04, ease(f, c2, c3)))
+          : shot === 3
+            ? frameOn(lerp(700, 860, ease(f, c3, c4)), 1080, 540, 960, 1.35)
+            : frameOn(540, 760, 540, 860, lerp(1.12, 1.22, ease(f, c4, c4 + 50)));
+  const quiet = shot === 4;
+  const dropDown = quiet ? 1 - ease(f, c4, c4 + 10, "linear") : 1;
+  return (
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, down + 24, 18) }} mood="night" noSky>
+      <Layer>
+        <Arena phase="cool" tone={RING_TONES.cool} f={f} lights={quiet ? 0 : 0.6} drop={dropDown > 0 ? <TokyoDrop down={dropDown} /> : null} />
+        {!quiet ? (
+          <>
+            <RopeTowel x={RING.lx + 60} f={f} />
+            <Figure
+              x={ox}
+              y={FEET}
+              s={1.0}
+              frame={f}
+              sil={SIL.opp}
+              gloves
+              flip
+              armL={[20, 160]}
+              armR={shot >= 2 ? [wind, wind + 10] : [20, 160]}
+              lean={shot === 2 ? lerp(0, -6, ease(f, down - 4, down + 4)) : 0}
+              step={bounce}
+            />
+            <Figure
+              x={mx}
+              y={FEET}
+              s={1.0}
+              frame={f}
+              gloves
+              lean={-88 * fall}
+              squash={land.squash}
+              armL={[20, lerp(150, 60, fall)]}
+              armR={[20, lerp(150, 60, fall)]}
+              eyes={fall > 0.2 ? "closed" : "open"}
+              brows={fall > 0 ? "sad" : "angry"}
+              mouth={fall > 0 ? "o" : "grit"}
+              blinkSeed={3}
+            />
+            <ImpactLines x={mx - 20} y={FEET - 560} t={(f - down) / 10} s={0.9} />
+            {shot >= 2 && f > down + 26 ? <CountHand x={980} y={760} n={Math.min(5, 1 + Math.floor((f - down - 26) / 7))} s={0.8} /> : null}
+            {/* Gürtel rollt aus dem Bild */}
+            {shot === 3 ? <Belt x={lerp(760, 1500, ease(f, gone - 4, gone + 22, "linear"))} y={1170} s={0.4} r={(f - gone) * 14} /> : null}
+          </>
+        ) : (
+          <>
+            <Stool x={540} y={FEET + 4} s={1.1} />
+            <Figure x={540} y={FEET} s={1.1} frame={f} pose="sit" towel="neck" headDown={0.9} eyes="down" brows="sad" mouth="frown" blinkSeed={3} />
+            <g>
+              <line x1={240} y1={-2000} x2={240} y2={570} stroke="#0B0B0B" strokeWidth={4} />
+              <PictureFrame x={240} y={700} s={0.72} />
+              <line x1={840} y1={-2000} x2={840} y2={570} stroke="#0B0B0B" strokeWidth={4} opacity={pop(f, sister, 10) > 0 ? 1 : 0} />
+              <PictureFrame x={840} y={700 - (1 - Math.min(1, pop(f, sister, 12))) * 600} s={0.72} long o={f >= sister - 2 ? 1 : 0} />
+            </g>
+            <SpotCone x={540} y={FEET + 10} o={1} w={360} dim={0.45} color="#C9D6F0" />
+          </>
+        )}
+      </Layer>
+    </Stage2D>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+
+/** Conviction: leerer Gerichtssaal, Hammer, Gitter-Schatten; der Balken LIFE HITS bewegt sich NICHT. */
+export const Conviction: React.FC = () => {
+  const { f, B } = useBeats();
+  const strike = 58;
+  const serves = 80;
+  const denies = 131;
+  const luck = B("barStill", 227);
+  const shot = shotIndex(f, [37, 74, denies, 190]);
+  const gr = anticipate(f, strike, -20, -62, 8, { pre: 7, dur: 5, over: 0.02 });
+  const bars = ease(f, serves, serves + 22);
+  const shake = f >= denies && f < denies + 40 ? Math.sin((f - denies) * 0.5) * 9 : 0;
+  const hy = FEET + headY("adult");
+  const cam =
+    shot === 0
+      ? frameOn(560, 780, 540, 860, lerp(1.0, 1.06, ease(f, 0, 37)))
+      : shot === 1
+        ? frameOn(860, 760, 540, 860, lerp(1.55, 1.65, ease(f, 37, 74)))
+        : shot === 2
+          ? frameOn(540, 780, 540, 860, lerp(1.3, 1.42, ease(f, 74, denies)))
+          : shot === 3
+            ? frameOn(540, hy, 540, 790, lerp(1.4, 1.48, ease(f, denies, 190)))
+            : frameOn(lerp(540, 650, ease(f, luck - 10, luck + 8)), 880, 540, 900, lerp(1.0, 1.4, ease(f, luck - 10, luck + 8, "inOut")));
+  const ruled = shot === 4;
+  return (
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, strike + 1, 12) }} mood="night" noSky>
+      <Layer>
+        <Arena phase="grey" tone={RING_TONES.grey} f={f} lights={0.2} drop={<CourtDrop down={ease(f, -8, 14, "linear")} f={f} />} />
+        {!ruled ? (
+          <>
+            <rect x={800} y={800} width={140} height={60} rx={8} fill="#4A4643" stroke={PAPER.ink} strokeWidth={5} />
+            <Gavel x={700} y={760} r={gr} s={0.9} />
+            <Figure
+              x={540}
+              y={FEET}
+              s={1.0}
+              frame={f}
+              o={shot === 1 ? 0 : 1}
+              headDown={shot === 2 ? 0.5 : 0}
+              headTilt={shake}
+              eyes={shot === 2 ? "down" : "open"}
+              brows="sad"
+              mouth="flat"
+              blinkSeed={3}
+            />
+            {/* Gitter-Schatten (Haftzeit) */}
+            {bars > 0
+              ? Array.from({ length: 9 }, (_, i) => (
+                  <rect key={i} x={240 + i * 76} y={lerp(-1400, 380, bars)} width={30} height={900} fill="#000" opacity={0.42} />
+                ))
+              : null}
+          </>
+        ) : (
+          <>
+            {/* großer Balken LIFE HITS: bleibt stehen */}
+            <Label x={930} y={790} size={58} anchor="end" color="#F4F4F4">
+              LIFE HITS
+            </Label>
+            <g filter="url(#paper)">
+              <rect x={170} y={826} width={760} height={84} rx={42} fill="#1E1E1E" stroke={PAPER.ink} strokeWidth={8} />
+              <rect x={178} y={834} width={744 * 0.72} height={68} rx={34} fill="#FF5A5A" />
+            </g>
+            <line x1={178 + 744 * 0.72} y1={806} x2={178 + 744 * 0.72} y2={930} stroke="#F4F4F4" strokeWidth={8} strokeDasharray="12 10" />
+            <Figure x={860} y={FEET + 30} s={0.6} frame={f} headDown={0.6} eyes="down" brows="sad" mouth="flat" blinkSeed={3} />
+          </>
+        )}
+      </Layer>
+    </Stage2D>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+
+/** Ear: Clinch, Biss als Comic-Symbol (kein Blut), Whip in den Ring bei Nacht: Geld fliegt, BANKRUPT 2003. */
+export const Ear: React.FC = () => {
+  const { f, B } = useBeats();
+  const ear = B("earPiece", 56);
+  const money = B("moneyFly", 83);
+  const shot = shotIndex(f, [25, ear, money, 120]);
+  const night = f >= money;
+  const whipX = night ? (1 - ease(f, money, money + 6)) * 380 : 0;
+  const ox = 660;
+  const cam =
+    shot === 0
+      ? frameOn(570, 700, 540, 860, lerp(1.32, 1.42, ease(f, 0, 25)))
+      : shot === 1
+        ? frameOn(600, FEET + headY("adult"), 540, 830, lerp(2.0, 2.15, ease(f, 25, ear)))
+        : shot === 2
+          ? frameOn(620, 760, 540, 860, lerp(1.4, 1.3, ease(f, ear, money)))
+          : shot === 3
+            ? frameOn(540 + whipX, 800, 540, 880, 1.0)
+            : frameOn(560, 780, 540, 860, lerp(1.3, 1.4, ease(f, 120, 166)));
+  const pieceT = f - ear;
+  const bills = React.useMemo(() => {
+    const r = seeded(5);
+    return Array.from({ length: 16 }, () => ({ a: r() * Math.PI - Math.PI, v: 8 + r() * 10, s: 0.5 + r() * 0.5, d: Math.floor(r() * 20) }));
+  }, []);
+  return (
+    <Stage2D cam={{ ...cam, y: cam.y + jolt(f, ear, 14) }} mood="night" noSky>
+      <Layer>
+        <Arena phase={night ? "black" : "red"} tone={night ? RING_TONES.dark : RING_TONES.warm} f={f} flashes={night ? 0 : 0.7} lights={night ? 0 : 0.6} drop={night ? <NightDrop down={1} /> : null} />
+        {!night ? (
+          <>
+            <RopeTowel x={RING.lx + 60} f={f} />
+            <Figure
+              x={ox}
+              y={FEET}
+              s={1.0}
+              frame={f}
+              sil={SIL.opp}
+              gloves
+              flip
+              armL={f >= ear ? [150, 170] : [40, 120]}
+              armR={[30, 130]}
+              lean={f >= ear ? 6 : 0}
+            />
+            <Figure x={470} y={FEET} s={1.0} frame={f} gloves armL={[40, 110]} armR={[60, 110]} lean={shot === 1 ? lerp(0, 9, ease(f, 25, ear)) : 4} brows="angry" mouth="grit" eyes="side" blinkSeed={3} />
+            {pieceT >= 0 && pieceT < 30 ? (
+              <g>
+                <path
+                  d="M 0 -14 Q 16 -12 14 6 Q 4 16 -8 10 Q -16 -2 0 -14 Z"
+                  transform={`translate(${ox + 70 + pieceT * 6} ${FEET + headY("adult") - 10 - pieceT * 9 + pieceT * pieceT * 0.4}) rotate(${pieceT * 25})`}
+                  fill={SIL.opp}
+                  stroke={PAPER.ink}
+                  strokeWidth={4}
+                />
+                <ImpactLines x={ox + 60} y={FEET + headY("adult")} t={pieceT / 12} s={0.6} />
+              </g>
+            ) : null}
+          </>
+        ) : (
+          <>
+            <Stool x={420} y={FEET + 4} s={1.1} />
+            <Figure x={420} y={FEET} s={1.1} frame={f} pose="sit" towel="head" headDown={0.8} eyes="down" brows="sad" mouth="frown" blinkSeed={3} />
+            {bills.map((b, i) => {
+              const t = f - money - b.d;
+              if (t < 0) return null;
+              const x = 540 + Math.cos(b.a) * b.v * t * 1.6;
+              const y = 950 + Math.sin(b.a) * b.v * t * 0.9 + t * t * 0.35;
+              return <Bill key={i} x={x} y={Math.min(y, 1250)} r={t * 9 + i * 20} s={b.s} flipY={Math.cos(t * 0.25 + i)} />;
+            })}
+            <Sign x={760} y={lerp(-200, 960, ease(f, money + 6, money + 18))} s={0.6} r={-6 + Math.sin(f * 0.1) * 2} lines={["BANKRUPT", "2003"]} />
+          </>
+        )}
+      </Layer>
+    </Stage2D>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+
+/** Exodus: fast schwarz, ein warmes Licht, MIKE allein auf der Ringkante, eine Papierblume fällt. Kein Kind, kein Unfall. */
+export const Exodus: React.FC = () => {
+  const { f, B } = useBeats();
+  const flower = B("flowerFall", 141);
+  const shot = shotIndex(f, [60, 125, flower - 2]);
+  const sy = RING.front + 150;
+  const hy = sy + headY("adult", true);
+  const fl = ease(f, flower, flower + 38, "inOut");
+  const cam =
+    shot === 0
+      ? frameOn(540, 980, 540, 860, lerp(1.0, 1.08, ease(f, 0, 60)))
+      : shot === 1
+        ? frameOn(540, hy, 540, 800, lerp(1.5, 1.68, ease(f, 60, 125)))
+        : shot === 2
+          ? frameOn(540, hy + 10, 540, 800, lerp(2.3, 2.4, ease(f, 125, flower)))
+          : frameOn(lerp(620, 700, fl), lerp(900, 1180, fl), 540, 860, 1.5);
+  const motes = React.useMemo(() => {
+    const r = seeded(8);
+    return Array.from({ length: 24 }, () => ({ x: 300 + r() * 480, y: 500 + r() * 700, k: r() }));
+  }, []);
+  return (
+    <Stage2D cam={cam} mood="night" noSky>
+      <Layer>
+        <Arena phase="black" tone={RING_TONES.dark} f={f} lights={0} />
+        <Bulb x={540} y={620} s={1.1} swing={Math.sin(f * 0.04) * 3} glow={0.9 + Math.sin(f * 0.13) * 0.05} />
+        {motes.map((m, i) => (
+          <circle key={i} cx={m.x + Math.sin(f * 0.02 + i) * 20} cy={m.y - ((f * (0.4 + m.k * 0.6)) % 200)} r={2.5} fill="#FFE2A8" opacity={0.35} />
+        ))}
+        <Figure x={540} y={sy} s={1.0} frame={f} pose="sit" towel="neck" headDown={0.95} eyes="down" brows="sad" mouth="frown" armL={[8, 28]} armR={[8, 28]} blinkSeed={3} breathe />
+        {f >= flower - 2 ? <PaperFlower x={lerp(560, 720, fl) + Math.sin(f * 0.12) * 30 * (1 - fl)} y={lerp(600, RING.front - 20, fl)} s={0.75} r={lerp(-40, 80, fl) + Math.sin(f * 0.15) * 12 * (1 - fl)} /> : null}
+      </Layer>
+    </Stage2D>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+
+/** Ending: Stadion 2024, älterer MIKE verliert; Karte: HARD rot, BLAMELESS „NO“; Karte dreht sich zum Zuschauer; Wipe zurück zum Hook. */
+export const Ending: React.FC = () => {
+  const { f, B } = useBeats();
+  const fight = 48;
+  const loses = 88;
+  const hard = B("scorecardHard", 127);
+  const no = B("scorecardNo", 170);
+  const turn = B("cardToCamera", 208);
+  const loop = B("loopToRing", 230);
+  const shot = shotIndex(f, [fight, loses, hard - 2, turn - 6, loop]);
+  const back = f >= loop;
+  const mx = 430;
+  const ox = 690;
+  const jab = Math.max(0, Math.sin(f * 0.35));
+  const cam =
+    shot === 0
+      ? frameOn(560, 820, 540, 880, lerp(0.96, 1.04, ease(f, 0, fight)))
+      : shot === 1
+        ? frameOn(560, 680, 540, 840, lerp(1.4, 1.5, ease(f, fight, loses)))
+        : shot === 2
+          ? frameOn(560, 720, 540, 860, lerp(1.2, 1.28, ease(f, loses, hard)))
+          : shot <= 4
+            ? frameOn(560, 760, 540, 880, 0.9)
+            : frameOn(820, FEET + headY("adult", true) * 1.1, 540, 830, 1.32);
+  const flipT = ease(f, turn - 4, turn + 8, "inOut");
+  const cardTurn = Math.cos(flipT * Math.PI);
+  const front = cardTurn >= 0;
+  return (
+    <Stage2D cam={cam} mood="night" noSky>
+      <Layer>
+        {!back ? (
+          <>
+            <Arena phase="dim" tone={RING_TONES.cool} f={f} lights={0.3} flashes={shot <= 2 ? 0.5 : 0} drop={<StadiumDrop down={ease(f, -4, 18, "linear")} f={f} />} />
+            <RopeTowel x={RING.lx + 60} f={f} />
+            <Figure
+              x={ox}
+              y={FEET}
+              s={1.0}
+              frame={f}
+              sil="#8A909A"
+              gloves
+              flip
+              armL={shot === 2 ? [160, 175] : [20, 160]}
+              armR={shot === 1 ? [lerp(30, 90, jab), lerp(150, 90, jab)] : [20, 150]}
+              step={Math.sin(f * 0.3) * 6}
+            />
+            <Figure
+              x={mx}
+              y={FEET}
+              s={1.0}
+              frame={f}
+              grey
+              towel="neck"
+              gloves
+              armL={shot === 2 ? [10, 10] : [20, 150]}
+              armR={shot === 2 ? [10, 10] : [24, 150]}
+              headDown={shot === 2 ? 0.5 : 0}
+              eyes={shot === 2 ? "down" : "open"}
+              brows={shot === 2 ? "sad" : "angry"}
+              mouth={shot === 2 ? "flat" : "grit"}
+              blinkSeed={3}
+            />
+            <SpotCone x={560} y={FEET + 10} o={1} w={520} dim={shot >= 3 ? 0.62 : 0.35} />
+          </>
+        ) : (
+          <>
+            <Arena phase="warm" tone={RING_TONES.warm} f={f} lights={0.5} />
+            <Stool x={820} y={FEET + 4} s={1.1} />
+            <Figure x={820} y={FEET} s={1.1} frame={f} pose="sit" towel="neck" armL={[18, 2]} armR={[18, 2]} headDown={1} eyes="down" brows="sad" blinkSeed={3} />
+            <SpotCone x={820} y={FEET + 10} o={1} w={330} dim={0.5} />
+          </>
+        )}
+      </Layer>
+      {shot === 3 || shot === 4 ? (
+        <Layer depth={0}>
+          {front ? (
+            <ScoreCard
+              x={540}
+              y={lerp(1500, 820, ease(f, hard - 4, hard + 8))}
+              s={1.0}
+              turn={Math.max(0.02, cardTurn)}
+              rowH={110}
+              w={900}
+              title="SCORE IT"
+              rows={[
+                { label: "HARD?", fill: ease(f, hard, hard + 10), mark: f >= hard + 6 ? "BRUTALLY" : undefined, markColor: PAPER.paper },
+                { label: "BLAMELESS?", fill: ease(f, no, no + 8), color: "#8A8F98", mark: f >= no ? "NO" : undefined },
+              ]}
+            />
+          ) : (
+            <ScoreCard x={540} y={820} s={1.0} turn={Math.max(0.02, -cardTurn)} rowH={110} w={900} title="YOU SCORE IT" rows={[{ label: "" }, { label: "" }]} pen={Math.sin(f * 0.6)} />
+          )}
+        </Layer>
+      ) : null}
+      <Layer depth={0}>
+        <GloveWipe local={f - loop} color={PAPER.gold} />
+      </Layer>
+    </Stage2D>
+  );
+};
