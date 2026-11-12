@@ -43,7 +43,8 @@ Themenunabhängiger Ablauf und Muster je Themen-Art: [`playbook-themen.md`](play
 3. **Durchgehende Bewegungsrichtung** bei Reisen (z. B. immer von links nach rechts / nach außen).
 4. **Laufendes Element** über das ganze Video (Zähler, Punktestand, Karte mit Fortschritt),
    damit der Fortschritt sichtbar ist und man das Ende erreichen will.
-5. Neue Einstellung etwa alle 2–3 s, aber **innerhalb derselben Handlung** (Nah/Total/Detail),
+5. **Nutzer-Feedback 12.11.2026 (Tyson, Freigabe 2): „Video soll etwas langsamer sein, um es angenehmer zum Schauen zu machen.“** → ruhigeres Bildtempo: Einstellungen eher 3–4 s, Kamerafahrten langsamer, Whip-/Wipe-Übergänge nur an Kapitelgrenzen, keine Schnitte unter 1,5 s; die Werte darunter sind dafür überholt.
+   Bisher: Neue Einstellung etwa alle 2–3 s, aber **innerhalb derselben Handlung** (Nah/Total/Detail),
    nicht als Sprung zu etwas Neuem. Messwerte (ffmpeg `scene` > 0,12, `referenz-analyse-2.md`):
    R3 (englisch) ≈ alle 2,6 s, R2 ≈ alle 3,3 s; Referenz 2: jedes Bild im 2,5-s-Raster eine andere
    Einstellung. Zielwert bleibt 2–3 s; 3,5 s ist die obere Grenze (R2), kein Ziel.
