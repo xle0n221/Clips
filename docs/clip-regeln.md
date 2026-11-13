@@ -161,6 +161,17 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   Stimm-Hörprobe** zur Freigabe 1 vorlegen. Claude kann nicht hören, nur messen (LUFS, Bandanteile) – das Urteil
   „passt / angenehm“ trifft der Nutzer.
 
+## Laune des Erzählers je Thema + Standardstimme (Vorgaben des Nutzers 13.11.2026)
+- **Standardstimme:** `am_michael` (Chatterbox, Klangvorlage `assets/stimmvorlagen/am_michael.wav`), vom Nutzer aus 8 Casting-Proben gewählt
+  („Diese Stimme als Standard für jedes Video“). Dashboard-Vorgabe ist Michael; nur eine im Dashboard gewählte Stimme weicht davon ab.
+- **Laune je Thema:** „Bei jedem Clip musst du je nach Thema entscheiden, in was für einer Laune er spricht.“ Vor der Vertonung legt das
+  Drehbuch die **Grundlaune** fest: Feld `narratorMood` = `{ "mood": "…", "why": "1 Satz zum Thema" }`, z. B.
+  düster-ernst (Krieg, Tragödie), neugierig-staunend (Wissenschaft, Weltall), verschmitzt-ironisch (Kurioses, Satire),
+  warm-nachdenklich (Lebensgeschichten), angespannt-flüsternd (Mystery/Horror), locker-cool (Games, Popkultur), sachlich-ruhig (heikle Nachrichten, reale Vorwürfe).
+- Die Grundlaune bestimmt `voicePreset`, die Szenen-`delivery`/`emotion` (exaggeration, Tempo, Pausen) und die Musikstimmung; Szenen
+  dürfen davon für Spannung/Wendung abweichen, kehren aber zur Grundlaune zurück. Der Retention-Kritiker prüft, ob Laune und Thema zusammenpassen;
+  die Hörprobe nennt die gewählte Laune.
+
 ## Sprache & Stimme (Vorgaben des Nutzers)
 - Clips sind **auf Englisch**, mit einer **angenehmen Stimme**.
 - **Zeitgemäßer, lockerer Slang**, aber so, dass **jede Altersgruppe** sich abgeholt fühlt

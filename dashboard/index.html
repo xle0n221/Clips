@@ -233,7 +233,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       <select id="voice" name="voice" title="Sprecherstimme im Video (Englisch)">
         <option value="af_heart">Stimme: Lily – Frau</option>
         <option value="af_bella">Stimme: Bella – Frau</option>
-        <option value="am_fenrir" selected>Stimme: Finn – Mann (Standard)</option>
+        <option value="am_michael" selected>Stimme: Michael – Mann (Standard)</option>
+        <option value="am_fenrir">Stimme: Finn – Mann</option>
         <option value="am_puck">Stimme: Max – Mann</option>
       </select>
       <label class="sr" for="vstyle">Sprechstil</label>
@@ -314,7 +315,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   const $ = (id) => document.getElementById(id);
   const listEl = $("list"), emptyEl = $("empty"), summaryEl = $("summary");
   let db = null, art = null, assets = null, canWrite = true, docs = [], loaded = false;
-  const VOICE_NAME = { af_heart: "Lily", af_bella: "Bella", am_fenrir: "Finn", am_puck: "Max" };
+  const VOICE_NAME = { af_heart: "Lily", af_bella: "Bella", am_fenrir: "Finn", am_puck: "Max", am_michael: "Michael", am_echo: "Echo" };
   const voiceName = (v) => VOICE_NAME[v] ? "Stimme " + VOICE_NAME[v] : "Stimme " + v;
   const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
   const WPS_MIN = 2.3, WPS_MAX = 2.6; // Ziel-Sprechtempo inkl. Pausen seit 12.11.2026 (Nutzer: Videos insgesamt langsamer, angenehm zu schauen)
@@ -966,12 +967,12 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       await db.collection("videos").doc(id).set({
         inspiration,
         topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
-        voice: $("voice").value || "am_fenrir", voicePreset: $("vstyle").value || "lebendig",
+        voice: $("voice").value || "am_michael", voicePreset: $("vstyle").value || "lebendig",
         stage: "queued", statusText: "", review: null, decision: null,
         branch: null, sessionId: null, busy: false, updatedAt: new Date().toISOString()
       });
       $("dupHint").hidden = true; $("lenHint").textContent = "";
-      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "am_fenrir"; $("vstyle").value = "lebendig";
+      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "am_michael"; $("vstyle").value = "lebendig";
       $("inspFiles").value = ""; $("inspCount").textContent = "optional – Bilder, kurze Videos oder PDFs";
       msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
       wake("add", id);
