@@ -94,6 +94,16 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Unverändert für jeden Stil: Themen-Treue (Standbild ohne Ton verrät das Thema), unteres Drittel frei für Untertitel,
   Schnitt auf Beats, Qualitäts-Tor Note ≥ 9.
 
+## Echte Bilder (Vorgabe des Nutzers 13.11.2026: „alles was möglich ist mit echten Bildern“, „die urheberrechtlich okay sind“)
+- **Erlaubt und erwünscht:** echte Fotos/Videos mit freier Lizenz oder gemeinfrei – Wikimedia Commons (CC0, CC BY, CC BY-SA, Public Domain),
+  NASA/NOAA/NPS/USGS (US-Bundesbehörden, gemeinfrei), Museen mit offener Lizenz. Je Bild Lizenz, Urheber und Datei-URL in
+  `docs/bildnachweise-<thema>.md` notieren; CC BY/BY-SA-Nachweis in die Video-Beschreibung (`publish.youtube.description`). Freigeschaltet: commons.wikimedia.org, upload.wikimedia.org.
+- **Nicht verwenden:** Trailer-Standbilder, Screenshots, Cover-Art, Logos und Figuren von Spielen/Filmen/Marken (z. B. Rockstar/GTA 6) –
+  urheberrechtlich geschützt; „hart an der Grenze“ heißt hier: echte Orte und Dinge zeigen, auf die sich das Werk bezieht
+  (GTA 6 → echte Fotos von Miami, Florida Keys, Everglades), dazu eigene Figuren. Rockstars Video-Richtlinie erlaubt laut Berichten nur
+  **eigene Gameplay-Aufnahmen, nicht kommerziell** (Seite support.rockstargames.com aus dieser Umgebung nicht lesbar – Ich kann den Wortlaut nicht bestätigen).
+- Reale Personen: nur Fotos mit freier Lizenz; keine Bearbeitung, die einen falschen Eindruck erweckt.
+
 ## Thumbnail im Video (Vorgabe des Nutzers 12.11.2026)
 > „ab jetzt für jeden clip ein Thumbnail einarbeiten das zum clip passt, das ich auf den plattformen in den
 > schneide einstellungen das eine bild Auswählen kann als ‚thumbnail‘“
