@@ -24,6 +24,7 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Zeit-Welt v2 nach Regie 8,0 / Design 8,5 (`docs/kritik-zeitwelt-szenen.md`) · Text-Kollision: alles Lesbare (Karte, Bildnachweis) über y 1300 halten – Karte an den Bildrahmen gepinnt, Nachweis über den Rahmen; Requisit in der Hand dreht mit dem Arm (`reach`) → Gegendrehung um x = reach, sonst steht das Foto auf der Kante; Visier als Band mit dunklem Rahmen statt großer weißer Fläche (wirkte wie Bildschirm-Gesicht); „abgekratzt“ liest sich erst mit Finger + Splittern + Durchblick: gemalte Schicht vorn UND hinten mit derselben Lücke, Lampe dahinter; echtes Video erkennbar: Einstellung ganz nah im Glas beginnen, dann zurückfahren. Beleg `out/zw-fix7.jpg`, `out/zw-fix9.jpg`, `out/zeit-kontakt.png`.
 - 13.11.2026 · Zeit-Welt „In This City, You Pay With Time“ (Cinematic 3D, KnowToon-Prompt) v1 · **Experiment Kino-Look ohne
   Postprocessing:** PBR-Kunststoff (`meshPhysicalMaterial` mit Klarlack) + additive Lichtkegel (`LightShaft`, offener Zylinder mit
   Verlaufs-Textur) + Halo/Bokeh-Punkte + Partikel (Staub/Sand/Regen deterministisch aus Seed + Frame) + DOM-Ebene `FilmLook`

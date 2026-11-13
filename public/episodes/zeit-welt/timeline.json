@@ -222,7 +222,6 @@
   {
    "beat": "glassOfficeSign",
    "sfx": "boom",
-   "sticker": "REPORT EMPTY JARS",
    "color": "#FFD23F",
    "scene": "empty",
    "atMs": 19800
@@ -348,7 +347,6 @@
   {
    "beat": "rentNotice",
    "sfx": "boom",
-   "sticker": "RENT +1 WEEK",
    "color": "#FFD23F",
    "scene": "rent",
    "atMs": 44640

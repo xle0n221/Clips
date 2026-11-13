@@ -230,12 +230,15 @@ export const TimeJar: React.FC<{
           <meshStandardMaterial color={Z.gold} emissive={Z.gold} emissiveIntensity={1.15 * glow} roughness={0.9} toneMapped={false} />
         </mesh>
       ) : null}
-      {painted ? (
-        <mesh position={[0, 0.012 + sandH / 2, 0]}>
-          <cylinderGeometry args={[r * 0.93, r * 0.93, sandH, 28, 1, true, scratch * 1.2, Math.PI * 2 - scratch * 1.2]} />
-          <meshStandardMaterial color={Z.gold} emissive={Z.gold} emissiveIntensity={0.9 * glow} roughness={0.95} side={DoubleSide} toneMapped={false} />
-        </mesh>
-      ) : null}
+      {painted
+        ? // gemalter Sand: dünne Farbschicht innen; `scratch` (rad) = abgekratzter Streifen vorn UND hinten → man sieht durchs klare Glas
+          [0, Math.PI].map((o) => (
+            <mesh key={o} position={[0, 0.012 + sandH / 2, 0]}>
+              <cylinderGeometry args={[r * 0.93, r * 0.93, sandH, 28, 1, true, o + scratch / 2, Math.PI - scratch]} />
+              <meshStandardMaterial color={Z.gold} emissive={Z.gold} emissiveIntensity={0.9 * glow} roughness={0.95} side={DoubleSide} toneMapped={false} />
+            </mesh>
+          ))
+        : null}
       {/* Glas */}
       <mesh position={[0, h / 2, 0]}>
         <cylinderGeometry args={[r, r, h, 32, 1, true]} />
@@ -446,9 +449,18 @@ export const Klotz: React.FC<KlotzProps> = (p) => {
       {isOffice ? (
         // Milchglas-Visier statt Gesicht (keine Augen sichtbar), graue Kappe
         <>
-          <mesh position={[0, 0.02, 0.49]}>
-            <planeGeometry args={[1.08, 0.62]} />
-            <meshPhysicalMaterial color={Z.visor} roughness={0.25} transparent opacity={0.9} emissive="#9FC4DA" emissiveIntensity={0.35} />
+          {/* Visier-Band aus Mattglas über den Augen (kein Bildschirm-Gesicht): dunkler Rahmen, bläulich-frostige Scheibe */}
+          <mesh position={[0, 0.06, 0.482]}>
+            <planeGeometry args={[1.14, 0.42]} />
+            <meshStandardMaterial color="#262B33" roughness={0.5} />
+          </mesh>
+          <mesh position={[0, 0.06, 0.49]}>
+            <planeGeometry args={[1.02, 0.3]} />
+            <meshPhysicalMaterial color="#9DB6CA" roughness={0.35} transparent opacity={0.95} emissive="#6F92AE" emissiveIntensity={0.4} />
+          </mesh>
+          <mesh position={[0, -0.24, 0.482]}>
+            <planeGeometry args={[0.24, 0.03]} />
+            <meshBasicMaterial color="#2A1416" />
           </mesh>
           <RoundedBox args={[1.3, 0.3, 1.02]} radius={0.1} position={[0, 0.5, 0]}>
             <Plastic color="#3F454F" />

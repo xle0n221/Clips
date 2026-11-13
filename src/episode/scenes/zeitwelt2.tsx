@@ -150,7 +150,7 @@ export const ZwRent: React.FC = () => {
     return (
       <>
         {street}
-        <group position={[-0.95, 2.5, -2.0]} rotation={[0, 0, 0.04 * (1 - paperIn)]} scale={1.3 * paperIn}>
+        <group position={[-0.55, 2.5, -2.0]} rotation={[0, 0, 0.04 * (1 - paperIn)]} scale={1.3 * paperIn}>
           <mesh>
             <planeGeometry args={[1.5, 1.0]} />
             <meshStandardMaterial color={Z.paper} roughness={0.9} />
@@ -363,31 +363,56 @@ export const ZwPainted: React.FC = () => {
   const { frame, duration, beat } = useScene();
   const painted = beat("paintFlakes");
   const glass = beat("idaEyePop");
-  const cutAt = Math.max(50, glass - 36); // auf „inside“
+  const cutAt = Math.max(50, glass - 30); // kurz vor „glass“: abgekratzter Streifen ≈ 0,9 s stehen lassen
   const { shot, f } = cut(frame, [cutAt]);
   if (shot === 0) {
-    // Makro: Glas steht kopf, nichts fällt; ein Fingernagel kratzt – gelbe Farbe blättert, darunter klares Glas
-    const scratch = ramp(frame, painted - 10, painted + 20);
-    const nail = lerp(0.35, -0.1, ramp(frame, painted - 12, painted + 18));
-    const a = frameOn([0, 0.0, 0], 1.6, 0.5, 0.5, [0.25, 0.1, 1]);
-    const b = frameOn([0, 0.0, 0], 1.15, 0.5, 0.5, [0.2, 0.08, 1]);
+    // Makro: Glas steht kopf, nichts fällt. Antons Zeigefinger (Klotz-Finger mit Nagel) kratzt von oben nach unten einen
+    // Streifen Farbe ab – Splitter fallen, durch den Streifen sieht man klares Glas und die Lampe dahinter.
+    const scratch = ramp(frame, painted - 22, painted + 6);
+    const nailY = lerp(0.34, -0.3, ramp(frame, painted - 24, painted + 6));
+    const flakes = Array.from({ length: 22 }, (_, i) => {
+      const t0 = painted - 22 + i * 1.3;
+      const age = frame - t0;
+      const x0 = ((i * 37) % 9) * 0.012 - 0.05;
+      return { on: age >= 0, x: x0 + age * 0.002 * ((i % 3) - 1), y: lerp(0.34, -0.3, Math.min(1, (t0 - painted + 24) / 30)) - age * age * 0.0012, z: 0.27 + (i % 4) * 0.01, r: age * 0.3 + i };
+    });
+    const a = frameOn([0, 0.0, 0.1], 1.5, 0.5, 0.5, [0.12, 0.08, 1]);
+    const b = frameOn([0, -0.02, 0.1], 1.05, 0.5, 0.5, [0.08, 0.06, 1]);
     return (
       <>
         <SpotlightStage center={[0, -1.5, 0]} on={1} radius={1.4} height={8} />
-        <TimeJar position={[0, 0.3, 0]} rotation={[0, 0.9 - scratch * 0.9, Math.PI]} scale={1.7} fill={1} painted scratch={scratch * 2.4} glow={1} clip={false} />
-        {/* Antons Daumen mit Fingernagel */}
-        <group position={[0.28, nail, 0.24]}>
-          <mesh>
-            <sphereGeometry args={[0.13, 16, 12]} />
+        {/* Lampe hinter dem Glas: im abgekratzten Streifen sichtbar */}
+        <mesh position={[0.02, 0.05, -1.4]}>
+          <sphereGeometry args={[0.12, 16, 12]} />
+          <meshBasicMaterial color="#FFF1D6" toneMapped={false} />
+        </mesh>
+        <Halo at={[0.02, 0.05, -1.35]} size={1.6} color="#FFE7C0" opacity={0.7} />
+        <pointLight position={[0.6, 0.5, 1.2]} color="#FFE8C8" intensity={3} distance={4} decay={2} />
+        <TimeJar position={[0, 0.3, 0]} rotation={[0, 0, Math.PI]} scale={1.7} fill={1} painted scratch={scratch * 0.75} glow={0.85} clip={false} />
+        {/* Antons Zeigefinger: Klotz-Glied mit hellem Nagel, kommt von rechts oben */}
+        <group position={[0.06, nailY, 0.3]} rotation={[0, 0, -0.35]}>
+          <mesh position={[0.12, 0.3, 0.02]}>
+            <boxGeometry args={[0.14, 0.62, 0.14]} />
             <meshPhysicalMaterial color="#E8BE98" roughness={0.5} clearcoat={0.5} />
           </mesh>
-          <mesh position={[-0.08, 0.02, 0.07]} rotation={[0, 0.6, 0]}>
-            <boxGeometry args={[0.06, 0.07, 0.02]} />
-            <meshStandardMaterial color="#F6E4DA" roughness={0.3} />
+          <mesh position={[0.05, 0.0, 0.07]}>
+            <boxGeometry args={[0.11, 0.06, 0.03]} />
+            <meshStandardMaterial color="#FFF2EA" roughness={0.25} />
+          </mesh>
+          <mesh position={[0.24, 0.62, 0.0]}>
+            <boxGeometry args={[0.32, 0.3, 0.3]} />
+            <meshPhysicalMaterial color="#E8BE98" roughness={0.5} clearcoat={0.5} />
           </mesh>
         </group>
-        {/* abblätternde Farbschuppen */}
-        <Motes frame={Math.max(0, frame - painted + 10)} center={[0.15, -0.2, 0.28]} size={[0.25, 0.6, 0.15]} count={frame >= painted - 10 ? 26 : 0} drift={[0.001, -0.01, 0.002]} color={Z.gold} dot={0.04} opacity={0.95} seed={131} />
+        {/* Farbsplitter fallen */}
+        {flakes.map((fl, i) =>
+          fl.on ? (
+            <mesh key={i} position={[fl.x, fl.y, fl.z]} rotation={[fl.r, fl.r * 0.7, 0]}>
+              <boxGeometry args={[0.03, 0.022, 0.004]} />
+              <meshBasicMaterial color={Z.gold} toneMapped={false} />
+            </mesh>
+          ) : null,
+        )}
         <Shot frame={f} duration={cutAt} {...fly(a, b)} />
       </>
     );
@@ -424,7 +449,7 @@ export const ZwTwenty: React.FC = () => {
         <Klotz frame={frame} who="anton" position={[1.6, 0.6, -2.3]} sit rotation={[0, -0.4, 0]} eyes={frame >= here ? "happy" : "dot"} mouth="smile" blinkSeed={7} reach={[1.0, 1.0]} />
         <Klotz frame={frame} who="ida" position={[-0.8, 0, -1.2]} rotation={[0, 1.0, 0]} eyes="wide" mouth="o" blinkSeed={3} jar={{ fill: 0.12 }} />
         <TimeJar position={[-1.6, 1.37, -2.0]} scale={1.3} fill={0} glow={0} />
-        <Shot frame={f} duration={cutAt} orbit={{ center: [0.2, 2.4, -2.6], radius: 8.5, fromDeg: -35, toDeg: 35, height: 0.6, heightTo: 1.0 }} from={[0, 0, 0]} look={[0.0, 2.9, -3.6]} fov={40} shake={0.01} />
+        <Shot frame={f} duration={cutAt} orbit={{ center: [0.5, 2.4, -2.4], radius: 9.5, fromDeg: -20, toDeg: 30, height: 0.6, heightTo: 1.0 }} from={[0, 0, 0]} look={[0.4, 2.8, -3.2]} fov={40} shake={0.01} />
       </>
     );
   }

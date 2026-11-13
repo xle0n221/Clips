@@ -257,6 +257,9 @@ export const CounterMacro: React.FC<{ readonly frame: number; readonly pour?: nu
         </mesh>
         <TextLabel text="BREAD · 12 MIN" width={0.82} height={0.3} color="#1A1410" position={[0, 0, 0.005]} />
       </group>
+      {/* Ida hinter der Theke (Cover: Hauptfigur + Kernbild), Gesicht im Gold-Schein */}
+      <Klotz frame={frame} who="ida" position={[0.55, 0.45, -1.0]} rotation={[0, -0.35, 0]} scale={0.62} look={-0.25} nod={0.28} eyes="wide" mouth="o" blinkSeed={4} reach={[0.9, 0.9]} />
+      <pointLight position={[0.3, 1.5, -0.3]} color={Z.gold} intensity={1.6} distance={2.2} decay={2} />
       <BrassDish position={[tap[0] + 0.05, 1.01, tap[2]]} scale={0.75} fill={dish} />
       <mesh position={[jarPos[0] - 0.22, jarPos[1] + 0.25, jarPos[2] + 0.05]}>
         <sphereGeometry args={[0.24, 18, 14]} />
@@ -435,12 +438,13 @@ export const ZwWorld: React.FC = () => {
   }
   // Detail: Zeitglas am Gürtel einer Passantin (Messingdeckel, Hahn, Lederclip, Gold leuchtet)
   const hip: V3 = [0.42, 0.62 + 0.36 * 0.55, 0.42];
-  const a = frameOn(hip, 2.1, 0.5, 0.5, [0.35, 0.12, 1]);
-  const b = frameOn(hip, 1.6, 0.5, 0.5, [0.22, 0.1, 1]);
+  const a = frameOn(hip, 2.8, 0.45, 0.5, [0.35, 0.12, 1]);
+  const b = frameOn(hip, 2.2, 0.45, 0.5, [0.25, 0.1, 1]);
   return (
     <>
       <Atmos bg="#141C2A" fog={[2, 12]} sky="#7F97B8" ground="#121821" hemi={0.6} keyLight={{ pos: [3, 5, 4], color: "#CFDDF5", intensity: 1.3 }} rim={{ pos: [-3, 2, -4], color: "#8FB8FF", intensity: 3 }} />
-      <Klotz frame={frame} who="towns" shirt="#5B4E6A" position={[0, 0, 0]} rotation={[0, 0, 0]} blinkSeed={23} jar={{ fill: 0.72, glow: 1.6 }} />
+      <pointLight position={[1.2, 1.6, 1.6]} color="#DCE6F8" intensity={6} distance={5} decay={2} />
+      <Klotz frame={frame} who="towns" shirt="#7A6A90" pants="#4A5468" position={[0, 0, 0]} rotation={[0, 0, 0]} reach={[0.35, 0.25]} blinkSeed={23} jar={{ fill: 0.72, glow: 1.6 }} />
       <Halo at={[-1.6, 1.8, -3]} size={1.6} opacity={0.5} />
       <Halo at={[1.8, 1.2, -4]} size={2.1} opacity={0.4} />
       <Halo at={[0.8, 2.3, -5]} size={1.2} color="#9CC0FF" opacity={0.45} />
@@ -594,7 +598,7 @@ export const OfficeDoor: React.FC<{ readonly frost?: number; readonly sign?: boo
       <group position={[0, 4.1, 0.03]}>
         <mesh>
           <planeGeometry args={[3.6, 0.9]} />
-          <meshStandardMaterial color="#C9D3DC" roughness={0.6} />
+          <meshStandardMaterial color="#DDE5EC" emissive="#9FB4C8" emissiveIntensity={0.55} roughness={0.6} />
         </mesh>
         <TextLabel text="GLASS OFFICE" width={3.3} height={0.5} color="#1E2630" position={[0, 0.13, 0.01]} />
         <TextLabel text="REPORT EMPTY JARS" width={3.2} height={0.3} color="#6A2A32" position={[0, -0.24, 0.01]} />
@@ -743,13 +747,14 @@ export const ZwThread: React.FC = () => {
   const jarPos: V3 = [-1.6, 1.37, -2.0];
   if (shot === 0) {
     // Morgengrauen: Ida in der Tür, Anton schläft im Sessel, das Glas auf dem Nachttisch
-    const a = frameOn([-0.6, 2.0, -1.6], 9.0, 0.5, 0.5, [0.35, 0.15, 1]);
-    const b = frameOn([-0.8, 1.9, -1.6], 7.8, 0.5, 0.5, [0.3, 0.14, 1]);
+    const a = frameOn([-0.8, 2.0, -1.6], 7.6, 0.5, 0.5, [0.35, 0.15, 1]);
+    const b = frameOn([-1.0, 1.8, -1.7], 6.4, 0.5, 0.5, [0.3, 0.14, 1]);
     return (
       <>
         <AntonRoom frame={frame} light="dawn" />
         <Klotz frame={frame} who="anton" position={[1.6, 0.6, -2.3]} sit eyes="closed" mouth="flat" blinkSeed={7} reach={[0.9, 0.9]} />
-        <TimeJar position={jarPos} scale={1.4} fill={0.04} glow={2} />
+        <TimeJar position={jarPos} scale={1.8} fill={0.04} glow={2.5} />
+        <pointLight position={[-1.0, 2.6, 0.4]} color="#C8D8F2" intensity={6} distance={6} decay={2} />
         <Klotz frame={frame} who="ida" position={[-2.6, 0, 0.6]} rotation={[0, 0.9, 0]} look={0.2} eyes="dot" mouth="flat" brow={-0.4} blinkSeed={3} reach={[0.3, 0.2]} jar={{ fill: 0.6 }} />
         <Shot frame={f} duration={c1} {...fly(a, b)} />
       </>

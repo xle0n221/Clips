@@ -140,7 +140,7 @@
     ],
     "bars": []
   },
-  "note": "v1 (13.11.2026, Drehbuch). Paket: docs/paket-zeit-welt.md. Sprache Englisch (Korrektur Nutzer). 253 Skriptwörter (ohne * und |), 21 Szenen à 8–16 W, 0 fehlende Cue-Wörter; Plan 2,23 W/s (gemessen Lucia) → ≈ 113 s + 0,5 s Cover + 2 s End-Card. Re-Hook ab Wort 114/253 = 45 %. Wird es > 138 s: zuerst 'Every kid knows:' und 'everything' streichen. Kette: Preis in Lebenszeit → Opa hat 1 Tag → Regeln der Welt → leer = verschwinden (Angst) → Ida arbeitet (unfairer Lohn) → Miete frisst ihr Glas → Re-Hook → leere Frau lebt → Opa dreht Glas um → Sand gemalt (Twist) → 20 Jahre leer → Glas zählt Verkauftes, nicht Leben → Angst hält Stadt am Laufen → Franklin 1748 → wörtlich → unbezahlter Tag → Glass Office klopft (Cliffhanger) → Frage an Zuschauer. v1.1 (13.11.2026, Fakten-/Retention-Prüfung): Glass Office in 'empty' gesprochen (Anker für Cliffhanger), tower/rent leiser (serious/tense statt excited/indignant), Franklin 'published this advice' (Primärquelle: Druck 1748), Sticker 1748 nicht aufs spätere Porträt. v1.2 (13.11.2026, STEP 4): 268 W (+15), Sätze ≤ 12 W mit genau einem Akzent, Abschnitte setup/tension/twist/ending über section+delivery+emotion-Objekt, speed 1,05; Plan 2,6 W/s → ≈ 106 s gesamt; Re-Hook ab Wort 121/268 = 45 %; längste Szene 6.5 s. Inhalt/Fakten unverändert (Zusätze nur Fiktion: 'in a tiny workshop', 'She even hums', 'Nothing falls', 'Still fixing clocks').",
+  "note": "v1 (13.11.2026, Drehbuch). Paket: docs/paket-zeit-welt.md. Sprache Englisch (Korrektur Nutzer). 253 Skriptwörter (ohne * und |), 21 Szenen à 8–16 W, 0 fehlende Cue-Wörter; Plan 2,23 W/s (gemessen Lucia) → ≈ 113 s + 0,5 s Cover + 2 s End-Card. Re-Hook ab Wort 114/253 = 45 %. Wird es > 138 s: zuerst 'Every kid knows:' und 'everything' streichen. Kette: Preis in Lebenszeit → Opa hat 1 Tag → Regeln der Welt → leer = verschwinden (Angst) → Ida arbeitet (unfairer Lohn) → Miete frisst ihr Glas → Re-Hook → leere Frau lebt → Opa dreht Glas um → Sand gemalt (Twist) → 20 Jahre leer → Glas zählt Verkauftes, nicht Leben → Angst hält Stadt am Laufen → Franklin 1748 → wörtlich → unbezahlter Tag → Glass Office klopft (Cliffhanger) → Frage an Zuschauer. v1.1 (13.11.2026, Fakten-/Retention-Prüfung): Glass Office in 'empty' gesprochen (Anker für Cliffhanger), tower/rent leiser (serious/tense statt excited/indignant), Franklin 'published this advice' (Primärquelle: Druck 1748), Sticker 1748 nicht aufs spätere Porträt. v1.2 (13.11.2026, STEP 4): 268 W (+15), Sätze ≤ 12 W mit genau einem Akzent, Abschnitte setup/tension/twist/ending über section+delivery+emotion-Objekt, speed 1,05; Plan 2,6 W/s → ≈ 106 s gesamt; Re-Hook ab Wort 121/268 = 45 %; längste Szene 6.5 s. Inhalt/Fakten unverändert (Zusätze nur Fiktion: 'in a tiny workshop', 'She even hums', 'Nothing falls', 'Still fixing clocks'). v1.3 (13.11.2026, Szenen-Nacharbeit nach Regie/Design-Kritik): Sticker „REPORT EMPTY JARS“ und „RENT +1 WEEK“ gestrichen (doppelt zum Schild/Zettel im Bild).",
   "scenes": [
     {
       "id": "hook",
@@ -300,7 +300,6 @@
           "word": "empty",
           "beat": "glassOfficeSign",
           "sfx": "boom",
-          "sticker": "REPORT EMPTY JARS",
           "color": "#FFD23F"
         },
         {
@@ -437,7 +436,6 @@
           "word": "week",
           "beat": "rentNotice",
           "sfx": "boom",
-          "sticker": "RENT +1 WEEK",
           "color": "#FFD23F"
         },
         {

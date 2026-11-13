@@ -163,10 +163,10 @@ const RealDesk: React.FC<{ readonly frame: number; readonly kb: number; readonly
         <meshStandardMaterial color="#2E2A28" roughness={0.9} />
       </mesh>
       <Frame position={[0, 3.3, -1.1]} w={2.3} h={3.0} map={photo} kb={kb} />
-      <TextLabel text="OUR WORLD · NASA PHOTO FROM SPACE" width={2.3} height={0.14} color="#C8BCA8" position={[0, 1.62, -1.08]} />
-      <Plank size={[8, 0.25, 3]} position={[0, 1.0, 0.4]} color="#6E4A30" />
+      <TextLabel text="OUR WORLD · NASA PHOTO FROM SPACE" width={2.3} height={0.14} color="#C8BCA8" position={[0, 5.1, -1.08]} />
+      <Plank size={[8, 0.25, 3]} position={[0, 0.6, 0.4]} color="#6E4A30" />
       {card > 0 ? (
-        <group position={[0.9, 1.15, 0.6]} rotation={[-Math.PI / 2 + 0.25 * (1 - card), 0, -0.12]} scale={card}>
+        <group position={[0.95, 3.0, -0.92]} rotation={[0, 0, -0.08 + 0.3 * (1 - card)]} scale={0.55 * card}>
           <mesh>
             <planeGeometry args={[2.0, 1.3]} />
             <meshStandardMaterial color={Z.paper} roughness={0.9} />
@@ -174,6 +174,10 @@ const RealDesk: React.FC<{ readonly frame: number; readonly kb: number; readonly
           <TextLabel text="ADVICE TO A" width={1.7} height={0.24} color="#2A2018" position={[0, 0.35, 0.01]} />
           <TextLabel text="YOUNG TRADESMAN" width={1.8} height={0.24} color="#2A2018" position={[0, 0.07, 0.01]} />
           <TextLabel text="B. FRANKLIN · 1748" width={1.5} height={0.18} color="#6A4A30" position={[0, -0.32, 0.01]} />
+          <mesh position={[0, 0.58, 0.03]}>
+            <sphereGeometry args={[0.07, 12, 10]} />
+            <meshStandardMaterial color="#B8302A" roughness={0.4} />
+          </mesh>
         </group>
       ) : null}
       {quote > 0 ? (
@@ -214,8 +218,8 @@ export const ZwFranklin: React.FC = () => {
   }
   // Schreibtisch: daneben fällt eine eigene Papierkarte „ADVICE TO A YOUNG TRADESMAN · 1748“ (kein Faksimile)
   const card = ramp(frame, advice - 40, advice - 20, Easing.out(Easing.back(1.4)));
-  const a = frameOn([0.4, 2.5, -0.3], 6.0, 0.48, 0.5, [0, 0.3, 1]);
-  const b = frameOn([0.5, 2.2, -0.1], 5.0, 0.5, 0.5, [0, 0.38, 1]);
+  const a = frameOn([0.3, 3.5, -1.1], 6.2, 0.5, 0.5, [0.05, 0.05, 1]);
+  const b = frameOn([0.3, 3.5, -1.1], 5.6, 0.5, 0.5, [0.03, 0.04, 1]);
   return (
     <>
       <RealDesk frame={frame} kb={1} card={card} />
@@ -240,7 +244,7 @@ export const ZwLiteral: React.FC = () => {
     const b = frameOn([0, 3.0, -0.6], 4.2, 0.45, 0.5, [0, 0, 1]);
     return (
       <>
-        <RealDesk frame={frame} kb={1} card={1} quote={q} dissolve={dis} />
+        <RealDesk frame={frame} kb={1} card={0} quote={q} dissolve={dis} />
         <Shot frame={f} duration={cutAt} {...fly(a, b)} />
       </>
     );
@@ -345,10 +349,11 @@ export const ZwKnock: React.FC = () => {
     const b = frameOn([0, 1.75, 0.1], 1.8, 0.5, 0.5, [0.15, 0.05, 1]);
     return (
       <>
-        <Atmos bg="#0E1520" fog={[3, 14]} sky="#8FA6C6" ground="#121821" hemi={0.9} keyLight={{ pos: [-3, 5, 4], color: "#BFD2EE", intensity: 1.4 }} rim={{ pos: [3, 3, -3], color: "#9CC4FF", intensity: 1.8 }} />
+        <Atmos bg="#0E1520" fog={[3, 14]} sky="#B8C8E0" ground="#2A1E16" hemi={1.6} keyLight={{ pos: [-3, 5, 4], color: "#DCE8FA", intensity: 2.6 }} rim={{ pos: [3, 3, -3], color: "#9CC4FF", intensity: 1.8 }} />
+        <spotLight position={[1.6, 3.2, 2.4]} color="#E6F0FF" intensity={30} angle={0.5} penumbra={0.5} distance={8} decay={2} />
         <mesh position={[0, 1.7, -0.05]}>
           <boxGeometry args={[3, 4, 0.1]} />
-          <meshStandardMaterial color="#6E4A30" roughness={0.6} />
+          <meshStandardMaterial color="#8A5E3C" roughness={0.55} />
         </mesh>
         <mesh position={[0, 1.95, 0.05]}>
           <cylinderGeometry args={[0.06, 0.06, 0.08, 12]} />
@@ -356,8 +361,8 @@ export const ZwKnock: React.FC = () => {
         </mesh>
         <group position={[0, 1.95, 0.08]} rotation={[-lift * 0.9, 0, 0]}>
           <mesh position={[0, -0.22, 0]}>
-            <torusGeometry args={[0.2, 0.04, 10, 24]} />
-            <meshStandardMaterial color="#B8C0CA" metalness={0.85} roughness={0.25} />
+            <torusGeometry args={[0.2, 0.045, 10, 24]} />
+            <meshStandardMaterial color={Z.brass} metalness={0.7} roughness={0.3} />
           </mesh>
         </group>
         <Shot frame={f} duration={cutAt} {...fly(a, b)} shake={0.004} />
@@ -366,8 +371,8 @@ export const ZwKnock: React.FC = () => {
   }
   // Untersicht durch den Türspalt: zwei hohe Gestalten mit Milchglas-Visier, eine hält ein Bild von Antons Glas
   const open = ramp(frame, cutAt, cutAt + 18);
-  const a = frameOn([0, 3.6, -2.6], 8.4, 0.45, 0.5, [0.05, -0.32, 1]);
-  const b = frameOn([0, 3.6, -2.6], 7.2, 0.45, 0.5, [0.03, -0.36, 1]);
+  const a = frameOn([-0.3, 3.4, -2.6], 9.6, 0.45, 0.5, [0.05, -0.3, 1]);
+  const b = frameOn([-0.3, 3.4, -2.6], 8.4, 0.45, 0.5, [0.03, -0.34, 1]);
   return (
     <>
       <Atmos bg="#0C1018" fog={[6, 26]} sky="#9DB2D2" ground="#0E131A" hemi={0.6} rim={{ pos: [0, 5, -8], color: "#DDEEFF", intensity: 3 }} />
@@ -376,13 +381,13 @@ export const ZwKnock: React.FC = () => {
         <meshStandardMaterial color="#3A2E26" roughness={0.6} />
       </mesh>
       {/* Türrahmen im Vordergrund, Tür schwingt auf */}
-      {[-1.6, 1.6].map((x) => (
+      {[-2.3, 2.3].map((x) => (
         <mesh key={x} position={[x, 2.6, 0.4]}>
           <boxGeometry args={[0.5, 5.4, 0.5]} />
           <meshStandardMaterial color="#2A1E16" roughness={0.6} />
         </mesh>
       ))}
-      <group position={[1.35, 0, 0.4]} rotation={[0, open * 1.3, 0]}>
+      <group position={[2.05, 0, 0.4]} rotation={[0, open * 1.5, 0]}>
         <mesh position={[-1.35, 2.2, 0]}>
           <boxGeometry args={[2.7, 4.4, 0.12]} />
           <meshStandardMaterial color="#6E4A30" roughness={0.6} />
@@ -394,24 +399,20 @@ export const ZwKnock: React.FC = () => {
         <meshBasicMaterial color="#9FB8D6" toneMapped={false} />
       </mesh>
       <LightShaft from={[0, 5, -5]} to={[0, 0.1, 1.5]} radius={2.4} top={1.2} color="#DDEEFF" opacity={0.14} />
-      <Klotz frame={frame} who="office" position={[-0.75, 0, -2.4]} rotation={[0, 0.1, 0]} reach={[0.15, 0.15]} blinkSeed={201} />
-      <Klotz
-        frame={frame}
-        who="office"
-        position={[0.85, 0, -2.8]}
-        rotation={[0, -0.15, 0]}
-        reach={[0.15, 1.3]}
-        blinkSeed={202}
-        holdR={
-          <group position={[0, 0, 0.35]} rotation={[0, 0, 0]}>
+      <pointLight position={[0, 3.2, 1.2]} color="#C8D8EE" intensity={10} distance={9} decay={2} />
+      <pointLight position={[0.9, 2.6, -1.4]} color="#FFF4E0" intensity={4} distance={3} decay={2} />
+      <Klotz frame={frame} who="office" position={[-0.75, 0, -2.4]} rotation={[0, 0.1, 0]} reach={[1.35, 0.15]} blinkSeed={201}
+        holdL={
+          <group position={[0.1, 0.15, 0.3]} rotation={[1.35, 0.35, 0]}>
             <mesh>
-              <planeGeometry args={[0.7, 0.9]} />
-              <meshStandardMaterial color="#EDE6D6" roughness={0.9} side={DoubleSide} />
+              <planeGeometry args={[1.0, 1.25]} />
+              <meshBasicMaterial color="#F4EEE0" side={DoubleSide} toneMapped={false} />
             </mesh>
-            <TimeJar position={[0, -0.25, 0.02]} scale={1.2} fill={0.8} painted glow={0.5} clip={false} />
+            <TimeJar position={[0, -0.35, 0.03]} scale={1.7} fill={0.8} painted glow={0.6} clip={false} />
           </group>
         }
       />
+      <Klotz frame={frame} who="office" position={[0.85, 0, -2.8]} rotation={[0, -0.15, 0]} reach={[0.15, 0.15]} blinkSeed={202} />
       <Motes frame={frame} center={[0, 2.5, -2]} size={[6, 5, 4]} count={90} drift={[0.002, 0.002, 0]} color="#E4EEFF" dot={0.06} opacity={0.5} seed={203} />
       <Shot frame={f} duration={duration - cutAt} {...fly(a, b)} />
     </>
@@ -444,14 +445,13 @@ const RealVideoInJar: React.FC<{ readonly frame: number; readonly position: V3; 
 };
 
 export const ZwQuestion: React.FC = () => {
-  const { frame, duration, beat } = useScene();
-  const sell = beat("realCommutersInJar");
-  // Langsamer Push-in auf Idas Glas im Regal; im Glas spiegeln sich echte Städte bei Nacht (ISS-Video)
+  const { frame, duration } = useScene();
+  // Idas Glas im Regal; im Glas spiegeln sich echte Städte bei Nacht (ISS-Video)
   const jar: V3 = [1.6, 3.42, -5.3];
   const s = 2.0;
-  const vid = ramp(frame, 6, sell);
-  const a = frameOn([jar[0], jar[1] + 0.36, jar[2]], 2.2, 0.47, 0.5, [0.1, 0.05, 1]);
-  const b = frameOn([jar[0], jar[1] + 0.36, jar[2]], 1.25, 0.47, 0.5, [0, 0.02, 1]);
+  // erst ganz nah: die echte ISS-Aufnahme füllt das Bild (als echte Stadtlichter erkennbar), dann Rückfahrt aufs ganze Glas
+  const a = frameOn([jar[0], jar[1] + 0.34, jar[2] + 0.3], 0.5, 0.5, 0.5, [0, 0.02, 1]);
+  const b = frameOn([jar[0], jar[1] + 0.36, jar[2]], 1.35, 0.47, 0.5, [0.06, 0.04, 1]);
   return (
     <>
       <WorkshopSet frame={frame} warm={0.6} />
@@ -459,11 +459,11 @@ export const ZwQuestion: React.FC = () => {
       {/* dunkle Rückwand im Glas: davor leuchten die echten Stadtlichter (additiv) */}
       <mesh position={[jar[0], jar[1] + 0.18 * s, jar[2] - 0.01]} scale={s * 0.97}>
         <cylinderGeometry args={[0.145, 0.145, 0.33, 32, 1, true, Math.PI / 2, Math.PI]} />
-        <meshBasicMaterial color="#05070C" side={DoubleSide} transparent opacity={0.85 * vid} />
+        <meshBasicMaterial color="#05070C" side={DoubleSide} transparent opacity={0.85} />
       </mesh>
-      <RealVideoInJar frame={frame} position={[jar[0], jar[1] + 0.18 * s, jar[2] + 0.004]} scale={s * 1.03} opacity={0.2 + 0.8 * vid} />
-      <Halo at={[jar[0], jar[1] + 0.25, jar[2] + 0.3]} size={0.8} color="#9CC4FF" opacity={0.3 * vid} />
-      <Shot frame={frame} duration={duration} {...fly(a, b)} ease="out" />
+      <RealVideoInJar frame={frame} position={[jar[0], jar[1] + 0.18 * s, jar[2] + 0.004]} scale={s * 1.03} opacity={1} />
+      <Halo at={[jar[0], jar[1] + 0.25, jar[2] + 0.3]} size={0.8} color="#9CC4FF" opacity={0.3} />
+      <Shot frame={frame} duration={duration} {...fly(a, b)} span={[22, duration - 10]} ease="inOut" />
     </>
   );
 };
