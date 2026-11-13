@@ -92,3 +92,46 @@ Teilstring-Skript gegen den geladenen Artikeltext: Nr. 1–18 = 18/18 Zitate gef
 - `www.rockstargames.com` (Charakterseiten, Newswire) für den wörtlichen Bio-Text, Alter, Herkunft.
 - Wikipedia-Artikel „Lucia Caminos“ (falls vorhanden) mit 15 s Abstand laden.
 - Nach 19.11.2026: Story-Fakten aus dem fertigen Spiel (Spoiler-Regel beachten).
+
+## Faktenprüfung Drehbuch v1 (13.11.2026)
+Prüfer: Faktenprüfer · Gegenstand: `episodes/lucia-gta6.json` v1 (Sprechtext, Sticker, HUD, Cover, Bild-Hinweise) · Drehbuch **nicht** geändert.
+
+**Neu geprüft:** Wikipedia-API heute erneut geladen (`titles=Lucia_Caminos` leitet auf „Grand Theft Auto VI“ um, 31 435 Zeichen = gleicher Stand wie Recherche; einen eigenen Lucia-Artikel gibt es nicht). Alle W-Zitate per Teilstring erneut gefunden, dazu neu: „Following two delays, further leaks, and an extensive marketing campaign, it is scheduled to be released on 19 November 2026“ (Einleitung) und „The first trailer in December 2023 revealed a 2025 release window“. 5 unabhängige WebSearch-Läufe (Rockstar-Bio, Trailer 2, „way out“, Release-Stand Nov. 2026). `gta.wiki` per WebFetch = ENOTFOUND → abgebrochen, keine Freigabe beantragt (Auftrag). **Alles bleibt Tertiär**; WS = Suchzusammenfassung, Wortlaut nicht geprüft.
+
+**WS-Befunde neu:** (a) Bio-Glück: 3 von 4 Zusammenfassungen heute „Sheer luck got her out“ (gtaintel, thegameswiki, redbull/gfinity), „pure luck“ nur noch in der alten Recherche-Zusammenfassung; eine Fanquelle nennt „paroled“ – widerspricht, nicht übernehmen. (b) Vater: „taught her to fight as soon as she could walk“ / „from childhood“ – sinngemäß übereinstimmend. (c) Trailer 2 (6.5.2025): mp1st, tomsguide, CBS, pcgamer laut Zusammenfassung übereinstimmend „Jason … meets her when she's released from prison“ / „picking her up as she's released“. (d) „A life with Jason could be her way out“: **widersprüchlich** – ein Lauf fand die Wendung nicht („I didn't find the phrase ‚way out'“), ein anderer behauptet sie ohne Wortlaut-Beleg; die mehrfach zitierte Bio endet sinngemäß mit „prepared to take matters into her own hands“. → Ich kann das nicht bestätigen. (e) Release: Fox 10 (16.10.2026) „GTA 6 locks in Nov. 19 release date“, Preloads ab 12.11.; keine Meldung einer neuen Verschiebung gefunden, aber auch keine Quelle vom November.
+
+| Nr | Satz/Label (Szene) | Urteil | Beleg | Ersatztext |
+| --- | --- | --- | --- | --- |
+| P1 | „Lucia, the woman you'll play in GTA 6, …“ (hook) | bestätigt | W Nr. 9: „played from a third-person view as either Jason Duval or Lucia Caminos“ | – |
+| P2 | „… has done *time*.“ (hook) | bestätigt | W Nr. 4 „imprisoned at Leonida Penitentiary“; „done time“ = umgangssprachlich für Haft, keine Dauer behauptet | – |
+| P3 | Sticker „SERVED TIME“, „LUCIA“, „WHY?“ (hook) | bestätigt | wie P2; „WHY?“/„LUCIA“ ohne Sachaussage | – |
+| P4 | Cover „WHO IS LUCIA?“ / „GTA 6 · her file, before Nov 19“; HUD-Titel „CASE FILE: LUCIA“, STATUS „UNKNOWN“ | bestätigt | Frage/Erzählrahmen; „before Nov 19“ nur gültig bei Veröffentlichung vor dem 19.11. | nach 19.11.: „GTA 6 · her file“ |
+| P5 | „Rockstar says her *dad* taught her to fight when she was little.“ (dad) | bestätigt (WS, sinngemäß, mehrfach übereinstimmend) | WS: „taught her to fight as soon as she could walk“ / „from childhood“ (gtaintel, thegameswiki); Rockstar-Seite nicht gelesen | – |
+| P6 | Sticker „TRAINED TO FIGHT“; HUD „FIGHTER“ (dad) | bestätigt (WS) | wie P5; FIGHTER = Kurzform von P5 | – |
+| P7 | Bild: Boxhandschuhe + Pratzen (dad) | Hinweis (Bild) | Kampfart unbelegt; als Stilmittel zulässig, nicht als „Boxerin“ beschriften | – |
+| P8 | „She grew up a fighter.“ (family) | bestätigt (Ableitung aus P5) | keine neue Tatsache | – |
+| P9 | „And fighting for her *family* is what landed her in Leonida Penitentiary.“ | bestätigt | W Nr. 4 „imprisoned at Leonida Penitentiary after fighting for her family“; WS Nr. 20 gleichlautend | – |
+| P10 | Sticker „FOR HER FAMILY“, „LEONIDA PENITENTIARY“; Feld „REASON: FIGHTING FOR FAMILY“; HUD „INMATE“ | bestätigt | wie P9; INMATE = imprisoned | – |
+| P11 | Bild: drei Familien-Silhouetten (family) | Hinweis (Bild) | Familiengröße unbelegt – drei Figuren behaupten eine Zahl; besser eine unscharfe Gruppe ohne zählbare Köpfe | – |
+| P12 | „So how did she get out? Rockstar's answer, more or less: *luck*.“ (out) | bestätigt (WS) | WS heute 3× „Sheer luck got her out“; „more or less“ kennzeichnet sinngemäß; Adjektiv-Streit (sheer/pure) durch bloßes „luck“ umgangen | – |
+| P13 | Sticker „RELEASED · HOW? LUCK“ vs. Bildvermerk „HOW? UNKNOWN“ (out) | umformulieren | Widerspruch in derselben Szene (einmal „luck“, einmal „unknown“); belegt ist nur „luck“, das *Wie* (Bewährung, Fehler …) ist offen | Sticker „RELEASED · LUCK“, Bildvermerk „DETAILS? UNKNOWN“ |
+| P14 | HUD „RELEASED“ (out) | bestätigt | WS P12 + Trailer-2-Berichte („released from prison“); neutral, kein Weg behauptet | – |
+| P15 | „But getting out is the *easy* part.“ / Sticker „THE EASY PART“ | bestätigt (Pointe/Überleitung) | Wertung, keine Sachaussage; Fortsetzung durch W Nr. 5 gedeckt | – |
+| P16 | „Trailer two shows Jason picking her up, …“ (jason) | bestätigt (WS, mehrere Berichte) | WS: mp1st/tomsguide/CBS „Jason … meets her when she's released from prison“; Trailer nicht gesehen | – |
+| P17 | „… and Rockstar hints a life with him might be her way *out*.“ | **umformulieren** | WS widersprüchlich (siehe d); Wortlaut nicht auffindbar → Ich kann das nicht bestätigen | ganzer Satz (19 W → 17 W): „Trailer two shows Jason picking her up as she walks out, and the two become a criminal *couple*.“ – Beleg W „The story follows a criminal couple: Jason Duval … and Lucia Caminos“ |
+| P18 | Straßenschild „WAY OUT →“, Sticker „WAY OUT?“ (jason) | **streichen** | hängt an P17 | Sticker „CRIMINAL COUPLE“ (Cue-Wort „couple“), Schild weglassen |
+| P19 | Sticker „JASON“ | bestätigt | W Nr. 1 | – |
+| P20 | „Think Bonnie and Clyde, *Florida* style.“ + Sticker „BONNIE & CLYDE, FLORIDA STYLE“ | bestätigt | W Nr. 6 „inspired by Bonnie and Clyde“; Nr. 2 Leonida „based on Florida“ | – |
+| P21 | „Then a bank job goes *wrong*.“ + Sticker „BANK JOB: FAILED“ | bestätigt | W Nr. 5 „Following a failed bank heist“; „Then“ = Erzählfolge, Quelle gibt keinen Zeitpunkt (vertretbar, weil Trailer 2 die Freilassung vor dem Paar-Leben zeigt) | – |
+| P22 | „They run into a state-wide conspiracy, and now they have to protect each *other*.“ + Sticker „STATE-WIDE CONSPIRACY“, „PROTECT EACH OTHER“ | bestätigt | W Nr. 5 „encounters a state-wide conspiracy and are forced to protect each other“ | – |
+| P23 | HUD „WANTED“ (heist) | **umformulieren** | Quelle sagt nirgends, dass sie gesucht/gejagt werden; „Bildwitz“ ist trotzdem eine Statusbehauptung | HUD „HEIST FAILED“ |
+| P24 | „Rockstar's writers want them both tough, vulnerable, *flawed*: right sometimes, wrong sometimes.“ (flawed) | **umformulieren** | W Nr. 7: *eine* Autorin (Elizabeth Gauvey-Kern) sagte, „the studio *wanted* both protagonists to be vulnerable, tough, flawed, right sometimes, wrong sometimes“ – Plural „writers“ und Präsens „want“ nicht gedeckt; **„them both“ ist richtig** (both protagonists) | (12 W → 11 W): „Rockstar wanted them both tough, vulnerable, *flawed*: right sometimes, wrong sometimes.“ |
+| P25 | Stempel „TOUGH“, „VULNERABLE“, „FLAWED“; Waage „RIGHT“/„WRONG“ | bestätigt | W Nr. 7 | – |
+| P26 | „And soon, *you* get to play as her, or as Jason.“ + HUD „PLAYABLE“, Karten „LUCIA/JASON“, „WHO DO YOU PICK?“ | bestätigt | W „played … as either Jason Duval or Lucia Caminos“; „soon“ nur bis 19.11. gültig | nach 19.11.: „And now, *you* get to play as her, or as Jason.“ |
+| P27 | „The game arrives November 19th, …“ + Sticker „NOV 19“ | bestätigt (geplant, nicht erschienen) | W Einleitung „scheduled to be released on 19 November 2026“; WS Fox 10, 16.10.2026 „locks in Nov. 19“; heute 13.11., 6 Tage vorher. Termin ist ein Plan – vor Veröffentlichung am Tag selbst nochmal prüfen | – |
+| P28 | „… after two *delays*.“ + Sticker „DELAYED ×2“ | bestätigt | W Einleitung „Following two delays“; Entwicklung: 2025-Fenster → 26.05.2026 → 19.11.2026 | – |
+| P29 | Kalenderblätter: nur „MAY 26, 2026“ datiert | Hinweis (Bild) | belegt; das erste Blatt sollte „2025“ (nicht ein Tagesdatum) zeigen – W „revealed a 2025 release window“ | erstes Blatt „2025“, zweites „MAY 26, 2026“ |
+| P30 | „So get ready to finally meet…“ (Loop) | bestätigt | keine Sachaussage | – |
+| P31 | Bild: Masken im Banküberfall, Gitterstäbe im Cover, Häftlings-Overall | bestätigt / schwach | Maske W Nr. 12 (Ladenüberfall, nicht Bank – als Motiv ok); Overall nur WS Nr. 26 (schwach), als Zeichen ok, nicht beschriften | – |
+
+**Ergebnis:** 31 Prüfpunkte (Sprechtext-Sätze, Labels/HUD/Cover, Bild-Hinweise). Bestätigt 23 (davon 5 nur WS, sinngemäß, mehrfach übereinstimmend), umformulieren 4 (P13, P17, P23, P24), streichen 1 (P18), Bild-Hinweise 3 (P7, P11, P29). Zeitabhängig: P4, P26, P27 bei Veröffentlichung nach dem 19.11. anpassen. Note fürs Drehbuch: 8 – Kern sauber, ein unbelegtes Bio-Zitat („way out“), ein unbelegtes HUD-Label, Präsens/Plural bei B10.
