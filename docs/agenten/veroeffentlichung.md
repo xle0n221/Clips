@@ -14,6 +14,7 @@ Schreibt für jedes fertige Video YouTube-Shorts- und TikTok-Texte (Titel, Besch
 - Von Faktenprüfer: Kausal-Wörter („so“, „because“, „killed“) in Titel und Caption gegen die Freigabeliste prüfen – sie erzeugen Behauptungen, die die Quelle nicht macht (`faktencheck-drehbuch-roemisches-reich.md`) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Tyson/UFC/Jensen · **Text-Fakten gegen Sprechtext der Szenen abgleichen, nicht gegen Recherche:** Recherche-Dateien enthalten mehr (Namen, Kurse), als das Video sagt; nur Gesagtes in Titel/Caption. Bei realen Personen mit Vorwürfen (Jensen): „reports, not findings“ in die Beschreibung, sensible Verurteilung (Tyson) nicht in Titel/Caption, Quellenzeile ehrlich „primary sources not accessible“. · `out/publish-*.json`
 - 09.11.2026 · Rom · **Titel gegen Hook-Zeitpunkt messen:** Zu jeder Titel-Variante notieren, in welcher Sekunde das Video ihr
   Versprechen einlöst (Wortzeit aus `captions.json`, Sticker aus `timeline.json`). Titel A „You bought the Roman Empire“ → 0,92 s
   („auctioned“ + Sticker), Titel B „He lasted 66 days“ → 19,3 s. Darum A als Hauptvariante. · `docs/veroeffentlichung-roemisches-reich.md`
