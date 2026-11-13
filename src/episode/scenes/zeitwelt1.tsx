@@ -249,32 +249,21 @@ export const CounterMacro: React.FC<{ readonly frame: number; readonly pour?: nu
       {/* Theke */}
       <Plank size={[6, 0.25, 2.4]} position={[0, 0.88, 0]} color="#9A7050" />
       <Bread position={[0.85, 1.0, -0.35]} rotation={[0, -0.35, 0]} scale={0.95} />
-      {/* Preisschild am Spieß */}
-      <mesh position={[0.3, 1.62, 0.05]}>
-        <cylinderGeometry args={[0.012, 0.012, 0.75, 6]} />
-        <meshStandardMaterial color="#C9C2B4" metalness={0.6} roughness={0.3} />
-      </mesh>
-      <group position={[0.3, 1.98, 0.06]} rotation={[0, -0.12, 0.04]}>
+      {/* Preisschild lehnt vorn am Brot */}
+      <group position={[0.75, 1.32, 0.22]} rotation={[-0.25, -0.3, 0.03]}>
         <mesh position={[0, 0, -0.01]}>
           <planeGeometry args={[1.12, 0.46]} />
           <meshStandardMaterial color={Z.paper} roughness={0.9} />
         </mesh>
         <TextLabel text="BREAD · 12 MIN" width={1.02} height={0.36} color="#1A1410" position={[0, 0, 0.005]} />
       </group>
-      <BrassDish position={[-0.15, 1.01, 0.3]} scale={0.75} fill={dish} />
-      {/* Ida-Arm (petrol) von links oben, Fäustling hält das Glas */}
-      <group position={[jarPos[0] - 0.55, jarPos[1] + 0.2, jarPos[2]]} rotation={[0, 0, -1.05]}>
-        <mesh position={[0, 0.55, 0]}>
-          <boxGeometry args={[0.32, 1.2, 0.34]} />
-          <meshPhysicalMaterial color={Z.idaShirt} roughness={0.42} clearcoat={0.5} />
-        </mesh>
-      </group>
+      <BrassDish position={[tap[0] + 0.05, 1.01, tap[2]]} scale={0.75} fill={dish} />
       <mesh position={[jarPos[0] - 0.22, jarPos[1] + 0.25, jarPos[2] + 0.05]}>
         <sphereGeometry args={[0.24, 18, 14]} />
         <meshPhysicalMaterial color={Z.skin} roughness={0.5} clearcoat={0.5} />
       </mesh>
-      <TimeJar position={jarPos} rotation={[0, 0.25, tilt]} scale={s} fill={0.62} clip={false} />
-      <SandStream frame={frame} from={tap} to={[-0.15, 1.08, 0.3]} width={0.018} on={pour} />
+      <TimeJar position={jarPos} rotation={[0, 0, tilt]} scale={s} fill={0.62} clip={false} />
+      <SandStream frame={frame} from={tap} to={[tap[0] + 0.05, 1.08, tap[2]]} width={0.018} on={pour} />
       {/* Hintergrund: Regal mit Broten, warme Bokeh-Lichter, kaltes Fenster */}
       <Plank size={[6, 0.12, 0.6]} position={[0.5, 2.6, -2.6]} color="#7A5A40" />
       {[-1.5, -0.3, 0.9, 2.1].map((x) => (
