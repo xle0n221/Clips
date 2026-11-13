@@ -1,0 +1,358 @@
+{
+  "id": "lucia-gta6",
+  "title": "Who is Lucia from GTA 6?",
+  "engine": "chatterbox",
+  "voice": "am_fenrir",
+  "voicePreset": "lebendig",
+  "speed": 1.0,
+  "pauseMs": 350,
+  "sceneGapMs": 600,
+  "lengthSec": 68,
+  "years": [],
+  "say": {
+    "Lucia": "Loo-see-ah",
+    "Leonida": "Lee-oh-nee-dah",
+    "GTA": "G T A"
+  },
+  "cover": {
+    "text": "WHO IS LUCIA?",
+    "sub": "GTA 6 · her file, before Nov 19",
+    "frames": 15
+  },
+  "sources": "docs/quellen-lucia-gta6.md, Abschnitt 'Freigabeliste' (B2–B11) + Tabelle Nr. 4–9, 16–17, 19–22, 24. Alles Tertiär: Nr. 4–17 wörtlich gegen Wikipedia geprüft (Teilstring), Nr. 19–24 (Rockstar-Bio, Trailer 2) nur WebSearch-Zusammenfassung – deshalb im Sprechtext mit 'Rockstar says / Rockstar's answer, more or less / Rockstar hints / Trailer two shows' formuliert, nie als wörtliches Zitat. Keine Rockstar-Seite gelesen, kein Trailer gesehen.",
+  "factcheck": "offen – Faktenprüfer bitte v. a. B5 'luck' (sheer vs. pure, Nr. 21), B6 'Trailer two shows Jason picking her up' (Nr. 24) und 'a life with him might be her way out' (Nr. 22), B2 Vater (Nr. 19), 'them both' bei B10 (Nr. 7 gilt für beide Hauptfiguren, Autorin Elizabeth Gauvey-Kern).",
+  "version": "v1 (13.11.2026, Drehbuch-Erstentwurf)",
+  "pointe": "Lucia's whole file is one fight for a way out – and on November 19 the player becomes that way out.",
+  "music": {
+    "mood": "dark",
+    "bpm": 128,
+    "why": "Krimi-Romanze im Florida-Licht (Gefängnis, Banküberfall, Bonnie-und-Clyde-Paar): dunkles, aber warmes Moll-R&B mit Rhodes, 808-Glide und Half-Time-Groove passt zu 'Verbrechen + Gefühl' und bleibt angenehm hörbar (Rap/R&B-Grundcharakter laut Nutzer). Gegen Jensen Huang (ebenfalls 'dark', 136 BPM) unterscheidbar durch langsameres Tempo 128 und Seed = 'lucia-gta6' (andere Tonart/Akkordfolge/Motiv). Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'wrong' (heist) Beat 1 Takt weg + Drop zurück auf 'other'; bei 'luck' kurzer Stopp (Pointe)."
+  },
+  "style": {
+    "look": "2d",
+    "why": "Eigenständiger flacher Comic-/Paper-Cut-Look mit Akten-Rahmen ('CASE FILE') erzählt eine Lebensgeschichte als Dossier am klarsten und hält bewusst Abstand zu Rockstars gemaltem Cover-Art- und Trailer-Stil – keine Verwechslung mit Marken-Artwork, kein nachgebautes Standbild.",
+    "characters": "LUCIA = eigene Cartoon-Figur, nicht porträtnah zu einer realen Person (Sprecherin unbestätigt): dunkler Zopf, Signalfarbe Türkis (Jacke/Haarband) als einziges durchgehendes Merkmal, wechselt Kleidung je Station (Kinder-Boxhandschuhe → neutraler Häftlings-Overall in eigener Farbe Orange-Sand → Alltagskleidung → Silhouette mit Maske beim Überfall, belegt Nr. 12 nur als Bildmotiv). JASON = eigene Figur, Signalfarbe Pink, nie größer als Lucia im Bild (sie ist die Hauptfigur). VATER = gesichtslose Silhouette mit Boxpratzen, kein Name. Farbwelt Florida-Sonnenuntergang (Pink, Türkis, Orange) als freie Stilwahl, nicht als 'Rockstar-Farben'. Keine Logos, kein GTA-/Rockstar-Schriftzug, keine Trailer-Motive, Waffen nur als Silhouette, nie im Detail."
+  },
+  "note": "Themen-Art: fiktive Figur/Spiel (Person-Biografie C1 + Release-Aufhänger). Pointe zuerst festgelegt (Feld pointe). Stationen 9 (Deckel ≤ 9 aus Jensen-Lehre eingehalten): hook (Frage: wer + was brachte sie in Haft) → Vater lehrt Kämpfen → Kampf für Familie = Gefängnis (Antwort auf Hook-Frage 2) → raus durch 'luck' + Re-Hook 'getting out is the easy part' → Jason holt sie ab, möglicher Ausweg, Bonnie & Clyde → Banküberfall scheitert, Verschwörung, gegenseitig schützen (Eskalation) → Wesen: tough/vulnerable/flawed → du spielst sie → Release 19.11. + Loop '…finally meet' → 'Lucia, the woman you'll play…'. Roter Faden: Akte CASE FILE: LUCIA, Status-Stempel wechselt (HUD-Zähler STATUS: UNKNOWN → FIGHTER → INMATE → RELEASED → WANTED → PLAYABLE). Wortzahl 150 Skriptwörter (Zählskript: ohne * und |, 0 fehlende Cue-Wörter) → 62,5 s bei 2,4 W/s, 58–65 s bei 2,3–2,6; mit den Erzähler-Pausen (gemessen bisher 1,75–2,1 W/s gesamt) eher 72–80 s → lengthSec 68 als Plan, Stimme misst nach. Wird es > 80 s: zuerst 'Think Bonnie and Clyde, Florida style.' (6 W) streichen, dann ', or as Jason'. Re-Hook 'But getting out is the easy part.' ab Wort 62/150 = 41 %. Release-Datum zeitlos ('arrives November 19th'); Cover-Untertitel 'before Nov 19', keine Tageszahl ('in six days') im Ton oder Bild. Bewusst weggelassen: B1 Liberty City (Quelle mehrdeutig), Nr. 3 'first non-optional female protagonist' (stark, aber nicht in der Freigabeliste – Faktenprüfer könnte es für v2 freigeben), Sprecherin/Manni L. Perez, Alter, Herkunft/Ethnie, Mutter (Nr. 23), Art der Freilassung, Leaks, Delikt/Strafdauer.",
+  "hud": {
+    "title": "CASE FILE: LUCIA",
+    "counters": [
+      {
+        "id": "status",
+        "label": "STATUS",
+        "value": "UNKNOWN"
+      }
+    ],
+    "bars": []
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "delivery": "punch",
+      "emotion": "tense",
+      "text": "Lucia, the woman you'll play in GTA 6, has done *time*. | So who is she, and what put her there?",
+      "visual": "2D Comic/Paper-Cut. Cover 0–0,5 s: Lucia (eigene Cartoon-Figur, türkises Haarband) im Profil hinter Gitterstäben, dahinter Florida-Sonnenuntergang (Pink/Orange) mit Palmen-Silhouetten; Titel 'WHO IS LUCIA?' in Akzentgelb, mittig oberes Drittel. Ab 0,5 s Kamera zieht auf: Bild wird zum Foto in einer Akte 'CASE FILE: LUCIA'. Auf 'time' Stempel 'SERVED TIME' knallt auf die Akte. Auf 'there' Fragezeichen-Sticker über dem leeren Feld 'REASON: ?'.",
+      "sources": [
+        "Spielbar als Lucia: Nr. 9 „Their relationship will depend on the player's actions“ + Freigabeliste B10 (zugleich spielbar) – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft.",
+        "Haft im Leonida Penitentiary: Nr. 4 „who was imprisoned at Leonida Penitentiary after fighting for her family from Liberty City“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. 'has done time' = Umgangssprache für diese Haft.",
+        "Gitter im Cover = Bildmotiv (Nr. 26 nur schwach belegt, deshalb nicht gesprochen); keine Nachzeichnung eines Trailer-Bilds."
+      ],
+      "cues": [
+        {
+          "word": "Lucia",
+          "beat": "fileOpen",
+          "sticker": "LUCIA",
+          "color": "#2EC4B6",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "time",
+          "beat": "stampServedTime",
+          "sticker": "SERVED TIME",
+          "color": "#FF3B3B",
+          "sfx": "boom"
+        },
+        {
+          "word": "there",
+          "beat": "reasonBlank",
+          "sticker": "WHY?",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "dad",
+      "delivery": "normal",
+      "emotion": "warm",
+      "text": "Rockstar says her *dad* taught her to fight when she was little.",
+      "visual": "Rückblende im Akten-Foto (warme Sepia-Töne): kleine Lucia mit zu großen Boxhandschuhen, Vater als gesichtslose Silhouette hält Pratzen. Auf 'fight' trifft ihr Schlag die Pratze, Staub-Puff. HUD STATUS → 'FIGHTER'.",
+      "sources": [
+        "B2 / Nr. 19: Rockstar-Bio (Mai 2025) sinngemäß „Lucia's father trained her to fight from childhood“ – gtabase.com/de/gta-6/charaktere/lucia (nur Suchtreffer) – Tertiär, WebSearch-Zusammenfassung, Wortlaut nicht geprüft; deshalb 'Rockstar says' + sinngemäß, kein Zitat."
+      ],
+      "cues": [
+        {
+          "word": "dad",
+          "beat": "dadSilhouette",
+          "sfx": "pop"
+        },
+        {
+          "word": "fight",
+          "beat": "padHit",
+          "sticker": "TRAINED TO FIGHT",
+          "color": "#FFD23F",
+          "sfx": "boom",
+          "hud": {
+            "id": "status",
+            "value": "FIGHTER"
+          }
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "delivery": "tense",
+      "emotion": "serious",
+      "text": "She grew up a fighter. | And fighting for her *family* is what landed her in Leonida Penitentiary.",
+      "visual": "Lucia wächst im Zeitraffer (Kind → Jugendliche → Erwachsene), türkises Band bleibt. Auf 'family' stellt sie sich schützend vor drei gesichtslose Familien-Silhouetten (keine Namen, keine Anzahl behauptet). Auf 'Penitentiary' Gittertür fällt zu, Akte zeigt Feld 'REASON: FIGHTING FOR FAMILY'. Kein Delikt, keine Strafdauer im Bild. HUD STATUS → 'INMATE'. Gitterschatten über der Szene.",
+      "sources": [
+        "B3/B4 / Nr. 4: „who was imprisoned at Leonida Penitentiary after fighting for her family from Liberty City“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft.",
+        "Nr. 20 (Rockstar-Bio sinngemäß „fighting for her family landed her in the Leonida Penitentiary“, WebSearch, deckt sich mit Nr. 4).",
+        "'She grew up a fighter' = Zusammenfassung aus B2 (Vater lehrt Kämpfen), keine neue Tatsache. Liberty City bewusst weggelassen (Satzbau der Quelle mehrdeutig, B1)."
+      ],
+      "cues": [
+        {
+          "word": "fighter",
+          "beat": "growUp",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "family",
+          "beat": "protectFamily",
+          "sticker": "FOR HER FAMILY",
+          "color": "#2EC4B6",
+          "sfx": "ding"
+        },
+        {
+          "word": "Penitentiary",
+          "beat": "cellDoorSlam",
+          "sticker": "LEONIDA PENITENTIARY",
+          "color": "#FF3B3B",
+          "sfx": "boom",
+          "hud": {
+            "id": "status",
+            "value": "INMATE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "out",
+      "delivery": "punch",
+      "emotion": "ironic",
+      "text": "So how did she get out? Rockstar's answer, more or less: *luck*. | But getting out is the *easy* part.",
+      "visual": "Lucia im Overall schaut auf die Zellentür. Auf 'luck' fällt ein Glücks-Würfel/Vierblättriges-Kleeblatt-Sticker durch die Gitterstäbe, Tür springt auf (Slapstick, kein Ausbruch gezeigt, Weg offen gelassen). Stempel 'RELEASED' + kleiner grauer Vermerk 'HOW? UNKNOWN'. HUD STATUS → 'RELEASED'. Re-Hook auf 'easy': Musik stoppt kurz, Kamera fährt auf die Sonne am Horizont, die sich langsam rot färbt.",
+      "sources": [
+        "B5 / Nr. 21: Rockstar-Bio sinngemäß Freilassung durch Glück („sheer luck“ bzw. „pure luck“ – zwei Zusammenfassungen uneins) – gta.media/who-is-lucia-in-gta-6/ ; redreactions.com/articles/gta6-lucia-caminos/ (nur Suchtreffer) – Tertiär, WebSearch, nicht wörtlich geprüft. Deshalb nur 'luck' ohne Adjektiv und 'more or less' als Kennzeichen für sinngemäß. FAKTENPRÜFER: Freigabe nötig (B5 'nur wenn Faktenprüfer freigibt'); Ersatz bei Ablehnung: 'How she got out, Rockstar won't say.' – Achtung: dann ebenfalls prüfen.",
+        "Wie genau sie freikam: offen (Quellen-Dokument 'Gerüchte'), daher im Bild 'HOW? UNKNOWN'.",
+        "'getting out is the easy part' = Erzähl-Übergang/Wertung, gedeckt durch B8 (danach scheitert der Banküberfall, Verschwörung)."
+      ],
+      "cues": [
+        {
+          "word": "get",
+          "beat": "cellStare",
+          "sfx": "pop"
+        },
+        {
+          "word": "luck",
+          "beat": "cloverDoorPop",
+          "sticker": "RELEASED · HOW? LUCK",
+          "color": "#2EC4B6",
+          "sfx": "ding",
+          "hud": {
+            "id": "status",
+            "value": "RELEASED"
+          }
+        },
+        {
+          "word": "easy",
+          "beat": "sunTurnsRed",
+          "sticker": "THE EASY PART",
+          "color": "#FFD23F",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "jason",
+      "delivery": "normal",
+      "emotion": "warm",
+      "text": "Trailer two shows Jason picking her up, and Rockstar hints a life with him might be her way *out*. | Think Bonnie and Clyde, *Florida* style.",
+      "visual": "Vor dem Gefängnistor: eigenes Cartoon-Auto (kein reales Modell, kein Spiel-Fahrzeug nachgebaut) hält, JASON (Signalfarbe Pink) lehnt an der Tür. Akte bekommt zweites Foto 'JASON', rote Faden-Linie verbindet beide Fotos. Auf 'out' Straßenschild 'WAY OUT →'. Auf 'Florida' Palmen, Sonnenuntergang, beide als Silhouetten im Cabrio – Sticker 'BONNIE & CLYDE, FLORIDA STYLE'. Kein Trailer-Standbild nachzeichnen.",
+      "sources": [
+        "B6 / Nr. 24: Trailer 2 (6. Mai 2025, Nr. 15) zeigt laut Berichten, wie Jason Lucia vom Gefängnis abholt – https://www.videogameschronicle.com/news/rockstar-has-released-a-new-grand-theft-auto-6-trailer/ (nur Suchtreffer) – Tertiär, WebSearch, nicht wörtlich geprüft, Trailer nicht gesehen.",
+        "B6 / Nr. 22: Rockstar-Bio sinngemäß „A life with Jason could be her way out.“ (Suchzusammenfassung, Wortlaut nicht bestätigt) → gesprochen als 'Rockstar hints … might be', kein Zitat.",
+        "B7 / Nr. 6: „The protagonists' dynamic is inspired by Bonnie and Clyde“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. 'Florida style': Nr. 2 Leonida „based on Florida“ (W, geprüft; Nr. 2 nicht in der Freigabeliste, aber B7-Sprechformel nennt 'Florida style' ausdrücklich)."
+      ],
+      "cues": [
+        {
+          "word": "Jason",
+          "beat": "jasonAtGate",
+          "sticker": "JASON",
+          "color": "#FF4FA3",
+          "sfx": "pop"
+        },
+        {
+          "word": "out",
+          "beat": "wayOutSign",
+          "sticker": "WAY OUT?",
+          "color": "#FFD23F",
+          "sfx": "ding"
+        },
+        {
+          "word": "Florida",
+          "beat": "convertibleSunset",
+          "sticker": "BONNIE & CLYDE, FLORIDA STYLE",
+          "color": "#FF4FA3",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "heist",
+      "delivery": "tense",
+      "emotion": "tense",
+      "text": "Then a bank job goes *wrong*. | They run into a state-wide conspiracy, and now they have to protect each *other*.",
+      "visual": "Bankfassade (eigene Grafik, kein reales Institut). Lucia und Jason als Silhouetten mit Masken (Maske belegt Nr. 12 als Motiv), keine Waffen im Detail. Auf 'wrong' Alarmlicht rot, Musik 1 Takt weg, Geldsack reißt, Scheine fliegen. Auf 'conspiracy' Karte eines ganzen (fiktiven) Bundesstaats mit roten Fäden und vielen Augen-Symbolen. HUD STATUS → 'WANTED'. Auf 'other' Rücken an Rücken, Beat kommt zurück.",
+      "sources": [
+        "B8/B9 / Nr. 5: „Following a failed bank heist, the duo encounters a state-wide conspiracy and are forced to protect each other.“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. Sprechtext fast wörtlich ('run into' = 'encounters').",
+        "'Then' = Erzählfolge nach der Freilassung; die Quelle nennt keine Zeitangabe, nur Reihenfolge Banküberfall → Verschwörung. HUD 'WANTED' = Bildwitz, keine Faktenaussage."
+      ],
+      "cues": [
+        {
+          "word": "wrong",
+          "beat": "alarmMoneyBurst",
+          "sticker": "BANK JOB: FAILED",
+          "color": "#FF3B3B",
+          "sfx": "boom"
+        },
+        {
+          "word": "conspiracy",
+          "beat": "stateMapStrings",
+          "sticker": "STATE-WIDE CONSPIRACY",
+          "color": "#FFFFFF",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "status",
+            "value": "WANTED"
+          }
+        },
+        {
+          "word": "other",
+          "beat": "backToBack",
+          "sticker": "PROTECT EACH OTHER",
+          "color": "#2EC4B6",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "flawed",
+      "delivery": "calm",
+      "emotion": "serious",
+      "text": "Rockstar's writers want them both tough, vulnerable, *flawed*: right sometimes, wrong sometimes.",
+      "visual": "Akten-Seite 'PROFILE' mit drei Stempeln nacheinander: 'TOUGH' (Faust), 'VULNERABLE' (Riss im Glas), 'FLAWED' (Kaffeefleck auf der Akte). Danach Waage mit 'RIGHT' / 'WRONG', die hin und her kippt. Lucia schaut in einen gesprungenen Spiegel.",
+      "sources": [
+        "B10 / Nr. 7: „wanted both protagonists to be vulnerable, tough, flawed, right sometimes, wrong sometimes, able to learn from each other“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär (zitiert Autorin Elizabeth Gauvey-Kern), wörtlich geprüft. Deshalb 'Rockstar's writers' und 'them both' statt 'her' (Aussage gilt für beide Hauptfiguren); 'want' im Präsens = Absicht der Figurenanlage."
+      ],
+      "cues": [
+        {
+          "word": "tough",
+          "beat": "stampTough",
+          "sticker": "TOUGH",
+          "color": "#FFFFFF",
+          "sfx": "pop"
+        },
+        {
+          "word": "flawed",
+          "beat": "stampFlawed",
+          "sticker": "FLAWED",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        },
+        {
+          "word": "wrong",
+          "beat": "scaleTilt",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "delivery": "hype",
+      "emotion": "excited",
+      "text": "And soon, *you* get to play as her, or as Jason.",
+      "visual": "Kamera dreht die Akte um: Rückseite ist ein eigener Controller-Umriss (kein Konsolen-Logo). Figur-Auswahl-Karte im eigenen Layout: zwei Karten LUCIA / JASON. HUD STATUS → 'PLAYABLE'. Konfetti in Türkis/Pink.",
+      "sources": [
+        "B10 / Nr. 9: Spielbar als Jason oder Lucia; „Their relationship will depend on the player's actions“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. 'soon' = Release 19.11.2026 (Nr. 17)."
+      ],
+      "cues": [
+        {
+          "word": "you",
+          "beat": "fileFlipController",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "status",
+            "value": "PLAYABLE"
+          }
+        },
+        {
+          "word": "Jason",
+          "beat": "pickCards",
+          "sfx": "ding",
+          "choice": {
+            "title": "WHO DO YOU PICK?",
+            "options": [
+              "A · LUCIA",
+              "B · JASON"
+            ]
+          },
+          "untilBeat": "calendarNov19"
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "delivery": "punch",
+      "emotion": "playful",
+      "text": "The game arrives November 19th, after two *delays*. | So get ready to finally meet…",
+      "visual": "Kalender-Abreißblock: zwei Blätter mit durchgestrichenen alten Terminen ('DELAYED', 'DELAYED' – ohne Daten zu sprechen, im Bild 'MAY 26, 2026' durchgestrichen), dann 'NOV 19' bleibt. Auf 'meet' fährt die Kamera zurück auf das Akten-Foto mit Gitterstäben und Sonnenuntergang – identisch mit dem Cover-Bild, nahtloser Loop zu 'Lucia, the woman you'll play…'.",
+      "sources": [
+        "B11 / Nr. 16: „In November 2025, Rockstar delayed the game to 19 November 2026 due to additional polishing“; frühere Verschiebung Mai 2025 auf 26.05.2026 (Nr. 16) = zwei Verschiebungen – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft.",
+        "Nr. 17: „it is scheduled to be released on 19 November 2026 for the PlayStation 5 and Xbox Series X/S“ – Stand heute 13.11.2026, noch nicht erschienen. Formulierung 'arrives November 19th' bleibt auch nach Erscheinen verständlich; sollte das Video nach dem 19.11. erscheinen, Satz auf 'arrived' prüfen.",
+        "Loop: '…finally meet…' → 'Lucia, the woman you'll play in GTA 6…'."
+      ],
+      "cues": [
+        {
+          "word": "19th",
+          "beat": "calendarNov19",
+          "sticker": "NOV 19",
+          "color": "#FFD23F",
+          "sfx": "ding"
+        },
+        {
+          "word": "delays",
+          "beat": "delayedStamps",
+          "sticker": "DELAYED ×2",
+          "color": "#FF3B3B",
+          "sfx": "pop"
+        },
+        {
+          "word": "meet",
+          "beat": "loopToCover",
+          "sfx": "whoosh"
+        }
+      ]
+    }
+  ]
+}
