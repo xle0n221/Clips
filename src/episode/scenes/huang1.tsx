@@ -33,6 +33,7 @@ import {
   Ticker,
 } from "./huangSets";
 import type { ChartPt } from "./huangSets";
+import { CoverScene } from "./huang2";
 import { useBeats } from "./rollsSets";
 
 /**
@@ -59,6 +60,8 @@ export const Hook: React.FC = () => {
   };
   const torn = f < rip ? 0 : Math.min(4, Math.floor((f - rip) / 4) + 1);
   const vanish = ease(f, gone, gone + 12, "inOut");
+  // Cover blendet über identisches Bild aus (kein Geisterbild), danach harter Schnitt in die Szene
+  if (f < 21) return <CoverScene f={f} />;
   return (
     <Stage2D cam={cam} mood="night" noSky>
       <LuxDefs />
@@ -81,7 +84,7 @@ export const Hook: React.FC = () => {
         />
         <ThumbStamp x={300} y={1110} s={0.72} t={ease(f, conf, conf + 8)} r={-8} />
         <Poof x={jx} y={fl - 470} t={(f - gone) / 16} s={0.9} />
-        <ReceiptTag x={830} y={880} s={0.72} t={ease(f, gone + 10, gone + 26)} swing={4 * Math.sin(f * 0.12)} />
+        <ReceiptTag x={835} y={870} s={0.8} t={ease(f, gone + 10, gone + 26)} swing={4 * Math.sin(f * 0.12)} />
       </Layer>
       <Layer depth={0}>
         {/* abgerissene Blätter SUN → WED fliegen nach rechts oben weg */}
@@ -288,12 +291,12 @@ export const Crash: React.FC = () => {
         <StockChart x={540} y={880} pts={CRASH_PTS} upto={upto} f={f} w={900} h={560} pulse={ease(f, rec, rec + 8) * (0.6 + 0.4 * Math.sin(f * 0.3))} />
         {f >= rec ? <path d="M 160 680 L 160 1050" stroke={HG.yellow} strokeWidth={8} strokeDasharray="18 12" /> : null}
         <MarketArrow x={850} y={700} s={0.8} t={pop(f, market, 10)} label="MARKET" />
-        <Kneeler x={-60} y={1245} s={1.05} f={f} />
+        {back > 0 ? <Kneeler x={-60} y={1245} s={1.05} f={f} /> : null}
       </Layer>
       <Layer depth={0}>
         <Ticker y={lerp(1215, 1215, back)} text="BREAKING: STOCK FALLS FASTER THAN BOARD CONFIDENCE" off={Math.max(0, f - mon) * 9} o={ease(f, mon, mon + 6) * (1 - caption)} />
         {caption > 0 ? (
-          <g opacity={caption} transform={`translate(540 ${lerp(660, 705, caption)})`}>
+          <g opacity={caption} transform={`translate(540 ${lerp(590, 615, caption)})`}>
             <rect x={-500} y={-70} width={1000} height={150} rx={12} fill="#FFFFFF" stroke={HG.ink} strokeWidth={6} />
             <HText x={0} y={-8} size={40} weight={700}>
               Lord, forgive us for the losses

@@ -234,7 +234,8 @@ export const Jensen: React.FC<{
       {hang > 0 ? (
         <g opacity={hang}>
           <path d={`M 0 ${shY - 30} L 0 ${shY - 70} Q 0 ${shY - 104} 26 ${shY - 104} Q 50 ${shY - 104} 50 ${shY - 80}`} stroke="#9AA0AE" strokeWidth={10} fill="none" strokeLinecap="round" />
-          <path d={`M 26 ${shY - 104} L 26 ${shY - 2200}`} stroke="#6F7486" strokeWidth={5} />
+          <path d={`M 26 ${shY - 104} L 26 ${shY - 150}`} stroke="#6F7486" strokeWidth={6} />
+          <rect x={-14} y={shY - 168} width={80} height={22} rx={8} fill="#55525E" stroke={HG.ink} strokeWidth={5} />
           <path d={`M -122 ${shY + 8} L 0 ${shY - 34} L 122 ${shY + 8}`} stroke="#8A5A34" strokeWidth={16} fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </g>
       ) : null}
@@ -296,20 +297,20 @@ export const EmptyJacket: React.FC<{ readonly x: number; readonly y: number; rea
 /** Kassenbon-Anhänger am Ärmel („WHAT DID IT COST?“), Ursprung = Schnur oben. */
 export const ReceiptTag: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly t: number; readonly swing?: number }> = ({ x, y, s = 1, t, swing = 0 }) => {
   if (t <= 0) return null;
-  const len = 150 + 170 * clamp01(t);
+  const len = 160 + 160 * clamp01(t);
   return (
     <g transform={`translate(${x} ${y}) rotate(${swing}) scale(${s})`} filter="url(#paper)">
       <path d="M 0 0 L 0 40" stroke={HG.ink} strokeWidth={5} />
-      <path d={`M -130 40 L 130 40 L 130 ${40 + len} ${Array.from({ length: 13 }, (_, i) => `L ${130 - (i + 1) * 20} ${40 + len + (i % 2 ? 0 : 14)}`).join(" ")} Z`} fill={HG.receipt} stroke={HG.ink} strokeWidth={6} strokeLinejoin="round" />
-      <T x={0} y={96} size={34}>WHAT DID</T>
-      <T x={0} y={138} size={34}>IT COST?</T>
-      <path d="M -100 160 L 100 160" stroke={HG.ink} strokeWidth={4} strokeDasharray="10 8" />
+      <path d={`M -175 40 L 175 40 L 175 ${40 + len} ${Array.from({ length: 14 }, (_, i) => `L ${175 - (i + 1) * 25} ${40 + len + (i % 2 ? 0 : 14)}`).join(" ")} Z`} fill={HG.receipt} stroke={HG.ink} strokeWidth={6} strokeLinejoin="round" />
+      <T x={0} y={108} size={54}>WHAT DID</T>
+      <T x={0} y={170} size={54}>IT COST?</T>
+      <path d="M -140 196 L 140 196" stroke={HG.ink} strokeWidth={4} strokeDasharray="10 8" />
       {t > 0.5 ? (
         <g opacity={clamp01((t - 0.5) * 3)}>
-          <rect x={-96} y={184} width={120} height={12} fill="#BDB6A6" />
-          <T x={96} y={198} size={30} anchor="end">$???</T>
-          <rect x={-96} y={222} width={90} height={12} fill="#BDB6A6" />
-          <T x={96} y={236} size={30} anchor="end">$???</T>
+          <rect x={-140} y={224} width={140} height={14} fill="#BDB6A6" />
+          <T x={140} y={242} size={40} anchor="end">$???</T>
+          <rect x={-140} y={270} width={110} height={14} fill="#BDB6A6" />
+          <T x={140} y={288} size={40} anchor="end">$???</T>
         </g>
       ) : null}
     </g>
@@ -377,22 +378,24 @@ export const Office: React.FC<{ readonly f: number; readonly crash?: number; rea
 };
 
 /** Kalender-Abreißblock (Wochentag groß). `flip` 0..1 = oberstes Blatt reißt ab und fliegt (nur Anzeige `prev`). */
-export const CalBlock: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly day: string; readonly sub?: string; readonly color?: string }> = ({
+export const CalBlock: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly day: string; readonly sub?: string; readonly color?: string; readonly w?: number; readonly subSize?: number }> = ({
   x,
   y,
   s = 1,
   day,
   sub = "",
   color = HG.red,
+  w = 260,
+  subSize = 30,
 }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`} filter="url(#sticker)">
-    <rect x={-130} y={-150} width={260} height={300} rx={14} fill={LUX.white} stroke={HG.ink} strokeWidth={7} />
-    <rect x={-130} y={-150} width={260} height={80} rx={14} fill={color} stroke={HG.ink} strokeWidth={7} />
+    <rect x={-w / 2} y={-150} width={w} height={300} rx={14} fill={LUX.white} stroke={HG.ink} strokeWidth={7} />
+    <rect x={-w / 2} y={-150} width={w} height={80} rx={14} fill={color} stroke={HG.ink} strokeWidth={7} />
     <circle cx={-70} cy={-150} r={12} fill={HG.ink} />
     <circle cx={70} cy={-150} r={12} fill={HG.ink} />
     <T x={0} y={50} size={day.length > 4 ? 64 : 92}>{day}</T>
     {sub ? (
-      <T x={0} y={110} size={30} fill="#5A5F6E">
+      <T x={0} y={110} size={subSize} fill="#3A3F4E">
         {sub}
       </T>
     ) : null}
@@ -408,6 +411,20 @@ export const CalSheet: React.FC<{ readonly x: number; readonly y: number; readon
       {day}
     </T>
   </g>
+);
+
+/** Dunkle Unterlage oben im Bildraum (Layer depth 0), damit das weiße HUD auf hellem Grund lesbar bleibt. */
+export const TopShade: React.FC = () => (
+  <>
+    <defs>
+      <linearGradient id="topShade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor="#15131A" stopOpacity="0.88" />
+        <stop offset="0.7" stopColor="#15131A" stopOpacity="0.7" />
+        <stop offset="1" stopColor="#15131A" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+    <rect x={0} y={0} width={1080} height={430} fill="url(#topShade)" />
+  </>
 );
 
 /** Daumen-hoch-Stempel „CONFIDENCE“ + Haken (Geometrie, kein Sonderzeichen). `t` 0..1 schlägt ein. */
@@ -760,7 +777,7 @@ export const NamePlate: React.FC<{ readonly x: number; readonly y: number; reado
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`} filter="url(#paperSoft)">
       <path d={`M ${-width / 2} 0 L ${width / 2} 0 L ${width / 2 - 14} -64 L ${-width / 2 + 14} -64 Z`} fill={fill} stroke={HG.ink} strokeWidth={5} strokeLinejoin="round" />
-      <T x={0} y={-20} size={Math.min(34, (width - 30) / (text.length * 0.66))} fill={fg}>
+      <T x={0} y={-20} size={Math.min(34, (width - 40) / (text.length * 0.8))} fill={fg}>
         {text}
       </T>
     </g>
@@ -772,7 +789,7 @@ export const Binder: React.FC<{ readonly x: number; readonly y: number; readonly
   <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`} filter="url(#paperSoft)">
     <rect x={-210} y={-70} width={420} height={140} rx={10} fill="#2F5D8A" stroke={HG.ink} strokeWidth={6} />
     <rect x={-190} y={-40} width={380} height={80} rx={6} fill={LUX.white} stroke={HG.ink} strokeWidth={4} />
-    <T x={0} y={12} size={Math.min(36, 360 / (text.length * 0.66))}>
+    <T x={0} y={12} size={Math.min(36, 350 / (text.length * 0.8))}>
       {text}
     </T>
   </g>
@@ -1050,20 +1067,47 @@ export const BurningChart: React.FC<{ readonly x: number; readonly y: number; re
   );
 };
 
-/** Laubbläser (in der Hand, Mitte = Griff), bläst nach links; `blow` 0..1 Luftstriche. */
+/** Laubbläser (Ursprung = Griff in der Hand): Motorgehäuse mit Tragegriff, langes Rohr nach links, Luftstoß-Linien + Blätter. `blow` 0..1. */
 export const LeafBlower: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly f: number; readonly blow: number }> = ({ x, y, s = 1, f, blow }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
-    <g filter="url(#paperSoft)">
-      <rect x={-40} y={-40} width={120} height={90} rx={22} fill="#E8434B" stroke={HG.ink} strokeWidth={6} />
-      <path d="M -40 0 L -250 -30 L -250 20 L -40 30 Z" fill="#F2C14E" stroke={HG.ink} strokeWidth={6} strokeLinejoin="round" />
-      <circle cx={60} cy={4} r={18} fill="#2C2C33" />
+    <g filter="url(#sticker)">
+      {/* Rohr (lang, leicht konisch) + Düse */}
+      <path d="M -40 8 L -330 0 L -330 46 L -40 52 Z" fill="#F2C14E" stroke={HG.ink} strokeWidth={7} strokeLinejoin="round" />
+      <path d="M -330 -6 L -370 -14 L -370 60 L -330 52 Z" fill="#2C2C33" stroke={HG.ink} strokeWidth={6} strokeLinejoin="round" />
+      {[-110, -190, -270].map((rx) => (
+        <path key={rx} d={`M ${rx} 4 L ${rx} 50`} stroke="#C28E25" strokeWidth={5} />
+      ))}
+      {/* Motorgehäuse */}
+      <rect x={-60} y={-40} width={170} height={130} rx={34} fill={HG.red} stroke={HG.ink} strokeWidth={7} />
+      <circle cx={60} cy={26} r={36} fill="#2C2C33" stroke={HG.ink} strokeWidth={5} />
+      {Array.from({ length: 6 }, (_, i) => (
+        <path key={i} transform={`translate(60 26) rotate(${i * 60 + f * 25})`} d="M 0 0 L 28 -6" stroke="#9AA0AE" strokeWidth={6} strokeLinecap="round" />
+      ))}
+      {/* Tragegriff oben */}
+      <path d="M -30 -40 Q -20 -100 30 -100 Q 80 -100 86 -40" stroke={HG.ink} strokeWidth={22} fill="none" strokeLinecap="round" />
+      <path d="M -30 -40 Q -20 -100 30 -100 Q 80 -100 86 -40" stroke="#3C4152" strokeWidth={12} fill="none" strokeLinecap="round" />
     </g>
-    {blow > 0
-      ? [0, 1, 2, 3].map((i) => {
-          const k = ((f * 0.08 + i * 0.25) % 1 + 1) % 1;
-          return <path key={i} d={`M ${-270 - k * 180} ${-30 + i * 18} l -90 ${(i - 1.5) * 8}`} stroke="#E9F4FF" strokeWidth={9} strokeLinecap="round" opacity={blow * (1 - k)} />;
-        })
-      : null}
+    {blow > 0 ? (
+      <g opacity={blow}>
+        {[0, 1, 2, 3, 4].map((i) => {
+          const k = ((f * 0.07 + i * 0.2) % 1 + 1) % 1;
+          return <path key={i} d={`M ${-390 - k * 220} ${-20 + i * 20} l -110 ${(i - 2) * 14}`} stroke="#FFFFFF" strokeWidth={11} strokeLinecap="round" opacity={1 - k} />;
+        })}
+        {[0, 1, 2].map((i) => {
+          const k = ((f * 0.05 + i * 0.33) % 1 + 1) % 1;
+          return (
+            <path
+              key={`l${i}`}
+              transform={`translate(${-420 - k * 300} ${10 + (i - 1) * 50 + Math.sin(k * 9 + i) * 20}) rotate(${k * 400 + i * 60})`}
+              d="M 0 -20 Q 18 0 0 20 Q -18 0 0 -20 Z"
+              fill={["#D9822B", "#B5542A", "#E8B64C"][i]}
+              stroke={HG.ink}
+              strokeWidth={3}
+            />
+          );
+        })}
+      </g>
+    ) : null}
   </g>
 );
 

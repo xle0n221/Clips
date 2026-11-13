@@ -43,7 +43,7 @@ export const HUANG_CONFIG: EpisodeConfig = {
   look: "2d",
   transitions: HUANG_TRANSITIONS,
   hud2d: { counterId: "nvda", barId: "conf" },
-  labelUntil: { alleged: "allegedStamp" },
+  labelUntil: { alleged: "clippingsIn" },
   stickerStack: true,
   coverArt: HuangCoverArt,
 };

@@ -26,6 +26,7 @@ import {
   StockChart,
   Stopwatch,
   ThumbStamp,
+  TopShade,
 } from "./huangSets";
 import type { ChartPt } from "./huangSets";
 import { useBeats } from "./rollsSets";
@@ -103,10 +104,10 @@ export const Twist: React.FC = () => {
       </Stage2D>
     );
   }
-  const cam = frameOn(560, 1000, 540, 960, lerp(1.0, 1.05, ease(f, ballot, d, "inOut")));
+  const cam = frameOn(600, 1000, 540, 960, lerp(0.94, 0.97, ease(f, ballot, d, "inOut")));
   const heat = 0.45 + 0.9 * ease(f, blower, blower + 10);
   const walk = ease(f, affair - 4, affair + 18, "inOut");
-  const jx = lerp(1350, 950, walk);
+  const jx = lerp(1400, 960, walk);
   return (
     <Stage2D cam={{ ...cam, x: cam.x + jolt(f, blower, 8) }} mood="night" noSky>
       <LuxDefs />
@@ -130,7 +131,7 @@ export const Twist: React.FC = () => {
           blinkSeed={6}
           holdB={(hx, hy) => (
             <g transform={`translate(${hx} ${hy}) scale(-1 1)`}>
-              <LeafBlower x={0} y={0} s={1.1} f={f} blow={ease(f, blower - 4, blower + 4)} />
+              <LeafBlower x={0} y={0} s={0.85} f={f} blow={ease(f, blower - 4, blower + 4)} />
             </g>
           )}
         />
@@ -212,6 +213,9 @@ export const Pr: React.FC = () => {
         </g>
         <MilkCarton x={760} y={1150 - 100 * win - hop} s={0.85} f={f} medal={pop(f, milk + 6, 10)} happy={win} />
       </Layer>
+      <Layer depth={0}>
+        <TopShade />
+      </Layer>
     </Stage2D>
   );
 };
@@ -249,6 +253,9 @@ export const Answer: React.FC = () => {
             ]}
           />
         </Layer>
+      <Layer depth={0}>
+        <TopShade />
+      </Layer>
       </Stage2D>
     );
   }
@@ -260,8 +267,8 @@ export const Answer: React.FC = () => {
       <Layer>
         <Bg id="answer2" a="#2E3A4A" b="#4A5A6E" />
         <rect x={-2000} y={1240} width={6000} height={2000} fill="#26303C" />
-        <ChipShelf x={540} y={1240} s={0.95} empty={ease(f, shelf, shelf + 8)} f={f} />
-        {cal > 0 ? <CalBlock x={880} y={760} s={0.6 * cal} day="NOV 17" sub="Q3 EARNINGS" color="#3B6FB6" /> : null}
+        <ChipShelf x={420} y={1240} s={0.76} empty={ease(f, shelf, shelf + 8)} f={f} />
+        {cal > 0 ? <CalBlock x={930} y={960} s={0.7 * cal} day="NOV 17" sub="Q3 EARNINGS" color="#3B6FB6" w={320} subSize={36} /> : null}
       </Layer>
     </Stage2D>
   );
@@ -297,7 +304,9 @@ export const Loop: React.FC = () => {
           </g>
         </g>
         <rect x={720 - 0.8 * 190} y={1250 - 0.8 * 280} width={0.8 * 380} height={0.8 * 70} rx={18} fill="#2A2730" stroke={HG.ink} strokeWidth={7} />
-        <ThumbStamp x={300} y={820} s={0.62} t={ease(f, stamp, stamp + 8)} r={-10} />
+        <g opacity={1 - ease(f, watch - 2, watch + 6)}>
+          <ThumbStamp x={300} y={820} s={0.62} t={ease(f, stamp, stamp + 8)} r={-10} />
+        </g>
         <Stopwatch x={300} y={1080} s={0.62} sec={sec} t={pop(f, watch, 10)} />
       </Layer>
     </Stage2D>

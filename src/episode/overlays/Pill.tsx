@@ -43,8 +43,8 @@ export const Pill: React.FC<{
     }).width,
     label.text.length * 46 * 0.72,
   );
-  // Zu lange Pills (breiter als das Bild − 80 px) verkleinern die Schrift statt aus dem Bild zu laufen
-  const fontSize = Math.min(46, Math.floor((46 * (width - 80 - 90)) / Math.max(1, rawW)));
+  // Zu lange Pills (breiter als 88 % des Bilds) verkleinern die Schrift statt aus dem Bild zu laufen
+  const fontSize = Math.min(46, Math.floor((46 * (width * 0.88 - 90)) / Math.max(1, rawW)));
   const estW = (rawW * fontSize) / 46 + 90;
   // Zipfel bleibt unter der Pill (nicht über deren Rundung hinaus); lieber 20 px Rand als lose Spitze
   const room = Math.max(0, estW / 2 - 50);

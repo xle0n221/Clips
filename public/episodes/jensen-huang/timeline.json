@@ -226,10 +226,10 @@
    "color": "#FFD23F",
    "sfx": "ding",
    "label": {
-    "text": "RECORD OCT 6: $239.24",
+    "text": "OCT RECORD: ~$239",
     "color": "#B0BEC5",
-    "x": 0.5,
-    "y": 0.3
+    "x": 0.32,
+    "y": 0.44
    },
    "scene": "crash",
    "atMs": 40520

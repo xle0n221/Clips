@@ -24,6 +24,15 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Jensen Huang (2D) v2 nach Regie-Kritik 7,5 · 12 Befunde, umgesetzt: Rekord-Pill an den Chart-Punkt
+  (x 0,32 / y 0,44) statt in die Sticker-Zone, Gebets-Caption dafür auf y ≈ 540–690; Board-Pill endet am Beat `clippingsIn`
+  (Sticker „REPORTED BY NYT“ verdeckte sie); Pills max. 88 % Bildbreite; Schild-Schrift mit 0,8 em/Zeichen einpassen
+  (0,66 schnitt das „I“ ab); Laubbläser als Gerät (Motorgehäuse + Tragegriff + Rohr + Luftstöße + Blätter), Figur nicht
+  mehr am Rand (Kamera 0,94); weißes HUD auf Beige → `TopShade` (dunkler Verlauf y 0–430, Bildraum) nur in den hellen Szenen;
+  **Cover-Geisterbild weg ohne Engine-Änderung:** Hook zeigt die ersten 21 Bilder (Cover + Ausblenden) dieselbe `CoverScene`,
+  danach harter Schnitt. Bon-Etikett/Kalender größer, Bügelstange als kurzer Wandhaken. Neue Falle: Figur, die erst bei der
+  Rückfahrt ins Bild soll (Investor), ragte vorher am Rand ins Bild → erst ab Fahrtbeginn zeichnen.
+  Offen: −29 % (Sticker) gegen −30 % (Bon, anderes Datum) ist Drehbuch-Sache. Beleg `out/jensen-huang-fix3.jpg`, `out/jensen-huang-contact.jpg`.
 - 13.11.2026 · Jensen Huang (2D Paper-Cut-Satire) v1 · **Experiment Re-Hook-Rückfahrt statt Schnitt:** in `crash` fährt die
   Kamera nach „Tuesday“ vom Terminal (Zoom 1,1) auf 0,72 zurück und enthüllt den knienden Investor + Gebets-Caption – liest
   sich im Kontaktabzug als neue Einstellung ohne Schnitt; erste Fassung (Zoom 0,6) machte Chart + Figur zu klein → ≥ 0,7.
@@ -161,7 +170,7 @@
 | 12.11.2026 | UFC (2D) v1 | 6,0 (Regie) | Cue-Abstände Ø 1,7 s, Karten bis Loop-Ende, Label-Stapel |
 | 12.11.2026 | UFC (2D) v2 | – (Selbstnote 7,5, Regie offen) | 0 Cue-Abstände < 1,5 s, 7 Befunde umgesetzt; Start-Oktagon anfangs leer |
 | 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
-| 13.11.2026 | Jensen Huang (2D) v1 | – (Selbstnote 7, Regie offen) | 15 Cue-Abstände < 1,5 s (Drehbuch), sonst keine Anschnitte |
+| 13.11.2026 | Jensen Huang (2D) v1 | 7,5 (Regie) | 15 Cue-Abstände < 1,5 s (Drehbuch), sonst keine Anschnitte |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |
 | 12.11.2026 | Rolls-Royce (2D) v1 | – (Selbstprüfung 7–8, Regie-Kritiker offen) | 2 Kontaktabzüge, 5 Korrekturen |
