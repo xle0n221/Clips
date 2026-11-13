@@ -22,6 +22,12 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Jason GTA 6 (2D-Akte, Schwester zu Lucia) · Eigene Bildwelt bei gleichem Format: Kork-Pinnwand + Polaroids statt
+  Schreibtisch, Keys-Mittag (Himmelblau/Türkis/Sand) statt Abendrot, Erkennung über Pink (Hemd) – als Kind pinkes Übergrößen-Shirt,
+  Armee olivgrün ohne Abzeichen (`Toon` additiv `outfit: "army" | "jkid"`, `age: "kid"` für Jason; Lucia unverändert geprüft).
+  Nebenfiguren Brian (Glatze, grauer Kranz, Hawaii-Hemd) und Cal (Kopfhörer, Fernglas) als `Guy`-Brustbilder in Polaroids.
+  Collage-Prinzip für echte Fotos: Cartoon-Figur als Papierausschnitt vor echtem Foto (Brian vor Strandhaus) bzw. echtes Foto
+  als Vorbild neben eigener Form (Florida-Satellitenbild ↔ LEONIDA, Keys-Luftbild an der Inselkarte). Beleg `out/jason-kontakt.png`.
 - 13.11.2026 · Lucia GTA 6 (2D Comic/Paper-Cut als Akte) · Stilwahl: eigene Figuren statt Spiel-Look – Erkennung über **ein**
   Merkmal (türkises Haarband + Zopf-Band), das auch auf Silhouetten (Überfall, Cabrio) türkis bleibt; Jason pink, gleich groß oder
   kleiner. Farbwelt je Station: Sepia (Rückblende) → Blaugrau (Zelle) → Abendrot (Freiheit) → Rotlicht (Überfall) → Gold (Premiere)

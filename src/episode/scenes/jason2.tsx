@@ -404,16 +404,16 @@ export const Loop: React.FC = () => {
           {s1 > 0 ? (
             <g>
               <DateSheet x={lerp(560, 235, s1)} y={lerp(1060, 790, s1)} s={0.66} r={lerp(0, -6, s1)} big="2025" head="WINDOW" />
-              <Stamp x={235} y={925} text="DELAYED" t={ease(f, delays - 6, delays)} r={-8} size={32} />
+              <Stamp x={235} y={888} text="DELAYED" t={ease(f, delays - 6, delays)} r={-8} size={32} />
             </g>
           ) : null}
           {s2 > 0 ? (
             <g>
               <DateSheet x={lerp(560, 880, s2)} y={lerp(1060, 790, s2)} s={0.66} r={lerp(0, 6, s2)} big="MAY 26" sub="2026" head="DATE" />
-              <Stamp x={880} y={930} text="DELAYED" t={ease(f, delays, delays + 6)} r={6} size={32} />
+              <Stamp x={880} y={919} text="DELAYED" t={ease(f, delays, delays + 6)} r={6} size={32} />
             </g>
           ) : null}
-          <Toon x={150} y={floor} s={0.7} frame={f} who="jason" armR={[lerp(20, 120, throwT), 30]} armL={[30, 128]} look={1} mouth={f >= delays ? "smirk" : "flat"} brows={f >= delays ? "up" : "neutral"} blinkSeed={11} />
+          <Toon x={118} y={floor} s={0.62} frame={f} who="jason" armR={[lerp(20, 120, throwT), 30]} armL={[30, 128]} look={1} mouth={f >= delays ? "smirk" : "flat"} brows={f >= delays ? "up" : "neutral"} blinkSeed={11} />
         </Layer>
         <Layer depth={0}>
           <TopShade />

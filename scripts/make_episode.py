@@ -486,6 +486,8 @@ def retime(path: Path) -> None:
 
 def main(path: Path, voice_name: str | None = None, speed: float | None = None, save: bool = False) -> None:
     ep = json.loads(path.read_text())
+    # Erzähler-Werte je Video überschreibbar (Feld `narrator`, z. B. KnowToon-Prompt STEP 4b: schneller, kürzere Pausen – Nutzer 13.11.2026)
+    NARRATOR.update({k: v for k, v in (ep.get("narrator") or {}).items() if k in NARRATOR})
     # Stimme/Tempo können per Kommandozeile (z. B. vom Dashboard) überschrieben werden
     if voice_name:
         try:

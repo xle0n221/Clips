@@ -24,6 +24,14 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Jason GTA 6 (2D-Akte an der Pinnwand) v1 · **Experiment echte Fotos/Videos im SVG-Bühnenbild:** `RealMedia`
+  (`scenes/jasonSets.tsx`) legt `<Img>`/`<OffthreadVideo>` per `foreignObject` in die Kamera-Ebenen; Ken-Burns per CSS-`transform`
+  im `div` (overflow hidden), Clip über SVG-`clipPath` im Polaroid wirkt auch auf foreignObject. Probe mit selbst erzeugtem Testbild
+  + Testvideo (danach gelöscht): Foto im Polaroid, Vollbild-Hintergrund mit Parallax (`Layer depth 0.25`) und Video (`trimBefore`)
+  rendern sauber, 4,0 s/Standbild (ohne 2,8 s). Fehlt der Manifest-Eintrag (`REAL`), zeichnet jede Stelle ihren Cartoon-Ersatz →
+  kein Fehlbild, kein Platzhaltertext. Weitere: Cover-Split ohne Gesichtsschnitt (Riss nur über dem Kopf und unter dem Kinn,
+  zwei gleiche Köpfe übereinander geclippt); Rückspul-Dreh = Polaroid dreht 360° während der Fahrt ins Foto; HUD-Wert mit 18 Zeichen
+  lief aus dem Bild → additiv `hud2d.maxWidth` (Schrift schrumpft). Beleg `out/jason-kontakt.png`.
 - 13.11.2026 · Lucia GTA 6 v2 nach Regie 7,5 / Design 8 (`docs/kritik-lucia-szenen.md`, 15 Befunde) · Gitter: Stababstand aus Gesichtsbreite
   rechnen (Cover gap 400, Zelle x0 −60/gap 240 → Gesicht zwischen zwei Stäben); Sticker, die über einen Schnitt laufen, nicht per
   Engine kürzen, sondern Einstellungswechsel auf `max(Wort, Sticker-Cue + 54)` legen (heist, jason, loop); Sticker = Stempel-Text
@@ -185,6 +193,7 @@
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 13.11.2026 | Jason GTA 6 (2D) v1 | – (Selbstnote 8,5, Regie/Design offen) | 11 Szenen ≈ 25 Einstellungen; echte Bilder nur als Slots (Dateien fehlten) |
 | 08.11.2026 | Sonnensystem v2 | – | 3 Anschnitte |
 | 12.11.2026 | UFC (2D) v1 | 6,0 (Regie) | Cue-Abstände Ø 1,7 s, Karten bis Loop-Ende, Label-Stapel |
 | 12.11.2026 | UFC (2D) v2 | – (Selbstnote 7,5, Regie offen) | 0 Cue-Abstände < 1,5 s, 7 Befunde umgesetzt; Start-Oktagon anfangs leer |
