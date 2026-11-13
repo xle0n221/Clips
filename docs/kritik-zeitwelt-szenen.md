@@ -16,7 +16,7 @@ Beide < 9 → Nacharbeit nötig. Mit R1–R3 und D1–D2 erwarte ich Regie 9, De
 
 ## Gemessen
 - **Szenenlängen** (`timeline.json`): 21 Szenen, 2,81–6,83 s, keine > 8 s ✔ (STEP 3).
-- **Einstellungswechsel**: TEMPO_PLATZHALTER
+- **Einstellungswechsel**: Code-Zählung (`cut(frame, …)` in `zeitwelt1–3.tsx`): 14 Szenen mit 1 Schnitt, 4 mit 2 Schnitten, 3 ohne → **43 Einstellungen in 100,7 s = Ø 2,3 s** → im KnowToon-Ziel 2–4 s (STEP 3) ✔, aber schneller als die Hausregel „eher 3–4 s“ (`clip-regeln.md` Bild & Schnitt 5) – Widerspruch Prompt ↔ Hausregel, Entscheidung beim Nutzer/Drehbuch. 1-s-Raster (Grauwert-Differenz, HUD/Untertitel ausgeblendet): Diff > 40 → 26 Wechsel (Ø 3,7 s), Diff > 30 → 52 (Ø 1,9 s, inkl. Kamerafahrten); in dunklen Szenen sind die Differenzen klein, Schwellen also unsicher – **kein ffmpeg-Wert, das kann ich nicht bestätigen**. Kein Schnitt < 1,5 s im Code (Mindestwerte `Math.max(30…70, …)`).
 - **Untertitel** (STEP 5): Variante `word-by-word-yellow` – ein Wort, Großbuchstaben, gelb `#FFD400`, 20-px-Kontur, Unterkante
   y ≈ 1500 (unteres Drittel) ✔; auf Gold-Flächen (Glas 64,5 s „ON“, SOLD-Säule 73,5 s „COUNTS“, Sand 100,0 s „SELL“) nur über die Kontur lesbar, aber lesbar.
   Erstes Wort ab 0,6 s (nach dem Cover) ✔.

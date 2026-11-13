@@ -69,3 +69,4 @@ Revise until all five answers are yes.
   Pausen, `speed` höchstens 1,05–1,1. ElevenLabs „stability 35–45 / style 30–40“ ≈ Chatterbox `exaggeration` 0,55–0,65, `cfg_weight` 0,4–0,5.
   Emotion je Abschnitt über `delivery` (setup relaxed/curious · tension quiet/whisper · twist louder/clipped · ending flat/low, 0,5 s Pause vor der letzten Zeile),
   Pause 0,3–0,6 s vor jeder Enthüllung (` | `), Sätze ≤ 12 Wörter, Akzentwort je Satz `*…*`, eine Sprechzeile je Shot.
+- **Schnitt-Tempo (Orchestrator-Entscheid 13.11.2026):** Für Videos nach diesem Prompt gilt STEP 3 „Change the shot every 2–4 s“ statt der Hausregel „Einstellungen eher 3–4 s“ (Prompt des Nutzers ist neuer und ausdrücklich); Szenen ≤ 8 s.
