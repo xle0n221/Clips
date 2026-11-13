@@ -1,0 +1,373 @@
+{
+  "id": "jason-gta6",
+  "title": "Who is Jason from GTA 6?",
+  "engine": "chatterbox",
+  "voice": "am_fenrir",
+  "voicePreset": "lebendig",
+  "speed": 1.0,
+  "pauseMs": 350,
+  "sceneGapMs": 600,
+  "lengthSec": 70,
+  "years": [],
+  "say": {
+    "Leonida": "Lee-oh-nee-dah",
+    "GTA": "G T A"
+  },
+  "cover": {
+    "text": "WHO IS JASON?",
+    "sub": "GTA 6 · his file, before Nov 19",
+    "frames": 15
+  },
+  "sources": "docs/quellen-jason-gta6.md, Abschnitt 'Freigabeliste' (J1–J11) + Tabelle Nr. 1–9, 11, 14, 16–17, 19, 20, 22, 23. Alles Tertiär: Nr. 1–18 wörtlich gegen Wikipedia geprüft (Teilstring, Recherche 13.11.2026), Nr. 19–23 (Rockstar-Bio, Trailer-2-Berichte) nur WebSearch-Zusammenfassung – deshalb mit 'Rockstar says / Rockstar's bio, roughly / hoping to' formuliert, nie als wörtliches Zitat. Keine Rockstar-Seite gelesen, kein Trailer gesehen.",
+  "factcheck": "offen – Faktenprüfer: bitte besonders J2 ('grifters and crooks', WS 3 Läufe), J3-Motiv ('hoping to leave that life behind', WS GamesRadar + Gfinity gleichsinnig), J7 ('easy life … harder', WS 2 Zusammenfassungen, Wortlaut uneins → nur 'roughly'), J8 (Abholen 'the day she gets out', WS wie Lucia-Video) und 'not meant to be do-gooders' (Nr. 8) prüfen. Zeitabhängig: Cover 'before Nov 19', 'Soon' (play) und 'It's scheduled for' (loop) nach dem 19.11.2026 anpassen; Termin am Renderstag erneut prüfen.",
+  "version": "v1 (13.11.2026, Drehbuch-Erstentwurf)",
+  "pointe": "Jason went from the Army to working for drug runners – a man who wants an easy life, and every page of his file makes it harder.",
+  "music": {
+    "mood": "chill",
+    "bpm": 84,
+    "why": "Gegenstück zur Schwester Lucia (dark, 128 BPM): Jason will laut Bio ein 'easy life' in den Keys – verschleppter Lo-fi-/R&B-Groove mit Rhodes, Gitarre und Knistern (scripts/music.py 'chill', ~84 BPM, Es-Dur-Bank) klingt nach Florida-Mittag und Strandhaus und macht die Ironie hörbar, dass es 'just keeps getting harder'. Rap-/R&B-Grundcharakter bleibt (Nutzer 12.11.2026), anderes Preset, andere Tonart und deutlich langsamer als Lucia → nie dieselbe Musik. Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'harder' (rehook) Filter zu, Beat 1 Takt weg; ab 'Lucia' (trailer) Drums wieder voll."
+  },
+  "style": {
+    "look": "2d",
+    "why": "Schwester-Video zu 'Who is Lucia?': gleiches Akten-Format ('CASE FILE: JASON', flacher Comic-/Paper-Cut-Look), damit beide Clips als Reihe erkennbar sind – aber eigene Bildwelt: Lucia = Florida-Sonnenuntergang/Gitter, Jason = Keys-Mittag (Wasserblau, Sand, Pink) mit Polaroids an einer Pinnwand und einer gestrichelten Weg-Linie über eine eigene, fiktive Inselkarte, die seinen Weg (Crooks → Army → Keys → Lucia) mitzeichnet. Hält Abstand zu Rockstars gemaltem Cover-Art- und Trailer-Stil: keine Logos, kein GTA-/Rockstar-Schriftzug, kein Trailer-Standbild nachgebaut.",
+    "characters": "JASON = eigene Cartoon-Figur, nicht porträtnah zu einer realen Person (Sprecher unbestätigt): kurze dunkle Haare, Dreitagebart, Signalfarbe Pink (Hemd/Bandana) als einziges durchgehendes Merkmal; Kleidung wechselt je Station (Kind im zu großen T-Shirt → schlichte olivgrüne Jacke ohne Abzeichen/Rang/Einheit + Seesack → pinkes Kurzarmhemd in den Keys). Outfit ist freie Stilwahl (Nr. 13: Aussehen im Spiel anpassbar), nie als 'offizielles Aussehen' beschriften. LUCIA = Figur aus dem Lucia-Video (türkises Haarband), hier nie größer als Jason. BRIAN = älterer Mann im Liegestuhl mit Mietbuch (eigene Figur, keine Ähnlichkeit zum Sprecher Stephen Root). CAL = Figur mit Kopfhörern und schlichtem Fernglas, schaut misstrauisch (keine Funk-Szene: 'Coast Guard radio' nicht freigegeben). 'Gauner' = gesichtslose Silhouetten mit Kartenspiel/Würfeln, keine Waffen. Drogen nur als neutrale Kiste 'CARGO', keine Pulver/Konsum."
+  },
+  "note": "v1: Themen-Art fiktive Figur/Spiel, Schwester zu episodes/lucia-gta6.json. 11 Szenen = Beats aus der Freigabeliste (J1 im Hook/play, J2 crooks, J3 army, J4 keys, J7 rehook, J5+J6 circle, J8 trailer, J9 couple, J10 flawed+play, J11 loop). Kette: Hook-Kontrast Army → drug runners ('How did that happen?') → Rückblende: unter Gaunern aufgewachsen → Army, um das hinter sich zu lassen → danach doch für Drogenkuriere in den Keys → Re-Hook 'easy life … keeps getting harder' (eigene Szene) → sein Umfeld (Vermieter Kurier, Freund paranoid) → Trailer 2: Lecks flicken, Lucia abholen → kriminelles Paar, Bonnie & Clyde → hart/verletzlich/fehlerhaft, keine Gutmenschen → du spielst ihn → 19.11. + Loop '…how one man went…' → 'from the Army…'. HUD STATUS: UNKNOWN → AROUND CROOKS → ARMY → WORKS FOR RUNNERS → CRIMINAL COUPLE → PLAYABLE (jede Stufe belegt, kein 'WANTED'). Wortzahl 157 Skriptwörter (ohne * und |, 0 fehlende Cue-Wörter; Zähltabelle je Szene: 17/10/11/14/13/17/24/13/13/10/15) → 65 s bei 2,4 W/s; mit Erzähler-Pausen wie Lucia (160 W → 71,7 s) ≈ 70 s. Wird es > 85 s: zuerst 'Just look who's around him.' (5 W) streichen. Re-Hook ab Wort 53/157 = 34 %; Hook-Pointe 'Army' = Wort 3 (≈ 1,2 s). Sticker sparsam (max. 1 je Satz, nie Sticker + Stempel mit gleichem Wort, Kritik Lucia D4). Bewusst weggelassen: Sprecher (Gerücht), Alter/Größe, Einheit/Rang (75th-Rangers-Theorie), Mietvertrags-Bedingungen, Cal 'Coast Guard radio' (nur 1 Lauf), 'best or worst thing'-Bio-Satz, Familie, Banküberfall/Verschwörung (gehört dem Lucia-Video), Leak-Deutung des Dach-Witzes (nur eine Quelle), Nachname Heder (Aussprache, Wortbudget).",
+  "hud": {
+    "title": "CASE FILE: JASON",
+    "counters": [
+      {
+        "id": "status",
+        "label": "STATUS",
+        "value": "UNKNOWN"
+      }
+    ],
+    "bars": []
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "delivery": "punch",
+      "emotion": "tense",
+      "text": "From the *Army*… | to working for *drug runners*. | That's Jason from GTA 6. | How did that happen?",
+      "visual": "2D Comic/Paper-Cut. Cover 0–0,5 s: Pinnwand-Akte 'CASE FILE: JASON' mit EINEM großen Polaroid, Jason (eigene Figur) als geteiltes Porträt – linke Hälfte olivgrüne Jacke ohne Abzeichen, rechte Hälfte pinkes Kurzarmhemd, dahinter türkises Keys-Wasser; Gesicht frei (kein Stab, keine Klammer darüber, Lehre Lucia D1). Titel 'WHO IS JASON?' in Akzentgelb, mittig oberes Drittel. Ab 0,5 s ruhiger Zoom auf die linke Hälfte. Auf 'Army' (≈ 1,2 s, Pointe vor 1,5 s) Stempel 'ARMY' in die Akte. Auf 'runners' Whip-Schwenk auf die rechte Hälfte, Stempel 'DRUG RUNNERS' (kein Sticker mit gleichem Wort). Auf 'happen' gestrichelte rote Linie zwischen beiden Hälften mit Fragezeichen.",
+      "sources": [
+        "J4 / Nr. 2: „Jason Duval, who worked for local drug runners in the Leonida Keys after serving in the Army“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. 'From the Army… to working for drug runners' = Reihenfolge der Quelle ('after serving').",
+        "J1 / Nr. 1, 9: Jason ist eine der zwei Hauptfiguren, spielbar – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft.",
+        "Geteiltes Porträt = Bildmotiv, kein offizielles Aussehen (Nr. 13)."
+      ],
+      "cues": [
+        {
+          "word": "Army",
+          "beat": "stampArmy",
+          "sfx": "boom"
+        },
+        {
+          "word": "runners",
+          "beat": "whipToKeysHalf",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "happen",
+          "beat": "redLineQuestion",
+          "sticker": "HOW?",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "crooks",
+      "delivery": "calm",
+      "emotion": "serious",
+      "text": "Rewind. | Rockstar says he grew up around *grifters* and crooks.",
+      "visual": "Rückspul-Effekt (Polaroid dreht sich, Sepia). Kleiner Jason im zu großen pinken T-Shirt sitzt an einem Tisch; um ihn gesichtslose Erwachsenen-Silhouetten mit Spielkarten, Würfeln und gezinkten Münzen (Gaunerei, keine Waffen). Auf 'grifters' zieht eine Silhouette ein Ass aus dem Ärmel, der Junge schaut zu. HUD STATUS → 'AROUND CROOKS'. Kamera steht ruhig (3–4 s).",
+      "sources": [
+        "J2 / Nr. 19: Rockstar-Bio sinngemäß „grew up around grifters and crooks“ – gamesradar.com (Militär-Artikel) ; rockstargames.com/VI/jason (nur Suchtreffer) – Tertiär, WebSearch, 3 Läufe übereinstimmend, Wortlaut nicht geprüft; deshalb 'Rockstar says', kein Anführungszeichen-Zitat.",
+        "HUD 'AROUND CROOKS' = gleiche Aussage wie Sprechtext (um ihn herum, nicht selbst Gauner)."
+      ],
+      "cues": [
+        {
+          "word": "Rewind",
+          "beat": "polaroidRewind",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "grifters",
+          "beat": "aceFromSleeve",
+          "sfx": "pop",
+          "hud": {
+            "id": "status",
+            "value": "AROUND CROOKS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "army",
+      "delivery": "normal",
+      "emotion": "warm",
+      "text": "So he joined the *Army*, hoping to leave that life behind.",
+      "visual": "Der Junge wird im Zeitraffer erwachsen (pinkes T-Shirt → schlichte olivgrüne Jacke ohne Abzeichen, Rang oder Einheit, Seesack). Auf 'Army' schließt er eine Tür hinter sich, die Kartenspieler-Silhouetten bleiben im Dunkeln zurück; vor ihm ein heller, leerer Weg. Gestrichelte Weg-Linie auf der Inselkarte beginnt. HUD STATUS → 'ARMY'. Keine echten Uniform-Details, keine Waffen.",
+      "sources": [
+        "J3 / Nr. 2: „after serving in the Army“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft.",
+        "Motiv / Nr. 20: Rockstar-Bio sinngemäß „a stint in the Army trying to shake off his troubled teens“ (GamesRadar-Zusammenfassung; Gfinity gleichsinnig 'enlisted … to shake off') – WS, nicht wörtlich geprüft; deshalb weich 'hoping to'. Rückfall laut Freigabeliste: 'So he served in the Army.'",
+        "'So' verknüpft nur das Bio-Motiv (schwierige Jugend → Army), wie es die Zusammenfassungen tun – vom Faktenprüfer prüfen lassen."
+      ],
+      "cues": [
+        {
+          "word": "Army",
+          "beat": "doorCloseOnCrooks",
+          "sfx": "boom",
+          "hud": {
+            "id": "status",
+            "value": "ARMY"
+          }
+        },
+        {
+          "word": "behind",
+          "beat": "pathLineStarts",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "keys",
+      "delivery": "tense",
+      "emotion": "serious",
+      "text": "After the Army? | He worked for local drug runners… down in the Leonida *Keys*.",
+      "visual": "Weg-Linie auf der eigenen, fiktiven Inselkarte läuft nach Süden über Brücken zu einer Inselkette, Label 'LEONIDA KEYS'. Schnitt: Jason (jetzt pinkes Kurzarmhemd) lädt an einem Steg eine neutrale Kiste 'CARGO' in ein kleines Motorboot; im Hintergrund zwei gesichtslose Auftraggeber-Silhouetten. Keine Drogen-Details. HUD STATUS → 'WORKS FOR RUNNERS'. Ruhige Seitwärtsfahrt.",
+      "sources": [
+        "J4 / Nr. 2: „who worked for local drug runners in the Leonida Keys after serving in the Army“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft; Sprechtext fast wörtlich.",
+        "Nr. 11: Leonida Keys inspiriert von den Florida Keys – W, wörtlich geprüft (Karte = eigene Grafik).",
+        "Boot/Steg/Kiste = Bildmotiv (Quellen-Datei 'Bild-Hinweise': Boot zulässig, Drogen nur als 'CARGO')."
+      ],
+      "cues": [
+        {
+          "word": "Army",
+          "beat": "pathLineSouth",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "runners",
+          "beat": "cargoOnBoat",
+          "sfx": "pop",
+          "hud": {
+            "id": "status",
+            "value": "WORKS FOR RUNNERS"
+          }
+        },
+        {
+          "word": "Keys",
+          "beat": "keysLabel",
+          "sticker": "LEONIDA KEYS",
+          "color": "#2EC4B6",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "rehook",
+      "delivery": "tense",
+      "emotion": "ironic",
+      "text": "Rockstar's bio, roughly: | he wants an *easy* life. | It just keeps getting *harder*.",
+      "visual": "Re-Hook als eigene Szene: Jason in einer Hängematte zwischen zwei Palmen, Sonne, türkises Wasser – Akten-Notiz 'GOAL: EASY LIFE'. Auf 'harder' Musik-Filter zu, Beat 1 Takt weg: ein Palmenast knackt, die Hängematte sackt ab, Gewitterwolke schiebt sich vor die Sonne. Akten-Seite blättert um: 'PAGE 2'. Kein Sticker (Text steht schon als Akten-Notiz).",
+      "sources": [
+        "J7 / Nr. 22: Rockstar-Bio sinngemäß „wants an easy life, but things just keep getting harder“ / „wants a simple life, but it just keeps getting harder for him“ – notebookcheck.net (nur Suchtreffer) – Tertiär, WS, zwei Zusammenfassungen gleichsinnig, Wortlaut uneins → 'roughly' als Kennzeichen für sinngemäß, kein Zitat (Lehre Lucia: WS-Beat braucht ≥ 2 übereinstimmende Zusammenfassungen – erfüllt in der Aussage, nicht im Wortlaut)."
+      ],
+      "cues": [
+        {
+          "word": "easy",
+          "beat": "hammockSun",
+          "sfx": "ding"
+        },
+        {
+          "word": "harder",
+          "beat": "branchSnapStorm",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "circle",
+      "delivery": "normal",
+      "emotion": "ironic",
+      "text": "Just look who's around him. | His landlord, Brian, is a long-time drug *runner*. | His friend Cal? *Paranoid*.",
+      "visual": "Pinnwand: zwei neue Polaroids werden mit roter Schnur an Jasons Foto gehängt. Links BRIAN (eigene Figur, älterer Mann im Liegestuhl vor einem kleinen Strandhaus, Mietbuch in der Hand); auf 'runner' kippt neben ihm eine Kiste 'CARGO' auf (leer, nur Stroh). Rechts CAL (eigene Figur) späht durch einen Spalt im Vorhang, auf 'Paranoid' zieht er ihn ruckartig zu. Kleine Polaroid-Beschriftungen 'LANDLORD' / 'FRIEND' (Fakten), kein weiterer Sticker.",
+      "sources": [
+        "J5 / Nr. 5: „Brian Heder (Stephen Root), a long-time drug runner in the Keys and Jason's landlord“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. Mietvertrags-Bedingungen (Gerücht) bewusst weggelassen.",
+        "J6 / Nr. 4: „Cal Hampton, Jason's paranoid friend“ – W, wörtlich geprüft. 'Coast Guard radio' (Nr. 24, ein Lauf) nicht verwendet."
+      ],
+      "cues": [
+        {
+          "word": "around",
+          "beat": "pinboardPan",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "runner",
+          "beat": "brianCargoTip",
+          "sfx": "pop"
+        },
+        {
+          "word": "Paranoid",
+          "beat": "calCurtainSnap",
+          "sticker": "PARANOID",
+          "color": "#FFD23F",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "trailer",
+      "delivery": "normal",
+      "emotion": "playful",
+      "text": "In trailer two, he's up on a roof… just fixing some *leaks*. | And he picks up *Lucia* the day she gets out of prison.",
+      "visual": "Eigene Bildidee, kein Trailer-Standbild: Jason auf einem flachen Dach mit Rohrzange, ein Rohr spritzt ihm Wasser ins Gesicht (Slapstick), er wischt sich ab. Ruhiger Übergang (Wasserstrahl wird zur Weg-Linie). Vor einem neutralen Tor (kein Schild, kein Name): eigenes Cartoon-Auto (kein reales Modell), Jason lehnt an der Tür, LUCIA (türkises Haarband, wie im Lucia-Video) tritt heraus. Auf 'Lucia' kommt ihr Polaroid an die Pinnwand neben seins. Drums wieder voll.",
+      "sources": [
+        "J8 / Nr. 14: Trailer 2, „wherein Jason is \"just fixing some leaks\"“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft; 'up on a roof' aus Nr. 23 (WS, mehrere Berichte). Deutung als Leak-Anspielung nicht gesprochen (nur eine Quelle).",
+        "J8 / Nr. 23: Jason holt Lucia am Tag ihrer Entlassung ab („going to pick up Lucia on the day she gets out of jail/prison“) – gamesradar.com / videogameschronicle.com (nur Suchtreffer) – WS, mehrere Berichte, Trailer nicht gesehen; gleiche Aussage wie im Lucia-Video (Faktenprüfer P16 dort bestätigt). Reihenfolge im Trailer nicht behauptet ('And', nicht 'Then')."
+      ],
+      "cues": [
+        {
+          "word": "roof",
+          "beat": "roofWrench",
+          "sfx": "pop"
+        },
+        {
+          "word": "leaks",
+          "beat": "pipeSpray",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "Lucia",
+          "beat": "luciaAtGate",
+          "sticker": "LUCIA",
+          "color": "#2EC4B6",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "couple",
+      "delivery": "normal",
+      "emotion": "warm",
+      "text": "Together, they're a criminal *couple*. | Think Bonnie and Clyde… in Florida's fictional *twin*.",
+      "visual": "Rote Schnur verbindet beide Polaroids; Pinnwand-Überschrift wechselt kurz auf 'CASE FILE: JASON + LUCIA'. Auf 'couple' HUD STATUS → 'CRIMINAL COUPLE' (kein Sticker mit gleichem Wort, Lehre Lucia D4). Auf 'twin' Kamera zieht auf die eigene Karte: Umriss 'LEONIDA' neben einem blassen, gespiegelten Florida-Umriss, beide im Cabrio als Silhouetten auf der Brücke über die Keys – Gesichter erkennbar groß (Lehre Lucia D7: nicht nur 40-px-Silhouetten).",
+      "sources": [
+        "J9 / Nr. 3: „The story follows a criminal couple“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft.",
+        "J9 / Nr. 6: „The protagonists' dynamic is inspired by Bonnie and Clyde“ – W, wörtlich geprüft.",
+        "Nr. 1: „the fictional US state of Leonida, based on Florida“ – W, wörtlich geprüft ('Florida's fictional twin' = based on Florida)."
+      ],
+      "cues": [
+        {
+          "word": "couple",
+          "beat": "redStringCouple",
+          "sfx": "ding",
+          "hud": {
+            "id": "status",
+            "value": "CRIMINAL COUPLE"
+          }
+        },
+        {
+          "word": "twin",
+          "beat": "leonidaTwinMap",
+          "sticker": "LEONIDA",
+          "color": "#FF4FA3",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "flawed",
+      "delivery": "calm",
+      "emotion": "serious",
+      "text": "Rockstar wanted them both tough, vulnerable, *flawed*. | And not meant to be *do-gooders*.",
+      "visual": "Akten-Seite 'PROFILE': Jason schaut in einen beschlagenen Spiegel im Strandhaus; drei Stempel nacheinander ohne zusätzliche Sticker: 'TOUGH', 'VULNERABLE', 'FLAWED'. Auf 'do-gooders' wird ein Heiligenschein über seinem Kopf weggeschnippt und fällt klirrend auf den Boden. Kamera ruhig.",
+      "sources": [
+        "J10 / Nr. 7: Autorin Elizabeth Gauvey-Kern: das Studio „wanted both protagonists to be vulnerable, tough, flawed, right sometimes, wrong sometimes“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – wörtlich geprüft; Satz wie im Lucia-Video (Faktenprüfer P24: Vergangenheit, 'them both').",
+        "Nr. 8: Reputationssystem „not meant to portray Lucia and Jason as \"do-gooders\"“ – W, wörtlich geprüft; Sprechtext nah am Wortlaut ('not meant to be')."
+      ],
+      "cues": [
+        {
+          "word": "tough",
+          "beat": "stampTough",
+          "sfx": "pop"
+        },
+        {
+          "word": "flawed",
+          "beat": "stampFlawed",
+          "sfx": "pop"
+        },
+        {
+          "word": "do-gooders",
+          "beat": "haloFlick",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "play",
+      "delivery": "hype",
+      "emotion": "excited",
+      "text": "Soon, *you* get to play as him… or as Lucia.",
+      "visual": "Pinnwand dreht sich um: Rückseite = eigener Controller-Umriss (kein Konsolen-Logo). Figuren-Auswahl im eigenen Layout: Jason (pinkes Hemd) und Lucia (türkises Band) stehen sichtbar neben ihren Karten (Lehre Lucia R3: Hauptfigur bleibt im Bild). Auswahlkarten zentriert, unten-mittig über y 1300, ab 'play' mindestens 2,5 s sichtbar und über den Szenenwechsel gehalten (Lehre Lucia R2). HUD STATUS → 'PLAYABLE'. Konfetti nur seitlich hinter den Karten.",
+      "sources": [
+        "J10 / Nr. 9: „played from a third-person view as either Jason Duval or Lucia Caminos“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. 'Soon' = geplanter Termin 19.11.2026 (Nr. 17); nach dem 19.11. anpassen."
+      ],
+      "cues": [
+        {
+          "word": "you",
+          "beat": "boardFlipController",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "status",
+            "value": "PLAYABLE"
+          }
+        },
+        {
+          "word": "play",
+          "beat": "pickCards",
+          "sfx": "ding",
+          "choice": {
+            "title": "WHO DO YOU PICK?",
+            "options": [
+              "A · JASON",
+              "B · LUCIA"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "delivery": "punch",
+      "emotion": "playful",
+      "text": "It's scheduled for *November 19th*, after two delays. | Now you know how one man went…",
+      "visual": "Jason sitzt auf dem Dach und reißt Blätter von einem großen Abreißkalender: zwei Blätter mit lesbarer Aufschrift ('2025' und 'MAY 26, 2026'), Stempel 'DELAYED' jeweils in der unteren Blatthälfte, Zahlen frei (Lehre Lucia D2); dann bleibt 'NOV 19'. HUD blendet ab 'went' aus (Lehre Lucia R7). Auf 'went' Kamera fährt zurück an die Pinnwand und in das geteilte Polaroid – identisch mit dem Cover-Bild, nahtloser Loop zu 'From the Army…'.",
+      "sources": [
+        "J11 / Nr. 16, 17, 18: „In November 2025, Rockstar delayed the game to 19 November 2026“; „in May 2025, the game was delayed to 26 May 2026“; „it is scheduled to be released on 19 November 2026 for the PlayStation 5 and Xbox Series X/S“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft; Stand 13.11.2026 nicht erschienen, Termin am Renderstag prüfen. Erstes Fenster '2025' wie im Lucia-Video (dort P29).",
+        "Loop: '…how one man went…' → 'From the Army… to working for drug runners.'"
+      ],
+      "cues": [
+        {
+          "word": "19th",
+          "beat": "calendarNov19",
+          "sticker": "NOV 19",
+          "color": "#FFD23F",
+          "sfx": "ding"
+        },
+        {
+          "word": "delays",
+          "beat": "delayedStamps",
+          "sfx": "pop"
+        },
+        {
+          "word": "went",
+          "beat": "loopToCover",
+          "sfx": "whoosh"
+        }
+      ]
+    }
+  ]
+}
