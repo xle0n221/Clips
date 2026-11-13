@@ -618,7 +618,7 @@ export const lerp2c = (a: string, b: string, t: number) => {
   const A = hex(a);
   const B = hex(b);
   const k = clamp01(t);
-  return `#${A.map((v, i) => Math.round(v + (B[i] - v) * k).toString(16).padStart(2, "0")).join("")}`;
+  return `#${A.map((v, i) => `0${Math.round(v + (B[i] - v) * k).toString(16)}`.slice(-2)).join("")}`;
 };
 
 /** Gitterstäbe (vertikal), x von x0 in Abständen `gap`. */
@@ -734,7 +734,7 @@ export const CaseFile: React.FC<{
         <LT x={120} y={1260} size={40} anchor="start" fill="#55525F" weight={800}>
           REASON:
         </LT>
-        <g transform={`translate(330 1262) scale(${0.6 + 0.4 * reasonQ})`} opacity={reasonQ > 0 ? 1 : 0.35}>
+        <g transform={`translate(330 1262) scale(${0.6 + 0.9 * reasonQ})`} opacity={reasonQ > 0 ? 1 : 0.35}>
           <LT x={0} y={0} size={reason.length > 6 ? 40 : 64} anchor="start" fill={reasonQ > 0 ? LC.red : "#B5AD9C"}>
             {reason}
           </LT>
@@ -923,25 +923,25 @@ export const PrisonWall: React.FC<{ readonly gx: number; readonly floor: number;
       <rect x={gx - gw / 2} y={floor - 460} width={gw} height={460} fill="#FFE7BE" opacity={0.6 * light * open} />
       <g filter="url(#paper)">
         <path
-          d={`M -900 ${top} L ${gx + 1500} ${top} L ${gx + 1500} ${floor} L ${gx + gw / 2} ${floor} L ${gx + gw / 2} ${floor - 460} L ${gx - gw / 2} ${floor - 460} L ${gx - gw / 2} ${floor} L -900 ${floor} Z`}
+          d={`M -900 ${top} L ${gx + 640} ${top} L ${gx + 640} ${floor} L ${gx + gw / 2} ${floor} L ${gx + gw / 2} ${floor - 460} L ${gx - gw / 2} ${floor - 460} L ${gx - gw / 2} ${floor} L -900 ${floor} Z`}
           fill="#8D8794"
           stroke={LC.ink}
           strokeWidth={7}
           strokeLinejoin="round"
         />
-        {Array.from({ length: 12 }, (_, i) => (
+        {Array.from({ length: Math.floor((gx + 1540) / 260) + 1 }, (_, i) => (
           <path key={i} d={`M ${-900 + i * 260} ${top + 4} L ${-900 + i * 260} ${floor}`} stroke="#6F6976" strokeWidth={4} />
         ))}
-        <rect x={-900} y={top - 30} width={gx + 2400} height={36} fill="#6F6976" stroke={LC.ink} strokeWidth={6} />
+        <rect x={-900} y={top - 30} width={gx + 1540} height={36} fill="#6F6976" stroke={LC.ink} strokeWidth={6} />
       </g>
       {/* Stacheldraht */}
       <path
-        d={Array.from({ length: 60 }, (_, i) => `${i ? "L" : "M"} ${-900 + i * 50} ${top - 46 + (i % 2) * 24}`).join(" ")}
+        d={Array.from({ length: Math.ceil((gx + 1540) / 50) }, (_, i) => `${i ? "L" : "M"} ${-900 + i * 50} ${top - 46 + (i % 2) * 24}`).join(" ")}
         stroke={LC.ink}
         strokeWidth={4}
         fill="none"
       />
-      {Array.from({ length: 30 }, (_, i) => (
+      {Array.from({ length: Math.floor((gx + 1540) / 100) }, (_, i) => (
         <circle key={i} cx={-880 + i * 100} cy={top - 60} r={26} fill="none" stroke={LC.ink} strokeWidth={4} />
       ))}
       {/* Wachturm */}

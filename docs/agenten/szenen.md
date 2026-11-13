@@ -24,6 +24,19 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Lucia GTA 6 (2D Comic/Paper-Cut-Akte) v1 · **Experiment Portal-Fahrt ins Akten-Foto statt Schnitt (hook → dad):**
+  Foto-Inhalt im Bildraum 1080 × 1920 zeichnen und per `scale(420/1080)` in den Foto-Rahmen clippen; Kamera fährt in den letzten
+  ≈ 0,7 s der Szene aufs Foto bis Zoom 1080/420, Foto „entwickelt“ sich zur Sepia-Rückblende, Folgeszene startet bei Zoom 1 mit
+  demselben Bild, Übergang `cut` → Bild 7,8 s/7,9 s pixelgleich (`out/lucia-fix4.jpg`). Dasselbe Raster trägt Cover = Foto =
+  Loop-Ende (Loop fährt zurück ins Foto, Endbild = `CoverScene`). Falle: Teile, die in der Folgeszene erst ins Bild kommen
+  (Vater-Silhouette), im Foto-Inhalt mit Startzustand zeichnen, und abhängige Positionen (Kind an Pratze gekoppelt) vom
+  Endzustand ableiten – sonst springt das Bild am Schnitt. Weitere Fallen: lange Kulisse (Gefängnismauer bis x +1500) verdeckte
+  die Sonne in der Parallax-Ebene → Mauer kürzen; Cabrio als Silhouette auf dunkler Straße unsichtbar → Farbe behalten, nur
+  Insassen als Silhouette; Rückseite beim Dreh (`scale(|cos|)`) nicht zusätzlich spiegeln (PLAYABLE stand spiegelverkehrt).
+  11 Szenen, 22 Einstellungen/Fahrten auf 71,7 s (Ø ≈ 3,3 s). Neu `scenes/luciaSets.tsx`: `Toon` (Lucia kid/teen/adult, Outfits
+  casual/overall/heist, Jason; Zopf + Haarband türkis auch auf Silhouette), `CaseFile`/`PHOTO_ZOOM`, `Sunset`, `Palm`, `Bars`,
+  `Cell`/`CellDoor`, `PrisonWall`, `Convertible`, `BankFront`, `StateMap`, `EyeMark`, `Polaroid`, `GoldSeal`, `DateSheet`,
+  `PageFlip` (Umblättern über Szenengrenze), `Crack`, `CoffeeRing`, `BlurGroup` (nicht zählbare Gruppe). Beleg `out/lucia-kontakt.png`.
 - 13.11.2026 · Jensen Huang (2D) v2 nach Regie-Kritik 7,5 · 12 Befunde, umgesetzt: Rekord-Pill an den Chart-Punkt
   (x 0,32 / y 0,44) statt in die Sticker-Zone, Gebets-Caption dafür auf y ≈ 540–690; Board-Pill endet am Beat `clippingsIn`
   (Sticker „REPORTED BY NYT“ verdeckte sie); Pills max. 88 % Bildbreite; Schild-Schrift mit 0,8 em/Zeichen einpassen
@@ -170,6 +183,7 @@
 | 12.11.2026 | UFC (2D) v1 | 6,0 (Regie) | Cue-Abstände Ø 1,7 s, Karten bis Loop-Ende, Label-Stapel |
 | 12.11.2026 | UFC (2D) v2 | – (Selbstnote 7,5, Regie offen) | 0 Cue-Abstände < 1,5 s, 7 Befunde umgesetzt; Start-Oktagon anfangs leer |
 | 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
+| 13.11.2026 | Lucia GTA 6 (2D) v1 | – (Selbstnote 8,5, Regie offen) | Portal nahtlos, 8 Befunde selbst behoben; Bewegung nur im Standbild geprüft |
 | 13.11.2026 | Jensen Huang (2D) v1 | 7,5 (Regie) | 15 Cue-Abstände < 1,5 s (Drehbuch), sonst keine Anschnitte |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |

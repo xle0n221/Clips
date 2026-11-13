@@ -8,6 +8,7 @@ import { TYSON_CONFIG, TYSON_SCENES } from "./tyson";
 import { UFC_CONFIG, UFC_SCENES } from "./ufc";
 import { ROLLS_CONFIG, ROLLS_SCENES } from "./rolls";
 import { HUANG_CONFIG, HUANG_SCENES } from "./huang";
+import { LUCIA_CONFIG, LUCIA_SCENES } from "./lucia";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
 export const SCENES: Record<string, React.FC> = {
@@ -36,6 +37,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   ufc: UFC_SCENES,
   "rolls-royce": ROLLS_SCENES,
   "jensen-huang": HUANG_SCENES,
+  "lucia-gta6": LUCIA_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -67,5 +69,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   ufc: UFC_CONFIG,
   "rolls-royce": ROLLS_CONFIG,
   "jensen-huang": HUANG_CONFIG,
+  "lucia-gta6": LUCIA_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

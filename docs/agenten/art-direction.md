@@ -22,6 +22,12 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Lucia GTA 6 (2D Comic/Paper-Cut als Akte) · Stilwahl: eigene Figuren statt Spiel-Look – Erkennung über **ein**
+  Merkmal (türkises Haarband + Zopf-Band), das auch auf Silhouetten (Überfall, Cabrio) türkis bleibt; Jason pink, gleich groß oder
+  kleiner. Farbwelt je Station: Sepia (Rückblende) → Blaugrau (Zelle) → Abendrot (Freiheit) → Rotlicht (Überfall) → Gold (Premiere)
+  → Violett (Spielerwahl); im Kontaktabzug ohne Ton unterscheidbar. Markenabstand: kein Schriftzug, kein Logo, Bank nur „BANK“,
+  Bundesstaat als eigene Halbinsel-Form, Controller eigener Umriss. Bild-Hinweise Faktenprüfung umgesetzt (Familie als Unschärfe-
+  Fleck, Handschuhe unbeschriftet, „2025“, RELEASED · LUCK + DETAILS? UNKNOWN, CRIMINAL COUPLE). Beleg `out/lucia-kontakt.png`.
 - 12.11.2026 · UFC (2D Fight-Poster) · **Experiment Oktagon in drei Lagen** (`kit2d/fight.tsx` `Octagon`: Boden + hintere
   Zaunhälfte, Kinder, vorderes Gitter mit Deckkraft 0,4–0,6): Käfig liest sich im Kontaktabzug sofort als MMA, Figur bleibt
   hinter dem Gitter lesbar; Rautenmuster per SVG-`pattern` (30 px, 45°) ohne messbare Mehrkosten (3,2 s/Bild, wie Tyson 3,8 s).
