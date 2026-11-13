@@ -1,0 +1,382 @@
+{
+ "id": "jason-gta6",
+ "title": "Who is Jason from GTA 6?",
+ "durationMs": 72450,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 8640
+  },
+  {
+   "id": "crooks",
+   "startMs": 8640,
+   "endMs": 13760
+  },
+  {
+   "id": "army",
+   "startMs": 13760,
+   "endMs": 17580
+  },
+  {
+   "id": "keys",
+   "startMs": 17580,
+   "endMs": 24580
+  },
+  {
+   "id": "rehook",
+   "startMs": 24580,
+   "endMs": 31780
+  },
+  {
+   "id": "circle",
+   "startMs": 31780,
+   "endMs": 40350
+  },
+  {
+   "id": "trailer",
+   "startMs": 40350,
+   "endMs": 47810
+  },
+  {
+   "id": "couple",
+   "startMs": 47810,
+   "endMs": 54750
+  },
+  {
+   "id": "flawed",
+   "startMs": 54750,
+   "endMs": 61620
+  },
+  {
+   "id": "play",
+   "startMs": 61620,
+   "endMs": 65780
+  },
+  {
+   "id": "loop",
+   "startMs": 65780,
+   "endMs": 71850
+  }
+ ],
+ "cues": [
+  {
+   "beat": "stampArmy",
+   "sfx": "boom",
+   "scene": "hook",
+   "atMs": 480
+  },
+  {
+   "beat": "whipToKeysHalf",
+   "sfx": "whoosh",
+   "scene": "hook",
+   "atMs": 2820
+  },
+  {
+   "beat": "redLineQuestion",
+   "sticker": "HOW?",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "hook",
+   "atMs": 7380
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 480
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 2620
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 2820
+  },
+  {
+   "beat": "polaroidRewind",
+   "sfx": "whoosh",
+   "scene": "crooks",
+   "atMs": 8700
+  },
+  {
+   "beat": "aceFromSleeve",
+   "sfx": "pop",
+   "hud": {
+    "id": "status",
+    "value": "AROUND CROOKS"
+   },
+   "scene": "crooks",
+   "atMs": 11880
+  },
+  {
+   "emph": true,
+   "scene": "crooks",
+   "atMs": 11880
+  },
+  {
+   "beat": "doorCloseOnCrooks",
+   "sfx": "boom",
+   "hud": {
+    "id": "status",
+    "value": "ARMY"
+   },
+   "scene": "army",
+   "atMs": 14600
+  },
+  {
+   "beat": "pathLineStarts",
+   "sfx": "whoosh",
+   "scene": "army",
+   "atMs": 16200
+  },
+  {
+   "emph": true,
+   "scene": "army",
+   "atMs": 14600
+  },
+  {
+   "beat": "pathLineSouth",
+   "sfx": "whoosh",
+   "scene": "keys",
+   "atMs": 18240
+  },
+  {
+   "beat": "cargoOnBoat",
+   "sfx": "pop",
+   "hud": {
+    "id": "status",
+    "value": "WORKED FOR RUNNERS"
+   },
+   "scene": "keys",
+   "atMs": 20700
+  },
+  {
+   "beat": "keysLabel",
+   "sticker": "LEONIDA KEYS",
+   "color": "#2EC4B6",
+   "sfx": "ding",
+   "scene": "keys",
+   "atMs": 23140
+  },
+  {
+   "emph": true,
+   "scene": "keys",
+   "atMs": 23140
+  },
+  {
+   "beat": "hammockSun",
+   "sfx": "ding",
+   "scene": "rehook",
+   "atMs": 28000
+  },
+  {
+   "beat": "branchSnapStorm",
+   "sfx": "boom",
+   "scene": "rehook",
+   "atMs": 30520
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 28000
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 30520
+  },
+  {
+   "beat": "pinboardPan",
+   "sfx": "whoosh",
+   "scene": "circle",
+   "atMs": 32720
+  },
+  {
+   "beat": "brianCargoTip",
+   "sfx": "pop",
+   "scene": "circle",
+   "atMs": 36760
+  },
+  {
+   "beat": "calCurtainSnap",
+   "sticker": "PARANOID",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "circle",
+   "atMs": 39440
+  },
+  {
+   "emph": true,
+   "scene": "circle",
+   "atMs": 36760
+  },
+  {
+   "emph": true,
+   "scene": "circle",
+   "atMs": 39440
+  },
+  {
+   "beat": "roofWrench",
+   "sfx": "pop",
+   "scene": "trailer",
+   "atMs": 42240
+  },
+  {
+   "beat": "pipeSpray",
+   "sfx": "whoosh",
+   "scene": "trailer",
+   "atMs": 43700
+  },
+  {
+   "beat": "luciaAtGate",
+   "sticker": "LUCIA",
+   "color": "#2EC4B6",
+   "sfx": "ding",
+   "scene": "trailer",
+   "atMs": 45400
+  },
+  {
+   "emph": true,
+   "scene": "trailer",
+   "atMs": 43700
+  },
+  {
+   "emph": true,
+   "scene": "trailer",
+   "atMs": 45400
+  },
+  {
+   "beat": "redStringCouple",
+   "sfx": "ding",
+   "hud": {
+    "id": "status",
+    "value": "CRIMINAL COUPLE"
+   },
+   "scene": "couple",
+   "atMs": 49180
+  },
+  {
+   "beat": "leonidaTwinMap",
+   "sticker": "LEONIDA",
+   "color": "#FF4FA3",
+   "sfx": "whoosh",
+   "scene": "couple",
+   "atMs": 53400
+  },
+  {
+   "emph": true,
+   "scene": "couple",
+   "atMs": 49180
+  },
+  {
+   "emph": true,
+   "scene": "couple",
+   "atMs": 53400
+  },
+  {
+   "beat": "stampTough",
+   "sfx": "pop",
+   "scene": "flawed",
+   "atMs": 56040
+  },
+  {
+   "beat": "stampFlawed",
+   "sfx": "pop",
+   "scene": "flawed",
+   "atMs": 58260
+  },
+  {
+   "beat": "haloFlick",
+   "sfx": "ding",
+   "scene": "flawed",
+   "atMs": 60120
+  },
+  {
+   "emph": true,
+   "scene": "flawed",
+   "atMs": 58260
+  },
+  {
+   "emph": true,
+   "scene": "flawed",
+   "atMs": 60120
+  },
+  {
+   "beat": "boardFlipController",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "status",
+    "value": "PLAYABLE"
+   },
+   "scene": "play",
+   "atMs": 61840
+  },
+  {
+   "beat": "pickCards",
+   "sfx": "ding",
+   "choice": {
+    "title": "WHO DO YOU PICK?",
+    "options": [
+     "A \u00b7 JASON",
+     "B \u00b7 LUCIA"
+    ]
+   },
+   "scene": "play",
+   "atMs": 62340
+  },
+  {
+   "emph": true,
+   "scene": "play",
+   "atMs": 61840
+  },
+  {
+   "beat": "calendarNov19",
+   "sticker": "NOV 19",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "loop",
+   "atMs": 66720
+  },
+  {
+   "beat": "delayedStamps",
+   "sfx": "pop",
+   "scene": "loop",
+   "atMs": 68020
+  },
+  {
+   "beat": "loopToCover",
+   "sfx": "whoosh",
+   "scene": "loop",
+   "atMs": 70520
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 66480
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 66720
+  }
+ ],
+ "hud": {
+  "title": "CASE FILE: JASON",
+  "counters": [
+   {
+    "id": "status",
+    "label": "STATUS",
+    "value": "UNKNOWN"
+   }
+  ],
+  "bars": []
+ },
+ "cover": {
+  "text": "WHO IS JASON?",
+  "sub": "GTA 6 \u00b7 his file, before Nov 19",
+  "frames": 15
+ }
+}
