@@ -1,0 +1,388 @@
+{
+ "id": "jensen-huang",
+ "title": "What Jensen Huang's affairs mean for NVIDIA",
+ "durationMs": 72350,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 7140
+  },
+  {
+   "id": "confess",
+   "startMs": 7140,
+   "endMs": 12480
+  },
+  {
+   "id": "fold",
+   "startMs": 12480,
+   "endMs": 20650
+  },
+  {
+   "id": "alleged",
+   "startMs": 20650,
+   "endMs": 33060
+  },
+  {
+   "id": "crash",
+   "startMs": 33060,
+   "endMs": 41860
+  },
+  {
+   "id": "twist",
+   "startMs": 41860,
+   "endMs": 49450
+  },
+  {
+   "id": "pr",
+   "startMs": 49450,
+   "endMs": 58310
+  },
+  {
+   "id": "answer",
+   "startMs": 58310,
+   "endMs": 66630
+  },
+  {
+   "id": "loop",
+   "startMs": 66630,
+   "endMs": 71750
+  }
+ ],
+ "cues": [
+  {
+   "sticker": "SUNDAY",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "hook",
+   "atMs": 380
+  },
+  {
+   "beat": "confidenceStamp",
+   "sticker": "BOARD: \"CONFIDENCE\" \u2713",
+   "color": "#76B900",
+   "sfx": "ding",
+   "bar": {
+    "id": "conf",
+    "value": 1.0
+   },
+   "scene": "hook",
+   "atMs": 2560
+  },
+  {
+   "beat": "calendarRip",
+   "sticker": "THURSDAY",
+   "color": "#FFFFFF",
+   "sfx": "whoosh",
+   "scene": "hook",
+   "atMs": 5400
+  },
+  {
+   "beat": "emptyJacket",
+   "sfx": "boom",
+   "bar": {
+    "id": "conf",
+    "value": 0.0
+   },
+   "scene": "hook",
+   "atMs": 6120
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 2560
+  },
+  {
+   "beat": "inboxConfession",
+   "sfx": "ding",
+   "scene": "confess",
+   "atMs": 8760
+  },
+  {
+   "beat": "tacoDrop",
+   "sticker": "REPLY ALL?",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "confess",
+   "atMs": 11300
+  },
+  {
+   "emph": true,
+   "scene": "confess",
+   "atMs": 11300
+  },
+  {
+   "beat": "phoneClosed",
+   "sfx": "pop",
+   "scene": "fold",
+   "atMs": 14040
+  },
+  {
+   "beat": "phoneFlip",
+   "sfx": "whoosh",
+   "scene": "fold",
+   "atMs": 17120
+  },
+  {
+   "beat": "gpuWink",
+   "sticker": "HIS LONGEST RELATIONSHIP",
+   "color": "#76B900",
+   "sfx": "ding",
+   "scene": "fold",
+   "atMs": 19240
+  },
+  {
+   "emph": true,
+   "scene": "fold",
+   "atMs": 19240
+  },
+  {
+   "beat": "boardTable",
+   "sticker": "INDEPENDENT INVESTIGATION",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "alleged",
+   "atMs": 21100
+  },
+  {
+   "beat": "quoteCard",
+   "label": {
+    "text": "BOARD: \"FOREIGN INTELLIGENCE EFFORT\" \u00b7 NOV 8",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.3
+   },
+   "sfx": "ding",
+   "scene": "alleged",
+   "atMs": 22640
+  },
+  {
+   "beat": "clippingsIn",
+   "sticker": "REPORTED BY NYT",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "alleged",
+   "atMs": 24420
+  },
+  {
+   "beat": "allegedStamp",
+   "sticker": "ALLEGED",
+   "color": "#FF3B3B",
+   "scene": "alleged",
+   "atMs": 26860
+  },
+  {
+   "beat": "deniesCard",
+   "sticker": "BEIJING: DENIES",
+   "color": "#B0BEC5",
+   "sfx": "ding",
+   "scene": "alleged",
+   "atMs": 31460
+  },
+  {
+   "emph": true,
+   "scene": "alleged",
+   "atMs": 31460
+  },
+  {
+   "beat": "terminalZoom",
+   "sticker": "BREAKING",
+   "color": "#FF3B3B",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "nvda",
+    "value": "NVDA $186.64"
+   },
+   "scene": "crash",
+   "atMs": 33520
+  },
+  {
+   "beat": "tickerBreaking",
+   "sticker": "MON \u22124.27%",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "hud": {
+    "id": "nvda",
+    "value": "NVDA $178.67"
+   },
+   "scene": "crash",
+   "atMs": 35260
+  },
+  {
+   "beat": "chartDrop",
+   "sticker": "TUE \u22125.5%",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "hud": {
+    "id": "nvda",
+    "value": "NVDA $168.89"
+   },
+   "scene": "crash",
+   "atMs": 37640
+  },
+  {
+   "beat": "recordFlag",
+   "sticker": "\u221229% FROM RECORD",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "label": {
+    "text": "RECORD OCT 6: $239.24",
+    "color": "#B0BEC5",
+    "x": 0.5,
+    "y": 0.3
+   },
+   "scene": "crash",
+   "atMs": 40520
+  },
+  {
+   "emph": true,
+   "scene": "crash",
+   "atMs": 40520
+  },
+  {
+   "beat": "rewindChart",
+   "sfx": "whoosh",
+   "scene": "twist",
+   "atMs": 42160
+  },
+  {
+   "beat": "nov5Drop",
+   "sticker": "NOV 5: \u22129.26%",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "scene": "twist",
+   "atMs": 44200
+  },
+  {
+   "beat": "ballotIcon",
+   "sticker": "BEFORE THE PROBE",
+   "color": "#FFFFFF",
+   "scene": "twist",
+   "atMs": 46420
+  },
+  {
+   "beat": "leafBlower",
+   "sticker": "NOT THE FIRE. THE BLOWER.",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "twist",
+   "atMs": 48280
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 48280
+  },
+  {
+   "beat": "stampCallback",
+   "sticker": "CONFIDENCE \u2713 (SUN)",
+   "color": "#76B900",
+   "sfx": "ding",
+   "scene": "pr",
+   "atMs": 50100
+  },
+  {
+   "beat": "resignCard",
+   "sticker": "RESIGNED (THU)",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "scene": "pr",
+   "atMs": 51760
+  },
+  {
+   "beat": "milkVsConfidence",
+   "sticker": "BEST BEFORE: 4 DAYS",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "pr",
+   "atMs": 57060
+  },
+  {
+   "emph": true,
+   "scene": "pr",
+   "atMs": 57060
+  },
+  {
+   "beat": "receiptFull",
+   "sfx": "pop",
+   "scene": "answer",
+   "atMs": 58980
+  },
+  {
+   "sticker": "BOARD: NO SIGN SECRETS COMPROMISED",
+   "color": "#FFFFFF",
+   "scene": "answer",
+   "atMs": 63640
+  },
+  {
+   "beat": "emptyShelf",
+   "sticker": "TRUST: OUT OF STOCK",
+   "color": "#FF3B3B",
+   "sfx": "ding",
+   "scene": "answer",
+   "atMs": 65500
+  },
+  {
+   "emph": true,
+   "scene": "answer",
+   "atMs": 65500
+  },
+  {
+   "beat": "newChairStamp",
+   "sticker": "CONFIDENCE \u2713",
+   "color": "#76B900",
+   "sfx": "ding",
+   "scene": "loop",
+   "atMs": 67560
+  },
+  {
+   "beat": "stopwatchStart",
+   "sticker": "\u23f1 0:00",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "choice": {
+    "title": "HOW LONG THIS TIME?",
+    "options": [
+     "A \u00b7 4 DAYS",
+     "B \u00b7 4 HOURS"
+    ]
+   },
+   "scene": "loop",
+   "atMs": 69360
+  },
+  {
+   "beat": "loopToSunday",
+   "sfx": "whoosh",
+   "scene": "loop",
+   "atMs": 70500
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 70500
+  }
+ ],
+ "hud": {
+  "title": "NVIDIA: 4 DAYS",
+  "counters": [
+   {
+    "id": "nvda",
+    "label": "",
+    "value": "NVDA $186.64"
+   }
+  ],
+  "bars": [
+   {
+    "id": "conf",
+    "label": "BOARD CONFIDENCE",
+    "value": 1.0,
+    "color": "#76B900"
+   }
+  ]
+ },
+ "cover": {
+  "text": "WHAT DID THE AFFAIR COST?",
+  "sub": "NVIDIA's board: 'confidence'. 4 days later\u2026",
+  "frames": 15
+ }
+}
