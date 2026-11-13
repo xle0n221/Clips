@@ -30,4 +30,4 @@ Rendert, normalisiert, prüft das fertige Video (ffprobe, LUFS, Kontaktabzug, er
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 13.11.2026 | Lucia (GTA 6) | 9 | Technik sauber; Lautheit −14,5 statt −14,0 LUFS (am Toleranzrand), sonst ohne Befund |
-| 13.11.2026 | Jason (GTA 6) | 7 | Technik ok (−14,6 LUFS, −1,3 dBTP); Endbild ohne End-Card „KnowToon“ im letzten Frame nicht bestätigt |
+| 13.11.2026 | Jason (GTA 6) | 9 | Technik ok (−14,6 LUFS in ±1, −1,3 dBTP); Loop-Ende mit Ton, keine End-Card-Pflicht (Prompt-Vorgabe ab KnowToon) |
