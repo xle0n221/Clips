@@ -423,7 +423,7 @@ export const ZwKnock: React.FC = () => {
 /* 21 question – „And you? | How many hours did you sell today?“ */
 /* ------------------------------------------------------------------ */
 const RealVideoInJar: React.FC<{ readonly position: V3; readonly scale: number; readonly opacity: number }> = ({ position, scale, opacity }) => {
-  const tex = useOffthreadVideoTexture({ src: staticFile("episodes/zeit-welt/real/cities-night-iss.mp4") });
+  const tex = useOffthreadVideoTexture({ src: staticFile("episodes/zeit-welt/real/aurora-city-lights-iss.mp4") });
   return (
     <mesh position={position} scale={scale}>
       <cylinderGeometry args={[0.145, 0.145, 0.33, 32, 1, true, -Math.PI / 2, Math.PI]} />
