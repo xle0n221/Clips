@@ -316,7 +316,7 @@ export const SplitArt: React.FC<{ readonly f: number; readonly dimL?: number; re
       x={540}
       y={SPLIT_FOOT}
       s={SPLIT_S}
-      frame={f}
+      frame={f < 21 ? 0 : f}
       who="jason"
       outfit={outfit}
       armL={[16, 10]}
@@ -800,15 +800,35 @@ export const Spray: React.FC<{ readonly a: readonly [number, number]; readonly b
 };
 
 /** Flaches Dach (Seitenansicht) mit Lüftungsrohr; Ursprung linke Kante bei Dachhöhe y. */
-export const Roof: React.FC<{ readonly y: number }> = ({ y }) => (
+export const Roof: React.FC<{ readonly y: number; readonly ladderX?: number }> = ({ y, ladderX }) => (
   <g>
-    <g filter="url(#paper)">
-      <rect x={-3000} y={y} width={7000} height={2000} fill="#D9CFC0" stroke={LC.ink} strokeWidth={6} />
-    </g>
-    <rect x={-3000} y={y} width={7000} height={26} fill="#B8AC98" />
-    {Array.from({ length: 30 }, (_, i) => (
-      <path key={i} d={`M ${-600 + i * 110} ${y + 26} L ${-560 + i * 110} ${y + 200}`} stroke="#C6BBA9" strokeWidth={4} />
+    {/* Hauswand unter der Dachkante (Pastell), Fensterstürze */}
+    <rect x={-3000} y={y + 120} width={7000} height={3000} fill="#F4C9B4" stroke={LC.ink} strokeWidth={6} />
+    {Array.from({ length: 12 }, (_, i) => (
+      <g key={i}>
+        <rect x={-700 + i * 330} y={y + 230} width={170} height={260} fill="#9FD8E6" stroke={LC.ink} strokeWidth={5} />
+        <rect x={-712 + i * 330} y={y + 210} width={194} height={26} fill="#FFFFFF" stroke={LC.ink} strokeWidth={4} />
+      </g>
     ))}
+    {/* Dach-Oberseite (Kies) + Blende + Regenrinne */}
+    <g filter="url(#paper)">
+      <rect x={-3000} y={y} width={7000} height={60} fill="#C9C3B6" stroke={LC.ink} strokeWidth={6} />
+      <rect x={-3000} y={y + 60} width={7000} height={44} fill="#FFFFFF" stroke={LC.ink} strokeWidth={6} />
+    </g>
+    {Array.from({ length: 70 }, (_, i) => (
+      <circle key={i} cx={-600 + i * 37} cy={y + 18 + (i % 3) * 13} r={4} fill="#A39C8E" />
+    ))}
+    <rect x={-3000} y={y + 102} width={7000} height={22} rx={11} fill="#B9C2CC" stroke={LC.ink} strokeWidth={5} />
+    {ladderX !== undefined ? (
+      <g filter="url(#paper)">
+        {[-36, 36].map((dx) => (
+          <path key={dx} d={`M ${ladderX + dx} ${y - 130} L ${ladderX + dx + 40} ${y + 900}`} stroke="#C98B3A" strokeWidth={14} strokeLinecap="round" />
+        ))}
+        {Array.from({ length: 9 }, (_, i) => (
+          <path key={i} d={`M ${ladderX - 36 + i * 4.4} ${y - 100 + i * 110} L ${ladderX + 36 + i * 4.4} ${y - 100 + i * 110}`} stroke="#C98B3A" strokeWidth={10} />
+        ))}
+      </g>
+    ) : null}
   </g>
 );
 

@@ -334,8 +334,6 @@
   },
   {
    "beat": "calendarNov19",
-   "sticker": "NOV 19",
-   "color": "#FFD23F",
    "sfx": "ding",
    "scene": "loop",
    "atMs": 66720

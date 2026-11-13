@@ -694,7 +694,7 @@ export const Circle: React.FC = () => {
         <Pinboard id="circle" f={f} />
         <RedString a={jPin} b={[brianX, BRIAN.y - 188 * 0.8]} t={ease(f, around + 10, around + 24)} />
         <RedString a={jPin} b={[calX, CAL.y - 188 * 0.8]} t={ease(f, around + 20, around + 34)} />
-        <JPolaroid x={JMINI.x} y={JMINI.y} s={JMINI.s} r={-2} id="j-mini" label="JASON" color={LC.pinkDark}>
+        <JPolaroid x={JMINI.x} y={JMINI.y} s={JMINI.s} r={-2} id="j-mini" label="JASON" color={LC.pinkDark} o={shot === 0 ? 1 : 0}>
           <JasonBust f={f} />
         </JPolaroid>
         <JPolaroid x={brianX} y={BRIAN.y} s={0.8} r={BRIAN.r} id="brian" label="LANDLORD">

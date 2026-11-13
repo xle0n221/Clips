@@ -2,7 +2,7 @@ import React from "react";
 import { camPath, ease, frameOn, jolt, Layer, lerp, LuxDefs, pop, Stage2D } from "../kit2d";
 import { shotIndex } from "../types";
 import { TopShade } from "./huangSets";
-import { Confetti, Convertible, DateSheet, LC, LT, Pad, Palm, Stamp, StateMap, Toon, toonHand, toonHeadY } from "./luciaSets";
+import { Confetti, Convertible, DateSheet, LC, LT, Pad, Palm, Pin, Stamp, STATE_PATH, StateMap, Toon, toonHand, toonHeadY } from "./luciaSets";
 import { BOARD_END, CoverScene, JasonBust, JPHOTO_CAM } from "./jason1";
 import { BigPolaroid, EdgeArm, Fog, Gate, Halo, hasReal, IndexCard, JPolaroid, KeysDay, Pinboard, Pipe, RealMedia, RedString, Roof, SplitArt, Spray, Water, Wrench } from "./jasonSets";
 import { useBeats } from "./rollsSets";
@@ -56,12 +56,12 @@ export const Trailer: React.FC = () => {
       <Stage2D cam={{ ...cam, x: cam.x + jolt(f, roof, 6) + jolt(f, leaks, 10) }} mood="night" noSky>
         <LuxDefs />
         <Layer depth={0.35}>
-          <KeysDay f={f} id="roof" x0={-1200} w={3400} horizon={1060} />
-          <Palm x={-80} y={1240} s={0.8} lean={8} color="#2F6B4A" sway={2 * Math.sin(f * 0.05)} />
-          <Palm x={1160} y={1240} s={0.9} lean={-6} color="#2F6B4A" sway={2 * Math.sin(f * 0.05 + 1)} />
+          <KeysDay f={f} id="roof" x0={-1200} w={3400} horizon={1700} />
+          <Palm x={-60} y={1820} s={1.05} lean={8} color="#2F6B4A" sway={2 * Math.sin(f * 0.05)} />
+          <Palm x={1180} y={1820} s={1.1} lean={-6} color="#2F6B4A" sway={2 * Math.sin(f * 0.05 + 1)} />
         </Layer>
         <Layer>
-          <Roof y={floor} />
+          <Roof y={floor} ladderX={110} />
           <Pipe x={collar[0] + 30} y={floor} h={floor - collar[1] + 150} />
           <Toon
             x={jx}
@@ -202,8 +202,21 @@ export const Couple: React.FC = () => {
             <RealMedia slot="floridaSat" x={-150} y={-180} w={300} h={320} kb={{ t: (f - cutC) / 70, z0: 1.0, z1: 1.06 }} />
           </JPolaroid>
         ) : null}
-        <g opacity={ease(f, twin - 8, twin + 4)}>
-          <StateMap x={real ? 790 : 540} y={900} s={real ? 0.5 : 0.75} label="" />
+        <g transform={`translate(${real ? 790 : 540} 880) scale(${1 + 0.06 * Math.max(0, 1 - Math.abs(f - twin - 3) / 6)}) translate(${real ? -790 : -540} -880)`}>
+          <g transform={`translate(${real ? 790 : 540} 880) scale(${real ? 0.5 : 0.72})`}>
+            <path d={STATE_PATH} fill="none" stroke={LC.ink} strokeWidth={22} strokeLinejoin="round" transform="translate(10 14)" opacity={0.35} />
+          </g>
+          <StateMap x={real ? 790 : 540} y={880} s={real ? 0.5 : 0.72} label="" />
+          <g transform={`translate(${real ? 790 : 540} 880) scale(${real ? 0.5 : 0.72})`}>
+            <path d={STATE_PATH} fill="none" stroke={LC.ink} strokeWidth={12} strokeLinejoin="round" />
+          </g>
+          {f >= twin ? <Pin x={real ? 800 : 555} y={880 - 40 * (1 - ease(f, twin, twin + 6))} color={LC.pink} /> : null}
+        </g>
+        <g transform={`translate(${lerp(real ? 600 : 300, real ? 980 : 800, ease(f, cutC, d, "inOut"))} 1230) scale(0.34)`}>
+          <Convertible x={0} y={0} s={1} wheel={(f - cutC) * 18}>
+            <Toon x={40} y={20} s={0.6} frame={f} who="jason" look={1} mouth="smile" blinkSeed={11} breathe={false} />
+            <Toon x={-170} y={24} s={0.58} frame={f} look={1} mouth="smirk" blinkSeed={5} breathe={false} />
+          </Convertible>
         </g>
         {real ? (
           <g opacity={ease(f, twin, twin + 8)}>
@@ -314,7 +327,7 @@ export const Play: React.FC = () => {
   const front = flip < 0.5;
   const sx = Math.abs(Math.cos(Math.PI * flip));
   const cam = frameOn(540, 940, 540, 940, lerp(0.97, 1.02, ease(f, 0, d, "inOut")));
-  const floor = 1180;
+  const floor = 1095;
   const show = ease(f, you, you + 10);
   return (
     <Stage2D cam={cam} mood="night" noSky>
@@ -394,7 +407,8 @@ export const Loop: React.FC = () => {
       <Stage2D cam={{ ...cam, x: cam.x + jolt(f, nov, 8) }} mood="night" noSky>
         <LuxDefs />
         <Layer depth={0.35}>
-          <KeysDay f={f} id="loop" x0={-1200} w={3400} horizon={1100} />
+          <KeysDay f={f} id="loop" x0={-1200} w={3400} horizon={1700} />
+          <Palm x={1120} y={1840} s={1.0} lean={-6} color="#2F6B4A" sway={2 * Math.sin(f * 0.05 + 1)} />
         </Layer>
         <Layer>
           <Roof y={floor} />
@@ -413,7 +427,7 @@ export const Loop: React.FC = () => {
               <Stamp x={880} y={919} text="DELAYED" t={ease(f, delays, delays + 6)} r={6} size={32} />
             </g>
           ) : null}
-          <Toon x={118} y={floor} s={0.62} frame={f} who="jason" armR={[lerp(20, 120, throwT), 30]} armL={[30, 128]} look={1} mouth={f >= delays ? "smirk" : "flat"} brows={f >= delays ? "up" : "neutral"} blinkSeed={11} />
+          <Toon x={178} y={floor} s={0.62} frame={f} who="jason" armR={[lerp(20, 120, throwT), 30]} armL={[30, 128]} look={1} mouth={f >= delays ? "smirk" : "flat"} brows={f >= delays ? "up" : "neutral"} blinkSeed={11} />
         </Layer>
         <Layer depth={0}>
           <TopShade />
