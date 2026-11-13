@@ -2,7 +2,7 @@
   "id": "zeit-welt",
   "title": "In This City, You Pay With Time",
   "engine": "chatterbox",
-  "voice": "am_fenrir",
+  "voice": "am_michael",
   "voicePreset": "lebendig",
   "speed": 1.08,
   "pauseMs": 350,
@@ -760,7 +760,7 @@
       "section": "ending"
     }
   ],
-  "voiceProfile": "male – am_fenrir (Finn): Repo-Standardstimme, vom Nutzer als 'sehr gut' freigegeben; warme mittel-tiefe Lage passt zum ruhigen Erzähler einer düsteren Parabel.",
+  "voiceProfile": "male, young adult – am_michael (vom Nutzer gewählt 13.11.2026 aus 8 Casting-Proben, out/casting-zeit-welt/): Messung F0-Median 129 Hz, Präsenz 2–5 kHz −9,7 dB (klarste), earshot Erzähler 0,41 vs News-Anchor 0,19, p_real 0,87, Whisper 0 Fehler.",
   "voiceNotes": {
     "prompt": "STEP 4 'NARRATION & VOICE' (Nutzer 13.11.2026), umgesetzt mit Chatterbox statt ElevenLabs (Zuordnung eigene Ableitung, per Messung prüfen).",
     "tempo": "Ziel 2,5–2,75 W/s gesamt (150–165 W/min): 268 W → 97–107 s Sprache + 0,5 s Cover + 2 s End-Card ≈ 100–110 s. Erreicht über kurze Pausen (gap_ms 280–380 statt 450–640) und speed 1,05 (Code-Deckel NARRATOR.max_speed 1,05; Twist emotion.speed 1,03 → effektiv ≈ 1,08 ≤ 1,1).",
