@@ -89,7 +89,7 @@ mit `id`, `text` und `cues` (an ein Wort gebunden: `sticker`+`color`, `sfx` boom
   `tile`. Gemessen 3,3–4 s/Bild statt 5,7 s je `npx remotion still`. Kein eigener Ad-hoc-Code mehr nötig.
 - Checkliste: nichts außerhalb des Bildes, keine leeren Einstellungen, Figuren nicht verdeckt,
   Sticker enden mit ihrer Szene, Thema erkennbar, roter Faden sichtbar.
-- **Qualitäts-Tor vor Freigabe 2:** Keine bekannte Schwäche mit Note < 7 geht zum Nutzer; Pflicht-Techniken
+- **Qualitäts-Tor vor Freigabe 2:** **Mindestnote 9/10** (Vorgabe Nutzer 13.11.2026) – jeder Prüfer (Faktenprüfer, Retention-, Regie-, Design-Kritiker, Endkontrolle) muss ≥ 9 geben, sonst Nacharbeit und erneute Prüfung, bevor etwas zum Nutzer geht; Pflicht-Techniken
   aus `clip-regeln.md` („Bewegung & Übergänge“) sichtbar; YOU in jeder Szene; erste 0,3 s mit Text.
 - **Freigabe 2:** Kontaktabzug **plus Vorschau-Video** in halber Auflösung (`--scale=0.5`, ~0,6 s/Bild,
   Rechenzeit statt Tokens) – der Nutzer sieht Bewegung, Tempo und Übergänge vor dem vollen Render.

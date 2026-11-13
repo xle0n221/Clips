@@ -88,11 +88,11 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Figuren dürfen je Video neu gestaltet werden (anderer Look, andere Proportionen); **innerhalb eines Videos** bleibt die
   Hauptfigur wiedererkennbar (roter Faden).
 - Im Drehbuch `"style": {"look": "2d|3d|mix", "why": "<1 Satz Begründung>", "characters": "<kurz>"}`; der Design-Kritiker
-  bewertet die Wahl mit (Note ≥ 7). Ergebnis + Wirkung in `docs/agenten/art-direction.md` („Gelernt“) eintragen, damit die
+  bewertet die Wahl mit (Note ≥ 9). Ergebnis + Wirkung in `docs/agenten/art-direction.md` („Gelernt“) eintragen, damit die
   Entscheidung beim nächsten Thema auf Erfahrung beruht.
 - Neue 2D-Bausteine als wiederverwendbare Komponenten anlegen (`src/episode/kit2d/`), genau wie das 3D-Kit wächst.
 - Unverändert für jeden Stil: Themen-Treue (Standbild ohne Ton verrät das Thema), unteres Drittel frei für Untertitel,
-  Schnitt auf Beats, Qualitäts-Tor Note ≥ 7.
+  Schnitt auf Beats, Qualitäts-Tor Note ≥ 9.
 
 ## Thumbnail im Video (Vorgabe des Nutzers 12.11.2026)
 > „ab jetzt für jeden clip ein Thumbnail einarbeiten das zum clip passt, das ich auf den plattformen in den

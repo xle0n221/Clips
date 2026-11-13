@@ -67,7 +67,8 @@ Der Orchestrator gibt jedem Agenten beim Start das Modell mit (`Agent`-Parameter
 | `opus` | schwer, kreativ oder fehlerteuer | Drehbuch, Faktenprüfer (Wahrheit vor Tempo), Szenen/Animation (3D-Code), Art Direction, Regie-Kritiker (Bildurteil), Stimme/Casting, Orchestrator selbst, alles mit unklarer Ursache (Fehlersuche) |
 
 Regeln:
-- Ist ein Ergebnis eines kleineren Modells beim Prüfer unter Note 7, wird die **Nacharbeit mit dem nächstgrößeren Modell** vergeben (nicht dasselbe Modell erneut).
+- **Mindestnote 9/10** (Vorgabe Nutzer 13.11.2026: „Videos sollen ab jetzt mind. eine 9/10 sein“): Unter 9 → Nacharbeit + erneute Prüfung, höchstens 3 Runden; danach entscheidet der Orchestrator und nennt die Note dem Nutzer offen.
+- Ist ein Ergebnis eines kleineren Modells beim Prüfer unter Note 9, wird die **Nacharbeit mit dem nächstgrößeren Modell** vergeben (nicht dasselbe Modell erneut).
 - Prüfer ist nie kleiner als der Ersteller (sonst übersieht er dessen Fehler).
 - Das Modell der laufenden Orchestrator-Sitzung und der an sie gebundenen geplanten Aufgaben (Abholer, Wochenrunde) ist fest;
   nur Agenten und geplante Aufgaben mit frischer Sitzung je Lauf können ein eigenes Modell bekommen.
