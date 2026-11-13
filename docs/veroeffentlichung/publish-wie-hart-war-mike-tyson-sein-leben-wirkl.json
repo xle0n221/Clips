@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "Mike Tyson: a hard life, or his own fault? You score it",
+      "description": "Reportedly 38 arrests by 13, his mom died when he was 16, and at 20 he became the youngest heavyweight champion ever. Hard? Brutally. Blameless? No. Facts checked against Wikipedia (Mike Tyson, Cus D'Amato, Buster Douglas, Evander Holyfield articles); primary sources were not accessible.",
+      "hashtags": [
+        "#MikeTyson",
+        "#boxing",
+        "#lifestory",
+        "#Shorts"
+      ]
+    },
+    "tiktok": {
+      "caption": "Mike Tyson: a hard life, or his own fault? Hard? Brutally. Blameless? No. You score it.",
+      "hashtags": [
+        "#miketyson",
+        "#boxing",
+        "#storytime",
+        "#boxingtok",
+        "#lifestory"
+      ]
+    },
+    "note": "Hashtags vor dem Posten in Creator Search Insights / YouTube-Suche gegenprüfen. Alle Belege tertiär (Wikipedia, docs/quellen-mike-tyson.md); '38 arrests' im Text mit 'reportedly'. Verurteilung bewusst nicht in Titel/Caption (sensibel); nur Hook-/Schluss-Formulierungen des Videos übernommen. Reichweite der Hashtags unbelegt. Prüfung 13.11.2026 (Faktenprüfer/Retention): Titel = Hook-Frage des Videos; 'mom dead at 16' → 'mom died when he was 16' (Alter von Tyson, Z9); 'at 20' = Z14."
+  }
+}
