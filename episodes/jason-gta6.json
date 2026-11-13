@@ -19,8 +19,8 @@
     "frames": 15
   },
   "sources": "docs/quellen-jason-gta6.md, Abschnitt 'Freigabeliste' (J1–J11) + Tabelle Nr. 1–9, 11, 14, 16–17, 19, 20, 22, 23. Alles Tertiär: Nr. 1–18 wörtlich gegen Wikipedia geprüft (Teilstring, Recherche 13.11.2026), Nr. 19–23 (Rockstar-Bio, Trailer-2-Berichte) nur WebSearch-Zusammenfassung – deshalb mit 'Rockstar says / Rockstar's bio, roughly / hoping to' formuliert, nie als wörtliches Zitat. Keine Rockstar-Seite gelesen, kein Trailer gesehen.",
-  "factcheck": "offen – Faktenprüfer: bitte besonders J2 ('grifters and crooks', WS 3 Läufe), J3-Motiv ('hoping to leave that life behind', WS GamesRadar + Gfinity gleichsinnig), J7 ('easy life … harder', WS 2 Zusammenfassungen, Wortlaut uneins → nur 'roughly'), J8 (Abholen 'the day she gets out', WS wie Lucia-Video) und 'not meant to be do-gooders' (Nr. 8) prüfen. Zeitabhängig: Cover 'before Nov 19', 'Soon' (play) und 'It's scheduled for' (loop) nach dem 19.11.2026 anpassen; Termin am Renderstag erneut prüfen.",
-  "version": "v1 (13.11.2026, Drehbuch-Erstentwurf)",
+  "factcheck": "geprüft 13.11.2026 (Faktenprüfer, Note 9; Retention 9): J2, J3 inkl. 'So' (Bio-Motiv 'trying to shake off his troubled teens', WS 3+ Zusammenfassungen), J7 ('roughly', Wortlaut uneins), 'up on a roof' (WS mehrere Berichte), J8 und 'do-gooders' (W) freigegeben; HUD 'WORKS' → 'WORKED FOR RUNNERS'. Termin 19.11.2026 heute laut W weiter 'scheduled'/'upcoming' – Cover 'before Nov 19', 'Soon' und 'It's scheduled for' nach dem 19.11.2026 anpassen; Termin am Renderstag erneut prüfen. Details: docs/quellen-jason-gta6.md → 'Faktenprüfung Drehbuch (13.11.2026)'.",
+  "version": "v1.1 (13.11.2026, nach Faktenprüfung + Retention: HUD-Zeitform, 'Even his landlord')",
   "pointe": "Jason went from the Army to working for drug runners – a man who wants an easy life, and every page of his file makes it harder.",
   "music": {
     "mood": "chill",
@@ -136,11 +136,12 @@
       "delivery": "tense",
       "emotion": "serious",
       "text": "After the Army? | He worked for local drug runners… down in the Leonida *Keys*.",
-      "visual": "Weg-Linie auf der eigenen, fiktiven Inselkarte läuft nach Süden über Brücken zu einer Inselkette, Label 'LEONIDA KEYS'. Schnitt: Jason (jetzt pinkes Kurzarmhemd) lädt an einem Steg eine neutrale Kiste 'CARGO' in ein kleines Motorboot; im Hintergrund zwei gesichtslose Auftraggeber-Silhouetten. Keine Drogen-Details. HUD STATUS → 'WORKS FOR RUNNERS'. Ruhige Seitwärtsfahrt.",
+      "visual": "Weg-Linie auf der eigenen, fiktiven Inselkarte läuft nach Süden über Brücken zu einer Inselkette, Label 'LEONIDA KEYS'. Schnitt: Jason (jetzt pinkes Kurzarmhemd) lädt an einem Steg eine neutrale Kiste 'CARGO' in ein kleines Motorboot; im Hintergrund zwei gesichtslose Auftraggeber-Silhouetten. Keine Drogen-Details. HUD STATUS → 'WORKED FOR RUNNERS'. Ruhige Seitwärtsfahrt.",
       "sources": [
         "J4 / Nr. 2: „who worked for local drug runners in the Leonida Keys after serving in the Army“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft; Sprechtext fast wörtlich.",
         "Nr. 11: Leonida Keys inspiriert von den Florida Keys – W, wörtlich geprüft (Karte = eigene Grafik).",
-        "Boot/Steg/Kiste = Bildmotiv (Quellen-Datei 'Bild-Hinweise': Boot zulässig, Drogen nur als 'CARGO')."
+        "Boot/Steg/Kiste = Bildmotiv (Quellen-Datei 'Bild-Hinweise': Boot zulässig, Drogen nur als 'CARGO').",
+        "Faktenprüfung 13.11.2026: HUD in Vergangenheit wie W 'who worked for' und Sprechtext 'He worked'."
       ],
       "cues": [
         {
@@ -154,7 +155,7 @@
           "sfx": "pop",
           "hud": {
             "id": "status",
-            "value": "WORKS FOR RUNNERS"
+            "value": "WORKED FOR RUNNERS"
           }
         },
         {
@@ -192,11 +193,12 @@
       "id": "circle",
       "delivery": "normal",
       "emotion": "ironic",
-      "text": "Just look who's around him. | His landlord, Brian, is a long-time drug *runner*. | His friend Cal? *Paranoid*.",
+      "text": "Just look who's around him. | Even his landlord, Brian, is a long-time drug *runner*. | His friend Cal? *Paranoid*.",
       "visual": "Pinnwand: zwei neue Polaroids werden mit roter Schnur an Jasons Foto gehängt. Links BRIAN (eigene Figur, älterer Mann im Liegestuhl vor einem kleinen Strandhaus, Mietbuch in der Hand); auf 'runner' kippt neben ihm eine Kiste 'CARGO' auf (leer, nur Stroh). Rechts CAL (eigene Figur) späht durch einen Spalt im Vorhang, auf 'Paranoid' zieht er ihn ruckartig zu. Kleine Polaroid-Beschriftungen 'LANDLORD' / 'FRIEND' (Fakten), kein weiterer Sticker.",
       "sources": [
         "J5 / Nr. 5: „Brian Heder (Stephen Root), a long-time drug runner in the Keys and Jason's landlord“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. Mietvertrags-Bedingungen (Gerücht) bewusst weggelassen.",
-        "J6 / Nr. 4: „Cal Hampton, Jason's paranoid friend“ – W, wörtlich geprüft. 'Coast Guard radio' (Nr. 24, ein Lauf) nicht verwendet."
+        "J6 / Nr. 4: „Cal Hampton, Jason's paranoid friend“ – W, wörtlich geprüft. 'Coast Guard radio' (Nr. 24, ein Lauf) nicht verwendet.",
+        "Faktenprüfung 13.11.2026: 'Even' = Steigerung im Erzählfluss (Retention), keine neue Sachaussage – Brian ist laut W selbst 'a long-time drug runner'."
       ],
       "cues": [
         {
