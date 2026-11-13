@@ -68,8 +68,6 @@
         {
           "word": "time",
           "beat": "stampServedTime",
-          "sticker": "SERVED TIME",
-          "color": "#FF3B3B",
           "sfx": "boom"
         },
         {
@@ -313,15 +311,11 @@
         {
           "word": "tough",
           "beat": "stampTough",
-          "sticker": "TOUGH",
-          "color": "#FFFFFF",
           "sfx": "pop"
         },
         {
           "word": "flawed",
           "beat": "stampFlawed",
-          "sticker": "FLAWED",
-          "color": "#FFD23F",
           "sfx": "pop"
         },
         {
@@ -351,7 +345,7 @@
           }
         },
         {
-          "word": "Jason",
+          "word": "play",
           "beat": "pickCards",
           "sfx": "ding",
           "choice": {
@@ -360,8 +354,7 @@
               "A · LUCIA",
               "B · JASON"
             ]
-          },
-          "untilBeat": "calendarNov19"
+          }
         }
       ]
     },

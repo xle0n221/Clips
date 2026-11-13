@@ -42,7 +42,11 @@ export const TimelineHUD: React.FC<{
   readonly counterId?: string;
   readonly barId?: string;
   readonly freezeBeat?: string;
-}> = ({ timeline, counterId = "time", barId = "traces", freezeBeat }) => {
+  /** dunkle Platte hinter Titel + Wert (Kontrast auf hellem Grund) */
+  readonly plate?: boolean;
+  /** ab diesem Beat ausblenden (10 Bilder) */
+  readonly hideBeat?: string;
+}> = ({ timeline, counterId = "time", barId = "traces", freezeBeat, plate = false, hideBeat }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const toF = (ms: number) => Math.round((ms / 1000) * fps);
@@ -60,6 +64,8 @@ export const TimelineHUD: React.FC<{
   const freezeCue = freezeBeat ? timeline.cues.find((c) => c.beat === freezeBeat) : undefined;
   const frozen = freezeCue ? frame >= toF(freezeCue.atMs) : false;
 
+  const hideCue = hideBeat ? timeline.cues.find((c) => c.beat === hideBeat) : undefined;
+  const hideO = hideCue ? 1 - clamp01((frame - toF(hideCue.atMs)) / 10) : 1;
   const { prev, cur, local } = hudValueAt(initial, changes, frame);
   const a = parse(prev);
   const b = parse(cur);
@@ -106,7 +112,20 @@ export const TimelineHUD: React.FC<{
     fontVariantNumeric: "tabular-nums",
   };
   return (
-    <AbsoluteFill style={{ pointerEvents: "none" }}>
+    <AbsoluteFill style={{ pointerEvents: "none", opacity: hideO }}>
+      {plate ? (
+        <div
+          style={{
+            position: "absolute",
+            left: LEFT - 22,
+            top: TOP - 14,
+            width: Math.max(spec?.title ? spec.title.length * 26 : 0, Math.max(cur.length, flipOld?.length ?? 0) * 80) + 44,
+            height: (spec?.title ? 42 : 0) + 124,
+            borderRadius: 22,
+            background: "rgba(16,10,26,0.62)",
+          }}
+        />
+      ) : null}
       <div style={{ position: "absolute", left: LEFT, top: TOP }}>
         {spec?.title ? (
           <div

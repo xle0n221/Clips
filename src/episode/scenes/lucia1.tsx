@@ -4,7 +4,6 @@ import { shotIndex } from "../types";
 import { TopShade } from "./huangSets";
 import {
   Bars,
-  BlurGroup,
   CaseFile,
   Cell,
   CellDoor,
@@ -44,7 +43,7 @@ export const CoverScene: React.FC<{ readonly f: number }> = ({ f }) => (
     <LuxDefs />
     <Layer>
       <Desk id="cover" f={f} />
-      <CaseFile f={f} clipId="clip-cover" photo={<CoverArt f={f} />} />
+      <CaseFile f={f} clipId="clip-cover" photo={<CoverArt f={f} />} paperclip={false} />
     </Layer>
     <Layer depth={0}>
       <TopShade />
@@ -148,8 +147,7 @@ export const Hook: React.FC = () => {
   const time = B("stampServedTime", 0.2);
   const reason = B("reasonBlank", 0.85);
   const what = W("What", 0.76);
-  const play = W("play", 0.46);
-  const portal0 = Math.min(d - 22, reason + 12);
+  const portal0 = Math.min(d - 20, reason + 14);
   if (f < 21) return <CoverScene f={f} />;
   const shot = shotIndex(f, [what]);
   const fieldCam = (z: number) => frameOn(500, 1230, 540, 900, z);
@@ -181,12 +179,9 @@ export const Hook: React.FC = () => {
       <LuxDefs />
       <Layer>
         <Desk id="hook" f={f} />
-        <CaseFile f={f} clipId="clip-hook" photo={photo} reason="?" reasonQ={pop(f, reason, 10)} />
+        <CaseFile f={f} clipId="clip-hook" photo={photo} reason="?" reasonQ={pop(f, reason, 10)} fieldsO={1 - ease(f, portal0, portal0 + 8)} />
         <g opacity={1 - ease(f, portal0, portal0 + 8)}>
           <Stamp x={560} y={990} text="SERVED TIME" t={ease(f, time, time + 7)} r={-12} size={66} />
-        </g>
-        <g opacity={1 - dev}>
-          <PostIt x={880} y={lerp(1180, 1110, ease(f, play, play + 10))} r={7} s={pop(f, play, 10)} lines={["YOU'LL", "PLAY HER"]} size={42} />
         </g>
       </Layer>
       <Layer depth={0}>
@@ -219,6 +214,38 @@ export const Dad: React.FC = () => {
 };
 
 /* ------------------------------------------------------------------ */
+
+/**
+ * Familie ohne zählbare Köpfe: warmes Haus mit erleuchteten Fenstern hinter Lucia, dazu von beiden Bildrändern
+ * angeschnittene Schultern/Arme (Köpfe außerhalb des Bildes), die sich an sie drängen.
+ */
+const FamilyHome: React.FC<{ readonly f: number; readonly floor: number; readonly t: number }> = ({ f, floor, t }) => (
+  <g>
+    <g filter="url(#paper)">
+      <rect x={300} y={floor - 520} width={480} height={520} fill="#B9785A" stroke={LC.ink} strokeWidth={6} />
+      <path d={`M 260 ${floor - 520} L 540 ${floor - 760} L 820 ${floor - 520} Z`} fill="#7A3F3A" stroke={LC.ink} strokeWidth={6} strokeLinejoin="round" />
+      {[360, 640].map((wx) => (
+        <g key={wx}>
+          <rect x={wx} y={floor - 440} width={90} height={110} fill="#FFD27A" stroke={LC.ink} strokeWidth={5} opacity={0.85 + 0.1 * Math.sin(f * 0.07 + wx)} />
+          <path d={`M ${wx + 45} ${floor - 440} L ${wx + 45} ${floor - 330} M ${wx} ${floor - 385} L ${wx + 90} ${floor - 385}`} stroke={LC.ink} strokeWidth={4} />
+        </g>
+      ))}
+    </g>
+    <rect x={300} y={floor - 520} width={480} height={520} fill="#FFB36B" opacity={0.12} />
+    {/* angeschnittene Schultern + Arme von links/rechts (Köpfe außerhalb des Bildes) */}
+    {[-1, 1].map((sd) => {
+      const bx = sd < 0 ? lerp(-220, -80, t) : lerp(1300, 1160, t);
+      return (
+        <g key={sd} filter="url(#paper)">
+          <circle cx={bx + sd * 20} cy={floor - 640} r={88} fill={sd < 0 ? "#2A1A22" : "#3A2A1C"} stroke={LC.ink} strokeWidth={6} />
+          <path d={`M ${bx - 200} ${floor + 40} L ${bx - 200} ${floor - 470} Q ${bx} ${floor - 560} ${bx + 200} ${floor - 470} L ${bx + 200} ${floor + 40} Z`} fill={sd < 0 ? "#6B3A55" : "#4A3A66"} stroke={LC.ink} strokeWidth={6} />
+          <path d={`M ${bx - sd * 150} ${floor - 440} Q ${bx - sd * 260} ${floor - 380} ${bx - sd * 330} ${floor - 470}`} stroke={LC.ink} strokeWidth={46} fill="none" strokeLinecap="round" />
+          <path d={`M ${bx - sd * 150} ${floor - 440} Q ${bx - sd * 260} ${floor - 380} ${bx - sd * 330} ${floor - 470}`} stroke={sd < 0 ? LC.jSkin : "#8B5A3C"} strokeWidth={34} fill="none" strokeLinecap="round" />
+        </g>
+      );
+    })}
+  </g>
+);
 
 /** Family: Zeitraffer Kind → Jugendliche → Erwachsene (Haarband bleibt); „family“ → schützend vor unscharfer Gruppe; „Penitentiary“ → Gitter fällt. */
 export const Family: React.FC = () => {
@@ -290,7 +317,7 @@ export const Family: React.FC = () => {
       <Layer>
         <rect x={-2000} y={-2000} width={5080} height={2000 + floor} fill="#E6B98E" />
         <rect x={-2000} y={floor} width={5080} height={2000} fill="#9A6B48" />
-        <BlurGroup id="fam" x={540} y={floor} s={1.05} f={f} />
+        <FamilyHome f={f} floor={floor} t={ease(f, fam - 4, fam + 12, "inOut")} />
         <Toon
           x={540}
           y={floor}
@@ -304,7 +331,7 @@ export const Family: React.FC = () => {
         />
         <rect x={-2000} y={-2000} width={5080} height={5920} fill="#2A3048" opacity={0.42 * grey} />
         <g transform={`translate(0 ${lerp(-1800, 0, bars)})`}>
-          <Bars x0={60} n={5} gap={240} y0={-400} y1={floor + 40} w={44} cross={[560, 1180]} />
+          <Bars x0={-60} n={6} gap={240} y0={-400} y1={floor + 40} w={44} cross={[560, 1180]} />
         </g>
         <g opacity={ease(f, slam + 10, slam + 18)}>
           <PostIt x={540} y={1170} r={-3} lines={["REASON: FIGHTING", "FOR HER FAMILY"]} size={36} fill="#FFF8EA" />

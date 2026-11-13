@@ -250,6 +250,8 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
           freezeBeat={cfg.hud2d.freezeBeat}
           counterId={cfg.hud2d.counterId}
           barId={cfg.hud2d.barId}
+          plate={cfg.hud2d.plate}
+          hideBeat={cfg.hud2d.hideBeat}
         />
       ) : null}
 
@@ -268,7 +270,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
           const until = untilCue ? toF(untilCue.atMs) - fromJ : Infinity;
           // optional (`stickerStack`): folgt der nächste Sticker zu schnell (< 45 Bilder), bleibt dieser stehen
           const keep = Boolean(cfg?.stickerStack) && nextJ - fromJ < 45;
-          return { from: fromJ, keep, dur: Math.max(10, Math.min(keep ? Infinity : nextJ - fromJ, sceneEnd - fromJ, 54, until)) };
+          return { from: fromJ, keep, dur: Math.max(10, Math.min(keep ? Infinity : nextJ - fromJ, sceneEnd - fromJ, cfg?.stickerMax?.[cj.sticker!] ?? 54, until)) };
         };
         const { from, dur } = durOf(i);
         const prev = i > 0 ? durOf(i - 1) : undefined;

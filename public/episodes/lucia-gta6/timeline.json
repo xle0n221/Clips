@@ -70,8 +70,6 @@
   },
   {
    "beat": "stampServedTime",
-   "sticker": "SERVED TIME",
-   "color": "#FF3B3B",
    "sfx": "boom",
    "scene": "hook",
    "atMs": 1540
@@ -151,7 +149,7 @@
   },
   {
    "beat": "cloverDoorPop",
-   "sticker": "RELEASED \u00b7 LUCK",
+   "sticker": "RELEASED · LUCK",
    "color": "#2EC4B6",
    "sfx": "ding",
    "hud": {
@@ -292,16 +290,12 @@
   },
   {
    "beat": "stampTough",
-   "sticker": "TOUGH",
-   "color": "#FFFFFF",
    "sfx": "pop",
    "scene": "flawed",
    "atMs": 53320
   },
   {
    "beat": "stampFlawed",
-   "sticker": "FLAWED",
-   "color": "#FFD23F",
    "sfx": "pop",
    "scene": "flawed",
    "atMs": 55380
@@ -333,13 +327,12 @@
    "choice": {
     "title": "WHO DO YOU PICK?",
     "options": [
-     "A \u00b7 LUCIA",
-     "B \u00b7 JASON"
+     "A · LUCIA",
+     "B · JASON"
     ]
    },
-   "untilBeat": "calendarNov19",
    "scene": "play",
-   "atMs": 62240
+   "atMs": 60720
   },
   {
    "emph": true,
@@ -356,7 +349,7 @@
   },
   {
    "beat": "delayedStamps",
-   "sticker": "DELAYED \u00d72",
+   "sticker": "DELAYED ×2",
    "color": "#FF3B3B",
    "sfx": "pop",
    "scene": "loop",
@@ -397,7 +390,7 @@
  },
  "cover": {
   "text": "WHO IS LUCIA?",
-  "sub": "GTA 6 \u00b7 her file, before Nov 19",
+  "sub": "GTA 6 · her file, before Nov 19",
   "frames": 15
  }
 }

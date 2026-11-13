@@ -56,7 +56,8 @@ export const Jason: React.FC = () => {
   const and = W("And", 0.39);
   const think = W("Think", 0.67);
   const walks = W("walks", 0.25);
-  const shot = shotIndex(f, [and, think]);
+  const drive = Math.max(think, couple + 54);
+  const shot = shotIndex(f, [and, drive]);
   const floor = 1300;
   if (shot === 0) {
     const arrive = ease(f, 0, jason - 2, "inOut");
@@ -109,7 +110,7 @@ export const Jason: React.FC = () => {
     );
   }
   if (shot === 1) {
-    const cam = frameOn(540, 900, 540, 900, lerp(1.0, 1.08, ease(f, and, think, "inOut")));
+    const cam = frameOn(540, 900, 540, 900, lerp(1.0, 1.08, ease(f, and, drive, "inOut")));
     const str = ease(f, couple - 14, couple, "inOut");
     const p1 = [340, 690] as const;
     const p2 = [760, 720] as const;
@@ -158,9 +159,9 @@ export const Jason: React.FC = () => {
       </Stage2D>
     );
   }
-  const run = f - think;
-  const carX = 300 + run * 9;
-  const cam = { x: carX + 80, y: lerp(1000, 980, ease(f, florida, florida + 20)), zoom: lerp(0.9, 0.96, ease(f, think, d, "inOut")) };
+  const run = f - drive;
+  const carX = 300 + run * 8;
+  const cam = { x: carX + 40, y: lerp(1060, 1040, ease(f, florida, florida + 20)), zoom: lerp(1.12, 1.18, ease(f, drive, d, "inOut")) };
   const wheel = run * 14;
   return (
     <Stage2D cam={cam} mood="night" noSky>
@@ -178,9 +179,9 @@ export const Jason: React.FC = () => {
         {Array.from({ length: 30 }, (_, i) => (
           <rect key={i} x={-400 + i * 260} y={1252} width={130} height={10} fill="#F2C14E" opacity={0.6} />
         ))}
-        <Convertible x={carX} y={1290} s={0.9} wheel={wheel}>
-          <Toon x={-80} y={10} s={0.5} frame={f} sil="#24102C" armR={[150, 10]} />
-          <Toon x={90} y={10} s={0.48} frame={f} who="jason" sil="#24102C" />
+        <Convertible x={carX} y={1290} s={1.2} wheel={wheel}>
+          <Toon x={-90} y={20} s={0.56} frame={f} armR={[150, 10]} look={1} mouth="smile" rim="#FFB36B" blinkSeed={5} />
+          <Toon x={100} y={20} s={0.53} frame={f} who="jason" look={-0.6} mouth="smile" rim="#FFB36B" blinkSeed={11} />
         </Convertible>
       </Layer>
       <Layer depth={1.7}>
@@ -202,10 +203,11 @@ export const Heist: React.FC = () => {
   const other = B("backToBack", 0.86);
   const they = W("They", 0.29);
   const now = W("Now", 0.69);
-  const shot = shotIndex(f, [they, now]);
+  const mapAt = Math.max(they, wrong + 54);
+  const shot = shotIndex(f, [mapAt, now]);
   const floor = 1300;
   if (shot === 0) {
-    const cam = frameOn(540, 1000, 540, 980, lerp(0.9, 0.97, ease(f, 0, they, "inOut")));
+    const cam = frameOn(540, 1000, 540, 980, lerp(0.9, 0.97, ease(f, 0, mapAt, "inOut")));
     const alarm = ease(f, wrong, wrong + 4);
     const lx = lerp(430, 360, ease(f, 0, wrong, "inOut"));
     const armR = [lerp(30, 70, ease(f, wrong, wrong + 6)), 20] as const;
@@ -224,7 +226,8 @@ export const Heist: React.FC = () => {
           <MoneyBag x={bx} y={by} s={0.8} rip={f >= wrong ? 1 : 0} r={8 * Math.sin(f * 0.2)} />
           {f >= wrong
             ? Array.from({ length: 16 }, (_, i) => {
-                const r = seeded(70 + i);
+                const r = seeded(7919 * (i + 3));
+                r();
                 const t = (f - wrong) / 30;
                 const vx = (r() - 0.5) * 900;
                 const vy = -500 - r() * 600;
@@ -239,7 +242,7 @@ export const Heist: React.FC = () => {
     );
   }
   if (shot === 1) {
-    const cam = frameOn(540, 900, 540, 900, lerp(1.25, 0.98, ease(f, they, consp + 20, "inOut")));
+    const cam = frameOn(540, 900, 540, 900, lerp(1.15, 0.98, ease(f, mapAt, consp + 20, "inOut")));
     const pins: readonly (readonly [number, number])[] = [
       [400, 640],
       [700, 610],
@@ -258,7 +261,7 @@ export const Heist: React.FC = () => {
           <rect x={-2000} y={-2000} width={5080} height={5920} fill="#3A2A22" />
           <StateMap x={560} y={900} s={1.05} />
           {pins.map(([px, py], i) => {
-            const t = ease(f, they + i * 5, they + i * 5 + 14, "inOut");
+            const t = ease(f, mapAt - 14 + i * 4, mapAt + i * 4, "inOut");
             return (
               <path
                 key={i}
@@ -269,7 +272,7 @@ export const Heist: React.FC = () => {
               />
             );
           })}
-          {pins.map(([px, py], i) => (f >= they + i * 5 + 12 ? <Pin key={i} x={px} y={py} /> : null))}
+          {pins.map(([px, py], i) => (f >= mapAt + i * 4 - 2 ? <Pin key={i} x={px} y={py} /> : null))}
           <Pin x={hub[0]} y={hub[1]} color={LC.yellow} />
           {pins.map(([px, py], i) => {
             const at = consp + i * 4;
@@ -379,7 +382,6 @@ export const First: React.FC = () => {
             </g>
           ))}
           <path d={`M 480 1094 L ${480 + 300 * cross} ${1094 - 12 * cross}`} stroke={LC.red} strokeWidth={16} strokeLinecap="round" />
-          {f >= opt + 6 ? <Stamp x={860} y={1180} text="NO" t={ease(f, opt + 6, opt + 12)} r={-12} size={60} /> : null}
         </g>
         <Toon x={180} y={1290} s={0.82} frame={f} armL={[30, 128]} armR={[30, 128]} mouth="smirk" look={1} brows={f >= opt ? "up" : "neutral"} blinkSeed={4} />
       </Layer>
@@ -443,7 +445,7 @@ export const Flawed: React.FC = () => {
         <rect x={-2000} y={-2000} width={5080} height={5920} fill="#4A2A5A" />
         <rect x={-2000} y={1290} width={5080} height={2000} fill="#2E1A3A" />
         <BlindLightRect f={f} />
-        <Scale x={730} y={1290} s={0.82} tilt={tilt} left={card("RIGHT", LC.tealDark)} right={card("WRONG", LC.red)} />
+        <Scale x={790} y={1290} s={0.82} tilt={tilt} left={card("RIGHT", LC.tealDark)} right={card("WRONG", LC.red)} />
         <Toon
           x={310}
           y={1290}
@@ -472,14 +474,18 @@ const BlindLightRect: React.FC<{ readonly f: number }> = ({ f }) => (
 
 /* ------------------------------------------------------------------ */
 
-/** Play: Akte dreht sich um → eigener Controller + PLAYABLE, Konfetti; ab „Jason“ Auswahlkarten (Overlay). */
+/**
+ * Play: Figuren-Auswahl. Lucia (links, größer) und Jason (rechts) auf Podesten, „you“ → Lucia winkt, Controller + Konfetti
+ * an den Rändern; ab „play“ liegen die Auswahlkarten (Overlay, y 594–1266) über den Körpern, die Köpfe bleiben darüber frei.
+ */
 export const Play: React.FC = () => {
   const { f, d, B } = useBeats();
   const you = B("fileFlipController", 0.23);
-  const flip = ease(f, you - 6, you + 10, "inOut");
-  const sx = Math.cos(flip * Math.PI);
-  const back = sx < 0;
-  const cam = frameOn(540, 940, 540, 940, lerp(0.95, 1.04, ease(f, 0, d, "inOut")));
+  const cards = B("pickCards", 0.4);
+  const cam = frameOn(540, 940, 540, 940, lerp(0.97, 1.02, ease(f, 0, d, "inOut")));
+  const floor = 1230;
+  const ls = 1.3;
+  const wave = ease(f, you, you + 8);
   return (
     <Stage2D cam={cam} mood="night" noSky>
       <LuxDefs />
@@ -491,27 +497,33 @@ export const Play: React.FC = () => {
           </radialGradient>
         </defs>
         <rect x={-2000} y={-2000} width={5080} height={5920} fill="url(#play-bg)" />
-        <g transform={`translate(540 960) scale(${Math.max(0.02, Math.abs(sx))} 1) rotate(${back ? 0 : -2})`}>
-          <g filter="url(#paper)">
-            <rect x={-360} y={-440} width={720} height={880} rx={10} fill={back ? "#2B2236" : LC.manila} stroke={LC.ink} strokeWidth={8} />
+        {[
+          [300, LC.teal],
+          [790, LC.pink],
+        ].map(([px, c]) => (
+          <g key={String(px)}>
+            <ellipse cx={Number(px)} cy={floor + 10} rx={210} ry={42} fill={String(c)} opacity={0.35 + 0.1 * Math.sin(f * 0.15)} />
+            <ellipse cx={Number(px)} cy={floor + 10} rx={210} ry={42} fill="none" stroke={String(c)} strokeWidth={6} />
           </g>
-          {back ? (
-            <g>
-              <Pad x={0} y={-60} s={0.95} f={f} />
-              <LT x={0} y={240} size={78} fill={LC.teal} spacing={6}>
-                PLAYABLE
-              </LT>
-            </g>
-          ) : (
-            <g>
-              <LT x={0} y={-300} size={48} spacing={8} fill="#6B4A1E">
-                CASE FILE
-              </LT>
-              <LT x={0} y={20} size={110} fill="#6B4A1E">
-                LUCIA
-              </LT>
-            </g>
-          )}
+        ))}
+        <Toon
+          x={300}
+          y={floor}
+          s={ls}
+          frame={f}
+          armR={[lerp(12, 150, wave), lerp(8, 20, wave) + 12 * Math.sin(f * 0.4) * wave]}
+          armL={[12, 8]}
+          look={0.4}
+          mouth={f >= you ? "smile" : "smirk"}
+          brows={f >= you ? "up" : "neutral"}
+          blinkSeed={5}
+        />
+        <Toon x={790} y={floor} s={ls * 0.94} frame={f} who="jason" armL={[30, 128]} armR={[30, 128]} look={-0.4} mouth="smirk" blinkSeed={11} />
+        <g opacity={1 - ease(f, cards - 6, cards)}>
+          <Pad x={545} y={1000} s={0.42 * pop(f, you, 10)} f={f} />
+          <LT x={545} y={1130} size={46} fill={LC.teal} spacing={6} o={ease(f, you + 4, you + 12)}>
+            PLAYABLE
+          </LT>
         </g>
       </Layer>
       <Layer depth={0}>
@@ -523,17 +535,17 @@ export const Play: React.FC = () => {
 
 /* ------------------------------------------------------------------ */
 
-/** Loop: Kalender NOV 19 (2026); „Yes, after two delays“ → Blätter 2025 + MAY 26, 2026 durchgestrichen + DELAYED; „meet“ → Kamera fährt zurück ins Akten-Foto = Cover. */
+/** Loop: Kalender NOV 19 (2026), Lucia wartet daneben; „Yes, after two delays“ → Blätter 2025 + MAY 26, 2026 durchgestrichen + DELAYED; danach Rückfahrt ins Akten-Foto = Cover. */
 export const Loop: React.FC = () => {
   const { f, d, B, W } = useBeats();
   const nov = B("calendarNov19", 0.12);
   const delays = B("delayedStamps", 0.38);
   const meet = B("loopToCover", 0.75);
   const yes = W("Yes", 0.28);
-  const so = W("So", 0.54);
+  const so = Math.max(W("So", 0.54), delays + 54);
   const shot = shotIndex(f, [so]);
   if (shot === 0) {
-    const cam = frameOn(540, 940, 540, 940, lerp(0.98, 1.04, ease(f, 0, so, "inOut")));
+    const cam = frameOn(540, 960, 540, 960, lerp(0.98, 1.03, ease(f, 0, so, "inOut")));
     const s1 = ease(f, yes, yes + 12, "inOut");
     const s2 = ease(f, yes + 12, yes + 24, "inOut");
     return (
@@ -541,19 +553,22 @@ export const Loop: React.FC = () => {
         <LuxDefs />
         <Layer>
           <Desk id="loop" f={f} />
-          <DateSheet x={540} y={1020} s={1.0 * (f >= nov ? 1 + 0.08 * Math.max(0, 1 - Math.abs(f - nov - 4) / 6) : 1)} big={f >= nov ? "NOV 19" : "???"} sub="2026" head="RELEASE" color={LC.teal} />
+          <DateSheet x={560} y={1080} s={0.9 * (f >= nov ? 1 + 0.08 * Math.max(0, 1 - Math.abs(f - nov - 4) / 6) : 1)} big={f >= nov ? "NOV 19" : "???"} sub="2026" head="RELEASE" color={LC.teal} />
           {s1 > 0 ? (
             <g>
-              <DateSheet x={lerp(-300, 230, s1)} y={720} s={0.6} r={lerp(-40, -10, s1)} big="2025" head="WINDOW" cross={ease(f, yes + 12, yes + 20)} />
-              <Stamp x={230} y={800} text="DELAYED" t={ease(f, yes + 20, yes + 26)} r={-14} size={44} />
+              <DateSheet x={lerp(-300, 255, s1)} y={800} s={0.66} r={lerp(-30, -6, s1)} big="2025" head="WINDOW" />
+              <path d="M 140 730 L 370 840" stroke={LC.red} strokeWidth={10} strokeLinecap="round" opacity={0.6 * ease(f, yes + 12, yes + 18)} />
+              <Stamp x={255} y={945} text="DELAYED" t={ease(f, yes + 20, yes + 26)} r={-8} size={34} />
             </g>
           ) : null}
           {s2 > 0 ? (
             <g>
-              <DateSheet x={lerp(1400, 850, s2)} y={720} s={0.6} r={lerp(40, 9, s2)} big="MAY 26" sub="2026" head="DATE" cross={ease(f, delays - 8, delays)} />
-              <Stamp x={850} y={800} text="DELAYED" t={ease(f, delays, delays + 6)} r={10} size={44} />
+              <DateSheet x={lerp(1400, 870, s2)} y={800} s={0.66} r={lerp(30, 6, s2)} big="MAY 26" sub="2026" head="DATE" />
+              <path d="M 755 730 L 985 840" stroke={LC.red} strokeWidth={10} strokeLinecap="round" opacity={0.6 * ease(f, delays - 8, delays - 2)} />
+              <Stamp x={870} y={950} text="DELAYED" t={ease(f, delays, delays + 6)} r={6} size={34} />
             </g>
           ) : null}
+          <Toon x={92} y={1290} s={0.72} frame={f} armL={[30, 128]} armR={[30, 128]} look={1} mouth={f >= delays ? "smirk" : "flat"} brows={f >= delays ? "up" : "neutral"} blinkSeed={5} />
         </Layer>
         <Layer depth={0}>
           <TopShade />
@@ -565,7 +580,7 @@ export const Loop: React.FC = () => {
   if (f >= arrive) return <CoverScene f={f} />;
   const cam = camPath(f, [
     [so, frameOn(540, 860, 540, 920, 0.95)],
-    [meet - 6, frameOn(540, 800, 540, 920, 1.12)],
+    [Math.max(so + 4, meet - 6), frameOn(540, 800, 540, 920, 1.12)],
     [arrive, PHOTO_CAM],
   ]);
   return (
@@ -573,9 +588,11 @@ export const Loop: React.FC = () => {
       <LuxDefs />
       <Layer>
         <Desk id="cover" f={f} />
-        <CaseFile f={f} clipId="clip-cover" photo={<CoverArt f={f} />} />
+        <CaseFile f={f} clipId="clip-cover" photo={<CoverArt f={f} />} paperclip={false} fieldsO={1 - ease(f, so, so + 10)} />
+      </Layer>
+      <Layer depth={0}>
+        <TopShade />
       </Layer>
     </Stage2D>
   );
 };
-

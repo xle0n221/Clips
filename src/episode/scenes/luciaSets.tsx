@@ -665,7 +665,7 @@ export const CoverArt: React.FC<{ readonly f: number }> = ({ f }) => (
     <Palm x={60} y={1500} s={1.25} lean={10} sway={2 * Math.sin(f * 0.05)} />
     <Palm x={1010} y={1460} s={1.05} lean={-12} sway={2 * Math.sin(f * 0.05 + 1)} />
     <Toon x={470} y={2330} s={2.5} frame={f} outfit="overall" look={0.9} lookY={-0.2} brows="angry" mouth="flat" blinkSeed={9} headTilt={-3} rim="#FFB36B" breathe={false} />
-    <Bars x0={-120} n={5} gap={300} y0={-40} y1={1960} w={40} cross={[1640]} />
+    <Bars x0={-130} n={4} gap={400} y0={-40} y1={1960} w={40} cross={[1640]} />
   </g>
 );
 
@@ -701,7 +701,11 @@ export const CaseFile: React.FC<{
   readonly reason?: string;
   readonly reasonQ?: number;
   readonly clipId: string;
-}> = ({ f, photo, reason = "?", reasonQ = 0, clipId }) => {
+  /** Büroklammer zeigen (im Cover aus: sonst Geister-Bogen am Bildrand) */
+  readonly paperclip?: boolean;
+  /** Deckkraft der Felder NAME/REASON (Portal-Fahrt: aus, damit kein Text unter den Untertiteln liegt) */
+  readonly fieldsO?: number;
+}> = ({ f, photo, reason = "?", reasonQ = 0, clipId, paperclip = true, fieldsO = 1 }) => {
   const k = PHOTO.w / 1080;
   const px = PHOTO.x - PHOTO.w / 2;
   const py = PHOTO.y - PHOTO.h / 2;
@@ -724,6 +728,7 @@ export const CaseFile: React.FC<{
           NO. L-01
         </LT>
         <path d="M 120 318 L 960 318" stroke={LC.ink} strokeWidth={3} />
+        <g opacity={fieldsO}>
         <LT x={120} y={1160} size={40} anchor="start" fill="#55525F" weight={800}>
           NAME:
         </LT>
@@ -743,6 +748,7 @@ export const CaseFile: React.FC<{
         {[1330, 1380, 1430].map((ly) => (
           <path key={ly} d={`M 120 ${ly} L ${520 + (ly % 7) * 50} ${ly}`} stroke="#DDD5C4" strokeWidth={10} strokeLinecap="round" />
         ))}
+        </g>
       </g>
       {/* Foto mit weißem Rand + Büroklammer */}
       <g filter="url(#paper)">
@@ -757,14 +763,14 @@ export const CaseFile: React.FC<{
         <g transform={`translate(${px} ${py}) scale(${k})`}>{photo}</g>
       </g>
       <rect x={px} y={py} width={PHOTO.w} height={PHOTO.h} fill="none" stroke={LC.ink} strokeWidth={3} />
-      <path
+      {paperclip ? <path
         d={`M ${px + 60} ${py - 50} L ${px + 60} ${py + 60} Q ${px + 60} ${py + 80} ${px + 80} ${py + 80} Q ${px + 100} ${py + 80} ${px + 100} ${py + 60} L ${px + 100} ${py - 30}`}
         stroke="#9AA2AE"
         strokeWidth={9}
         fill="none"
         strokeLinecap="round"
         opacity={0.95 + 0.0 * f}
-      />
+      /> : null}
     </g>
   );
 };
@@ -1196,10 +1202,12 @@ export const Confetti: React.FC<{ readonly t: number; readonly n?: number }> = (
     <g>
       {Array.from({ length: n }, (_, i) => {
         const rnd = seeded(300 + i);
-        const x0 = rnd() * 1080;
+        // nur an den Rändern und unter dem HUD (nicht durch Titel oder Auswahlkarten)
+        const side = rnd() < 0.5;
+        const x0 = side ? 10 + rnd() * 120 : 950 + rnd() * 120;
         const vy = 6 + rnd() * 8;
-        const y = -60 + t * vy;
-        if (y > 1300) return null;
+        const y = 390 + t * vy - rnd() * 300;
+        if (y > 1260 || y < 390) return null;
         const c = [LC.teal, LC.pink, LC.yellow, LC.white][i % 4];
         return <rect key={i} x={x0 + Math.sin(t * 0.1 + i) * 30} y={y} width={18} height={30} fill={c} stroke={LC.ink} strokeWidth={3} transform={`rotate(${t * 8 + i * 30} ${x0} ${y})`} />;
       })}

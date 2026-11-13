@@ -51,7 +51,10 @@ export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
 export type EpisodeConfig = {
   readonly look?: "2d";
   readonly transitions?: Record<string, TransitionSpec>;
-  readonly hud2d?: { readonly freezeBeat?: string; readonly counterId?: string; readonly barId?: string };
+  /** `plate`: dunkle Platte hinter dem Text-Zähler (Kontrast auf hellem Papier); `hideBeat`: HUD blendet ab diesem Beat aus (Loop-Naht) */
+  readonly hud2d?: { readonly freezeBeat?: string; readonly counterId?: string; readonly barId?: string; readonly plate?: boolean; readonly hideBeat?: string };
+  /** Sticker (Text → höchstens so viele Bilder, Standard 54) */
+  readonly stickerMax?: Record<string, number>;
   /** Pill (label) einer Szene endet am Beat dieses Namens statt am Szenenende (Szenen-ID → Beat) */
   readonly labelUntil?: Record<string, string>;
   /** Pill(s) einer Szene enden beim ersten Vorkommen dieses Worts (captions.json) – nur Pills, die vorher beginnen */

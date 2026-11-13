@@ -24,6 +24,12 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Lucia GTA 6 v2 nach Regie 7,5 / Design 8 (`docs/kritik-lucia-szenen.md`, 15 Befunde) · Gitter: Stababstand aus Gesichtsbreite
+  rechnen (Cover gap 400, Zelle x0 −60/gap 240 → Gesicht zwischen zwei Stäben); Sticker, die über einen Schnitt laufen, nicht per
+  Engine kürzen, sondern Einstellungswechsel auf `max(Wort, Sticker-Cue + 54)` legen (heist, jason, loop); Sticker = Stempel-Text
+  doppelt → Sticker im Drehbuch streichen (SERVED TIME, TOUGH, FLAWED); Auswahlkarten früher (Cue „play“, 2,6 s) und Figuren mit
+  Köpfen über y 594 (Karten decken nur Körper); Familie ohne zählbare Köpfe = Haus mit Licht + angeschnittene Schultern/Arme vom
+  Bildrand. Neu additiv: `hud2d.plate` (dunkle Platte, Kontrast auf Papier), `hud2d.hideBeat` (Loop-Naht), `stickerMax`. Beleg `out/lucia-kontakt.png`.
 - 13.11.2026 · Lucia GTA 6 (2D Comic/Paper-Cut-Akte) v1 · **Experiment Portal-Fahrt ins Akten-Foto statt Schnitt (hook → dad):**
   Foto-Inhalt im Bildraum 1080 × 1920 zeichnen und per `scale(420/1080)` in den Foto-Rahmen clippen; Kamera fährt in den letzten
   ≈ 0,7 s der Szene aufs Foto bis Zoom 1080/420, Foto „entwickelt“ sich zur Sepia-Rückblende, Folgeszene startet bei Zoom 1 mit
@@ -183,7 +189,8 @@
 | 12.11.2026 | UFC (2D) v1 | 6,0 (Regie) | Cue-Abstände Ø 1,7 s, Karten bis Loop-Ende, Label-Stapel |
 | 12.11.2026 | UFC (2D) v2 | – (Selbstnote 7,5, Regie offen) | 0 Cue-Abstände < 1,5 s, 7 Befunde umgesetzt; Start-Oktagon anfangs leer |
 | 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
-| 13.11.2026 | Lucia GTA 6 (2D) v1 | – (Selbstnote 8,5, Regie offen) | Portal nahtlos, 8 Befunde selbst behoben; Bewegung nur im Standbild geprüft |
+| 13.11.2026 | Lucia GTA 6 (2D) v2 | – (Selbstnote 9, Nachprüfung offen) | alle 15 Befunde umgesetzt |
+| 13.11.2026 | Lucia GTA 6 (2D) v1 | 7,5 Regie / 8 Design | Portal nahtlos, 8 Befunde selbst behoben; Bewegung nur im Standbild geprüft |
 | 13.11.2026 | Jensen Huang (2D) v1 | 7,5 (Regie) | 15 Cue-Abstände < 1,5 s (Drehbuch), sonst keine Anschnitte |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |

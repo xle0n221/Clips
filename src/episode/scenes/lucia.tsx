@@ -47,7 +47,9 @@ export const LuciaCoverArt: React.FC = () => {
 export const LUCIA_CONFIG: EpisodeConfig = {
   look: "2d",
   transitions: LUCIA_TRANSITIONS,
-  hud2d: { counterId: "status", barId: "none" },
+  hud2d: { counterId: "status", barId: "none", plate: true, hideBeat: "loopToCover" },
   stickerStack: true,
+  // WHY? endet vor der Portal-Fahrt ins Foto (sonst steht es über der Rückblende)
+  stickerMax: { "WHY?": 16 },
   coverArt: LuciaCoverArt,
 };
