@@ -1,4 +1,4 @@
-# Video-Paket-Prompt des Nutzers (13.11.2026) – für das nächste Video und künftige, wenn der Nutzer es so will
+# Video-Paket-Prompt des Nutzers (13.11.2026; STEP 4 am 13.11. vom Nutzer durch „NARRATION & VOICE“ ersetzt) – für das nächste Video und künftige, wenn der Nutzer es so will
 Vorgabe des Nutzers: „Benutze für das nächste Video diesen Prompt und gib mir eine Vorschau … Videos müssen 9/10 sein.“
 Kanal (TikTok und YouTube): **KnowToon** → End-Card-Suchleiste tippt „KnowToon“.
 Eingesetzte Werte: Language **ENGLISCH** (Nutzer 13.11.2026: „Sprache immer englisch“ – gilt statt DEUTSCH im Prompt) · Length 90–140 s · Audience ALLE · Channel @KnowToon · Series NEIN.
@@ -21,8 +21,12 @@ Cinematic 3D animation, blocky toy-like characters (round-dot eyes, simple mouth
 STEP 3 – STRUCTURE
 Hook (0-4 s): striking close-up plus a threat, question or surprising claim. Setup: place, time, stakes. Rising tension: 2-3 escalating beats, each with a clue or prop (clock, radio, screen, sign). Climax: twist, sacrifice or reveal. Ending: cliffhanger, loop or open question. Each scene max 8 s. Change the shot every 2-4 s, alternate wide, close-up, low-angle, over-the-shoulder and detail shots. Slow push-in before reveals, fast cuts in action.
 
-STEP 4 – NARRATION
-One consistent storyteller voice. Short sentences, concrete words, no filler, no clichés. Rhythm: setup calm, tension slower and quieter, twist louder. Roughly 150 words per minute. Only state facts that are verifiable; for factual topics list sources and mark any uncertain claim.
+STEP 4 – NARRATION & VOICE
+Voice profile: [männlich / weiblich], young adult, clear and close-mic'd, warm mid-low pitch, light vocal fry allowed, natural storyteller delivery (like a friend telling a story, not a news anchor). Calm base energy, fast confident tempo, about 150-165 words per minute. Language: [DEUTSCH], neutral accent, clean pronunciation.
+Emotion map: setup = relaxed and curious; rising tension = slower, quieter, slight whisper; twist/climax = louder, faster, clipped sentences; ending = flat and low, with a 0.5 s pause before the last line.
+Delivery rules: short sentences (max 12 words), pause 0.3-0.6 s before every reveal, no filler words, no exaggerated acting, stress the key word of each sentence.
+Text-to-speech settings (ElevenLabs-style): stability 35-45, similarity 75, style 30-40, speaker boost on, speed 1.05-1.1. Output one narration line per shot so audio can be generated per scene and re-timed.
+Facts: only verifiable claims; list sources and mark uncertain claims.
 
 STEP 5 – SOUND & CAPTIONS
 Ambient bed matching the setting, bass hit before each reveal, one sharp accent on the twist, no lyrics. Word-by-word captions, one word at a time, bold sans-serif, yellow with thick black outline, lower third.
@@ -55,3 +59,9 @@ Revise until all five answers are yes.
 - Untertitel: Wort für Wort, fett, gelb mit dickem schwarzem Rand, unteres Drittel (Skill `remotion-captions`).
 - End-Card 2 s: dunkler Hintergrund, Suchleiste tippt „KnowToon“ + kurzer Call-to-Action.
 - Bestehende Pflichten bleiben: Mindestnote 9/10, echte frei lizenzierte Bilder/Videos wo passend, Thumbnail in den ersten 0,5 s, Musik selbst gemacht (hier: ohne Gesang).
+- **STEP 4 Stimme (Nutzer 13.11.2026) – Umsetzung mit Chatterbox** (wir haben kein ElevenLabs; Zuordnung ist eigene Ableitung, per Messung zu prüfen):
+  Sprache Englisch (Regel „immer Englisch“ geht vor); Profil je Video wählen und im Drehbuch nennen (Standard männlich, am_fenrir).
+  Tempo 150–165 W/min = **2,5–2,75 W/s** – gilt für Videos nach diesem Prompt und ersetzt dort die Repo-Spanne 2,3–2,6 W/s; erreicht durch Text und
+  Pausen, `speed` höchstens 1,05–1,1. ElevenLabs „stability 35–45 / style 30–40“ ≈ Chatterbox `exaggeration` 0,55–0,65, `cfg_weight` 0,4–0,5.
+  Emotion je Abschnitt über `delivery` (setup relaxed/curious · tension quiet/whisper · twist louder/clipped · ending flat/low, 0,5 s Pause vor der letzten Zeile),
+  Pause 0,3–0,6 s vor jeder Enthüllung (` | `), Sätze ≤ 12 Wörter, Akzentwort je Satz `*…*`, eine Sprechzeile je Shot.

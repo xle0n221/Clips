@@ -25,7 +25,7 @@
     "cta": "Follow for the next strange world.",
     "seconds": 2
   },
-  "sources": "Fiktion (eigene Welt). Einziger Realfakt: Franklin 1748 'Remember that time is money.' – Szene 'franklin', Quellen dort; Wortlaut nicht selbst gegen Primärquelle geprüft (founders.archives.gov aus dieser Umgebung gesperrt). Echte Bilder/Videos: Platzhalter B1–B3, V1–V3, Nachweise offen → docs/bildnachweise-zeit-welt.md.",
+  "sources": "Fiktion (eigene Welt). Einziger Realfakt: Franklin, 'Advice to a Young Tradesman' (gedruckt 1748): 'Remember that Time is Money.' – am 13.11.2026 gegen Founders Online (Primärquelle) bestätigt, Quellen in Szene 'franklin'. Echte Bilder/Videos: Platzhalter B1–B3, V1–V3, Nachweise offen → docs/bildnachweise-zeit-welt.md.",
   "pointe": "The jar doesn't count your life – it only counts what you sold; the fear of the empty jar is what keeps the city working.",
   "originality": "Prämisse erinnert an 'In Time' (2011). Bewusst anders: keine Arm-Uhr/Leuchtziffern, sondern Sandglas am Gürtel; leer = KEIN Tod (Twist: die Todes-Angst ist die Lüge); eigene Stadt Minuteburg, eigene Figuren Ida/Anton/Glass Office, keine Figuren, Handlung, Zitate oder Bilder aus dem Film; Klotzfiguren eigenes Design, keine Spielzeugmarke.",
   "music": {
@@ -49,7 +49,7 @@
     ],
     "bars": []
   },
-  "note": "v1 (13.11.2026, Drehbuch). Paket: docs/paket-zeit-welt.md. Sprache Englisch (Korrektur Nutzer). 246 Skriptwörter (ohne * und |), 21 Szenen à 8–15 W, 0 fehlende Cue-Wörter; Plan 2,23 W/s (gemessen Lucia) → ≈ 110 s + 0,5 s Cover + 2 s End-Card. Re-Hook ab Wort 109/246 = 44 %. Wird es > 138 s: zuerst 'Every kid knows:' und 'everything' streichen. Kette: Preis in Lebenszeit → Opa hat 1 Tag → Regeln der Welt → leer = verschwinden (Angst) → Ida arbeitet (unfairer Lohn) → Miete frisst ihr Glas → Re-Hook → leere Frau lebt → Opa dreht Glas um → Sand gemalt (Twist) → 20 Jahre leer → Glas zählt Verkauftes, nicht Leben → Angst hält Stadt am Laufen → Franklin 1748 → wörtlich → unbezahlter Tag → Glass Office klopft (Cliffhanger) → Frage an Zuschauer.",
+  "note": "v1 (13.11.2026, Drehbuch). Paket: docs/paket-zeit-welt.md. Sprache Englisch (Korrektur Nutzer). 253 Skriptwörter (ohne * und |), 21 Szenen à 8–16 W, 0 fehlende Cue-Wörter; Plan 2,23 W/s (gemessen Lucia) → ≈ 113 s + 0,5 s Cover + 2 s End-Card. Re-Hook ab Wort 114/253 = 45 %. Wird es > 138 s: zuerst 'Every kid knows:' und 'everything' streichen. Kette: Preis in Lebenszeit → Opa hat 1 Tag → Regeln der Welt → leer = verschwinden (Angst) → Ida arbeitet (unfairer Lohn) → Miete frisst ihr Glas → Re-Hook → leere Frau lebt → Opa dreht Glas um → Sand gemalt (Twist) → 20 Jahre leer → Glas zählt Verkauftes, nicht Leben → Angst hält Stadt am Laufen → Franklin 1748 → wörtlich → unbezahlter Tag → Glass Office klopft (Cliffhanger) → Frage an Zuschauer. v1.1 (13.11.2026, Fakten-/Retention-Prüfung): Glass Office in 'empty' gesprochen (Anker für Cliffhanger), tower/rent leiser (serious/tense statt excited/indignant), Franklin 'published this advice' (Primärquelle: Druck 1748), Sticker 1748 nicht aufs spätere Porträt.",
   "scenes": [
     {
       "id": "hook",
@@ -150,8 +150,8 @@
       "id": "empty",
       "delivery": "tense",
       "emotion": "serious",
-      "text": "And when a jar runs *empty*? | Every kid knows: | you *disappear*.",
-      "visual": "Dunkle Gasse, Regen. Ein Schild an einer grauen Amtstür (eigenes Design, frostiges Glaslogo): 'GLASS OFFICE · REPORT EMPTY JARS'. Kinder-Klotzfiguren flüstern hinter einer Mauer (Nahaufnahme). Auf 'disappear' fällt ein leeres Glas auf das Pflaster und rollt – Licht der Laterne flackert aus.",
+      "text": "And when a jar runs *empty*? | Every kid knows: | the Glass Office comes. | And you *disappear*.",
+      "visual": "Dunkle Gasse, Regen. Ein Schild an einer grauen Amtstür (eigenes Design, frostiges Glaslogo): 'GLASS OFFICE · REPORT EMPTY JARS'. Auf 'Office' Amtstür groß im Bild (gesprochener Name = Anker für den Cliffhanger in 'knock'). Kinder-Klotzfiguren flüstern hinter einer Mauer (Nahaufnahme). Auf 'disappear' fällt ein leeres Glas auf das Pflaster und rollt – Licht der Laterne flackert aus.",
       "sources": [
         "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
       ],
@@ -162,6 +162,10 @@
           "sfx": "boom",
           "sticker": "REPORT EMPTY JARS",
           "color": "#FFD23F"
+        },
+        {
+          "word": "Office",
+          "beat": "glassOfficeDoor"
         },
         {
           "word": "disappear",
@@ -217,8 +221,8 @@
     },
     {
       "id": "tower",
-      "delivery": "normal",
-      "emotion": "excited",
+      "delivery": "calm",
+      "emotion": "serious",
       "text": "Ida fixes the tower clock. | Ten hours of work… | two hours of *sand*.",
       "visual": "Low-Angle: IDA klettert im Turm zwischen riesigen Zahnrädern (eigenes 3D-Modell). ECHTES FOTO (Platzhalter B2, Commons, Suchbegriff 'tower clock mechanism') kurz als Überblendung auf ein Zahnrad (Match Cut echt → 3D). Zeitraffer: Sonne wandert durch das Turmfenster. Auf 'sand' tropft nur ein kurzes Rinnsal in ihr Glas – Gesicht fällt.",
       "sources": [
@@ -243,7 +247,7 @@
     {
       "id": "rent",
       "delivery": "tense",
-      "emotion": "indignant",
+      "emotion": "tense",
       "text": "Then the rent goes up. | By a whole *week*. | Her own jar gets *lighter*.",
       "visual": "Vermieter (eigene Klotzfigur, Zylinder, kein Gesichtsbezug zu realer Person) nagelt einen Zettel an die Tür: 'RENT +1 WEEK'. Over-the-shoulder: IDA gießt Sand aus ihrem Glas in seinen Trichter. Detail: ihr Glas am Gürtel, Pegel sinkt sichtbar.",
       "sources": [
@@ -286,7 +290,7 @@
       "delivery": "tense",
       "emotion": "tense",
       "text": "An old woman sweeps the market square. | Her jar is *empty*. | And she's *alive*.",
-      "visual": "Totale Marktplatz, Nebel. Eine alte Klotzfigur (pflaumenfarbenes Kopftuch, Reisigbesen) fegt. ECHTES VIDEO (Platzhalter V2, Commons, Suchbegriff 'time-lapse market square crowd webm') als Spiegelung in einer Pfütze. Auf 'empty' Detail: ihr Glas – komplett leer, Spinnweben im Deckel. Auf 'alive' schaut sie IDA direkt an und zwinkert (Augen-Pop bei IDA).",
+      "visual": "Totale Marktplatz, Nebel. Eine alte Klotzfigur (pflaumenfarbenes Kopftuch, Reisigbesen) fegt. ECHTES VIDEO (Platzhalter V2, Commons, Suchbegriff 'time-lapse market square crowd webm') als Spiegelung in einer Pfütze. Auf 'empty' Detail: ihr Glas – halb unter dem Schultertuch versteckt, nur IDA sieht es: komplett leer, Spinnweben im Deckel. Auf 'alive' schaut sie IDA direkt an und zwinkert (Augen-Pop bei IDA).",
       "sources": [
         "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung.",
         "Echtes Video V2: Platzhalter, Lizenz offen."
@@ -426,11 +430,11 @@
       "id": "franklin",
       "delivery": "calm",
       "emotion": "calm",
-      "text": "Sounds made up? | In *our* world, in 1748, Benjamin Franklin wrote:",
-      "visual": "Form-Wipe (Sanduhr-Form) aus der Fiktion in die echte Welt. ECHTES BILD (Platzhalter B3, Commons, Suchbegriff 'Benjamin Franklin by Joseph Siffred Duplessis', gemeinfrei laut üblicher Commons-Einstufung – Datei noch prüfen) im Bilderrahmen, Ken-Burns. Jahreszahl '1748' als Sticker.",
+      "text": "Sounds made up? | In *our* world, in 1748, Benjamin Franklin published this advice:",
+      "visual": "Form-Wipe (Sanduhr-Form) aus der Fiktion in die echte Welt. ECHTES BILD (Platzhalter B3, Commons, Suchbegriff 'Benjamin Franklin by Joseph Siffred Duplessis' – Datei + Lizenz noch prüfen) im Bilderrahmen, Ken-Burns. Das Porträt entstand Jahrzehnte später – NICHT mit '1748' beschriften: Sticker '1748' sitzt auf einer eigenen gestalteten Papierkarte 'ADVICE TO A YOUNG TRADESMAN' neben dem Rahmen (kein Faksimile, kein Original-Titelblatt vortäuschen).",
       "sources": [
-        "Benjamin Franklin, 'Advice to a Young Tradesman, Written by an Old One', datiert [21 July 1748] – Founders Online (National Archives): https://founders.archives.gov/documents/Franklin/01-03-02-0130 (Primärquelle; aus dieser Umgebung NICHT lesbar, Host gesperrt). Wortlaut 'REMEMBER that time is money.' nur über Suchzusammenfassung der Wikisource-Ausgabe 1793 (https://en.wikisource.org/wiki/Page:Works_of_the_Late_Doctor_Benjamin_Franklin_(1793).djvu/198) und Quote Investigator (https://quoteinvestigator.com/2010/05/14/time-is-money/) – Ich kann den Wortlaut nicht selbst bestätigen; Faktenprüfer muss gegen Founders Online prüfen.",
-        "Nur 'Franklin wrote' – nicht 'Franklin erfand'. Quote Investigator und Wikipedia (https://en.wikipedia.org/wiki/Time_is_money_(aphorism)) halten frühere Herkunft für möglich."
+        "Founders Online (National Archives), 'Advice to a Young Tradesman, [21 July 1748]', https://founders.archives.gov/documents/Franklin/01-03-02-0130 – am 13.11.2026 neu geladen: Wortlaut 'Remember that Time is Money. He that can earn Ten Shillings a Day by his Labour, and goes abroad, or sits idle one half of that Day, … has really spent or rather thrown away Five Shillings besides.' Titel im Druck: 'Advice to a young Tradesman, written by an old One.' Gedruckt in George Fisher, The American Instructor (Philadelphia: B. Franklin and D. Hall, 1748), pp. 375–7; Herausgeber: 'This is the earliest known printing'; Datum [21 July 1748] = Gazette-Anzeige 'just published' (eckige Klammern = erschlossen). Original: The Papers of Benjamin Franklin, vol. 3, ed. Labaree (Yale UP, 1961), pp. 304–308.",
+        "Deshalb 'published' statt 'wrote': belegt ist der Druck 1748, nicht das Schreibdatum. Nur 'Franklin published', nicht 'Franklin erfand' – Wikipedia (https://en.wikipedia.org/wiki/Time_is_money_(aphorism)) und Quote Investigator halten frühere Herkunft für möglich."
       ],
       "cues": [
         {
@@ -439,8 +443,8 @@
           "sfx": "whoosh"
         },
         {
-          "word": "wrote",
-          "beat": "franklinPortrait",
+          "word": "advice",
+          "beat": "franklinPortraitAndCard",
           "sfx": "ding",
           "sticker": "1748",
           "color": "#FFD23F"
