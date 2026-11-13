@@ -1,4 +1,4 @@
-# Video-Paket-Prompt des Nutzers (13.11.2026; STEP 4 am 13.11. vom Nutzer durch „NARRATION & VOICE“ ersetzt) – für das nächste Video und künftige, wenn der Nutzer es so will
+# Video-Paket-Prompt des Nutzers (13.11.2026; STEP 4b „NARRATION & VOICE“ am 13.11. vom Nutzer ergänzt – Original-STEP 4 bleibt) – für das nächste Video und künftige, wenn der Nutzer es so will
 Vorgabe des Nutzers: „Benutze für das nächste Video diesen Prompt und gib mir eine Vorschau … Videos müssen 9/10 sein.“
 Kanal (TikTok und YouTube): **KnowToon** → End-Card-Suchleiste tippt „KnowToon“.
 Eingesetzte Werte: Language **ENGLISCH** (Nutzer 13.11.2026: „Sprache immer englisch“ – gilt statt DEUTSCH im Prompt) · Length 90–140 s · Audience ALLE · Channel @KnowToon · Series NEIN.
@@ -21,7 +21,10 @@ Cinematic 3D animation, blocky toy-like characters (round-dot eyes, simple mouth
 STEP 3 – STRUCTURE
 Hook (0-4 s): striking close-up plus a threat, question or surprising claim. Setup: place, time, stakes. Rising tension: 2-3 escalating beats, each with a clue or prop (clock, radio, screen, sign). Climax: twist, sacrifice or reveal. Ending: cliffhanger, loop or open question. Each scene max 8 s. Change the shot every 2-4 s, alternate wide, close-up, low-angle, over-the-shoulder and detail shots. Slow push-in before reveals, fast cuts in action.
 
-STEP 4 – NARRATION & VOICE
+STEP 4 – NARRATION
+One consistent storyteller voice. Short sentences, concrete words, no filler, no clichés. Rhythm: setup calm, tension slower and quieter, twist louder. Roughly 150 words per minute. Only state facts that are verifiable; for factual topics list sources and mark any uncertain claim.
+
+STEP 4b – NARRATION & VOICE (added by user 13.11.2026)
 Voice profile: [männlich / weiblich], young adult, clear and close-mic'd, warm mid-low pitch, light vocal fry allowed, natural storyteller delivery (like a friend telling a story, not a news anchor). Calm base energy, fast confident tempo, about 150-165 words per minute. Language: [DEUTSCH], neutral accent, clean pronunciation.
 Emotion map: setup = relaxed and curious; rising tension = slower, quieter, slight whisper; twist/climax = louder, faster, clipped sentences; ending = flat and low, with a 0.5 s pause before the last line.
 Delivery rules: short sentences (max 12 words), pause 0.3-0.6 s before every reveal, no filler words, no exaggerated acting, stress the key word of each sentence.
@@ -59,7 +62,8 @@ Revise until all five answers are yes.
 - Untertitel: Wort für Wort, fett, gelb mit dickem schwarzem Rand, unteres Drittel (Skill `remotion-captions`).
 - End-Card 2 s: dunkler Hintergrund, Suchleiste tippt „KnowToon“ + kurzer Call-to-Action.
 - Bestehende Pflichten bleiben: Mindestnote 9/10, echte frei lizenzierte Bilder/Videos wo passend, Thumbnail in den ersten 0,5 s, Musik selbst gemacht (hier: ohne Gesang).
-- **STEP 4 Stimme (Nutzer 13.11.2026) – Umsetzung mit Chatterbox** (wir haben kein ElevenLabs; Zuordnung ist eigene Ableitung, per Messung zu prüfen):
+- **STEP 4 + 4b zusammen (abgeglichen 13.11.2026):** kein Widerspruch – 4 sagt „roughly 150 wpm“, 4b „150–165“ (enthält 150); beide: eine Erzählstimme, kurze Sätze, Spannung leiser/langsamer, Twist lauter, nur belegte Fakten. 4b ergänzt Stimmprofil, Pausen, Ende flach + 0,5 s Pause, TTS-Werte.
+- **STEP 4b Stimme – Umsetzung mit Chatterbox** (wir haben kein ElevenLabs; Zuordnung ist eigene Ableitung, per Messung zu prüfen):
   Sprache Englisch (Regel „immer Englisch“ geht vor); Profil je Video wählen und im Drehbuch nennen (Standard männlich, am_fenrir).
   Tempo 150–165 W/min = **2,5–2,75 W/s** – gilt für Videos nach diesem Prompt und ersetzt dort die Repo-Spanne 2,3–2,6 W/s; erreicht durch Text und
   Pausen, `speed` höchstens 1,05–1,1. ElevenLabs „stability 35–45 / style 30–40“ ≈ Chatterbox `exaggeration` 0,55–0,65, `cfg_weight` 0,4–0,5.
