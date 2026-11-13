@@ -10,6 +10,8 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 - Bestehende Videos unverändert (Pixel-Vergleich mit Rausch-Grenze)
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- HUD-Kontrast als weiße Füllung gegen Grund messen (Ziel ≥ 4,5 : 1); auf hellem Papier/Gold braucht es die Platte `hud2d.plate` (Lucia: 1,46 → 6,0 : 1).
+- Geänderte gemeinsame Dateien: Diff lesen (neue Props mit neutralem Standard?) + ein Standbild eines anderen Clips ziehen.
 - Rausch-Grenze vorab messen: gleiches Bundle zweimal rendern (bisher 94–113 Pixel Unterschied).
 - Randfälle eigens bauen (`OverlayEdgeCases`).
 - Gruppen-Deckkraft beim Ausblenden vermeiden (Geisterbilder in Chromium/swangle).
@@ -17,6 +19,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 - Untertitel-Zone mit den Werten aus dem Code prüfen: Unterkante y 1520 (`Captions.tsx` `paddingBottom: 400`), eine Zeile ≈ 1420–1520, zwei Zeilen ab ≈ 1325 (`design-system.md` §4.6) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Lucia GTA 6 Runde 2 · Experiment: HUD-Kontrast automatisch über alle 30 Standbilder (hellstes Pixel im HUD-Feld gegen 25-%-Quantil) – Platte `rgba(16,10,26,0,62)` hebt den Tiefstwert von 1,46 auf 6,0 : 1; Quantil-Methode greift beim Ausblenden (69,9/71,6 s) daneben, dort von Hand prüfen. Cover-PNG gegen Bundle-Bild 3 per Pixel-Differenz geprüft (2,5–3,7) statt nur Zeitstempel · `docs/kritik-lucia-szenen.md` Runde 2
 - 13.11.2026 · Lucia GTA 6 (2D) · Experiment: Gitterstab-Lage im Cover aus dem Code nachgerechnet (`Bars x0 + k·gap` gegen Figuren-x) statt nur Sichtprüfung – fand Stab mitten im Gesicht (x 480 vs. 470) und lieferte direkt die Korrektur (x0 −130, gap 400). HUD-Kontrast als Füllung/Grund **und** Kontur/Grund messen: weiß auf Creme 1,46 : 1, lesbar nur durch Kontur 14 : 1 → Prüfregel: Füllung < 3 : 1 = Befund. Durchgestrichene Daten (Faktenhinweis) bleiben nur lesbar, wenn X/Stempel nicht über der Zahl liegen · `docs/kritik-lucia-szenen.md` D1/D2/D5
 - 12.11.2026 · Mike Tyson (2D) · `pose="sit"` in `kit2d/boxing.tsx` zeigt frontal keine Oberschenkel: Beine hängen gerade unter den Trunks zwischen den Hocker-Beinen → liest sich als Stehen auf Stelzen (Cover, Hook, ear 55,2 s, exodus 59,5 s); Sitzfiguren frontal brauchen sichtbare verkürzte Oberschenkel/Knie oder ¾-Ansicht. `towel="head"` mit dunklem Gesicht liest sich als Kapuze/Kopftuch, nicht als Boxerhandtuch. Keine Porträtähnlichkeit, keine Logos – bestanden. Cover-Untertitel mit Einzelwort-Umbruch („round“) → Zeilenbreite prüfen · `out/tyson-check.jpg`, `out/mike-tyson-cover.png`
 - 12.11.2026 · Earth Without Us (2D) · Beschriftungen in 2D-Sets an festen x-Werten laufen bei Kamerafahrt aus dem Bild (HELIOSPHERE `Label x=260` in `earth2.tsx` → „LIOSPHERE“, f4850); Prüfregel: jedes Label in jedem Standbild ganz im Bild? Cover-PNG in `out/` war älter als das Drehbuch (Untertext abweichend) → Cover immer aus Bild 5 des aktuellen Bundles neu ziehen · `scratchpad/v4850.png`, `c5.png`
@@ -30,6 +33,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 13.11.2026 | Lucia GTA 6 Runde 2 (v2, Cover + 30 Standbilder) | 9,0 (Design-Kritiker) | alle Befunde erledigt, HUD ≥ 6 : 1; Rest: Bildrand 64 s, Karten 38 px links |
 | 13.11.2026 | Lucia GTA 6 (2D, Cover + 45 Einzelbilder) | 8,0 (Design-Kritiker) | Stab durchs Gesicht im Cover, „2025“-Blatt unlesbar, doppelte Sticker/Stempel, HUD auf Papier 1,46 : 1 |
 | 12.11.2026 | Earth Without Us (2D, Kontaktabzug + 2 Standbilder) | 7,5 (Selbstbewertung Design-Kritiker) | Stil 2D passend und konsistent; abgeschnittenes Label, veraltetes Cover-PNG, Kleinteile (Satelliten, Voyager) zu klein |
 | 12.11.2026 | Mike Tyson (2D, Kontaktabzug + Cover + 8 Einzelbilder) | 6,5 (Selbstbewertung Design-Kritiker) | Sitzpose ohne Oberschenkel, Kopf-Handtuch als Kapuze, abgeschnittene LIFE-HITS-Leiste conviction |

@@ -49,3 +49,48 @@ Beide < 9 → Nacharbeit nötig (Mindestnote 9/10). Mit den P1-Punkten erwarte i
 - Schnitte auf Cue-Wörter (time, fight, family, luck, easy, story, Jason, couple, wrong, first, optional, 19th) – Bild zeigt jeweils das Verb.
 - Keine Rockstar-Logos, kein GTA-Schriftzug-Nachbau, eigenes Auto, generischer Controller, graue Platzhalter-Rahmen statt Ex-Protagonisten, keine Waffen. Boxhandschuhe nicht als „Boxerin“ beschriftet (P7 ✔). Familie ohne zählbare Köpfe (P11 ✔, aber R1).
 - Übergänge: Portal, Whip (22,9 s), Umblättern, Spotlight (43,5 s), Tracking + Parallax – alle ruhig.
+
+## Runde 2 (Szenen v2, Commit eed81b4, 13.11.2026)
+
+Grundlage: neues Bundle, 30 Standbilder an den Befund-Stellen + Stichproben (`--at`, halbe Größe), 143 Bilder im
+0,5-s-Raster (0,2×) für die Tempo-Messung, `out/lucia-gta6-cover.png` (stimmt mit Bild 3 des Bundles überein,
+mittlere Abweichung 2,5–3,7 Grauwerte = JPEG/Skalierung), `out/lucia-kontakt.png` (11:16, aktuell). Code nur gelesen.
+
+### Noten
+| Rolle | Runde 1 | Runde 2 | Kurzgrund |
+| --- | --- | --- | --- |
+| Regie | 7,5 | **9,0** | Alle P1/P2 behoben: Karten 60,7–63,4 s (≈ 2,6 s, zentriert, „COMMENT A OR B“), Lucia + Jason in `play`, Lucia im Kalender, Familie lesbar (Haus + Arme vom Rand), Pills enden rechtzeitig, Loop-Naht ohne HUD. Einstellungstempo im Ziel. |
+| Design | 8,0 | **9,0** | Cover-Gesicht frei, „2025“/„MAY 26“ lesbar, keine Doppel-Sticker, HUD-Platte ≥ 6 : 1, Cabrio-Nahe mit erkennbarer Lucia. Nur Kleinigkeiten (Bildrand, Karten-Mitte). |
+
+Beide ≥ 9 → aus Regie-/Design-Sicht freigabefähig.
+
+### Messwerte
+- **HUD-Kontrast** (weiße Füllung gegen Platte/Grund, alle 30 Standbilder): min. **6,0 : 1** (Papierseite 28,4 s, vorher 1,46 : 1), Gold 47,5 s 9,7 : 1, Holz/Haus 7,7–11,8 : 1, sonst 15–19 : 1 → Ziel ≥ 4,5 : 1 überall erfüllt. 71,6 s: HUD ausgeblendet (`hideBeat: "loopToCover"`) ✔.
+- **Bildwechsel-Tempo** (Mittelwert-Differenz aufeinanderfolgender 0,5-s-Bilder, HUD- und Untertitelband ausgeblendet, 54×86 px): Einstellungswechsel (Diff > 50, benachbarte zusammengefasst) **≈ 19 in 71,7 s → Ø ≈ 3,7 s** → im Ziel 3–4 s. Sichtbare Bild-Ereignisse (Diff > 20, inkl. Sticker/Stempel/Fahrten): 57 → **0,8 je s** (Ø 1,24 s). Längste ruhige Strecke: Akte 1,3–6,2 s (Kamerafahrt, kein Standbild). Methode ersetzt ffmpeg `scene` (kein Video vorhanden), Schwelle ist eine Annahme – **kein ffmpeg-Wert, das kann ich nicht bestätigen**.
+- **Gemeinsame Dateien** (`Episode.tsx`, `kit2d/hud.tsx`, `scenes/index.ts`, Diff gelesen): neue Felder `plate` (Standard `false`), `hideBeat` (Standard undefiniert → Deckkraft 1), `stickerMax` (Standard `?? 54` = alter Wert). Nur `lucia.tsx` setzt sie; Huang/Tyson/UFC/Rolls/Earth nicht. Standbild `JensenHuang` 10,0 s: HUD ohne Platte, Sticker/Layout wie gewohnt → **andere Clips unverändert** (Code-Lesung + 1 Standbild; kein Pixel-Vergleich, da kein Vorher-Bild).
+
+### Status der 15 Befunde
+| # | Status | Beleg |
+| --- | --- | --- |
+| D1 Cover-Stab | erledigt | 0,1 s / 71,6 s: Gesicht zwischen zwei Stäben, keine Klammer |
+| R1 Familie | erledigt | 14,6 s: Haus mit Fenstern + Arme/Schultern vom Rand, keine zählbaren Köpfe (P11 ✔) |
+| R2 Karten | erledigt | 61,5–63,3 s zentriert, ≈ 2,6 s stehend, Aufruf „COMMENT A OR B“ |
+| R3 Lucia fehlt | erledigt | 60,5 s Lucia + Jason; 64–68 s Lucia neben Kalender |
+| D2 2025-Blatt | erledigt | 67,3 s „WINDOW 2025“ und „DATE MAY 26 2026“ lesbar, Stempel unter der Zahl (P29 ✔) |
+| R4 BANK-Pill | erledigt | 40,0 s Pill über der Bank, Karte später |
+| R5 DELAYED-Pill | erledigt | 69,9 s kein Sticker über dem Foto |
+| R6 Portal-Kollision | erledigt | 7,5 s Untertitel frei, WHY? weg (`stickerMax`) |
+| D3 Stab 16,5 s | erledigt | Gesicht zwischen Stäben |
+| D4 Doppel-Sticker | erledigt | 2,0 s / 54,0 s nur Stempel |
+| D5 HUD-Kontrast | erledigt | s. Messwerte |
+| D6 Konfetti | erledigt | 61,5 s Konfetti am linken Rand, nicht durch Titel |
+| D7 Cabrio | erledigt | 35,5 s Nahe, Lucia (türkises Band) erkennbar |
+| D8 RIGHT-Schild | erledigt | 58,5 s frei |
+| R7 Loop-Naht | erledigt | HUD blendet ab 69,7 s aus |
+
+### Rest-Befunde (kein Muss für 9)
+| # | Szene / s | Problem | Vorschlag | Prio |
+| --- | --- | --- | --- | --- |
+| N1 | loop 64,0–65,0 s | Lucia steht am linken Bildrand, ihre Hand ist bei x = 0 angeschnitten. | Figur ~40 px nach rechts. | P3 |
+| N2 | play 61,5–62,5 s | Kartenblock ≈ 38 px links der Mitte; Karten verdecken die Körper von Lucia/Jason (Köpfe frei). | Block auf x 540 zentrieren; Figuren 40 px höher oder Karten etwas tiefer (Unterkante ≤ y 1300). | P3 |
+| N3 | family 16,5 s | HUD-Wechsel FIGHTER→INMATE steht genau im Moment des Standbilds halb gerollt (Animation, kein Fehler). | – | info |
