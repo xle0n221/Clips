@@ -32,14 +32,16 @@ export const Pill: React.FC<{
   const x = Math.max(0.04, Math.min(0.96, label.x)) * width;
   const y = Math.max(0.05, Math.min(1, label.y)) * height;
   // Gemessene Breite (Schrift 46 px, Abstand 1 px) + Innenabstand 2×30 + Rahmen 2×7 + Neigung
-  const estW =
-    measureText({
-      text: label.text.toUpperCase(),
-      fontFamily: CAPTION_FONT,
-      fontWeight: 900,
-      fontSize: 46,
-      letterSpacing: "1px",
-    }).width + 90;
+  const rawW = measureText({
+    text: label.text.toUpperCase(),
+    fontFamily: CAPTION_FONT,
+    fontWeight: 900,
+    fontSize: 46,
+    letterSpacing: "1px",
+  }).width;
+  // Zu lange Pills (breiter als das Bild − 80 px) verkleinern die Schrift statt aus dem Bild zu laufen
+  const fontSize = Math.min(46, Math.floor((46 * (width - 80 - 90)) / Math.max(1, rawW)));
+  const estW = (rawW * fontSize) / 46 + 90;
   // Zipfel bleibt unter der Pill (nicht über deren Rundung hinaus); lieber 20 px Rand als lose Spitze
   const room = Math.max(0, estW / 2 - 50);
   const shift = Math.max(
@@ -73,7 +75,7 @@ export const Pill: React.FC<{
             padding: "8px 30px 10px",
             fontFamily: CAPTION_FONT,
             fontWeight: 900,
-            fontSize: 46,
+            fontSize,
             letterSpacing: 1,
             whiteSpace: "nowrap",
             lineHeight: 1.1,

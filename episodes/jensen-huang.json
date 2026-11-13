@@ -401,7 +401,8 @@
               "A · 4 DAYS",
               "B · 4 HOURS"
             ]
-          }
+          },
+          "untilBeat": "loopToSunday"
         },
         {
           "word": "time",

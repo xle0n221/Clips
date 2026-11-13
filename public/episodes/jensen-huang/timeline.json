@@ -348,7 +348,8 @@
     ]
    },
    "scene": "loop",
-   "atMs": 69360
+   "atMs": 69360,
+   "untilBeat": "loopToSunday"
   },
   {
    "beat": "loopToSunday",
