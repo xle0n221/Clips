@@ -17,6 +17,7 @@ Wer ein Video aus dem Dashboard bearbeitet, hält sich an **`docs/dashboard-abla
 Jeder beauftragte Agent bekommt seine Rollen-Datei aus `docs/agenten/` mit (Lern-Kreislauf: vorher lesen, ein Experiment, nachher eintragen).
 
 ## Ein Video herstellen
+**Kanal: KnowToon** (TikTok + YouTube, Nutzer 13.11.2026). **Video-Paket-Prompt des Nutzers** für das nächste Video: `docs/prompts/knowtoon-videopaket.md` (Deutsch, 90–140 s, 3D-Klotzfiguren, Wort-für-Wort-Untertitel gelb, End-Card „KnowToon“). Remotion-Skills laden: `scripts/setup_remotion_skills.sh`.
 **Mindestnote 9/10** (Vorgabe Nutzer 13.11.2026: „Videos sollen ab jetzt mind. eine 9/10 sein“ – gilt ab dem Lucia-Video für alle Clips): jede Prüfrolle (Fakten, Drehbuch/Retention, Regie, Design, Endkontrolle) muss ≥ 9 geben, sonst Nacharbeit + erneute Prüfung vor jeder Freigabe; Noten in jeder Freigabe nennen.
 Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regeln `docs/clip-regeln.md`.
 **Titel, Caption, Hashtags Pflicht** (Nutzer 13.11.2026: „In Zukunft immer bei den Videos im Dashboard anzeigen“): ein Video wird nur zusammen mit vollständigem `publish` auf `done` gesetzt – `docs/dashboard-ablauf.md`.

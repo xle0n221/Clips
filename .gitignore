@@ -16,3 +16,6 @@ whisper.cpp
 __pycache__
 .venv-skillspector/
 .claude/worktrees/
+
+# Remotion-Skills (ohne Lizenzdatei, lokal per scripts/setup_remotion_skills.sh)
+.claude/skills/remotion-*/
