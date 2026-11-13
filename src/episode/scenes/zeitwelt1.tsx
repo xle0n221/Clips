@@ -250,12 +250,12 @@ export const CounterMacro: React.FC<{ readonly frame: number; readonly pour?: nu
       <Plank size={[6, 0.25, 2.4]} position={[0, 0.88, 0]} color="#9A7050" />
       <Bread position={[0.85, 1.0, -0.35]} rotation={[0, -0.35, 0]} scale={0.95} />
       {/* Preisschild lehnt vorn am Brot */}
-      <group position={[0.42, 1.32, 0.3]} rotation={[-0.25, -0.2, 0.03]}>
+      <group position={[0.28, 1.3, 0.32]} rotation={[-0.25, -0.15, 0.03]}>
         <mesh position={[0, 0, -0.01]}>
-          <planeGeometry args={[1.12, 0.46]} />
+          <planeGeometry args={[0.9, 0.38]} />
           <meshStandardMaterial color={Z.paper} roughness={0.9} />
         </mesh>
-        <TextLabel text="BREAD · 12 MIN" width={1.02} height={0.36} color="#1A1410" position={[0, 0, 0.005]} />
+        <TextLabel text="BREAD · 12 MIN" width={0.82} height={0.3} color="#1A1410" position={[0, 0, 0.005]} />
       </group>
       <BrassDish position={[tap[0] + 0.05, 1.01, tap[2]]} scale={0.75} fill={dish} />
       <mesh position={[jarPos[0] - 0.22, jarPos[1] + 0.25, jarPos[2] + 0.05]}>
