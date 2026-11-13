@@ -19,6 +19,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 - Untertitel-Zone mit den Werten aus dem Code prüfen: Unterkante y 1520 (`Captions.tsx` `paddingBottom: 400`), eine Zeile ≈ 1420–1520, zwei Zeilen ab ≈ 1325 (`design-system.md` §4.6) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · ZeitWelt Runde 2 · Neue Kollisionsart: Sticker über Bildnachweis-Zeile (1748, 84,3 s) – Prüfregel: Nachweis-Zeilen echter Bilder gegen alle Sticker/Labels derselben Einstellung prüfen, nicht nur gegen Untertitel · `docs/kritik-zeitwelt-szenen.md` Runde 2 N1
 - 13.11.2026 · ZeitWelt (3D, KnowToon) · Experiment: Originalitäts-Check gegen Markenfiguren als Merkmalsliste statt Bauchgefühl – LEGO (Noppen, C-Hände, Zylinderkopf), Minecraft (Pixeltextur, scharfe Würfel), Roblox (Blocky-Rumpf, Rechteck-Glieder, Standard-Smiley) gegen Code (`Klotz`, `zeitweltSets.tsx`) und Nahaufnahmen (49,8 / 66,0 s): nur das Grundprinzip „Blocky Avatar“ geteilt, keine Erkennungsmerkmale → bestanden mit Hinweis. Andere Clips per Pixel-Differenz zu einem früheren eigenen Standbild geprüft (Lucia Bild 852: 0,0). HUD min. 14,6 : 1. Text-auf-Text bei echten Bildern: Bildnachweis-Zeile und Karten gehören über y 1300 · `docs/kritik-zeitwelt-szenen.md`
 - 13.11.2026 · Jason GTA 6 Runde 2 · Cover-PNG gegen Bild 3 **und** Bild 14 des Bundles verglichen (1,5 / 1,3 Grauwerte) – deckt jetzt das ganze Thumbnail-Fenster ab, nicht nur den Anfang. Fehlende echte Bilder als Bedingung der Note geführt (Begründung in der Freigabe), nicht als Notenabzug, wenn der Ersatz lückenlos ist · `docs/kritik-jason-szenen.md` Runde 2
 - 13.11.2026 · Jason GTA 6 (2D) · Experiment: Cover-Fenster Bild 0–14 vollständig auf Blinzeln/Animation geprüft (Bilder 3, 12, 14) statt nur Bild 3/5 – fand geschlossene Augen in Bild 12–14 (`blinkAt` läuft auch im Cover). Prüfregel: im Thumbnail-Fenster alle Figuren-Animationen (Blinzeln, Mund) aus. HUD-Kontrast-Messung automatisch über 64 Bilder: min. 10 : 1 (Platte auf Papier). Leeres Manifest `REAL = {}` per grep gefunden → echte Bilder fehlen ganz; Fallback eines Slots war leer statt Cartoon · `docs/kritik-jason-szenen.md`
@@ -36,6 +37,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 13.11.2026 | ZeitWelt Runde 2 (Cover + 24 Nachprüfbilder) | 9,0 (Design-Kritiker) | Ida im Cover, Doppel-Sticker weg, ISS-Lichter im Glas; Rest P3 |
 | 13.11.2026 | ZeitWelt (3D, Cover + 57 Einzelbilder) | 8,5 (Design-Kritiker) | Cover ohne Hauptfigur, Sticker doppelt zum Schild, ISS-Video in Spiegelung unkenntlich |
 | 13.11.2026 | Jason GTA 6 Runde 2 (Cover + 20 Nachprüfbilder) | 9,0 (Design-Kritiker) | Cover ohne Blinzeln, keine Doppelung; echte Fotos fehlen (begründen) |
 | 13.11.2026 | Jason GTA 6 (2D, Cover + 64 Einzelbilder) | 8,5 (Design-Kritiker) | Blinzeln im Cover, keine echten Bilder (REAL leer), leerer Florida-Fallback, NOV-19-Doppelung |

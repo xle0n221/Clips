@@ -48,3 +48,41 @@ Beide < 9 → Nacharbeit nötig. Mit R1–R3 und D1–D2 erwarte ich Regie 9, De
 - (e) NASA-Foto sichtbar und passend (D3 für das Video).
 - (f) Lucia/Jason unverändert.
 - Farblogik STEP 2 konsequent (kaltes Blaugrau, Gold nur als Sand; LIFE grau / SOLD gold), Film-Korn/Vignette dezent, Regen/Staub-Partikel.
+
+## Runde 2 (Nacharbeit, Commit 9d66bd1, 13.11.2026)
+
+Grundlage: neues Bundle aus `9d66bd1`, 24 eigene Standbilder an den Befund-Stellen (Cover 0,1/0,4/0,47 s, 13,0, 20,9, 22,6, 24,5, 32,0,
+43,9, 45,0, 62,6/63,5/64,5, 83,9/84,3, 85,3/86,0, 87,5, 93,4/95,5/97,6, 98,5/99,5/100,5 s) + 3 Bewegungs-Dreier (je 3 Frames in Folge:
+stakes 5,0 s Kranfahrt, ida 30,5 s, home 57,5 s Tracking). `out/zeit-kontakt.png` nicht verwendet (älter als die letzte Änderung). Code nur gelesen.
+
+### Noten
+| Rolle | Runde 1 | Runde 2 | Kurzgrund |
+| --- | --- | --- | --- |
+| Regie | 8,0 | **9,0** | Twist lesbar (Spachtel kratzt, Farbsplitter fallen, klares Glas 64,5 s), knock lesbar (Messing-Klopfer an Holztür, beleuchtete Agenten mit Mattglas-Visier und Foto von Antons Glas), keine Untertitel mehr auf Karte/Nachweis, dunkle Stellen aufgehellt. Bewegung ruhig. |
+| Design | 8,5 | **9,0** | Ida im Cover, Doppel-Sticker weg, Glass-Office-Schild lesbar, ISS-Stadtlichter füllen das Glas. Rest klein (Sticker 1748 über Nachweis, s. u.). |
+
+Beide ≥ 9 → aus Regie-/Design-Sicht freigabefähig.
+
+### Status
+| # | Status | Beleg |
+| --- | --- | --- |
+| R1 Text auf Text | erledigt | 83,9 s Karte rechts im Rahmen (über y 1300), „THIS“ frei; 85,3 s Nachweis über dem Rahmen, „THAT“ frei |
+| R2 knock dunkel | erledigt | 93,4 s Messing-Klopfer auf Holztür; 95,5/97,6 s Agenten beleuchtet, Foto mit Glas lesbar |
+| R3 Twist | erledigt | 62,6–64,5 s Spachtel, Splitter, klare Glas-Hälfte |
+| D1 Cover ohne Figur | erledigt | Bild 3/12/14: Ida rechts hinter dem Preisschild, Augen offen |
+| D2 Doppel-Sticker | erledigt | 20,9/22,6 s nur Schild, lesbar |
+| D3 ISS-Video | erledigt (Rest) | 98,5–99,5 s Stadtlichter bildfüllend im Glas; als weiße Flecken auf Bernstein eher „Lichter“ als eindeutig „Erde von oben“ – reicht, B1 trägt die Pflicht |
+| R4 dunkle Stellen | erledigt | 13,0 s Passant mit Glas am Gürtel erkennbar; 24,5 / 32,0 s aufgehellt |
+| D4 RENT-Zettel | erledigt | 43,9 / 45,0 s ganz im Bild, kein Sticker |
+| R5 twenty | nicht nachgeprüft | P3 |
+
+### Bewegung (3 Frames in Folge)
+- stakes 5,0 s: langsame Kranfahrt über den Platz, ~2–3 px/Frame (halbe Größe), Figuren gleiten gleichmäßig ✔.
+- ida 30,5 s: fast stehend, nur Atmen/Kopfnicken ✔.
+- home 57,5 s: Tracking mit Vordergrund-Säule, Parallax lesbar, kein Ruckeln ✔.
+
+### Rest-Befunde (kein Muss für 9)
+| # | Szene / s | Problem | Vorschlag | Prio |
+| --- | --- | --- | --- | --- |
+| N1 | franklin 84,3 s | Sticker „1748“ liegt über der Nachweis-Zeile „OUR WORLD · NASA PHOTO FROM SPACE“ (nur „OUR WORLD · N… PACE“ lesbar). | Sticker unter die Zeile oder an die Karte setzen. | P3 |
+| N2 | literal 86,0 s, empty 22,6 s | Nachweis-Zeile rechts oben angeschnitten („…SPACE“); Schild „GLASS OFFICE“ berührt den rechten Rand. | 30–40 px nach innen. | P3 |
