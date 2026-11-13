@@ -1,0 +1,403 @@
+{
+ "id": "lucia-gta6",
+ "title": "Who is Lucia from GTA 6?",
+ "durationMs": 71720,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 7850
+  },
+  {
+   "id": "dad",
+   "startMs": 7850,
+   "endMs": 11560
+  },
+  {
+   "id": "family",
+   "startMs": 11560,
+   "endMs": 17910
+  },
+  {
+   "id": "out",
+   "startMs": 17910,
+   "endMs": 22940
+  },
+  {
+   "id": "rehook",
+   "startMs": 22940,
+   "endMs": 28680
+  },
+  {
+   "id": "jason",
+   "startMs": 28680,
+   "endMs": 37640
+  },
+  {
+   "id": "heist",
+   "startMs": 37640,
+   "endMs": 45710
+  },
+  {
+   "id": "first",
+   "startMs": 45710,
+   "endMs": 51820
+  },
+  {
+   "id": "flawed",
+   "startMs": 51820,
+   "endMs": 58920
+  },
+  {
+   "id": "play",
+   "startMs": 58920,
+   "endMs": 63350
+  },
+  {
+   "id": "loop",
+   "startMs": 63350,
+   "endMs": 71120
+  }
+ ],
+ "cues": [
+  {
+   "beat": "fileOpen",
+   "sticker": "LUCIA",
+   "color": "#2EC4B6",
+   "sfx": "whoosh",
+   "scene": "hook",
+   "atMs": 0
+  },
+  {
+   "beat": "stampServedTime",
+   "sticker": "SERVED TIME",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "scene": "hook",
+   "atMs": 1540
+  },
+  {
+   "beat": "reasonBlank",
+   "sticker": "WHY?",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "hook",
+   "atMs": 6680
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1540
+  },
+  {
+   "beat": "dadSilhouette",
+   "sfx": "pop",
+   "scene": "dad",
+   "atMs": 8860
+  },
+  {
+   "beat": "padHit",
+   "sticker": "TRAINED TO FIGHT",
+   "color": "#FFD23F",
+   "sfx": "boom",
+   "hud": {
+    "id": "status",
+    "value": "FIGHTER"
+   },
+   "scene": "dad",
+   "atMs": 9680
+  },
+  {
+   "emph": true,
+   "scene": "dad",
+   "atMs": 8860
+  },
+  {
+   "beat": "growUp",
+   "sfx": "whoosh",
+   "scene": "family",
+   "atMs": 12240
+  },
+  {
+   "beat": "protectFamily",
+   "sticker": "FOR HER FAMILY",
+   "color": "#2EC4B6",
+   "sfx": "ding",
+   "scene": "family",
+   "atMs": 14100
+  },
+  {
+   "beat": "cellDoorSlam",
+   "sticker": "LEONIDA PENITENTIARY",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "hud": {
+    "id": "status",
+    "value": "INMATE"
+   },
+   "scene": "family",
+   "atMs": 16360
+  },
+  {
+   "emph": true,
+   "scene": "family",
+   "atMs": 14100
+  },
+  {
+   "beat": "cellStare",
+   "sfx": "pop",
+   "scene": "out",
+   "atMs": 18580
+  },
+  {
+   "beat": "cloverDoorPop",
+   "sticker": "RELEASED \u00b7 LUCK",
+   "color": "#2EC4B6",
+   "sfx": "ding",
+   "hud": {
+    "id": "status",
+    "value": "RELEASED"
+   },
+   "scene": "out",
+   "atMs": 21900
+  },
+  {
+   "emph": true,
+   "scene": "out",
+   "atMs": 21900
+  },
+  {
+   "beat": "musicStopGate",
+   "sticker": "THE EASY PART",
+   "color": "#FFD23F",
+   "sfx": "whoosh",
+   "scene": "rehook",
+   "atMs": 24680
+  },
+  {
+   "beat": "sunTurnsRed",
+   "sticker": "CHAPTER 2",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "scene": "rehook",
+   "atMs": 27480
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 24680
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 27480
+  },
+  {
+   "beat": "jasonAtGate",
+   "sticker": "JASON",
+   "color": "#FF4FA3",
+   "sfx": "pop",
+   "scene": "jason",
+   "atMs": 29700
+  },
+  {
+   "beat": "redStringCouple",
+   "sticker": "CRIMINAL COUPLE",
+   "color": "#FF4FA3",
+   "sfx": "ding",
+   "scene": "jason",
+   "atMs": 33440
+  },
+  {
+   "beat": "convertibleSunset",
+   "sticker": "BONNIE & CLYDE, FLORIDA STYLE",
+   "color": "#FF4FA3",
+   "sfx": "whoosh",
+   "scene": "jason",
+   "atMs": 35880
+  },
+  {
+   "emph": true,
+   "scene": "jason",
+   "atMs": 33440
+  },
+  {
+   "emph": true,
+   "scene": "jason",
+   "atMs": 35880
+  },
+  {
+   "beat": "alarmMoneyBurst",
+   "sticker": "BANK JOB: FAILED",
+   "color": "#FF3B3B",
+   "sfx": "boom",
+   "hud": {
+    "id": "status",
+    "value": "HEIST FAILED"
+   },
+   "scene": "heist",
+   "atMs": 38900
+  },
+  {
+   "beat": "stateMapStrings",
+   "sticker": "STATE-WIDE CONSPIRACY",
+   "color": "#FFFFFF",
+   "sfx": "whoosh",
+   "scene": "heist",
+   "atMs": 41420
+  },
+  {
+   "beat": "backToBack",
+   "sticker": "PROTECT EACH OTHER",
+   "color": "#2EC4B6",
+   "sfx": "ding",
+   "scene": "heist",
+   "atMs": 44520
+  },
+  {
+   "emph": true,
+   "scene": "heist",
+   "atMs": 38900
+  },
+  {
+   "emph": true,
+   "scene": "heist",
+   "atMs": 44520
+  },
+  {
+   "beat": "goldSealFirst",
+   "sticker": "SERIES FIRST",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "first",
+   "atMs": 46260
+  },
+  {
+   "beat": "optionalCrossed",
+   "sticker": "NOT OPTIONAL",
+   "color": "#2EC4B6",
+   "sfx": "pop",
+   "scene": "first",
+   "atMs": 50480
+  },
+  {
+   "emph": true,
+   "scene": "first",
+   "atMs": 46260
+  },
+  {
+   "emph": true,
+   "scene": "first",
+   "atMs": 50480
+  },
+  {
+   "beat": "stampTough",
+   "sticker": "TOUGH",
+   "color": "#FFFFFF",
+   "sfx": "pop",
+   "scene": "flawed",
+   "atMs": 53320
+  },
+  {
+   "beat": "stampFlawed",
+   "sticker": "FLAWED",
+   "color": "#FFD23F",
+   "sfx": "pop",
+   "scene": "flawed",
+   "atMs": 55380
+  },
+  {
+   "beat": "scaleTilt",
+   "sfx": "whoosh",
+   "scene": "flawed",
+   "atMs": 57220
+  },
+  {
+   "emph": true,
+   "scene": "flawed",
+   "atMs": 55380
+  },
+  {
+   "beat": "fileFlipController",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "status",
+    "value": "PLAYABLE"
+   },
+   "scene": "play",
+   "atMs": 59940
+  },
+  {
+   "beat": "pickCards",
+   "sfx": "ding",
+   "choice": {
+    "title": "WHO DO YOU PICK?",
+    "options": [
+     "A \u00b7 LUCIA",
+     "B \u00b7 JASON"
+    ]
+   },
+   "untilBeat": "calendarNov19",
+   "scene": "play",
+   "atMs": 62240
+  },
+  {
+   "emph": true,
+   "scene": "play",
+   "atMs": 59940
+  },
+  {
+   "beat": "calendarNov19",
+   "sticker": "NOV 19",
+   "color": "#FFD23F",
+   "sfx": "ding",
+   "scene": "loop",
+   "atMs": 64360
+  },
+  {
+   "beat": "delayedStamps",
+   "sticker": "DELAYED \u00d72",
+   "color": "#FF3B3B",
+   "sfx": "pop",
+   "scene": "loop",
+   "atMs": 66580
+  },
+  {
+   "beat": "loopToCover",
+   "sfx": "whoosh",
+   "scene": "loop",
+   "atMs": 69680
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 63960
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 64360
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 69680
+  }
+ ],
+ "hud": {
+  "title": "CASE FILE: LUCIA",
+  "counters": [
+   {
+    "id": "status",
+    "label": "STATUS",
+    "value": "UNKNOWN"
+   }
+  ],
+  "bars": []
+ },
+ "cover": {
+  "text": "WHO IS LUCIA?",
+  "sub": "GTA 6 \u00b7 her file, before Nov 19",
+  "frames": 15
+ }
+}
