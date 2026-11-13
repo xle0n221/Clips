@@ -165,8 +165,8 @@ export const ZwRent: React.FC = () => {
   }
   // Over-the-shoulder: Ida gießt Sand aus ihrem Glas in seinen Messingtrichter, ihr Pegel sinkt
   const pour = ramp(frame, cutAt + 4, lighter + 10);
-  const a = frameOn([0.5, 2.0, -0.6], 4.8, 0.5, 0.5, [-0.45, 0.15, 1]);
-  const b = frameOn([0.55, 1.9, -0.5], 4.0, 0.5, 0.5, [-0.4, 0.12, 1]);
+  const a = frameOn([0.5, 2.3, -0.6], 5.8, 0.52, 0.5, [-0.45, 0.15, 1]);
+  const b = frameOn([0.55, 2.25, -0.5], 5.0, 0.52, 0.5, [-0.4, 0.12, 1]);
   return (
     <>
       {street}

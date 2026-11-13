@@ -98,13 +98,13 @@ export const ZwFear: React.FC = () => {
   if (shot === 0) {
     // Nah: Anton flüstert (Mund bewegt sich), Ida hört zu – Nachtfenster dahinter
     const talk = frame < cutAt - 4 ? 0.25 + 0.35 * Math.abs(Math.sin(frame * 0.55)) : 0;
-    const a = frameOn([0.4, 2.5, -2.0], 5.4, 0.47, 0.5, [0.2, 0.06, 1]);
-    const b = frameOn([0.6, 2.5, -2.1], 4.4, 0.47, 0.5, [0.15, 0.05, 1]);
+    const a = frameOn([0.45, 2.4, -1.8], 6.6, 0.47, 0.5, [0.2, 0.06, 1]);
+    const b = frameOn([0.5, 2.4, -1.9], 5.8, 0.47, 0.5, [0.15, 0.05, 1]);
     return (
       <>
         <AntonRoom frame={frame} light="night" />
         <Klotz frame={frame} who="anton" position={[1.6, 0.6, -2.3]} sit rotation={[0, -0.5, 0]} eyes="dot" mouth="flat" talk={talk} brow={-0.2} blinkSeed={7} reach={[1.0, 1.0]} />
-        <Klotz frame={frame} who="ida" position={[-0.6, 0, -1.4]} rotation={[0, 1.0, 0]} eyes="dot" mouth="flat" blinkSeed={3} jar={{ fill: 0.12 }} />
+        <Klotz frame={frame} who="ida" position={[-0.3, 0, -1.3]} rotation={[0, 1.0, 0]} eyes="dot" mouth="flat" blinkSeed={3} jar={{ fill: 0.12 }} />
         <Shot frame={f} duration={cutAt} {...fly(a, b)} />
       </>
     );

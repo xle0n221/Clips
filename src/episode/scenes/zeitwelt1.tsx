@@ -286,7 +286,7 @@ export const ZwHook: React.FC = () => {
   const { shot, f } = cut(frame, [cutAt]);
   if (shot === 0) {
     const a = frameOn([0.1, 1.55, 0.1], 3.4, 0.58, 0.5, [0.15, 0.22, 1]);
-    const b = frameOn([-0.1, 1.45, 0.2], 2.5, 0.58, 0.5, [0.1, 0.18, 1]);
+    const b = frameOn([0.1, 1.45, 0.2], 2.9, 0.58, 0.5, [0.1, 0.18, 1]);
     return (
       <>
         <CounterMacro frame={frame} dish={0.25 + 0.15 * ramp(frame, 0, cutAt)} />
@@ -665,7 +665,8 @@ export const ZwEmpty: React.FC = () => {
       <Atmos bg="#0A0F18" fog={[5, 20]} sky="#6A7FA0" ground="#0E131A" hemi={0.7} rim={{ pos: [3, 4, -6], color: "#B8D4F0", intensity: 1.4 }} />
       <WetGround glints={flick > 0.3 ? [[-1.4, 0, -1.4]] : []} />
       <Lamp position={[-1.4, 0, -3.2]} on={flick} />
-      <pointLight position={[0.6, 1.6, 1.8]} color="#BFD6F2" intensity={9} distance={6} decay={2} />
+      <pointLight position={[0.6, 1.6, 1.8]} color="#BFD6F2" intensity={14} distance={6} decay={2} />
+      <spotLight position={[-0.6, 2.2, -2.2]} color="#DDEEFF" intensity={40} angle={0.6} penumbra={0.6} distance={8} decay={2} />
       <Halo at={[0.2, 0.05, 0.2]} size={2.2} color="#9CC0FF" opacity={0.25} />
       <TimeJar position={[0.0 + roll * 1.2, 0.3 + y, 0.4]} rotation={[0, 0.5, Math.PI / 2 * fall + roll * 4]} scale={2.0} fill={0} glow={0} clip />
       <HouseRow z={-8} from={-10} to={10} seed={52} lit={0.1} />
