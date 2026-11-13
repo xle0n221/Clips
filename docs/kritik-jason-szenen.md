@@ -58,3 +58,33 @@ Fehlen in der Freigabe begründet wird (Wikimedia/Commons aus dieser Umgebung ge
 - Hauptfigur in jeder Szene sichtbar (Lücke nur 52,3–54,7 s Karte).
 - Bild-Hinweise Faktenprüfung (`quellen-jason-gta6.md`): keine Rockstar-Logos/GTA-Schriftzug, kein Trailer-Standbild nachgebaut (Dach/Tor eigene Bildideen), Armee-Jacke ohne Abzeichen/Rang, Drogen nur Kiste „CARGO“, Gauner gesichtslos ohne Waffen, Lucia im Cartoon-Look des Lucia-Videos und nicht größer als Jason, HUD „WORKED FOR RUNNERS“ (P2 ✔), keine Funk-Szene bei Cal ✔.
 - Lucia-Lehren: HUD-Platte, Karten ≥ 2 s und zentriert, Lucia+Jason in `play`, keine Pills in fremden Einstellungen, kein Konfetti durch den Titel – erfüllt.
+
+## Runde 2 (Nacharbeit, Commit 913678e, 13.11.2026)
+
+Grundlage: neues Bundle, 20 Standbilder an den Befund-Stellen (`--at`, halbe Größe: Cover 0,10/0,40/0,47 s, trailer 41,6/42,5/43,5,
+couple 52,3/52,8/53,2, play 62,6/64,0/65,5, loop 66,0/67,0/68,5/72,3, keys 17,7/19,5, circle 34,5, flawed 59,0),
+`out/jason-gta6-cover.png` (17:20) gegen Bild 3 und Bild 14 des Bundles: mittlere Abweichung 1,5 / 1,3 Grauwerte = gleich.
+Code nur gelesen.
+
+### Noten
+| Rolle | Runde 1 | Runde 2 | Kurzgrund |
+| --- | --- | --- | --- |
+| Regie | 8,5 | **9,0** | Kein leeres Bild mehr (Karte + Cabrio ab Schnitt 52,3 s), Dach mit Hauswand/Fenstern/Leiter lesbar, Titel „WHO DO YOU PICK?“ frei von den Gesichtern, Loop-Kalender auf demselben Dach (Ortskette schlüssig), Loop-Ende = Cover. |
+| Design | 8,5 | **9,0** | Cover-Fenster 0–14 mit offenen Augen, NOV-19-Doppelung weg, angeschnittenes Polaroid weg. Echte Fotos fehlen weiter (Commons 403) – Freigabe muss das begründen; der Cartoon-Ersatz trägt das Video ohne Lücke. |
+
+Beide ≥ 9 → aus Regie-/Design-Sicht freigabefähig, **unter der Bedingung**, dass die Freigabe das Fehlen echter Bilder
+mit Beleg (`out/commons-jason.log`, 403) begründet (Regel „Echte Bilder und Videos“).
+
+### Status
+| # | Status | Beleg |
+| --- | --- | --- |
+| R1 leeres Bild couple | erledigt | 52,3 / 52,8 / 53,2 s: Leonida-Karte deckend mit dunkler Kontur + Cabrio |
+| D1 Blinzeln im Cover | erledigt | Bilder 3, 12, 14 Augen offen; Cover-PNG = Bundle |
+| D2 echte Bilder | offen, begründet | `REAL` weiter leer; Begründung in der Freigabe nötig |
+| R2 Dach | erledigt | 41,6–43,5 s Dachkante, Hauswand mit Fenstern, Leiter, Palmen unter der Kante |
+| R3 Titel über Kinnen | erledigt (Rest) | 62,6–65,5 s Gesichter über dem Titel; Karten verdecken Körper weiter (bewusst, Köpfe frei) |
+| D3 NOV-19-Sticker | erledigt | 66,0–68,5 s kein Sticker, Kalender trägt das Datum |
+| D5 Polaroid-Anschnitt | erledigt | 34,5 s nichts angeschnitten |
+| R5 Jason am Rand | erledigt | 67,0 s ≈ 60 px Luft, 68,5 s Hand ≈ 50 px vom Rand |
+| R4 Karte ohne Label | offen (P3) | 17,7 / 19,5 s unverändert – kein Muss |
+| D4 Bart-Punkte | offen (P3) | 59,0 s / Cover unverändert – kein Muss |
