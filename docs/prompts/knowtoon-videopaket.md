@@ -1,7 +1,7 @@
 # Video-Paket-Prompt des Nutzers (13.11.2026) – für das nächste Video und künftige, wenn der Nutzer es so will
 Vorgabe des Nutzers: „Benutze für das nächste Video diesen Prompt und gib mir eine Vorschau … Videos müssen 9/10 sein.“
 Kanal (TikTok und YouTube): **KnowToon** → End-Card-Suchleiste tippt „KnowToon“.
-Eingesetzte Werte (aus dem Prompt): Language DEUTSCH · Length 90–140 s · Audience ALLE · Channel @KnowToon · Series NEIN.
+Eingesetzte Werte: Language **ENGLISCH** (Nutzer 13.11.2026: „Sprache immer englisch“ – gilt statt DEUTSCH im Prompt) · Length 90–140 s · Audience ALLE · Channel @KnowToon · Series NEIN.
 
 ```
 ROLE
@@ -49,7 +49,7 @@ Revise until all five answers are yes.
 ```
 
 ## Umsetzung in diesem Repo (Ableitung, Orchestrator 13.11.2026)
-- Sprache: Für Videos nach diesem Prompt gilt **Deutsch** (Wert aus dem Prompt) statt der Repo-Vorgabe Englisch.
+- Sprache: **immer Englisch** (Nutzer 13.11.2026), auch wenn im Prompt DEUTSCH steht.
 - Länge 90–140 s bei ~150 W/min (= 2,5 W/s, liegt in 2,3–2,6) → 225–350 Wörter.
 - Stil fest: 3D-Bau-Kit `src/episode/kit/` (eigene, originale Spielzeug-Klotzfiguren – keine Figuren bekannter Marken nachbauen).
 - Untertitel: Wort für Wort, fett, gelb mit dickem schwarzem Rand, unteres Drittel (Skill `remotion-captions`).
