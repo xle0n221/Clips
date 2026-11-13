@@ -20,6 +20,7 @@ Jeder beauftragte Agent bekommt seine Rollen-Datei aus `docs/agenten/` mit (Lern
 **Mindestnote 9/10** (Vorgabe Nutzer 13.11.2026: „Videos sollen ab jetzt mind. eine 9/10 sein“ – gilt ab dem Lucia-Video für alle Clips): jede Prüfrolle (Fakten, Drehbuch/Retention, Regie, Design, Endkontrolle) muss ≥ 9 geben, sonst Nacharbeit + erneute Prüfung vor jeder Freigabe; Noten in jeder Freigabe nennen.
 Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regeln `docs/clip-regeln.md`.
 **Titel, Caption, Hashtags Pflicht** (Nutzer 13.11.2026: „In Zukunft immer bei den Videos im Dashboard anzeigen“): ein Video wird nur zusammen mit vollständigem `publish` auf `done` gesetzt – `docs/dashboard-ablauf.md`.
+**Echte Bilder & Videos Pflicht** (Nutzer 13.11.2026: „ab jetzt in jedem Clip“): passende echte Fotos und Videoclips mit freier Lizenz einblenden (Commons, NASA …), nie geschützte Spiel-/Film-/Markenbilder – `docs/clip-regeln.md` → „Echte Bilder und Videos“.
 **Thumbnail Pflicht** (Vorgabe 12.11.2026): erste 0,5 s jedes Clips = gestaltetes Cover zum Auswählen auf den Plattformen – `docs/clip-regeln.md` → „Thumbnail im Video“.
 Stil: **je Video passend zum Thema entscheiden** (Vorgabe Nutzer 11.11.2026) – 3D (Bau-Kit `src/episode/kit/`),
 2D (flach/SVG/Paper-Cut) oder Mischung; Figuren dürfen je Video anders aussehen. Entscheidung + Begründung im
