@@ -1,0 +1,26 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "In This City, Bread Costs 12 Minutes of Your Life",
+      "description": "An original animated story: in Minuteburg everyone pays with time, and an empty jar means you disappear. Or does it? The story is fiction; the only real-world fact is the advice 'Remember that Time is Money', printed in 1748 and attributed to Benjamin Franklin (Founders Online: https://founders.archives.gov/documents/Franklin/01-03-02-0130). Real footage: NASA (ISS photo of city lights at night; city lights from the ISS video 'Aurora borealis over the US and Canada'; NASA media are generally not subject to US copyright).",
+      "hashtags": [
+        "#KnowToon",
+        "#ShortStory",
+        "#Animation",
+        "#TimeIsMoney",
+        "#Dystopia"
+      ]
+    },
+    "tiktok": {
+      "caption": "In Minuteburg, bread costs 12 minutes of your life, and an empty jar means you disappear. Or does it? How many hours did you sell today? (Story is fiction. 'Remember that Time is Money' was printed in 1748, attributed to Franklin. Real footage: NASA.)",
+      "hashtags": [
+        "#KnowToon",
+        "#Animation",
+        "#ShortStory",
+        "#TimeIsMoney",
+        "#Dystopia"
+      ]
+    },
+    "note": "Hashtags vor dem Posten in Creator Search Insights / YouTube-Suche gegenprüfen (Set aus docs/paket-zeit-welt.md Abschnitt 7; Reichweite unbelegt). Titel = Hook-Satz des Videos (Szene 1), nicht 'You pay with time'-Cover. Einzige Realaussage: Franklin 'Time is Money', gedruckt 1748 ('published', nicht 'wrote'; Primärquelle Founders Online, am 13.11.2026 geprüft); Rest ist ausdrücklich Fiktion (Minuteburg, Ida, Anton, Glass Office). NASA-Nachweis laut docs/bildnachweise-zeit-welt.md in die YouTube-Beschreibung übernommen; auf TikTok ggf. 'Real footage: NASA (public domain)' ergänzen, falls Platz. Prüfung 13.11.2026 (Faktenprüfer/Retention): 'public domain' → NASA-Wortlaut 'generally not subject to US copyright' (nasa.gov Brand Center); NASA-Video als Quelle der Stadtlichter benannt (Ausschnitt zeigt vor allem Stadtlichter, Polarlicht nur schwach – kein Polarlicht behauptet); Franklin: 'printed 1748, attributed to' (Druck anonym 'written by an old One', Zuordnung durch Franklin Papers); NASA-Credit auch in der TikTok-Caption."
+  }
+}
