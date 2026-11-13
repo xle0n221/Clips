@@ -10,9 +10,9 @@
  * Schlüsselobjekt: das Zeitglas am Gürtel (`TimeJar`). Nichts aus „In Time“ (keine leuchtende Arm-Uhr).
  * Alles aus dem Frame berechnet (kein useEffect, kein Zufall ohne Seed).
  */
-import { RoundedBox } from "@react-three/drei";
-import React, { useMemo, useState } from "react";
-import { cancelRender, continueRender, delayRender, Easing, interpolate, staticFile } from "remotion";
+import { RoundedBox, useTexture } from "@react-three/drei";
+import React, { useMemo } from "react";
+import { Easing, interpolate, staticFile } from "remotion";
 import {
   AdditiveBlending,
   BufferAttribute,
@@ -23,7 +23,6 @@ import {
   RepeatWrapping,
   SRGBColorSpace,
   Texture,
-  TextureLoader,
 } from "three";
 import { aimAt, blinkAt } from "../kit/motion";
 import { V3 } from "../kit/camera";
@@ -179,27 +178,11 @@ const woodTex = () =>
 /* Echte Bilder/Videos als Textur                                       */
 /* ------------------------------------------------------------------ */
 
-const imgCache = new Map<string, Texture>();
-/** Bild aus public/ als Textur, unter delayRender geladen (deterministisch, einmal je Datei). */
+/** Bild aus public/ als Textur (drei `useTexture` = Suspense; ThreeCanvas wartet per delayRender, bis es geladen ist). */
 export const useImageTexture = (path: string) => {
-  const [tex, setTex] = useState<Texture | null>(() => imgCache.get(path) ?? null);
-  useState(() => {
-    if (imgCache.has(path)) return null;
-    const handle = delayRender(`Bild ${path}`);
-    new TextureLoader().load(
-      staticFile(path),
-      (t) => {
-        t.colorSpace = SRGBColorSpace;
-        imgCache.set(path, t);
-        setTex(t);
-        continueRender(handle);
-      },
-      undefined,
-      (e) => cancelRender(e),
-    );
-    return null;
-  });
-  return tex;
+  const t = useTexture(staticFile(path));
+  t.colorSpace = SRGBColorSpace;
+  return t;
 };
 
 /* ------------------------------------------------------------------ */

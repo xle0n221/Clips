@@ -250,7 +250,7 @@ export const CounterMacro: React.FC<{ readonly frame: number; readonly pour?: nu
       <Plank size={[6, 0.25, 2.4]} position={[0, 0.88, 0]} color="#9A7050" />
       <Bread position={[0.85, 1.0, -0.35]} rotation={[0, -0.35, 0]} scale={0.95} />
       {/* Preisschild lehnt vorn am Brot */}
-      <group position={[0.75, 1.32, 0.22]} rotation={[-0.25, -0.3, 0.03]}>
+      <group position={[0.42, 1.32, 0.3]} rotation={[-0.25, -0.2, 0.03]}>
         <mesh position={[0, 0, -0.01]}>
           <planeGeometry args={[1.12, 0.46]} />
           <meshStandardMaterial color={Z.paper} roughness={0.9} />
@@ -665,6 +665,7 @@ export const ZwEmpty: React.FC = () => {
       <Atmos bg="#0A0F18" fog={[5, 20]} sky="#6A7FA0" ground="#0E131A" hemi={0.7} rim={{ pos: [3, 4, -6], color: "#B8D4F0", intensity: 1.4 }} />
       <WetGround glints={flick > 0.3 ? [[-1.4, 0, -1.4]] : []} />
       <Lamp position={[-1.4, 0, -3.2]} on={flick} />
+      <pointLight position={[1.2, 1.4, 1.8]} color="#BFD6F2" intensity={4} distance={6} decay={2} />
       <TimeJar position={[0.3 + roll * 1.4, 0.16 + y, 0.4]} rotation={[lf >= 8 ? 0 : -fall * 1.2, 0, Math.PI / 2 + roll * 6]} scale={1.3} fill={0} glow={0} clip />
       <HouseRow z={-8} from={-10} to={10} seed={52} lit={0.1} />
       <Rain frame={frame} center={[0, 2, 0]} size={[6, 5, 5]} count={160} opacity={0.3} />
@@ -793,12 +794,10 @@ export const ZwThread: React.FC = () => {
   const head: V3 = [-1.2, 2.18, -0.6];
   const a = frameOn(head, 4.0, 0.45, 0.5, [0.9, 0.05, 0.5]);
   const b = frameOn(head, 3.4, 0.45, 0.5, [0.85, 0.05, 0.55]);
-  const breath = (frame - c2) % 40;
   return (
     <>
       <AntonRoom frame={frame} light="dawn" />
       <Klotz frame={frame} who="ida" position={[-1.2, 0, -0.6]} rotation={[0, 0.7, 0]} eyes="dot" mouth="flat" brow={-0.6} blinkSeed={3} jar={{ fill: 0.6 }} />
-      <Motes frame={breath} center={[-0.55, 1.95, 0.25]}  size={[0.5, 0.25, 0.4]} count={30} drift={[-0.006, 0.002, 0.004]} color="#E4EEFF" dot={0.09} opacity={breath < 24 ? 0.35 * (1 - breath / 24) : 0} seed={61} />
       <Shot frame={f} duration={duration - c2} {...fly(a, b)} />
     </>
   );

@@ -244,7 +244,6 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
         )}
       </AbsoluteFill>
       {cfg?.filmLook ? <FilmLook spec={cfg.filmLook} /> : null}
-      {cfg?.realLayer ? <cfg.realLayer /> : null}
       {act ? <GradeTint grade={act} /> : null}
       <TransitionOverlay state={tState} width={width} height={height} />
 

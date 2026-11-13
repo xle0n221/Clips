@@ -72,8 +72,6 @@ export type EpisodeConfig = {
   readonly coverArt?: React.FC;
   /** Kino-Look über der 3D-Leinwand: Filmkorn, Vignette, Rand-Unschärfe (overlays/FilmLook.tsx) */
   readonly filmLook?: FilmLookSpec;
-  /** Zusätzliche DOM-Ebene über der Leinwand (z. B. echte Fotos/Videos an festen Bildstellen) */
-  readonly realLayer?: React.FC;
   /** Ambient-Bett (Datei in public/episodes/<id>/, erzeugt mit scripts/make_sound_bed.py) */
   readonly bed?: { readonly src: string; readonly volume?: number };
 };
