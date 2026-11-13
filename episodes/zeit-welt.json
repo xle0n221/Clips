@@ -1,0 +1,549 @@
+{
+  "id": "zeit-welt",
+  "title": "In This City, You Pay With Time",
+  "engine": "chatterbox",
+  "voice": "am_fenrir",
+  "voicePreset": "lebendig",
+  "speed": 1.0,
+  "pauseMs": 350,
+  "sceneGapMs": 600,
+  "lengthSec": 120,
+  "years": [
+    1748
+  ],
+  "say": {
+    "Minuteburg": "Minute-burg"
+  },
+  "cover": {
+    "text": "YOU PAY WITH TIME",
+    "sub": "bread = 12 minutes of your life",
+    "frames": 15
+  },
+  "captionStyle": "word-by-word-yellow",
+  "endCard": {
+    "handle": "KnowToon",
+    "cta": "Follow for the next strange world.",
+    "seconds": 2
+  },
+  "sources": "Fiktion (eigene Welt). Einziger Realfakt: Franklin 1748 'Remember that time is money.' – Szene 'franklin', Quellen dort; Wortlaut nicht selbst gegen Primärquelle geprüft (founders.archives.gov aus dieser Umgebung gesperrt). Echte Bilder/Videos: Platzhalter B1–B3, V1–V3, Nachweise offen → docs/bildnachweise-zeit-welt.md.",
+  "pointe": "The jar doesn't count your life – it only counts what you sold; the fear of the empty jar is what keeps the city working.",
+  "originality": "Prämisse erinnert an 'In Time' (2011). Bewusst anders: keine Arm-Uhr/Leuchtziffern, sondern Sandglas am Gürtel; leer = KEIN Tod (Twist: die Todes-Angst ist die Lüge); eigene Stadt Minuteburg, eigene Figuren Ida/Anton/Glass Office, keine Figuren, Handlung, Zitate oder Bilder aus dem Film; Klotzfiguren eigenes Design, keine Spielzeugmarke.",
+  "music": {
+    "mood": "epic",
+    "bpm": 92,
+    "why": "Dunkel-spannende Parabel um Zeit: cineastischer Rap-Beat in Moll (Klavier + Streicherfläche, Boom-Bap, Taikos, ohne Gesang) wirkt wie eine tickende Uhr; bewusst anders als Lucia (dark 128) und Jason (chill 84) – anderes Preset, anderes Tempo. Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'exist' (rehook) Filter zu + 1 Takt Pause; bei 'painted' Stille 0,5 s, dann voll; ab 'Unpaid' nur Klavier; Endkarte Ausklang."
+  },
+  "style": {
+    "look": "3d",
+    "why": "Vorgabe des Prompts (Cinematic 3D, Klotzfiguren) und das Thema lebt von Materialien: Glas, Sand-Partikel, Messing, Regen, Volumenlicht – das kann das 3D-Bau-Kit (src/episode/kit/) mit Rim-Light, Partikeln und Tiefenunschärfe besser als 2D.",
+    "characters": "IDA (14) = eigene Klotzfigur: runde Punkt-Augen, einfacher Mund, kantige Glieder, braune kurze Bob-Frisur, petrolfarbenes Hemd, senfgelbe Werkstattschürze, Messing-Lupe am Stirnband, Zeitglas am Ledergürtel. GRANDPA ANTON = Klotzfigur, weiße eckige Buschbrauen, runde Brille, grauer Strickjanker, Zeitglas mit gemaltem Sand. SWEEPER = alte Klotzfigur, pflaumenfarbenes Kopftuch, Reisigbesen, leeres Glas. GLASS OFFICE = hohe Figuren in grauen Mänteln mit Milchglas-Visier, keine Waffen. Schlüsselobjekt ZEITGLAS: kleines Zylinderglas, Messingdeckel, winziger Messinghahn, Lederclip. Farblogik: Gold = Zeit/Sand (einzige warme Sättigung), Welt kalt blau-grau mit Nebel; Schluss warm ohne Gold."
+  },
+  "hud": {
+    "title": "MINUTEBURG",
+    "counters": [
+      {
+        "id": "jar",
+        "label": "GRANDPA'S JAR",
+        "value": "—"
+      }
+    ],
+    "bars": []
+  },
+  "note": "v1 (13.11.2026, Drehbuch). Paket: docs/paket-zeit-welt.md. Sprache Englisch (Korrektur Nutzer). 246 Skriptwörter (ohne * und |), 21 Szenen à 8–15 W, 0 fehlende Cue-Wörter; Plan 2,23 W/s (gemessen Lucia) → ≈ 110 s + 0,5 s Cover + 2 s End-Card. Re-Hook ab Wort 109/246 = 44 %. Wird es > 138 s: zuerst 'Every kid knows:' und 'everything' streichen. Kette: Preis in Lebenszeit → Opa hat 1 Tag → Regeln der Welt → leer = verschwinden (Angst) → Ida arbeitet (unfairer Lohn) → Miete frisst ihr Glas → Re-Hook → leere Frau lebt → Opa dreht Glas um → Sand gemalt (Twist) → 20 Jahre leer → Glas zählt Verkauftes, nicht Leben → Angst hält Stadt am Laufen → Franklin 1748 → wörtlich → unbezahlter Tag → Glass Office klopft (Cliffhanger) → Frage an Zuschauer.",
+  "scenes": [
+    {
+      "id": "hook",
+      "delivery": "punch",
+      "emotion": "tense",
+      "text": "In this city, bread costs *twelve minutes*. | Of your *life*.",
+      "visual": "COVER 0–0,5 s (Bilder 0–14, ohne Untertitel): Extreme Nahaufnahme, Bäckertheke aus Holz, IDAs Klotzhand hält ihr Zeitglas schräg; ein Faden goldener Sand rieselt in eine Messingschale. Preisschild an einem Brotlaib groß und lesbar: 'BREAD · 12 MIN'. Titel 'YOU PAY WITH TIME' in Akzentgelb, oberes Drittel. Ab 0,5 s langsamer Push-in auf die rieselnden Körner (Makro, Tiefenunschärfe, Staub im Gegenlicht). Auf 'minutes' Bass-Hit. Auf 'life' Schnitt (≈ 3 s) auf IDAs Gesicht von unten (Low-Angle), Augen werden groß.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "minutes",
+          "beat": "sandPourMacro",
+          "sfx": "boom"
+        },
+        {
+          "word": "life",
+          "beat": "idaLowAngleEyes",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "stakes",
+      "delivery": "normal",
+      "emotion": "serious",
+      "text": "Everyone here pays with *time*. | And Ida's grandpa has one *day* left.",
+      "visual": "Totale (Weitwinkel, von oben): kalt-blauer Marktplatz im Nebel, viele Klotzfiguren mit goldenen Gläsern am Gürtel – das Gold ist die einzige warme Farbe. Auf 'grandpa' Over-the-shoulder über IDA auf GRANDPA ANTON am Fenster; sein Glas fast leer. HUD erscheint: GRANDPA'S JAR → '1 DAY LEFT'.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "time",
+          "beat": "marketWideGoldJars",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "day",
+          "beat": "otsGrandpaJar",
+          "sfx": "ding",
+          "hud": {
+            "id": "jar",
+            "value": "1 DAY LEFT"
+          }
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "delivery": "calm",
+      "emotion": "calm",
+      "text": "This is *Minuteburg*. | Everyone wears a little glass jar. | Inside: golden *sand*.",
+      "visual": "Ruhiger Kran-Flug über eigene Stadt: schiefe Klotzhäuser, Kupferdächer, Nieselregen, Laternen. ECHTES VIDEO (Platzhalter V1, Wikimedia Commons, Suchbegriff 'clockwork mechanism video webm'): echtes Uhrwerk in Nahaufnahme als Hintergrund-Einblendung im Rahmen eines Schaufensters 'TIME REPAIRS' (Ken-Burns, 3 s). Auf 'sand' Detail: das Zeitglas (Messingdeckel, kleiner Messinghahn, Lederclip) am Gürtel einer Passantin.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung.",
+        "Echtes Video V1: Platzhalter, Datei + Lizenz noch nicht geprüft (Recherche → docs/bildnachweise-zeit-welt.md)."
+      ],
+      "cues": [
+        {
+          "word": "Minuteburg",
+          "beat": "craneOverCity",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "sand",
+          "beat": "jarDetail",
+          "sfx": "ding",
+          "sticker": "1 GRAIN = 1 SECOND",
+          "color": "#FFD23F"
+        }
+      ]
+    },
+    {
+      "id": "rules",
+      "delivery": "calm",
+      "emotion": "calm",
+      "text": "Every grain: one second. | Work *fills* it. | Buying *empties* it.",
+      "visual": "Split in zwei Einstellungen à 3 s: (1) Fabrikband, Klotzarbeiter drehen eine Kurbel, aus einem Messingrohr rieselt Sand in ihre Gläser. (2) Bäcker kippt Sand aus einem Kunden-Glas in seine Waage. Gleiche Bildrichtung links→rechts (Sand fließt immer nach rechts = zum Händler).",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "fills",
+          "beat": "factoryFill",
+          "sfx": "pop"
+        },
+        {
+          "word": "empties",
+          "beat": "bakerScale",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "empty",
+      "delivery": "tense",
+      "emotion": "serious",
+      "text": "And when a jar runs *empty*? | Every kid knows: | you *disappear*.",
+      "visual": "Dunkle Gasse, Regen. Ein Schild an einer grauen Amtstür (eigenes Design, frostiges Glaslogo): 'GLASS OFFICE · REPORT EMPTY JARS'. Kinder-Klotzfiguren flüstern hinter einer Mauer (Nahaufnahme). Auf 'disappear' fällt ein leeres Glas auf das Pflaster und rollt – Licht der Laterne flackert aus.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "empty",
+          "beat": "glassOfficeSign",
+          "sfx": "boom",
+          "sticker": "REPORT EMPTY JARS",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "disappear",
+          "beat": "emptyJarRolls",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "ida",
+      "delivery": "normal",
+      "emotion": "warm",
+      "text": "Ida is fourteen. | She fixes clocks. | Grandpa Anton taught her everything.",
+      "visual": "Warme Werkstatt (einziger warmer Innenraum, Lampenlicht). IDA mit Lupe am Stirnband öffnet eine Taschenuhr; Rückblende-Insert: ANTON führt ihre Hand mit der Pinzette. Echtes Foto (Platzhalter B1, Commons, Suchbegriff 'watchmaker tools workbench') als gerahmtes Bild an der Werkstattwand. Squash/Hop, als sie vom Hocker springt.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung.",
+        "Echtes Foto B1: Platzhalter, Lizenz offen."
+      ],
+      "cues": [
+        {
+          "word": "clocks",
+          "beat": "workshopPocketWatch",
+          "sfx": "pop"
+        },
+        {
+          "word": "Anton",
+          "beat": "flashbackHands",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "thread",
+      "delivery": "calm",
+      "emotion": "sad",
+      "text": "This morning, she checks his jar. | One thin thread of *sand*. | A day, at *most*.",
+      "visual": "Morgengrauen, kaltes Blau. Langsamer Push-in auf ANTONs Glas auf dem Nachttisch: nur ein dünner Goldfaden am Boden (Detail, Tiefenunschärfe). Schnitt auf IDAs Gesicht im Halbprofil, Atem dampft. HUD: '1 DAY LEFT' blinkt einmal.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "sand",
+          "beat": "pushInThinThread",
+          "sfx": "ding"
+        },
+        {
+          "word": "most",
+          "beat": "idaHalfProfile",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "tower",
+      "delivery": "normal",
+      "emotion": "excited",
+      "text": "Ida fixes the tower clock. | Ten hours of work… | two hours of *sand*.",
+      "visual": "Low-Angle: IDA klettert im Turm zwischen riesigen Zahnrädern (eigenes 3D-Modell). ECHTES FOTO (Platzhalter B2, Commons, Suchbegriff 'tower clock mechanism') kurz als Überblendung auf ein Zahnrad (Match Cut echt → 3D). Zeitraffer: Sonne wandert durch das Turmfenster. Auf 'sand' tropft nur ein kurzes Rinnsal in ihr Glas – Gesicht fällt.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung.",
+        "Echtes Foto B2: Platzhalter, Lizenz offen."
+      ],
+      "cues": [
+        {
+          "word": "tower",
+          "beat": "towerGearsLowAngle",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "sand",
+          "beat": "tinyPayout",
+          "sfx": "pop",
+          "sticker": "10 H → 2 H",
+          "color": "#FFD23F"
+        }
+      ]
+    },
+    {
+      "id": "rent",
+      "delivery": "tense",
+      "emotion": "indignant",
+      "text": "Then the rent goes up. | By a whole *week*. | Her own jar gets *lighter*.",
+      "visual": "Vermieter (eigene Klotzfigur, Zylinder, kein Gesichtsbezug zu realer Person) nagelt einen Zettel an die Tür: 'RENT +1 WEEK'. Over-the-shoulder: IDA gießt Sand aus ihrem Glas in seinen Trichter. Detail: ihr Glas am Gürtel, Pegel sinkt sichtbar.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "week",
+          "beat": "rentNotice",
+          "sfx": "boom",
+          "sticker": "RENT +1 WEEK",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "lighter",
+          "beat": "idaJarDrops",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "rehook",
+      "delivery": "tense",
+      "emotion": "tense",
+      "text": "And then Ida sees something… | that shouldn't *exist*.",
+      "visual": "Re-Hook (≈ 44 %): Musik-Filter zu, Beat setzt 1 Takt aus. Langsamer Push-in auf IDAs Augen, im Pupillen-Spiegel eine kleine Gestalt mit Besen. Ticken wird lauter.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "exist",
+          "beat": "eyeReflection",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "sweeper",
+      "delivery": "tense",
+      "emotion": "tense",
+      "text": "An old woman sweeps the market square. | Her jar is *empty*. | And she's *alive*.",
+      "visual": "Totale Marktplatz, Nebel. Eine alte Klotzfigur (pflaumenfarbenes Kopftuch, Reisigbesen) fegt. ECHTES VIDEO (Platzhalter V2, Commons, Suchbegriff 'time-lapse market square crowd webm') als Spiegelung in einer Pfütze. Auf 'empty' Detail: ihr Glas – komplett leer, Spinnweben im Deckel. Auf 'alive' schaut sie IDA direkt an und zwinkert (Augen-Pop bei IDA).",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung.",
+        "Echtes Video V2: Platzhalter, Lizenz offen."
+      ],
+      "cues": [
+        {
+          "word": "empty",
+          "beat": "sweeperEmptyJar",
+          "sfx": "ding"
+        },
+        {
+          "word": "alive",
+          "beat": "sweeperWink",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "delivery": "tense",
+      "emotion": "tense",
+      "text": "Ida runs home to Grandpa Anton. | He just smiles. | And turns his jar *over*.",
+      "visual": "Tracking-Shot mit Parallax: IDA rennt durch die Gassen (links→rechts), Regen-Partikel. Schnitt in die Stube: ANTON im Sessel, lächelt ruhig. Langsamer Push-in (Spotlight-Bühne) auf seine Hände, die das Glas umdrehen. Kein Sand rieselt.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "home",
+          "beat": "trackRunParallax",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "over",
+          "beat": "spotlightJarFlip",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "painted",
+      "delivery": "punch",
+      "emotion": "awe",
+      "text": "The sand is *painted* on. | Yellow paint, inside the glass.",
+      "visual": "TWIST. Makro: ANTONs Fingernagel kratzt an der Innenwand – gelbe Farbe blättert ab, darunter klares, leeres Glas. Ein einziger scharfer Glas-Akzent (Pling) auf 'painted'. Reaktions-Großaufnahme IDA mit Augen-Pop (Match Cut).",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "painted",
+          "beat": "paintFlakes",
+          "sfx": "ding",
+          "hud": {
+            "id": "jar",
+            "value": "EMPTY?"
+          }
+        },
+        {
+          "word": "glass",
+          "beat": "idaEyePop",
+          "sfx": "pop"
+        }
+      ]
+    },
+    {
+      "id": "twenty",
+      "delivery": "punch",
+      "emotion": "awe",
+      "text": "His jar has been empty for *twenty years*. | And he's still *here*.",
+      "visual": "Orbit (≤ 90°) um ANTON und IDA, die sich gegenüber sitzen; Staub im Lampenlicht. An der Wand 20 kleine Kalender, je mit gelbem Pinselstrich durchgestrichen. HUD: GRANDPA'S JAR → 'EMPTY · 20 YEARS'.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "years",
+          "beat": "orbitCalendars",
+          "sfx": "boom",
+          "hud": {
+            "id": "jar",
+            "value": "EMPTY · 20 YEARS"
+          }
+        },
+        {
+          "word": "here",
+          "beat": "antonSmile",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "truth",
+      "delivery": "normal",
+      "emotion": "serious",
+      "text": "The jar doesn't count your *life*. | It only counts what you *sold*.",
+      "visual": "Lauter und klarer (Twist-Satz). Eigene Infografik im 3D-Raum: ein Glas, daneben zwei Spalten 'LIFE' (grau, nicht messbar, Fragezeichen) und 'SOLD' (Gold, Körner fließen hinein). Kamerafahrt von 'LIFE' nach 'SOLD'.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "life",
+          "beat": "lifeColumn",
+          "sfx": "pop"
+        },
+        {
+          "word": "sold",
+          "beat": "soldColumnGold",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "fear",
+      "delivery": "calm",
+      "emotion": "sad",
+      "text": "Grandpa whispers: | the fear of an empty jar… | keeps the whole city *working*.",
+      "visual": "Leiser, langsamer. Kamera zieht durch das Fenster hinaus (Zoom-out) über die nächtliche Stadt: in jedem Fenster ein goldenes Glas-Glimmen, Fabrikschlote, das Glass-Office-Gebäude als dunkler Klotz mit frostigem Licht.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "jar",
+          "beat": "pullOutWindow",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "working",
+          "beat": "cityGlowWide",
+          "sfx": "boom"
+        }
+      ]
+    },
+    {
+      "id": "franklin",
+      "delivery": "calm",
+      "emotion": "calm",
+      "text": "Sounds made up? | In *our* world, in 1748, Benjamin Franklin wrote:",
+      "visual": "Form-Wipe (Sanduhr-Form) aus der Fiktion in die echte Welt. ECHTES BILD (Platzhalter B3, Commons, Suchbegriff 'Benjamin Franklin by Joseph Siffred Duplessis', gemeinfrei laut üblicher Commons-Einstufung – Datei noch prüfen) im Bilderrahmen, Ken-Burns. Jahreszahl '1748' als Sticker.",
+      "sources": [
+        "Benjamin Franklin, 'Advice to a Young Tradesman, Written by an Old One', datiert [21 July 1748] – Founders Online (National Archives): https://founders.archives.gov/documents/Franklin/01-03-02-0130 (Primärquelle; aus dieser Umgebung NICHT lesbar, Host gesperrt). Wortlaut 'REMEMBER that time is money.' nur über Suchzusammenfassung der Wikisource-Ausgabe 1793 (https://en.wikisource.org/wiki/Page:Works_of_the_Late_Doctor_Benjamin_Franklin_(1793).djvu/198) und Quote Investigator (https://quoteinvestigator.com/2010/05/14/time-is-money/) – Ich kann den Wortlaut nicht selbst bestätigen; Faktenprüfer muss gegen Founders Online prüfen.",
+        "Nur 'Franklin wrote' – nicht 'Franklin erfand'. Quote Investigator und Wikipedia (https://en.wikipedia.org/wiki/Time_is_money_(aphorism)) halten frühere Herkunft für möglich."
+      ],
+      "cues": [
+        {
+          "word": "our",
+          "beat": "wipeToRealWorld",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "wrote",
+          "beat": "franklinPortrait",
+          "sfx": "ding",
+          "sticker": "1748",
+          "color": "#FFD23F"
+        }
+      ]
+    },
+    {
+      "id": "literal",
+      "delivery": "normal",
+      "emotion": "ironic",
+      "text": "\"Remember that *time is money*.\" | In Minuteburg, it's *literal*.",
+      "visual": "Zitat als Schreibschrift-Einblendung über dem Porträt (Gelb, Anführungszeichen). Auf 'literal' Match Cut: das Wort 'money' zerfällt zu goldenem Sand und rieselt zurück in Minuteburg – in IDAs Glas.",
+      "sources": [
+        "Zitat siehe Szene 'franklin'; Wortlaut vor Freigabe gegen Primärquelle prüfen (Großschreibung im Original 'Time is Money' möglich)."
+      ],
+      "cues": [
+        {
+          "word": "money",
+          "beat": "quoteCard",
+          "sfx": "ding"
+        },
+        {
+          "word": "literal",
+          "beat": "wordToSand",
+          "sfx": "whoosh"
+        }
+      ]
+    },
+    {
+      "id": "unpaid",
+      "delivery": "normal",
+      "emotion": "warm",
+      "text": "Ida puts her jar away. | She spends the whole day with Grandpa. | *Unpaid*.",
+      "visual": "Wärmstes Bild des Videos, aber ohne Gold: IDA stellt ihr Glas ins Regal. Montage à 2–3 s: beide reparieren zusammen eine alte Spieluhr, lachen, Tee. Auf 'Unpaid' Sticker-Stempel in Weiß (nicht Gold: Zeit ohne Preis).",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "away",
+          "beat": "jarOnShelf",
+          "sfx": "pop"
+        },
+        {
+          "word": "Unpaid",
+          "beat": "stampUnpaid",
+          "sfx": "ding",
+          "sticker": "UNPAID",
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "id": "knock",
+      "delivery": "tense",
+      "emotion": "tense",
+      "text": "Next morning, a knock at the door. | The *Glass Office*. | Someone *reported* Grandpa.",
+      "visual": "Cliffhanger. Kaltes Blau. Detail: Türklopfer, drei Schläge (Bass-Hit je Schlag leise, letzter laut). Low-Angle durch den Türspalt: zwei hohe Figuren in grauen Mänteln mit Milchglas-Visieren (eigenes Design, keine Uniform, keine Waffen), eine hält ANTONs gemaltes Glas-Foto. HUD blendet aus.",
+      "sources": [
+        "Fiktion (eigene Welt Minuteburg) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "door",
+          "beat": "knocker",
+          "sfx": "boom"
+        },
+        {
+          "word": "Office",
+          "beat": "glassOfficeLowAngle",
+          "sfx": "boom"
+        },
+        {
+          "word": "reported",
+          "beat": "hudOut",
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "delivery": "calm",
+      "emotion": "calm",
+      "text": "And you? | How many hours did you *sell* today?",
+      "visual": "Langsamer Push-in auf das eigene Glas im Regal; die Kamera dreht zur Linse, das Glas spiegelt die Silhouette des Zuschauers (Handy in der Hand). ECHTES VIDEO (Platzhalter V3, Commons, Suchbegriff 'commuters time-lapse webm') im Glas als Spiegelung: echte Pendler-Menge. Danach End-Card (2 s).",
+      "sources": [
+        "Offene Frage an den Zuschauer, keine Tatsachenbehauptung.",
+        "Echtes Video V3: Platzhalter, Lizenz offen."
+      ],
+      "cues": [
+        {
+          "word": "you",
+          "beat": "jarToCamera",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "sell",
+          "beat": "realCommutersInJar",
+          "sfx": "ding",
+          "sticker": "YOU?",
+          "color": "#FFD23F"
+        }
+      ]
+    }
+  ]
+}
