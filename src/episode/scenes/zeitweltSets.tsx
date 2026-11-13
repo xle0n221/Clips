@@ -725,13 +725,11 @@ export const LightShaft: React.FC<{
   const len = Math.hypot(dx, dy, dz) || 1;
   const mid: V3 = [(from[0] + to[0]) / 2, (from[1] + to[1]) / 2, (from[2] + to[2]) / 2];
   // Zylinder zeigt entlang +y: Drehung so, dass +y → (from - to)
-  const o = useMemo(() => {
-    const ob = new Object3D();
-    ob.position.set(...mid);
-    ob.lookAt(from[0], from[1], from[2]);
-    ob.rotateX(Math.PI / 2);
-    return ob;
-  }, [from, mid]);
+  const ob = new Object3D();
+  ob.position.set(...mid);
+  ob.lookAt(from[0], from[1], from[2]);
+  ob.rotateX(Math.PI / 2);
+  const o = ob;
   const tex = shaftTex();
   return (
     <mesh position={mid} quaternion={o.quaternion}>

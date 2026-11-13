@@ -26,7 +26,7 @@ import { seeded, INK } from "./toon";
  *             Blickziel (`look`) der letzten A-Einstellung liegt IN der Öffnung, `at` = ihre
  *             Bildstelle (`screenOf`).
  */
-export type WipeShape = "circle" | "star" | "hex" | "diamond" | "burst";
+export type WipeShape = "circle" | "star" | "hex" | "diamond" | "burst" | "hourglass";
 export type PortalShape = "door" | "round" | "screen";
 export type TransitionSpec = {
   readonly kind: "flash" | "tint" | "whip" | "wipe" | "zoom" | "match" | "cut" | "portal";
@@ -232,6 +232,8 @@ const SHAPES: Record<WipeShape, { d: string; inner: number }> = {
   },
   diamond: { d: polygon([[0, -1], [1, 0], [0, 1], [-1, 0]]), inner: Math.SQRT1_2 },
   burst: { d: polygon(ring(12, 0.78)), inner: 0.78 * Math.cos(Math.PI / 12) },
+  // Sanduhr (Zeit-Video): zwei Dreiecke mit schmaler Taille
+  hourglass: { d: polygon([[-0.78, -1], [0.78, -1], [0.14, 0], [0.78, 1], [-0.78, 1], [-0.14, 0]]), inner: 0.14 },
 };
 
 /** DOM-Ebene des Übergangs (Form, Farbe, Streifen, Blitz). Über der Leinwand, unter Untertiteln. */
