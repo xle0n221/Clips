@@ -568,7 +568,7 @@ export const Loop: React.FC = () => {
               <Stamp x={870} y={950} text="DELAYED" t={ease(f, delays, delays + 6)} r={6} size={34} />
             </g>
           ) : null}
-          <Toon x={92} y={1290} s={0.72} frame={f} armL={[30, 128]} armR={[30, 128]} look={1} mouth={f >= delays ? "smirk" : "flat"} brows={f >= delays ? "up" : "neutral"} blinkSeed={5} />
+          <Toon x={132} y={1290} s={0.72} frame={f} armL={[30, 128]} armR={[30, 128]} look={1} mouth={f >= delays ? "smirk" : "flat"} brows={f >= delays ? "up" : "neutral"} blinkSeed={5} />
         </Layer>
         <Layer depth={0}>
           <TopShade />
