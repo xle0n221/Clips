@@ -1,0 +1,738 @@
+{
+ "id": "zeit-welt",
+ "title": "In This City, You Pay With Time",
+ "durationMs": 103173,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 3781
+  },
+  {
+   "id": "stakes",
+   "startMs": 3781,
+   "endMs": 7830
+  },
+  {
+   "id": "world",
+   "startMs": 7830,
+   "endMs": 13767
+  },
+  {
+   "id": "rules",
+   "startMs": 13767,
+   "endMs": 18813
+  },
+  {
+   "id": "empty",
+   "startMs": 18813,
+   "endMs": 24922
+  },
+  {
+   "id": "ida",
+   "startMs": 24922,
+   "endMs": 30693
+  },
+  {
+   "id": "thread",
+   "startMs": 30693,
+   "endMs": 36498
+  },
+  {
+   "id": "tower",
+   "startMs": 36498,
+   "endMs": 41950
+  },
+  {
+   "id": "rent",
+   "startMs": 41950,
+   "endMs": 46616
+  },
+  {
+   "id": "rehook",
+   "startMs": 46616,
+   "endMs": 49767
+  },
+  {
+   "id": "sweeper",
+   "startMs": 49767,
+   "endMs": 55977
+  },
+  {
+   "id": "home",
+   "startMs": 55977,
+   "endMs": 61405
+  },
+  {
+   "id": "painted",
+   "startMs": 61405,
+   "endMs": 66481
+  },
+  {
+   "id": "twenty",
+   "startMs": 66481,
+   "endMs": 72024
+  },
+  {
+   "id": "truth",
+   "startMs": 72024,
+   "endMs": 75687
+  },
+  {
+   "id": "fear",
+   "startMs": 75687,
+   "endMs": 80557
+  },
+  {
+   "id": "franklin",
+   "startMs": 80557,
+   "endMs": 86144
+  },
+  {
+   "id": "literal",
+   "startMs": 86144,
+   "endMs": 89847
+  },
+  {
+   "id": "unpaid",
+   "startMs": 89847,
+   "endMs": 94525
+  },
+  {
+   "id": "knock",
+   "startMs": 94525,
+   "endMs": 99933
+  },
+  {
+   "id": "question",
+   "startMs": 99933,
+   "endMs": 102573
+  }
+ ],
+ "cues": [
+  {
+   "beat": "sandPourMacro",
+   "sfx": "boom",
+   "scene": "hook",
+   "atMs": 1820
+  },
+  {
+   "beat": "idaLowAngleEyes",
+   "sfx": "whoosh",
+   "scene": "hook",
+   "atMs": 2980
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1440
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1820
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 2980
+  },
+  {
+   "beat": "marketWideGoldJars",
+   "sfx": "whoosh",
+   "scene": "stakes",
+   "atMs": 5140
+  },
+  {
+   "beat": "otsGrandpaJar",
+   "sfx": "ding",
+   "hud": {
+    "id": "jar",
+    "value": "1 DAY LEFT"
+   },
+   "scene": "stakes",
+   "atMs": 7040
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 5140
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 7040
+  },
+  {
+   "beat": "craneOverCity",
+   "sfx": "whoosh",
+   "scene": "world",
+   "atMs": 8440
+  },
+  {
+   "beat": "jarDetail",
+   "sfx": "ding",
+   "sticker": "1 GRAIN = 1 SECOND",
+   "color": "#FFD23F",
+   "scene": "world",
+   "atMs": 12760
+  },
+  {
+   "emph": true,
+   "scene": "world",
+   "atMs": 8440
+  },
+  {
+   "emph": true,
+   "scene": "world",
+   "atMs": 10760
+  },
+  {
+   "emph": true,
+   "scene": "world",
+   "atMs": 12760
+  },
+  {
+   "beat": "factoryFill",
+   "sfx": "pop",
+   "scene": "rules",
+   "atMs": 16040
+  },
+  {
+   "beat": "bakerScale",
+   "sfx": "pop",
+   "scene": "rules",
+   "atMs": 17740
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 15180
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 16040
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 17740
+  },
+  {
+   "beat": "glassOfficeSign",
+   "sfx": "boom",
+   "sticker": "REPORT EMPTY JARS",
+   "color": "#FFD23F",
+   "scene": "empty",
+   "atMs": 19960
+  },
+  {
+   "beat": "glassOfficeDoor",
+   "scene": "empty",
+   "atMs": 22340
+  },
+  {
+   "beat": "emptyJarRolls",
+   "sfx": "whoosh",
+   "scene": "empty",
+   "atMs": 23880
+  },
+  {
+   "emph": true,
+   "scene": "empty",
+   "atMs": 19960
+  },
+  {
+   "emph": true,
+   "scene": "empty",
+   "atMs": 21080
+  },
+  {
+   "emph": true,
+   "scene": "empty",
+   "atMs": 22060
+  },
+  {
+   "emph": true,
+   "scene": "empty",
+   "atMs": 22340
+  },
+  {
+   "emph": true,
+   "scene": "empty",
+   "atMs": 23880
+  },
+  {
+   "beat": "workshopPocketWatch",
+   "sfx": "pop",
+   "scene": "ida",
+   "atMs": 26680
+  },
+  {
+   "beat": "flashbackHands",
+   "sfx": "ding",
+   "scene": "ida",
+   "atMs": 28940
+  },
+  {
+   "emph": true,
+   "scene": "ida",
+   "atMs": 25420
+  },
+  {
+   "emph": true,
+   "scene": "ida",
+   "atMs": 26680
+  },
+  {
+   "emph": true,
+   "scene": "ida",
+   "atMs": 28940
+  },
+  {
+   "beat": "pushInThinThread",
+   "sfx": "ding",
+   "scene": "thread",
+   "atMs": 33900
+  },
+  {
+   "beat": "idaHalfProfile",
+   "sfx": "boom",
+   "scene": "thread",
+   "atMs": 35500
+  },
+  {
+   "emph": true,
+   "scene": "thread",
+   "atMs": 31900
+  },
+  {
+   "emph": true,
+   "scene": "thread",
+   "atMs": 33900
+  },
+  {
+   "emph": true,
+   "scene": "thread",
+   "atMs": 35500
+  },
+  {
+   "beat": "towerGearsLowAngle",
+   "sfx": "whoosh",
+   "scene": "tower",
+   "atMs": 37560
+  },
+  {
+   "beat": "tinyPayout",
+   "sfx": "pop",
+   "sticker": "10 H \u2192 2 H",
+   "color": "#FFD23F",
+   "scene": "tower",
+   "atMs": 40940
+  },
+  {
+   "emph": true,
+   "scene": "tower",
+   "atMs": 37560
+  },
+  {
+   "emph": true,
+   "scene": "tower",
+   "atMs": 39340
+  },
+  {
+   "emph": true,
+   "scene": "tower",
+   "atMs": 40940
+  },
+  {
+   "beat": "rentNotice",
+   "sfx": "boom",
+   "sticker": "RENT +1 WEEK",
+   "color": "#FFD23F",
+   "scene": "rent",
+   "atMs": 43960
+  },
+  {
+   "beat": "idaJarDrops",
+   "sfx": "pop",
+   "scene": "rent",
+   "atMs": 45620
+  },
+  {
+   "emph": true,
+   "scene": "rent",
+   "atMs": 42360
+  },
+  {
+   "emph": true,
+   "scene": "rent",
+   "atMs": 43960
+  },
+  {
+   "emph": true,
+   "scene": "rent",
+   "atMs": 45620
+  },
+  {
+   "beat": "eyeReflection",
+   "sfx": "boom",
+   "scene": "rehook",
+   "atMs": 48840
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 47480
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 48840
+  },
+  {
+   "beat": "sweeperEmptyJar",
+   "sfx": "ding",
+   "scene": "sweeper",
+   "atMs": 52600
+  },
+  {
+   "beat": "sweeperWink",
+   "sfx": "pop",
+   "scene": "sweeper",
+   "atMs": 53900
+  },
+  {
+   "emph": true,
+   "scene": "sweeper",
+   "atMs": 51280
+  },
+  {
+   "emph": true,
+   "scene": "sweeper",
+   "atMs": 52600
+  },
+  {
+   "emph": true,
+   "scene": "sweeper",
+   "atMs": 53900
+  },
+  {
+   "emph": true,
+   "scene": "sweeper",
+   "atMs": 55020
+  },
+  {
+   "beat": "trackRunParallax",
+   "sfx": "whoosh",
+   "scene": "home",
+   "atMs": 56480
+  },
+  {
+   "beat": "spotlightJarFlip",
+   "sfx": "boom",
+   "scene": "home",
+   "atMs": 60520
+  },
+  {
+   "emph": true,
+   "scene": "home",
+   "atMs": 56480
+  },
+  {
+   "emph": true,
+   "scene": "home",
+   "atMs": 58460
+  },
+  {
+   "emph": true,
+   "scene": "home",
+   "atMs": 60520
+  },
+  {
+   "beat": "paintFlakes",
+   "sfx": "ding",
+   "hud": {
+    "id": "jar",
+    "value": "EMPTY?"
+   },
+   "scene": "painted",
+   "atMs": 63560
+  },
+  {
+   "beat": "idaEyePop",
+   "sfx": "pop",
+   "scene": "painted",
+   "atMs": 65640
+  },
+  {
+   "emph": true,
+   "scene": "painted",
+   "atMs": 61480
+  },
+  {
+   "emph": true,
+   "scene": "painted",
+   "atMs": 63560
+  },
+  {
+   "emph": true,
+   "scene": "painted",
+   "atMs": 64640
+  },
+  {
+   "beat": "orbitCalendars",
+   "sfx": "boom",
+   "hud": {
+    "id": "jar",
+    "value": "EMPTY \u00b7 20 YEARS"
+   },
+   "scene": "twenty",
+   "atMs": 68140
+  },
+  {
+   "beat": "antonSmile",
+   "sfx": "ding",
+   "scene": "twenty",
+   "atMs": 69620
+  },
+  {
+   "emph": true,
+   "scene": "twenty",
+   "atMs": 67780
+  },
+  {
+   "emph": true,
+   "scene": "twenty",
+   "atMs": 68140
+  },
+  {
+   "emph": true,
+   "scene": "twenty",
+   "atMs": 69620
+  },
+  {
+   "emph": true,
+   "scene": "twenty",
+   "atMs": 71100
+  },
+  {
+   "beat": "lifeColumn",
+   "sfx": "pop",
+   "scene": "truth",
+   "atMs": 73280
+  },
+  {
+   "beat": "soldColumnGold",
+   "sfx": "boom",
+   "scene": "truth",
+   "atMs": 74800
+  },
+  {
+   "emph": true,
+   "scene": "truth",
+   "atMs": 73280
+  },
+  {
+   "emph": true,
+   "scene": "truth",
+   "atMs": 74800
+  },
+  {
+   "beat": "pullOutWindow",
+   "sfx": "whoosh",
+   "scene": "fear",
+   "atMs": 78020
+  },
+  {
+   "beat": "cityGlowWide",
+   "sfx": "boom",
+   "scene": "fear",
+   "atMs": 79620
+  },
+  {
+   "emph": true,
+   "scene": "fear",
+   "atMs": 76120
+  },
+  {
+   "emph": true,
+   "scene": "fear",
+   "atMs": 78020
+  },
+  {
+   "emph": true,
+   "scene": "fear",
+   "atMs": 79620
+  },
+  {
+   "beat": "wipeToRealWorld",
+   "sfx": "whoosh",
+   "scene": "franklin",
+   "atMs": 81940
+  },
+  {
+   "beat": "franklinPortraitAndCard",
+   "sfx": "ding",
+   "sticker": "1748",
+   "color": "#FFD23F",
+   "scene": "franklin",
+   "atMs": 85300
+  },
+  {
+   "emph": true,
+   "scene": "franklin",
+   "atMs": 80940
+  },
+  {
+   "emph": true,
+   "scene": "franklin",
+   "atMs": 81160
+  },
+  {
+   "emph": true,
+   "scene": "franklin",
+   "atMs": 81940
+  },
+  {
+   "beat": "quoteCard",
+   "sfx": "ding",
+   "scene": "literal",
+   "atMs": 87320
+  },
+  {
+   "beat": "wordToSand",
+   "sfx": "whoosh",
+   "scene": "literal",
+   "atMs": 89120
+  },
+  {
+   "emph": true,
+   "scene": "literal",
+   "atMs": 86680
+  },
+  {
+   "emph": true,
+   "scene": "literal",
+   "atMs": 86980
+  },
+  {
+   "emph": true,
+   "scene": "literal",
+   "atMs": 87320
+  },
+  {
+   "emph": true,
+   "scene": "literal",
+   "atMs": 89120
+  },
+  {
+   "beat": "jarOnShelf",
+   "sfx": "pop",
+   "scene": "unpaid",
+   "atMs": 90700
+  },
+  {
+   "beat": "stampUnpaid",
+   "sfx": "ding",
+   "sticker": "UNPAID",
+   "color": "#FFFFFF",
+   "scene": "unpaid",
+   "atMs": 93640
+  },
+  {
+   "emph": true,
+   "scene": "unpaid",
+   "atMs": 90700
+  },
+  {
+   "emph": true,
+   "scene": "unpaid",
+   "atMs": 92740
+  },
+  {
+   "emph": true,
+   "scene": "unpaid",
+   "atMs": 93640
+  },
+  {
+   "beat": "knocker",
+   "sfx": "boom",
+   "scene": "knock",
+   "atMs": 96060
+  },
+  {
+   "beat": "glassOfficeLowAngle",
+   "sfx": "boom",
+   "scene": "knock",
+   "atMs": 97080
+  },
+  {
+   "beat": "hudOut",
+   "sfx": "ding",
+   "scene": "knock",
+   "atMs": 98480
+  },
+  {
+   "emph": true,
+   "scene": "knock",
+   "atMs": 95640
+  },
+  {
+   "emph": true,
+   "scene": "knock",
+   "atMs": 96800
+  },
+  {
+   "emph": true,
+   "scene": "knock",
+   "atMs": 97080
+  },
+  {
+   "emph": true,
+   "scene": "knock",
+   "atMs": 98480
+  },
+  {
+   "beat": "jarToCamera",
+   "sfx": "whoosh",
+   "scene": "question",
+   "atMs": 100180
+  },
+  {
+   "beat": "realCommutersInJar",
+   "sfx": "ding",
+   "sticker": "YOU?",
+   "color": "#FFD23F",
+   "scene": "question",
+   "atMs": 101620
+  },
+  {
+   "emph": true,
+   "scene": "question",
+   "atMs": 100180
+  },
+  {
+   "emph": true,
+   "scene": "question",
+   "atMs": 101620
+  }
+ ],
+ "hud": {
+  "title": "MINUTEBURG",
+  "counters": [
+   {
+    "id": "jar",
+    "label": "GRANDPA'S JAR",
+    "value": "\u2014"
+   }
+  ],
+  "bars": []
+ },
+ "cover": {
+  "text": "YOU PAY WITH TIME",
+  "sub": "bread = 12 minutes of your life",
+  "frames": 15
+ }
+}

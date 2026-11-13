@@ -4,9 +4,9 @@
   "engine": "chatterbox",
   "voice": "am_fenrir",
   "voicePreset": "lebendig",
-  "speed": 1.05,
+  "speed": 1.08,
   "pauseMs": 350,
-  "sceneGapMs": 600,
+  "sceneGapMs": 250,
   "lengthSec": 106,
   "years": [
     1748
@@ -59,7 +59,7 @@
         "cfg": 0.5,
         "temp": 0.8,
         "speed": 1.0,
-        "gap_ms": 320,
+        "gap_ms": 220,
         "comma_ms": 160,
         "end_db": 2.0,
         "gain_db": 0.0
@@ -91,7 +91,7 @@
         "cfg": 0.5,
         "temp": 0.8,
         "speed": 1.0,
-        "gap_ms": 320,
+        "gap_ms": 220,
         "comma_ms": 160,
         "end_db": 2.0,
         "gain_db": 0.0
@@ -127,7 +127,7 @@
         "cfg": 0.5,
         "temp": 0.8,
         "speed": 1.0,
-        "gap_ms": 320,
+        "gap_ms": 220,
         "comma_ms": 160,
         "end_db": 2.0,
         "gain_db": 0.0
@@ -162,7 +162,7 @@
         "cfg": 0.5,
         "temp": 0.8,
         "speed": 1.0,
-        "gap_ms": 320,
+        "gap_ms": 220,
         "comma_ms": 160,
         "end_db": 2.0,
         "gain_db": 0.0
@@ -194,7 +194,7 @@
         "cfg": 0.5,
         "temp": 0.8,
         "speed": 1.0,
-        "gap_ms": 320,
+        "gap_ms": 220,
         "comma_ms": 160,
         "end_db": 2.0,
         "gain_db": 0.0
@@ -232,7 +232,7 @@
         "cfg": 0.5,
         "temp": 0.8,
         "speed": 1.0,
-        "gap_ms": 320,
+        "gap_ms": 220,
         "comma_ms": 160,
         "end_db": 2.0,
         "gain_db": 0.0
@@ -265,7 +265,7 @@
         "cfg": 0.45,
         "temp": 0.75,
         "speed": 0.97,
-        "gap_ms": 380,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 2.5,
         "gain_db": -2.0
@@ -297,7 +297,7 @@
         "cfg": 0.45,
         "temp": 0.75,
         "speed": 0.97,
-        "gap_ms": 380,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 2.5,
         "gain_db": -2.0
@@ -332,7 +332,7 @@
         "cfg": 0.45,
         "temp": 0.75,
         "speed": 0.97,
-        "gap_ms": 380,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 2.5,
         "gain_db": -2.0
@@ -366,7 +366,7 @@
         "cfg": 0.45,
         "temp": 0.75,
         "speed": 0.97,
-        "gap_ms": 380,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 2.5,
         "gain_db": -2.0
@@ -393,7 +393,7 @@
         "cfg": 0.45,
         "temp": 0.75,
         "speed": 0.97,
-        "gap_ms": 380,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 2.5,
         "gain_db": -2.0
@@ -426,7 +426,7 @@
         "cfg": 0.45,
         "temp": 0.75,
         "speed": 0.97,
-        "gap_ms": 380,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 2.5,
         "gain_db": -2.0
@@ -458,7 +458,7 @@
         "cfg": 0.4,
         "temp": 0.8,
         "speed": 1.03,
-        "gap_ms": 280,
+        "gap_ms": 220,
         "comma_ms": 140,
         "end_db": 1.0,
         "gain_db": 1.5
@@ -494,7 +494,7 @@
         "cfg": 0.4,
         "temp": 0.8,
         "speed": 1.03,
-        "gap_ms": 280,
+        "gap_ms": 220,
         "comma_ms": 140,
         "end_db": 1.0,
         "gain_db": 1.5
@@ -530,7 +530,7 @@
         "cfg": 0.4,
         "temp": 0.8,
         "speed": 1.03,
-        "gap_ms": 280,
+        "gap_ms": 220,
         "comma_ms": 140,
         "end_db": 1.0,
         "gain_db": 1.5
@@ -562,7 +562,7 @@
         "cfg": 0.5,
         "temp": 0.7,
         "speed": 1.0,
-        "gap_ms": 330,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 3.0,
         "gain_db": -1.5
@@ -594,7 +594,7 @@
         "cfg": 0.5,
         "temp": 0.7,
         "speed": 1.0,
-        "gap_ms": 330,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 3.0,
         "gain_db": -1.5
@@ -629,7 +629,7 @@
         "cfg": 0.5,
         "temp": 0.7,
         "speed": 1.0,
-        "gap_ms": 330,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 3.0,
         "gain_db": -1.5
@@ -661,7 +661,7 @@
         "cfg": 0.5,
         "temp": 0.7,
         "speed": 1.0,
-        "gap_ms": 330,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 3.0,
         "gain_db": -1.5
@@ -695,7 +695,7 @@
         "cfg": 0.5,
         "temp": 0.7,
         "speed": 1.0,
-        "gap_ms": 330,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 3.0,
         "gain_db": -1.5
@@ -732,7 +732,7 @@
         "cfg": 0.5,
         "temp": 0.7,
         "speed": 1.0,
-        "gap_ms": 250,
+        "gap_ms": 220,
         "comma_ms": 180,
         "end_db": 3.0,
         "gain_db": -1.5
@@ -770,5 +770,10 @@
     "rules": "Sätze ≤ 12 Wörter, genau ein *Akzentwort* je Satz (Skript-Prüfung), keine Füllwörter, kein Overacting; eine Sprechzeile je Szene, Audio wird je Szene erzeugt und neu getimt.",
     "conflict": "Weicht für dieses Paket bewusst von clip-regeln.md 'Wie ein echter Geschichtenerzähler' ab (Satzpause 450–640 ms, 2,3–2,6 W/s) – laut docs/prompts/knowtoon-videopaket.md gilt für Videos nach diesem Prompt 2,5–2,75 W/s. Nach Vertonung mit scripts/stimm_messung.py messen; Whisper ≥ 98 % und Satzende-Absenkung bleiben Pflicht."
   },
-  "version": "v1.2 (13.11.2026, STEP 4 NARRATION & VOICE: Tempo 2,5–2,75 W/s, Emotion-Map je Abschnitt, Ein-Akzent-Regel)"
+  "version": "v1.2 (13.11.2026, STEP 4 NARRATION & VOICE: Tempo 2,5–2,75 W/s, Emotion-Map je Abschnitt, Ein-Akzent-Regel)",
+  "narrator": {
+    "max_speed": 1.1,
+    "piece_extra_ms": 80,
+    "scene_gap_ms": 250
+  }
 }
