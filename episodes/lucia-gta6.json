@@ -21,7 +21,7 @@
   },
   "sources": "docs/quellen-lucia-gta6.md, Abschnitt 'Freigabeliste' (B2–B11) + Tabelle Nr. 4–9, 16–17, 19–22, 24. Alles Tertiär: Nr. 4–17 wörtlich gegen Wikipedia geprüft (Teilstring), Nr. 19–24 (Rockstar-Bio, Trailer 2) nur WebSearch-Zusammenfassung – deshalb im Sprechtext mit 'Rockstar says / Rockstar's answer, more or less / Rockstar hints / Trailer two shows' formuliert, nie als wörtliches Zitat. Keine Rockstar-Seite gelesen, kein Trailer gesehen.",
   "factcheck": "Faktenprüfer 13.11.2026: Note 8, 4 Umformulierungen (P13, P17, P23, P24), 1 Streichung (P18 'way out'), 3 Bild-Hinweise (P7, P11, P29) übernommen; Nr. 3 freigegeben. Zeitabhängig: Cover 'before Nov 19' und 'soon' (play) nach dem 19.11. anpassen (P4, P26); Termin am Veröffentlichungstag nochmal prüfen (P27). Alles Tertiär.",
-  "version": "v2 (13.11.2026, nach Faktenprüfung Note 8 + Retention 7/10)",
+  "version": "v2.1 (13.11.2026, Hook gekürzt nach Retention-Prüfung v2)",
   "pointe": "Lucia's file is one fight after another – and on November 19 the player takes over the fight.",
   "music": {
     "mood": "dark",
@@ -33,7 +33,7 @@
     "why": "Eigenständiger flacher Comic-/Paper-Cut-Look mit Akten-Rahmen ('CASE FILE') erzählt eine Lebensgeschichte als Dossier am klarsten und hält bewusst Abstand zu Rockstars gemaltem Cover-Art- und Trailer-Stil – keine Verwechslung mit Marken-Artwork, kein nachgebautes Standbild.",
     "characters": "LUCIA = eigene Cartoon-Figur, nicht porträtnah zu einer realen Person (Sprecherin unbestätigt): dunkler Zopf, Signalfarbe Türkis (Jacke/Haarband) als einziges durchgehendes Merkmal, wechselt Kleidung je Station (Kinder-Boxhandschuhe → neutraler Häftlings-Overall in eigener Farbe Orange-Sand → Alltagskleidung → Silhouette mit Maske beim Überfall, belegt Nr. 12 nur als Bildmotiv). JASON = eigene Figur, Signalfarbe Pink, nie größer als Lucia im Bild (sie ist die Hauptfigur). VATER = gesichtslose Silhouette mit Boxpratzen, kein Name. Farbwelt Florida-Sonnenuntergang (Pink, Türkis, Orange) als freie Stilwahl, nicht als 'Rockstar-Farben'. Keine Logos, kein GTA-/Rockstar-Schriftzug, keine Trailer-Motive, Waffen nur als Silhouette, nie im Detail."
   },
-  "note": "v2: Themen-Art fiktive Figur/Spiel. 11 Szenen (Re-Hook als eigene Szene, Nr. 3 'first' als Mittel-Wende gegen das Loch nach heist). Kette: hook (Frage: was brachte sie in Haft?) → Vater lehrt Kämpfen → Kampf für Familie = Gefängnis → raus durch 'luck' → Re-Hook 'easy part / Staying out? Different story.' → Jason holt sie ab, kriminelles Paar, Bonnie & Clyde → Banküberfall scheitert, Verschwörung, gegenseitig schützen → Serien-Premiere: erste nicht optionale Hauptfigur → tough/vulnerable/flawed → du spielst sie → 19.11. + Loop '…finally meet…' → 'Lucia, …'. HUD STATUS: UNKNOWN → FIGHTER → INMATE → RELEASED → HEIST FAILED → PLAYABLE. Wortzahl 159 Skriptwörter (ohne * und |, 0 fehlende Cue-Wörter) → 66.2 s bei 2,4 W/s; mit Erzähler-Pausen eher 75–85 s (11 Szenenwechsel). Wird es > 85 s: zuerst 'Think Bonnie and Clyde, Florida style.' (6 W), dann ', or as Jason' streichen. Re-Hook ab Wort 56/159 = 35 %. Bewusst weggelassen: B1 Liberty City, 'way out' (Nr. 22, nicht bestätigbar), Sprecherin/Manni L. Perez, Alter, Herkunft, Mutter, Art der Freilassung, Delikt/Strafdauer, Leaks, Tageszahl bis Release.",
+  "note": "v2: Themen-Art fiktive Figur/Spiel. 11 Szenen (Re-Hook als eigene Szene, Nr. 3 'first' als Mittel-Wende gegen das Loch nach heist). Kette: hook (Frage: was brachte sie in Haft?) → Vater lehrt Kämpfen → Kampf für Familie = Gefängnis → raus durch 'luck' → Re-Hook 'easy part / Staying out? Different story.' → Jason holt sie ab, kriminelles Paar, Bonnie & Clyde → Banküberfall scheitert, Verschwörung, gegenseitig schützen → Serien-Premiere: erste nicht optionale Hauptfigur → tough/vulnerable/flawed → du spielst sie → 19.11. + Loop '…finally meet…' → 'Lucia, …'. HUD STATUS: UNKNOWN → FIGHTER → INMATE → RELEASED → HEIST FAILED → PLAYABLE. Wortzahl 160 Skriptwörter (ohne * und |, 0 fehlende Cue-Wörter) → 66.7 s bei 2,4 W/s; mit Erzähler-Pausen eher 75–85 s (11 Szenenwechsel). Wird es > 85 s: zuerst 'Think Bonnie and Clyde, Florida style.' (6 W), dann ', or as Jason' streichen. Re-Hook ab Wort 57/160 = 35 %; Hook-Pointe 'time' = Wort 3 (≈ 1,3 s, Retention-Kritiker 13.11. v2). Bewusst weggelassen: B1 Liberty City, 'way out' (Nr. 22, nicht bestätigbar), Sprecherin/Manni L. Perez, Alter, Herkunft, Mutter, Art der Freilassung, Delikt/Strafdauer, Leaks, Tageszahl bis Release.",
   "hud": {
     "title": "CASE FILE: LUCIA",
     "counters": [
@@ -50,11 +50,11 @@
       "id": "hook",
       "delivery": "punch",
       "emotion": "tense",
-      "text": "Lucia, the woman you'll play in GTA 6, did *time*. | What put her there?",
-      "visual": "2D Comic/Paper-Cut. Cover 0–0,5 s: Lucia (eigene Cartoon-Figur, türkises Haarband) im Profil hinter Gitterstäben, dahinter Florida-Sonnenuntergang (Pink/Orange) mit Palmen-Silhouetten; Titel 'WHO IS LUCIA?' in Akzentgelb, mittig oberes Drittel. Ab 0,5 s Kamera zieht auf: Bild wird zum Foto in einer Akte 'CASE FILE: LUCIA'. Auf 'time' Stempel 'SERVED TIME' knallt auf die Akte. Auf 'there' Fragezeichen-Sticker über dem leeren Feld 'REASON: ?'.",
+      "text": "Lucia did *time*. | She's the woman you'll play in GTA 6. | What put her there?",
+      "visual": "2D Comic/Paper-Cut. Cover 0–0,5 s: Lucia (eigene Cartoon-Figur, türkises Haarband) im Profil hinter Gitterstäben, dahinter Florida-Sonnenuntergang (Pink/Orange) mit Palmen-Silhouetten; Titel 'WHO IS LUCIA?' in Akzentgelb, mittig oberes Drittel. Ab 0,5 s Kamera zieht auf: Bild wird zum Foto in einer Akte 'CASE FILE: LUCIA'. Auf 'time' (≈ 1,3 s, Pointe vor 2 s) Stempel 'SERVED TIME' knallt auf die Akte. Auf 'there' Fragezeichen-Sticker über dem leeren Feld 'REASON: ?'.",
       "sources": [
         "Spielbar als Lucia: Nr. 9 „Their relationship will depend on the player's actions“ + Freigabeliste B10 (zugleich spielbar) – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft.",
-        "Haft im Leonida Penitentiary: Nr. 4 „who was imprisoned at Leonida Penitentiary after fighting for her family from Liberty City“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. 'has done time' = Umgangssprache für diese Haft.",
+        "Haft im Leonida Penitentiary: Nr. 4 „who was imprisoned at Leonida Penitentiary after fighting for her family from Liberty City“ – https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI – Tertiär, wörtlich geprüft. 'did time' = Umgangssprache für diese Haft.",
         "Gitter im Cover = Bildmotiv (Nr. 26 nur schwach belegt, deshalb nicht gesprochen); keine Nachzeichnung eines Trailer-Bilds."
       ],
       "cues": [
@@ -205,7 +205,7 @@
       "id": "jason",
       "delivery": "normal",
       "emotion": "warm",
-      "text": "Trailer two shows Jason picking her up as she walks out. | And the two become a criminal *couple*. | Think Bonnie and Clyde, *Florida* style.",
+      "text": "Trailer two shows Jason picking her up as she walks out. | And the two are a criminal *couple*. | Think Bonnie and Clyde, *Florida* style.",
       "visual": "Vor dem Gefängnistor: eigenes Cartoon-Auto (kein reales Modell, kein Spiel-Fahrzeug nachgebaut) hält, JASON (Signalfarbe Pink) lehnt an der Tür, Lucia tritt heraus. Akte bekommt zweites Foto 'JASON', rote Faden-Linie verbindet beide Fotos; auf 'couple' Sticker 'CRIMINAL COUPLE' über beiden Fotos. Kein Wegweiser/Schild. Auf 'Florida' Palmen, Sonnenuntergang, beide als Silhouetten im Cabrio – Sticker 'BONNIE & CLYDE, FLORIDA STYLE'. Kein Trailer-Standbild nachzeichnen.",
       "sources": [
         "B6 / Nr. 24: Trailer 2 (6. Mai 2025) zeigt laut mehreren Berichten, wie Jason Lucia bei der Freilassung abholt (WS: mp1st/tomsguide/CBS 'meets her when she's released from prison') – Faktenprüfer P16 bestätigt (WS), Trailer nicht gesehen.",
