@@ -24,6 +24,19 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Jensen Huang (2D Paper-Cut-Satire) v1 · **Experiment Re-Hook-Rückfahrt statt Schnitt:** in `crash` fährt die
+  Kamera nach „Tuesday“ vom Terminal (Zoom 1,1) auf 0,72 zurück und enthüllt den knienden Investor + Gebets-Caption – liest
+  sich im Kontaktabzug als neue Einstellung ohne Schnitt; erste Fassung (Zoom 0,6) machte Chart + Figur zu klein → ≥ 0,7.
+  9 Szenen, 17 Einstellungen/Fahrten auf 72,4 s (Ø ≈ 4,2 s). Loop: Endbild = Cover-Komponente (`CoverScene` in
+  `scenes/huang2.tsx`, auch `coverArt`), Auswahlkarte `untilBeat: loopToSunday` (Drehbuch + timeline). Fallen: Cover-Titel
+  mit 5 Wörtern bricht auf 4 Zeilen + Unterzeile bis y ≈ 880 → Motiv darunter legen (Kalender wanderte sonst unter die
+  Unterzeile); Pill-Text 44 Zeichen lief aus dem Bild, `measureText` unterschätzt → `overlays/Pill.tsx` schrumpft Schrift
+  (Zeichen-Schätzung 0,72 em als Untergrenze, kurze Pills unverändert); `&` hinter `cd … && S=…` schickt die ganze Kette
+  in den Hintergrund (Variable fehlt in der Warteschleife). **Offen:** Cue-Abstände laut Drehbuch n 38, Ø 1,88 s, Median 1,64,
+  15 < 1,5 s (z. B. hook „Thursday“→„gone“ 0,72 s, pr 0,65 s) – nicht im Code lösbar, UFC-Methode (Cues verlegen + `--retime`)
+  nötig. Neu in `huangSets.tsx`: `Jensen` (Karikatur, `vanish` → leere Jacke am Bügel), `ThumbStamp`, `FlipPhone`,
+  `GpuBuddy`, `StockChart` (`upto` = Punkt-Index), `Ticker`, `Receipt`, `ChipShelf`, `MilkCarton`, `Stopwatch`, `GreySil`.
+  Beleg `out/jensen-huang-contact.jpg`, `out/jensen-huang-fix.jpg`, `out/jensen-huang-fix2.jpg`.
 - 12.11.2026 · Rolls-Royce (2D) v2 nach Regie-Kritik 6/10 (neue Erzähler-Tonspur 92,7 s) · **Experiment UFC-Methode
   übernommen (Cues verlegen statt Schnitte ändern):** 7 reine Beat-/SFX-Cues entfernt (Animation per `W("wort")` aus
   captions.json), 15 Cues auf Nachbarwörter gelegt (z. B. Startschuss „minute“ statt „Go!“ am Szenenende, Haken auf „Done?“),
@@ -148,6 +161,7 @@
 | 12.11.2026 | UFC (2D) v1 | 6,0 (Regie) | Cue-Abstände Ø 1,7 s, Karten bis Loop-Ende, Label-Stapel |
 | 12.11.2026 | UFC (2D) v2 | – (Selbstnote 7,5, Regie offen) | 0 Cue-Abstände < 1,5 s, 7 Befunde umgesetzt; Start-Oktagon anfangs leer |
 | 12.11.2026 | Mike Tyson (2D) v1 | 6,5 (Regie/Design) | Biss unlesbar, Sitzpose, Anschnitte → v2 |
+| 13.11.2026 | Jensen Huang (2D) v1 | – (Selbstnote 7, Regie offen) | 15 Cue-Abstände < 1,5 s (Drehbuch), sonst keine Anschnitte |
 | 12.11.2026 | Earth (2D) v1 | 6,5 (Regie) | Standeinstellungen > 4 s, Bild ≠ Wort → Korrektur v2 |
 | 09.11.2026 | Rom (Szenen v1) | – (Regie-Kritiker steht aus) | Selbstprüfung: 2 Kontaktabzüge, 9 Korrekturen |
 | 12.11.2026 | Rolls-Royce (2D) v1 | – (Selbstprüfung 7–8, Regie-Kritiker offen) | 2 Kontaktabzüge, 5 Korrekturen |

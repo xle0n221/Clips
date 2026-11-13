@@ -39,11 +39,11 @@ const DAYS = ["SUN", "MON", "TUE", "WED", "THU"];
 
 /** Cover-/Loop-Bild: Chefbüro, Kurs stürzt rot, Kalender SUN, leere Lederjacke am Bügel. */
 export const CoverScene: React.FC<{ readonly f: number; readonly zoom?: number }> = ({ f, zoom = 1.04 }) => (
-  <Stage2D cam={frameOn(600, 1000, 540, 1000, zoom)} mood="night" noSky>
+  <Stage2D cam={frameOn(600, 1000, 540, 1110, zoom)} mood="night" noSky>
     <LuxDefs />
     <Layer>
       <Office f={f} crash={1} />
-      <CalBlock x={OFFICE.calX} y={OFFICE.calY + 40} s={0.85} day="SUN" sub="NOV 2026" />
+      <CalBlock x={OFFICE.calX - 20} y={OFFICE.calY + 210} s={0.8} day="SUN" sub="NOV 2026" />
       <EmptyJacket x={700} y={OFFICE.floor} s={0.95} frame={f} swing={2 * Math.sin(f * 0.08)} />
     </Layer>
   </Stage2D>
@@ -179,14 +179,14 @@ export const Pr: React.FC = () => {
       <Stage2D cam={cam} mood="night" noSky>
         <LuxDefs />
         <Layer>
-          <Bg id="pr2" a="#241828" b="#3E2436" />
-          <rect x={-2000} y={1250} width={6000} height={2000} fill="#2A1E2C" />
+          <Bg id="pr2" a="#6A5470" b="#8C6E80" />
+          <rect x={-2000} y={1250} width={6000} height={2000} fill="#4A3646" />
           <ExecChair x={780} y={1250} s={0.72} spin={0} />
           <rect x={560} y={1120} width={460} height={130} fill="#6B4A32" stroke={HG.ink} strokeWidth={8} />
           <g transform={`translate(790 1112) scale(1 ${Math.max(0.05, plateS)})`}>
             {swap < 0.5 ? <NamePlate x={0} y={0} text="CEO" w={300} /> : <NamePlate x={0} y={0} text="INTERIM CEO: THE CFO" w={420} fill={HG.yellow} />}
           </g>
-          <Note x={lerp(-300, 320, ease(f, resign, resign + 12, "inOut"))} y={860} s={0.62} r={-5} lines={["RESIGNED:", "CEO · BOARD", "EFFECTIVE", "IMMEDIATELY"]} fill="#FFE3E3" size={62} />
+          <Note x={lerp(-300, 300, ease(f, resign, resign + 12, "inOut"))} y={860} s={0.78} r={-5} lines={["RESIGNED:", "CEO · BOARD", "EFFECTIVE", "IMMEDIATELY"]} fill="#FFE3E3" size={62} />
         </Layer>
       </Stage2D>
     );

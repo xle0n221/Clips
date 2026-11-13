@@ -32,13 +32,17 @@ export const Pill: React.FC<{
   const x = Math.max(0.04, Math.min(0.96, label.x)) * width;
   const y = Math.max(0.05, Math.min(1, label.y)) * height;
   // Gemessene Breite (Schrift 46 px, Abstand 1 px) + Innenabstand 2×30 + Rahmen 2×7 + Neigung
-  const rawW = measureText({
-    text: label.text.toUpperCase(),
-    fontFamily: CAPTION_FONT,
-    fontWeight: 900,
-    fontSize: 46,
-    letterSpacing: "1px",
-  }).width;
+  // measureText unterschätzt Montserrat 900 bei langen Texten → Zeichen-Schätzung als Untergrenze
+  const rawW = Math.max(
+    measureText({
+      text: label.text.toUpperCase(),
+      fontFamily: CAPTION_FONT,
+      fontWeight: 900,
+      fontSize: 46,
+      letterSpacing: "1px",
+    }).width,
+    label.text.length * 46 * 0.72,
+  );
   // Zu lange Pills (breiter als das Bild − 80 px) verkleinern die Schrift statt aus dem Bild zu laufen
   const fontSize = Math.min(46, Math.floor((46 * (width - 80 - 90)) / Math.max(1, rawW)));
   const estW = (rawW * fontSize) / 46 + 90;

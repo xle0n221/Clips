@@ -144,10 +144,10 @@ export const Fold: React.FC = () => {
   const open = ease(f, flip, flip + 12, "inOut");
   const buddy = pop(f, flip + 8, 12);
   const cam = camPath(f, [
-    [0, frameOn(330, 1040, 540, 960, 1.3)],
-    [flip, frameOn(330, 1040, 540, 960, 1.38)],
-    [flip + 18, frameOn(560, 880, 540, 920, 1.0)],
-    [d, frameOn(560, 880, 540, 920, 1.05)],
+    [0, frameOn(330, 1060, 540, 960, 1.45)],
+    [flip, frameOn(330, 1060, 540, 960, 1.55)],
+    [flip + 18, frameOn(560, 900, 540, 930, 1.12)],
+    [d, frameOn(560, 900, 540, 930, 1.17)],
   ]);
   return (
     <Stage2D cam={cam} mood="night" noSky>
@@ -163,8 +163,8 @@ export const Fold: React.FC = () => {
             opacity={0.5}
           />
         ))}
-        <FlipPhone x={330} y={lerp(900, 1500, 1 - slide) - (f >= flip ? 0 : 0)} s={0.8} open={open} heart={pop(f, wife, 10)} r={lerp(-6, 0, open)} />
-        {buddy > 0 ? <GpuBuddy x={780} y={990} s={0.62 * buddy} f={f} wink={f >= wink && f < wink + 24 ? 1 : 0} hearts={ease(f, wink, wink + 40, "linear")} /> : null}
+        <FlipPhone x={300} y={lerp(900, 1500, 1 - slide)} s={0.9} open={open} heart={pop(f, wife, 10)} r={lerp(-6, 0, open)} />
+        {buddy > 0 ? <GpuBuddy x={790} y={1000} s={0.7 * buddy} f={f} wink={f >= wink && f < wink + 24 ? 1 : 0} hearts={ease(f, wink, wink + 40, "linear")} /> : null}
       </Layer>
     </Stage2D>
   );
@@ -270,7 +270,7 @@ export const Crash: React.FC = () => {
     [zoom + 16, frameOn(540, 880, 540, 900, 1.06)],
     [tue, frameOn(540, 880, 540, 900, 1.1)],
   ]);
-  const c1 = frameOn(540, 880, 620, 990, lerp(0.64, 0.6, ease(f, tue + 22, d, "inOut")));
+  const c1 = frameOn(540, 880, 620, 990, lerp(0.74, 0.71, ease(f, tue + 22, d, "inOut")));
   const cam = {
     x: lerp(c0.x, c1.x, back),
     y: lerp(c0.y, c1.y, back),
@@ -288,7 +288,7 @@ export const Crash: React.FC = () => {
         <StockChart x={540} y={880} pts={CRASH_PTS} upto={upto} f={f} w={900} h={560} pulse={ease(f, rec, rec + 8) * (0.6 + 0.4 * Math.sin(f * 0.3))} />
         {f >= rec ? <path d="M 160 680 L 160 1050" stroke={HG.yellow} strokeWidth={8} strokeDasharray="18 12" /> : null}
         <MarketArrow x={850} y={700} s={0.8} t={pop(f, market, 10)} label="MARKET" />
-        <Kneeler x={-150} y={1300} s={1.2} f={f} />
+        <Kneeler x={-60} y={1245} s={1.05} f={f} />
       </Layer>
       <Layer depth={0}>
         <Ticker y={lerp(1215, 1215, back)} text="BREAKING: STOCK FALLS FASTER THAN BOARD CONFIDENCE" off={Math.max(0, f - mon) * 9} o={ease(f, mon, mon + 6) * (1 - caption)} />

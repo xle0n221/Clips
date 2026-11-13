@@ -215,7 +215,7 @@
       "sources": [
         "9.11.2026: 186,64 → 178,67 $ = −4,27 % (gesprochen gerundet 'four percent'); Nasdaq/S&P stiegen – https://www.stocktitan.net + https://stockanalysis.com/stocks/nvda/history/ – Status: Kursdaten laut Suchtreffern, Herleitung docs/recherche-jensen-huang.md b; Prüfstatus: nur WebSearch-Zusammenfassung, Seite nicht geladen (Host im Proxy gesperrt) – Wortlaut nicht geprüft, Faktenprüfer muss Primärquelle laden.",
         "10.11.2026: 178,67 → 168,89 $ = −5,47 % (gerundet 5,5 %) – https://heygotrade.com (Marktbericht 'november-6-2026', genaue URL laut Recherche gekürzt) – Status wie oben; Gegenzahl StockTitan 166,60/−6,8 % = Mittagswert.",
-        "Rekordschluss 6.10.2026: 239,24 $ (stocktitan/Suche). Herleitung 'almost thirty percent': 168,89 / 239,24 − 1 = −29,4 %.",
+        "Rekordschluss 5.10.2026: 238,90 $ (Reuters laut Suchzusammenfassung, Faktenprüfer 13.11.). Herleitung almost thirty percent: 168,89 / 238,90 − 1 = −29,3 %.",
         "Ursache 9./10.11. laut Al Jazeera ('shares slump amid investigation') und Motley Fool ausdrücklich mit der Untersuchung verbunden ({R} b Ursachenlage); Sprechtext nennt bewusst keine Ursache, nur Zeitfolge.",
         "Meme-Formate belegt: 'BREAKING'-Fake-Ticker, TikTok 11.11.2026, 1,3 Mio Views – https://www.tiktok.com/@spiderbilaly/video/7707067627352362254 ; Gebets-Caption – https://www.tiktok.com/@dylan.page/video/7706619783201983776 (Apify, Videos nicht angesehen)."
       ],
@@ -260,7 +260,7 @@
           "color": "#FFD23F",
           "sfx": "ding",
           "label": {
-            "text": "RECORD OCT 6: $239.24",
+            "text": "OCT RECORD: ~$239",
             "color": "#B0BEC5",
             "x": 0.5,
             "y": 0.3
