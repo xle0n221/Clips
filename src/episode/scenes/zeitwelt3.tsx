@@ -163,8 +163,8 @@ const RealDesk: React.FC<{ readonly frame: number; readonly kb: number; readonly
         <planeGeometry args={[14, 10]} />
         <meshStandardMaterial color="#2E2A28" roughness={0.9} />
       </mesh>
-      <Frame position={[0, 3.3, -1.1]} w={3.6} h={2.4} map={photo} kb={kb} />
-      <TextLabel text="OUR WORLD · NASA PHOTO FROM SPACE" width={3.4} height={0.18} color="#C8BCA8" position={[0, 1.9, -1.08]} />
+      <Frame position={[0, 3.3, -1.1]} w={2.3} h={3.0} map={photo} kb={kb} />
+      <TextLabel text="OUR WORLD · NASA PHOTO FROM SPACE" width={2.3} height={0.14} color="#C8BCA8" position={[0, 1.62, -1.08]} />
       <Plank size={[8, 0.25, 3]} position={[0, 1.0, 0.4]} color="#6E4A30" />
       {card > 0 ? (
         <group position={[0.9, 1.15, 0.6]} rotation={[-Math.PI / 2 + 0.25 * (1 - card), 0, -0.12]} scale={card}>
@@ -178,7 +178,7 @@ const RealDesk: React.FC<{ readonly frame: number; readonly kb: number; readonly
         </group>
       ) : null}
       {quote > 0 ? (
-        <group position={[0, 3.3, -0.6]} scale={0.85 + 0.15 * quote}>
+        <group position={[0, 3.3, -0.6]} scale={0.55 * (0.85 + 0.15 * quote)}>
           <mesh>
             <planeGeometry args={[4.4, 1.9]} />
             <meshBasicMaterial color="#0B0D12" transparent opacity={0.72 * quote} />
@@ -204,8 +204,8 @@ export const ZwFranklin: React.FC = () => {
   const { shot, f } = cut(frame, [cutAt]);
   if (shot === 0) {
     // Nach dem Sanduhr-Wipe: echtes Foto unserer Welt (Stadtlichter), Push-in
-    const a = frameOn([0, 3.3, -1.1], 4.2, 0.48, 0.5, [0, 0, 1]);
-    const b = frameOn([0, 3.3, -1.1], 3.2, 0.48, 0.5, [0, 0, 1]);
+    const a = frameOn([0, 3.2, -1.1], 5.0, 0.48, 0.5, [0, 0, 1]);
+    const b = frameOn([0, 3.3, -1.1], 3.9, 0.48, 0.5, [0, 0, 1]);
     return (
       <>
         <RealDesk frame={frame} kb={ramp(frame, 0, cutAt)} />
@@ -215,8 +215,8 @@ export const ZwFranklin: React.FC = () => {
   }
   // Schreibtisch: daneben fällt eine eigene Papierkarte „ADVICE TO A YOUNG TRADESMAN · 1748“ (kein Faksimile)
   const card = ramp(frame, advice - 40, advice - 20, Easing.out(Easing.back(1.4)));
-  const a = frameOn([0.3, 2.3, -0.2], 6.4, 0.5, 0.5, [0, 0.35, 1]);
-  const b = frameOn([0.5, 2.0, 0.0], 5.4, 0.52, 0.5, [0, 0.45, 1]);
+  const a = frameOn([0.4, 2.5, -0.3], 6.0, 0.48, 0.5, [0, 0.3, 1]);
+  const b = frameOn([0.5, 2.2, -0.1], 5.0, 0.5, 0.5, [0, 0.38, 1]);
   return (
     <>
       <RealDesk frame={frame} kb={1} card={card} />

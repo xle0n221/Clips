@@ -22,6 +22,13 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Zeit-Welt (Cinematic 3D, KnowToon STEP 2) · Eigene Klotzfigur statt Marken-Optik: Kopf als abgerundeter Quader
+  BREITER als der Rumpf (Spielzeug-Großkopf), runde Punktaugen mit Glanzpunkt, Fäustlinge, trapezförmiger Rumpf – kein Noppen-Kopf,
+  keine C-Hände, kein Pixel-Gesicht. Erkennung: Ida = petrol Hemd + Senf-Schürze + Messing-Lupe am Stirnband; Anton = weiße Buschbrauen
+  + runde Brille; Glass Office = Milchglas-Visier statt Gesicht. **Farblogik hält im Kontaktabzug:** Welt kalt blau-grau, Gold nur
+  als Sand (emissiv, `toneMapped={false}`), einzige warme Innenräume = Werkstatt/Stube; Twist auf Spotlight-Schwarz; Schluss warm ohne
+  Gold (Glas weg). Schlüsselobjekt `TimeJar` in fast jeder Szene. Echte Bilder: NASA-ISS-Foto im Bilderrahmen „OUR WORLD“ + ISS-Video
+  als Spiegelung im Glas – echte Welt als Foto im 3D-Raum, nicht als Vollbild. Beleg `out/zeit-kontakt.png`, `out/zeit-welt-cover.png`.
 - 13.11.2026 · Jason GTA 6 (2D-Akte, Schwester zu Lucia) · Eigene Bildwelt bei gleichem Format: Kork-Pinnwand + Polaroids statt
   Schreibtisch, Keys-Mittag (Himmelblau/Türkis/Sand) statt Abendrot, Erkennung über Pink (Hemd) – als Kind pinkes Übergrößen-Shirt,
   Armee olivgrün ohne Abzeichen (`Toon` additiv `outfit: "army" | "jkid"`, `age: "kid"` für Jason; Lucia unverändert geprüft).

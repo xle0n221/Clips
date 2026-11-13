@@ -145,8 +145,8 @@ export const ZwRent: React.FC = () => {
     const hit = (frame % 18) / 18;
     const ham = frame < notice + 10 ? Math.sin(hit * Math.PI * 2) * 0.5 : 0;
     const paperIn = ramp(frame, 8, 22);
-    const a = frameOn([-0.2, 2.6, -1.8], 7.6, 0.5, 0.5, [0.25, 0.05, 1]);
-    const b = frameOn([-0.4, 2.6, -1.8], 6.4, 0.48, 0.5, [0.18, 0.04, 1]);
+    const a = frameOn([0.2, 2.6, -1.6], 8.4, 0.5, 0.5, [0.25, 0.05, 1]);
+    const b = frameOn([0.1, 2.5, -1.6], 7.2, 0.48, 0.5, [0.18, 0.04, 1]);
     return (
       <>
         {street}
@@ -158,7 +158,7 @@ export const ZwRent: React.FC = () => {
           <TextLabel text="RENT" width={1.2} height={0.34} color="#3A1A1A" position={[0, 0.2, 0.01]} />
           <TextLabel text="+1 WEEK" width={1.3} height={0.34} color="#8A1F2A" position={[0, -0.2, 0.01]} />
         </group>
-        <Klotz frame={frame} who="landlord" position={[1.6, 0, -0.9]} rotation={[0, -0.9, 0]} reach={[1.5 + ham, 0.3]} mouth="grin" brow={0.5} blinkSeed={81} />
+        <Klotz frame={frame} who="landlord" position={[0.9, 0, -0.9]} rotation={[0, -0.9, 0]} reach={[1.5 + ham, 0.3]} mouth="grin" brow={0.5} blinkSeed={81} />
         <Shot frame={f} duration={cutAt} {...fly(a, b)} />
       </>
     );
@@ -293,13 +293,13 @@ export const ZwSweeper: React.FC = () => {
   }
   // Sie schaut Ida direkt an und zwinkert; Ida (Vordergrund links) mit Augen-Pop
   const pop = eyePopAt(frame, alive, 1.8, 1.4);
-  const a = frameOn([0.2, 2.0, -0.4], 6.4, 0.45, 0.5, [0.2, 0.08, 1]);
-  const b = frameOn([0.2, 2.0, -0.4], 5.6, 0.45, 0.5, [0.15, 0.06, 1]);
+  const a = frameOn([-0.5, 2.0, 0.4], 8.0, 0.45, 0.5, [0.2, 0.08, 1]);
+  const b = frameOn([-0.5, 2.0, 0.4], 7.0, 0.45, 0.5, [0.15, 0.06, 1]);
   return (
     <>
       <MarketSet frame={frame} rain={0.4} />
       {sweeper(frame >= alive)}
-      <Klotz frame={frame} who="ida" position={[-1.6, 0, 1.4]} rotation={[0, 0.7, 0]} eyes="wide" eyePop={pop} mouth="o" blinkSeed={3} jar={{ fill: 0.12 }} />
+      <Klotz frame={frame} who="ida" position={[-1.5, 0, 1.2]} rotation={[0, 0.9, 0]} eyes="wide" eyePop={pop} mouth="o" blinkSeed={3} jar={{ fill: 0.12 }} />
       <Shot frame={f} duration={duration - c2} {...fly(a, b)} />
     </>
   );

@@ -24,6 +24,18 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Zeit-Welt „In This City, You Pay With Time“ (Cinematic 3D, KnowToon-Prompt) v1 · **Experiment Kino-Look ohne
+  Postprocessing:** PBR-Kunststoff (`meshPhysicalMaterial` mit Klarlack) + additive Lichtkegel (`LightShaft`, offener Zylinder mit
+  Verlaufs-Textur) + Halo/Bokeh-Punkte + Partikel (Staub/Sand/Regen deterministisch aus Seed + Frame) + DOM-Ebene `FilmLook`
+  (Filmkorn `feTurbulence` je Bild neuer Seed, Vignette, Rand-Unschärfe per `backdrop-filter`) → liest sich im Kontaktabzug als
+  „Film-Look“, 5,4 s/Bild bei 0,3 Größe (Rom ≈ 4 s). **Kamera-Falle Hochformat:** erste Fassung 10 von 17 Einstellungen zu nah – bei
+  `aimAt` ist die sichtbare BREITE nur 0,5625·H; Querformat-Dinge (Foto 3,6 breit, Zitat 4,0 breit) bei H 4–5 laufen aus dem Bild
+  (Foto wirkte „schwarz“, weil nur die dunkle Bildmitte zu sehen war) → Breite ≤ 0,8·0,5625·H planen, Halbnah H 6–8, Gesicht H 3–5,
+  Totale H 10–17. Schwenk zwischen zwei Orten mitten in der Einstellung zeigt im Standbild Leere → Schwenk ≤ 14 Bilder oder Orte
+  näher. Prop-Name `key` an eigener Komponente geht nicht (React) → `keyLight`. Neu `scenes/zeitweltSets.tsx`: `Klotz` (eigene
+  Klotzfigur, Rollen ida/anton/sweeper/landlord/office/…), `TimeJar` (fill/painted/scratch/cobweb), `Atmos`, `LightShaft`, `Halo`,
+  `Motes`, `Rain`, `SandStream`, `WetGround` (Glanzstreifen), `Lamp`, `House`/`HouseRow`, `Gear`, `Room`, `HangLamp`, `Frame`
+  (echte Textur, Ken-Burns), `useImageTexture` (delayRender). Beleg `out/zw-test1.jpg` → `out/zw-test2.jpg` → `out/zeit-kontakt.png`.
 - 13.11.2026 · Jason GTA 6 v2 nach Regie 8,5 / Design 8,5 (`docs/kritik-jason-szenen.md`) · Cartoon-Ersatz muss allein tragen
   (Karte ab Schnitt deckend + dunkle Kontur + Mini-Cabrio, nicht erst auf dem Cue einblenden); Cover-Blinzeln: `blinkAt` startet
   frühestens Bild 10 → Figur im Cover mit festem Bild 0 zeichnen; „Dach“ liest sich erst mit Blende, Regenrinne, Hauswand +
@@ -197,6 +209,7 @@
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 13.11.2026 | Zeit-Welt (3D) v1 | – (Selbstnote 8, Regie/Design offen) | 21 Szenen, 39 Einstellungen; Figuren-Animation nur im Standbild geprüft |
 | 13.11.2026 | Jason GTA 6 (2D) v1 | – (Selbstnote 8,5, Regie/Design offen) | 11 Szenen ≈ 25 Einstellungen; echte Bilder nur als Slots (Dateien fehlten) |
 | 08.11.2026 | Sonnensystem v2 | – | 3 Anschnitte |
 | 12.11.2026 | UFC (2D) v1 | 6,0 (Regie) | Cue-Abstände Ø 1,7 s, Karten bis Loop-Ende, Label-Stapel |

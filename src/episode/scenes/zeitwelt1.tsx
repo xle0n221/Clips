@@ -250,11 +250,11 @@ export const CounterMacro: React.FC<{ readonly frame: number; readonly pour?: nu
       <Plank size={[6, 0.25, 2.4]} position={[0, 0.88, 0]} color="#9A7050" />
       <Bread position={[0.85, 1.0, -0.35]} rotation={[0, -0.35, 0]} scale={0.95} />
       {/* Preisschild am Spieß */}
-      <mesh position={[0.55, 1.62, 0.05]}>
+      <mesh position={[0.3, 1.62, 0.05]}>
         <cylinderGeometry args={[0.012, 0.012, 0.75, 6]} />
         <meshStandardMaterial color="#C9C2B4" metalness={0.6} roughness={0.3} />
       </mesh>
-      <group position={[0.55, 1.98, 0.06]} rotation={[0, -0.12, 0.04]}>
+      <group position={[0.3, 1.98, 0.06]} rotation={[0, -0.12, 0.04]}>
         <mesh position={[0, 0, -0.01]}>
           <planeGeometry args={[1.12, 0.46]} />
           <meshStandardMaterial color={Z.paper} roughness={0.9} />
@@ -499,7 +499,7 @@ export const ZwRules: React.FC = () => {
   // Fahrt links → rechts: Fabrik füllt Gläser (Sand aus Messingrohr) → Bäcker kippt ein Kunden-Glas auf seine Waage
   const startX = -2.4;
   const endX = 5.2;
-  const t = ramp(frame, empties - 18, empties + 8, Easing.inOut(Easing.cubic));
+  const t = ramp(frame, empties - 9, empties + 5, Easing.inOut(Easing.cubic));
   const x = lerp(startX, endX, t);
   const crank = frame * 0.12;
   const workerFill = 0.25 + 0.4 * ramp(frame, fills, fills + 40);
@@ -516,8 +516,8 @@ export const ZwRules: React.FC = () => {
         <meshStandardMaterial color="#3C4452" roughness={0.9} />
       </mesh>
       {/* Fabrik: Messingrohr mit Kurbel, Arbeiter dreht, Sand fließt ins Glas */}
-      <mesh position={[-2.4, 3.6, -1.2]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.18, 0.18, 4, 16]} />
+      <mesh position={[1.4, 3.6, -1.2]} rotation={[0, 0, Math.PI / 2]}>
+        <cylinderGeometry args={[0.18, 0.18, 11.6, 16]} />
         <meshStandardMaterial color={Z.brass} metalness={0.8} roughness={0.3} />
       </mesh>
       <mesh position={[-1.6, 3.0, -1.2]}>
@@ -668,8 +668,8 @@ export const ZwEmpty: React.FC = () => {
   const y = lf < 0 ? 1.1 : lf < 8 ? 1.1 * (1 - fall * fall) : Math.abs(Math.sin(lf * 0.5)) * 0.08 * Math.exp(-(lf - 8) * 0.25);
   const roll = Math.max(0, lf - 8) * 0.05;
   const flick = lf < 0 ? 1 : lf < 16 ? (Math.floor(lf / 2) % 2 ? 0.25 : 0.9) : Math.max(0, 1 - (lf - 16) / 6);
-  const a = frameOn([0.2, 0.9, 0.0], 4.6, 0.55, 0.5, [0.35, 0.2, 1]);
-  const b = frameOn([0.7, 0.8, 0.0], 3.8, 0.55, 0.5, [0.3, 0.18, 1]);
+  const a = frameOn([0.4, 0.6, 0.4], 3.0, 0.55, 0.5, [0.35, 0.25, 1]);
+  const b = frameOn([0.9, 0.4, 0.4], 2.4, 0.55, 0.5, [0.3, 0.22, 1]);
   void from;
   return (
     <>
@@ -809,7 +809,7 @@ export const ZwThread: React.FC = () => {
     <>
       <AntonRoom frame={frame} light="dawn" />
       <Klotz frame={frame} who="ida" position={[-1.2, 0, -0.6]} rotation={[0, 0.7, 0]} eyes="dot" mouth="flat" brow={-0.6} blinkSeed={3} jar={{ fill: 0.6 }} />
-      <Motes frame={breath} center={[-0.55, 2.0, 0.0]} size={[0.5, 0.25, 0.4]} count={30} drift={[-0.006, 0.002, 0.004]} color="#E4EEFF" dot={0.09} opacity={breath < 24 ? 0.35 * (1 - breath / 24) : 0} seed={61} />
+      <Motes frame={breath} center={[-0.55, 1.95, 0.25]}  size={[0.5, 0.25, 0.4]} count={30} drift={[-0.006, 0.002, 0.004]} color="#E4EEFF" dot={0.09} opacity={breath < 24 ? 0.35 * (1 - breath / 24) : 0} seed={61} />
       <Shot frame={f} duration={duration - c2} {...fly(a, b)} />
     </>
   );
