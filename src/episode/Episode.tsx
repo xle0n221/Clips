@@ -252,6 +252,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
           barId={cfg.hud2d.barId}
           plate={cfg.hud2d.plate}
           hideBeat={cfg.hud2d.hideBeat}
+          maxWidth={cfg.hud2d.maxWidth}
         />
       ) : null}
 

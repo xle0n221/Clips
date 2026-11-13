@@ -9,6 +9,7 @@ import { UFC_CONFIG, UFC_SCENES } from "./ufc";
 import { ROLLS_CONFIG, ROLLS_SCENES } from "./rolls";
 import { HUANG_CONFIG, HUANG_SCENES } from "./huang";
 import { LUCIA_CONFIG, LUCIA_SCENES } from "./lucia";
+import { JASON_CONFIG, JASON_SCENES } from "./jason";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
 export const SCENES: Record<string, React.FC> = {
@@ -38,6 +39,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "rolls-royce": ROLLS_SCENES,
   "jensen-huang": HUANG_SCENES,
   "lucia-gta6": LUCIA_SCENES,
+  "jason-gta6": JASON_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -52,7 +54,7 @@ export type EpisodeConfig = {
   readonly look?: "2d";
   readonly transitions?: Record<string, TransitionSpec>;
   /** `plate`: dunkle Platte hinter dem Text-Zähler (Kontrast auf hellem Papier); `hideBeat`: HUD blendet ab diesem Beat aus (Loop-Naht) */
-  readonly hud2d?: { readonly freezeBeat?: string; readonly counterId?: string; readonly barId?: string; readonly plate?: boolean; readonly hideBeat?: string };
+  readonly hud2d?: { readonly freezeBeat?: string; readonly counterId?: string; readonly barId?: string; readonly plate?: boolean; readonly hideBeat?: string; readonly maxWidth?: number };
   /** Sticker (Text → höchstens so viele Bilder, Standard 54) */
   readonly stickerMax?: Record<string, number>;
   /** Pill (label) einer Szene endet am Beat dieses Namens statt am Szenenende (Szenen-ID → Beat) */
@@ -73,5 +75,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "rolls-royce": ROLLS_CONFIG,
   "jensen-huang": HUANG_CONFIG,
   "lucia-gta6": LUCIA_CONFIG,
+  "jason-gta6": JASON_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

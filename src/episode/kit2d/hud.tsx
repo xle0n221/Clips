@@ -46,7 +46,9 @@ export const TimelineHUD: React.FC<{
   readonly plate?: boolean;
   /** ab diesem Beat ausblenden (10 Bilder) */
   readonly hideBeat?: string;
-}> = ({ timeline, counterId = "time", barId = "traces", freezeBeat, plate = false, hideBeat }) => {
+  /** Wert-Schrift schrumpft, damit der längste Wert höchstens so breit ist (px); ohne = 104 px wie bisher */
+  readonly maxWidth?: number;
+}> = ({ timeline, counterId = "time", barId = "traces", freezeBeat, plate = false, hideBeat, maxWidth }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const toF = (ms: number) => Math.round((ms / 1000) * fps);
@@ -100,10 +102,13 @@ export const TimelineHUD: React.FC<{
   const dropFlash = barLocal < 12 ? 1 - barLocal / 12 : 0;
   const barColor = frozen ? C.moon : (bar?.color ?? C.scarf);
 
+  // optional: Schrift so, dass der aktuelle Wert (≈ 0,74 em je Zeichen) in maxWidth passt
+  const longest = Math.max(cur.length, flipOld?.length ?? 0);
+  const valueSize = maxWidth ? Math.min(104, Math.floor(maxWidth / Math.max(1, longest * 0.74))) : 104;
   const textStyle: React.CSSProperties = {
     fontFamily: FONT,
     fontWeight: 900,
-    fontSize: 104,
+    fontSize: valueSize,
     lineHeight: 1,
     color: C.white,
     letterSpacing: -1,
@@ -119,7 +124,7 @@ export const TimelineHUD: React.FC<{
             position: "absolute",
             left: LEFT - 22,
             top: TOP - 14,
-            width: Math.max(spec?.title ? spec.title.length * 26 : 0, Math.max(cur.length, flipOld?.length ?? 0) * 80) + 44,
+            width: Math.max(spec?.title ? spec.title.length * 26 : 0, Math.max(cur.length, flipOld?.length ?? 0) * 80 * (valueSize / 104)) + 44,
             height: (spec?.title ? 42 : 0) + 124,
             borderRadius: 22,
             background: "rgba(16,10,26,0.62)",
