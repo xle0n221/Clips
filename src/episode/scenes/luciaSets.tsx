@@ -81,25 +81,29 @@ export const LT: React.FC<{
 
 export type LArm = readonly [number, number];
 type Build = { leg: number; torso: number; head: number; shW: number; hipW: number; waist: number; a1: number; a2: number; limb: number };
-const BUILD: Record<"adult" | "teen" | "kid" | "jason", Build> = {
+const BUILD: Record<"adult" | "teen" | "kid" | "jason" | "jkid", Build> = {
   adult: { leg: 250, torso: 184, head: 58, shW: 64, hipW: 52, waist: 44, a1: 100, a2: 96, limb: 27 },
   teen: { leg: 214, torso: 160, head: 57, shW: 56, hipW: 45, waist: 40, a1: 88, a2: 84, limb: 24 },
   kid: { leg: 142, torso: 118, head: 56, shW: 46, hipW: 38, waist: 38, a1: 64, a2: 60, limb: 22 },
   jason: { leg: 248, torso: 188, head: 58, shW: 80, hipW: 54, waist: 60, a1: 104, a2: 100, limb: 31 },
+  /** Jason als Kind (Jason-Video, additiv): nur bei who="jason" + age="kid" */
+  jkid: { leg: 148, torso: 124, head: 57, shW: 50, hipW: 40, waist: 42, a1: 68, a2: 64, limb: 23 },
 };
+/** Bauplan je Figur (Lucia: Alter; Jason: Erwachsen, additiv Kind). */
+const bkey = (who: "lucia" | "jason", age: LAge) => (who === "jason" ? (age === "kid" ? "jkid" : "jason") : age);
 export type LAge = "kid" | "teen" | "adult";
-export type LOutfit = "casual" | "overall" | "kid" | "teen" | "heist" | "jason";
+export type LOutfit = "casual" | "overall" | "kid" | "teen" | "heist" | "jason" | "army" | "jkid";
 const rad = (d: number) => (d * Math.PI) / 180;
 const poly = (pts: readonly (readonly [number, number])[]) => pts.map((q, i) => `${i ? "L" : "M"} ${q[0].toFixed(1)} ${q[1].toFixed(1)}`).join(" ");
 
 /** Kopfmitte relativ zum Fußpunkt (s = 1). */
 export const toonHeadY = (who: "lucia" | "jason" = "lucia", age: LAge = "adult") => {
-  const b = BUILD[who === "jason" ? "jason" : age];
+  const b = BUILD[bkey(who, age)];
   return -(b.leg + b.torso + 20 + b.head);
 };
 /** Handposition relativ zum Fußpunkt (s = 1, nicht gespiegelt). */
 export const toonHand = (side: -1 | 1, arm: LArm, who: "lucia" | "jason" = "lucia", age: LAge = "adult") => {
-  const b = BUILD[who === "jason" ? "jason" : age];
+  const b = BUILD[bkey(who, age)];
   const sh = -b.leg - b.torso;
   const s0: [number, number] = [side * (b.shW - 10), sh + 16];
   const e: [number, number] = [s0[0] + side * Math.sin(rad(arm[0])) * b.a1, s0[1] + Math.cos(rad(arm[0])) * b.a1];
@@ -171,8 +175,8 @@ export const Toon: React.FC<{
   rim,
 }) => {
   const isJ = who === "jason";
-  const b = BUILD[isJ ? "jason" : age];
-  const outfit: LOutfit = outfitIn ?? (isJ ? "jason" : age === "kid" ? "kid" : age === "teen" ? "teen" : "casual");
+  const b = BUILD[bkey(who, age)];
+  const outfit: LOutfit = outfitIn ?? (isJ ? (age === "kid" ? "jkid" : "jason") : age === "kid" ? "kid" : age === "teen" ? "teen" : "casual");
   const ink = LC.ink;
   const skin = sil ?? (isJ ? LC.jSkin : LC.skin);
   const shade = isJ ? LC.jShade : LC.skinShade;
@@ -195,6 +199,12 @@ export const Toon: React.FC<{
         return { top: "#8C8A99", sleeveU: "#8C8A99", sleeveL: "#8C8A99", sleeveLen: 1, leg: LC.denim, shoe: LC.white, bottom: LC.denim };
       case "heist":
         return { top: "#2A2433", sleeveU: "#2A2433", sleeveL: "#2A2433", sleeveLen: 1, leg: "#221D2A", shoe: "#141018", bottom: "#221D2A" };
+      case "army":
+        // schlichte olivgrüne Jacke ohne Abzeichen/Rang/Einheit (Jason-Video, Bild-Hinweise)
+        return { top: "#5F6B3C", sleeveU: "#5F6B3C", sleeveL: "#55613A", sleeveLen: 1, leg: "#6B6550", shoe: "#2B2430", bottom: "#6B6550" };
+      case "jkid":
+        // zu großes pinkes T-Shirt (Jason als Kind)
+        return { top: LC.pink, sleeveU: LC.pink, sleeveL: skin, sleeveLen: 0, leg: skin, shoe: LC.white, bottom: LC.denim };
       case "jason":
         return { top: LC.pink, sleeveU: LC.pink, sleeveL: skin, sleeveLen: 0, leg: "#3C4A66", shoe: "#2B2430", bottom: "#3C4A66" };
       default:
@@ -249,7 +259,7 @@ export const Toon: React.FC<{
       <g key={`arm${side}`}>
         <path d={poly(pts)} stroke={ink} strokeWidth={w + 10} fill="none" strokeLinecap="round" strokeLinejoin="round" />
         <path d={poly(pts)} stroke={skin} strokeWidth={w} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        {outfit === "kid" || outfit === "jason" ? (
+        {outfit === "kid" || outfit === "jason" || outfit === "jkid" ? (
           <path d={poly([pts[0], upperHalf])} stroke={S(pal.sleeveU)} strokeWidth={w + 8} strokeLinecap="round" />
         ) : (
           <>
@@ -382,7 +392,7 @@ export const Toon: React.FC<{
       {sil ? null : (
         <>
           <path d={`M ${-hr * 0.88} ${headC + hr * 0.25} Q 0 ${headC + hr * 1.12} ${hr * 0.88} ${headC + hr * 0.25} Q 0 ${headC + hr * 0.9} ${-hr * 0.88} ${headC + hr * 0.25} Z`} fill={shade} opacity={0.45} />
-          {isJ ? (
+          {isJ && age !== "kid" ? (
             <g opacity={0.5}>
               <path d={`M ${-hr * 0.8} ${headC + hr * 0.3} Q 0 ${headC + hr * 1.18} ${hr * 0.8} ${headC + hr * 0.3} Q 0 ${headC + hr * 0.82} ${-hr * 0.8} ${headC + hr * 0.3} Z`} fill="#5A4030" opacity={0.35} />
               {Array.from({ length: 14 }, (_, i) => (
@@ -471,6 +481,32 @@ export const Toon: React.FC<{
         <g>
           <path d={lowerD} fill={LC.denim} stroke={ink} strokeWidth={5} strokeLinejoin="round" />
           <path d={`M -30 ${sh - 6} Q 0 ${sh + 30} 30 ${sh - 6}`} stroke="#6E6C7A" strokeWidth={8} fill="none" />
+        </g>
+      );
+    if (outfit === "army")
+      return (
+        <g>
+          <path d={`M -26 ${sh - 8} L 0 ${sh + 26} L 26 ${sh - 8}`} fill="#4C5730" stroke={ink} strokeWidth={4} strokeLinejoin="round" />
+          <path d={`M 0 ${sh + 26} L 0 ${hipY - 4}`} stroke="#3E4728" strokeWidth={5} />
+          {[-1, 1].map((sd) => (
+            <rect key={sd} x={sd > 0 ? 12 : -12 - b.shW * 0.55} y={sh + 40} width={b.shW * 0.55} height={44} rx={4} fill="#55613A" stroke={ink} strokeWidth={4} />
+          ))}
+          <path d={lowerD} fill="#6B6550" stroke={ink} strokeWidth={5} strokeLinejoin="round" />
+          <rect x={-b.waist - 2} y={wy - 2} width={b.waist * 2 + 4} height={12} fill="#2A2032" />
+        </g>
+      );
+    if (outfit === "jkid")
+      return (
+        <g>
+          <path
+            d={`M ${-b.hipW - 6} ${hipY - 4} L ${b.hipW + 6} ${hipY - 4} L ${b.hipW + 14} ${hipY + 52} L 6 ${hipY + 56} L 0 ${hipY + 22} L -6 ${hipY + 56} L ${-b.hipW - 14} ${hipY + 52} Z`}
+            fill={LC.denim}
+            stroke={ink}
+            strokeWidth={5}
+            strokeLinejoin="round"
+          />
+          <path d={`M ${-b.shW - 4} ${sh + 10} L ${-b.hipW - 16} ${hipY + 26} L ${b.hipW + 16} ${hipY + 26} L ${b.shW + 4} ${sh + 10} Z`} fill={LC.pink} stroke={ink} strokeWidth={5} strokeLinejoin="round" />
+          <path d={`M -24 ${sh - 8} Q 0 ${sh + 16} 24 ${sh - 8}`} stroke={LC.pinkDark} strokeWidth={7} fill="none" />
         </g>
       );
     if (outfit === "jason")
