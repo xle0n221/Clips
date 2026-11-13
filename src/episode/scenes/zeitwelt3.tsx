@@ -147,9 +147,10 @@ export const ZwFear: React.FC = () => {
 /* ------------------------------------------------------------------ */
 
 /** Schreibtisch in „unserer Welt“: echtes NASA-Foto (Stadtlichter aus der ISS) im Rahmen + eigene Papierkarte. */
-const RealDesk: React.FC<{ readonly frame: number; readonly kb: number; readonly card?: number; readonly quote?: number; readonly dissolve?: number }> = ({
+const RealDesk: React.FC<{ readonly frame: number; readonly kb: number; readonly card?: number; readonly quote?: number; readonly dissolve?: number; readonly creditY?: number | null }> = ({
   frame,
   kb,
+  creditY = 4.2,
   card = 0,
   quote = 0,
   dissolve = 0,
@@ -163,7 +164,15 @@ const RealDesk: React.FC<{ readonly frame: number; readonly kb: number; readonly
         <meshStandardMaterial color="#2E2A28" roughness={0.9} />
       </mesh>
       <Frame position={[0, 3.3, -1.1]} w={2.3} h={3.0} map={photo} kb={kb} />
-      <TextLabel text="OUR WORLD · NASA PHOTO FROM SPACE" width={2.3} height={0.14} color="#C8BCA8" position={[0, 5.1, -1.08]} />
+      {creditY !== null ? (
+        <group position={[0, creditY, -1.0]}>
+          <mesh position={[0, 0, -0.005]}>
+            <planeGeometry args={[2.0, 0.2]} />
+            <meshBasicMaterial color="#000000" transparent opacity={0.6} />
+          </mesh>
+          <TextLabel text="OUR WORLD · NASA PHOTO FROM SPACE" width={1.9} height={0.12} color="#E6DCC8" />
+        </group>
+      ) : null}
       <Plank size={[8, 0.25, 3]} position={[0, 0.6, 0.4]} color="#6E4A30" />
       {card > 0 ? (
         <group position={[0.95, 3.0, -0.92]} rotation={[0, 0, -0.08 + 0.3 * (1 - card)]} scale={0.55 * card}>
@@ -244,7 +253,7 @@ export const ZwLiteral: React.FC = () => {
     const b = frameOn([0, 3.0, -0.6], 4.2, 0.45, 0.5, [0, 0, 1]);
     return (
       <>
-        <RealDesk frame={frame} kb={1} card={0} quote={q} dissolve={dis} />
+        <RealDesk frame={frame} kb={1} card={0} quote={q} dissolve={dis} creditY={null} />
         <Shot frame={f} duration={cutAt} {...fly(a, b)} />
       </>
     );

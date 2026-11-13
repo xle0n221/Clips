@@ -597,11 +597,11 @@ export const OfficeDoor: React.FC<{ readonly frost?: number; readonly sign?: boo
     {sign ? (
       <group position={[0, 4.1, 0.03]}>
         <mesh>
-          <planeGeometry args={[3.6, 0.9]} />
+          <planeGeometry args={[2.5, 0.9]} />
           <meshStandardMaterial color="#DDE5EC" emissive="#9FB4C8" emissiveIntensity={0.55} roughness={0.6} />
         </mesh>
-        <TextLabel text="GLASS OFFICE" width={3.3} height={0.5} color="#1E2630" position={[0, 0.13, 0.01]} />
-        <TextLabel text="REPORT EMPTY JARS" width={3.2} height={0.3} color="#6A2A32" position={[0, -0.24, 0.01]} />
+        <TextLabel text="GLASS OFFICE" width={2.3} height={0.45} color="#1E2630" position={[0, 0.13, 0.01]} />
+        <TextLabel text="REPORT EMPTY JARS" width={2.25} height={0.26} color="#6A2A32" position={[0, -0.24, 0.01]} />
       </group>
     ) : null}
   </group>
