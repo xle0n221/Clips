@@ -296,8 +296,8 @@ export const ZwHook: React.FC = () => {
   const cutAt = Math.max(30, life - 21); // Schnitt auf „Of“ (≈ 0,7 s vor „life“): Einstellung ≥ 1,5 s
   const { shot, f } = cut(frame, [cutAt]);
   if (shot === 0) {
-    const a = frameOn([-0.25, 1.45, 0.25], 1.9, 0.56, 0.5, [0.15, 0.22, 1]);
-    const b = frameOn([-0.3, 1.38, 0.28], 1.25, 0.56, 0.5, [0.1, 0.18, 1]);
+    const a = frameOn([0.1, 1.55, 0.1], 3.4, 0.58, 0.5, [0.15, 0.22, 1]);
+    const b = frameOn([-0.1, 1.45, 0.2], 2.5, 0.58, 0.5, [0.1, 0.18, 1]);
     return (
       <>
         <CounterMacro frame={frame} dish={0.25 + 0.15 * ramp(frame, 0, cutAt)} />
@@ -308,8 +308,8 @@ export const ZwHook: React.FC = () => {
   // Untersicht: Idas Gesicht im Gold-Schein von unten, Augen werden groß auf „life“
   const head: V3 = [0, 1.95, 0];
   const pop = eyePopAt(frame, life, 1.7, 1.35);
-  const a = frameOn(head, 3.4, 0.48, 0.5, [0.05, -0.32, 1]);
-  const b = frameOn(head, 2.9, 0.47, 0.5, [0.05, -0.36, 1]);
+  const a = frameOn(head, 5.2, 0.42, 0.5, [0.05, -0.3, 1]);
+  const b = frameOn(head, 4.4, 0.42, 0.5, [0.05, -0.34, 1]);
   return (
     <>
       <Atmos bg="#0F1520" fog={[6, 24]} sky="#3E5270" ground="#2A1A0C" hemi={0.35} rim={{ pos: [-3, 5, -6], color: "#9CC4FF", intensity: 2.6 }} />
@@ -347,8 +347,8 @@ export const ZwStakes: React.FC = () => {
   }
   // Over-the-shoulder: über Idas Schulter auf Anton am regennassen Fenster, sein Glas fast leer
   const anton: V3 = [0.6, 0, -3.2];
-  const a = frameOn([0.4, 2.2, -3.2], 4.4, 0.5, 0.55, [-0.35, 0.05, 1]);
-  const b = frameOn([0.5, 2.0, -3.2], 3.7, 0.5, 0.55, [-0.32, 0.04, 1]);
+  const a = frameOn([0.2, 2.0, -2.4], 6.4, 0.48, 0.5, [-0.3, 0.06, 1]);
+  const b = frameOn([0.3, 1.9, -2.6], 5.6, 0.48, 0.5, [-0.28, 0.05, 1]);
   return (
     <>
       <Atmos bg={Z.fogDeep} fog={[6, 26]} sky="#7F97B8" ground="#121821" hemi={0.7} keyLight={{ pos: [-6, 9, 6], color: "#AFC4E6", intensity: 1.0 }} rim={{ pos: [4, 4, -10], color: "#8FB8FF", intensity: 2 }} />
@@ -382,7 +382,7 @@ export const ZwStakes: React.FC = () => {
         </mesh>
       ))}
       {/* Ida von hinten im Vordergrund (Schulter, Frisur) */}
-      <Klotz frame={frame} who="ida" position={[-1.7, 0, 0.9]} rotation={[0, Math.PI - 0.35, 0]} scale={1.05} blinkSeed={3} reach={[0.1, 0.25]} jar={{ fill: 0.6 }} />
+      <Klotz frame={frame} who="ida" position={[-2.3, 0, 0.2]} rotation={[0, Math.PI - 0.35, 0]} scale={1.0} blinkSeed={3} reach={[0.1, 0.25]} jar={{ fill: 0.6 }} />
       <Lamp position={[3.8, 0, -2.6]} />
       <Rain frame={frame} center={[0, 3.5, -1]} size={[10, 8, 6]} opacity={0.3} />
       <Shot frame={f} duration={duration - cutAt} {...fly(a, b)} />
@@ -446,8 +446,8 @@ export const ZwWorld: React.FC = () => {
   }
   // Detail: Zeitglas am Gürtel einer Passantin (Messingdeckel, Hahn, Lederclip, Gold leuchtet)
   const hip: V3 = [0.42, 0.62 + 0.36 * 0.55, 0.42];
-  const a = frameOn(hip, 1.25, 0.5, 0.5, [0.35, 0.12, 1]);
-  const b = frameOn(hip, 0.95, 0.5, 0.5, [0.22, 0.1, 1]);
+  const a = frameOn(hip, 2.1, 0.5, 0.5, [0.35, 0.12, 1]);
+  const b = frameOn(hip, 1.6, 0.5, 0.5, [0.22, 0.1, 1]);
   return (
     <>
       <Atmos bg="#141C2A" fog={[2, 12]} sky="#7F97B8" ground="#121821" hemi={0.6} keyLight={{ pos: [3, 5, 4], color: "#CFDDF5", intensity: 1.3 }} rim={{ pos: [-3, 2, -4], color: "#8FB8FF", intensity: 3 }} />
@@ -474,8 +474,8 @@ export const ZwRules: React.FC = () => {
   if (shot === 0) {
     // Makro: einzelne Körner fallen im Sekundentakt durch den Hals des Glases
     const jar: V3 = [0, 0, 0];
-    const a = frameOn([0, 0.32, 0], 0.95, 0.5, 0.5, [0.1, 0.05, 1]);
-    const b = frameOn([0, 0.36, 0], 0.78, 0.5, 0.5, [0.06, 0.05, 1]);
+    const a = frameOn([0, 0.4, 0], 1.7, 0.5, 0.5, [0.1, 0.05, 1]);
+    const b = frameOn([0, 0.45, 0], 1.3, 0.5, 0.5, [0.06, 0.05, 1]);
     const grains = [0, 1, 2, 3].map((k) => {
       const t = ((frame + k * 30) % 30) / 30;
       return { y: lerp(0.62, 0.3, t * t), o: t < 0.95 ? 1 : 0 };
@@ -635,8 +635,8 @@ export const ZwEmpty: React.FC = () => {
     </>
   );
   if (shot === 0) {
-    const a = frameOn([0, 2.8, -2], 7.2, 0.46, 0.5, [0.15, 0.08, 1]);
-    const b = frameOn([0, 2.9, -2], 6.0, 0.46, 0.5, [0.1, 0.06, 1]);
+    const a = frameOn([0, 2.6, -2], 9.5, 0.5, 0.5, [0.15, 0.08, 1]);
+    const b = frameOn([0, 2.6, -2], 8.2, 0.5, 0.5, [0.1, 0.06, 1]);
     return (
       <>
         {alley}
@@ -647,8 +647,8 @@ export const ZwEmpty: React.FC = () => {
   }
   if (shot === 1) {
     // Kinder flüstern hinter einer Mauer, hinten leuchtet die Amtstür auf („Glass Office“)
-    const a = frameOn([0.1, 1.9, 2.4], 3.6, 0.5, 0.5, [0.25, 0.05, 1]);
-    const b = frameOn([0.1, 1.9, 2.4], 3.1, 0.5, 0.5, [0.18, 0.05, 1]);
+    const a = frameOn([0.1, 2.2, 2.0], 5.4, 0.5, 0.5, [0.25, 0.05, 1]);
+    const b = frameOn([0.1, 2.2, 2.0], 4.6, 0.5, 0.5, [0.18, 0.05, 1]);
     return (
       <>
         {alley}
@@ -668,12 +668,12 @@ export const ZwEmpty: React.FC = () => {
   const y = lf < 0 ? 1.1 : lf < 8 ? 1.1 * (1 - fall * fall) : Math.abs(Math.sin(lf * 0.5)) * 0.08 * Math.exp(-(lf - 8) * 0.25);
   const roll = Math.max(0, lf - 8) * 0.05;
   const flick = lf < 0 ? 1 : lf < 16 ? (Math.floor(lf / 2) % 2 ? 0.25 : 0.9) : Math.max(0, 1 - (lf - 16) / 6);
-  const a = frameOn([0.4, 0.35, 0.4], 2.6, 0.55, 0.5, [0.35, 0.12, 1]);
-  const b = frameOn([0.9, 0.3, 0.4], 2.2, 0.55, 0.5, [0.3, 0.1, 1]);
+  const a = frameOn([0.2, 0.9, 0.0], 4.6, 0.55, 0.5, [0.35, 0.2, 1]);
+  const b = frameOn([0.7, 0.8, 0.0], 3.8, 0.55, 0.5, [0.3, 0.18, 1]);
   void from;
   return (
     <>
-      <Atmos bg="#0A0F18" fog={[4, 18]} sky="#4A5C7A" ground="#0E131A" hemi={0.35} rim={{ pos: [3, 4, -6], color: "#B8D4F0", intensity: 1.4 }} />
+      <Atmos bg="#0A0F18" fog={[5, 20]} sky="#6A7FA0" ground="#0E131A" hemi={0.7} rim={{ pos: [3, 4, -6], color: "#B8D4F0", intensity: 1.4 }} />
       <WetGround glints={flick > 0.3 ? [[-1.4, 0, -1.4]] : []} />
       <Lamp position={[-1.4, 0, -3.2]} on={flick} />
       <TimeJar position={[0.3 + roll * 1.4, 0.16 + y, 0.4]} rotation={[lf >= 8 ? 0 : -fall * 1.2, 0, Math.PI / 2 + roll * 6]} scale={1.3} fill={0} glow={0} clip />
@@ -697,8 +697,8 @@ export const ZwIda: React.FC = () => {
     // Halbnah in der warmen Werkstatt: Ida öffnet eine Taschenuhr, springt dann vom Hocker (Hop)
     const h = hop(frame, cutAt - 26, 0.7, 12);
     const open = ramp(frame, clocks - 6, clocks + 10);
-    const a = frameOn([0.2, 2.3, -1.0], 5.6, 0.5, 0.5, [0.25, 0.12, 1]);
-    const b = frameOn([0.3, 2.2, -1.0], 4.6, 0.5, 0.5, [0.15, 0.1, 1]);
+    const a = frameOn([0.0, 2.2, -1.0], 8.0, 0.5, 0.5, [0.25, 0.12, 1]);
+    const b = frameOn([0.0, 2.1, -1.0], 6.8, 0.5, 0.5, [0.15, 0.1, 1]);
     const sitting = frame < cutAt - 26;
     return (
       <>
@@ -724,8 +724,8 @@ export const ZwIda: React.FC = () => {
     );
   }
   // Rückblende-Insert: Antons Hände führen Idas Hände mit der Pinzette (warmer Dunst)
-  const a = frameOn([0.1, 1.75, -1.4], 1.9, 0.5, 0.5, [0.1, 0.55, 1]);
-  const b = frameOn([0.1, 1.72, -1.4], 1.6, 0.5, 0.5, [0.08, 0.5, 1]);
+  const a = frameOn([0.3, 1.75, -1.3], 2.8, 0.5, 0.5, [0.1, 0.55, 1]);
+  const b = frameOn([0.3, 1.72, -1.3], 2.3, 0.5, 0.5, [0.08, 0.5, 1]);
   const guide = Math.sin(frame * 0.07) * 0.05;
   return (
     <>
@@ -774,22 +774,22 @@ export const ZwThread: React.FC = () => {
   const jarPos: V3 = [-1.6, 1.37, -2.0];
   if (shot === 0) {
     // Morgengrauen: Ida in der Tür, Anton schläft im Sessel, das Glas auf dem Nachttisch
-    const a = frameOn([-0.2, 2.0, -2.0], 6.2, 0.5, 0.5, [0.35, 0.15, 1]);
-    const b = frameOn([-0.6, 1.9, -2.0], 5.4, 0.5, 0.5, [0.3, 0.14, 1]);
+    const a = frameOn([-0.6, 2.0, -1.6], 9.0, 0.5, 0.5, [0.35, 0.15, 1]);
+    const b = frameOn([-0.8, 1.9, -1.6], 7.8, 0.5, 0.5, [0.3, 0.14, 1]);
     return (
       <>
         <AntonRoom frame={frame} light="dawn" />
         <Klotz frame={frame} who="anton" position={[1.6, 0.6, -2.3]} sit eyes="closed" mouth="flat" blinkSeed={7} reach={[0.9, 0.9]} />
         <TimeJar position={jarPos} scale={1.4} fill={0.04} glow={2} />
-        <Klotz frame={frame} who="ida" position={[-3.3, 0, 0.3]} rotation={[0, 0.9, 0]} look={0.2} eyes="dot" mouth="flat" brow={-0.4} blinkSeed={3} reach={[0.3, 0.2]} jar={{ fill: 0.6 }} />
+        <Klotz frame={frame} who="ida" position={[-2.6, 0, 0.6]} rotation={[0, 0.9, 0]} look={0.2} eyes="dot" mouth="flat" brow={-0.4} blinkSeed={3} reach={[0.3, 0.2]} jar={{ fill: 0.6 }} />
         <Shot frame={f} duration={c1} {...fly(a, b)} />
       </>
     );
   }
   if (shot === 1) {
     // Langsamer Push-in auf das Glas: nur ein dünner Goldfaden am Boden (Tiefenunschärfe über Dunst)
-    const a = frameOn([jarPos[0], jarPos[1] + 0.25, jarPos[2]], 1.4, 0.5, 0.5, [0.15, 0.12, 1]);
-    const b = frameOn([jarPos[0], jarPos[1] + 0.12, jarPos[2]], 0.75, 0.52, 0.5, [0.12, 0.1, 1]);
+    const a = frameOn([jarPos[0], jarPos[1] + 0.3, jarPos[2]], 2.2, 0.5, 0.5, [0.15, 0.12, 1]);
+    const b = frameOn([jarPos[0], jarPos[1] + 0.25, jarPos[2]], 1.4, 0.52, 0.5, [0.12, 0.1, 1]);
     return (
       <>
         <AntonRoom frame={frame} light="dawn" />
@@ -802,14 +802,14 @@ export const ZwThread: React.FC = () => {
   }
   // Idas Gesicht im Halbprofil, kaltes Morgenlicht, Atem dampft
   const head: V3 = [-1.2, 2.18, -0.6];
-  const a = frameOn(head, 2.6, 0.47, 0.5, [0.8, 0.05, 0.6]);
-  const b = frameOn(head, 2.3, 0.47, 0.5, [0.75, 0.05, 0.65]);
+  const a = frameOn(head, 4.0, 0.45, 0.5, [0.9, 0.05, 0.5]);
+  const b = frameOn(head, 3.4, 0.45, 0.5, [0.85, 0.05, 0.55]);
   const breath = (frame - c2) % 40;
   return (
     <>
       <AntonRoom frame={frame} light="dawn" />
-      <Klotz frame={frame} who="ida" position={[-1.2, 0, -0.6]} rotation={[0, -0.9, 0]} eyes="dot" mouth="flat" brow={-0.6} blinkSeed={3} jar={{ fill: 0.6 }} />
-      <Motes frame={breath} center={[-1.95, 2.0, -0.05]} size={[0.5, 0.25, 0.4]} count={30} drift={[-0.006, 0.002, 0.004]} color="#E4EEFF" dot={0.09} opacity={breath < 24 ? 0.35 * (1 - breath / 24) : 0} seed={61} />
+      <Klotz frame={frame} who="ida" position={[-1.2, 0, -0.6]} rotation={[0, 0.7, 0]} eyes="dot" mouth="flat" brow={-0.6} blinkSeed={3} jar={{ fill: 0.6 }} />
+      <Motes frame={breath} center={[-0.55, 2.0, 0.0]} size={[0.5, 0.25, 0.4]} count={30} drift={[-0.006, 0.002, 0.004]} color="#E4EEFF" dot={0.09} opacity={breath < 24 ? 0.35 * (1 - breath / 24) : 0} seed={61} />
       <Shot frame={f} duration={duration - c2} {...fly(a, b)} />
     </>
   );
