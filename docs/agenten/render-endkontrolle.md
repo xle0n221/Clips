@@ -17,6 +17,7 @@ Rendert, normalisiert, prüft das fertige Video (ffprobe, LUFS, Kontaktabzug, er
 - Von Design-Kritiker: bei Vorher/Nachher-Vergleichen zuerst die Rausch-Grenze messen (gleiches Bundle zweimal: 94–113 Pixel Unterschied, `verbesserungen.md` Rom-Kit) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Lucia (GTA 6) · Endkontrolle ohne Befund: Video 1080×1920, h264 High, yuv420p, bt709, 30 fps, 71,8 s (Vertonung 71,7 s). Lautheit −14,5 LUFS (ebur128, LRA 3,5 LU), True Peak −1,2 dBTP – innerhalb Ziel, aber am oberen Rand der ±1-Toleranz; Finalisierung auf −14,0 LUFS zielen. Kein schwarzer Frame (blackdetect), keine Stille > 0,5 s unter −50 dB, letzte 2 s mit Ton (RMS −19 dB). Kontaktabzug alle 3 s: keine Anschnitte. Cover (erstes Frame) lesbar · out/lucia-frame0.jpg · out/lucia-final-kontakt.jpg
 - 12.11.2026 · Erde ohne Menschen · Render als Hintergrund-Befehl der Sitzung wurde nach **2 h hart beendet** (Grenze der Umgebung) bei 4799/5294 Bildern – Remotion kann nicht fortsetzen, ganzer Render verloren. Lange Renders daher **losgelöst** starten: `setsid nohup npx remotion render … > out/render-<id>.log 2>&1 < /dev/null & disown`, Warten per eigener Schleife (`while pgrep …; do sleep 60; done`). Gleichzeitige Chatterbox-Stimme (nice 15) verlängerte die Restzeit-Schätzung von 1 h 10 auf 1 h 36 · `out/render-earth.log`.
 - 2026-11-09 · Rom · Render 2701 Frames (90,1 s) in ~56 min (Start ~07:00, Datei 07:56 UTC) auf 4 CPU, swangle – deutlich länger als Sonnensystem (~40 min/87 s); Ursache nicht gemessen (vermutlich mehr Figuren je Bild). Ohne `--browser-executable` bricht der Render ab (remotion.media gesperrt). finalize.sh → −14,0 LUFS (ebur128). Dashboard-Vorschau: 540×960, CRF 30 = 7,8 MB (unter 15-MB-Asset-Grenze). · Beleg: out/render-rome.log, ffprobe/ebur128
 - 08.11.2026 · Sonnensystem v2 · −18,5 → −14 LUFS per `finalize.sh`.
@@ -27,4 +28,4 @@ Rendert, normalisiert, prüft das fertige Video (ffprobe, LUFS, Kontaktabzug, er
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
-
+| 13.11.2026 | Lucia (GTA 6) | 9 | Technik sauber; Lautheit −14,5 statt −14,0 LUFS (am Toleranzrand), sonst ohne Befund |
