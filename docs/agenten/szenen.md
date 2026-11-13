@@ -24,6 +24,10 @@
   Bei Pills: Kopf mit `under(pillY, H)` direkt unter die Pill-Spitze legen.
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 13.11.2026 · Jason GTA 6 v2 nach Regie 8,5 / Design 8,5 (`docs/kritik-jason-szenen.md`) · Cartoon-Ersatz muss allein tragen
+  (Karte ab Schnitt deckend + dunkle Kontur + Mini-Cabrio, nicht erst auf dem Cue einblenden); Cover-Blinzeln: `blinkAt` startet
+  frühestens Bild 10 → Figur im Cover mit festem Bild 0 zeichnen; „Dach“ liest sich erst mit Blende, Regenrinne, Hauswand +
+  Leiter und Horizont UNTER der Kante; Sticker = Kalenderblatt-Text → Sticker im Drehbuch + timeline gestrichen. Beleg `out/jason-kontakt.png`.
 - 13.11.2026 · Jason GTA 6 (2D-Akte an der Pinnwand) v1 · **Experiment echte Fotos/Videos im SVG-Bühnenbild:** `RealMedia`
   (`scenes/jasonSets.tsx`) legt `<Img>`/`<OffthreadVideo>` per `foreignObject` in die Kamera-Ebenen; Ken-Burns per CSS-`transform`
   im `div` (overflow hidden), Clip über SVG-`clipPath` im Polaroid wirkt auch auf foreignObject. Probe mit selbst erzeugtem Testbild
