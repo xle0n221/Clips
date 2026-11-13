@@ -26,7 +26,8 @@ Der frühere Abholer, der jedes Mal eine neue Sitzung startete, ist deaktiviert 
    „Erledigt – weitermachen“ gedrückt: auf dem Branch des Videos dort weitermachen, wo es stand.
 3. `busy: true`, aber `updatedAt` älter als 3 Stunden → abgebrochene Arbeit, dort weitermachen.
 4. `stage: "queued"`: zuerst die mit `priority: true` (Knopf „Als Nächstes“), sonst das älteste → neu beginnen.
-5. Sonst: nichts tun, keine Schreibaktion, Sitzung beenden.
+5. `stage: "done"` **ohne** `publish` (Titel, Caption, Hashtags fehlen) → Veröffentlichungstexte nachholen (Rolle Veröffentlichung + Prüfung ≥ 9/10) und eintragen.
+6. Sonst: nichts tun, keine Schreibaktion, Sitzung beenden.
 
 Beim Übernehmen `resume` und `priority` auf `null` setzen, `actionNeeded` auf `null`.
 
@@ -50,7 +51,7 @@ Während der Arbeit `updatedAt` mindestens alle 30 Minuten erneuern (zusammen mi
 | Hörprobe (3, nach Freigabe 1) | `scenes` | `python3 scripts/hoerprobe.py <id>` (MP4 + fertiges JSON inkl. earshot-Messung), MP4 per Artifact-Asset hochladen, JSON mit `mediaUrl` per `ArtifactData update file_path` schreiben; Ergebnis → `review: { kind: "audio", title, mediaUrl, text }`, `decision: null`, `busy: false` |
 | Szenen + Prüfbilder, Freigabe 2 (4–5) | `scenes` | Kontaktabzug als Asset hochladen → `review: { kind: "contactsheet", title, imageUrl, scenes }`, `decision: null`, `busy: false` |
 | Render (6) | `render` | `renderProgress` (0..1) und `renderEta` aus dem Remotion-Log, mind. alle 10 Min. |
-| Fertig | `done` | `review: null`, `busy: false`, `previewUrl` (verkleinerte Vorschau, < 15 MB), `fileSizeBytes`, `publish` (siehe unten) |
+| Fertig | `done` | `review: null`, `busy: false`, `previewUrl` (verkleinerte Vorschau, < 15 MB), `fileSizeBytes`, `publish` (siehe unten) – **Pflicht** (Nutzer 13.11.2026: „In Zukunft immer bei den Videos im Dashboard anzeigen“): `done` nur im **selben** Schreibvorgang mit vollständigem `publish` (YouTube-Titel/Beschreibung/Hashtags + TikTok-Caption/Hashtags) |
 | Fehler | `error` | `statusText` = Fehler in Klartext, `busy: false` |
 
 Neue Videos mit `"engine": "chatterbox"` (Freigabe des Nutzers 09.11.2026). Vom Dashboard gewählte Stimme: Feld `voice` (Kokoro-ID = Klangvorlage) und Sprechstil `voicePreset` (Standard `lebendig`; alte Einträge: `voiceStyle` als Text) → ins Drehbuch
