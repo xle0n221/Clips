@@ -17,7 +17,7 @@ Wer ein Video aus dem Dashboard bearbeitet, hält sich an **`docs/dashboard-abla
 Jeder beauftragte Agent bekommt seine Rollen-Datei aus `docs/agenten/` mit (Lern-Kreislauf: vorher lesen, ein Experiment, nachher eintragen).
 
 ## Ein Video herstellen
-**Mindestnote 9/10** (Vorgabe Nutzer 13.11.2026: „Videos sollen ab jetzt mind. eine 9/10 sein“): jede Prüfrolle (Fakten, Drehbuch/Retention, Regie, Design, Endkontrolle) muss ≥ 9 geben, sonst Nacharbeit + erneute Prüfung vor jeder Freigabe; Noten in jeder Freigabe nennen.
+**Mindestnote 9/10** (Vorgabe Nutzer 13.11.2026: „Videos sollen ab jetzt mind. eine 9/10 sein“ – gilt ab dem Lucia-Video für alle Clips): jede Prüfrolle (Fakten, Drehbuch/Retention, Regie, Design, Endkontrolle) muss ≥ 9 geben, sonst Nacharbeit + erneute Prüfung vor jeder Freigabe; Noten in jeder Freigabe nennen.
 Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regeln `docs/clip-regeln.md`.
 **Thumbnail Pflicht** (Vorgabe 12.11.2026): erste 0,5 s jedes Clips = gestaltetes Cover zum Auswählen auf den Plattformen – `docs/clip-regeln.md` → „Thumbnail im Video“.
 Stil: **je Video passend zum Thema entscheiden** (Vorgabe Nutzer 11.11.2026) – 3D (Bau-Kit `src/episode/kit/`),
