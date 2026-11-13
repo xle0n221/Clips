@@ -145,12 +145,12 @@ export const ZwRent: React.FC = () => {
     const hit = (frame % 18) / 18;
     const ham = frame < notice + 10 ? Math.sin(hit * Math.PI * 2) * 0.5 : 0;
     const paperIn = ramp(frame, 8, 22);
-    const a = frameOn([0.2, 2.6, -1.6], 8.4, 0.5, 0.5, [0.25, 0.05, 1]);
-    const b = frameOn([0.1, 2.5, -1.6], 7.2, 0.48, 0.5, [0.18, 0.04, 1]);
+    const a = frameOn([0.2, 2.5, -1.6], 6.8, 0.48, 0.5, [0.25, 0.05, 1]);
+    const b = frameOn([0.2, 2.45, -1.6], 5.6, 0.47, 0.5, [0.18, 0.04, 1]);
     return (
       <>
         {street}
-        <group position={[-0.4, 2.3, -2.0]} rotation={[0, 0, 0.04 * (1 - paperIn)]} scale={paperIn}>
+        <group position={[-0.95, 2.5, -2.0]} rotation={[0, 0, 0.04 * (1 - paperIn)]} scale={1.3 * paperIn}>
           <mesh>
             <planeGeometry args={[1.5, 1.0]} />
             <meshStandardMaterial color={Z.paper} roughness={0.9} />
@@ -158,15 +158,15 @@ export const ZwRent: React.FC = () => {
           <TextLabel text="RENT" width={1.2} height={0.34} color="#3A1A1A" position={[0, 0.2, 0.01]} />
           <TextLabel text="+1 WEEK" width={1.3} height={0.34} color="#8A1F2A" position={[0, -0.2, 0.01]} />
         </group>
-        <Klotz frame={frame} who="landlord" position={[0.9, 0, -0.9]} rotation={[0, -0.9, 0]} reach={[1.5 + ham, 0.3]} mouth="grin" brow={0.5} blinkSeed={81} />
+        <Klotz frame={frame} who="landlord" position={[1.25, 0, -1.0]} rotation={[0, -1.1, 0]} reach={[1.5 + ham, 0.3]} mouth="grin" brow={0.5} blinkSeed={81} />
         <Shot frame={f} duration={cutAt} {...fly(a, b)} />
       </>
     );
   }
   // Over-the-shoulder: Ida gießt Sand aus ihrem Glas in seinen Messingtrichter, ihr Pegel sinkt
   const pour = ramp(frame, cutAt + 4, lighter + 10);
-  const a = frameOn([0.3, 1.9, -0.6], 5.6, 0.5, 0.5, [-0.45, 0.15, 1]);
-  const b = frameOn([0.4, 1.7, -0.5], 4.6, 0.52, 0.5, [-0.4, 0.12, 1]);
+  const a = frameOn([0.5, 2.0, -0.6], 4.8, 0.5, 0.5, [-0.45, 0.15, 1]);
+  const b = frameOn([0.55, 1.9, -0.5], 4.0, 0.5, 0.5, [-0.4, 0.12, 1]);
   return (
     <>
       {street}

@@ -35,7 +35,7 @@
   näher. Prop-Name `key` an eigener Komponente geht nicht (React) → `keyLight`. Neu `scenes/zeitweltSets.tsx`: `Klotz` (eigene
   Klotzfigur, Rollen ida/anton/sweeper/landlord/office/…), `TimeJar` (fill/painted/scratch/cobweb), `Atmos`, `LightShaft`, `Halo`,
   `Motes`, `Rain`, `SandStream`, `WetGround` (Glanzstreifen), `Lamp`, `House`/`HouseRow`, `Gear`, `Room`, `HangLamp`, `Frame`
-  (echte Textur, Ken-Burns), `useImageTexture` (delayRender). Beleg `out/zw-test1.jpg` → `out/zw-test2.jpg` → `out/zeit-kontakt.png`.
+  (echte Textur, Ken-Burns), `useImageTexture` (drei `useTexture` = Suspense). **Falle echte Medien in 3D:** eigener TextureLoader mit delayRender und `useOffthreadVideoTexture` lieferten im Standbild KEIN Bild (Foto schwarz, Video-Fläche Testfarbe Magenta) – Suspense-Textur (`useTexture`) wirkt; Video daher als Einzelbild-Folge (ffmpeg → JPG je Frame). Nach earshot-Prüfung (zwei Tiefton-Ereignisse 0,12 s auseinander) Cue-„boom“ an 6 Enthüllungen entfernt, Basstreffer im Bett bleibt. Beleg `out/zw-test1.jpg` → `out/zw-test2.jpg` → `out/zeit-kontakt.png`.
 - 13.11.2026 · Jason GTA 6 v2 nach Regie 8,5 / Design 8,5 (`docs/kritik-jason-szenen.md`) · Cartoon-Ersatz muss allein tragen
   (Karte ab Schnitt deckend + dunkle Kontur + Mini-Cabrio, nicht erst auf dem Cue einblenden); Cover-Blinzeln: `blinkAt` startet
   frühestens Bild 10 → Figur im Cover mit festem Bild 0 zeichnen; „Dach“ liest sich erst mit Blende, Regenrinne, Hauswand +

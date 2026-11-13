@@ -390,8 +390,8 @@ export const ZwWorld: React.FC = () => {
   if (shot === 0) {
     // Kranfahrt: von über den Dächern hinab zur Straße mit dem Schaufenster „TIME REPAIRS“
     const t = ramp(frame, 0, cutAt, Easing.inOut(Easing.cubic));
-    const pos: V3 = [lerp(-3, 1.2, t), lerp(15, 3.1, t), lerp(14, 8.5, t)];
-    const look: V3 = [lerp(0, 1.4, t), lerp(3, 2.2, t), lerp(-12, -3.4, t)];
+    const pos: V3 = [lerp(0.2, 1.4, t), lerp(7.5, 3.4, t), lerp(15, 11.5, t)];
+    const look: V3 = [lerp(0.6, 1.5, t), lerp(3.6, 2.3, t), lerp(-8, -3.4, t)];
     return (
       <>
         <Atmos bg={Z.fogDeep} fog={[10, 50]} sky="#7F97B8" ground="#121821" hemi={0.75} keyLight={{ pos: [-8, 14, 6], color: "#AFC4E6", intensity: 1.0 }} rim={{ pos: [6, 6, -14], color: "#8FB8FF", intensity: 2 }} />
@@ -405,15 +405,15 @@ export const ZwWorld: React.FC = () => {
             <boxGeometry args={[6, 6.4, 2.6]} />
             <meshStandardMaterial color="#3F4B5E" roughness={0.85} />
           </mesh>
-          <mesh position={[0, 1.7, 1.31]}>
+          <mesh position={[0, 1.7, 1.32]}>
             <planeGeometry args={[4.2, 2.4]} />
-            <meshStandardMaterial color="#2A1E14" emissive="#7A4A1A" emissiveIntensity={0.5} />
+            <meshStandardMaterial color="#2A1E14" emissive="#5A3412" emissiveIntensity={0.45} />
           </mesh>
-          <Gear position={[-0.9, 1.9, 1.0]} radius={0.8} teeth={16} angle={frame * 0.03} />
-          <Gear position={[0.55, 1.4, 1.0]} radius={0.55} teeth={11} angle={-frame * 0.045 + 0.2} />
-          <Gear position={[1.3, 2.4, 1.0]} radius={0.4} teeth={9} angle={frame * 0.06} />
+          <Gear position={[-0.9, 1.9, 1.45]} radius={0.8} teeth={16} angle={frame * 0.03} />
+          <Gear position={[0.55, 1.4, 1.45]} radius={0.55} teeth={11} angle={-frame * 0.045 + 0.2} />
+          <Gear position={[1.3, 2.4, 1.45]} radius={0.4} teeth={9} angle={frame * 0.06} />
           <pointLight position={[0, 1.9, 1.9]} color="#FFC07A" intensity={4} distance={5} decay={2} />
-          <mesh position={[0, 1.7, 1.35]}>
+          <mesh position={[0, 1.7, 1.7]}>
             <planeGeometry args={[4.2, 2.4]} />
             <meshPhysicalMaterial color="#AFC8E8" transparent opacity={0.12} roughness={0.05} />
           </mesh>
@@ -426,8 +426,8 @@ export const ZwWorld: React.FC = () => {
         <Lamp position={[-4, 0, -1]} />
         <Lamp position={[5, 0, -1]} />
         {/* Passanten mit Gläsern */}
-        <Klotz frame={frame} who="towns" shirt="#4E5C70" position={[lerp(-3.4, -1.6, ramp(frame, 0, duration)), 0, -0.6]} rotation={[0, Math.PI / 2, 0]} walk={1} blinkSeed={21} jar={{ fill: 0.7, glow: 1.4 }} />
-        <Klotz frame={frame + 9} who="worker" position={[lerp(5.2, 3.6, ramp(frame, 0, duration)), 0, 0.6]} rotation={[0, -Math.PI / 2, 0]} walk={1} blinkSeed={22} jar={{ fill: 0.45, glow: 1.4 }} />
+        <Klotz frame={frame} who="towns" shirt="#4E5C70" position={[lerp(-1.6, 0.6, ramp(frame, 0, duration)), 0, 0.4]} rotation={[0, Math.PI / 2, 0]} walk={1} blinkSeed={21} jar={{ fill: 0.7, glow: 1.4 }} />
+        <Klotz frame={frame + 9} who="worker" position={[lerp(4.4, 2.6, ramp(frame, 0, duration)), 0, 1.2]} rotation={[0, -Math.PI / 2, 0]} walk={1} blinkSeed={22} jar={{ fill: 0.45, glow: 1.4 }} />
         <Rain frame={frame} center={[0, 6, 0]} size={[22, 14, 18]} opacity={0.26} />
         <Shot frame={f} duration={cutAt} from={pos} look={look} fov={40} shake={0.01} />
       </>
@@ -655,18 +655,19 @@ export const ZwEmpty: React.FC = () => {
   const lf = frame - gone;
   const fall = lf < 0 ? 0 : Math.min(1, lf / 8);
   const y = lf < 0 ? 1.1 : lf < 8 ? 1.1 * (1 - fall * fall) : Math.abs(Math.sin(lf * 0.5)) * 0.08 * Math.exp(-(lf - 8) * 0.25);
-  const roll = Math.max(0, lf - 8) * 0.05;
+  const roll = Math.min(0.25, Math.max(0, lf - 8) * 0.02);
   const flick = lf < 0 ? 1 : lf < 16 ? (Math.floor(lf / 2) % 2 ? 0.25 : 0.9) : Math.max(0, 1 - (lf - 16) / 6);
-  const a = frameOn([0.4, 0.6, 0.4], 3.0, 0.55, 0.5, [0.35, 0.25, 1]);
-  const b = frameOn([0.9, 0.4, 0.4], 2.4, 0.55, 0.5, [0.3, 0.22, 1]);
+  const a = frameOn([0.1, 0.7, 0.4], 3.0, 0.55, 0.5, [0.2, 0.22, 1]);
+  const b = frameOn([0.2, 0.4, 0.4], 2.4, 0.55, 0.5, [0.18, 0.2, 1]);
   void from;
   return (
     <>
       <Atmos bg="#0A0F18" fog={[5, 20]} sky="#6A7FA0" ground="#0E131A" hemi={0.7} rim={{ pos: [3, 4, -6], color: "#B8D4F0", intensity: 1.4 }} />
       <WetGround glints={flick > 0.3 ? [[-1.4, 0, -1.4]] : []} />
       <Lamp position={[-1.4, 0, -3.2]} on={flick} />
-      <pointLight position={[1.2, 1.4, 1.8]} color="#BFD6F2" intensity={4} distance={6} decay={2} />
-      <TimeJar position={[0.3 + roll * 1.4, 0.16 + y, 0.4]} rotation={[lf >= 8 ? 0 : -fall * 1.2, 0, Math.PI / 2 + roll * 6]} scale={1.3} fill={0} glow={0} clip />
+      <pointLight position={[0.6, 1.6, 1.8]} color="#BFD6F2" intensity={9} distance={6} decay={2} />
+      <Halo at={[0.2, 0.05, 0.2]} size={2.2} color="#9CC0FF" opacity={0.25} />
+      <TimeJar position={[0.0 + roll * 1.2, 0.3 + y, 0.4]} rotation={[0, 0.5, Math.PI / 2 * fall + roll * 4]} scale={2.0} fill={0} glow={0} clip />
       <HouseRow z={-8} from={-10} to={10} seed={52} lit={0.1} />
       <Rain frame={frame} center={[0, 2, 0]} size={[6, 5, 5]} count={160} opacity={0.3} />
       <Shot frame={f} duration={duration - c2} {...fly(a, b)} />
@@ -713,39 +714,16 @@ export const ZwIda: React.FC = () => {
       </>
     );
   }
-  // Rückblende-Insert: Antons Hände führen Idas Hände mit der Pinzette (warmer Dunst)
-  const a = frameOn([0.3, 1.75, -1.3], 2.8, 0.5, 0.5, [0.1, 0.55, 1]);
-  const b = frameOn([0.3, 1.72, -1.3], 2.3, 0.5, 0.5, [0.08, 0.5, 1]);
-  const guide = Math.sin(frame * 0.07) * 0.05;
+  // Rückblende-Insert: Anton steht hinter Ida und führt ihre Hand mit der Pinzette (warmer Dunst)
+  const guide = Math.sin(frame * 0.07) * 0.06;
+  const a = frameOn([0.3, 2.4, -0.9], 7.6, 0.48, 0.5, [0.05, 0.2, 1]);
+  const b = frameOn([0.3, 2.3, -0.9], 6.6, 0.48, 0.5, [0.04, 0.18, 1]);
   return (
     <>
-      <WorkshopSet frame={frame} haze={1} warm={1.2} />
-      <PocketWatch frame={frame} position={[0.1, 1.56, -1.4]} rotation={[-Math.PI / 2, 0, 0]} scale={0.6} open={1} />
-      {/* Idas Fäustling mit Pinzette, darüber Antons größere Hand */}
-      <group position={[0.35 + guide, 1.82, -1.15]} rotation={[0, 0, 0.5]}>
-        <mesh>
-          <sphereGeometry args={[0.18, 16, 12]} />
-          <meshPhysicalMaterial color={Z.skin} roughness={0.5} clearcoat={0.5} />
-        </mesh>
-        <mesh position={[-0.2, -0.16, 0]} rotation={[0, 0, 0.7]}>
-          <boxGeometry args={[0.02, 0.36, 0.02]} />
-          <meshStandardMaterial color="#C8CCD2" metalness={0.9} roughness={0.2} />
-        </mesh>
-        <mesh position={[0.32, 0.1, 0]} rotation={[0, 0, -1.2]}>
-          <boxGeometry args={[0.3, 0.55, 0.3]} />
-          <meshPhysicalMaterial color={Z.idaShirt} roughness={0.42} clearcoat={0.5} />
-        </mesh>
-      </group>
-      <group position={[0.55 + guide, 1.98, -1.05]}>
-        <mesh>
-          <sphereGeometry args={[0.24, 16, 12]} />
-          <meshPhysicalMaterial color="#E8BE98" roughness={0.5} clearcoat={0.5} />
-        </mesh>
-        <mesh position={[0.36, 0.14, 0.05]} rotation={[0, 0, -1.25]}>
-          <boxGeometry args={[0.36, 0.62, 0.36]} />
-          <meshPhysicalMaterial color={Z.anton} roughness={0.42} clearcoat={0.5} />
-        </mesh>
-      </group>
+      <WorkshopSet frame={frame} haze={0.8} warm={1.25} />
+      <PocketWatch frame={frame} position={[0.2, 1.56, -1.55]} rotation={[-Math.PI / 2, 0, 0]} scale={0.5} open={1} />
+      <Klotz frame={frame} who="ida" position={[-0.4, 0, -0.6]} rotation={[0, 0.3, 0]} reach={[1.25 + guide, 1.3]} eyes="happy" mouth="smile" nod={0.3} blinkSeed={3} jar={{ fill: 0.6 }} />
+      <Klotz frame={frame} who="anton" position={[1.35, 0, -0.75]} rotation={[0, -0.6, 0]} reach={[1.15 + guide, 0.9]} eyes="happy" mouth="smile" nod={0.35} blinkSeed={7} />
       <Shot frame={f} duration={duration - cutAt} {...fly(a, b)} />
     </>
   );

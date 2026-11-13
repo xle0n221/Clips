@@ -298,7 +298,6 @@
   },
   {
    "beat": "idaHalfProfile",
-   "sfx": "boom",
    "scene": "thread",
    "atMs": 36380
   },
@@ -377,7 +376,6 @@
   },
   {
    "beat": "eyeReflection",
-   "sfx": "boom",
    "scene": "rehook",
    "atMs": 49400
   },
@@ -431,7 +429,6 @@
   },
   {
    "beat": "spotlightJarFlip",
-   "sfx": "boom",
    "scene": "home",
    "atMs": 61380
   },
@@ -483,7 +480,6 @@
   },
   {
    "beat": "orbitCalendars",
-   "sfx": "boom",
    "hud": {
     "id": "jar",
     "value": "EMPTY \u00b7 20 YEARS"
@@ -525,7 +521,6 @@
   },
   {
    "beat": "soldColumnGold",
-   "sfx": "boom",
    "scene": "truth",
    "atMs": 74000
   },
@@ -664,7 +659,6 @@
   },
   {
    "beat": "glassOfficeLowAngle",
-   "sfx": "boom",
    "scene": "knock",
    "atMs": 95580
   },
@@ -725,7 +719,7 @@
    {
     "id": "jar",
     "label": "GRANDPA'S JAR",
-    "value": "\u2014"
+    "value": "TICKING\u2026"
    }
   ],
   "bars": []

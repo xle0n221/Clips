@@ -38,7 +38,7 @@
     "why": "Düstere Parabel über eine Stadt, die mit Lebenszeit bezahlt: leise, gefasste Erzählstimme wie bei einer Gute-Nacht-Geschichte mit Haken, damit das Unheimliche aus dem Inhalt kommt, nicht aus Effekthascherei – Bild entsprechend kalt-blau, gedämpft, Nebel, nur Gold (Zeit) leuchtet."
   },
   "soundBed": {
-    "why": "KnowToon-Prompt STEP 5: Ambient passend zum Ort (Uhr-Ticken = Zeit, Stadt-Raum mit fernem Regen = Minuteburg), Basstreffer vor jeder Enthüllung, ein scharfer Akzent beim Twist ('painted'); ohne Gesang. Klänge aus der earshot-Klangbank (Rang: tick 'fit/tick/domino' z +2,5 plausibel für 'clock tick', Bass 'pro_impact/deep' z +2,6 plausibel, Twist 'mallet/glock' klingt wie 'glass ting' z +2,9).",
+    "why": "KnowToon-Prompt STEP 5: Ambient passend zum Ort (Uhr-Ticken = Zeit, Stadt-Raum mit fernem Regen = Minuteburg), Basstreffer vor jeder Enthüllung, ein scharfer Akzent beim Twist ('painted'); ohne Gesang. Klänge aus der earshot-Klangbank (Rang: tick 'fit/tick/domino' z +2,5 plausibel für 'clock tick', Bass 'pro_impact/deep' z +2,6 plausibel, Twist 'mallet/glock' klingt wie 'glass ting' z +2,9). Doppelung geprüft (earshot timeline 48,6–50,4 s: Bass-Spitze + Cue-„boom“ als zwei Tiefton-Ereignisse 0,12 s auseinander) → Cue-„boom“ an den 6 Enthüllungs-Wörtern mit Basstreffer entfernt (most, exist, over, years, sold, Office).",
     "tick": {
       "sound": "fit/tick/domino",
       "tock": "knock/wood",
@@ -135,7 +135,7 @@
       {
         "id": "jar",
         "label": "GRANDPA'S JAR",
-        "value": "—"
+        "value": "TICKING…"
       }
     ],
     "bars": []
@@ -374,8 +374,7 @@
         },
         {
           "word": "most",
-          "beat": "idaHalfProfile",
-          "sfx": "boom"
+          "beat": "idaHalfProfile"
         }
       ],
       "section": "tension"
@@ -470,8 +469,7 @@
       "cues": [
         {
           "word": "exist",
-          "beat": "eyeReflection",
-          "sfx": "boom"
+          "beat": "eyeReflection"
         }
       ],
       "section": "tension"
@@ -535,8 +533,7 @@
         },
         {
           "word": "over",
-          "beat": "spotlightJarFlip",
-          "sfx": "boom"
+          "beat": "spotlightJarFlip"
         }
       ],
       "section": "tension"
@@ -599,7 +596,6 @@
         {
           "word": "years",
           "beat": "orbitCalendars",
-          "sfx": "boom",
           "hud": {
             "id": "jar",
             "value": "EMPTY · 20 YEARS"
@@ -639,8 +635,7 @@
         },
         {
           "word": "sold",
-          "beat": "soldColumnGold",
-          "sfx": "boom"
+          "beat": "soldColumnGold"
         }
       ],
       "section": "twist"
@@ -804,8 +799,7 @@
         },
         {
           "word": "Office",
-          "beat": "glassOfficeLowAngle",
-          "sfx": "boom"
+          "beat": "glassOfficeLowAngle"
         },
         {
           "word": "reported",

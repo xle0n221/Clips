@@ -3,10 +3,9 @@
  * Echte Bilder/Videos (NASA, gemeinfrei, docs/bildnachweise-zeit-welt.md): Stadtlichter aus der ISS (franklin),
  * ISS-Video „Städte bei Nacht“ als Spiegelung im Glas (question).
  */
-import { useOffthreadVideoTexture } from "@remotion/three";
 import React from "react";
-import { Easing, staticFile } from "remotion";
-import { DoubleSide } from "three";
+import { Easing } from "remotion";
+import { AdditiveBlending, DoubleSide } from "three";
 import { Shot, V3 } from "../kit/camera";
 import { useScene } from "../types";
 import { AntonRoom, WorkshopSet } from "./zeitwelt1";
@@ -422,13 +421,25 @@ export const ZwKnock: React.FC = () => {
 /* ------------------------------------------------------------------ */
 /* 21 question – „And you? | How many hours did you sell today?“ */
 /* ------------------------------------------------------------------ */
-const RealVideoInJar: React.FC<{ readonly position: V3; readonly scale: number; readonly opacity: number }> = ({ position, scale, opacity }) => {
-  const tex = useOffthreadVideoTexture({ src: staticFile("episodes/zeit-welt/real/aurora-city-lights-iss.mp4") });
+/**
+ * Echtes ISS-Video im Glas: Einzelbilder (ffmpeg aus aurora-city-lights-iss.mp4, Ausschnitt Stadtlichter)
+ * per Suspense-Textur je Frame – `useOffthreadVideoTexture` lieferte im Standbild-Render keine Textur (geprüft 13.11.2026).
+ */
+const VIDEO_FRAMES = 90;
+const RealVideoInJar: React.FC<{ readonly frame: number; readonly position: V3; readonly scale: number; readonly opacity: number }> = ({ frame, position, scale, opacity }) => {
+  const i = (Math.max(0, frame) % VIDEO_FRAMES) + 1;
+  const n = `${i < 10 ? "00" : i < 100 ? "0" : ""}${i}`;
+  const tex = useImageTexture(`episodes/zeit-welt/real/aurora-frames/f${n}.jpg`);
+  // drei additive Lagen = dreifache Helligkeit der (sehr dunklen) Nachtaufnahme
   return (
-    <mesh position={position} scale={scale}>
-      <cylinderGeometry args={[0.145, 0.145, 0.33, 32, 1, true, -Math.PI / 2, Math.PI]} />
-      {tex ? <meshBasicMaterial map={tex} transparent opacity={opacity} toneMapped={false} side={DoubleSide} color="#CFE0FF" /> : <meshBasicMaterial color="#000" transparent opacity={0} />}
-    </mesh>
+    <>
+      {[1.0, 1.006, 1.012].map((k) => (
+        <mesh key={k} position={position} scale={scale * k}>
+          <cylinderGeometry args={[0.145, 0.145, 0.33, 32, 1, true, -Math.PI / 2, Math.PI]} />
+          <meshBasicMaterial map={tex} transparent opacity={opacity} toneMapped={false} side={DoubleSide} color="#E6F0FF" blending={AdditiveBlending} depthWrite={false} />
+        </mesh>
+      ))}
+    </>
   );
 };
 
@@ -437,17 +448,22 @@ export const ZwQuestion: React.FC = () => {
   const sell = beat("realCommutersInJar");
   // Langsamer Push-in auf Idas Glas im Regal; im Glas spiegeln sich echte Städte bei Nacht (ISS-Video)
   const jar: V3 = [1.6, 3.42, -5.3];
-  const s = 1.3;
+  const s = 2.0;
   const vid = ramp(frame, 6, sell);
-  const a = frameOn([jar[0], jar[1] + 0.25, jar[2]], 2.4, 0.47, 0.5, [0.1, 0.05, 1]);
-  const b = frameOn([jar[0], jar[1] + 0.24, jar[2]], 1.0, 0.47, 0.5, [0, 0.02, 1]);
+  const a = frameOn([jar[0], jar[1] + 0.36, jar[2]], 2.2, 0.47, 0.5, [0.1, 0.05, 1]);
+  const b = frameOn([jar[0], jar[1] + 0.36, jar[2]], 1.25, 0.47, 0.5, [0, 0.02, 1]);
   return (
     <>
       <WorkshopSet frame={frame} warm={0.6} />
-      <TimeJar position={jar} scale={s} fill={0.37} glow={0.4} />
-      <RealVideoInJar position={[jar[0], jar[1] + 0.18 * s, jar[2] + 0.004]} scale={s * 1.03} opacity={0.15 + 0.75 * vid} />
+      <TimeJar position={jar} scale={s} fill={0.22} glow={0.25} />
+      {/* dunkle Rückwand im Glas: davor leuchten die echten Stadtlichter (additiv) */}
+      <mesh position={[jar[0], jar[1] + 0.18 * s, jar[2] - 0.01]} scale={s * 0.97}>
+        <cylinderGeometry args={[0.145, 0.145, 0.33, 32, 1, true, Math.PI / 2, Math.PI]} />
+        <meshBasicMaterial color="#05070C" side={DoubleSide} transparent opacity={0.85 * vid} />
+      </mesh>
+      <RealVideoInJar frame={frame} position={[jar[0], jar[1] + 0.18 * s, jar[2] + 0.004]} scale={s * 1.03} opacity={0.2 + 0.8 * vid} />
       <Halo at={[jar[0], jar[1] + 0.25, jar[2] + 0.3]} size={0.8} color="#9CC4FF" opacity={0.3 * vid} />
-      <Shot frame={frame} duration={duration} {...fly(a, b)} ease="inOut" />
+      <Shot frame={frame} duration={duration} {...fly(a, b)} ease="out" />
     </>
   );
 };
