@@ -734,5 +734,11 @@
   "text": "YOU PAY WITH TIME",
   "sub": "bread = 12 minutes of your life",
   "frames": 15
+ },
+ "captionStyle": "word-by-word-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for the next strange world.",
+  "seconds": 2
  }
 }

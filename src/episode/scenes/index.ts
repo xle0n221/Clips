@@ -10,6 +10,8 @@ import { ROLLS_CONFIG, ROLLS_SCENES } from "./rolls";
 import { HUANG_CONFIG, HUANG_SCENES } from "./huang";
 import { LUCIA_CONFIG, LUCIA_SCENES } from "./lucia";
 import { JASON_CONFIG, JASON_SCENES } from "./jason";
+import { ZEIT_CONFIG, ZEIT_SCENES } from "./zeitwelt";
+import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
 export const SCENES: Record<string, React.FC> = {
@@ -40,6 +42,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "jensen-huang": HUANG_SCENES,
   "lucia-gta6": LUCIA_SCENES,
   "jason-gta6": JASON_SCENES,
+  "zeit-welt": ZEIT_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -67,6 +70,12 @@ export type EpisodeConfig = {
   readonly stickerStack?: boolean;
   /** Motiv hinter dem Cover-Titel (overlays/Cover.tsx); ohne = erste Szene bleibt sichtbar */
   readonly coverArt?: React.FC;
+  /** Kino-Look über der 3D-Leinwand: Filmkorn, Vignette, Rand-Unschärfe (overlays/FilmLook.tsx) */
+  readonly filmLook?: FilmLookSpec;
+  /** Zusätzliche DOM-Ebene über der Leinwand (z. B. echte Fotos/Videos an festen Bildstellen) */
+  readonly realLayer?: React.FC;
+  /** Ambient-Bett (Datei in public/episodes/<id>/, erzeugt mit scripts/make_sound_bed.py) */
+  readonly bed?: { readonly src: string; readonly volume?: number };
 };
 export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" }, coverArt: EarthCoverArt },
@@ -76,5 +85,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "jensen-huang": HUANG_CONFIG,
   "lucia-gta6": LUCIA_CONFIG,
   "jason-gta6": JASON_CONFIG,
+  "zeit-welt": ZEIT_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

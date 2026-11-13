@@ -14,6 +14,8 @@ import {
 import { z } from "zod";
 import { Captions } from "./overlays/Captions";
 import { Cover, coverClear, coverFrames } from "./overlays/Cover";
+import { EndCard } from "./overlays/EndCard";
+import { FilmLook } from "./overlays/FilmLook";
 import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
 import { hudBottom } from "./overlays/Hud";
@@ -50,9 +52,14 @@ export const calculateEpisodeMetadata: CalculateMetadataFunction<
       (r) => r.json() as Promise<Caption[]>,
     ),
   ]);
+  // End-Card (optional): `seconds` nach dem Ende der letzten Szene, ohne = unverändert
+  const lastEnd = timeline.scenes[timeline.scenes.length - 1]?.endMs ?? 0;
+  const totalMs = timeline.endCard
+    ? Math.max(timeline.durationMs, lastEnd + (timeline.endCard.seconds ?? 2) * 1000)
+    : timeline.durationMs;
   return {
     fps: FPS,
-    durationInFrames: Math.ceil((timeline.durationMs / 1000) * FPS),
+    durationInFrames: Math.ceil((totalMs / 1000) * FPS),
     props: { ...props, timeline, captions },
   };
 };
@@ -185,6 +192,10 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
         };
 
   const stickers = timeline.cues.filter((c) => c.sticker);
+  // End-Card beginnt am Ende der letzten Szene (ohne End-Card: nie)
+  const endCardFrom = timeline.endCard
+    ? Math.min(durationInFrames - 1, toF(timeline.scenes[timeline.scenes.length - 1].endMs))
+    : Infinity;
   const emph = emphMap(timeline);
   const base = `episodes/${episode}`;
 
@@ -232,6 +243,8 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
         </ThreeCanvas>
         )}
       </AbsoluteFill>
+      {cfg?.filmLook ? <FilmLook spec={cfg.filmLook} /> : null}
+      {cfg?.realLayer ? <cfg.realLayer /> : null}
       {act ? <GradeTint grade={act} /> : null}
       <TransitionOverlay state={tState} width={width} height={height} />
 
@@ -301,15 +314,28 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
       })}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="above" />
-      {frame >= coverFrames(timeline.cover) ? (
-        <Captions captions={captions} emph={emph.size ? emph : undefined} mode={timeline.captionMode} />
+      {frame >= coverFrames(timeline.cover) && frame < endCardFrom ? (
+        <Captions captions={captions} emph={emph.size ? emph : undefined} mode={timeline.captionMode} variant={timeline.captionStyle} />
       ) : null}
       <Grade />
       {timeline.cover ? <Cover cover={timeline.cover} art={cfg?.coverArt} /> : null}
+      {timeline.endCard ? (
+        <Sequence from={endCardFrom} durationInFrames={durationInFrames - endCardFrom} layout="none">
+          <EndCard spec={timeline.endCard} />
+        </Sequence>
+      ) : null}
 
       {/* Ton: Stimme, Musikbett, Effekte */}
       <Audio src={staticFile(`${base}/voice.wav`)} />
-      <Audio src={staticFile(`${base}/music.wav`)} volume={0.13} />
+      <Audio
+        src={staticFile(`${base}/music.wav`)}
+        volume={
+          timeline.endCard
+            ? (f) => 0.13 * interpolate(f, [endCardFrom, durationInFrames - 2], [1, 0.35], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+            : 0.13
+        }
+      />
+      {cfg?.bed ? <Audio src={staticFile(`${base}/${cfg.bed.src}`)} volume={cfg.bed.volume ?? 1} /> : null}
       {starts.slice(1).map((s) => (
         <Sequence
           key={`wh-${s}`}

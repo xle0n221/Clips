@@ -104,6 +104,47 @@ const OneWord: React.FC<{ readonly text: string; readonly color?: string; readon
 };
 
 /**
+ * Variante „word-by-word-yellow“ (KnowToon-Prompt STEP 5, Drehbuch-Feld `captionStyle`): ein Wort zur Zeit,
+ * fett (900), serifenlos, GELB mit dicker schwarzer Kontur, unteres Drittel. Akzentwörter (`emph`) gleiche Farbe,
+ * nur etwas größer + kräftigerer Pop – so bleibt die Farbe eindeutig „Untertitel“.
+ */
+export const YELLOW_CAPTION = "#FFD400";
+const YellowWord: React.FC<{ readonly text: string; readonly key2: boolean; readonly bottom: number }> = ({
+  text,
+  key2,
+  bottom,
+}) => {
+  const frame = useCurrentFrame();
+  const pop = interpolate(frame, [0, 2, 4], key2 ? [0.72, 1.12, 1] : [0.86, 1.05, 1], {
+    extrapolateRight: "clamp",
+  });
+  return (
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: bottom }}>
+      <div
+        style={{
+          fontFamily: CAPTION_FONT,
+          fontWeight: 900,
+          fontSize: key2 ? 104 : 90,
+          lineHeight: 1,
+          color: YELLOW_CAPTION,
+          textAlign: "center",
+          maxWidth: 1000,
+          whiteSpace: "nowrap",
+          textTransform: "uppercase",
+          WebkitTextStroke: "20px #000",
+          paintOrder: "stroke",
+          textShadow: "0 8px 0 rgba(0,0,0,0.85), 0 0 26px rgba(0,0,0,0.55)",
+          transform: `scale(${pop})`,
+          letterSpacing: 1,
+        }}
+      >
+        {text}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/**
  * emph: Startzeit (ms) eines Untertitel-Worts -> Akzentfarbe. Kommt aus `emph`-Cues bzw. aus
  * "*Wort*" im Drehbuch (make_episode.py). Seiten ohne Akzentwort werden unverändert gezeichnet.
  */
@@ -114,8 +155,12 @@ export const Captions: React.FC<{
   readonly mode?: "pages" | "word";
   /** Abstand vom unteren Rand (px), nur für "word" (Standard 420) */
   readonly bottom?: number;
-}> = ({ captions, emph, mode, bottom = 420 }) => {
+  /** Drehbuch-Feld `captionStyle`; "word-by-word-yellow" = gelbe Wort-für-Wort-Untertitel (überschreibt `mode`) */
+  readonly variant?: string;
+}> = ({ captions, emph, mode, bottom = 420, variant }) => {
   const { fps } = useVideoConfig();
+  if (variant === "word-by-word-yellow")
+    return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} yellow />;
   if (mode === "word") return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} />;
   return <PageCaptions captions={captions} emph={emph} fps={fps} />;
 };
@@ -126,7 +171,8 @@ const WordCaptions: React.FC<{
   readonly emph?: Map<number, string>;
   readonly fps: number;
   readonly bottom: number;
-}> = ({ captions, emph, fps, bottom }) => {
+  readonly yellow?: boolean;
+}> = ({ captions, emph, fps, bottom, yellow }) => {
   const words = captions.filter((c) => c.text.trim() !== "");
   return (
     <AbsoluteFill>
@@ -137,7 +183,11 @@ const WordCaptions: React.FC<{
         const dur = Math.max(4, Math.round((endMs / 1000) * fps) - from);
         return (
           <Sequence key={i} from={from} durationInFrames={dur} layout="none">
-            <OneWord text={w.text.trim()} color={emph?.get(w.startMs)} bottom={bottom} />
+            {yellow ? (
+              <YellowWord text={w.text.trim().replace(/^["“]+/, "").replace(/["”.,:;…]+$/, "")} key2={Boolean(emph?.has(w.startMs))} bottom={bottom} />
+            ) : (
+              <OneWord text={w.text.trim()} color={emph?.get(w.startMs)} bottom={bottom} />
+            )}
           </Sequence>
         );
       })}

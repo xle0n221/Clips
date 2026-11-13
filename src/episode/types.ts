@@ -72,6 +72,10 @@ export type Timeline = {
   hud?: HudSpec;
   /** Thumbnail-Cover in den ersten Bildern (Drehbuch-Feld `cover`, docs/clip-regeln.md → „Thumbnail im Video“) */
   cover?: CoverSpec;
+  /** Untertitel-Variante (Drehbuch-Feld `captionStyle`), z. B. "word-by-word-yellow" (overlays/Captions.tsx); ohne = wie bisher */
+  captionStyle?: string;
+  /** End-Card nach der letzten Szene (Drehbuch-Feld `endCard`, overlays/EndCard.tsx); verlängert das Video um `seconds` */
+  endCard?: { handle: string; cta: string; seconds?: number; accent?: string };
 };
 
 export type CoverSpec = { text: string; sub?: string; frames?: number };

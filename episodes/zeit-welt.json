@@ -33,6 +33,97 @@
     "bpm": 92,
     "why": "Dunkel-spannende Parabel um Zeit: cineastischer Rap-Beat in Moll (Klavier + Streicherfläche, Boom-Bap, Taikos, ohne Gesang) wirkt wie eine tickende Uhr; bewusst anders als Lucia (dark 128) und Jason (chill 84) – anderes Preset, anderes Tempo. Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'exist' (rehook) Filter zu + 1 Takt Pause; bei 'painted' Stille 0,5 s, dann voll; ab 'Unpaid' nur Klavier; Endkarte Ausklang."
   },
+  "narratorMood": {
+    "mood": "ruhig-unheimlich, nachdenklich",
+    "why": "Düstere Parabel über eine Stadt, die mit Lebenszeit bezahlt: leise, gefasste Erzählstimme wie bei einer Gute-Nacht-Geschichte mit Haken, damit das Unheimliche aus dem Inhalt kommt, nicht aus Effekthascherei – Bild entsprechend kalt-blau, gedämpft, Nebel, nur Gold (Zeit) leuchtet."
+  },
+  "soundBed": {
+    "why": "KnowToon-Prompt STEP 5: Ambient passend zum Ort (Uhr-Ticken = Zeit, Stadt-Raum mit fernem Regen = Minuteburg), Basstreffer vor jeder Enthüllung, ein scharfer Akzent beim Twist ('painted'); ohne Gesang. Klänge aus der earshot-Klangbank (Rang: tick 'fit/tick/domino' z +2,5 plausibel für 'clock tick', Bass 'pro_impact/deep' z +2,6 plausibel, Twist 'mallet/glock' klingt wie 'glass ting' z +2,9).",
+    "tick": {
+      "sound": "fit/tick/domino",
+      "tock": "knock/wood",
+      "db": -30,
+      "period": 1.0
+    },
+    "room": {
+      "db": -42,
+      "rain_db": -46
+    },
+    "reveals": [
+      {
+        "scene": "hook",
+        "word": "life."
+      },
+      {
+        "scene": "stakes",
+        "word": "day"
+      },
+      {
+        "scene": "empty",
+        "word": "disappear."
+      },
+      {
+        "scene": "thread",
+        "word": "most."
+      },
+      {
+        "scene": "rehook",
+        "word": "exist."
+      },
+      {
+        "scene": "sweeper",
+        "word": "alive."
+      },
+      {
+        "scene": "home",
+        "word": "over."
+      },
+      {
+        "scene": "twenty",
+        "word": "years."
+      },
+      {
+        "scene": "truth",
+        "word": "sold."
+      },
+      {
+        "scene": "knock",
+        "word": "Office."
+      }
+    ],
+    "revealSound": {
+      "sound": "pro_impact/deep",
+      "db": -14
+    },
+    "twist": {
+      "scene": "painted",
+      "word": "painted",
+      "sounds": [
+        "mallet/glock",
+        "pro_tap/glass"
+      ],
+      "db": -12
+    },
+    "tickLouder": [
+      {
+        "scene": "rehook",
+        "db": 9
+      }
+    ],
+    "tickOff": [
+      {
+        "scene": "unpaid"
+      }
+    ],
+    "silence": [
+      {
+        "scene": "painted",
+        "word": "painted",
+        "ms": 500
+      }
+    ],
+    "tailMs": 2000
+  },
   "style": {
     "look": "3d",
     "why": "Vorgabe des Prompts (Cinematic 3D, Klotzfiguren) und das Thema lebt von Materialien: Glas, Sand-Partikel, Messing, Regen, Volumenlicht – das kann das 3D-Bau-Kit (src/episode/kit/) mit Rim-Light, Partikeln und Tiefenunschärfe besser als 2D.",

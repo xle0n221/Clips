@@ -480,6 +480,9 @@ def retime(path: Path) -> None:
         tl["hud"] = ep["hud"]
     if "cover" in ep:
         tl["cover"] = ep["cover"]
+    for key in ("captionStyle", "endCard"):  # Untertitel-Variante + End-Card (overlays/Captions.tsx, overlays/EndCard.tsx)
+        if key in ep:
+            tl[key] = ep[key]
     (out_dir / "timeline.json").write_text(json.dumps(tl, indent=1) + "\n")
     print(f"Cues neu gebunden: {len(tl['cues'])} ({out_dir.relative_to(ROOT)}/timeline.json)")
 
@@ -555,6 +558,9 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         timeline["hud"] = ep["hud"]
     if "cover" in ep:  # Thumbnail-Cover in den ersten Bildern (src/episode/overlays/Cover.tsx)
         timeline["cover"] = ep["cover"]
+    for key in ("captionStyle", "endCard"):  # Untertitel-Variante + End-Card (overlays/Captions.tsx, overlays/EndCard.tsx)
+        if key in ep:
+            timeline[key] = ep[key]
     (out_dir / "timeline.json").write_text(json.dumps(timeline, indent=1) + "\n")
 
     mus = ep.get("music") or {}  # {"mood": "dark", "bpm": 140, "why": "..."} – fehlt: alter Loop "upbeat"
