@@ -20,6 +20,18 @@ for ((s=0; s<total; s+=size)); do
   echo "file '$(basename "$f")'" >> "$dir/list.txt"
   echo "ABSCHNITT $e/$((total-1)) fertig"
 done
-[ -s "$dir/audio.wav" ] || npx remotion render "$comp" "$dir/audio.wav" --codec=wav "${B[@]}" >/dev/null 2>&1
+# Ton ebenfalls in Abschnitten (ein Durchlauf über alle Bilder läuft bei schweren Szenen in Zeitgrenzen)
+: > "$dir/alist.txt"
+for ((s=0; s<total; s+=size)); do
+  e=$((s+size-1)); [ $e -ge $total ] && e=$((total-1))
+  a="$dir/audio-$(printf %05d $s).wav"
+  if [ ! -s "$a.done" ]; then
+    npx remotion render "$comp" "$a" --frames=$s-$e --codec=wav --timeout=180000 "${B[@]}" 2>&1 | tr '\r' '\n' | grep -E "rror" | tail -1 || true
+    [ -s "$a" ] && echo ok > "$a.done"
+  fi
+  echo "file '$(basename "$a")'" >> "$dir/alist.txt"
+  echo "TON $e/$((total-1)) fertig"
+done
+[ -s "$dir/audio.wav" ] || ffmpeg -hide_banner -y -f concat -safe 0 -i "$dir/alist.txt" -c copy "$dir/audio.wav" 2>&1 | tail -1
 ffmpeg -hide_banner -y -f concat -safe 0 -i "$dir/list.txt" -i "$dir/audio.wav" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest "$out" 2>&1 | tail -1
 echo "FERTIG $out"
