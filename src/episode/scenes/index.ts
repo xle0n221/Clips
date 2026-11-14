@@ -84,6 +84,8 @@ export type EpisodeConfig = {
   readonly noHud?: boolean;
   /** Oberkante der Sticker (px); ohne = wie bisher (HUD-Unterkante + 30 bzw. 300) */
   readonly stickerTop?: number;
+  /** Sticker mit diesem Text nicht zeichnen (z. B. wenn die Handlungs-Phrase dasselbe sagt) */
+  readonly stickerHide?: readonly string[];
   /** dunkle Platte hinter der Handlungs-Phrase */
   readonly onScreenPlate?: boolean;
   /** End-Card: Tippen beginnt ab diesem Bild (Standard 10) */

@@ -192,7 +192,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
             .trim(),
         };
 
-  const stickers = timeline.cues.filter((c) => c.sticker);
+  const stickers = timeline.cues.filter((c) => c.sticker && (cfg?.stickerHide ?? []).indexOf(c.sticker) < 0);
   // End-Card beginnt am Ende der letzten Szene (ohne End-Card: nie)
   const endCardFrom = timeline.endCard
     ? Math.min(durationInFrames - 1, toF(timeline.scenes[timeline.scenes.length - 1].endMs))

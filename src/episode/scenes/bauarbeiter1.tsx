@@ -214,16 +214,17 @@ export const BauPipe: React.FC = () => {
   if (shot === 0) {
     // Ohr am Rohr: Milo kniet rechts neben dem Rohr, beugt sich seitlich hin, Gesicht zur Kamera (P2-6)
     const k = knockAt(frame, beat("miloEarToPipe") + 20, [130, 220]);
-    const a = frameOn([0.5, 1.15, 0], 3.7, 0.55, 0.5, [0.1, 0.15, 1]);
-    const b = frameOn([0.4, 1.15, 0], 3.2, 0.55, 0.5, [0.08, 0.15, 1]);
+    // weiter Ausschnitt: rotes Rohr unten im Bild, Kopf nur ≈ 25° geneigt, Ohr am Rohrrand (R3 P2-1)
+    const a = frameOn([0.5, 1.3, 0], 4.9, 0.5, 0.5, [-0.4, 0.15, 1]);
+    const b = frameOn([0.45, 1.3, 0], 4.5, 0.5, 0.5, [-0.38, 0.15, 1]);
     return (
       <>
         <Night hemi={0.45} />
-        <SiteSet frame={frame} pipe={false} />
-        <Pipe top={1.25} glow={0.1 + 0.6 * k} />
+        <SiteSet frame={frame} pipe={false} clock="" />
+        <Pipe top={1.72} glow={0.1 + 0.6 * k} />
         <Pebbles jump={k} />
-        <Pebbles center={[0, 1.25, 0]} ring={0.27} count={4} jump={k} seed={9} />
-        <Milo frame={frame} position={[1.85, 0, 0]} rotation={[0, -Math.PI / 2, 0]} kneel={1} lean={0.8} look={Math.PI / 2 - 0.25} eyes={k > 0.2 ? "wide" : "closed"} mouth="flat" reach={[0.7, 0.4]} lamp={{ beam: 0, on: 0.8 }} blinkSeed={7} />
+        <Pebbles center={[0, 1.72, 0]} ring={0.27} count={4} jump={k} seed={9} />
+        <Milo frame={frame} position={[1.22, 0, 0]} rotation={[0, -Math.PI / 2, 0]} kneel={1} lean={0.3} look={Math.PI / 2 - 0.35} eyes={k > 0.2 ? "wide" : "closed"} mouth="flat" reach={[0.15, 0.15]} lamp={{ beam: 0, on: 0.8 }} blinkSeed={7} />
         <pointLight position={[1.0, 2.2, 1.6]} color={B.amber} intensity={5} distance={4} decay={2} />
         <Drizzle frame={frame} at={[0, 2, -0.5]} size={[5, 4, 4]} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="out" punch={k > 0.95 ? f : undefined} />
@@ -408,7 +409,7 @@ export const BauTape: React.FC = () => {
 export const BauNote: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("note");
   if (shot === 0) {
-    const unfold = 0.8 + 0.2 * win(frame, beat("noteOnTapeEnd"), beat("noteTextStopKnocking") - 4);
+    const unfold = 0.9 + 0.1 * win(frame, 0, beat("noteOnTapeEnd") - 8);
     const paper: V3 = [0, 1.55, 0.5];
     const a = frameOn([0, 1.75, 0.5], 2.7, 0.5, 0.5, [0.1, 0.2, 1]);
     const b = frameOn(paper, 2.0, 0.5, 0.5, [0.06, 0.18, 1]);

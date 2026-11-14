@@ -729,8 +729,9 @@ export const Paper: React.FC<{ readonly position?: V3; readonly rotation?: V3; r
       </mesh>
     </group>
     {ruled
-      ? [0, 1, 2, 3].map((k) => (
-          <mesh key={k} position={[0, h * 0.32 - k * h * 0.2, 0.002]}>
+      ? [0.4, 0, -0.4].map((k) => (
+          // Linien zwischen den Schriftzeilen (nicht durch die Schrift)
+          <mesh key={k} position={[0, k * h, 0.002]}>
             <planeGeometry args={[w * 0.92, 0.008]} />
             <meshBasicMaterial color="#7FA0C8" />
           </mesh>

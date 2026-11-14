@@ -151,7 +151,7 @@ export const BauBelow: React.FC = () => {
         <Milo frame={frame} position={[-0.85, LOW, -0.25]} nod={-0.55} reach={[0.2, 2.6]} holdR={<Wrench rotation={[-0.3, 0, 0]} />} lamp={{ color: B.teal, beam: 3, light: 4 }} blinkSeed={14} />
         <pointLight position={[0, LOW + 6, 0]} color={B.teal} intensity={6} distance={14} decay={2} />
         <pointLight position={[0, LOW + 7, 2]} color="#BFFFF8" intensity={30} distance={22} decay={2} />
-        <Shot frame={f} duration={len} {...fly(a, b)} span={[0, 38]} ease="inOut" shake={0.01} />
+        <Shot frame={f} duration={len} {...fly(a, b)} span={[0, 26]} ease="inOut" shake={0.01} />
       </>
     );
   }
@@ -202,14 +202,14 @@ export const BauFear: React.FC = () => {
   const b = { pos: [0.3, 1.2, 2.2] as V3, look: [0, 14, -6] as V3, fov: 46 };
   return (
     <>
-      <Night hemi={0.35} />
+      <Night hemi={0.85} bg="#14224A" />
       <SiteSet frame={frame} lampsOn={0.6} />
-      <Halo at={[-6, SKY + 2, -24]} size={22} color="#9FB4E8" opacity={0.35} />
+      <Halo at={[-6, SKY + 2, -24]} size={32} color="#9FB4E8" opacity={0.8} />
       <Clouds y={SKY} frame={frame} />
       <StarField y={SKY + 6} frame={frame} opacity={0.2} />
       <Milo frame={frame} position={[0, 0, 0]} rotation={[0, Math.PI, 0]} nod={-0.7} lamp={{ beam: 4, light: 4 }} blinkSeed={15} />
       <LightShaft from={[0, 3.2, -0.45]} to={[0, 18, -10]} radius={3.2} top={0.15} color={B.amber} opacity={0.3} />
-      <pointLight position={[0, 4.5, 1.6]} color="#9FB4E8" intensity={6} distance={6} decay={2} />
+      <pointLight position={[0, 4.5, 1.6]} color="#9FB4E8" intensity={12} distance={7} decay={2} />
       <Rain frame={frame} center={[0, 5, 1]} size={[8, 8, 6]} count={260} opacity={0.3} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="inOut" />
     </>
@@ -383,8 +383,8 @@ export const BauAnswer2: React.FC = () => {
     const t0 = beat("miloFaceLampTeal");
     const teal = frame >= t0 && Math.floor((frame - t0) / 4) % 3 !== 1;
     const head: V3 = [0, 2.6, 0];
-    const a = frameOn(head, 3.3, 0.5, 0.5, [-0.15, 0.05, 1]);
-    const b = frameOn(head, 2.9, 0.5, 0.5, [-0.12, 0.05, 1]);
+    const a = frameOn(head, 3.9, 0.52, 0.5, [-0.15, 0.05, 1]);
+    const b = frameOn(head, 3.5, 0.52, 0.5, [-0.12, 0.05, 1]);
     return (
       <>
         <Night bg="#1E3358" hemi={0.7} />
@@ -401,7 +401,8 @@ export const BauAnswer2: React.FC = () => {
   const raise = ramp(frame, tapStart - 8, tapStart - 1);
   const rise = ramp(f, 0, Math.min(len, 40), (x) => 1 - Math.pow(1 - x, 2));
   const a = { pos: [0.03, 9.5, 0.12] as V3, look: [0, UP + 6, 0] as V3, fov: 40 };
-  const b = { pos: [2.6, UP + 3.0, 3.6] as V3, look: [0.9, UP + 2.0, -0.6] as V3, fov: 44 };
+  // Helm + Lampe unter die obere Platte (R3 P2-2)
+  const b = { pos: [2.6, UP + 3.3, 3.8] as V3, look: [0.9, UP + 3.0, -0.6] as V3, fov: 46 };
   return (
     <>
       <Night tint="teal" hemi={0.5} />

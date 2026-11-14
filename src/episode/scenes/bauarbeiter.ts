@@ -53,5 +53,7 @@ export const BAU_CONFIG: EpisodeConfig = {
   noHud: true,
   stickerTop: 430,
   onScreenPlate: true,
+  // Schluss: Phrase + Untertitel sagen es schon – der Sticker „NOW HE'S BELOW“ läge auf Helm/Lampe (R3 P2-2)
+  stickerHide: ["NOW HE'S BELOW"],
   endCardTypeFrom: 2,
 };
