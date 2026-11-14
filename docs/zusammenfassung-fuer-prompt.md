@@ -104,7 +104,7 @@ Regeln dafür:
 - Nur ein Render gleichzeitig (4 CPU-Kerne).
 
 ## 7. Stand der Arbeit
-- **Fertig:**
+- **Fertig** (laut Dashboard `done`; Sonnensystem laut Repo, nicht im Dashboard; Rolls-Royce hat ein Drehbuch, ist aber nicht als fertig markiert):
   - Sonnensystem, Römisches Reich, Erde ohne Menschen, Mike Tyson, UFC, Jensen Huang
   - Lucia GTA 6, Jason GTA 6
   - „In This City, You Pay With Time“ (zeit-welt, KnowToon-Vorbild)
