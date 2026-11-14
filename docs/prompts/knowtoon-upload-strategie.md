@@ -123,3 +123,4 @@ Jede Rechnung mit Ausgangszahlen zeigen.
   - Story: Fiktion/Erzählung (Zeit-Welt, Bauarbeiter, Horror-Warteschlange)
   - Wissen: Personen, Geschichte, Erklärung (Lucia, Jason, Tyson, UFC, Huang, Rom)
   - What-if: Gedankenexperiment (Erde ohne Menschen)
+- **Hochladen bleibt Handarbeit (Nutzer 14.11.2026: „Ok dann belassen wirs erstmal so das im Dashboard einfach die zeiten stehen“):** Das Dashboard zeigt nur Slot und Ortszeiten; du lädst selbst hoch. Geprüft am 14.11.: In Zapier ist kein YouTube-Konto verbunden, und für TikTok gibt es dort nur Werbe-Apps. Ein nicht geprüfter TikTok-API-Zugang darf nur `SELF_ONLY` posten (developers.tiktok.com/docs/en/content-sharing-guidelines). Automatik nur auf neuen Auftrag.
