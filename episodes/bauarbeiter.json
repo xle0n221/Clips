@@ -27,7 +27,8 @@
   "music": {
     "mood": "dark",
     "bpm": 66,
-    "why": "Horror bei Nacht: langsamer, fast leerer Dark-Ambient-Trap in Moll ohne Gesang – tiefe Drone/Pad, gedämpftes Rhodes, einzelnes Glocken-Motiv wie eine Spieluhr, 808 als Herzschlag erst ab 'pipe'; klar anders als Zeit-Welt (epic 92) und Lucia/Jensen (dark 128/136) durch halbes Tempo und kaum Drums, und anders als Jason (chill 84). Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'rehook' Filter zu + 1 Takt Pause; bei 'hope' öffnet sich ein warmer Akkord; vor 'turn' 0,6 s Stille, dann tiefer Drone-Einsatz; ab 'pour' nur Drone; End-Card Ausklang. Offen für Musik-Rolle: ob gen_dark bei 66 BPM sparsam genug klingt (Clap/Hats ausdünnen) – mit earshot prüfen."
+    "sparseUntilScene": "pipe",
+    "why": "Horror bei Nacht: langsamer, fast leerer Dark-Ambient-Trap in Moll ohne Gesang – tiefe Drone/Pad, gedämpftes Rhodes, einzelnes Glocken-Motiv wie eine Spieluhr, 808 als Herzschlag erst ab 'pipe'; klar anders als Zeit-Welt (epic 92) und Lucia/Jensen (dark 128/136) durch halbes Tempo und kaum Drums, und anders als Jason (chill 84). Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'rehook' Filter zu + 1 Takt Pause; bei 'hope' öffnet sich ein warmer Akkord; vor 'turn' 0,6 s Stille, dann tiefer Drone-Einsatz; ab 'pour' nur Drone; End-Card Ausklang. Station-2-Nacharbeit 14.11.2026: `sparseUntilScene` = vor Szene 'pipe' nur Rhodes/Pad/Bell (keine Drums, kein 808, < 1,2 Onsets/s), Schlagzeug + 808 erst ab 'pipe'."
   },
   "narratorMood": {
     "mood": "angespannt-flüsternd, bedrückend",
@@ -1246,7 +1247,8 @@
   "narrator": {
     "max_speed": 1.1,
     "piece_extra_ms": 80,
-    "scene_gap_ms": 250
+    "scene_gap_ms": 250,
+    "qc_tries": 6
   },
   "captionNote": "Erweiterung 'Continuous Improvement' Regel 4: Untertitel als 2–5-Wort-Phrasen (Feld captions je Szene, Reihenfolge = Sprechtext), gelb mit dickem schwarzem Rand, unteres Drittel; zusätzlich je Szene eine Handlungs-Phrase (Feld onScreen, oberes Drittel, ganze Szene). Test: alle onScreen-Phrasen von oben nach unten erzählen die Geschichte. Renderer kennt 'phrase-yellow' evtl. noch nicht → Szenenbau prüfen.",
   "hookQuestion": {

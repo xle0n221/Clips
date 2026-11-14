@@ -1,92 +1,92 @@
 {
  "id": "bauarbeiter",
  "title": "Something Under the Site Knocked Back",
- "durationMs": 81656,
+ "durationMs": 82801,
  "scenes": [
   {
    "id": "hook",
    "startMs": 150,
-   "endMs": 4962
+   "endMs": 4995
   },
   {
    "id": "ritual",
-   "startMs": 4962,
-   "endMs": 11253
+   "startMs": 4995,
+   "endMs": 11457
   },
   {
    "id": "stakes",
-   "startMs": 11253,
-   "endMs": 17045
+   "startMs": 11457,
+   "endMs": 17275
   },
   {
    "id": "pipe",
-   "startMs": 17045,
-   "endMs": 22238
+   "startMs": 17275,
+   "endMs": 22542
   },
   {
    "id": "answer",
-   "startMs": 22238,
-   "endMs": 27196
+   "startMs": 22542,
+   "endMs": 27562
   },
   {
    "id": "radio",
-   "startMs": 27196,
-   "endMs": 31869
+   "startMs": 27562,
+   "endMs": 32263
   },
   {
    "id": "tape",
-   "startMs": 31869,
-   "endMs": 36486
+   "startMs": 32263,
+   "endMs": 36903
   },
   {
    "id": "note",
-   "startMs": 36486,
-   "endMs": 41215
+   "startMs": 36903,
+   "endMs": 41653
   },
   {
    "id": "look",
-   "startMs": 41215,
-   "endMs": 46189
+   "startMs": 41653,
+   "endMs": 46654
   },
   {
    "id": "mirror",
-   "startMs": 46189,
-   "endMs": 51881
+   "startMs": 46654,
+   "endMs": 52417
   },
   {
    "id": "below",
-   "startMs": 51881,
-   "endMs": 56569
+   "startMs": 52417,
+   "endMs": 57105
   },
   {
    "id": "fear",
-   "startMs": 56569,
-   "endMs": 61190
+   "startMs": 57105,
+   "endMs": 62167
   },
   {
    "id": "hope",
-   "startMs": 61190,
-   "endMs": 65940
+   "startMs": 62167,
+   "endMs": 66974
   },
   {
    "id": "turn",
-   "startMs": 65940,
-   "endMs": 70405
+   "startMs": 66974,
+   "endMs": 71504
   },
   {
    "id": "pour",
-   "startMs": 70405,
-   "endMs": 74216
+   "startMs": 71504,
+   "endMs": 75360
   },
   {
    "id": "knocks",
-   "startMs": 74216,
-   "endMs": 76813
+   "startMs": 75360,
+   "endMs": 77958
   },
   {
    "id": "answer2",
-   "startMs": 76813,
-   "endMs": 81056
+   "startMs": 77958,
+   "endMs": 82201
   }
  ],
  "cues": [
@@ -120,34 +120,34 @@
   {
    "beat": "miloTapsHardHat",
    "scene": "ritual",
-   "atMs": 7300
+   "atMs": 7420
   },
   {
    "beat": "hardHatThirdTapSlow",
    "scene": "ritual",
-   "atMs": 9500
+   "atMs": 9720
   },
   {
    "beat": "hardHatTapDetail",
    "sfx": "pop",
    "scene": "ritual",
-   "atMs": 10540
+   "atMs": 10720
   },
   {
    "emph": true,
    "scene": "ritual",
-   "atMs": 9500
+   "atMs": 9720
   },
   {
    "emph": true,
    "scene": "ritual",
-   "atMs": 10540
+   "atMs": 10720
   },
   {
    "beat": "craneWideLot9",
    "sfx": "whoosh",
    "scene": "stakes",
-   "atMs": 11940
+   "atMs": 12140
   },
   {
    "beat": "pourSign",
@@ -156,287 +156,282 @@
     "value": "6:00 AM"
    },
    "scene": "stakes",
-   "atMs": 14440
+   "atMs": 14660
   },
   {
    "beat": "pitLowAnglePipe",
    "scene": "stakes",
-   "atMs": 16320
+   "atMs": 16520
   },
   {
    "emph": true,
    "scene": "stakes",
-   "atMs": 11940
+   "atMs": 12140
   },
   {
    "emph": true,
    "scene": "stakes",
-   "atMs": 14440
+   "atMs": 14660
   },
   {
    "emph": true,
    "scene": "stakes",
-   "atMs": 16320
+   "atMs": 16520
   },
   {
    "beat": "miloEarToPipe",
    "scene": "pipe",
-   "atMs": 17640
+   "atMs": 18600
   },
   {
    "beat": "tabletPlanEmpty",
    "sticker": "NOT ON THE PLANS",
    "color": "#FFD23F",
    "scene": "pipe",
-   "atMs": 21320
+   "atMs": 21580
   },
   {
    "emph": true,
    "scene": "pipe",
-   "atMs": 17640
+   "atMs": 18600
   },
   {
    "emph": true,
    "scene": "pipe",
-   "atMs": 21320
+   "atMs": 21580
   },
   {
    "beat": "wrenchTapsThree",
    "scene": "answer",
-   "atMs": 23780
+   "atMs": 23860
   },
   {
    "beat": "pebblesJumpTealPulse",
    "scene": "answer",
-   "atMs": 24880
+   "atMs": 25140
   },
   {
    "beat": "miloLeansBack",
    "sfx": "pop",
    "scene": "answer",
-   "atMs": 26400
+   "atMs": 26760
   },
   {
    "emph": true,
    "scene": "answer",
-   "atMs": 23780
+   "atMs": 23860
   },
   {
    "emph": true,
    "scene": "answer",
-   "atMs": 24880
+   "atMs": 25140
   },
   {
    "emph": true,
    "scene": "answer",
-   "atMs": 25300
+   "atMs": 26320
   },
   {
    "beat": "radioBaseLed",
    "sfx": "pop",
    "scene": "radio",
-   "atMs": 27900
+   "atMs": 28300
   },
   {
    "beat": "tabletRockLayers",
    "scene": "radio",
-   "atMs": 30500
+   "atMs": 30880
   },
   {
    "emph": true,
    "scene": "radio",
-   "atMs": 27900
+   "atMs": 28300
   },
   {
    "emph": true,
    "scene": "radio",
-   "atMs": 30500
+   "atMs": 30880
   },
   {
    "beat": "tapeIntoPipe",
    "sfx": "whoosh",
    "scene": "tape",
-   "atMs": 32820
+   "atMs": 33220
   },
   {
    "beat": "tapeJerk",
    "sticker": "40 M",
    "color": "#FFD23F",
    "scene": "tape",
-   "atMs": 35460
+   "atMs": 35880
   },
   {
    "emph": true,
    "scene": "tape",
-   "atMs": 32820
+   "atMs": 33220
   },
   {
    "emph": true,
    "scene": "tape",
-   "atMs": 35460
+   "atMs": 35880
   },
   {
    "beat": "noteOnTapeEnd",
    "sfx": "ding",
    "scene": "note",
-   "atMs": 37420
+   "atMs": 37860
   },
   {
    "beat": "noteTextStopKnocking",
    "scene": "note",
-   "atMs": 38440
+   "atMs": 38900
   },
   {
    "beat": "matchLogbookHandwriting",
    "scene": "note",
-   "atMs": 40280
+   "atMs": 40700
   },
   {
    "emph": true,
    "scene": "note",
-   "atMs": 37420
+   "atMs": 37860
   },
   {
    "emph": true,
    "scene": "note",
-   "atMs": 38440
+   "atMs": 38900
   },
   {
    "emph": true,
    "scene": "note",
-   "atMs": 40280
+   "atMs": 40700
   },
   {
    "beat": "povPipeDown",
    "sfx": "whoosh",
    "scene": "look",
-   "atMs": 42500
+   "atMs": 42940
   },
   {
    "beat": "tealHeadlampLooksUp",
    "scene": "look",
-   "atMs": 42040
+   "atMs": 42520
   },
   {
    "emph": true,
    "scene": "look",
-   "atMs": 42500
+   "atMs": 42940
   },
   {
    "emph": true,
    "scene": "look",
-   "atMs": 44880
+   "atMs": 45320
   },
   {
    "beat": "miloBelowFace",
    "scene": "mirror",
-   "atMs": 46480
+   "atMs": 46960
   },
   {
    "beat": "matchCutFaces",
    "scene": "mirror",
-   "atMs": 48480
+   "atMs": 48960
   },
   {
    "beat": "lowerMiloTapsHat",
    "scene": "mirror",
-   "atMs": 49940
+   "atMs": 50440
   },
   {
    "beat": "lowerMiloSmiles",
    "scene": "mirror",
-   "atMs": 51160
+   "atMs": 51700
   },
   {
    "emph": true,
    "scene": "mirror",
-   "atMs": 46480
+   "atMs": 46960
   },
   {
    "emph": true,
    "scene": "mirror",
-   "atMs": 47460
+   "atMs": 47920
   },
   {
    "emph": true,
    "scene": "mirror",
-   "atMs": 48480
+   "atMs": 48960
   },
   {
    "emph": true,
    "scene": "mirror",
-   "atMs": 49940
+   "atMs": 50440
   },
   {
    "emph": true,
    "scene": "mirror",
-   "atMs": 51160
+   "atMs": 51700
   },
   {
    "beat": "vertigoDownMirrorSite",
    "sfx": "whoosh",
    "scene": "below",
-   "atMs": 53420
+   "atMs": 53940
   },
   {
    "beat": "lowerMiloTapsUp",
    "scene": "below",
-   "atMs": 55580
+   "atMs": 56120
   },
   {
    "emph": true,
    "scene": "below",
-   "atMs": 53420
+   "atMs": 53940
   },
   {
    "emph": true,
    "scene": "below",
-   "atMs": 55580
+   "atMs": 56120
   },
   {
    "beat": "miloLooksUp",
    "scene": "fear",
-   "atMs": 57540
+   "atMs": 58080
   },
   {
    "beat": "tiltUpSky",
    "scene": "fear",
-   "atMs": 60540
+   "atMs": 61500
   },
   {
    "emph": true,
    "scene": "fear",
-   "atMs": 57540
+   "atMs": 58080
   },
   {
    "emph": true,
    "scene": "fear",
-   "atMs": 60540
+   "atMs": 61500
   },
   {
    "beat": "cloudsPartStars",
    "scene": "hope",
-   "atMs": 61740
+   "atMs": 62760
   },
   {
    "beat": "miloExhales",
    "scene": "hope",
-   "atMs": 63960
+   "atMs": 64960
   },
   {
    "beat": "miloSmileRelief",
    "scene": "hope",
-   "atMs": 65180
+   "atMs": 66180
   },
   {
    "emph": true,
    "scene": "hope",
-   "atMs": 61740
-  },
-  {
-   "emph": true,
-   "scene": "hope",
-   "atMs": 62980
+   "atMs": 62760
   },
   {
    "emph": true,
@@ -446,37 +441,42 @@
   {
    "emph": true,
    "scene": "hope",
-   "atMs": 65180
+   "atMs": 64960
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 66180
   },
   {
    "beat": "starFlickersTeal",
    "scene": "turn",
-   "atMs": 67180
+   "atMs": 68220
   },
   {
    "beat": "starIsHeadlamp",
    "scene": "turn",
-   "atMs": 68400
+   "atMs": 69480
   },
   {
    "beat": "allStarsHeadlamps",
    "scene": "turn",
-   "atMs": 69280
+   "atMs": 70400
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 67180
+   "atMs": 68220
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 68400
+   "atMs": 69480
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 69280
+   "atMs": 70400
   },
   {
    "beat": "concretePourTrucks",
@@ -486,7 +486,7 @@
     "value": "NOW"
    },
    "scene": "pour",
-   "atMs": 71660
+   "atMs": 72740
   },
   {
    "beat": "concreteCoversPipe",
@@ -495,17 +495,17 @@
     "value": "SEALED"
    },
    "scene": "pour",
-   "atMs": 73560
+   "atMs": 74660
   },
   {
    "emph": true,
    "scene": "pour",
-   "atMs": 71660
+   "atMs": 72740
   },
   {
    "emph": true,
    "scene": "pour",
-   "atMs": 73560
+   "atMs": 74660
   },
   {
    "beat": "hardHatTappedFromAbove",
@@ -514,34 +514,34 @@
     "value": "6:00 AM"
    },
    "scene": "knocks",
-   "atMs": 75600
+   "atMs": 76980
   },
   {
    "emph": true,
    "scene": "knocks",
-   "atMs": 75600
+   "atMs": 76980
   },
   {
    "beat": "miloFaceLampTeal",
    "scene": "answer2",
-   "atMs": 78100
+   "atMs": 79180
   },
   {
    "beat": "craneUpThirdSite",
    "sticker": "NOW HE'S BELOW",
    "color": "#FFD23F",
    "scene": "answer2",
-   "atMs": 80220
+   "atMs": 81380
   },
   {
    "emph": true,
    "scene": "answer2",
-   "atMs": 78100
+   "atMs": 79180
   },
   {
    "emph": true,
    "scene": "answer2",
-   "atMs": 80220
+   "atMs": 81380
   }
  ],
  "hud": {

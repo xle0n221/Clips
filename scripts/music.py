@@ -318,6 +318,7 @@ class Song:
         self.bar = 4 * self.beat
         self.intro = (4 if 4 * self.beat <= 2.0 else 2) * self.beat
         self.nbars = int(np.ceil((seconds - self.intro) / self.bar)) + 1
+        self.sparse = 0.0  # Sekunden: davor nur Flächen (kein Schlagzeug/808), nur gen_dark (Drehbuch music.sparseUntilScene)
 
     def t(self, bar, beat=0.0):
         return self.intro + bar * self.bar + beat * self.beat
@@ -350,6 +351,8 @@ def gen_dark(mix, s, key, prog, rng, kit):
                 if rhythm[(j + (3 if sec == "A2" else 0)) % 8] and j % 2 == 0:
                     m = 72 + key + notes[j] + (12 if sec == "A2" and j == 0 else 0)
                     mix.add("music", t0 + j * s.beat / 2, bell(_hz(m), 1.1), 0.07)
+        if t0 + s.beat < s.sparse:  # sparse: nur Rhodes/Pad/Bell, 808 + Drums erst ab der Zielszene (Standard 0 = unverändert)
+            continue
         if sec == "C" and bar % 4 < 2:  # Breakdown: nur Rhodes + Riser
             if bar % 4 == 1:
                 mix.add("fx", t0, riser(s.bar, rng), 0.06)
@@ -577,11 +580,12 @@ def describe(mood: str, seed: int, bpm: float | None = None) -> dict:
     }
 
 
-def render(seconds: float, mood: str, bpm: float | None = None, seed: int = 0) -> np.ndarray:
+def render(seconds: float, mood: str, bpm: float | None = None, seed: int = 0, sparse_until: float = 0.0) -> np.ndarray:
     d = describe(mood, seed, bpm)
     mood, rng = d["mood"], d["_rng"]
     print(f"Musik: {mood}, {d['bpm']} BPM, {d['key']}, {d['chords']} (Seed {seed})")
     song = Song(seconds, d["bpm"])
+    song.sparse = sparse_until
     mix = Mix(seconds)
     kit = Kit(rng)
     GEN[mood](mix, song, d["_key"], BANKS[mood][d["_var"]], rng, kit)

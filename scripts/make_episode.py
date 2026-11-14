@@ -214,20 +214,19 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict) -> np.ndarray:
     fo = len(y) - max(0, f0)
     if fo > 0:
         y[len(y) - fo:] *= ((1 + np.cos(np.linspace(0, np.pi, fo))) / 2).astype(np.float32)
-    # Harte Kante (stimm_messung: Pegel kurz vor der Stille noch > Satzpegel −25 dB, dann Stille; z. B. „times“ / „up“ –
-    # Endkonsonant bricht ab): NUR den Nachklang NACH dem Wortende (letzter Block ≥ Satzpegel −18 dB bleibt unberührt)
-    # in dB-linearer Rampe (−60 dB in 100 ms) ausblenden; Wörter werden nie angefasst. Sätze ohne harte Kante bleiben
-    # bitgleich (14.11.2026, bauarbeiter 8,18 s / 58,2 s).
-    db2 = _frames_db(y, hop)
-    ok = np.nonzero(db2 >= level - 18)[0]
-    if len(ok):
-        we = int(ok[-1])
-        nxt = np.nonzero(db2[we + 1:] < level - 35)[0]
-        if len(nxt) and nxt[0] <= 6:
-            a = (we + 1) * hop
-            t = np.arange(len(y) - a) / (0.10 * sr)
-            y[a:] *= (10 ** (-3.0 * np.minimum(t, 1.0))).astype(np.float32) * (t < 1.0)
     return y
+
+
+def hard_edge(y: np.ndarray) -> bool:
+    """Endet der (erzählte) Satz abrupt? Näherung von stimm_messung.py „harte Kanten“ (Endkonsonant bricht ab: „times“, „up“):
+    der letzte Block vor der Stille (< Satzpegel −35 dB) liegt noch über Satzpegel −28,2 dB. Schwelle an den 45 Sätzen von
+    bauarbeiter (14.11.2026) so gewählt, dass die zwei gemessenen Kanten (8,18 s / 58,2 s) und nur wenige weitere erfasst werden."""
+    db = _frames_db(y, SAMPLE_RATE // 100)
+    if len(db) < 5:
+        return False
+    lv = float(np.median(db[db > np.percentile(db, 40)]))
+    loud = np.nonzero(db >= lv - 35)[0]
+    return bool(len(loud) and loud[-1] + 1 < len(db) and db[loud[-1]] > lv - 28.2)
 
 
 _WHISPER = None
@@ -326,28 +325,30 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
     print(f"Chatterbox: {sum(not Path(j['out']).exists() for j in first)} von {len(first)} Stücken neu, Stimme {voice_id}")
     run(first)
     chosen: dict[str, Path] = {}
-    pending = [(text, job, seed) for k in keys if k[3] is not None for text, job, seed in k[2]]
-    tries = {text: [] for text, _, _ in pending}
+    pending = [(text, job, seed, k[3]) for k in keys if k[3] is not None for text, job, seed in k[2]]
+    tries = {text: [] for text, _, _, _ in pending}
     for attempt in range(NARRATOR["qc_tries"]):
         retry = []
-        for text, job, seed in pending:
+        for text, job, seed, em in pending:
             f = job_path({**job, "seed": seed + attempt})
             bad = qc_score(f, text, ep, qc)
+            if bad == 0 and hard_edge(narrate_sentence(sf.read(str(f), dtype="float32")[0], text, em)):
+                bad = 0.5  # harte Kante am Satzende (stimm_messung): neuen Seed versuchen, sonst bleibt der beste
             tries[text].append((bad, attempt, f))
             if bad == 0 or attempt == NARRATOR["qc_tries"] - 1:
                 chosen[text] = min(tries[text], key=lambda t: (t[0], t[1]))[2]
             else:
-                retry.append((text, job, seed))
+                retry.append((text, job, seed, em))
         qc_file.write_text(json.dumps(qc, indent=0))
         if not retry:
             break
-        print(f"Aussprache-Prüfung: {len(retry)} Sätze neu (Versuch {attempt + 2}): " + " · ".join(t[:40] for t, _, _ in retry))
-        run([{**job, "seed": seed + attempt + 1, "out": str(job_path({**job, "seed": seed + attempt + 1}))} for _, job, seed in retry])
+        print(f"Aussprache-Prüfung: {len(retry)} Sätze neu (Versuch {attempt + 2}): " + " · ".join(t[0][:40] for t in retry))
+        run([{**job, "seed": seed + attempt + 1, "out": str(job_path({**job, "seed": seed + attempt + 1}))} for _, job, seed, _ in retry])
         pending = retry
-    n_bad = sum(1 for t in tries.values() if min(x[0] for x in t) > 0)
+    n_bad = sum(1 for t in tries.values() if min(x[0] for x in t) >= 1)
     print(f"Aussprache-Prüfung: {len(tries) - n_bad}/{len(tries)} Sätze ohne Abweichung")
     for text, t in tries.items():
-        if min(x[0] for x in t) > 0:
+        if min(x[0] for x in t) >= 1:
             print(f"   Rest-Abweichung {min(x[0] for x in t)} Wort/Wörter: {text}")
 
     tempo = float(ep.get("speed", 1.0))  # Chatterbox hat kein Tempo-Feld: tonhöhenneutral strecken (ffmpeg atempo)
@@ -578,7 +579,8 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
 
     mus = ep.get("music") or {}  # {"mood": "dark", "bpm": 140, "why": "..."} – fehlt: alter Loop "upbeat"
     make_music(out_dir / "music.wav", seconds=timeline["durationMs"] / 1000 + 1, bpm=mus.get("bpm"),
-               mood=mus.get("mood", "upbeat"), seed=mus.get("seed", ep["id"]))
+               mood=mus.get("mood", "upbeat"), seed=mus.get("seed", ep["id"]),
+               sparse_until=next((sc["startMs"] / 1000 for sc in timeline["scenes"] if sc["id"] == mus.get("sparseUntilScene")), 0.0))
     make_sfx(ROOT / "public" / "sfx")
     print(f"Fertig: {out_dir.relative_to(ROOT)}")
 

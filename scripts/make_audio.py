@@ -62,7 +62,8 @@ def make_sfx(folder: Path) -> None:
     _write(folder / "ding.wav", ding)
 
 
-def make_music(path: Path, seconds: float, bpm: float | None = None, mood: str = "upbeat", seed: int | str = 0) -> None:
+def make_music(path: Path, seconds: float, bpm: float | None = None, mood: str = "upbeat", seed: int | str = 0,
+               sparse_until: float = 0.0) -> None:
     """Musikbett je Stimmung (Presets in scripts/music.py). "upbeat" = alter Loop, bitgleich wie bisher.
 
     seed: Zahl oder Text (Episoden-ID) – variiert Tonart, Akkordfolge und Motiv, damit kein Video wie das andere klingt.
@@ -76,7 +77,7 @@ def make_music(path: Path, seconds: float, bpm: float | None = None, mood: str =
     import music
 
     s = music.seed_from(seed) if isinstance(seed, str) else int(seed)
-    _write(path, music.render(seconds, mood, bpm, s), normalize=False)  # Lautheit regelt music.py
+    _write(path, music.render(seconds, mood, bpm, s, sparse_until), normalize=False)  # Lautheit regelt music.py
 
 
 def _music_upbeat(path: Path, seconds: float, bpm: float = 104) -> None:
