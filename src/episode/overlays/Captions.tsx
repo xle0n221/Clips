@@ -144,6 +144,108 @@ const YellowWord: React.FC<{ readonly text: string; readonly key2: boolean; read
   );
 };
 
+/* ------------------------------------------------------------------ */
+/* „phrase-yellow“ (Erweiterung „Continuous Improvement“ Regel 4)       */
+/* ------------------------------------------------------------------ */
+
+export type Phrase = { readonly text: string; readonly startMs: number; readonly endMs: number };
+const normWord = (w: string) => w.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+/**
+ * Wörter (captions.json) zu Phrasen bündeln. Mit `phrases` (Drehbuch `scenes[].captions`): je Phrase so viele
+ * Wörter wie sie hat, der Reihe nach – passt die Wortzahl nicht genau, automatisch. Automatisch: Schnitt nach
+ * Satzzeichen oder spätestens nach 4 Wörtern (2–5-Wort-Regel), ein einzelnes Restwort hängt am Vorgänger.
+ */
+export const groupPhrases = (captions: Caption[], phrases?: readonly string[]): Phrase[] => {
+  const words = captions.filter((c) => normWord(c.text) !== "");
+  if (phrases && phrases.length) {
+    const out: Phrase[] = [];
+    let i = 0;
+    for (const p of phrases) {
+      const n = p.split(/\s+/).filter((w) => normWord(w) !== "").length;
+      const seg = words.slice(i, i + n);
+      if (!seg.length) break;
+      out.push({ text: p, startMs: seg[0].startMs, endMs: seg[seg.length - 1].endMs });
+      i += n;
+    }
+    if (i === words.length) return out;
+  }
+  const out: { words: Caption[] }[] = [];
+  let cur: Caption[] = [];
+  for (const w of words) {
+    cur.push(w);
+    if (/[.,!?…;:]["”]?$/.test(w.text.trim()) || cur.length >= 4) {
+      out.push({ words: cur });
+      cur = [];
+    }
+  }
+  if (cur.length) {
+    if (cur.length === 1 && out.length) out[out.length - 1].words.push(...cur);
+    else out.push({ words: cur });
+  }
+  return out.map((g) => ({
+    text: g.words.map((w) => w.text.trim()).join(" "),
+    startMs: g.words[0].startMs,
+    endMs: g.words[g.words.length - 1].endMs,
+  }));
+};
+
+/** Eine Phrase: GELB, fett, dicker schwarzer Rand, unteres Drittel, höchstens zwei Zeilen, kurzer Pop beim Einsatz. */
+const YellowPhrase: React.FC<{ readonly text: string; readonly bottom: number }> = ({ text, bottom }) => {
+  const frame = useCurrentFrame();
+  const pop = interpolate(frame, [0, 2, 5], [0.84, 1.05, 1], { extrapolateRight: "clamp" });
+  const clean = text.trim().replace(/["“”]/g, "").replace(/[.,:;]+$/, "");
+  const size = clean.length > 22 ? 76 : 86;
+  return (
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: bottom }}>
+      <div
+        style={{
+          fontFamily: CAPTION_FONT,
+          fontWeight: 900,
+          fontSize: size,
+          lineHeight: 1.06,
+          color: YELLOW_CAPTION,
+          textAlign: "center",
+          maxWidth: 940,
+          textTransform: "uppercase",
+          WebkitTextStroke: "18px #000",
+          paintOrder: "stroke",
+          textShadow: "0 8px 0 rgba(0,0,0,0.85), 0 0 26px rgba(0,0,0,0.55)",
+          transform: `scale(${pop})`,
+          letterSpacing: 1,
+        }}
+      >
+        {clean}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** Phrase steht bis zur nächsten (höchstens Phrasenende + 500 ms, mind. 8 Bilder). */
+const PhraseCaptions: React.FC<{
+  readonly captions: Caption[];
+  readonly phrases?: readonly string[];
+  readonly fps: number;
+  readonly bottom: number;
+}> = ({ captions, phrases, fps, bottom }) => {
+  const list = useMemo(() => groupPhrases(captions, phrases), [captions, phrases]);
+  return (
+    <AbsoluteFill>
+      {list.map((p, i) => {
+        const next = list[i + 1];
+        const from = Math.round((p.startMs / 1000) * fps);
+        const endMs = next ? Math.min(next.startMs, p.endMs + 500) : p.endMs + 500;
+        const dur = Math.max(8, Math.round((endMs / 1000) * fps) - from);
+        return (
+          <Sequence key={i} from={from} durationInFrames={dur} layout="none">
+            <YellowPhrase text={p.text} bottom={bottom} />
+          </Sequence>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
 /**
  * emph: Startzeit (ms) eines Untertitel-Worts -> Akzentfarbe. Kommt aus `emph`-Cues bzw. aus
  * "*Wort*" im Drehbuch (make_episode.py). Seiten ohne Akzentwort werden unverändert gezeichnet.
@@ -157,8 +259,11 @@ export const Captions: React.FC<{
   readonly bottom?: number;
   /** Drehbuch-Feld `captionStyle`; "word-by-word-yellow" = gelbe Wort-für-Wort-Untertitel (überschreibt `mode`) */
   readonly variant?: string;
-}> = ({ captions, emph, mode, bottom = 420, variant }) => {
+  /** Phrasen für "phrase-yellow" (Drehbuch `scenes[].captions`); ohne = automatisch gebündelt */
+  readonly phrases?: readonly string[];
+}> = ({ captions, emph, mode, bottom = 420, variant, phrases }) => {
   const { fps } = useVideoConfig();
+  if (variant === "phrase-yellow") return <PhraseCaptions captions={captions} phrases={phrases} fps={fps} bottom={bottom} />;
   if (variant === "word-by-word-yellow")
     return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} yellow />;
   if (mode === "word") return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} />;

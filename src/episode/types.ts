@@ -74,6 +74,10 @@ export type Timeline = {
   cover?: CoverSpec;
   /** Untertitel-Variante (Drehbuch-Feld `captionStyle`), z. B. "word-by-word-yellow" (overlays/Captions.tsx); ohne = wie bisher */
   captionStyle?: string;
+  /** Untertitel-Phrasen (Drehbuch-Feld `scenes[].captions`, Reihenfolge = Sprechtext) für captionStyle "phrase-yellow"; ohne = automatisch */
+  phrases?: string[];
+  /** Handlungs-Phrase je Szene (Drehbuch-Feld `scenes[].onScreen`, oberes Drittel, ganze Szene); ohne = keine */
+  onScreen?: Record<string, string>;
   /** End-Card nach der letzten Szene (Drehbuch-Feld `endCard`, overlays/EndCard.tsx); verlängert das Video um `seconds` */
   endCard?: { handle: string; cta: string; seconds?: number; accent?: string };
 };

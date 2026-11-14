@@ -11,6 +11,7 @@ import { HUANG_CONFIG, HUANG_SCENES } from "./huang";
 import { LUCIA_CONFIG, LUCIA_SCENES } from "./lucia";
 import { JASON_CONFIG, JASON_SCENES } from "./jason";
 import { ZEIT_CONFIG, ZEIT_SCENES } from "./zeitwelt";
+import { BAU_CONFIG, BAU_SCENES } from "./bauarbeiter";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -43,6 +44,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "lucia-gta6": LUCIA_SCENES,
   "jason-gta6": JASON_SCENES,
   "zeit-welt": ZEIT_SCENES,
+  bauarbeiter: BAU_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -74,6 +76,14 @@ export type EpisodeConfig = {
   readonly filmLook?: FilmLookSpec;
   /** Ambient-Bett (Datei in public/episodes/<id>/, erzeugt mit scripts/make_sound_bed.py) */
   readonly bed?: { readonly src: string; readonly volume?: number };
+  /** Untertitel-Phrasen für captionStyle "phrase-yellow" (wenn timeline.json keine `phrases` hat) */
+  readonly phrases?: readonly string[];
+  /** Handlungs-Phrase je Szene oben (wenn timeline.json keine `onScreen` hat), overlays/OnScreenText.tsx */
+  readonly onScreen?: Readonly<Record<string, string>>;
+  /** Zahlen-HUD aus timeline.hud nicht zeichnen (z. B. weil oben die Handlungs-Phrase steht) */
+  readonly noHud?: boolean;
+  /** Oberkante der Sticker (px); ohne = wie bisher (HUD-Unterkante + 30 bzw. 300) */
+  readonly stickerTop?: number;
 };
 export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" }, coverArt: EarthCoverArt },
@@ -84,5 +94,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "lucia-gta6": LUCIA_CONFIG,
   "jason-gta6": JASON_CONFIG,
   "zeit-welt": ZEIT_CONFIG,
+  bauarbeiter: BAU_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];
