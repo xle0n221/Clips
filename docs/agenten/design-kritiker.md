@@ -19,6 +19,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 - Untertitel-Zone mit den Werten aus dem Code prüfen: Unterkante y 1520 (`Captions.tsx` `paddingBottom: 400`), eine Zeile ≈ 1420–1520, zwei Zeilen ab ≈ 1325 (`design-system.md` §4.6) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 14.11.2026 · Bauarbeiter Runde 2 · Ersteller-Messwerte nachgerendert statt übernommen (Abweichung 0,2-2,3, fear 20,3 knapp); Prüfregel: Endstand immer selbst rendern, Ersteller-Zahlen nur gegenprüfen; Sticker-Platte per Y-Dezil im Sticker-Band messbar · `docs/kritik-bauarbeiter-szenen.md` Design Runde 2
 - 14.11.2026 · Bauarbeiter (3D, KnowToon) · Experiment: Pixelmessung von Sticker-Grau gegen Szenen-Grund im Fade-in (1,4 : 1 auf hellem Mund-Ring, 52,5 s) und Dunkelstellen per mittlerer Luminanz (11-17 bei 64-69 s); Prüfregel: Sticker-Kontrast auch während des Einblendens messen, Sticker, die den Untertitel wörtlich wiederholen, als Doppelung führen · `docs/kritik-bauarbeiter-szenen.md` Design Runde 1
 - 13.11.2026 · ZeitWelt Runde 2 · Neue Kollisionsart: Sticker über Bildnachweis-Zeile (1748, 84,3 s) – Prüfregel: Nachweis-Zeilen echter Bilder gegen alle Sticker/Labels derselben Einstellung prüfen, nicht nur gegen Untertitel · `docs/kritik-zeitwelt-szenen.md` Runde 2 N1
 - 13.11.2026 · ZeitWelt (3D, KnowToon) · Experiment: Originalitäts-Check gegen Markenfiguren als Merkmalsliste statt Bauchgefühl – LEGO (Noppen, C-Hände, Zylinderkopf), Minecraft (Pixeltextur, scharfe Würfel), Roblox (Blocky-Rumpf, Rechteck-Glieder, Standard-Smiley) gegen Code (`Klotz`, `zeitweltSets.tsx`) und Nahaufnahmen (49,8 / 66,0 s): nur das Grundprinzip „Blocky Avatar“ geteilt, keine Erkennungsmerkmale → bestanden mit Hinweis. Andere Clips per Pixel-Differenz zu einem früheren eigenen Standbild geprüft (Lucia Bild 852: 0,0). HUD min. 14,6 : 1. Text-auf-Text bei echten Bildern: Bildnachweis-Zeile und Karten gehören über y 1300 · `docs/kritik-zeitwelt-szenen.md`
@@ -39,6 +40,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 14.11.2026 | Bauarbeiter Runde 1 (Kontaktabzug + 9 Standbilder) | 8,5 (Design-Kritiker) | Sticker 1,4 : 1 bei 52,5 s, leere Fear-Szene mit Sticker-Doppelung, dunkle Szenen 64-69 s, Gesicht ausgeblichen 70,5 s |
+| 14.11.2026 | Bauarbeiter Runde 2 (9 Standbilder nachgerendert) | 9,0 (Design-Kritiker) | Sticker 1,4 → ca. 15 : 1, Dunkelstellen 20-34, D1-D8 behoben; Uhr (D9) ungemessen, Zettel-Linien P3 |
 | 13.11.2026 | ZeitWelt Runde 2 (Cover + 24 Nachprüfbilder) | 9,0 (Design-Kritiker) | Ida im Cover, Doppel-Sticker weg, ISS-Lichter im Glas; Rest P3 |
 | 13.11.2026 | ZeitWelt (3D, Cover + 57 Einzelbilder) | 8,5 (Design-Kritiker) | Cover ohne Hauptfigur, Sticker doppelt zum Schild, ISS-Video in Spiegelung unkenntlich |
 | 13.11.2026 | Jason GTA 6 Runde 2 (Cover + 20 Nachprüfbilder) | 9,0 (Design-Kritiker) | Cover ohne Blinzeln, keine Doppelung; echte Fotos fehlen (begründen) |

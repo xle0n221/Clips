@@ -98,3 +98,30 @@ Gemessen bei Länge ≈ 84,2 s: erster lesbarer Stern 67,2 s = 79,8 %, Enthüllu
 
 ### Note: **8,5 / 10** (Regie)
 Beleg: alle Messregeln erfüllt (Ø 2,42 s, max 4,53 s, Phrasen 2–5, Schlussbild gepflanzt/wiederholt/umgedeutet, Höhepunkt-Start 79,8 %), alle P1 und fünf P2 behoben, Höhepunkt jetzt ohne Ton lesbar. Unter 9 bleibt: pipe 19,5 s (Verb „horcht am Rohr“ nicht lesbar, Pose kippt) und answer2 81,5–82,0 s (Sticker auf Helm, dreifache Wiederholung des Satzes), dazu P3 (below 0,9 s schwarz, note-Zettel, pour-Untertitel, Röhre ohne Motiv, dritte Lot 9 unsichtbar). Beide P2 beheben → Nachprüfung 4 Bilder → ≥ 9.
+
+## Design Runde 2 (Design-Kritiker, 14.11.2026)
+
+Endstand (Commit 5318cd7) selbst nachgerendert: f6, f1215, f1575, f1845, f1935, f2060, f2115, f2475, f2500 (+ f45, f855 nur Luminanz). Kein Voll-Render.
+
+**Nachmessung (mittlere Luminanz 0-255; Ersteller-Angabe in Klammern)**
+- turn f2060: 33,7 (33,9) · hope f1935: 33,3 (34,9) · fear f1845: 20,3 (21,7) · below f1575: 23,2 (20,9) · Gesicht f2115: 55,5 (55,2). Ersteller-Werte bis auf 0,2-2,3 bestätigt; fear grenzwertig (>= 20).
+- Sticker-Band (y 130-260) bei f1575/1845/1935/2060/2115: unteres Dezil Y = 0,0 (nahezu Schwarz), hellste Zeichen Y 0,77-0,82 (weiß) → Kontrast ca. 15 : 1 (vorher 1,4 : 1 bei f1575). Platte sichtbar.
+- Untertitel gelb/schwarz unverändert gut (f1575, f1845, f2060, f2115).
+
+**Status D1-D9**
+- D1 erledigt: f1575 „A COPY OF LOT 9“ weiß auf dunkler Platte, voll lesbar (Sicht + Messung); Platte wirkt beim Fade ebenfalls.
+- D2 erledigt: f1845 zeigt jetzt Helm-Silhouette mit Rim-Light und Lichtfleck; Sticker „HE CHECKS THE SKY“ ≠ Untertitel. Rest P3: Das Objekt ist sehr nah/abstrakt (Helm von unten, wirkt wie Kapsel); Milo ist nur über Kontext erkennbar.
+- D3 erledigt nach K13: Sticker benennen die Handlung in anderen Worten (f1215 „A WARNING IN HIS WRITING“, f1845, f2060/2115 „EVERY STAR IS A MILO“). Keine wörtliche Wiederholung in den 5 geprüften Bildern.
+- D4 erledigt: f2060 Lampe als großes Gesicht im Rohr (ca. 650 px breit statt 80 px), Lum. 33,7; f1935 33,3.
+- D5 erledigt: f2115 Gesicht nicht mehr ausgebrannt (Augen, Mund, Nase lesbar), Hut mit Krempe/Wölbung erkennbar (leuchtende Lampenplatte), Lum. 55,5.
+- D6 erledigt: Cover f6 – Untertext „Lot 9 · 2:14 AM“ auf dunklem Grund über dem Helm, Titel frei; Helm mit Lampenkegel groß unter dem Titel. Sauber.
+- D7 erledigt: „X“ aus dem Bild (f6 unten frei).
+- D8 erledigt: f2475 Suchleiste tippt bereits „Kno“, f2500 End-Card „KnowToon“ steht (gemeinsam geprüft).
+- D9 offen/P3: 2:14-Uhr laut Ersteller 5,9 : 1 – nicht eigens gemessen (kein Standbild mit Uhr unter meinen Frames); stichprobenhaft in f6/f855 nicht sichtbar. Zettel f1215: blaue Linien des 2:00-Zettels laufen durch die Schrift („ALL QUIET“, „- M.“) wie Durchstreichung – P3.
+
+**Neu/Rest (alle P3)**
+- f1215: Sticker-Platte (zweizeilig, y 150-305) ragt breit (x 70-1010) und liegt nah (65 px) über dem Zettel; goldener Querbalken zwischen den Zetteln ohne Funktion. Linien aus dem Zettel nehmen.
+- 28,5 s / 79,5 s: Alt-Stand (Zaun-Uhr) laut Auftrag nicht nachgemessen.
+
+**Note Design: 9,0 / 10**
+Beleg: Sticker 1,4 → ca. 15 : 1 (f1575), Dunkelstellen 20,3-33,7 (vorher 11,2-24,9, Ziel >= 20 erreicht), Gesicht 70,5 s ohne Überstrahlung, Cover und End-Card sauber, Untertitel ca. 14 : 1, keine wörtliche Sticker-Doppelung in den geprüften Bildern. Kein Aufschlag über 9, weil fear (20,3) knapp an der Grenze liegt, die Uhr (D9) nicht selbst gemessen wurde und die Zettel-Linien lesbarkeitsmindernd sind.
