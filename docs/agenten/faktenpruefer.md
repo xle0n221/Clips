@@ -11,6 +11,7 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 - Unterscheidet Fakt / Legende / Pointe (keine Sachbehauptung)
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Neue Fassung (v2) eines schon geprüften Pakets: zuerst alle früheren Befunde per grep suchen – Neufassungen bringen alte Fehler zurück (Bauarbeiter v2, 14.11.2026).
 - Bei Fiktion: echte Fotos/Videos nie mit erfundenem Ort/Namen beschriften – Beschriftung generisch + Quellenzeile (Bauarbeiter, 14.11.2026).
 - Technische Angaben im Paket (max_speed, Pausen) gegen den Code prüfen, nicht gegen frühere Pakete (Bauarbeiter, 14.11.2026).
 - Editionsdaten in eckigen Klammern ([21 July 1748]) sind erschlossen – meist Druck-/Anzeigedatum: „wrote in X“ → „published in X“, solange kein Schreibdatum belegt ist (Franklin, 13.11.2026).
@@ -35,6 +36,7 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 - Wikipedia-API drosselt (HTTP 429) über den geteilten Proxy: Artikel einzeln mit 15–20 s Abstand laden, nicht abbrechen und nicht umgehen (Tyson, 12.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 14.11.2026 · Bauarbeiter v2 → v2.1 · Note 8 → 9: Sprechtext weiter ohne Realaussage. Beide v1.2-Befunde waren in v2 **wieder da** (Foto „BORE LOG LOT 9“, `speed` 1,08 ≤ 1,1), weil v2 neu aus v1 geschrieben wurde. Experiment Rückfall-Prüfung: alte Befunde per grep in der neuen Fassung suchen – 2 von 2 wieder gefunden · `docs/paket-bauarbeiter.md` „Prüfung v2 (14.11.2026)“.
 - 14.11.2026 · Bauarbeiter („Something Under the Site Knocked Back“, reine Fiktion/Horror) v1 → v1.2 · Note 8 → 9: Sprechtext ohne Realaussage. 2 Befunde außerhalb des Sprechtexts: echtes USGS-Bohrkern-Foto als „BORE LOG LOT 9“ beschriftet (echtes Bild als erfundenen Ort ausgegeben) → „BORE LOG“ + Quellenzeile; Paket-Angabe „max_speed 1,1“ falsch gegen `scripts/voice_fx.py` (1,05). Experiment Pipeline-Angaben gegen Code prüfen: 1 von 1 Technik-Behauptung im Paket war falsch · `docs/paket-bauarbeiter.md` „Prüfung (14.11.2026)“.
 - 13.11.2026 · Publish-Text Zeit-Welt (Fiktion + Franklin + NASA) · 8 → 9: Fiktion sauber gekennzeichnet; Befunde nur im Nachweis-Teil: „public domain“ stärker als NASA-Wortlaut („generally not subject to copyright in the United States“) → Wortlaut übernommen; NASA-Videotitel „Aurora borealis …“ ohne Hinweis, dass der Ausschnitt vor allem Stadtlichter zeigt → „city lights from the ISS video …“; Franklin „Benjamin Franklin's advice“ → „printed 1748, attributed to“ (anonymer Druck, F3). Experiment Bildnachweis-Zeile gegen Lizenzseite und Bild-Ausschnitt: 2 von 2 Abweichungen lagen im Nachweis, nicht im Sprechtext – Bildnachweise wie Sachaussagen prüfen · `out/publish-in-dieser-welt-zahlen-die-menschen-mit-i.json`.
 - 13.11.2026 · Publish-Text Jason GTA 6 · 8 → 9: Caption ließ die Zuschreibung „Rockstar's bio, roughly“ weg (WS-Beleg) → ergänzt; Titel „to drug runners“ → „to working for drug runners“ (W „worked for“). note-Hinweise „Soon“/„before Nov 19“/„It's scheduled for“ gegen `episodes/jason-gta6.json` geprüft: alle 3 vorhanden. Experiment Note gegen Drehbuch abgleichen: 3 von 3 Zeitwörtern gefunden – note-Verweise aufs Video immer per grep prüfen, nicht aus der Vorlage (Lucia) übernehmen · `out/publish-wer-ist-eigentlich-jason-aus-gta-6.json`.
@@ -76,3 +78,4 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 | 13.11.2026 | Jason GTA 6 v1 → v1.1 | 9 (eigene Note fürs Drehbuch) | WS-Beats attribuiert/„roughly“, Duo-Fakten = Lucia; 1 HUD-Zeitform korrigiert; Termin 19.11. heute gültig |
 | 13.11.2026 | Zeit-Welt v1 → v1.1 | 8 → 9 | Franklin-Zitat an Primärquelle bestätigt; „wrote“ → „published“ (nur Druckjahr belegt), 1748-Sticker vom späten Porträt genommen |
 | 14.11.2026 | Bauarbeiter v1 → v1.2 | 8 → 9 | Reine Fiktion sauber; echtes Foto mit erfundener Ortsangabe, falsche max_speed-Angabe korrigiert |
+| 14.11.2026 | Bauarbeiter v2 → v2.1 | 8 → 9 | 2 v1.2-Befunde zurückgekehrt (Foto-Beschriftung, speed), korrigiert |

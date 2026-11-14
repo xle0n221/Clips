@@ -7,7 +7,7 @@
   "speed": 1.05,
   "pauseMs": 350,
   "sceneGapMs": 250,
-  "lengthSec": 75,
+  "lengthSec": 77,
   "years": [],
   "say": {},
   "cover": {
@@ -129,7 +129,11 @@
         "gapMs": 420,
         "sound": "knock/desk",
         "db": -10,
-        "note": "aus dem Rohr, gedämpft (Tiefpass)"
+        "note": "aus dem Rohr, gedämpft (Tiefpass) · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
+        "gapsMs": [
+          220,
+          600
+        ]
       },
       {
         "scene": "ritual",
@@ -138,7 +142,11 @@
         "gapMs": 300,
         "sound": "knock/plastic",
         "db": -12,
-        "note": "Knöchel auf Helm – Ritual-Klang (wird am Schluss wiederholt)"
+        "note": "Knöchel auf Helm – Ritual-Klang (wird am Schluss wiederholt) · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
+        "gapsMs": [
+          220,
+          600
+        ]
       },
       {
         "scene": "pipe",
@@ -147,7 +155,11 @@
         "gapMs": 420,
         "sound": "knock/desk",
         "db": -11,
-        "note": "aus dem Rohr"
+        "note": "aus dem Rohr · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
+        "gapsMs": [
+          220,
+          600
+        ]
       },
       {
         "scene": "answer",
@@ -156,7 +168,11 @@
         "gapMs": 300,
         "sound": "knock/wood",
         "db": -12,
-        "note": "Schraubenschlüssel"
+        "note": "Schraubenschlüssel · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
+        "gapsMs": [
+          220,
+          600
+        ]
       },
       {
         "scene": "answer",
@@ -165,7 +181,11 @@
         "gapMs": 300,
         "sound": "knock/desk",
         "db": -12,
-        "note": "Antwort von unten, gleicher Rhythmus"
+        "note": "Antwort von unten, gleicher Rhythmus · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
+        "gapsMs": [
+          220,
+          600
+        ]
       },
       {
         "scene": "mirror",
@@ -174,7 +194,11 @@
         "gapMs": 300,
         "sound": "knock/plastic",
         "db": -18,
-        "note": "fern, von unten, Hall"
+        "note": "fern, von unten, Hall · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
+        "gapsMs": [
+          220,
+          600
+        ]
       },
       {
         "scene": "knocks",
@@ -183,7 +207,11 @@
         "gapMs": 300,
         "sound": "knock/plastic",
         "db": -9,
-        "note": "Helm von oben – exakt der Ritual-Klang aus 'ritual'"
+        "note": "Helm von oben – exakt der Ritual-Klang aus 'ritual' · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
+        "gapsMs": [
+          220,
+          600
+        ]
       }
     ],
     "tailMs": 2000
@@ -209,7 +237,7 @@
     ],
     "bars": []
   },
-  "note": "v2 (14.11.2026, Erweiterung 'Continuous Improvement', docs/prompts/knowtoon-erweiterung-verbesserung.md). 187 Skriptwörter, 17 Szenen, 33 Einstellungen (Ø 2,27 s, −47 % ggü. zeit-welt 4,3 s), längste Einstellung 5,2 s = einziger Halt am Höhepunkt. Kette: Boden klopft zurück in Milos Rhythmus → Ritual 3× Helm (Schlussbild gepflanzt) → allein, Guss um 6 → Rohr nicht im Plan → kopiert Rhythmus → Basis: nur Fels → Maßband 40 m, Ruck → Zettel in eigener Schrift (Re-Hook 42 %) → Stirnlampe schaut hoch → zweiter Milo, klopft 3× Helm (Wiederholung) → zweite Baustelle unten → ist jemand über ihm? (Einsatz 66 %) → Sterne, er ist oben (Hoffnung 72 %) → Sterne sind Stirnlampen (Wendung 77 %, Halt, Stille davor) → Beton versiegelt Rohr → 3 Klopfer auf den Helm von oben → 'The knocker was always Milo. Now he's the one below.' Skript-Prüfung: Sätze ≤ 12 W, 1 Akzent je Satz, Cue-Wörter vorhanden, captions 2–5 W (Ausnahme 'For luck.' = 2), onScreen ≤ 5 W, why ≤ 8 W: 0 Verstöße. Vorher v1 (184 W, 16 Szenen, Doppelpour-Ende).",
+  "note": "v2 (14.11.2026, Erweiterung 'Continuous Improvement', docs/prompts/knowtoon-erweiterung-verbesserung.md). 187 Skriptwörter, 17 Szenen, 33 Einstellungen (Ø 2,27 s, −47 % ggü. zeit-welt 4,3 s), längste Einstellung 5,2 s = einziger Halt am Höhepunkt. Kette: Boden klopft zurück in Milos Rhythmus → Ritual 3× Helm (Schlussbild gepflanzt) → allein, Guss um 6 → Rohr nicht im Plan → kopiert Rhythmus → Basis: nur Fels → Maßband 40 m, Ruck → Zettel in eigener Schrift (Re-Hook 42 %) → Stirnlampe schaut hoch → zweiter Milo, klopft 3× Helm (Wiederholung) → zweite Baustelle unten → ist jemand über ihm? (Einsatz 66 %) → Sterne, er ist oben (Hoffnung 72 %) → Sterne sind Stirnlampen (Wendung 77 %, Halt, Stille davor) → Beton versiegelt Rohr → 3 Klopfer auf den Helm von oben → 'The knocker was always Milo. Now he's the one below.' Skript-Prüfung: Sätze ≤ 12 W, 1 Akzent je Satz, Cue-Wörter vorhanden, captions 2–5 W (Ausnahme 'For luck.' = 2), onScreen ≤ 5 W, why ≤ 8 W: 0 Verstöße. Vorher v1 (184 W, 16 Szenen, Doppelpour-Ende). v2.1 (14.11.2026, Prüfung v2): Ritual als hör- und lesbares Muster 'Two quick, one slow' (+4 W → 191 W, ≈ 76,5 s), damit 'secret rhythm' im Hook eingelöst wird; knocks gapsMs [220,600]; turn-Halt endet auf EINEM lesbaren 'Stern' (Rohr + kopfüber Helm + Stirnlampe); Bohrkern-Foto ohne Lot-9-Beschriftung; speed 1,05 (= NARRATOR.max_speed).",
   "scenes": [
     {
       "id": "hook",
@@ -287,25 +315,25 @@
         "end_db": 2.5,
         "gain_db": -1.0
       },
-      "text": "Every shift, Milo knocks his hard hat *three* times. | For *luck*.",
+      "text": "Every shift, Milo knocks his hard hat three times. | Two quick, one *slow*. | For *luck*.",
       "onScreen": "MILO'S LUCKY THREE KNOCKS",
       "why": "because: the rhythm is his secret",
-      "visual": "SHOT 1 (medium, warm amber): flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles, a little smile; real public-domain construction-site photo (B1) pinned on the trailer corkboard behind him / SHOT 2 (detail): his knuckles on the hard hat, third tap, dust puffs off the brim (PLANTED FINAL IMAGE: three knocks on the hard hat)",
+      "visual": "SHOT 1 (medium, warm amber): flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles in a clear pattern – tap, tap, … TAP (two quick, one slow; small pause before the slow third tap), a little smile; real public-domain construction-site photo (B1) pinned on the trailer corkboard behind him / SHOT 2 (detail): his knuckles on the hard hat, third tap, dust puffs off the brim (PLANTED FINAL IMAGE: three knocks on the hard hat)",
       "shots": [
         {
           "type": "medium, warm amber",
-          "desc": "flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles, a little smile; real public-domain construction-site photo (B1) pinned on the trailer corkboard behind him",
+          "desc": "flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles in a clear pattern – tap, tap, … TAP (two quick, one slow; small pause before the slow third tap), a little smile; real public-domain construction-site photo (B1) pinned on the trailer corkboard behind him",
           "t": [
             5.1,
-            7.2
+            8.0
           ]
         },
         {
           "type": "detail",
           "desc": "his knuckles on the hard hat, third tap, dust puffs off the brim (PLANTED FINAL IMAGE: three knocks on the hard hat)",
           "t": [
-            7.2,
-            9.3
+            8.0,
+            10.8
           ]
         }
       ],
@@ -319,6 +347,10 @@
           "beat": "miloTapsHardHat"
         },
         {
+          "word": "slow",
+          "beat": "hardHatThirdTapSlow"
+        },
+        {
           "word": "luck",
           "beat": "hardHatTapDetail",
           "sfx": "pop"
@@ -327,6 +359,7 @@
       "captions": [
         "Every shift, Milo knocks",
         "his hard hat three times.",
+        "Two quick, one slow.",
         "For luck."
       ]
     },
@@ -353,16 +386,16 @@
           "type": "high wide crane shot",
           "desc": "the whole original LOT 9 site from above: pit, rebar grid, crane, trailer, amber lamps in a cold navy city, no people",
           "t": [
-            9.3,
-            11.8
+            10.8,
+            13.3
           ]
         },
         {
           "type": "detail → low-angle",
           "desc": "fence sign 'CONCRETE POUR · 6:00 AM' with rain running over it, then the empty pit with the iron pipe in the center",
           "t": [
-            11.8,
-            14.3
+            13.3,
+            15.8
           ]
         }
       ],
@@ -418,16 +451,16 @@
           "type": "medium",
           "desc": "MILO kneeling, ear to the pipe, pebbles trembling three times",
           "t": [
-            14.3,
-            16.8
+            15.8,
+            18.3
           ]
         },
         {
           "type": "over-the-shoulder",
           "desc": "his tablet: original blueprint 'LOT 9 · FOUNDATION', an empty grid where the pipe stands, red circle blinking",
           "t": [
-            16.8,
-            19.3
+            18.3,
+            20.8
           ]
         }
       ],
@@ -475,16 +508,16 @@
           "type": "detail",
           "desc": "red wrench taps the pipe three times – same rhythm as the hard-hat ritual",
           "t": [
-            19.3,
-            21.5
+            20.8,
+            23.0
           ]
         },
         {
           "type": "macro + reaction",
           "desc": "three pebbles jump by themselves, a faint teal pulse from the pipe opening; MILO leans back",
           "t": [
-            21.5,
-            23.6
+            23.0,
+            25.1
           ]
         }
       ],
@@ -529,22 +562,22 @@
       "text": "He calls *base*. | \"Below Lot Nine is solid *rock*, Milo.\"",
       "onScreen": "BASE: ONLY ROCK BELOW",
       "why": "but: it answers, so he asks",
-      "visual": "SHOT 1 (detail): walkie-talkie with a 'BASE' sticker, LED blinking with the voice (ROSA is only a radio voice) / SHOT 2 (insert): on MILO's tablet a real public-domain photo of rock drill cores labeled 'BORE LOG LOT 9' (B2), Ken Burns",
+      "visual": "SHOT 1 (detail): walkie-talkie with a 'BASE' sticker, LED blinking with the voice (ROSA is only a radio voice) / SHOT 2 (insert): on MILO's tablet a real public-domain photo of rock drill cores under a header 'BORE LOG' with a small credit line 'Photo: USGS (example)' (B2; the real photo is never labeled as the fictional Lot 9), Ken Burns",
       "shots": [
         {
           "type": "detail",
           "desc": "walkie-talkie with a 'BASE' sticker, LED blinking with the voice (ROSA is only a radio voice)",
           "t": [
-            23.6,
-            25.5
+            25.1,
+            27.0
           ]
         },
         {
           "type": "insert",
-          "desc": "on MILO's tablet a real public-domain photo of rock drill cores labeled 'BORE LOG LOT 9' (B2), Ken Burns",
+          "desc": "on MILO's tablet a real public-domain photo of rock drill cores under a header 'BORE LOG' with a small credit line 'Photo: USGS (example)' (B2; the real photo is never labeled as the fictional Lot 9), Ken Burns",
           "t": [
-            25.5,
-            27.4
+            27.0,
+            28.9
           ]
         }
       ],
@@ -592,16 +625,16 @@
           "type": "close-up",
           "desc": "yellow tape measure unrolling into the pipe, markings run past to 40 m, sticker '40 M'",
           "t": [
-            27.4,
-            29.3
+            28.9,
+            30.8
           ]
         },
         {
           "type": "fast handheld detail",
           "desc": "the tape jerks hard, nearly ripping out of MILO's blocky hands",
           "t": [
-            29.3,
-            31.3
+            30.8,
+            32.8
           ]
         }
       ],
@@ -650,16 +683,16 @@
           "type": "slow push-in, ECU",
           "desc": "wet tape coming out of the pipe, a folded note wired to its end; blocky hands unfold it: pencil 'STOP KNOCKING.'",
           "t": [
-            31.3,
-            33.6
+            32.8,
+            35.1
           ]
         },
         {
           "type": "split-screen match cut",
           "desc": "beside it MILO's own logbook '2:00 ALL QUIET – M.', same crooked K",
           "t": [
-            33.6,
-            35.9
+            35.1,
+            37.4
           ]
         }
       ],
@@ -711,16 +744,16 @@
           "type": "POV down the pipe",
           "desc": "amber headlamp cone sliding down rusty walls, a tiny teal dot far below",
           "t": [
-            35.9,
-            38.0
+            37.4,
+            39.5
           ]
         },
         {
           "type": "reverse low-angle from inside the pipe",
           "desc": "the teal dot grows into a headlamp looking up; MILO's face framed in the pipe circle",
           "t": [
-            38.0,
-            40.1
+            39.5,
+            41.6
           ]
         }
       ],
@@ -767,16 +800,16 @@
           "type": "fast cuts ≤ 1,5 s each",
           "desc": "teal headlamp → yellow hard hat lit teal → a second MILO's identical face looking up (match cut amber vs teal)",
           "t": [
-            40.1,
-            42.4
+            41.6,
+            43.9
           ]
         },
         {
           "type": "medium, teal",
           "desc": "the lower MILO taps his own hard hat three times and smiles (MIDDLE REPETITION of the final image)",
           "t": [
-            42.4,
-            44.7
+            43.9,
+            46.2
           ]
         }
       ],
@@ -832,16 +865,16 @@
           "type": "vertigo dive through the pipe",
           "desc": "camera plunges down into a second LOT 9, mirrored upside down, all teal: same crane, trailer, sign",
           "t": [
-            44.7,
-            47.0
+            46.2,
+            48.5
           ]
         },
         {
           "type": "medium",
           "desc": "the lower MILO tapping his wrench UP against the pipe",
           "t": [
-            47.0,
-            49.3
+            48.5,
+            50.8
           ]
         }
       ],
@@ -889,16 +922,16 @@
           "type": "low-angle close-up",
           "desc": "MILO slowly lifting his head, rain on his face (PEAK STEP 1: stakes – the viewer fears for him)",
           "t": [
-            49.3,
-            51.7
+            50.8,
+            53.2
           ]
         },
         {
           "type": "tilt up",
           "desc": "from his hard hat into a dark, cloudy sky",
           "t": [
-            51.7,
-            54.0
+            53.2,
+            55.5
           ]
         }
       ],
@@ -944,16 +977,16 @@
           "type": "wide",
           "desc": "clouds part, a field of small white stars over the city (PEAK STEP 2: hope rises; music opens to a warm chord)",
           "t": [
-            54.0,
-            55.9
+            55.5,
+            57.4
           ]
         },
         {
           "type": "close-up",
           "desc": "MILO exhales, shoulders drop, tiny relieved smile",
           "t": [
-            55.9,
-            57.8
+            57.4,
+            59.3
           ]
         }
       ],
@@ -999,14 +1032,14 @@
       "text": "Then one star *flickers*. | Like a *headlamp*. | Then *all* of them do.",
       "onScreen": "THE STARS ARE HEADLAMPS",
       "why": "but: the stars move like headlamps",
-      "visual": "SHOT 1 (ONE deliberate HOLD ≤ 6 s (only shot > 4 s), very slow push-in): after 0,6 s total SILENCE (music and bed off): one star flickers teal, then hundreds – each is a tiny headlamp at the end of a pipe in a vast concrete ceiling; the 'sky' is the underside of another site (PEAK STEP 3: the turn; emotion: dread)",
+      "visual": "SHOT 1 (ONE deliberate HOLD ≤ 6 s (only shot > 4 s), very slow push-in): after 0,6 s total SILENCE (music and bed off): one star flickers teal, then hundreds – each is a tiny headlamp at the end of a pipe in a vast concrete ceiling; the 'sky' is the underside of another site; last ≈ 1,5 s of the hold: the push-in reaches ONE 'star' close enough to read without sound – a round pipe mouth in grey concrete, an upside-down yellow hard hat with a teal headlamp and a blocky mustache looking down at Milo (PEAK STEP 3: the turn; emotion: dread)",
       "shots": [
         {
           "type": "ONE deliberate HOLD ≤ 6 s (only shot > 4 s), very slow push-in",
-          "desc": "after 0,6 s total SILENCE (music and bed off): one star flickers teal, then hundreds – each is a tiny headlamp at the end of a pipe in a vast concrete ceiling; the 'sky' is the underside of another site (PEAK STEP 3: the turn; emotion: dread)",
+          "desc": "after 0,6 s total SILENCE (music and bed off): one star flickers teal, then hundreds – each is a tiny headlamp at the end of a pipe in a vast concrete ceiling; the 'sky' is the underside of another site; last ≈ 1,5 s of the hold: the push-in reaches ONE 'star' close enough to read without sound – a round pipe mouth in grey concrete, an upside-down yellow hard hat with a teal headlamp and a blocky mustache looking down at Milo (PEAK STEP 3: the turn; emotion: dread)",
           "t": [
-            57.8,
-            63.0
+            59.3,
+            64.5
           ]
         }
       ],
@@ -1058,16 +1091,16 @@
           "type": "real footage → match cut",
           "desc": "real public-domain concrete pour (V1, 2 s, night graded) → original blocky mixer trucks at the pit edge, first blue of dawn",
           "t": [
-            63.0,
-            64.8
+            64.5,
+            66.3
           ]
         },
         {
           "type": "slow-motion detail",
           "desc": "grey concrete flowing over the pipe opening, the teal glow going out",
           "t": [
-            64.8,
-            66.5
+            66.3,
+            68.0
           ]
         }
       ],
@@ -1122,8 +1155,8 @@
           "type": "medium, static, one shot",
           "desc": "MILO alone on the fresh slab; his hard hat dips three times as something above taps it; he hasn't moved his hands (FINAL IMAGE with new meaning: the lucky knock comes from above)",
           "t": [
-            66.5,
-            69.2
+            68.0,
+            70.7
           ]
         }
       ],
@@ -1168,16 +1201,16 @@
           "type": "close-up",
           "desc": "MILO's face, amber lamp flickering teal",
           "t": [
-            69.2,
-            71.1
+            70.7,
+            72.6
           ]
         },
         {
           "type": "slow crane up, then end card",
           "desc": "camera rises through a tiny pipe in the 'sky' to a third LOT 9 above, where another MILO taps his hard hat three times – then end card",
           "t": [
-            71.1,
-            73.0
+            72.6,
+            74.5
           ]
         }
       ],
@@ -1242,9 +1275,9 @@
   },
   "shotPlan": {
     "shots": 33,
-    "avgSec": 2.27,
+    "avgSec": 2.32,
     "previous": "zeit-welt 103 s / 24 Schnitte ≈ 4,3 s",
-    "reduction": "47 %",
+    "reduction": "46 %",
     "maxSec": "5,2 (nur Halt am Höhepunkt 'turn'), sonst ≤ 2,9"
   }
 }
