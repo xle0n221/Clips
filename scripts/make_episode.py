@@ -214,6 +214,19 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict) -> np.ndarray:
     fo = len(y) - max(0, f0)
     if fo > 0:
         y[len(y) - fo:] *= ((1 + np.cos(np.linspace(0, np.pi, fo))) / 2).astype(np.float32)
+    # Harte Kante (stimm_messung: Pegel vor der Stille > Satzpegel −25 dB, danach in ≤ 40 ms unter −35 dB, z. B. „times“ /
+    # „up“ – Endkonsonant bricht ab): NUR den Nachklang nach dem Wortende über 120 ms weich ausblenden, das Wort bleibt
+    # unberührt (14.11.2026, bauarbeiter 8,18 s / 58,2 s). Sätze ohne harte Kante bleiben bitgleich.
+    db2 = _frames_db(y, hop)
+    ok = np.nonzero(db2 >= level - 25)[0]
+    if len(ok):
+        we = int(ok[-1])
+        nxt = np.nonzero(db2[we + 1:] < level - 35)[0]
+        if len(nxt) and nxt[0] <= 3:
+            a, n = (we + 1) * hop, int(0.12 * sr)
+            seg = y[a: a + n]
+            y[a: a + n] = seg * ((1 + np.cos(np.linspace(0, np.pi, len(seg)))) / 2).astype(np.float32)
+            y[a + n:] = 0
     return y
 
 
