@@ -34,10 +34,14 @@ def main() -> None:
     out = ROOT / "out"
     out.mkdir(exist_ok=True)
     mp4 = out / f"{a.id}-hoerprobe.mp4"
+    bed = pub / "bed.wav"  # Ambient-Bett (make_sound_bed.py), im Video mit volume 1 wie zeitwelt.ts
+    bed_in = ["-t", str(a.sec), "-i", str(bed)] if bed.exists() else []
+    mix = ("[1:a]volume=0.13[m];[0:a][m][2:a]amix=inputs=3:normalize=0:duration=first,asplit[a][w];" if bed_in
+           else "[1:a]volume=0.13[m];[0:a][m]amix=inputs=2:normalize=0:duration=first,asplit[a][w];")
     subprocess.run(
         ["ffmpeg", "-v", "error", "-y", "-t", str(a.sec), "-i", str(pub / "voice.wav"), "-t", str(a.sec), "-i", str(pub / "music.wav"),
-         "-filter_complex",
-         "[1:a]volume=0.13[m];[0:a][m]amix=inputs=2:normalize=0:duration=first,asplit[a][w];"
+         *bed_in, "-filter_complex",
+         mix +
          "[w]showwaves=s=720x400:mode=cline:colors=0xE63946,format=yuv420p[v]",
          "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
          "-movflags", "+faststart", str(mp4)],
@@ -56,7 +60,7 @@ def main() -> None:
     lines = [
         f"Tempo: {words} Wörter in {dur:.1f} s = {wps:.2f} W/s (Ziel 2,3–2,6). Stimme {ep.get('voice')}, Sprechstil "
         f"{ep.get('voicePreset')}, speed {ep.get('speed')}.",
-        f"Musik: Preset „{mus.get('mood', 'upbeat')}“ – komplett selbst erzeugt.",
+        f"Musik: Preset „{mus.get('mood', 'upbeat')}“ – komplett selbst erzeugt." + (" Mit Geräusch-Bett (bed.wav)." if bed_in else ""),
     ]
     if meas:
         lufs = meas.get("lufs") or meas.get("integrated_lufs") or (meas.get("loudness") or {}).get("integrated")
