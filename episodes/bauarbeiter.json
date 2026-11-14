@@ -127,14 +127,12 @@
         "scene": "hook",
         "word": "knocked",
         "count": 3,
+        "offsetMs": 750,
         "gapMs": 420,
         "sound": "knock/desk",
-        "db": -10,
-        "note": "aus dem Rohr, gedämpft (Tiefpass) · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
-        "gapsMs": [
-          220,
-          600
-        ]
+        "db": -6,
+        "note": "aus dem Rohr, gedämpft (Tiefpass) · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow') · Station-2-Nacharbeit 14.11.2026: kurz-kurz in der Sprechlücke nach back. (2,83 s), langer Schlag in der Lücke nach rhythm. (4,70 s) – nie unter dem Wort",
+        "gapsMs": [120, 1750]
       },
       {
         "scene": "ritual",
@@ -153,14 +151,12 @@
         "scene": "pipe",
         "word": "three",
         "count": 3,
+        "offsetMs": 670,
         "gapMs": 420,
         "sound": "knock/desk",
-        "db": -11,
-        "note": "aus dem Rohr · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow')",
-        "gapsMs": [
-          220,
-          600
-        ]
+        "db": -7,
+        "note": "aus dem Rohr · Muster kurz-kurz-lang (Milos Rhythmus, 'Two quick, one slow') · Station-2-Nacharbeit 14.11.2026: alle drei Schläge in der Lücke nach knocks. (19,27–19,62 s), nie unter dem Wort",
+        "gapsMs": [130, 220]
       },
       {
         "scene": "answer",
