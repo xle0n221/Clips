@@ -7,4 +7,8 @@ Fehlt ein Wert, steht „fehlt“. Keine Schätzwerte, keine erfundenen Zahlen. 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | In This City, You Pay With Time (zeit-welt) | TikTok | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt |
 
+| Lucia (GTA 6) | TikTok | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt |
+| Jason (GTA 6) | YouTube Shorts | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt |
 Hinweis 14.11.2026 20:58 UTC: Kennzahlen-Eintrag TikTok für zeit-welt im Dashboard gespeichert, alle Felder leer → als gepostet geführt, Werte „fehlt“.
+
+Hinweis 14.11.2026 20:58 UTC: ebenso Lucia (TikTok) und Jason (YouTube Shorts) mit leeren Feldern gespeichert → als gepostet geführt (Plan sah 15.11. vor).
