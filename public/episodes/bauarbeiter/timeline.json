@@ -1,0 +1,574 @@
+{
+ "id": "bauarbeiter",
+ "title": "Something Under the Site Knocked Back",
+ "durationMs": 82160,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4995
+  },
+  {
+   "id": "ritual",
+   "startMs": 4995,
+   "endMs": 11308
+  },
+  {
+   "id": "stakes",
+   "startMs": 11308,
+   "endMs": 17125
+  },
+  {
+   "id": "pipe",
+   "startMs": 17125,
+   "endMs": 22392
+  },
+  {
+   "id": "answer",
+   "startMs": 22392,
+   "endMs": 27372
+  },
+  {
+   "id": "radio",
+   "startMs": 27372,
+   "endMs": 32073
+  },
+  {
+   "id": "tape",
+   "startMs": 32073,
+   "endMs": 36713
+  },
+  {
+   "id": "note",
+   "startMs": 36713,
+   "endMs": 41463
+  },
+  {
+   "id": "look",
+   "startMs": 41463,
+   "endMs": 46464
+  },
+  {
+   "id": "mirror",
+   "startMs": 46464,
+   "endMs": 52227
+  },
+  {
+   "id": "below",
+   "startMs": 52227,
+   "endMs": 56915
+  },
+  {
+   "id": "fear",
+   "startMs": 56915,
+   "endMs": 61525
+  },
+  {
+   "id": "hope",
+   "startMs": 61525,
+   "endMs": 66332
+  },
+  {
+   "id": "turn",
+   "startMs": 66332,
+   "endMs": 70862
+  },
+  {
+   "id": "pour",
+   "startMs": 70862,
+   "endMs": 74718
+  },
+  {
+   "id": "knocks",
+   "startMs": 74718,
+   "endMs": 77316
+  },
+  {
+   "id": "answer2",
+   "startMs": 77316,
+   "endMs": 81560
+  }
+ ],
+ "cues": [
+  {
+   "beat": "pipeMacroPebblesJump",
+   "sticker": "WHO KNOCKED BACK?",
+   "color": "#FFD23F",
+   "scene": "hook",
+   "atMs": 2080
+  },
+  {
+   "beat": "miloLowAngleListens",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "clock",
+    "value": "2:14 AM"
+   },
+   "scene": "hook",
+   "atMs": 4180
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 2080
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4180
+  },
+  {
+   "beat": "miloTapsHardHat",
+   "scene": "ritual",
+   "atMs": 7340
+  },
+  {
+   "beat": "hardHatThirdTapSlow",
+   "scene": "ritual",
+   "atMs": 9560
+  },
+  {
+   "beat": "hardHatTapDetail",
+   "sfx": "pop",
+   "scene": "ritual",
+   "atMs": 10580
+  },
+  {
+   "emph": true,
+   "scene": "ritual",
+   "atMs": 9560
+  },
+  {
+   "emph": true,
+   "scene": "ritual",
+   "atMs": 10580
+  },
+  {
+   "beat": "craneWideLot9",
+   "sfx": "whoosh",
+   "scene": "stakes",
+   "atMs": 11980
+  },
+  {
+   "beat": "pourSign",
+   "hud": {
+    "id": "pour",
+    "value": "6:00 AM"
+   },
+   "scene": "stakes",
+   "atMs": 14500
+  },
+  {
+   "beat": "pitLowAnglePipe",
+   "scene": "stakes",
+   "atMs": 16360
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 11980
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 14500
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 16360
+  },
+  {
+   "beat": "miloEarToPipe",
+   "scene": "pipe",
+   "atMs": 18440
+  },
+  {
+   "beat": "tabletPlanEmpty",
+   "sticker": "NOT ON THE PLANS",
+   "color": "#FFD23F",
+   "scene": "pipe",
+   "atMs": 21440
+  },
+  {
+   "emph": true,
+   "scene": "pipe",
+   "atMs": 18440
+  },
+  {
+   "emph": true,
+   "scene": "pipe",
+   "atMs": 21440
+  },
+  {
+   "beat": "wrenchTapsThree",
+   "scene": "answer",
+   "atMs": 23920
+  },
+  {
+   "beat": "pebblesJumpTealPulse",
+   "scene": "answer",
+   "atMs": 25040
+  },
+  {
+   "beat": "miloLeansBack",
+   "sfx": "pop",
+   "scene": "answer",
+   "atMs": 26580
+  },
+  {
+   "emph": true,
+   "scene": "answer",
+   "atMs": 23920
+  },
+  {
+   "emph": true,
+   "scene": "answer",
+   "atMs": 25040
+  },
+  {
+   "emph": true,
+   "scene": "answer",
+   "atMs": 26240
+  },
+  {
+   "beat": "radioBaseLed",
+   "sfx": "pop",
+   "scene": "radio",
+   "atMs": 28100
+  },
+  {
+   "beat": "tabletRockLayers",
+   "scene": "radio",
+   "atMs": 30680
+  },
+  {
+   "emph": true,
+   "scene": "radio",
+   "atMs": 28100
+  },
+  {
+   "emph": true,
+   "scene": "radio",
+   "atMs": 30680
+  },
+  {
+   "beat": "tapeIntoPipe",
+   "sfx": "whoosh",
+   "scene": "tape",
+   "atMs": 33020
+  },
+  {
+   "beat": "tapeJerk",
+   "sticker": "40 M",
+   "color": "#FFD23F",
+   "scene": "tape",
+   "atMs": 35680
+  },
+  {
+   "emph": true,
+   "scene": "tape",
+   "atMs": 33020
+  },
+  {
+   "emph": true,
+   "scene": "tape",
+   "atMs": 35680
+  },
+  {
+   "beat": "noteOnTapeEnd",
+   "sfx": "ding",
+   "scene": "note",
+   "atMs": 37660
+  },
+  {
+   "beat": "noteTextStopKnocking",
+   "scene": "note",
+   "atMs": 38720
+  },
+  {
+   "beat": "matchLogbookHandwriting",
+   "scene": "note",
+   "atMs": 40520
+  },
+  {
+   "emph": true,
+   "scene": "note",
+   "atMs": 37660
+  },
+  {
+   "emph": true,
+   "scene": "note",
+   "atMs": 38720
+  },
+  {
+   "emph": true,
+   "scene": "note",
+   "atMs": 40520
+  },
+  {
+   "beat": "povPipeDown",
+   "sfx": "whoosh",
+   "scene": "look",
+   "atMs": 42720
+  },
+  {
+   "beat": "tealHeadlampLooksUp",
+   "scene": "look",
+   "atMs": 42320
+  },
+  {
+   "emph": true,
+   "scene": "look",
+   "atMs": 42720
+  },
+  {
+   "emph": true,
+   "scene": "look",
+   "atMs": 45160
+  },
+  {
+   "beat": "miloBelowFace",
+   "scene": "mirror",
+   "atMs": 46760
+  },
+  {
+   "beat": "matchCutFaces",
+   "scene": "mirror",
+   "atMs": 48780
+  },
+  {
+   "beat": "lowerMiloTapsHat",
+   "scene": "mirror",
+   "atMs": 50240
+  },
+  {
+   "beat": "lowerMiloSmiles",
+   "scene": "mirror",
+   "atMs": 51520
+  },
+  {
+   "emph": true,
+   "scene": "mirror",
+   "atMs": 46760
+  },
+  {
+   "emph": true,
+   "scene": "mirror",
+   "atMs": 47740
+  },
+  {
+   "emph": true,
+   "scene": "mirror",
+   "atMs": 48780
+  },
+  {
+   "emph": true,
+   "scene": "mirror",
+   "atMs": 50240
+  },
+  {
+   "emph": true,
+   "scene": "mirror",
+   "atMs": 51520
+  },
+  {
+   "beat": "vertigoDownMirrorSite",
+   "sfx": "whoosh",
+   "scene": "below",
+   "atMs": 53740
+  },
+  {
+   "beat": "lowerMiloTapsUp",
+   "scene": "below",
+   "atMs": 55940
+  },
+  {
+   "emph": true,
+   "scene": "below",
+   "atMs": 53740
+  },
+  {
+   "emph": true,
+   "scene": "below",
+   "atMs": 55940
+  },
+  {
+   "beat": "miloLooksUp",
+   "scene": "fear",
+   "atMs": 57900
+  },
+  {
+   "beat": "tiltUpSky",
+   "scene": "fear",
+   "atMs": 60860
+  },
+  {
+   "emph": true,
+   "scene": "fear",
+   "atMs": 57900
+  },
+  {
+   "emph": true,
+   "scene": "fear",
+   "atMs": 60860
+  },
+  {
+   "beat": "cloudsPartStars",
+   "scene": "hope",
+   "atMs": 62080
+  },
+  {
+   "beat": "miloExhales",
+   "scene": "hope",
+   "atMs": 64300
+  },
+  {
+   "beat": "miloSmileRelief",
+   "scene": "hope",
+   "atMs": 65540
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 62080
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 63320
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 64300
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 65540
+  },
+  {
+   "beat": "starFlickersTeal",
+   "scene": "turn",
+   "atMs": 67580
+  },
+  {
+   "beat": "starIsHeadlamp",
+   "scene": "turn",
+   "atMs": 68840
+  },
+  {
+   "beat": "allStarsHeadlamps",
+   "scene": "turn",
+   "atMs": 69760
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 67580
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 68840
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 69760
+  },
+  {
+   "beat": "concretePourTrucks",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "pour",
+    "value": "NOW"
+   },
+   "scene": "pour",
+   "atMs": 72120
+  },
+  {
+   "beat": "concreteCoversPipe",
+   "hud": {
+    "id": "pour",
+    "value": "SEALED"
+   },
+   "scene": "pour",
+   "atMs": 74020
+  },
+  {
+   "emph": true,
+   "scene": "pour",
+   "atMs": 72120
+  },
+  {
+   "emph": true,
+   "scene": "pour",
+   "atMs": 74020
+  },
+  {
+   "beat": "hardHatTappedFromAbove",
+   "hud": {
+    "id": "clock",
+    "value": "6:00 AM"
+   },
+   "scene": "knocks",
+   "atMs": 76340
+  },
+  {
+   "emph": true,
+   "scene": "knocks",
+   "atMs": 76340
+  },
+  {
+   "beat": "miloFaceLampTeal",
+   "scene": "answer2",
+   "atMs": 78560
+  },
+  {
+   "beat": "craneUpThirdSite",
+   "sticker": "NOW HE'S BELOW",
+   "color": "#FFD23F",
+   "scene": "answer2",
+   "atMs": 80720
+  },
+  {
+   "emph": true,
+   "scene": "answer2",
+   "atMs": 78560
+  },
+  {
+   "emph": true,
+   "scene": "answer2",
+   "atMs": 80720
+  }
+ ],
+ "hud": {
+  "title": "LOT 9 \u00b7 NIGHT SHIFT",
+  "counters": [
+   {
+    "id": "clock",
+    "label": "TIME",
+    "value": "2:14 AM"
+   },
+   {
+    "id": "pour",
+    "label": "POUR",
+    "value": "6:00 AM"
+   }
+  ],
+  "bars": []
+ },
+ "cover": {
+  "text": "WHO KNOCKED BACK?",
+  "sub": "Lot 9 \u00b7 2:14 AM",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow before the next knock.",
+  "seconds": 2
+ }
+}
