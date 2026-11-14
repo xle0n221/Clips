@@ -18,6 +18,7 @@ Ergebnis `docs/trends/<datum>.md` + `docs/trends/aktuell.md`. Prüfer: Retention
 - Noch keine erprobten Punkte (Rolle angelegt 12.11.2026).
 
 ## Gelernt (neueste oben; Datum · Befund · Beleg)
+- 14.11.2026 · **Neue Eingabe** (Nutzer, `docs/prompts/knowtoon-upload-strategie.md` §1, §8): Die 14-Tage-Auswertung liefert die drei stärksten und drei schwächsten Themen-Arten – bei der Themenwahl berücksichtigen; Ziele in Reihenfolge: Bindung > neue Follower aus englischsprachigen Ländern > Aufrufe > Monetarisierung.
 - 12.11.2026 · Benchmark Tempo: n=9 Erzähl-Shorts mit Untertiteln, Median 3,43 W/s; ruhige Spitzenreiter (AumSum 40/52 s, 26–42 Mio.) 2,4–2,6 W/s · `docs/trends/benchmark-tempo.md` (Apify 0,175 $)
 - 12.11.2026 · Apify-Suche liefert ~50 % Themenfremdes und nur ~30 % TikTok-Treffer mit Untertiteln; YouTube-Untertitel kommen mit dem Lauf (`transcriptionAndSubtitle: ALWAYS_SUBTITLES`), TikTok `downloadSubtitlesOptions: DOWNLOAD_SUBTITLES` (vtt-Links über api.apify.com)
 

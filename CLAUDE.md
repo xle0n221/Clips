@@ -22,6 +22,7 @@ Jeder beauftragte Agent bekommt seine Rollen-Datei aus `docs/agenten/` mit (Lern
 Skill `clip-video` (`.claude/skills/clip-video/SKILL.md`) und verbindliche Regeln `docs/clip-regeln.md`.
 **Titel, Caption, Hashtags Pflicht** (Nutzer 13.11.2026: „In Zukunft immer bei den Videos im Dashboard anzeigen“): ein Video wird nur zusammen mit vollständigem `publish` auf `done` gesetzt – `docs/dashboard-ablauf.md`.
 **Keine echten Bilder/Videos mehr** (Nutzer 14.11.2026: „Lass es mit den echten Bildern. Das frisst Zeit“ – hebt die Pflicht vom 13.11. auf): Clips komplett gezeichnet/3D; nie geschützte Spiel-/Film-/Markenbilder – `docs/clip-regeln.md` → „Echte Bilder und Videos“.
+**Upload & Auswertung** (Nutzer 14.11.2026, ergänzt die Prompts, geht in seinem Bereich vor): `docs/prompts/knowtoon-upload-strategie.md` – Slots A (TT 17 / YT 18 Uhr DE) und B (TT 22 / YT 23), Block `publish.upload` mit Ortszeiten, Kennzahlen `analytics` → `docs/analytics/uploads.md`, Auswertung alle 14 Tage.
 **Thumbnail Pflicht** (Vorgabe 12.11.2026): erste 0,5 s jedes Clips = gestaltetes Cover zum Auswählen auf den Plattformen – `docs/clip-regeln.md` → „Thumbnail im Video“.
 Stil: **je Video passend zum Thema entscheiden** (Vorgabe Nutzer 11.11.2026) – 3D (Bau-Kit `src/episode/kit/`),
 2D (flach/SVG/Paper-Cut) oder Mischung; Figuren dürfen je Video anders aussehen. Entscheidung + Begründung im

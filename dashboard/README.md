@@ -41,7 +41,9 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `busy` | boolean (optional) | Sitzung | `true`, solange eine Sitzung am Video arbeitet (Sperre für den Abholer); bei Freigabe, Fertig oder Fehler `false` |
 | `resume` | true \| null (optional) | Seite / Nutzer | Knopf „Erneut versuchen“ (bei `error`) bzw. „Erledigt – weitermachen“ (bei `actionNeeded`): der nächste Durchlauf setzt das Video fort; die Sitzung setzt es beim Übernehmen auf `null` |
 | `priority` | true \| null (optional) | Seite / Nutzer | Knopf „Als Nächstes“ auf wartenden Karten: wird vor älteren Themen übernommen |
-| `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
+| `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note?, upload? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
+| `publish.upload` | `{ status: "plan"\|"hold"\|"skip", reason?, type, lengthSec, tiktok?: { date, timeDe, slot, local: { newYork, losAngeles, london }, calc }, youtube?: { … }, dstNote? }` | Sitzung (Rolle Veröffentlichung) | Upload-Plan je Plattform mit Ortszeiten (Regel `docs/prompts/knowtoon-upload-strategie.md` §4–5); `skip` = nicht veröffentlichen, `hold` = zurückgestellt, je mit Grund |
+| `analytics` | null \| `{ tiktok?: {…}, youtube?: {…} }` je `{ date, timeDe, slot, views1h, views24h, views48h, views7d, avgWatchSec, completionPct, newFollowers, topCountries, shares, updatedAt }` | Seite / Nutzer | Kennzahlen je Plattform, Formular „Kennzahlen“ auf der Fertig-Karte; leer = `null` = „fehlt“; Zahlen als number, sonst Text wie eingegeben (Upload-Prompt §6) |
 
 Zusätzliche optionale Felder in `review`:
 - `review.corrections`: Liste `{ claim, note }` – Aussagen, die von gängigen Angaben abweichen; immer sichtbar hervorgehoben

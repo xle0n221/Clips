@@ -86,6 +86,7 @@ Entscheidung in einem Satz im Drehbuch-Feld `style.why` bzw. `note` festhalten.
 Hashtags aus `hashtags/current` (Kombi passend zum Thema, 1–2 Tags themenspezifisch ersetzen),
 Grenzen und Quellen: `dashboard/README.md`, Abschnitt „Veröffentlichen“.
 YouTube: `title` ≤ 100 Zeichen, `description`, `hashtags`; TikTok: `caption`, höchstens 5 `hashtags`. Englisch.
+**Block `upload`** (Nutzer 14.11.2026, `docs/prompts/knowtoon-upload-strategie.md` §4–5): Slot je Plattform mit Datum, Ortszeiten New York/Los Angeles/London mit Rechnung (zoneinfo), Hinweis bei abweichender Sommer-/Winterzeit, Themen-Art, Länge. Nur Videos, die die heutigen Regeln erfüllen; sonst `status: "skip"` mit Grund. Kennzahlen (`analytics`) trägt der Nutzer ein; der Abholer überträgt neue Werte nach `docs/analytics/uploads.md` und startet alle 14 Tage die Auswertung (nur bei neuen Zahlen).
 Zusätzlich `thumbnail` (Hinweis, welches Bild im Video als Thumbnail/Cover zu wählen ist) – Regel: `docs/clip-regeln.md` → „Thumbnail im Video“. Das Cover-Standbild gehört in den Kontaktabzug zu Freigabe 2.
 
 ## 7. Wenn etwas blockiert

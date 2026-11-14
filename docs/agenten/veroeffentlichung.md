@@ -14,6 +14,7 @@ Schreibt für jedes fertige Video YouTube-Shorts- und TikTok-Texte (Titel, Besch
 - Von Faktenprüfer: Kausal-Wörter („so“, „because“, „killed“) in Titel und Caption gegen die Freigabeliste prüfen – sie erzeugen Behauptungen, die die Quelle nicht macht (`faktencheck-drehbuch-roemisches-reich.md`) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 14.11.2026 · **Neue Aufgabe** (Nutzer, `docs/prompts/knowtoon-upload-strategie.md` §1, §4–5): Slot vorschlagen (A: TT 17/YT 18, B: TT 22/YT 23 DE; max. 2/Tag/Plattform; nur 1 fertig → Slot B), Ortszeiten New York/Los Angeles/London per `zoneinfo` mit Rechnung, Sommer-/Winterzeit-Abweichung nennen, `publish.upload` ergänzen. Reihenfolge: stärkste Scorecard zuerst, Themen-Arten abwechseln.
 - 13.11.2026 · Tyson/UFC/Jensen · **Text-Fakten gegen Sprechtext der Szenen abgleichen, nicht gegen Recherche:** Recherche-Dateien enthalten mehr (Namen, Kurse), als das Video sagt; nur Gesagtes in Titel/Caption. Bei realen Personen mit Vorwürfen (Jensen): „reports, not findings“ in die Beschreibung, sensible Verurteilung (Tyson) nicht in Titel/Caption, Quellenzeile ehrlich „primary sources not accessible“. · `out/publish-*.json`
 - 09.11.2026 · Rom · **Titel gegen Hook-Zeitpunkt messen:** Zu jeder Titel-Variante notieren, in welcher Sekunde das Video ihr
   Versprechen einlöst (Wortzeit aus `captions.json`, Sticker aus `timeline.json`). Titel A „You bought the Roman Empire“ → 0,92 s
