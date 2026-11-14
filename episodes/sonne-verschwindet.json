@@ -1,0 +1,1538 @@
+{
+  "id": "sonne-verschwindet",
+  "title": "The Sun Vanished. Earth Finds Out in 8:19",
+  "engine": "chatterbox",
+  "voice": "am_michael",
+  "voicePreset": "lebendig",
+  "speed": 1.05,
+  "pauseMs": 350,
+  "sceneGapMs": 250,
+  "lengthSec": 105,
+  "years": [],
+  "say": {
+    "Juno": "JOO-no"
+  },
+  "cover": {
+    "text": "THE SUN IS GONE",
+    "sub": "Nobody knows yet",
+    "frames": 15
+  },
+  "captionStyle": "phrase-yellow",
+  "endCard": {
+    "handle": "KnowToon",
+    "cta": "Follow before the lights go out.",
+    "seconds": 2
+  },
+  "sources": "Quellen: docs/quellen-sonne-verschwindet.md (Q1–Q15). Gedankenexperiment: Die Sonne kann nicht einfach verschwinden (Massen-/Energieerhaltung) – im Video als 'What if' gerahmt, Titel/Caption sagen 'What if'. Rahmen (Juno, Grandpa Ode, Strand, Telefonat, Teleskop, Vollmond, Saturn in Opposition) ist Fiktion. Zahlen gerundet mit Herleitung in der Quellen-Datei. Keine echten Bilder/Videos (Nutzer 14.11.2026), keine Marken, keine fremden Figuren.",
+  "pointe": "What happens at 8:19? The light and the pull run out in the same second – and Saturn keeps glowing with the vanished Sun's light for two more hours: eight minutes of light, two hours of echo.",
+  "originality": "Eigene Figuren (Juno, Grandpa Ode) und eigener Rahmen: ein Videotelefonat zwischen Tag- und Nachtseite der Erde, das den Countdown aus zwei Blickwinkeln zeigt. Abgrenzung zu 'Earth Without Humans' (KnowToon, What-if): dort Du-Perspektive als Geist, Hook-Frage 'how long until Earth forgets us?', Zeitraum Jahre bis Jahrtausende, Faktenkette Infrastruktur; hier dritte Person mit Countdown in Echtzeit (8:19), Hook = Paradox 'Sonne weg, niemand merkt es', Physik-Kette Licht → Gravitation → GW170817 → Bahn → Saturn-Echo. Kein Nachbau bekannter Erklär-Kanäle oder Filme; Klotzfiguren eigenes Design, keine Logos.",
+  "music": {
+    "mood": "epic",
+    "bpm": 78,
+    "sparseUntilScene": "gravity",
+    "why": "Weltall/großes Ereignis → Preset 'epic' (cineastischer Rap-Beat, Klavier + Streicherfläche), aber deutlich anders als Zeit-Welt (epic 92): halbes Gefühl durch 78 BPM, Dur-nahe Neo-Soul-Akkorde (maj7/9) im sonnigen Teil, Moll ab 'turn'; anders als Bauarbeiter (dark 66). Tick-Motiv der Countdown-Uhr als Hi-Hat-Raster. Trend: docs/trends/aktuell.md (15.11.) – Sound-Trends 'Ich kann das nicht bestätigen' → Trend nicht belegt, Wahl nach Thema. Bis 'gravity' nur Klavier/Pad (sparsam), Drums ab 'gravity'; bei 'hope' warmer Dur-Akkord; vor 'turn' 0,6 s totale Stille, dann tiefer Streicher-Drone in Moll ohne Drums; ab 'ocean' Klavier allein; End-Card Ausklang."
+  },
+  "narratorMood": {
+    "mood": "neugierig-staunend, mit leiser wachsender Spannung",
+    "why": "Weltall-What-if mit Countdown: staunend wie jemand, der ein Geheimnis kennt, das die Figuren nicht kennen (dramatische Ironie) – sonnig-warm am Strand, leiser und gespannt beim Countdown, am Höhepunkt ('turn') laut und abgehackt, danach ruhig und tief. Sprechart (Pflicht, clip-regeln.md 14.11.2026): voicePreset 'lebendig' (Zuordnung Wissen/Weltall → lebendig + awe/warm; passt hier, Dashboard-Standard bleibt), Spannung über delivery 'tense' statt Preset 'spannend', weil kein Horror. Bei gesetztem emotion-Objekt wirkt nur speed × emotion.speed (scripts/make_episode.py)."
+  },
+  "soundBed": {
+    "why": "KnowToon-Prompt STEP 5: Ambient passend zum Ort (Meeresrauschen/Möwen am Strand, Grillen auf Grandpas Balkon = Tag- und Nachtseite), Countdown-Uhr als Tick, Basstreffer vor jeder Enthüllung, ein scharfer Akzent beim Twist ('black' in turn), ohne Gesang. Klang-IDs aus der earshot-Klangbank wie Zeit-Welt/Bauarbeiter; Eignung per earshot rank vor dem Mix prüfen. Meeresrauschen läuft über 'room' (rain_db als Rausch-Pegel; Szenenbau prüfen, ob ein eigener Wellen-Klang nötig ist). Cue-'boom' an Enthüllungs-Wörtern weggelassen (Doppelungs-Lehre Zeit-Welt).",
+    "tick": {
+      "sound": "fit/tick/domino",
+      "tock": "knock/wood",
+      "db": -34,
+      "period": 1.0
+    },
+    "room": {
+      "db": -40,
+      "rain_db": -44
+    },
+    "reveals": [
+      {
+        "scene": "hook",
+        "word": "minutes"
+      },
+      {
+        "scene": "zero",
+        "word": "gone"
+      },
+      {
+        "scene": "speed",
+        "word": "light"
+      },
+      {
+        "scene": "arrive",
+        "word": "apart"
+      },
+      {
+        "scene": "orbit",
+        "word": "empty"
+      },
+      {
+        "scene": "straight",
+        "word": "second"
+      },
+      {
+        "scene": "moon",
+        "word": "doesn't"
+      },
+      {
+        "scene": "saturn",
+        "word": "Sun"
+      }
+    ],
+    "revealSound": {
+      "sound": "pro_impact/deep",
+      "db": -14
+    },
+    "twist": {
+      "scene": "turn",
+      "word": "black",
+      "sounds": [
+        "pro_impact/deep",
+        "pro_tap/glass"
+      ],
+      "db": -12
+    },
+    "tickLouder": [
+      {
+        "scene": "seven",
+        "db": 6
+      },
+      {
+        "scene": "hope",
+        "db": 8
+      }
+    ],
+    "tickOff": [
+      {
+        "scene": "turn"
+      },
+      {
+        "scene": "straight"
+      },
+      {
+        "scene": "moon"
+      },
+      {
+        "scene": "ocean"
+      },
+      {
+        "scene": "saturn"
+      },
+      {
+        "scene": "answer2"
+      }
+    ],
+    "silence": [
+      {
+        "scene": "turn",
+        "word": "Eight",
+        "ms": 600
+      },
+      {
+        "scene": "answer2",
+        "word": "Then",
+        "ms": 500
+      }
+    ],
+    "knocks": [],
+    "tailMs": 2000
+  },
+  "style": {
+    "look": "3d",
+    "why": "Vorgabe Basis-Prompt + K7 (3D-Klotzfiguren). Das Thema lebt vom Licht selbst – goldenes Sonnenlicht als sichtbares Band, das von der leeren Stelle zur Erde fliegt, Mittagshimmel, der schlagartig schwarz wird, Saturn-Glanz im Okular, Eis über dem Meer: Volumenlicht, Rim-Light, Reflexionen und Partikel kann das 3D-Bau-Kit (src/episode/kit/) besser als 2D; Raumgrafiken (Bahn, Lichtschale, Raumzeit-Gitter) als 3D-Objekte in derselben Welt, nicht als flache Infografik.",
+    "characters": "JUNO = eigene Klotzfigur, ca. 10 Jahre: kleiner Würfelkopf, runde Punkt-Augen, einfacher Mund, zwei kurze Zopf-Klötze, gelber Sonnenhut, türkises T-Shirt, rote Shorts, dicke orange Kinder-Uhr mit Countdown. GRANDPA ODE = eigene Klotzfigur: breiter Kastenkörper, grauer Bart-Klotz, runde Brille, senfgelbe Strickjacke, Messing-Teleskop auf Dreibein, Balkon bei Nacht. Strandgäste nur als einfache Hintergrund-Klötze. Schlüsselobjekte: Junos Countdown-Uhr ('SUNLIGHT LEFT 8:19') und Saturn im runden Okular. Farblogik: Gold = Sonnenlicht, das noch unterwegs ist (Strand, Lichtband, Saturn-Glanz); Indigo/Schwarz = Welt ohne Sonne; Eisblau = Kälte danach; Grün-Glimmen nur an der Tiefsee-Quelle. Keine Marken, keine Logos, keine echten Bilder."
+  },
+  "hud": {
+    "title": "WHAT IF THE SUN VANISHED",
+    "counters": [
+      {
+        "id": "sunlight",
+        "label": "SUNLIGHT LEFT",
+        "value": "8:19"
+      },
+      {
+        "id": "orbit",
+        "label": "ORBIT",
+        "value": "CURVED"
+      }
+    ],
+    "bars": []
+  },
+  "note": "v1 (14.11.2026, Autopilot). 266 Skriptwörter, 22 Szenen, 48 Einstellungen inkl. End-Card (Ø 2.19 s), Plan 105 s bei 2,6 W/s. Kette: Sonne weg, niemand merkt es (Hook) → Juno am Strand (warm) → Grandpa auf der Nachtseite, Teleskop auf Saturn (Schlussbild gepflanzt) → das Licht ist 8 min alt → Sonne schon weg, Licht unterwegs → 150 Mio. km Licht ohne Nachschub → Frage: warum fliegt die Erde nicht weg? (Re-Hook 30 %) → Gravitation mit Lichtgeschwindigkeit → GW170817: 130 Mio. Jahre, < 2 s Abstand → Erde kreist um eine leere Stelle (Paradox 50 %) → niemand weiß es → Saturn noch perfekt (Wiederholung) → 'five more minutes' (Ironie) → eine warme Minute (Einsatz) → alles gut? (Hoffnung) → 0,6 s Stille → 8:19 schwarz + Erde lässt los (Höhepunkt 72–74 %) → geradeaus 30 km/s → Mond aus, Saturn nicht → Eis als Decke, Mikroben an Quellen → Saturn glüht 2 h später (neue Bedeutung) → 'Eight minutes of light. Two hours of echo. Then Saturn goes dark, too.' Skript-Prüfung (build.py): Sätze ≤ 12 W, 1 Akzent je Satz, captions 2–5 W und Wortfolge = Sprechtext, Cue-Wörter vorhanden, Einstellungen ≤ 4 s außer turn, why ≤ 8 W: 0 Verstöße.",
+  "voiceProfile": "male, young adult – am_michael (Standardstimme, Nutzer 13.11.2026); Grundlaune neugierig-staunend, Spannung im Countdown.",
+  "voiceNotes": {
+    "prompt": "STEP 4/4b 'NARRATION & VOICE' (Nutzer 13.11.2026), umgesetzt mit Chatterbox wie Zeit-Welt/Bauarbeiter.",
+    "tempo": "Ziel 2,5–2,75 W/s (K4): 266 W → 96,7–106,4 s Sprache + 0,6 s Stille + 2 s End-Card ≈ 99–109 s (Plan 2,6 W/s ≈ 105 s, K5 90–140 s ✓).",
+    "chatterbox": "exaggeration 0,50–0,65, cfg_weight 0,40–0,50, temperature 0,70–0,80 je Szene im Feld emotion.",
+    "emotionMap": "voicePreset lebendig · setup (hook awe, juno/grandpa warm, old awe) = neugierig, warm (−1 dB) · tension (zero … seven; tense/serious/awe, five playful) = langsamer, leiser (speed 0,97, −2,5 dB) · hope (warm) = gelöst, längere Pausen · twist (turn, straight dramatic, moon awe) = lauter, abgehackt (exag 0,65, speed 1,03, +1,5 dB) · ending (ocean, saturn, answer2; calm) = ruhig, tief (−2 dB, Satzende −3,5 dB).",
+    "pauses": "' | ' vor jeder Enthüllung ≈ 0,45–0,53 s; vor 'turn' 0,6 s totale Stille; vor der letzten Zeile ('Then Saturn goes dark, too.') genau 0,5 s.",
+    "rules": "Sätze ≤ 12 Wörter, genau ein *Akzentwort* je Satz (Skript-Prüfung 0 Verstöße), keine Füllwörter, kein Overacting; Zahlen gesprochen ausgeschrieben ('a hundred fifty million', 'twenty seventeen'), Ziffern nur im Bild.",
+    "conflict": "K4/K12: 2,5–2,75 W/s und Pausen-Maßstab des Vorbilds; Whisper ≥ 98 % (K9 Zahlen-Normalisierung) und leiser werdendes Satzende bleiben Pflicht (scripts/stimm_messung.py + earshot)."
+  },
+  "version": "v1 (14.11.2026, Autopilot, Basis-Prompt + Erweiterung 'Continuous Improvement')",
+  "narrator": {
+    "max_speed": 1.1,
+    "piece_extra_ms": 80,
+    "scene_gap_ms": 250,
+    "qc_tries": 6
+  },
+  "captionNote": "Erweiterung Regel 4 + K6: Untertitel als 2–5-Wort-Phrasen (Feld captions je Szene, Wortfolge = Sprechtext, per Skript geprüft), gelb mit dickem schwarzem Rand, unteres Drittel; je Szene eine Handlungs-Phrase (onScreen, oberes Drittel), die die Handlung in ANDEREN Worten benennt (K13). Lesetest: nur onScreen gelesen erzählt die Geschichte.",
+  "hookQuestion": {
+    "text": "WHAT HAPPENS AT 8:19?",
+    "shownBy": "Cover 0–0,5 s ('THE SUN IS GONE') + Sticker 'WHAT HAPPENS AT 8:19?' bis 2,0 s + Countdown-Uhr ab 'minutes'",
+    "answer": "At 8:19 the light and the pull run out together – and Saturn keeps the Sun's light for two more hours: eight minutes of light, two hours of echo."
+  },
+  "finalImage": {
+    "image": "Saturn glowing in Grandpa's eyepiece",
+    "plant": "grandpa (Teleskop auf Saturn, Start 10.0 s ≈ 10 %)",
+    "repeat": "four ('Still perfect.', 59.2 s ≈ 56 %)",
+    "payoff": "saturn/answer2 (93.7 s ≈ 89 %): Saturn ist nicht mehr nur hübsch – es ist das letzte Echo einer Sonne, die nicht mehr existiert, und geht als Letztes aus"
+  },
+  "emotionalPeak": {
+    "emotion": "awe-struck dread (staunendes Grauen) nach Hoffnung",
+    "steps": {
+      "stakes": "seven (67.3 s ≈ 64 %): 'One warm minute left.' – Zuschauer weiß, Juno nicht",
+      "hope": "hope (72.3 s ≈ 69 %): 'Maybe it's all fine.'",
+      "turn": "turn (75.8 s ≈ 72 %, Enthüllung 'black' ≈ 77.3 s ≈ 74 %): 'Eight nineteen. The sky goes black. And Earth lets go.'"
+    },
+    "silenceBefore": "0,6 s totale Stille (Musik + Bett + Tick aus) vor 'turn'",
+    "hold": "turn = einzige Einstellung > 4 s geplant (≈ 4,4 s, ≤ 6 s)"
+  },
+  "shotPlan": {
+    "shots": 48,
+    "avgSec": 2.19,
+    "previous": "Bauarbeiter 84,3 s / 34 Shots Ø 2,42 s, max 4,53 s",
+    "reduction": "10 %",
+    "maxSec": "≈ 4,4 (nur Halt am Höhepunkt 'turn'), sonst ≤ 2,5"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "section": "setup",
+      "delivery": "awe",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 240,
+        "comma_ms": 170,
+        "end_db": 2.5,
+        "gain_db": -1.0
+      },
+      "text": "The Sun just *vanished*. | And nobody on Earth will notice… | for eight *minutes*.",
+      "onScreen": "NO SUN. NO ALARM. YET.",
+      "why": "start: result before cause",
+      "visual": "SHOT 1 (ECU, slow push-in, COVER 0–0,5 s ohne Untertitel): a blazing golden Sun in a deep-blue sky blinks out like a switched-off bulb, leaving an empty black circle with a thin fading golden ring; on the beach below, JUNO still smiles in warm golden light (the light has not arrived yet – visible without sound); cover title 'THE SUN IS GONE' in accent yellow, upper third, small 'Nobody knows yet'; hook question sticker 'WHAT HAPPENS AT 8:19?' until 2,0 s / SHOT 2 (low-angle close-up): Juno's wrist: a chunky orange kids' watch flips to a countdown 'SUNLIGHT LEFT 8:19' and starts ticking down",
+      "shots": [
+        {
+          "type": "ECU, slow push-in, COVER 0–0,5 s ohne Untertitel",
+          "desc": "a blazing golden Sun in a deep-blue sky blinks out like a switched-off bulb, leaving an empty black circle with a thin fading golden ring; on the beach below, JUNO still smiles in warm golden light (the light has not arrived yet – visible without sound); cover title 'THE SUN IS GONE' in accent yellow, upper third, small 'Nobody knows yet'; hook question sticker 'WHAT HAPPENS AT 8:19?' until 2,0 s",
+          "t": [
+            0.0,
+            2.5
+          ]
+        },
+        {
+          "type": "low-angle close-up",
+          "desc": "Juno's wrist: a chunky orange kids' watch flips to a countdown 'SUNLIGHT LEFT 8:19' and starts ticking down",
+          "t": [
+            2.5,
+            5.0
+          ]
+        }
+      ],
+      "sources": [
+        "Q1 NASA Earth facts: 150 Mio. km = 1 AE, 'about eight minutes' (science.nasa.gov/earth/facts/)",
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)"
+      ],
+      "cues": [
+        {
+          "word": "vanished",
+          "beat": "sunBlinksOut",
+          "sticker": "WHAT HAPPENS AT 8:19?",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "minutes",
+          "beat": "watchCountdownStarts",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "sunlight",
+            "value": "8:19"
+          }
+        }
+      ],
+      "captions": [
+        "The Sun just vanished.",
+        "And nobody on Earth",
+        "will notice… for eight minutes."
+      ]
+    },
+    {
+      "id": "juno",
+      "section": "setup",
+      "delivery": "warm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 240,
+        "comma_ms": 170,
+        "end_db": 2.5,
+        "gain_db": -1.0
+      },
+      "text": "Meet *Juno*. | Noon, on a *beach*. | Sunlight is still warm on her *face*.",
+      "onScreen": "JUNO SOAKS UP THE SUN",
+      "why": "so: who feels it first?",
+      "visual": "SHOT 1 (wide): sunny beach at noon, turquoise waves, JUNO (small blocky girl) lying on a striped towel, eyes closed, golden light on her face / SHOT 2 (close-up): Juno's face: round-dot eyes closed, simple smile, warm golden rim light on her cheeks (PLANT 1: warmth)",
+      "shots": [
+        {
+          "type": "wide",
+          "desc": "sunny beach at noon, turquoise waves, JUNO (small blocky girl) lying on a striped towel, eyes closed, golden light on her face",
+          "t": [
+            5.0,
+            7.5
+          ]
+        },
+        {
+          "type": "close-up",
+          "desc": "Juno's face: round-dot eyes closed, simple smile, warm golden rim light on her cheeks (PLANT 1: warmth)",
+          "t": [
+            7.5,
+            10.0
+          ]
+        }
+      ],
+      "sources": [
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "Juno",
+          "beat": "beachWideJuno"
+        },
+        {
+          "word": "face",
+          "beat": "junoFaceGolden"
+        }
+      ],
+      "captions": [
+        "Meet Juno.",
+        "Noon, on a beach.",
+        "Sunlight is still warm",
+        "on her face."
+      ]
+    },
+    {
+      "id": "grandpa",
+      "section": "setup",
+      "delivery": "warm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 240,
+        "comma_ms": 170,
+        "end_db": 2.5,
+        "gain_db": -1.0
+      },
+      "text": "On the phone, her *grandpa*. | *Night* on his side of the world. | His telescope is aimed at *Saturn*.",
+      "onScreen": "GRANDPA WATCHES SATURN",
+      "why": "but: half of Earth is night",
+      "visual": "SHOT 1 (over-the-shoulder): Juno's phone on the towel, video call: GRANDPA ODE on a night balcony, indigo sky, a full Moon high in the sky (midnight) / SHOT 2 (medium, night side): Grandpa's balcony: brass telescope on a tripod, Grandpa waves, pale-gold dot of Saturn in the sky (PLANT: Saturn) / SHOT 3 (eyepiece POV): Saturn with its rings, small and sharp in a round eyepiece circle, pale gold",
+      "shots": [
+        {
+          "type": "over-the-shoulder",
+          "desc": "Juno's phone on the towel, video call: GRANDPA ODE on a night balcony, indigo sky, a full Moon high in the sky (midnight)",
+          "t": [
+            10.0,
+            12.3
+          ]
+        },
+        {
+          "type": "medium, night side",
+          "desc": "Grandpa's balcony: brass telescope on a tripod, Grandpa waves, pale-gold dot of Saturn in the sky (PLANT: Saturn)",
+          "t": [
+            12.3,
+            14.6
+          ]
+        },
+        {
+          "type": "eyepiece POV",
+          "desc": "Saturn with its rings, small and sharp in a round eyepiece circle, pale gold",
+          "t": [
+            14.6,
+            16.9
+          ]
+        }
+      ],
+      "sources": [
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "grandpa",
+          "beat": "videoCallGrandpa",
+          "sfx": "pop"
+        },
+        {
+          "word": "Saturn",
+          "beat": "eyepieceSaturn",
+          "sfx": "ding"
+        }
+      ],
+      "captions": [
+        "On the phone, her grandpa.",
+        "Night on his side",
+        "of the world.",
+        "His telescope is aimed",
+        "at Saturn."
+      ]
+    },
+    {
+      "id": "old",
+      "section": "setup",
+      "delivery": "awe",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 240,
+        "comma_ms": 170,
+        "end_db": 2.5,
+        "gain_db": -1.0
+      },
+      "text": "But that warmth is *old*. | It left the Sun eight minutes *ago*.",
+      "onScreen": "HER SUNBEAM: 8 MIN OLD",
+      "why": "but: her sunlight is eight minutes old",
+      "visual": "SHOT 1 (macro): a single golden sunbeam drawn as a glowing ribbon touching Juno's cheek; a tiny tag on it reads '8 MIN OLD' / SHOT 2 (pull-back along the beam): camera races backwards along the golden ribbon into space, Earth shrinks behind",
+      "shots": [
+        {
+          "type": "macro",
+          "desc": "a single golden sunbeam drawn as a glowing ribbon touching Juno's cheek; a tiny tag on it reads '8 MIN OLD'",
+          "t": [
+            16.9,
+            19.2
+          ]
+        },
+        {
+          "type": "pull-back along the beam",
+          "desc": "camera races backwards along the golden ribbon into space, Earth shrinks behind",
+          "t": [
+            19.2,
+            21.5
+          ]
+        }
+      ],
+      "sources": [
+        "Q1 NASA Earth facts: 150 Mio. km = 1 AE, 'about eight minutes' (science.nasa.gov/earth/facts/)",
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)"
+      ],
+      "cues": [
+        {
+          "word": "old",
+          "beat": "sunbeamTag8Min"
+        },
+        {
+          "word": "ago",
+          "beat": "pullBackAlongBeam",
+          "sfx": "whoosh"
+        }
+      ],
+      "captions": [
+        "But that warmth is old.",
+        "It left the Sun",
+        "eight minutes ago."
+      ]
+    },
+    {
+      "id": "zero",
+      "section": "tension",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "So right now, the Sun is already *gone*. | Its last light is still on its *way*.",
+      "onScreen": "LAST LIGHT STILL IN FLIGHT",
+      "why": "so: the Sun is already gone",
+      "visual": "SHOT 1 (wide space shot): where the Sun was: empty black, a thin golden shell of light expanding outward like a ring on water / SHOT 2 (tracking shot): camera rides on the front of the golden light shell, Earth a tiny blue dot far ahead / SHOT 3 (insert): Juno's watch: 7:58 ticking",
+      "shots": [
+        {
+          "type": "wide space shot",
+          "desc": "where the Sun was: empty black, a thin golden shell of light expanding outward like a ring on water",
+          "t": [
+            21.5,
+            23.6
+          ]
+        },
+        {
+          "type": "tracking shot",
+          "desc": "camera rides on the front of the golden light shell, Earth a tiny blue dot far ahead",
+          "t": [
+            23.6,
+            25.6
+          ]
+        },
+        {
+          "type": "insert",
+          "desc": "Juno's watch: 7:58 ticking",
+          "t": [
+            25.6,
+            27.7
+          ]
+        }
+      ],
+      "sources": [
+        "Q1 NASA Earth facts: 150 Mio. km = 1 AE, 'about eight minutes' (science.nasa.gov/earth/facts/)",
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)"
+      ],
+      "cues": [
+        {
+          "word": "gone",
+          "beat": "emptySpotLightShell",
+          "hud": {
+            "id": "sunlight",
+            "value": "7:58"
+          }
+        },
+        {
+          "word": "way",
+          "beat": "rideLightShell"
+        }
+      ],
+      "captions": [
+        "So right now,",
+        "the Sun is already gone.",
+        "Its last light",
+        "is still on its way."
+      ]
+    },
+    {
+      "id": "distance",
+      "section": "tension",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "A hundred fifty million kilometers of *light*. | With nothing *behind* it.",
+      "onScreen": "150 MILLION KM, THEN NOTHING",
+      "why": "because: light needs time to cross",
+      "visual": "SHOT 1 (ultra-wide): a long golden light ribbon stretching from the empty black spot to the tiny blue Earth, a ruler line '150 000 000 KM' / SHOT 2 (detail): the tail end of the ribbon: behind it only black, the ribbon slides forward, nothing follows",
+      "shots": [
+        {
+          "type": "ultra-wide",
+          "desc": "a long golden light ribbon stretching from the empty black spot to the tiny blue Earth, a ruler line '150 000 000 KM'",
+          "t": [
+            27.7,
+            29.8
+          ]
+        },
+        {
+          "type": "detail",
+          "desc": "the tail end of the ribbon: behind it only black, the ribbon slides forward, nothing follows",
+          "t": [
+            29.8,
+            31.9
+          ]
+        }
+      ],
+      "sources": [
+        "Q4 NASA Sun facts: 'about 93 million miles (150 million kilometers) from Earth' (science.nasa.gov/sun/facts/)",
+        "Q1 NASA Earth facts: 150 Mio. km = 1 AE, 'about eight minutes' (science.nasa.gov/earth/facts/)"
+      ],
+      "cues": [
+        {
+          "word": "light",
+          "beat": "ribbon150Mkm",
+          "sticker": "150 000 000 KM",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "behind",
+          "beat": "ribbonTailBlack"
+        }
+      ],
+      "captions": [
+        "A hundred fifty million",
+        "kilometers of light.",
+        "With nothing behind it."
+      ]
+    },
+    {
+      "id": "gravity",
+      "section": "tension",
+      "delivery": "serious",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "But *wait*. | No Sun means no *pull*. | Shouldn't Earth fly off *now*?",
+      "onScreen": "WHY ISN'T EARTH FLYING OFF?",
+      "why": "but: gravity should vanish too",
+      "visual": "SHOT 1 (medium): Juno's blocky model of the solar system on the towel (tennis-ball Sun on a string, marble Earth) – her hand cuts the string / SHOT 2 (low-angle close-up): Grandpa on screen, eyebrow raised; question mark sticker over Earth's dotted orbit line",
+      "shots": [
+        {
+          "type": "medium",
+          "desc": "Juno's blocky model of the solar system on the towel (tennis-ball Sun on a string, marble Earth) – her hand cuts the string",
+          "t": [
+            31.9,
+            34.2
+          ]
+        },
+        {
+          "type": "low-angle close-up",
+          "desc": "Grandpa on screen, eyebrow raised; question mark sticker over Earth's dotted orbit line",
+          "t": [
+            34.2,
+            36.5
+          ]
+        }
+      ],
+      "sources": [
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "pull",
+          "beat": "modelStringCut",
+          "sfx": "pop"
+        },
+        {
+          "word": "now",
+          "beat": "grandpaEyebrow"
+        }
+      ],
+      "captions": [
+        "But wait.",
+        "No Sun means no pull.",
+        "Shouldn't Earth fly off now?"
+      ]
+    },
+    {
+      "id": "speed",
+      "section": "tension",
+      "delivery": "serious",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "*Nope*. Gravity isn't *instant* either. | It moves at the speed of *light*.",
+      "onScreen": "GRAVITY HAS A SPEED LIMIT",
+      "why": "because: gravity also needs travel time",
+      "visual": "SHOT 1 (graphic in world): space-time drawn as a stretchy golden grid around the empty spot; a ripple wave travels outward next to the light shell, both side by side / SHOT 2 (tracking): ripple and light shell racing together toward the blue Earth, a speed sign 'c' floating beside them",
+      "shots": [
+        {
+          "type": "graphic in world",
+          "desc": "space-time drawn as a stretchy golden grid around the empty spot; a ripple wave travels outward next to the light shell, both side by side",
+          "t": [
+            36.5,
+            38.8
+          ]
+        },
+        {
+          "type": "tracking",
+          "desc": "ripple and light shell racing together toward the blue Earth, a speed sign 'c' floating beside them",
+          "t": [
+            38.8,
+            41.2
+          ]
+        }
+      ],
+      "sources": [
+        "Q5 NASA 'When Dead Stars Collide!': GW 'travel at the speed of light', 'gamma rays came just 1.7 seconds after', '130 million light-years' (science.nasa.gov/universe/stories/quick-reads/when-dead-stars-collide/)",
+        "Q6 Wikipedia GW170817 (Tertiär): Geschwindigkeitsdifferenz zwischen −3e−15 und +7e−16 c (Abbott et al. 2017, ApJL 848 L13 – Primärquelle nicht erreichbar)"
+      ],
+      "cues": [
+        {
+          "word": "instant",
+          "beat": "gridRipple"
+        },
+        {
+          "word": "light",
+          "beat": "rippleAndLightRace",
+          "sticker": "SPEED: c",
+          "color": "#FFD23F"
+        }
+      ],
+      "captions": [
+        "Nope. Gravity isn't",
+        "instant either.",
+        "It moves at",
+        "the speed of light."
+      ]
+    },
+    {
+      "id": "proof",
+      "section": "tension",
+      "delivery": "awe",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "In twenty seventeen, we saw two dead stars *crash*. | Their ripples and their light raced *together*.",
+      "onScreen": "DEAD STARS RAN THE TEST",
+      "why": "because: dead stars proved it",
+      "visual": "SHOT 1 (wide, deep space): two small, heavy, dark-blue glowing balls ('dead stars') spiral around each other in a distant galaxy / SHOT 2 (ECU): they crash: a bright flash plus a golden grid ripple leaving at the same instant / SHOT 3 (tracking): the flash and the ripple fly side by side through starry space, a calendar sticker '2017' fades in at the end",
+      "shots": [
+        {
+          "type": "wide, deep space",
+          "desc": "two small, heavy, dark-blue glowing balls ('dead stars') spiral around each other in a distant galaxy",
+          "t": [
+            41.2,
+            43.2
+          ]
+        },
+        {
+          "type": "ECU",
+          "desc": "they crash: a bright flash plus a golden grid ripple leaving at the same instant",
+          "t": [
+            43.2,
+            45.3
+          ]
+        },
+        {
+          "type": "tracking",
+          "desc": "the flash and the ripple fly side by side through starry space, a calendar sticker '2017' fades in at the end",
+          "t": [
+            45.3,
+            47.3
+          ]
+        }
+      ],
+      "sources": [
+        "Q5 NASA 'When Dead Stars Collide!': GW 'travel at the speed of light', 'gamma rays came just 1.7 seconds after', '130 million light-years' (science.nasa.gov/universe/stories/quick-reads/when-dead-stars-collide/)"
+      ],
+      "cues": [
+        {
+          "word": "crash",
+          "beat": "deadStarsCrash",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "together",
+          "beat": "flashRippleSideBySide"
+        }
+      ],
+      "captions": [
+        "In twenty seventeen, we saw",
+        "two dead stars crash.",
+        "Their ripples and their light",
+        "raced together."
+      ]
+    },
+    {
+      "id": "arrive",
+      "section": "tension",
+      "delivery": "awe",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "After a hundred thirty million years… | they arrived under two seconds *apart*.",
+      "onScreen": "A PHOTO FINISH: 1.7 S",
+      "why": "so: same speed, measured",
+      "visual": "SHOT 1 (time-lapse space): flash and ripple crossing a field of galaxies, a counter '130 000 000 YEARS' rolling / SHOT 2 (photo-finish split screen): two detectors on a cartoon Earth: ripple hits first, light 1.7 s later, stopwatch sticker '1.7 S'",
+      "shots": [
+        {
+          "type": "time-lapse space",
+          "desc": "flash and ripple crossing a field of galaxies, a counter '130 000 000 YEARS' rolling",
+          "t": [
+            47.3,
+            49.6
+          ]
+        },
+        {
+          "type": "photo-finish split screen",
+          "desc": "two detectors on a cartoon Earth: ripple hits first, light 1.7 s later, stopwatch sticker '1.7 S'",
+          "t": [
+            49.6,
+            51.9
+          ]
+        }
+      ],
+      "sources": [
+        "Q5 NASA 'When Dead Stars Collide!': GW 'travel at the speed of light', 'gamma rays came just 1.7 seconds after', '130 million light-years' (science.nasa.gov/universe/stories/quick-reads/when-dead-stars-collide/)",
+        "Q6 Wikipedia GW170817 (Tertiär): Geschwindigkeitsdifferenz zwischen −3e−15 und +7e−16 c (Abbott et al. 2017, ApJL 848 L13 – Primärquelle nicht erreichbar)"
+      ],
+      "cues": [
+        {
+          "word": "years",
+          "beat": "galaxyTimelapse"
+        },
+        {
+          "word": "apart",
+          "beat": "photoFinish",
+          "sticker": "1.7 S",
+          "color": "#FFD23F"
+        }
+      ],
+      "captions": [
+        "After a hundred thirty",
+        "million years…",
+        "they arrived",
+        "under two seconds apart."
+      ]
+    },
+    {
+      "id": "orbit",
+      "section": "tension",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "So for eight minutes, Earth keeps circling an *empty* spot.",
+      "onScreen": "EARTH ORBITS A GHOST",
+      "why": "so: Earth still feels a ghost pull",
+      "visual": "SHOT 1 (top-down space): Earth (with its Moon) still curving along its dotted orbit around a perfectly empty black spot, a faint golden ghost outline where the Sun was / SHOT 2 (close-up): the dotted orbit line glows ahead of Earth, a label 'NOTHING HERE' on the empty spot",
+      "shots": [
+        {
+          "type": "top-down space",
+          "desc": "Earth (with its Moon) still curving along its dotted orbit around a perfectly empty black spot, a faint golden ghost outline where the Sun was",
+          "t": [
+            51.9,
+            53.8
+          ]
+        },
+        {
+          "type": "close-up",
+          "desc": "the dotted orbit line glows ahead of Earth, a label 'NOTHING HERE' on the empty spot",
+          "t": [
+            53.8,
+            55.8
+          ]
+        }
+      ],
+      "sources": [
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)",
+        "Q5 NASA 'When Dead Stars Collide!': GW 'travel at the speed of light', 'gamma rays came just 1.7 seconds after', '130 million light-years' (science.nasa.gov/universe/stories/quick-reads/when-dead-stars-collide/)",
+        "Q6 Wikipedia GW170817 (Tertiär): Geschwindigkeitsdifferenz zwischen −3e−15 und +7e−16 c (Abbott et al. 2017, ApJL 848 L13 – Primärquelle nicht erreichbar)"
+      ],
+      "cues": [
+        {
+          "word": "empty",
+          "beat": "orbitEmptySpot",
+          "hud": {
+            "id": "sunlight",
+            "value": "4:30"
+          }
+        }
+      ],
+      "captions": [
+        "So for eight minutes,",
+        "Earth keeps circling",
+        "an empty spot."
+      ]
+    },
+    {
+      "id": "rehook",
+      "section": "tension",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "Juno has no *idea*. | Neither does *anyone*. | Not *yet*.",
+      "onScreen": "THE CLOCK RUNS SILENTLY",
+      "why": "but: nobody can know yet",
+      "visual": "SHOT 1 (medium): Juno sunbathing, humming, watch shows 4:30 / SHOT 2 (wide crowd): blocky people on the beach: ice cream, volleyball, a dog – all normal, golden light",
+      "shots": [
+        {
+          "type": "medium",
+          "desc": "Juno sunbathing, humming, watch shows 4:30",
+          "t": [
+            55.8,
+            57.5
+          ]
+        },
+        {
+          "type": "wide crowd",
+          "desc": "blocky people on the beach: ice cream, volleyball, a dog – all normal, golden light",
+          "t": [
+            57.5,
+            59.2
+          ]
+        }
+      ],
+      "sources": [
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "idea",
+          "beat": "junoHumming"
+        },
+        {
+          "word": "yet",
+          "beat": "beachCrowdNormal"
+        }
+      ],
+      "captions": [
+        "Juno has no idea.",
+        "Neither does anyone.",
+        "Not yet."
+      ]
+    },
+    {
+      "id": "four",
+      "section": "tension",
+      "delivery": "warm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "*Four* minutes in. | Grandpa zooms in on Saturn's *rings*. | Still *perfect*.",
+      "onScreen": "SATURN LOOKS NORMAL",
+      "why": "so: everything still looks normal",
+      "visual": "SHOT 1 (close-up): Grandpa with his eye at the telescope, smiling, cardigan, block beard / SHOT 2 (eyepiece POV): Saturn's rings sharp and bright, pale gold (MIDDLE REPEAT: Saturn)",
+      "shots": [
+        {
+          "type": "close-up",
+          "desc": "Grandpa with his eye at the telescope, smiling, cardigan, block beard",
+          "t": [
+            59.2,
+            61.3
+          ]
+        },
+        {
+          "type": "eyepiece POV",
+          "desc": "Saturn's rings sharp and bright, pale gold (MIDDLE REPEAT: Saturn)",
+          "t": [
+            61.3,
+            63.5
+          ]
+        }
+      ],
+      "sources": [
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)",
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "Four",
+          "beat": "grandpaTelescope",
+          "hud": {
+            "id": "sunlight",
+            "value": "4:19"
+          }
+        },
+        {
+          "word": "rings",
+          "beat": "eyepieceRings"
+        }
+      ],
+      "captions": [
+        "Four minutes in.",
+        "Grandpa zooms in",
+        "on Saturn's rings.",
+        "Still perfect."
+      ]
+    },
+    {
+      "id": "five",
+      "section": "tension",
+      "delivery": "playful",
+      "emotion": {
+        "exag": 0.6,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -1.0
+      },
+      "text": "*Five* minutes. | Grandpa *yawns* goodnight. | Juno begs: \"Five more *minutes*!\"",
+      "onScreen": "SHE WANTS MORE TIME",
+      "why": "but: she wants more time",
+      "visual": "SHOT 1 (over-the-shoulder): phone: Grandpa yawns, waves goodnight / SHOT 2 (close-up): Juno grins, holds up five blocky fingers; watch reads 3:19",
+      "shots": [
+        {
+          "type": "over-the-shoulder",
+          "desc": "phone: Grandpa yawns, waves goodnight",
+          "t": [
+            63.5,
+            65.4
+          ]
+        },
+        {
+          "type": "close-up",
+          "desc": "Juno grins, holds up five blocky fingers; watch reads 3:19",
+          "t": [
+            65.4,
+            67.3
+          ]
+        }
+      ],
+      "sources": [
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "yawns",
+          "beat": "grandpaYawns"
+        },
+        {
+          "word": "begs",
+          "beat": "junoFiveFingers",
+          "hud": {
+            "id": "sunlight",
+            "value": "3:19"
+          }
+        }
+      ],
+      "captions": [
+        "Five minutes.",
+        "Grandpa yawns goodnight.",
+        "Juno begs:",
+        "\"Five more minutes!\""
+      ]
+    },
+    {
+      "id": "seven",
+      "section": "tension",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 180,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "*Seven* minutes. | Juno closes her eyes in the *warmth*. | One warm minute *left*.",
+      "onScreen": "HER LAST WARM MINUTE",
+      "why": "but: her warm minute is running out",
+      "visual": "SHOT 1 (slow push-in, ECU): Juno closes her eyes, golden light on her face (STEP 1: the viewer cares – this is her last warm minute) / SHOT 2 (insert): watch: 1:00 – ticking louder",
+      "shots": [
+        {
+          "type": "slow push-in, ECU",
+          "desc": "Juno closes her eyes, golden light on her face (STEP 1: the viewer cares – this is her last warm minute)",
+          "t": [
+            67.3,
+            69.8
+          ]
+        },
+        {
+          "type": "insert",
+          "desc": "watch: 1:00 – ticking louder",
+          "t": [
+            69.8,
+            72.3
+          ]
+        }
+      ],
+      "sources": [
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)",
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "Seven",
+          "beat": "junoClosesEyes",
+          "hud": {
+            "id": "sunlight",
+            "value": "1:00"
+          }
+        },
+        {
+          "word": "left",
+          "beat": "watchOneMinute"
+        }
+      ],
+      "captions": [
+        "Seven minutes.",
+        "Juno closes her eyes",
+        "in the warmth.",
+        "One warm minute left."
+      ],
+      "peak": "stakes"
+    },
+    {
+      "id": "hope",
+      "section": "tension",
+      "delivery": "warm",
+      "emotion": {
+        "exag": 0.5,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 0.98,
+        "gap_ms": 280,
+        "comma_ms": 190,
+        "end_db": 2.0,
+        "gain_db": -1.0
+      },
+      "text": "*Eight* minutes. | Waves, birds, *sunshine*. | Maybe it's all *fine*.",
+      "onScreen": "NOTHING HAS CHANGED... RIGHT?",
+      "why": "but: nothing has changed yet",
+      "visual": "SHOT 1 (wide): golden beach, waves glittering, gulls, everything bright (STEP 2: hope – music opens to a warm chord) / SHOT 2 (close-up): Juno stretches, relaxed smile; watch 0:01 – then 0,6 s TOTAL SILENCE",
+      "shots": [
+        {
+          "type": "wide",
+          "desc": "golden beach, waves glittering, gulls, everything bright (STEP 2: hope – music opens to a warm chord)",
+          "t": [
+            72.3,
+            74.0
+          ]
+        },
+        {
+          "type": "close-up",
+          "desc": "Juno stretches, relaxed smile; watch 0:01 – then 0,6 s TOTAL SILENCE",
+          "t": [
+            74.0,
+            75.8
+          ]
+        }
+      ],
+      "sources": [
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)",
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "sunshine",
+          "beat": "beachGlitter"
+        },
+        {
+          "word": "fine",
+          "beat": "junoStretches",
+          "hud": {
+            "id": "sunlight",
+            "value": "0:01"
+          }
+        }
+      ],
+      "captions": [
+        "Eight minutes.",
+        "Waves, birds, sunshine.",
+        "Maybe it's all fine."
+      ],
+      "peak": "hope"
+    },
+    {
+      "id": "turn",
+      "section": "twist",
+      "delivery": "dramatic",
+      "emotion": {
+        "exag": 0.65,
+        "cfg": 0.4,
+        "temp": 0.8,
+        "speed": 1.03,
+        "gap_ms": 200,
+        "comma_ms": 140,
+        "end_db": 1.0,
+        "gain_db": 1.5
+      },
+      "text": "Eight *nineteen*. | The sky goes *black*. | And Earth lets *go*.",
+      "onScreen": "NOON TURNS TO NIGHT",
+      "why": "so: light and pull end together",
+      "visual": "SHOT 1 (ONE deliberate HOLD ≤ 6 s, slow push-in): after 0,6 s total silence: the noon sky switches from blue to black in one beat, stars pop out at midday, Juno's face loses its golden light and turns cold blue from the stars; Juno opens her eyes; watch '0:00' (STEP 3: the turn; emotion: awe-struck dread)",
+      "shots": [
+        {
+          "type": "ONE deliberate HOLD ≤ 6 s, slow push-in",
+          "desc": "after 0,6 s total silence: the noon sky switches from blue to black in one beat, stars pop out at midday, Juno's face loses its golden light and turns cold blue from the stars; Juno opens her eyes; watch '0:00' (STEP 3: the turn; emotion: awe-struck dread)",
+          "t": [
+            75.8,
+            80.2
+          ]
+        }
+      ],
+      "sources": [
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)",
+        "Q5 NASA 'When Dead Stars Collide!': GW 'travel at the speed of light', 'gamma rays came just 1.7 seconds after', '130 million light-years' (science.nasa.gov/universe/stories/quick-reads/when-dead-stars-collide/)",
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "nineteen",
+          "beat": "skyGoesBlack",
+          "hud": {
+            "id": "sunlight",
+            "value": "0:00"
+          }
+        },
+        {
+          "word": "black",
+          "beat": "noonStars"
+        },
+        {
+          "word": "go",
+          "beat": "junoEyesOpen"
+        }
+      ],
+      "captions": [
+        "Eight nineteen.",
+        "The sky goes black.",
+        "And Earth lets go."
+      ],
+      "peak": "turn",
+      "emotionName": "awe-struck dread (staunendes Grauen) nach Hoffnung"
+    },
+    {
+      "id": "straight",
+      "section": "twist",
+      "delivery": "dramatic",
+      "emotion": {
+        "exag": 0.65,
+        "cfg": 0.4,
+        "temp": 0.8,
+        "speed": 1.03,
+        "gap_ms": 200,
+        "comma_ms": 140,
+        "end_db": 1.0,
+        "gain_db": 1.5
+      },
+      "text": "No more *curve*. | Earth flies straight, thirty kilometers every *second*.",
+      "onScreen": "EARTH LEAVES ITS ORBIT",
+      "why": "because: nothing pulls it around",
+      "visual": "SHOT 1 (top-down space): Earth's dotted orbit line snaps; Earth and Moon leave on a straight line into the black, a speed tag '30 KM/S' / SHOT 2 (close-up): the old curved orbit line fading behind them",
+      "shots": [
+        {
+          "type": "top-down space",
+          "desc": "Earth's dotted orbit line snaps; Earth and Moon leave on a straight line into the black, a speed tag '30 KM/S'",
+          "t": [
+            80.2,
+            82.1
+          ]
+        },
+        {
+          "type": "close-up",
+          "desc": "the old curved orbit line fading behind them",
+          "t": [
+            82.1,
+            84.1
+          ]
+        }
+      ],
+      "sources": [
+        "Q7 Herleitung Bahngeschwindigkeit 2π·1 AE / 365,25 d = 29,8 km/s (Werte aus Q1)"
+      ],
+      "cues": [
+        {
+          "word": "curve",
+          "beat": "orbitSnaps",
+          "hud": {
+            "id": "orbit",
+            "value": "STRAIGHT"
+          }
+        },
+        {
+          "word": "second",
+          "beat": "speedTag30",
+          "sticker": "30 KM/S",
+          "color": "#FFD23F"
+        }
+      ],
+      "captions": [
+        "No more curve.",
+        "Earth flies straight,",
+        "thirty kilometers every second."
+      ]
+    },
+    {
+      "id": "moon",
+      "section": "twist",
+      "delivery": "awe",
+      "emotion": {
+        "exag": 0.65,
+        "cfg": 0.4,
+        "temp": 0.8,
+        "speed": 1.03,
+        "gap_ms": 200,
+        "comma_ms": 140,
+        "end_db": 1.0,
+        "gain_db": 1.5
+      },
+      "text": "Seconds later, the full Moon goes *dark*. | Saturn *doesn't*.",
+      "onScreen": "THE MOON GOES OUT",
+      "why": "but: one light stays on",
+      "visual": "SHOT 1 (medium, night side): Grandpa's balcony: the full Moon glows on for a moment, then fades to a dark disc / SHOT 2 (eyepiece POV): Saturn still shining in the eyepiece, pale gold",
+      "shots": [
+        {
+          "type": "medium, night side",
+          "desc": "Grandpa's balcony: the full Moon glows on for a moment, then fades to a dark disc",
+          "t": [
+            84.1,
+            85.8
+          ]
+        },
+        {
+          "type": "eyepiece POV",
+          "desc": "Saturn still shining in the eyepiece, pale gold",
+          "t": [
+            85.8,
+            87.5
+          ]
+        }
+      ],
+      "sources": [
+        "Q8 NASA Moon facts: 384.400 km, Vollmond 'fully illuminated by the Sun'; Herleitung 2 × 384.400 km / c ≈ 2,6 s (science.nasa.gov/moon/facts/)",
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "dark",
+          "beat": "moonFades"
+        },
+        {
+          "word": "doesn't",
+          "beat": "saturnStillShining",
+          "sfx": "ding"
+        }
+      ],
+      "captions": [
+        "Seconds later,",
+        "the full Moon goes dark.",
+        "Saturn doesn't."
+      ]
+    },
+    {
+      "id": "ocean",
+      "section": "ending",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.7,
+        "speed": 0.98,
+        "gap_ms": 250,
+        "comma_ms": 190,
+        "end_db": 3.5,
+        "gain_db": -2.0
+      },
+      "text": "Ice caps the oceans like a *blanket*. | Down at hot vents, some microbes keep eating *chemicals*.",
+      "onScreen": "THE DEEP SURVIVES THE COLD",
+      "why": "so: the cold comes, the deep survives",
+      "visual": "SHOT 1 (wide, ocean surface): the turquoise sea under starlight, a white ice skin creeping over it like a blanket / SHOT 2 (dive): camera sinks through the ice into dark water to the sea floor / SHOT 3 (macro): a hydrothermal vent puffing warm black smoke, tiny glowing-green microbe dots around it (stylized, no animals)",
+      "shots": [
+        {
+          "type": "wide, ocean surface",
+          "desc": "the turquoise sea under starlight, a white ice skin creeping over it like a blanket",
+          "t": [
+            87.5,
+            89.6
+          ]
+        },
+        {
+          "type": "dive",
+          "desc": "camera sinks through the ice into dark water to the sea floor",
+          "t": [
+            89.6,
+            91.6
+          ]
+        },
+        {
+          "type": "macro",
+          "desc": "a hydrothermal vent puffing warm black smoke, tiny glowing-green microbe dots around it (stylized, no animals)",
+          "t": [
+            91.6,
+            93.7
+          ]
+        }
+      ],
+      "sources": [
+        "Q11 Schulze-Makuch & Fairén 2021, Life (PMC8397938): Eisschicht isoliert, Erdwärme hält Wasser darunter flüssig – Dauer für die Erde: Ich kann das nicht bestätigen",
+        "Q12 NASA 'Earth: Undersea Seeps, Vents, and Volcanoes': 'chemosynthesis' ohne Sonnenlicht; Wikipedia 'Hydrothermal vent': manche Tiere brauchen Photosynthese-Sauerstoff → 'some microbes'"
+      ],
+      "cues": [
+        {
+          "word": "blanket",
+          "beat": "iceSkinCreeps"
+        },
+        {
+          "word": "chemicals",
+          "beat": "ventMicrobes",
+          "sfx": "whoosh"
+        }
+      ],
+      "captions": [
+        "Ice caps the oceans",
+        "like a blanket.",
+        "Down at hot vents,",
+        "some microbes keep",
+        "eating chemicals."
+      ]
+    },
+    {
+      "id": "saturn",
+      "section": "ending",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.7,
+        "speed": 0.98,
+        "gap_ms": 250,
+        "comma_ms": 190,
+        "end_db": 3.5,
+        "gain_db": -2.0
+      },
+      "text": "Two hours later, Saturn still *glows*. | Lit by a vanished *Sun*.",
+      "onScreen": "SATURN: THE SUN'S LAST ECHO",
+      "why": "but: Saturn's light is late",
+      "visual": "SHOT 1 (eyepiece POV): Saturn alone in the round eyepiece, still glowing pale gold; clock sticker '+2 H' / SHOT 2 (close-up): Grandpa, bundled in a scarf, breath visible, staring into the eyepiece, wide round-dot eyes (FINAL IMAGE new meaning: Saturn is the Sun's last echo)",
+      "shots": [
+        {
+          "type": "eyepiece POV",
+          "desc": "Saturn alone in the round eyepiece, still glowing pale gold; clock sticker '+2 H'",
+          "t": [
+            93.7,
+            95.8
+          ]
+        },
+        {
+          "type": "close-up",
+          "desc": "Grandpa, bundled in a scarf, breath visible, staring into the eyepiece, wide round-dot eyes (FINAL IMAGE new meaning: Saturn is the Sun's last echo)",
+          "t": [
+            95.8,
+            97.9
+          ]
+        }
+      ],
+      "sources": [
+        "Q9 NASA Saturn facts: 9,5 AE, 'sunlight 80 minutes'; Herleitung Opposition (9,5 + 8,5) AE / c ≈ 150 min − 8,3 min ≈ 2 h 21 min (science.nasa.gov/saturn/facts/)",
+        "Fiktion (Rahmen): Juno, Grandpa, Strand, Telefonat, Teleskop, Vollmond und Saturn-Opposition sind erfundene Requisiten – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "glows",
+          "beat": "saturnAlonePlus2h",
+          "sticker": "+2 H",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "Sun",
+          "beat": "grandpaStares"
+        }
+      ],
+      "captions": [
+        "Two hours later,",
+        "Saturn still glows.",
+        "Lit by a vanished Sun."
+      ]
+    },
+    {
+      "id": "answer2",
+      "section": "ending",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.7,
+        "speed": 0.98,
+        "gap_ms": 250,
+        "comma_ms": 190,
+        "end_db": 3.5,
+        "gain_db": -2.0
+      },
+      "text": "Eight minutes of *light*. | Two hours of *echo*. | Then Saturn goes *dark*, too.",
+      "onScreen": "THEN THE ECHO ENDS",
+      "why": "so: the hook question is answered",
+      "visual": "SHOT 1 (eyepiece POV): Saturn's glow fades slowly to black, only distant stars remain in the circle / SHOT 2 (wide, slow crane up): Juno and Grandpa on the split phone screen look up at a starry black sky, then end card",
+      "shots": [
+        {
+          "type": "eyepiece POV",
+          "desc": "Saturn's glow fades slowly to black, only distant stars remain in the circle",
+          "t": [
+            97.9,
+            100.4
+          ]
+        },
+        {
+          "type": "wide, slow crane up",
+          "desc": "Juno and Grandpa on the split phone screen look up at a starry black sky, then end card",
+          "t": [
+            100.4,
+            102.9
+          ]
+        }
+      ],
+      "sources": [
+        "Q2 Herleitung 1 AE / c = 149.597.870,7 km / 299.792,458 km/s = 499 s = 8 min 19 s (c exakt: Wikipedia 'Speed of light', Tertiär)",
+        "Q9 NASA Saturn facts: 9,5 AE, 'sunlight 80 minutes'; Herleitung Opposition (9,5 + 8,5) AE / c ≈ 150 min − 8,3 min ≈ 2 h 21 min (science.nasa.gov/saturn/facts/)"
+      ],
+      "cues": [
+        {
+          "word": "echo",
+          "beat": "saturnFades"
+        },
+        {
+          "word": "dark",
+          "beat": "craneUpStars",
+          "sticker": "THE ECHO ENDS",
+          "color": "#FFD23F"
+        }
+      ],
+      "captions": [
+        "Eight minutes of light.",
+        "Two hours of echo.",
+        "Then Saturn goes dark, too."
+      ]
+    }
+  ]
+}
