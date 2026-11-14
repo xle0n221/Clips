@@ -5,3 +5,6 @@ Fehlt ein Wert, steht „fehlt“. Keine Schätzwerte, keine erfundenen Zahlen. 
 
 | Video | Plattform | Datum | Uhrzeit (DE) | Slot | Aufrufe 1 h | 24 h | 48 h | 7 Tage | Ø Wiedergabe (s) | % vollständig | neue Follower | Top-3-Länder | Shares |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| In This City, You Pay With Time (zeit-welt) | TikTok | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt | fehlt |
+
+Hinweis 14.11.2026 20:58 UTC: Kennzahlen-Eintrag TikTok für zeit-welt im Dashboard gespeichert, alle Felder leer → als gepostet geführt, Werte „fehlt“.
