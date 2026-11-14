@@ -18,6 +18,7 @@ Ergebnis `docs/trends/<datum>.md` + `docs/trends/aktuell.md`. Prüfer: Retention
 - Noch keine erprobten Punkte (Rolle angelegt 12.11.2026).
 
 ## Gelernt (neueste oben; Datum · Befund · Beleg)
+- 15.11.2026 · Experiment: `scripts/trends_fetch.py --tiktok 12 --youtube 12` (REST über Proxy; die Apify-MCP-Tools sind in Subagenten nicht ladbar) lieferte 18 verwertbare Clips für 0,033 $ (TikTok 10 von 12, YouTube 8). Messbares: Duell-What-if 2,04 Mio., Verlies-Horror 1,42 Mio., 3D-Mikrowelt 0,89 Mio.; Paradox-Short 148.838 → 228.199 in 3 Tagen. Nutzung: Suchbegriffe prägen Treffer (KI-Werbung, Anime), Hook/Aufbau nur aus Titel+Dauer ableitbar; gleiche Suche täglich wiederholen für Steigt/Fällt · `docs/trends/2026-11-15.md`
 - 14.11.2026 · WebSearch liefert für aktuelle Shorts/TikTok fast nur Vendor-Blogs ohne Einzelclip-Zahlen (8 Suchen, 0 verifizierbare Clip-Aufrufe) – für belastbare Zahlen Apify-Kanalläufe nötig; Themen-Bewertung 5 Kriterien, Interesse bleibt [HYPOTHESE] · `docs/trends/2026-11-14.md`
 - 14.11.2026 · **Neue Eingabe** (Nutzer, `docs/prompts/knowtoon-upload-strategie.md` §1, §8): Die 14-Tage-Auswertung liefert die drei stärksten und drei schwächsten Themen-Arten – bei der Themenwahl berücksichtigen; Ziele in Reihenfolge: Bindung > neue Follower aus englischsprachigen Ländern > Aufrufe > Monetarisierung.
 - 12.11.2026 · Benchmark Tempo: n=9 Erzähl-Shorts mit Untertiteln, Median 3,43 W/s; ruhige Spitzenreiter (AumSum 40/52 s, 26–42 Mio.) 2,4–2,6 W/s · `docs/trends/benchmark-tempo.md` (Apify 0,175 $)
