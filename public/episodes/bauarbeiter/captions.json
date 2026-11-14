@@ -23,15 +23,15 @@
  {
   "text": " Lot",
   "startMs": 1200,
-  "endMs": 1380,
-  "timestampMs": 1290,
+  "endMs": 1360,
+  "timestampMs": 1280,
   "confidence": null
  },
  {
   "text": " Nine",
-  "startMs": 1380,
+  "startMs": 1360,
   "endMs": 1720,
-  "timestampMs": 1550,
+  "timestampMs": 1540,
   "confidence": null
  },
  {
@@ -44,1296 +44,1296 @@
  {
   "text": " knocked",
   "startMs": 2080,
-  "endMs": 2340,
-  "timestampMs": 2210,
+  "endMs": 2360,
+  "timestampMs": 2220,
   "confidence": null
  },
  {
   "text": " back.",
-  "startMs": 2340,
-  "endMs": 2740,
-  "timestampMs": 2540,
+  "startMs": 2360,
+  "endMs": 2760,
+  "timestampMs": 2560,
   "confidence": null
  },
  {
   "text": " In",
-  "startMs": 2740,
-  "endMs": 3320,
-  "timestampMs": 3030,
+  "startMs": 2760,
+  "endMs": 3280,
+  "timestampMs": 3020,
   "confidence": null
  },
  {
   "text": " Milo's",
-  "startMs": 3320,
-  "endMs": 3840,
-  "timestampMs": 3580,
+  "startMs": 3280,
+  "endMs": 3820,
+  "timestampMs": 3550,
   "confidence": null
  },
  {
   "text": " secret",
-  "startMs": 3840,
+  "startMs": 3820,
   "endMs": 4180,
-  "timestampMs": 4010,
+  "timestampMs": 4000,
   "confidence": null
  },
  {
   "text": " rhythm.",
   "startMs": 4180,
-  "endMs": 4620,
-  "timestampMs": 4400,
+  "endMs": 4600,
+  "timestampMs": 4390,
   "confidence": null
  },
  {
   "text": " Every",
-  "startMs": 5180,
-  "endMs": 5300,
-  "timestampMs": 5240,
+  "startMs": 4600,
+  "endMs": 5260,
+  "timestampMs": 4930,
   "confidence": null
  },
  {
   "text": " shift,",
-  "startMs": 5300,
+  "startMs": 5260,
   "endMs": 5680,
-  "timestampMs": 5490,
+  "timestampMs": 5470,
   "confidence": null
  },
  {
   "text": " Milo",
-  "startMs": 6180,
-  "endMs": 6280,
-  "timestampMs": 6230,
+  "startMs": 5680,
+  "endMs": 6220,
+  "timestampMs": 5950,
   "confidence": null
  },
  {
   "text": " knocks",
-  "startMs": 6280,
-  "endMs": 6620,
-  "timestampMs": 6450,
+  "startMs": 6220,
+  "endMs": 6600,
+  "timestampMs": 6410,
   "confidence": null
  },
  {
   "text": " his",
-  "startMs": 6620,
-  "endMs": 6880,
-  "timestampMs": 6750,
+  "startMs": 6600,
+  "endMs": 6840,
+  "timestampMs": 6720,
   "confidence": null
  },
  {
   "text": " hard",
-  "startMs": 6880,
-  "endMs": 7160,
-  "timestampMs": 7020,
+  "startMs": 6840,
+  "endMs": 7140,
+  "timestampMs": 6990,
   "confidence": null
  },
  {
   "text": " hat",
-  "startMs": 7160,
-  "endMs": 7340,
-  "timestampMs": 7250,
+  "startMs": 7140,
+  "endMs": 7300,
+  "timestampMs": 7220,
   "confidence": null
  },
  {
   "text": " three",
-  "startMs": 7340,
-  "endMs": 7640,
-  "timestampMs": 7490,
+  "startMs": 7300,
+  "endMs": 7620,
+  "timestampMs": 7460,
   "confidence": null
  },
  {
   "text": " times.",
-  "startMs": 7640,
-  "endMs": 8120,
-  "timestampMs": 7880,
+  "startMs": 7620,
+  "endMs": 8080,
+  "timestampMs": 7850,
   "confidence": null
  },
  {
   "text": " Two",
-  "startMs": 8640,
-  "endMs": 8740,
-  "timestampMs": 8690,
+  "startMs": 8080,
+  "endMs": 8700,
+  "timestampMs": 8390,
   "confidence": null
  },
  {
   "text": " quick,",
-  "startMs": 8740,
-  "endMs": 9100,
-  "timestampMs": 8920,
+  "startMs": 8700,
+  "endMs": 9060,
+  "timestampMs": 8880,
   "confidence": null
  },
  {
   "text": " one",
-  "startMs": 9340,
-  "endMs": 9560,
-  "timestampMs": 9450,
+  "startMs": 9060,
+  "endMs": 9500,
+  "timestampMs": 9280,
   "confidence": null
  },
  {
   "text": " slow.",
-  "startMs": 9560,
-  "endMs": 9940,
-  "timestampMs": 9750,
+  "startMs": 9500,
+  "endMs": 9920,
+  "timestampMs": 9710,
   "confidence": null
  },
  {
   "text": " For",
-  "startMs": 10360,
-  "endMs": 10580,
-  "timestampMs": 10470,
+  "startMs": 9920,
+  "endMs": 10540,
+  "timestampMs": 10230,
   "confidence": null
  },
  {
   "text": " luck.",
-  "startMs": 10580,
+  "startMs": 10540,
   "endMs": 10860,
-  "timestampMs": 10720,
+  "timestampMs": 10700,
   "confidence": null
  },
  {
   "text": " Tonight",
-  "startMs": 11380,
-  "endMs": 11660,
-  "timestampMs": 11520,
+  "startMs": 10860,
+  "endMs": 11600,
+  "timestampMs": 11230,
   "confidence": null
  },
  {
   "text": " he's",
-  "startMs": 11880,
-  "endMs": 11980,
-  "timestampMs": 11930,
+  "startMs": 11600,
+  "endMs": 11940,
+  "timestampMs": 11770,
   "confidence": null
  },
  {
   "text": " alone.",
-  "startMs": 11980,
-  "endMs": 12320,
-  "timestampMs": 12150,
+  "startMs": 11940,
+  "endMs": 12300,
+  "timestampMs": 12120,
   "confidence": null
  },
  {
   "text": " At",
-  "startMs": 12760,
-  "endMs": 12940,
-  "timestampMs": 12850,
+  "startMs": 12300,
+  "endMs": 12880,
+  "timestampMs": 12590,
   "confidence": null
  },
  {
   "text": " six,",
-  "startMs": 12940,
-  "endMs": 13300,
-  "timestampMs": 13120,
+  "startMs": 12880,
+  "endMs": 13340,
+  "timestampMs": 13110,
   "confidence": null
  },
  {
   "text": " trucks",
-  "startMs": 13900,
-  "endMs": 13940,
-  "timestampMs": 13920,
+  "startMs": 13340,
+  "endMs": 13900,
+  "timestampMs": 13620,
   "confidence": null
  },
  {
   "text": " pour",
-  "startMs": 13940,
-  "endMs": 14300,
-  "timestampMs": 14120,
+  "startMs": 13900,
+  "endMs": 14260,
+  "timestampMs": 14080,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 14300,
-  "endMs": 14500,
-  "timestampMs": 14400,
+  "startMs": 14260,
+  "endMs": 14440,
+  "timestampMs": 14350,
   "confidence": null
  },
  {
   "text": " foundation.",
-  "startMs": 14500,
-  "endMs": 14960,
-  "timestampMs": 14730,
+  "startMs": 14440,
+  "endMs": 15000,
+  "timestampMs": 14720,
   "confidence": null
  },
  {
   "text": " Then",
-  "startMs": 15420,
-  "endMs": 15700,
-  "timestampMs": 15560,
+  "startMs": 15000,
+  "endMs": 15620,
+  "timestampMs": 15310,
   "confidence": null
  },
  {
   "text": " nothing",
-  "startMs": 15700,
-  "endMs": 16080,
-  "timestampMs": 15890,
+  "startMs": 15620,
+  "endMs": 16060,
+  "timestampMs": 15840,
   "confidence": null
  },
  {
   "text": " gets",
-  "startMs": 16080,
-  "endMs": 16360,
-  "timestampMs": 16220,
+  "startMs": 16060,
+  "endMs": 16320,
+  "timestampMs": 16190,
   "confidence": null
  },
  {
   "text": " out.",
-  "startMs": 16360,
+  "startMs": 16320,
   "endMs": 16680,
-  "timestampMs": 16520,
+  "timestampMs": 16500,
   "confidence": null
  },
  {
   "text": " At",
-  "startMs": 17100,
-  "endMs": 17340,
-  "timestampMs": 17220,
+  "startMs": 16680,
+  "endMs": 17240,
+  "timestampMs": 16960,
   "confidence": null
  },
  {
   "text": " two",
-  "startMs": 17340,
-  "endMs": 17660,
-  "timestampMs": 17500,
+  "startMs": 17240,
+  "endMs": 17440,
+  "timestampMs": 17340,
   "confidence": null
  },
  {
   "text": " fourteen,",
-  "startMs": 17660,
-  "endMs": 17980,
-  "timestampMs": 17820,
+  "startMs": 17440,
+  "endMs": 17640,
+  "timestampMs": 17540,
   "confidence": null
  },
  {
   "text": " three",
-  "startMs": 18440,
-  "endMs": 18620,
-  "timestampMs": 18530,
+  "startMs": 17640,
+  "endMs": 18540,
+  "timestampMs": 18090,
   "confidence": null
  },
  {
   "text": " knocks.",
-  "startMs": 18620,
-  "endMs": 18880,
-  "timestampMs": 18750,
+  "startMs": 18540,
+  "endMs": 18900,
+  "timestampMs": 18720,
   "confidence": null
  },
  {
   "text": " From",
-  "startMs": 19740,
-  "endMs": 19940,
-  "timestampMs": 19840,
+  "startMs": 18900,
+  "endMs": 19820,
+  "timestampMs": 19360,
   "confidence": null
  },
  {
   "text": " an",
-  "startMs": 19940,
-  "endMs": 20100,
-  "timestampMs": 20020,
+  "startMs": 19820,
+  "endMs": 19960,
+  "timestampMs": 19890,
   "confidence": null
  },
  {
   "text": " iron",
-  "startMs": 20100,
-  "endMs": 20360,
-  "timestampMs": 20230,
+  "startMs": 19960,
+  "endMs": 20260,
+  "timestampMs": 20110,
   "confidence": null
  },
  {
   "text": " pipe",
-  "startMs": 20360,
-  "endMs": 20700,
-  "timestampMs": 20530,
+  "startMs": 20260,
+  "endMs": 20600,
+  "timestampMs": 20430,
   "confidence": null
  },
  {
   "text": " not",
-  "startMs": 21040,
-  "endMs": 21180,
-  "timestampMs": 21110,
+  "startMs": 20600,
+  "endMs": 21060,
+  "timestampMs": 20830,
   "confidence": null
  },
  {
   "text": " on",
-  "startMs": 21180,
-  "endMs": 21320,
-  "timestampMs": 21250,
+  "startMs": 21060,
+  "endMs": 21200,
+  "timestampMs": 21130,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 21320,
-  "endMs": 21440,
-  "timestampMs": 21380,
+  "startMs": 21200,
+  "endMs": 21320,
+  "timestampMs": 21260,
   "confidence": null
  },
  {
   "text": " plans.",
-  "startMs": 21440,
-  "endMs": 21760,
-  "timestampMs": 21600,
+  "startMs": 21320,
+  "endMs": 21780,
+  "timestampMs": 21550,
   "confidence": null
  },
  {
   "text": " Milo",
-  "startMs": 22640,
-  "endMs": 23060,
-  "timestampMs": 22850,
+  "startMs": 22440,
+  "endMs": 22900,
+  "timestampMs": 22670,
   "confidence": null
  },
  {
   "text": " taps",
-  "startMs": 23060,
-  "endMs": 23420,
-  "timestampMs": 23240,
+  "startMs": 22900,
+  "endMs": 23280,
+  "timestampMs": 23090,
   "confidence": null
  },
  {
   "text": " his",
-  "startMs": 23420,
-  "endMs": 23700,
-  "timestampMs": 23560,
+  "startMs": 23280,
+  "endMs": 23520,
+  "timestampMs": 23400,
   "confidence": null
  },
  {
   "text": " lucky",
-  "startMs": 23700,
-  "endMs": 23920,
-  "timestampMs": 23810,
+  "startMs": 23520,
+  "endMs": 23780,
+  "timestampMs": 23650,
   "confidence": null
  },
  {
   "text": " three.",
-  "startMs": 23920,
-  "endMs": 24300,
-  "timestampMs": 24110,
+  "startMs": 23780,
+  "endMs": 24160,
+  "timestampMs": 23970,
   "confidence": null
  },
  {
   "text": " The",
-  "startMs": 24720,
-  "endMs": 24860,
-  "timestampMs": 24790,
+  "startMs": 24160,
+  "endMs": 24680,
+  "timestampMs": 24420,
   "confidence": null
  },
  {
   "text": " pipe",
-  "startMs": 24860,
-  "endMs": 25040,
-  "timestampMs": 24950,
+  "startMs": 24680,
+  "endMs": 24880,
+  "timestampMs": 24780,
   "confidence": null
  },
  {
   "text": " answers.",
-  "startMs": 25040,
-  "endMs": 25420,
-  "timestampMs": 25230,
+  "startMs": 24880,
+  "endMs": 25300,
+  "timestampMs": 25090,
   "confidence": null
  },
  {
   "text": " Exactly",
-  "startMs": 26240,
-  "endMs": 26300,
-  "timestampMs": 26270,
+  "startMs": 25300,
+  "endMs": 26120,
+  "timestampMs": 25710,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 26300,
-  "endMs": 26580,
-  "timestampMs": 26440,
+  "startMs": 26120,
+  "endMs": 26400,
+  "timestampMs": 26260,
   "confidence": null
  },
  {
   "text": " same.",
-  "startMs": 26580,
-  "endMs": 26900,
-  "timestampMs": 26740,
+  "startMs": 26400,
+  "endMs": 26820,
+  "timestampMs": 26610,
   "confidence": null
  },
  {
   "text": " He",
-  "startMs": 26900,
-  "endMs": 27720,
-  "timestampMs": 27310,
+  "startMs": 26820,
+  "endMs": 27540,
+  "timestampMs": 27180,
   "confidence": null
  },
  {
   "text": " calls",
-  "startMs": 27720,
-  "endMs": 28100,
-  "timestampMs": 27910,
+  "startMs": 27540,
+  "endMs": 27900,
+  "timestampMs": 27720,
   "confidence": null
  },
  {
   "text": " base.",
-  "startMs": 28100,
-  "endMs": 28600,
-  "timestampMs": 28350,
+  "startMs": 27900,
+  "endMs": 28420,
+  "timestampMs": 28160,
   "confidence": null
  },
  {
   "text": " \"Below",
-  "startMs": 29420,
-  "endMs": 29420,
-  "timestampMs": 29420,
+  "startMs": 28420,
+  "endMs": 29160,
+  "timestampMs": 28790,
   "confidence": null
  },
  {
   "text": " Lot",
-  "startMs": 29420,
-  "endMs": 29640,
-  "timestampMs": 29530,
+  "startMs": 29160,
+  "endMs": 29460,
+  "timestampMs": 29310,
   "confidence": null
  },
  {
   "text": " Nine",
-  "startMs": 29640,
-  "endMs": 29980,
-  "timestampMs": 29810,
+  "startMs": 29460,
+  "endMs": 29840,
+  "timestampMs": 29650,
   "confidence": null
  },
  {
   "text": " is",
-  "startMs": 29980,
-  "endMs": 30280,
-  "timestampMs": 30130,
+  "startMs": 29840,
+  "endMs": 30080,
+  "timestampMs": 29960,
   "confidence": null
  },
  {
   "text": " solid",
-  "startMs": 30280,
-  "endMs": 30680,
-  "timestampMs": 30480,
+  "startMs": 30080,
+  "endMs": 30500,
+  "timestampMs": 30290,
   "confidence": null
  },
  {
   "text": " rock,",
-  "startMs": 30680,
-  "endMs": 31020,
-  "timestampMs": 30850,
+  "startMs": 30500,
+  "endMs": 30800,
+  "timestampMs": 30650,
   "confidence": null
  },
  {
   "text": " Milo.\"",
-  "startMs": 31200,
-  "endMs": 31400,
-  "timestampMs": 31300,
+  "startMs": 30800,
+  "endMs": 31340,
+  "timestampMs": 31070,
   "confidence": null
  },
  {
   "text": " He",
-  "startMs": 32120,
-  "endMs": 32300,
-  "timestampMs": 32210,
+  "startMs": 31340,
+  "endMs": 32100,
+  "timestampMs": 31720,
   "confidence": null
  },
  {
   "text": " lowers",
-  "startMs": 32300,
-  "endMs": 32600,
-  "timestampMs": 32450,
+  "startMs": 32100,
+  "endMs": 32400,
+  "timestampMs": 32250,
   "confidence": null
  },
  {
   "text": " his",
-  "startMs": 32600,
-  "endMs": 32840,
-  "timestampMs": 32720,
+  "startMs": 32400,
+  "endMs": 32620,
+  "timestampMs": 32510,
   "confidence": null
  },
  {
   "text": " tape",
-  "startMs": 32840,
-  "endMs": 33020,
-  "timestampMs": 32930,
+  "startMs": 32620,
+  "endMs": 32820,
+  "timestampMs": 32720,
   "confidence": null
  },
  {
   "text": " measure.",
-  "startMs": 33020,
-  "endMs": 33360,
-  "timestampMs": 33190,
+  "startMs": 32820,
+  "endMs": 33160,
+  "timestampMs": 32990,
   "confidence": null
  },
  {
   "text": " Forty",
-  "startMs": 33780,
-  "endMs": 34060,
-  "timestampMs": 33920,
+  "startMs": 33160,
+  "endMs": 33840,
+  "timestampMs": 33500,
   "confidence": null
  },
  {
   "text": " meters",
-  "startMs": 34060,
-  "endMs": 34300,
-  "timestampMs": 34180,
+  "startMs": 33840,
+  "endMs": 34140,
+  "timestampMs": 33990,
   "confidence": null
  },
  {
   "text": " down\u2026",
-  "startMs": 34300,
-  "endMs": 34840,
-  "timestampMs": 34570,
+  "startMs": 34140,
+  "endMs": 34680,
+  "timestampMs": 34410,
   "confidence": null
  },
  {
   "text": " something",
-  "startMs": 35340,
-  "endMs": 35680,
-  "timestampMs": 35510,
+  "startMs": 34680,
+  "endMs": 35460,
+  "timestampMs": 35070,
   "confidence": null
  },
  {
   "text": " tugs.",
-  "startMs": 35680,
-  "endMs": 36180,
-  "timestampMs": 35930,
+  "startMs": 35460,
+  "endMs": 36060,
+  "timestampMs": 35760,
   "confidence": null
  },
  {
   "text": " It",
-  "startMs": 36700,
-  "endMs": 36900,
-  "timestampMs": 36800,
+  "startMs": 36060,
+  "endMs": 36640,
+  "timestampMs": 36350,
   "confidence": null
  },
  {
   "text": " comes",
-  "startMs": 36900,
-  "endMs": 37040,
-  "timestampMs": 36970,
+  "startMs": 36640,
+  "endMs": 36820,
+  "timestampMs": 36730,
   "confidence": null
  },
  {
   "text": " back",
-  "startMs": 37040,
-  "endMs": 37340,
-  "timestampMs": 37190,
+  "startMs": 36820,
+  "endMs": 37100,
+  "timestampMs": 36960,
   "confidence": null
  },
  {
   "text": " with",
-  "startMs": 37340,
-  "endMs": 37520,
-  "timestampMs": 37430,
+  "startMs": 37100,
+  "endMs": 37280,
+  "timestampMs": 37190,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 37520,
-  "endMs": 37660,
-  "timestampMs": 37590,
+  "startMs": 37280,
+  "endMs": 37420,
+  "timestampMs": 37350,
   "confidence": null
  },
  {
   "text": " note.",
-  "startMs": 37660,
-  "endMs": 37860,
-  "timestampMs": 37760,
+  "startMs": 37420,
+  "endMs": 37700,
+  "timestampMs": 37560,
   "confidence": null
  },
  {
   "text": " \"Stop",
-  "startMs": 38500,
-  "endMs": 38720,
-  "timestampMs": 38610,
+  "startMs": 37700,
+  "endMs": 38440,
+  "timestampMs": 38070,
   "confidence": null
  },
  {
   "text": " knocking.\"",
-  "startMs": 38720,
-  "endMs": 39140,
-  "timestampMs": 38930,
+  "startMs": 38440,
+  "endMs": 38940,
+  "timestampMs": 38690,
   "confidence": null
  },
  {
   "text": " In",
-  "startMs": 39560,
-  "endMs": 39740,
-  "timestampMs": 39650,
+  "startMs": 38940,
+  "endMs": 39500,
+  "timestampMs": 39220,
   "confidence": null
  },
  {
   "text": " Milo's",
-  "startMs": 39740,
-  "endMs": 40280,
-  "timestampMs": 40010,
+  "startMs": 39500,
+  "endMs": 40000,
+  "timestampMs": 39750,
   "confidence": null
  },
  {
   "text": " own",
-  "startMs": 40280,
-  "endMs": 40520,
-  "timestampMs": 40400,
+  "startMs": 40000,
+  "endMs": 40280,
+  "timestampMs": 40140,
   "confidence": null
  },
  {
   "text": " handwriting.",
-  "startMs": 40520,
-  "endMs": 40960,
-  "timestampMs": 40740,
+  "startMs": 40280,
+  "endMs": 40720,
+  "timestampMs": 40500,
   "confidence": null
  },
  {
   "text": " He",
-  "startMs": 41520,
-  "endMs": 41700,
-  "timestampMs": 41610,
+  "startMs": 40720,
+  "endMs": 41440,
+  "timestampMs": 41080,
   "confidence": null
  },
  {
   "text": " shines",
-  "startMs": 41700,
-  "endMs": 42060,
-  "timestampMs": 41880,
+  "startMs": 41440,
+  "endMs": 41820,
+  "timestampMs": 41630,
   "confidence": null
  },
  {
   "text": " his",
-  "startMs": 42060,
-  "endMs": 42320,
-  "timestampMs": 42190,
+  "startMs": 41820,
+  "endMs": 42040,
+  "timestampMs": 41930,
   "confidence": null
  },
  {
   "text": " headlamp",
-  "startMs": 42320,
-  "endMs": 42720,
-  "timestampMs": 42520,
+  "startMs": 42040,
+  "endMs": 42500,
+  "timestampMs": 42270,
   "confidence": null
  },
  {
   "text": " down.",
-  "startMs": 42720,
-  "endMs": 43140,
-  "timestampMs": 42930,
+  "startMs": 42500,
+  "endMs": 43000,
+  "timestampMs": 42750,
   "confidence": null
  },
  {
   "text": " Far",
-  "startMs": 43560,
-  "endMs": 43860,
-  "timestampMs": 43710,
+  "startMs": 43000,
+  "endMs": 43600,
+  "timestampMs": 43300,
   "confidence": null
  },
  {
   "text": " below\u2026",
-  "startMs": 43860,
-  "endMs": 44220,
-  "timestampMs": 44040,
+  "startMs": 43600,
+  "endMs": 44080,
+  "timestampMs": 43840,
   "confidence": null
  },
  {
   "text": " another",
-  "startMs": 44840,
-  "endMs": 45160,
-  "timestampMs": 45000,
+  "startMs": 44080,
+  "endMs": 44880,
+  "timestampMs": 44480,
   "confidence": null
  },
  {
   "text": " headlamp",
-  "startMs": 45160,
-  "endMs": 45580,
-  "timestampMs": 45370,
+  "startMs": 44880,
+  "endMs": 45340,
+  "timestampMs": 45110,
   "confidence": null
  },
  {
   "text": " looks",
-  "startMs": 45580,
-  "endMs": 45780,
-  "timestampMs": 45680,
+  "startMs": 45340,
+  "endMs": 45520,
+  "timestampMs": 45430,
   "confidence": null
  },
  {
   "text": " up.",
-  "startMs": 45780,
-  "endMs": 46020,
-  "timestampMs": 45900,
+  "startMs": 45520,
+  "endMs": 45760,
+  "timestampMs": 45640,
   "confidence": null
  },
  {
   "text": " It's",
-  "startMs": 46520,
-  "endMs": 46760,
-  "timestampMs": 46640,
+  "startMs": 45760,
+  "endMs": 46480,
+  "timestampMs": 46120,
   "confidence": null
  },
  {
   "text": " Milo.",
-  "startMs": 46760,
-  "endMs": 47020,
-  "timestampMs": 46890,
+  "startMs": 46480,
+  "endMs": 46820,
+  "timestampMs": 46650,
   "confidence": null
  },
  {
   "text": " Same",
-  "startMs": 47640,
-  "endMs": 47740,
-  "timestampMs": 47690,
+  "startMs": 46820,
+  "endMs": 47460,
+  "timestampMs": 47140,
   "confidence": null
  },
  {
   "text": " hat.",
-  "startMs": 47740,
-  "endMs": 48020,
-  "timestampMs": 47880,
+  "startMs": 47460,
+  "endMs": 47780,
+  "timestampMs": 47620,
   "confidence": null
  },
  {
   "text": " Same",
-  "startMs": 48440,
-  "endMs": 48780,
-  "timestampMs": 48610,
+  "startMs": 47780,
+  "endMs": 48480,
+  "timestampMs": 48130,
   "confidence": null
  },
  {
   "text": " mustache.",
-  "startMs": 48780,
-  "endMs": 49400,
-  "timestampMs": 49090,
+  "startMs": 48480,
+  "endMs": 49160,
+  "timestampMs": 48820,
   "confidence": null
  },
  {
   "text": " He",
-  "startMs": 49860,
-  "endMs": 49980,
-  "timestampMs": 49920,
+  "startMs": 49160,
+  "endMs": 49640,
+  "timestampMs": 49400,
   "confidence": null
  },
  {
   "text": " knocks",
-  "startMs": 49980,
-  "endMs": 50240,
-  "timestampMs": 50110,
+  "startMs": 49640,
+  "endMs": 49940,
+  "timestampMs": 49790,
   "confidence": null
  },
  {
   "text": " three",
-  "startMs": 50240,
-  "endMs": 50540,
-  "timestampMs": 50390,
+  "startMs": 49940,
+  "endMs": 50220,
+  "timestampMs": 50080,
   "confidence": null
  },
  {
   "text": " times.",
-  "startMs": 50540,
-  "endMs": 50900,
-  "timestampMs": 50720,
+  "startMs": 50220,
+  "endMs": 50640,
+  "timestampMs": 50430,
   "confidence": null
  },
  {
   "text": " For",
-  "startMs": 51300,
-  "endMs": 51520,
-  "timestampMs": 51410,
+  "startMs": 50640,
+  "endMs": 51160,
+  "timestampMs": 50900,
   "confidence": null
  },
  {
   "text": " luck.",
-  "startMs": 51520,
-  "endMs": 51780,
-  "timestampMs": 51650,
+  "startMs": 51160,
+  "endMs": 51460,
+  "timestampMs": 51310,
   "confidence": null
  },
  {
   "text": " Down",
-  "startMs": 52280,
-  "endMs": 52520,
-  "timestampMs": 52400,
+  "startMs": 51460,
+  "endMs": 52160,
+  "timestampMs": 51810,
   "confidence": null
  },
  {
   "text": " there",
-  "startMs": 52520,
-  "endMs": 52840,
-  "timestampMs": 52680,
+  "startMs": 52200,
+  "endMs": 52480,
+  "timestampMs": 52340,
   "confidence": null
  },
  {
   "text": " is",
-  "startMs": 52840,
-  "endMs": 53140,
-  "timestampMs": 52990,
+  "startMs": 52480,
+  "endMs": 52780,
+  "timestampMs": 52630,
   "confidence": null
  },
  {
   "text": " another",
-  "startMs": 53140,
-  "endMs": 53520,
-  "timestampMs": 53330,
+  "startMs": 52780,
+  "endMs": 53120,
+  "timestampMs": 52950,
   "confidence": null
  },
  {
   "text": " Lot",
-  "startMs": 53520,
-  "endMs": 53740,
-  "timestampMs": 53630,
+  "startMs": 53120,
+  "endMs": 53420,
+  "timestampMs": 53270,
   "confidence": null
  },
  {
   "text": " Nine.",
-  "startMs": 53740,
-  "endMs": 54100,
-  "timestampMs": 53920,
+  "startMs": 53420,
+  "endMs": 53780,
+  "timestampMs": 53600,
   "confidence": null
  },
  {
   "text": " Another",
-  "startMs": 54340,
-  "endMs": 54660,
-  "timestampMs": 54500,
+  "startMs": 53780,
+  "endMs": 54260,
+  "timestampMs": 54020,
   "confidence": null
  },
  {
   "text": " Milo",
-  "startMs": 54660,
-  "endMs": 55020,
-  "timestampMs": 54840,
+  "startMs": 54260,
+  "endMs": 54680,
+  "timestampMs": 54470,
   "confidence": null
  },
  {
   "text": " hears",
-  "startMs": 55020,
-  "endMs": 55300,
-  "timestampMs": 55160,
+  "startMs": 54680,
+  "endMs": 54940,
+  "timestampMs": 54810,
   "confidence": null
  },
  {
   "text": " knocks",
-  "startMs": 55300,
-  "endMs": 55680,
-  "timestampMs": 55490,
+  "startMs": 54940,
+  "endMs": 55360,
+  "timestampMs": 55150,
   "confidence": null
  },
  {
   "text": " from",
-  "startMs": 55680,
-  "endMs": 55940,
-  "timestampMs": 55810,
+  "startMs": 55360,
+  "endMs": 55580,
+  "timestampMs": 55470,
   "confidence": null
  },
  {
   "text": " above.",
-  "startMs": 55940,
-  "endMs": 56260,
-  "timestampMs": 56100,
+  "startMs": 55580,
+  "endMs": 55920,
+  "timestampMs": 55750,
   "confidence": null
  },
  {
   "text": " Then",
-  "startMs": 56900,
-  "endMs": 57240,
-  "timestampMs": 57070,
+  "startMs": 55920,
+  "endMs": 56860,
+  "timestampMs": 56390,
   "confidence": null
  },
  {
   "text": " Milo",
-  "startMs": 57240,
-  "endMs": 57620,
-  "timestampMs": 57430,
+  "startMs": 56860,
+  "endMs": 57280,
+  "timestampMs": 57070,
   "confidence": null
  },
  {
   "text": " looks",
-  "startMs": 57620,
-  "endMs": 57900,
-  "timestampMs": 57760,
+  "startMs": 57280,
+  "endMs": 57540,
+  "timestampMs": 57410,
   "confidence": null
  },
  {
   "text": " up.",
-  "startMs": 57900,
-  "endMs": 58180,
-  "timestampMs": 58040,
+  "startMs": 57540,
+  "endMs": 57820,
+  "timestampMs": 57680,
   "confidence": null
  },
  {
   "text": " If",
-  "startMs": 58460,
-  "endMs": 58580,
-  "timestampMs": 58520,
+  "startMs": 57820,
+  "endMs": 58220,
+  "timestampMs": 58020,
   "confidence": null
  },
  {
   "text": " he's",
-  "startMs": 58580,
-  "endMs": 58760,
-  "timestampMs": 58670,
+  "startMs": 58220,
+  "endMs": 58440,
+  "timestampMs": 58330,
   "confidence": null
  },
  {
   "text": " above",
-  "startMs": 58760,
-  "endMs": 59040,
-  "timestampMs": 58900,
+  "startMs": 58440,
+  "endMs": 58680,
+  "timestampMs": 58560,
   "confidence": null
  },
  {
   "text": " someone\u2026",
-  "startMs": 59040,
-  "endMs": 59500,
-  "timestampMs": 59270,
+  "startMs": 58680,
+  "endMs": 59160,
+  "timestampMs": 58920,
   "confidence": null
  },
  {
   "text": " is",
-  "startMs": 59800,
-  "endMs": 59900,
-  "timestampMs": 59850,
+  "startMs": 59160,
+  "endMs": 59560,
+  "timestampMs": 59360,
   "confidence": null
  },
  {
   "text": " someone",
-  "startMs": 59900,
-  "endMs": 60320,
-  "timestampMs": 60110,
+  "startMs": 59560,
+  "endMs": 60040,
+  "timestampMs": 59800,
   "confidence": null
  },
  {
   "text": " above",
-  "startMs": 60320,
-  "endMs": 60860,
-  "timestampMs": 60590,
+  "startMs": 60040,
+  "endMs": 60540,
+  "timestampMs": 60290,
   "confidence": null
  },
  {
   "text": " him?",
-  "startMs": 60860,
-  "endMs": 61140,
-  "timestampMs": 61000,
+  "startMs": 60540,
+  "endMs": 60860,
+  "timestampMs": 60700,
   "confidence": null
  },
  {
   "text": " He",
-  "startMs": 61540,
-  "endMs": 61800,
-  "timestampMs": 61670,
+  "startMs": 61200,
+  "endMs": 61480,
+  "timestampMs": 61340,
   "confidence": null
  },
  {
   "text": " sees",
-  "startMs": 61800,
-  "endMs": 62080,
-  "timestampMs": 61940,
+  "startMs": 61480,
+  "endMs": 61740,
+  "timestampMs": 61610,
   "confidence": null
  },
  {
   "text": " stars.",
-  "startMs": 62080,
-  "endMs": 62540,
-  "timestampMs": 62310,
+  "startMs": 61740,
+  "endMs": 62240,
+  "timestampMs": 61990,
   "confidence": null
  },
  {
   "text": " Open",
-  "startMs": 63040,
-  "endMs": 63320,
-  "timestampMs": 63180,
+  "startMs": 62240,
+  "endMs": 62980,
+  "timestampMs": 62610,
   "confidence": null
  },
  {
   "text": " sky.",
-  "startMs": 63320,
-  "endMs": 63680,
-  "timestampMs": 63500,
+  "startMs": 62980,
+  "endMs": 63400,
+  "timestampMs": 63190,
   "confidence": null
  },
  {
   "text": " He",
-  "startMs": 64200,
-  "endMs": 64300,
-  "timestampMs": 64250,
+  "startMs": 63400,
+  "endMs": 63960,
+  "timestampMs": 63680,
   "confidence": null
  },
  {
   "text": " breathes.",
-  "startMs": 64300,
-  "endMs": 64880,
-  "timestampMs": 64590,
+  "startMs": 63960,
+  "endMs": 64800,
+  "timestampMs": 64380,
   "confidence": null
  },
  {
   "text": " He's",
-  "startMs": 65200,
-  "endMs": 65380,
-  "timestampMs": 65290,
+  "startMs": 64800,
+  "endMs": 65020,
+  "timestampMs": 64910,
   "confidence": null
  },
  {
   "text": " on",
-  "startMs": 65380,
-  "endMs": 65540,
-  "timestampMs": 65460,
+  "startMs": 65020,
+  "endMs": 65180,
+  "timestampMs": 65100,
   "confidence": null
  },
  {
   "text": " top.",
-  "startMs": 65540,
-  "endMs": 65840,
-  "timestampMs": 65690,
+  "startMs": 65180,
+  "endMs": 65560,
+  "timestampMs": 65370,
   "confidence": null
  },
  {
   "text": " Then",
-  "startMs": 66520,
-  "endMs": 66720,
-  "timestampMs": 66620,
+  "startMs": 65560,
+  "endMs": 66320,
+  "timestampMs": 65940,
   "confidence": null
  },
  {
   "text": " one",
-  "startMs": 66720,
-  "endMs": 67220,
-  "timestampMs": 66970,
+  "startMs": 66320,
+  "endMs": 66840,
+  "timestampMs": 66580,
   "confidence": null
  },
  {
   "text": " star",
-  "startMs": 67220,
-  "endMs": 67580,
-  "timestampMs": 67400,
+  "startMs": 66840,
+  "endMs": 67180,
+  "timestampMs": 67010,
   "confidence": null
  },
  {
   "text": " flickers.",
-  "startMs": 67580,
-  "endMs": 67960,
-  "timestampMs": 67770,
+  "startMs": 67180,
+  "endMs": 67600,
+  "timestampMs": 67390,
   "confidence": null
  },
  {
   "text": " Like",
-  "startMs": 68500,
-  "endMs": 68680,
-  "timestampMs": 68590,
+  "startMs": 67600,
+  "endMs": 68260,
+  "timestampMs": 67930,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 68680,
-  "endMs": 68840,
-  "timestampMs": 68760,
+  "startMs": 68260,
+  "endMs": 68400,
+  "timestampMs": 68330,
   "confidence": null
  },
  {
   "text": " headlamp.",
-  "startMs": 68840,
-  "endMs": 69300,
-  "timestampMs": 69070,
+  "startMs": 68400,
+  "endMs": 68920,
+  "timestampMs": 68660,
   "confidence": null
  },
  {
   "text": " Then",
-  "startMs": 69640,
-  "endMs": 69760,
-  "timestampMs": 69700,
+  "startMs": 68920,
+  "endMs": 69280,
+  "timestampMs": 69100,
   "confidence": null
  },
  {
   "text": " all",
-  "startMs": 69760,
-  "endMs": 69920,
-  "timestampMs": 69840,
+  "startMs": 69280,
+  "endMs": 69460,
+  "timestampMs": 69370,
   "confidence": null
  },
  {
   "text": " of",
-  "startMs": 69920,
-  "endMs": 70020,
-  "timestampMs": 69970,
+  "startMs": 69460,
+  "endMs": 69560,
+  "timestampMs": 69510,
   "confidence": null
  },
  {
   "text": " them",
-  "startMs": 70020,
-  "endMs": 70100,
-  "timestampMs": 70060,
+  "startMs": 69560,
+  "endMs": 69680,
+  "timestampMs": 69620,
   "confidence": null
  },
  {
   "text": " do.",
-  "startMs": 70100,
-  "endMs": 70340,
-  "timestampMs": 70220,
+  "startMs": 69680,
+  "endMs": 69920,
+  "timestampMs": 69800,
   "confidence": null
  },
  {
   "text": " At",
-  "startMs": 70920,
-  "endMs": 71100,
-  "timestampMs": 71010,
+  "startMs": 69920,
+  "endMs": 70640,
+  "timestampMs": 70280,
   "confidence": null
  },
  {
   "text": " six,",
-  "startMs": 71100,
-  "endMs": 71400,
-  "timestampMs": 71250,
+  "startMs": 70640,
+  "endMs": 70960,
+  "timestampMs": 70800,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 71800,
-  "endMs": 71880,
-  "timestampMs": 71840,
+  "startMs": 70960,
+  "endMs": 71400,
+  "timestampMs": 71180,
   "confidence": null
  },
  {
   "text": " trucks",
-  "startMs": 71880,
-  "endMs": 72120,
-  "timestampMs": 72000,
+  "startMs": 71400,
+  "endMs": 71660,
+  "timestampMs": 71530,
   "confidence": null
  },
  {
   "text": " pour.",
-  "startMs": 72120,
-  "endMs": 72520,
-  "timestampMs": 72320,
+  "startMs": 71660,
+  "endMs": 72100,
+  "timestampMs": 71880,
   "confidence": null
  },
  {
   "text": " Concrete",
-  "startMs": 73080,
-  "endMs": 73380,
-  "timestampMs": 73230,
+  "startMs": 72100,
+  "endMs": 72920,
+  "timestampMs": 72510,
   "confidence": null
  },
  {
   "text": " seals",
-  "startMs": 73380,
-  "endMs": 73780,
-  "timestampMs": 73580,
+  "startMs": 72920,
+  "endMs": 73340,
+  "timestampMs": 73130,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 73780,
-  "endMs": 74020,
-  "timestampMs": 73900,
+  "startMs": 73340,
+  "endMs": 73560,
+  "timestampMs": 73450,
   "confidence": null
  },
  {
   "text": " pipe.",
-  "startMs": 74020,
-  "endMs": 74240,
-  "timestampMs": 74130,
+  "startMs": 73560,
+  "endMs": 73840,
+  "timestampMs": 73700,
   "confidence": null
  },
  {
   "text": " Then,",
-  "startMs": 74940,
-  "endMs": 75060,
-  "timestampMs": 75000,
+  "startMs": 73840,
+  "endMs": 74540,
+  "timestampMs": 74190,
   "confidence": null
  },
  {
   "text": " on",
-  "startMs": 75240,
-  "endMs": 75420,
-  "timestampMs": 75330,
+  "startMs": 74540,
+  "endMs": 74900,
+  "timestampMs": 74720,
   "confidence": null
  },
  {
   "text": " his",
-  "startMs": 75420,
-  "endMs": 75560,
-  "timestampMs": 75490,
+  "startMs": 74900,
+  "endMs": 75040,
+  "timestampMs": 74970,
   "confidence": null
  },
  {
   "text": " hard",
-  "startMs": 75560,
-  "endMs": 75860,
-  "timestampMs": 75710,
+  "startMs": 75040,
+  "endMs": 75360,
+  "timestampMs": 75200,
   "confidence": null
  },
  {
   "text": " hat\u2026",
-  "startMs": 75860,
-  "endMs": 76080,
-  "timestampMs": 75970,
+  "startMs": 75360,
+  "endMs": 75600,
+  "timestampMs": 75480,
   "confidence": null
  },
  {
   "text": " three",
-  "startMs": 76340,
-  "endMs": 76500,
-  "timestampMs": 76420,
+  "startMs": 75600,
+  "endMs": 75980,
+  "timestampMs": 75790,
   "confidence": null
  },
  {
   "text": " knocks.",
-  "startMs": 76500,
-  "endMs": 76740,
-  "timestampMs": 76620,
+  "startMs": 75980,
+  "endMs": 76340,
+  "timestampMs": 76160,
   "confidence": null
  },
  {
   "text": " The",
-  "startMs": 77320,
-  "endMs": 77460,
-  "timestampMs": 77390,
+  "startMs": 76340,
+  "endMs": 76960,
+  "timestampMs": 76650,
   "confidence": null
  },
  {
   "text": " knocker",
-  "startMs": 77460,
-  "endMs": 77860,
-  "timestampMs": 77660,
+  "startMs": 76960,
+  "endMs": 77360,
+  "timestampMs": 77160,
   "confidence": null
  },
  {
   "text": " was",
-  "startMs": 77860,
-  "endMs": 78120,
-  "timestampMs": 77990,
+  "startMs": 77360,
+  "endMs": 77600,
+  "timestampMs": 77480,
   "confidence": null
  },
  {
   "text": " always",
-  "startMs": 78120,
-  "endMs": 78560,
-  "timestampMs": 78340,
+  "startMs": 77600,
+  "endMs": 78100,
+  "timestampMs": 77850,
   "confidence": null
  },
  {
   "text": " Milo.",
-  "startMs": 78560,
-  "endMs": 79180,
-  "timestampMs": 78870,
+  "startMs": 78100,
+  "endMs": 78740,
+  "timestampMs": 78420,
   "confidence": null
  },
  {
   "text": " Now",
-  "startMs": 79740,
-  "endMs": 80020,
-  "timestampMs": 79880,
+  "startMs": 78740,
+  "endMs": 79520,
+  "timestampMs": 79130,
   "confidence": null
  },
  {
   "text": " he's",
-  "startMs": 80020,
-  "endMs": 80500,
-  "timestampMs": 80260,
+  "startMs": 79520,
+  "endMs": 80000,
+  "timestampMs": 79760,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 80500,
-  "endMs": 80580,
-  "timestampMs": 80540,
+  "startMs": 80000,
+  "endMs": 80080,
+  "timestampMs": 80040,
   "confidence": null
  },
  {
   "text": " one",
-  "startMs": 80580,
-  "endMs": 80720,
-  "timestampMs": 80650,
+  "startMs": 80080,
+  "endMs": 80220,
+  "timestampMs": 80150,
   "confidence": null
  },
  {
   "text": " below.",
-  "startMs": 80720,
-  "endMs": 81020,
-  "timestampMs": 80870,
+  "startMs": 80220,
+  "endMs": 80560,
+  "timestampMs": 80390,
   "confidence": null
  }
 ]
