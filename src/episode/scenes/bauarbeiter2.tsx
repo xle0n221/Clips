@@ -136,20 +136,22 @@ export const BauBelow: React.FC = () => {
   if (shot === 0) {
     // Vertigo-Sturz durchs Rohr: aus Milos Rohr (oben) hinab, unten aus der Decke heraus auf die zweite, türkise LOT 9
     const LOW = -16;
+    // Sturz in ≤ 1,3 s, ab ≈ 53,5 s ist die zweite Baustelle zu sehen (P1-2)
     const a = { pos: [0.02, 2.0, 0.08] as V3, look: [0, -10, 0] as V3, fov: 34 };
-    const b = { pos: [0.4, LOW + 9.0, 1.6] as V3, look: [0, LOW + 1.2, -0.6] as V3, fov: 62 };
+    const b = { pos: [0.6, LOW + 9.0, 2.6] as V3, look: [0, LOW + 1.0, -1.2] as V3, fov: 62 };
     return (
       <>
         <Night tint="teal" hemi={0.45} />
         <Pipe top={1} down={5.2} inside />
-        <pointLight position={[0, 0.5, 0]} color={B.amber} intensity={14} distance={6} decay={2} />
+        <pointLight position={[0, -0.6, 0]} color={B.amber} intensity={5} distance={4} decay={2} />
         <pointLight position={[0, -2.5, 0]} color={B.teal} intensity={22} distance={8} decay={2} />
         <pointLight position={[0, -7, 0]} color={B.teal} intensity={26} distance={9} decay={2} />
         <LightShaft from={[0, -12, 0]} to={[0, 1.5, 0]} radius={0.12} top={0.26} color={B.teal} opacity={0.35} />
         <LowerSite frame={frame} y={LOW} glow={1} />
         <Milo frame={frame} position={[-0.85, LOW, -0.25]} nod={-0.55} reach={[0.2, 2.6]} holdR={<Wrench rotation={[-0.3, 0, 0]} />} lamp={{ color: B.teal, beam: 3, light: 4 }} blinkSeed={14} />
         <pointLight position={[0, LOW + 6, 0]} color={B.teal} intensity={6} distance={14} decay={2} />
-        <Shot frame={f} duration={len} {...fly(a, b)} ease="in" shake={0.01} />
+        <pointLight position={[0, LOW + 7, 2]} color="#BFFFF8" intensity={30} distance={22} decay={2} />
+        <Shot frame={f} duration={len} {...fly(a, b)} span={[0, 38]} ease="inOut" shake={0.01} />
       </>
     );
   }
@@ -195,8 +197,9 @@ export const BauFear: React.FC = () => {
     );
   }
   // Schwenk vom Helm hinauf in den dunklen, bewölkten Himmel
-  const a = { pos: [0.6, 1.4, 3.0] as V3, look: [0, 3.0, 0] as V3, fov: 40 };
-  const b = { pos: [0.6, 1.4, 3.0] as V3, look: [0, SKY, -12] as V3, fov: 46 };
+  // Helm-Silhouette bleibt unten im Bild (Fixpunkt), heller Kegel in die Wolken (P1-3/D2)
+  const a = { pos: [0.3, 1.2, 2.2] as V3, look: [0, 3.0, 0] as V3, fov: 44 };
+  const b = { pos: [0.3, 1.2, 2.2] as V3, look: [0, 14, -6] as V3, fov: 46 };
   return (
     <>
       <Night hemi={0.35} />
@@ -204,7 +207,9 @@ export const BauFear: React.FC = () => {
       <Halo at={[-6, SKY + 2, -24]} size={22} color="#9FB4E8" opacity={0.35} />
       <Clouds y={SKY} frame={frame} />
       <StarField y={SKY + 6} frame={frame} opacity={0.2} />
-      <Milo frame={frame} position={[0, 0, 0]} nod={-0.6} lamp={{ beam: 4 }} blinkSeed={15} />
+      <Milo frame={frame} position={[0, 0, 0]} rotation={[0, Math.PI, 0]} nod={-0.7} lamp={{ beam: 4, light: 4 }} blinkSeed={15} />
+      <LightShaft from={[0, 3.2, -0.45]} to={[0, 18, -10]} radius={3.2} top={0.15} color={B.amber} opacity={0.3} />
+      <pointLight position={[0, 4.5, 1.6]} color="#9FB4E8" intensity={6} distance={6} decay={2} />
       <Rain frame={frame} center={[0, 5, 1]} size={[8, 8, 6]} count={260} opacity={0.3} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="inOut" />
     </>
@@ -218,15 +223,18 @@ export const BauHope: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("hope");
   if (shot === 0) {
     const open = ramp(frame, beat("cloudsPartStars") - 10, beat("cloudsPartStars") + 40);
-    const a = { pos: [0, 1.0, 9] as V3, look: [0, 14, -18] as V3, fov: 50 };
-    const b = { pos: [0, 1.3, 8] as V3, look: [0, 15, -18] as V3, fov: 48 };
+    const a = { pos: [0.5, 0.4, 8.0] as V3, look: [0.2, 12, -18] as V3, fov: 50 };
+    const b = { pos: [0.45, 0.55, 7.6] as V3, look: [0.2, 12.5, -18] as V3, fov: 48 };
     return (
       <>
-        <Night hemi={0.55} bg="#0A1430" />
-        <SiteSet frame={frame} lampsOn={0.8} />
+        <Night hemi={1.0} bg="#182A5A" />
+        <SiteSet frame={frame} lampsOn={0.8} clock="" />
+        {/* Rim-Licht hinter Milo: Umriss vor dem Himmel (P2-8/D4) */}
+        <pointLight position={[0.4, 4.2, 0.6]} color={B.amberHot} intensity={14} distance={6} decay={2} />
+        <pointLight position={[1.6, 2.6, 5.0]} color="#9FB4E8" intensity={4} distance={5} decay={2} />
         <StarField y={SKY + 6} frame={frame} opacity={0.35 + 0.65 * open} dot={0.9} />
         <Clouds y={SKY} frame={frame} open={open} />
-        <Milo frame={frame} position={[0, 0, 2.5]} rotation={[0, Math.PI, 0]} nod={-0.5} lamp={{ beam: 3 }} blinkSeed={16} />
+        <Milo frame={frame} position={[0, 0, 2.5]} rotation={[0, Math.PI * 0.78, 0]} nod={-0.5} lamp={{ beam: 3 }} blinkSeed={16} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
       </>
     );
@@ -254,42 +262,48 @@ export const BauHope: React.FC = () => {
 /* ------------------------------------------------------------------ */
 export const BauTurn: React.FC = () => {
   const { frame, duration, beat } = useScene();
-  const one = beat("starFlickersTeal");
-  const lamp = beat("starIsHeadlamp");
+  const lamp = beat("starIsHeadlamp"); // ≈ 69,5 s: Enthüllung „Gesicht im Rohr“
   const all = beat("allStarsHeadlamps");
-  const flick = frame >= one - 6 ? (Math.floor((frame - one) / 3) % 3 === 0 ? 0.35 : 1) : 0;
-  const teal = frame < one - 6 ? 0 : frame < all ? 0.003 + 0.04 * win(frame, lamp, all) : 0.04 + 0.96 * win(frame, all, all + 10);
-  const conc = win(frame, all + 2, all + 22);
+  // erster Stern flackert türkis ab ≈ 67,2 s (Bild 6), groß und hell (P1-1)
+  const lit = frame >= 6;
+  const flick = lit ? (Math.floor((frame - 6) / 3) % 3 === 0 ? 0.45 : 1) : 0;
+  // weitere Sterne während des Halts, auf „all“ alle
+  const teal = frame < 24 ? 0 : frame < all ? 0.02 + 0.2 * win(frame, 24, lamp) : 0.22 + 0.78 * win(frame, all, all + 10);
+  const conc = 0.35 + 0.65 * win(frame, all - 4, all + 14);
   const H = SKY + 6; // Decke
   const S: V3 = [0, H - 1.4, -14]; // EIN „Stern“ = Rohrmündung mit Milo oben
-  const camA: V3 = [0, 1.6, 6];
-  const dir = [S[0] - camA[0], S[1] - camA[1], S[2] - camA[2]];
+  const dir: V3 = [0, 29.2, -20];
   const L = Math.hypot(dir[0], dir[1], dir[2]);
-  const near = 3.3;
-  const camB: V3 = [S[0] - (dir[0] / L) * near, S[1] - (dir[1] / L) * near, S[2] - (dir[2] / L) * near];
-  // sehr langsame Fahrt; zum Ende (letzte ≈ 1,5 s) liegt der eine Stern lesbar im Bild
-  const t = Math.min(1, frame / Math.max(1, duration - 42));
-  const ease = 0.12 * t + 0.88 * t * t * t;
-  const pos: V3 = [camA[0] + (camB[0] - camA[0]) * ease, camA[1] + (camB[1] - camA[1]) * ease, camA[2] + (camB[2] - camA[2]) * ease];
-  const starLit = flick > 0 ? flick : 0;
+  const at = (d: number): V3 => [S[0] - (dir[0] / L) * d, S[1] - (dir[1] / L) * d, S[2] - (dir[2] / L) * d];
+  // Fahrt: 17 → 3,6 Einheiten bis zur Enthüllung, kurzer Halt, ab „all“ leicht zurück (viele Lampen ringsum)
+  const d =
+    frame < lamp
+      ? 17 - 13.4 * ramp(frame, 0, lamp)
+      : frame < all
+        ? 3.6 - 0.3 * win(frame, lamp, all)
+        : 3.3 + 4.2 * ramp(frame, all, duration);
+  const pos = at(d);
+  const near = 1 - Math.min(1, (d - 3.3) / 14);
   return (
     <>
-      <Night hemi={0.3 + 0.2 * conc} bg="#050A18" fog={[30, 120]} />
-      <SiteSet frame={frame} lampsOn={0.7} />
-      <Milo frame={frame} position={[0, 0, 3.6]} rotation={[0, Math.PI, 0]} nod={-0.6} lamp={{ beam: 3 }} blinkSeed={18} />
-      <StarField y={H - 0.2} frame={frame} teal={teal} center={[0, 0, -14]} size={80} dot={0.6} />
+      <Night hemi={0.55 + 0.2 * conc} bg="#13224A" fog={[30, 120]} />
+      <StarField y={H - 0.2} frame={frame} teal={teal} center={[0, 0, -14]} size={80} dot={0.8} />
+      {/* dichter Kranz weiterer Stirnlampen um den einen Stern (sichtbar beim Zurückfahren) */}
+      <StarField y={H - 0.2} frame={frame + 7} teal={frame >= all ? 1 : teal} center={S} size={16} count={140} dot={0.35} opacity={0.9} />
       <ConcreteSky y={H} show={conc} center={[0, 0, -14]} />
       {/* der eine Stern: Rohrmündung aus der Decke + Milo kopfüber mit türkiser Stirnlampe */}
       <group position={[S[0], H, S[2]]} rotation={[Math.PI, 0, 0]}>
-        <Pipe top={1.4} down={0.4} radius={0.75} glow={0.3 * starLit} />
+        <Pipe top={1.4} down={0.4} radius={0.75} glow={0.3 * flick} />
       </group>
-      {starLit > 0 ? (
+      {lit ? (
         <>
-          <Milo frame={frame} headOnly position={[S[0], S[1] + 0.25, S[2]]} rotation={[1.0, 0, Math.PI]} scale={1} eyes="dot" mouth="flat" lamp={{ color: B.teal, on: starLit, beam: 0, light: 5 }} blinkSeed={19} />
-          <Halo at={[S[0], S[1] - 0.2, S[2] + 0.2]} size={1.2 + 1.5 * (1 - ease)} color={B.teal} opacity={0.8 * starLit} />
+          <Milo frame={frame} headOnly position={[S[0], S[1] + 0.25, S[2]]} rotation={[0.8, 0, Math.PI]} scale={1} eyes="dot" mouth="flat" lamp={{ color: B.teal, on: flick * (0.55 + 0.45 * (1 - near)), beam: 0, light: 3.5 }} blinkSeed={19} />
+          {/* Glow groß, solange der Stern fern ist (≥ 40 px), nah zurückgenommen (Gesicht brennt nicht aus, D5) */}
+          <Halo at={[S[0], S[1] - 0.3, S[2] + 0.3]} size={4.2 * (1 - near) + 0.6} color={B.teal} opacity={(0.95 - 0.6 * near) * flick} />
+          <pointLight position={[S[0], S[1] - 1.2, S[2] + 1.0]} color="#CFE8FF" intensity={2.5 * near} distance={4} decay={2} />
         </>
       ) : (
-        <Halo at={[S[0], S[1], S[2]]} size={0.8} color="#F2F4FF" opacity={0.9} />
+        <Halo at={[S[0], S[1], S[2]]} size={1.6} color="#F2F4FF" opacity={0.9} />
       )}
       <Shot frame={frame} duration={duration} from={pos} look={S} fov={40} shake={0.004} />
     </>
@@ -309,7 +323,7 @@ export const BauPour: React.FC = () => {
     return (
       <>
         <Night bg={dawn} hemi={0.85} />
-        <SiteSet frame={frame} lampsOn={0.5} pipeGlow={0.6} clock="6:00" sign />
+        <SiteSet frame={frame} lampsOn={0.5} pipeGlow={0.6} clock="6:00" />
         <Mixer position={[-3.5, 3, -10]} rotation={[0, 0.2, 0]} frame={frame} />
         <Mixer position={[4.2, 3, -10.4]} rotation={[0, -0.25 + Math.PI, 0]} frame={frame} />
         <ConcreteFlow from={[-3.2, 0.1, -7.6]} to={[-0.4, 0.1, -0.6]} t={flow} frame={frame} />
@@ -368,13 +382,13 @@ export const BauAnswer2: React.FC = () => {
     // Nah: Milos amber Stirnlampe flackert türkis
     const t0 = beat("miloFaceLampTeal");
     const teal = frame >= t0 && Math.floor((frame - t0) / 4) % 3 !== 1;
-    const head: V3 = [0, 2.5, 0];
-    const a = frameOn(head, 2.4, 0.52, 0.5, [-0.15, 0.05, 1]);
-    const b = frameOn(head, 2.05, 0.52, 0.5, [-0.12, 0.05, 1]);
+    const head: V3 = [0, 2.6, 0];
+    const a = frameOn(head, 3.3, 0.5, 0.5, [-0.15, 0.05, 1]);
+    const b = frameOn(head, 2.9, 0.5, 0.5, [-0.12, 0.05, 1]);
     return (
       <>
         <Night bg="#1E3358" hemi={0.7} />
-        <SiteSet frame={frame} lampsOn={0.3} pipe={false} clock="6:00" concrete={1} />
+        <SiteSet frame={frame} lampsOn={0.3} pipe={false} clock="" concrete={1} />
         <Milo frame={frame} position={[0, 0, 0]} eyes="wide" mouth="flat" brow={0.8} lamp={{ color: teal ? B.teal : B.amber, beam: 2.5, light: 4 }} blinkSeed={22} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="out" />
       </>
@@ -392,10 +406,14 @@ export const BauAnswer2: React.FC = () => {
     <>
       <Night tint="teal" hemi={0.5} />
       <group position={[0, UP - 0.02, 0]}>
-        <SiteSet frame={frame} tint="teal" city={false} pipe={false} clock="6:00" />
+        <SiteSet frame={frame} tint="teal" city={false} pipe={false} clock="" />
       </group>
       <ConcreteSky y={UP - 0.05} show={1} center={[0, 0, -4]} />
       <Pipe position={[0, 8, 0]} top={UP + 1 - 8} down={0.1} inside glow={0.5} />
+      {/* Licht im Rohr: der Aufstieg ist nie schwarz (P2-12) */}
+      <pointLight position={[0, 10, 0]} color={B.teal} intensity={22} distance={7} decay={2} />
+      <pointLight position={[0, 12.5, 0]} color="#BFFFF8" intensity={22} distance={7} decay={2} />
+      <LightShaft from={[0, UP + 1, 0]} to={[0, 8.5, 0]} radius={0.12} top={0.26} color={B.teal} opacity={0.4} />
       <Milo frame={frame} position={[0.9, UP, -0.6]} rotation={[0, -0.4, 0]} tap={{ raise, hit }} mouth="smile" eyes={hit > 0.5 ? "closed" : "dot"} lamp={{ color: B.teal, beam: 2.4, light: 4 }} blinkSeed={23} />
       <Shot frame={rise * 100} duration={100} {...fly(a, b)} ease="linear" shake={0.01} />
     </>

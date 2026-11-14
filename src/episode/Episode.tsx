@@ -321,6 +321,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
           items={timeline.scenes
             .map((s, i) => ({ text: onScreen[s.id] ?? "", from: Math.max(starts[i], coverClear(timeline.cover)), to: Math.min(ends[i], endCardFrom) }))
             .filter((x) => x.text && x.to > x.from)}
+          plate={cfg?.onScreenPlate}
         />
       ) : null}
       {frame >= coverFrames(timeline.cover) && frame < endCardFrom ? (
@@ -336,7 +337,7 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
       {timeline.cover ? <Cover cover={timeline.cover} art={cfg?.coverArt} /> : null}
       {timeline.endCard ? (
         <Sequence from={endCardFrom} durationInFrames={durationInFrames - endCardFrom} layout="none">
-          <EndCard spec={timeline.endCard} />
+          <EndCard spec={cfg?.endCardTypeFrom !== undefined ? { ...timeline.endCard, typeFrom: cfg.endCardTypeFrom } : timeline.endCard} />
         </Sequence>
       ) : null}
 

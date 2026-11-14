@@ -19,7 +19,7 @@ export const BAU_SHOTS: Record<string, { readonly names: readonly string[]; read
   look: { names: ["POV down the pipe", "reverse from inside pipe"], cuts: (b) => [b("povPipeDown") + 63] },
   mirror: {
     names: ["teal headlamp", "hard hat lit teal", "lower Milo face", "lower Milo taps hat"],
-    cuts: (b) => [b("miloBelowFace") + 25, b("matchCutFaces") - 9, b("lowerMiloTapsHat") - 11],
+    cuts: (b) => [b("miloBelowFace") + 25, b("matchCutFaces") - 4, b("lowerMiloTapsHat") - 11],
   },
   below: { names: ["vertigo dive to Lot 9 below", "lower Milo taps up"], cuts: (b) => [b("lowerMiloTapsUp") - 47] },
   fear: { names: ["low-angle Milo looks up", "tilt up into sky"], cuts: (b) => [b("tiltUpSky") - 31] },

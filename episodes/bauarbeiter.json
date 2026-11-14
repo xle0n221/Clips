@@ -251,7 +251,7 @@
         "gain_db": -1.0
       },
       "text": "The ground under Lot Nine just *knocked* back. | In Milo's secret *rhythm*.",
-      "onScreen": "THE GROUND KNOCKED BACK",
+      "onScreen": "SOMETHING ANSWERS FROM BELOW",
       "why": "start: threat before cause",
       "visual": "SHOT 1 (ECU, slow push-in, COVER 0–0,5 s ohne Untertitel): rusty iron pipe in wet mud at night, pebbles jumping on it with each knock (visible without sound); Milo's yellow hard hat in the foreground throws an amber light cone; cover title 'WHO KNOCKED BACK?' in accent yellow, upper third, small 'LOT 9 · 2:14 AM'; hook question stays as sticker until 2,0 s / SHOT 2 (low-angle close-up): MILO's face half in shadow, round-dot eyes wide, listening; site clock on the fence reads 2:14",
       "shots": [
@@ -313,7 +313,7 @@
         "gain_db": -1.0
       },
       "text": "Every shift, Milo knocks his hard hat three times. | Two quick, one *slow*. | For *luck*.",
-      "onScreen": "MILO'S LUCKY THREE KNOCKS",
+      "onScreen": "HIS GOOD-LUCK HABIT",
       "why": "because: the rhythm is his secret",
       "visual": "SHOT 1 (medium, warm amber): flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles in a clear pattern – tap, tap, … TAP (two quick, one slow; small pause before the slow third tap), a little smile; a hand-drawn site plan of Lot 9 pinned on the trailer corkboard behind him / SHOT 2 (detail): his knuckles on the hard hat, third tap, dust puffs off the brim (PLANTED FINAL IMAGE: three knocks on the hard hat)",
       "shots": [
@@ -374,7 +374,7 @@
         "gain_db": -1.0
       },
       "text": "Tonight he's *alone*. | At six, trucks pour the *foundation*. | Then nothing gets *out*.",
-      "onScreen": "CONCRETE POUR AT SIX",
+      "onScreen": "ALONE BEFORE THE POUR",
       "why": "but: he's alone, pour at six",
       "visual": "SHOT 1 (high wide crane shot): the whole original LOT 9 site from above: pit, rebar grid, crane, trailer, amber lamps in a cold navy city, no people / SHOT 2 (detail → low-angle): fence sign 'CONCRETE POUR · 6:00 AM' with rain running over it, then the empty pit with the iron pipe in the center",
       "shots": [
@@ -439,7 +439,7 @@
         "gain_db": -2.5
       },
       "text": "At two fourteen, *three* knocks. | From an iron pipe not on the *plans*.",
-      "onScreen": "KNOCKS FROM A SECRET PIPE",
+      "onScreen": "A PIPE NOBODY PLANNED",
       "why": "so: we find the knocking source",
       "visual": "SHOT 1 (medium): MILO kneeling, ear to the pipe, pebbles trembling three times / SHOT 2 (over-the-shoulder): his tablet: original blueprint 'LOT 9 · FOUNDATION', an empty grid where the pipe stands, red circle blinking",
       "shots": [
@@ -496,7 +496,7 @@
         "gain_db": -2.5
       },
       "text": "Milo taps his lucky *three*. | The pipe *answers*. | *Exactly* the same.",
-      "onScreen": "IT COPIES HIS RHYTHM",
+      "onScreen": "SOMEONE COPIES HIS KNOCK",
       "why": "so: he tests it with his rhythm",
       "visual": "SHOT 1 (detail): red wrench taps the pipe three times – same rhythm as the hard-hat ritual / SHOT 2 (macro + reaction): three pebbles jump by themselves, a faint teal pulse from the pipe opening; MILO leans back",
       "shots": [
@@ -556,7 +556,7 @@
         "gain_db": -2.5
       },
       "text": "He calls *base*. | \"Below Lot Nine is solid *rock*, Milo.\"",
-      "onScreen": "BASE: ONLY ROCK BELOW",
+      "onScreen": "BASE SAYS NOTHING'S THERE",
       "why": "but: it answers, so he asks",
       "visual": "SHOT 1 (detail): walkie-talkie with a 'BASE' sticker, LED blinking with the voice (ROSA is only a radio voice) / SHOT 2 (insert): on MILO's tablet a cartoon cross-section of grey rock layers under a header 'BORE LOG', solid all the way down, Ken Burns",
       "shots": [
@@ -612,7 +612,7 @@
         "gain_db": -2.5
       },
       "text": "He lowers his tape *measure*. | Forty meters down… | something *tugs*.",
-      "onScreen": "SOMETHING TUGS THE TAPE",
+      "onScreen": "THE TAPE GETS YANKED",
       "why": "but: base says rock, he measures",
       "visual": "SHOT 1 (close-up): yellow tape measure unrolling into the pipe, markings run past to 40 m, sticker '40 M' / SHOT 2 (fast handheld detail): the tape jerks hard, nearly ripping out of MILO's blocky hands",
       "shots": [
@@ -670,7 +670,7 @@
         "gain_db": -2.5
       },
       "text": "It comes back with a *note*. | \"Stop *knocking*.\" | In Milo's own *handwriting*.",
-      "onScreen": "A NOTE IN HIS HANDWRITING",
+      "onScreen": "A WARNING IN HIS WRITING",
       "why": "so: the tape brings something back",
       "visual": "SHOT 1 (slow push-in, ECU): wet tape coming out of the pipe, a folded note wired to its end; blocky hands unfold it: pencil 'STOP KNOCKING.' / SHOT 2 (split-screen match cut): beside it MILO's own logbook '2:00 ALL QUIET – M.', same crooked K",
       "shots": [
@@ -731,7 +731,7 @@
         "gain_db": -2.5
       },
       "text": "He shines his headlamp *down*. | Far below… | another *headlamp* looks up.",
-      "onScreen": "A HEADLAMP LOOKS UP",
+      "onScreen": "SOMEONE LOOKS BACK UP",
       "why": "because: it's his handwriting, he looks",
       "visual": "SHOT 1 (POV down the pipe): amber headlamp cone sliding down rusty walls, a tiny teal dot far below / SHOT 2 (reverse low-angle from inside the pipe): the teal dot grows into a headlamp looking up; MILO's face framed in the pipe circle",
       "shots": [
@@ -787,7 +787,7 @@
         "gain_db": 1.5
       },
       "text": "It's *Milo*. | Same *hat*. | Same *mustache*. | He knocks *three* times. | For *luck*.",
-      "onScreen": "IT'S ANOTHER MILO",
+      "onScreen": "HIS EXACT DOUBLE",
       "why": "so: the light shows a face",
       "visual": "SHOT 1 (fast cuts ≤ 1,5 s each): teal headlamp → yellow hard hat lit teal → a second MILO's identical face looking up (match cut amber vs teal) / SHOT 2 (medium, teal): the lower MILO taps his own hard hat three times and smiles (MIDDLE REPETITION of the final image)",
       "shots": [
@@ -852,7 +852,7 @@
         "gain_db": 1.5
       },
       "text": "Down there is another Lot *Nine*. | Another Milo hears knocks from *above*.",
-      "onScreen": "A SECOND SITE BELOW",
+      "onScreen": "A COPY OF LOT 9",
       "why": "because: another Milo needs another site",
       "visual": "SHOT 1 (vertigo dive through the pipe): camera plunges down into a second LOT 9, mirrored upside down, all teal: same crane, trailer, sign / SHOT 2 (medium): the lower MILO tapping his wrench UP against the pipe",
       "shots": [
@@ -909,7 +909,7 @@
         "gain_db": -2.5
       },
       "text": "Then Milo looks *up*. | If he's above someone… is someone above *him*?",
-      "onScreen": "IS SOMEONE ABOVE HIM?",
+      "onScreen": "HE CHECKS THE SKY",
       "why": "so: if he's above someone…",
       "visual": "SHOT 1 (low-angle close-up): MILO slowly lifting his head, rain on his face (PEAK STEP 1: stakes – the viewer fears for him) / SHOT 2 (tilt up): from his hard hat into a dark, cloudy sky",
       "shots": [
@@ -964,7 +964,7 @@
         "gain_db": -1.0
       },
       "text": "He sees *stars*. | Open *sky*. | He *breathes*. | He's on *top*.",
-      "onScreen": "ONLY STARS. HE'S SAFE.",
+      "onScreen": "CLEAR SKY. RELIEF.",
       "why": "but: the sky looks open",
       "visual": "SHOT 1 (wide): clouds part, a field of small white stars over the city (PEAK STEP 2: hope rises; music opens to a warm chord) / SHOT 2 (close-up): MILO exhales, shoulders drop, tiny relieved smile",
       "shots": [
@@ -1025,7 +1025,7 @@
         "gain_db": 1.5
       },
       "text": "Then one star *flickers*. | Like a *headlamp*. | Then *all* of them do.",
-      "onScreen": "THE STARS ARE HEADLAMPS",
+      "onScreen": "EVERY STAR IS A MILO",
       "why": "but: the stars move like headlamps",
       "visual": "SHOT 1 (ONE deliberate HOLD ≤ 6 s (only shot > 4 s), very slow push-in): after 0,6 s total SILENCE (music and bed off): one star flickers teal, then hundreds – each is a tiny headlamp at the end of a pipe in a vast concrete ceiling; the 'sky' is the underside of another site; last ≈ 1,5 s of the hold: the push-in reaches ONE 'star' close enough to read without sound – a round pipe mouth in grey concrete, an upside-down yellow hard hat with a teal headlamp and a blocky mustache looking down at Milo (PEAK STEP 3: the turn; emotion: dread)",
       "shots": [
@@ -1078,7 +1078,7 @@
         "gain_db": -2.0
       },
       "text": "At six, the trucks *pour*. | Concrete seals the *pipe*.",
-      "onScreen": "CONCRETE SEALS THE PIPE",
+      "onScreen": "NO WAY BACK DOWN",
       "why": "so: six o'clock, the pipe seals",
       "visual": "SHOT 1 (wide): original blocky mixer trucks at the pit edge, first blue of dawn / SHOT 2 (slow-motion detail): grey concrete flowing over the pipe opening, the teal glow going out",
       "shots": [
@@ -1141,7 +1141,7 @@
         "gain_db": -2.0
       },
       "text": "Then, on his hard hat… *three* knocks.",
-      "onScreen": "THREE KNOCKS FROM ABOVE",
+      "onScreen": "SOMEONE ABOVE KNOCKS",
       "why": "but: knocks still come, from above",
       "visual": "SHOT 1 (medium, static, one shot): MILO alone on the fresh slab; his hard hat dips three times as something above taps it; he hasn't moved his hands (FINAL IMAGE with new meaning: the lucky knock comes from above)",
       "shots": [
@@ -1187,7 +1187,7 @@
         "gain_db": -2.0
       },
       "text": "The knocker was always *Milo*. | Now he's the one *below*.",
-      "onScreen": "NOW MILO IS BELOW",
+      "onScreen": "HE BECAME THE BELOW",
       "why": "so: the hook question is answered",
       "visual": "SHOT 1 (close-up): MILO's face, amber lamp flickering teal / SHOT 2 (slow crane up, then end card): camera rises through a tiny pipe in the 'sky' to a third LOT 9 above, where another MILO taps his hard hat three times – then end card",
       "shots": [
@@ -1246,7 +1246,7 @@
     "scene_gap_ms": 250,
     "qc_tries": 6
   },
-  "captionNote": "Erweiterung 'Continuous Improvement' Regel 4: Untertitel als 2–5-Wort-Phrasen (Feld captions je Szene, Reihenfolge = Sprechtext), gelb mit dickem schwarzem Rand, unteres Drittel; zusätzlich je Szene eine Handlungs-Phrase (Feld onScreen, oberes Drittel, ganze Szene). Test: alle onScreen-Phrasen von oben nach unten erzählen die Geschichte. Renderer kennt 'phrase-yellow' evtl. noch nicht → Szenenbau prüfen.",
+  "captionNote": "Erweiterung 'Continuous Improvement' Regel 4: Untertitel als 2–5-Wort-Phrasen (Feld captions je Szene, Reihenfolge = Sprechtext), gelb mit dickem schwarzem Rand, unteres Drittel; zusätzlich je Szene eine Handlungs-Phrase (Feld onScreen, oberes Drittel, ganze Szene). Test: alle onScreen-Phrasen von oben nach unten erzählen die Geschichte. Renderer kennt 'phrase-yellow' evtl. noch nicht → Szenenbau prüfen. · Runde 2 (14.11.2026, K13 konflikte.md): onScreen benennt die Handlung in ANDEREN Worten als der Untertitel (keine wörtliche Wiederholung).",
   "hookQuestion": {
     "text": "WHO KNOCKED BACK?",
     "shownBy": "Cover 0–0,5 s + Sticker bis 2,0 s",
@@ -1254,19 +1254,20 @@
   },
   "finalImage": {
     "image": "three knocks on Milo's hard hat",
-    "plant": "ritual (≈ 7 %)",
-    "repeat": "mirror (≈ 53 %, the lower Milo does the same ritual)",
-    "payoff": "knocks (≈ 89 %): the three knocks come from above – the ritual means he is someone's 'below'"
+    "plant": "ritual (Klopfen 7,4–8,2 s ≈ 9 %)",
+    "repeat": "mirror (unterer Milo klopft 50,4–51,2 s ≈ 60 %)",
+    "payoff": "knocks (77,0 s ≈ 91 %): the three knocks come from above – the ritual means he is someone's 'below'"
   },
   "emotionalPeak": {
     "emotion": "dread (Grauen) right after relief",
     "steps": {
-      "stakes": "fear (66 %): 'is someone above him?'",
-      "hope": "hope (72 %): 'He sees stars. … He's on top.'",
-      "turn": "turn (77 %): 'Then one star flickers. Like a headlamp. Then all of them do.'"
+      "stakes": "fear (67,8 %, fear-Start 57,1 s von 84,2 s): 'is someone above him?'",
+      "hope": "hope (73,8 %, 62,2 s): 'He sees stars. … He's on top.'",
+      "turn": "turn (79,5 %, Start 67,0 s; Enthüllung Gesicht im Rohr ≈ 69,5 s = 82,5 %; Halt-Ende 71,5 s = 84,9 %): 'Then one star flickers. Like a headlamp. Then all of them do.'"
     },
+    "measured": "Gemessen 14.11.2026 (Gesamtlänge 84,2 s inkl. End-Card 2 s, scripts/bauarbeiter_shots.mts): turn-Halt 4,53 s",
     "silenceBefore": "0,6 s totale Stille (Musik + Bett aus) vor 'turn'",
-    "hold": "turn = einzige Einstellung > 4 s (≈ 5,2 s, ≤ 6 s)"
+    "hold": "turn = einzige Einstellung > 4 s (gemessen 4,53 s, ≤ 6 s)"
   },
   "shotPlan": {
     "shots": 33,

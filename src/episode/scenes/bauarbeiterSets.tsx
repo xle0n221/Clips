@@ -61,7 +61,8 @@ export const knockAt = (frame: number, t0: number, gapsMs: readonly number[] = [
   let v = 0;
   for (const t of times) {
     const d = frame - t;
-    if (d >= -1.5 && d < 7) v = Math.max(v, d < 0 ? 1 + d / 1.5 : Math.exp(-d / 2.2));
+    // Ausholen 3 Bilder, Treffer, Abklingen (≥ 3 Bilder Bewegung je Schlag)
+    if (d >= -3 && d < 9) v = Math.max(v, d < 0 ? 1 + d / 3 : Math.exp(-d / 2.6));
   }
   return Math.max(0, Math.min(1, v));
 };
@@ -528,13 +529,14 @@ export const Milo: React.FC<MiloProps> = (p) => {
 /* ------------------------------------------------------------------ */
 
 /** Rostiges Eisenrohr mit Kreide-X. Ursprung = Boden, `top` = Höhe über Boden. `glow` 0..1 türkis aus der Öffnung. */
-export const Pipe: React.FC<{ readonly position?: V3; readonly top?: number; readonly glow?: number; readonly radius?: number; readonly down?: number; readonly inside?: boolean }> = ({
+export const Pipe: React.FC<{ readonly position?: V3; readonly top?: number; readonly glow?: number; readonly radius?: number; readonly down?: number; readonly inside?: boolean; readonly chalk?: boolean }> = ({
   position = [0, 0, 0],
   top = 1.0,
   glow = 0,
   radius = 0.3,
   down = 2,
   inside = false,
+  chalk = false,
 }) => {
   const tex = rustTex();
   const len = top + down;
@@ -566,8 +568,8 @@ export const Pipe: React.FC<{ readonly position?: V3; readonly top?: number; rea
           <Halo at={[0, top + 0.05, 0]} size={1.6} color={B.teal} opacity={0.6 * glow} />
         </>
       ) : null}
-      {/* Kreide-X vorn */}
-      {[-1, 1].map((sd) => (
+      {/* Kreide-X vorn (nur auf Wunsch: lag sonst im Untertitel-Band, Design D7) */}
+      {(chalk ? [-1, 1] : []).map((sd) => (
         <mesh key={sd} position={[0, top * 0.45, radius + 0.004]} rotation={[0, 0, sd * 0.75]}>
           <planeGeometry args={[0.05, Math.min(0.42, top * 0.6)]} />
           <meshStandardMaterial color="#E9E6DE" roughness={0.95} />

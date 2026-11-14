@@ -84,6 +84,10 @@ export type EpisodeConfig = {
   readonly noHud?: boolean;
   /** Oberkante der Sticker (px); ohne = wie bisher (HUD-Unterkante + 30 bzw. 300) */
   readonly stickerTop?: number;
+  /** dunkle Platte hinter der Handlungs-Phrase */
+  readonly onScreenPlate?: boolean;
+  /** End-Card: Tippen beginnt ab diesem Bild (Standard 10) */
+  readonly endCardTypeFrom?: number;
 };
 export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "earth-without-humans": { look: "2d", transitions: EARTH_TRANSITIONS, hud2d: { freezeBeat: "barFreeze" }, coverArt: EarthCoverArt },

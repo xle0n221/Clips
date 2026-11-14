@@ -3,7 +3,7 @@ import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { CAPTION_FONT } from "./fonts";
 
 /** Drehbuch-Feld `endCard` (KnowToon-Prompt STEP 6): letzte `seconds` s, Suchleiste tippt `handle`, darunter `cta`. */
-export type EndCardSpec = { readonly handle: string; readonly cta: string; readonly seconds?: number; readonly accent?: string };
+export type EndCardSpec = { readonly handle: string; readonly cta: string; readonly seconds?: number; readonly accent?: string; /** Bild, ab dem getippt wird (Standard 10) */ readonly typeFrom?: number };
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -18,7 +18,7 @@ export const EndCard: React.FC<{ readonly spec: EndCardSpec }> = ({ spec }) => {
   const fade = interpolate(frame, [0, 6], [0, 1], clamp);
   const barIn = interpolate(frame, [3, 12], [0, 1], { ...clamp, easing: (t) => 1 - Math.pow(1 - t, 3) });
   // Tippen: ab Bild 10, ein Zeichen je 2,5 Bilder (KnowToon = 8 Zeichen ≈ 0,7 s)
-  const typed = Math.max(0, Math.min(spec.handle.length, Math.floor((frame - 10) / 2.5) + 1));
+  const typed = Math.max(0, Math.min(spec.handle.length, Math.floor((frame - (spec.typeFrom ?? 10)) / 2.5) + 1));
   const doneAt = 10 + spec.handle.length * 2.5;
   const cursorOn = frame < doneAt + 4 || Math.floor(frame / 8) % 2 === 0;
   const ctaIn = interpolate(frame, [doneAt + 2, doneAt + 10], [0, 1], clamp);

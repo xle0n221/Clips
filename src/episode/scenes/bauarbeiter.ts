@@ -51,5 +51,7 @@ export const BAU_CONFIG: EpisodeConfig = {
   phrases: PHRASES,
   onScreen: ON_SCREEN,
   noHud: true,
-  stickerTop: 400,
+  stickerTop: 430,
+  onScreenPlate: true,
+  endCardTypeFrom: 2,
 };

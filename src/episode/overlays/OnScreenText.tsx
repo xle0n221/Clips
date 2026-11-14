@@ -11,12 +11,15 @@ export const OnScreenText: React.FC<{
   readonly items: readonly { readonly text: string; readonly from: number; readonly to: number }[];
   readonly top?: number;
   readonly accent?: string;
-}> = ({ items, top = 150, accent = "#FFB23E" }) => {
+  /** dunkle Platte hinter dem Text (Kontrast auf hellem/unruhigem Grund) */
+  readonly plate?: boolean;
+}> = ({ items, top = 150, accent = "#FFB23E", plate = false }) => {
   const frame = useCurrentFrame();
   const it = items.find((x) => frame >= x.from && frame < x.to);
   if (!it) return null;
   const local = frame - it.from;
-  const o = interpolate(local, [0, 6], [0, 1], { extrapolateRight: "clamp" });
+  // mit Platte sofort voll deckend (kein halbtransparentes Einblenden über hellem Grund)
+  const o = plate ? 1 : interpolate(local, [0, 6], [0, 1], { extrapolateRight: "clamp" });
   const y = interpolate(local, [0, 6], [-14, 0], { extrapolateRight: "clamp" });
   const size = it.text.length > 22 ? 58 : 66;
   return (
@@ -35,6 +38,7 @@ export const OnScreenText: React.FC<{
             paintOrder: "stroke",
             textShadow: "0 6px 0 rgba(0,0,0,0.8), 0 0 22px rgba(0,0,0,0.6)",
             letterSpacing: 1,
+            ...(plate ? { background: "rgba(4,6,14,0.88)", borderRadius: 22, padding: "14px 30px 18px" } : {}),
           }}
         >
           {it.text}

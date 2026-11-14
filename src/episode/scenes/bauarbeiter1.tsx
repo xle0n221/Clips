@@ -10,6 +10,7 @@ import { useScene } from "../types";
 import { bauCuts } from "./bauarbeiterCuts";
 import {
   Atmos,
+  Pipe,
   B,
   cut,
   fly,
@@ -90,8 +91,9 @@ export const BauHook: React.FC = () => {
   const k = knockAt(frame, beat("pipeMacroPebblesJump") + 22.5, [120, 1750]);
   if (shot === 0) {
     // ECU: Rohr im Schlamm, Kiesel springen; Milo kniet dahinter, Stirnlampe wirft den Kegel aufs Rohr (= Cover)
-    const a = frameOn([0.1, 1.25, -0.4], 4.0, 0.6, 0.5, [-0.15, 0.12, 1]);
-    const b = frameOn([0.1, 1.2, -0.4], 3.5, 0.6, 0.5, [-0.12, 0.12, 1]);
+    // Cover: Kopf tief genug, damit Titel + Unterzeile auf dunklem Grund stehen (P2-11/D6)
+    const a = frameOn([0.1, 1.25, -0.4], 4.0, 0.8, 0.5, [-0.15, 0.12, 1]);
+    const b = frameOn([0.1, 1.2, -0.4], 3.5, 0.64, 0.5, [-0.12, 0.12, 1]);
     return (
       <>
         <Night hemi={0.45} />
@@ -150,16 +152,20 @@ export const BauRitual: React.FC = () => {
   const t0 = slow - 26;
   const hit = knockAt(frame, t0, [230, 630]);
   const hat: V3 = [TRAILER_MILO[0] + 0.05, 2.95, TRAILER_MILO[2]];
-  const a = frameOn([hat[0], hat[1] - 0.35, hat[2]], 2.7, 0.5, 0.5, [0.35, 0.15, 1]);
-  const b = frameOn([hat[0], hat[1] - 0.3, hat[2]], 2.35, 0.5, 0.5, [0.3, 0.14, 1]);
+  // Knöchel groß im Vordergrund (Kamera auf der Seite der klopfenden Hand), Gesicht dahinter
+  const glove: V3 = [TRAILER_MILO[0] + 0.62, 2.9, TRAILER_MILO[2] - 0.05];
+  const a = frameOn([glove[0] - 0.35, 2.65, glove[2]], 2.5, 0.5, 0.5, [0.8, 0.08, 1]);
+  const b = frameOn([glove[0] - 0.3, 2.7, glove[2]], 2.2, 0.5, 0.5, [0.75, 0.08, 1]);
   return (
     <>
       <Night hemi={0.5} />
       <SiteSet frame={frame} city={false} />
       <pointLight position={[TRAILER_MILO[0] + 0.6, 3.8, TRAILER_MILO[2] + 1.6]} color={B.amberHot} intensity={4} distance={5} decay={2} />
       <Milo frame={frame} position={TRAILER_MILO} rotation={[0, 0.2, 0]} mouth="smile" tap={{ raise: 1, hit }} eyes={frame > slow + 20 ? "happy" : "dot"} lamp={{ beam: 1.5 }} blinkSeed={5} />
-      <Puff at={[hat[0] + 0.35, hat[1] - 0.05, hat[2] + 0.35]} age={frame - slow} size={0.7} />
-      <Puff at={[hat[0] + 0.35, hat[1] - 0.05, hat[2] + 0.35]} age={frame - t0} size={0.35} />
+      <pointLight position={[glove[0] + 0.8, glove[1] + 0.3, glove[2] + 1.2]} color={B.amberHot} intensity={5} distance={3} decay={2} />
+      <Puff at={[glove[0] - 0.15, glove[1] + 0.05, glove[2]]} age={frame - slow} size={0.8} />
+      <Puff at={[glove[0] - 0.15, glove[1] + 0.05, glove[2]]} age={frame - t0} size={0.45} />
+      <Puff at={[glove[0] - 0.15, glove[1] + 0.05, glove[2]]} age={frame - (t0 + 6.9)} size={0.45} />
       <Drizzle frame={frame} at={hat} size={[3, 3, 3]} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="out" punch={slow - (frame - f)} />
     </>
@@ -192,7 +198,7 @@ export const BauStakes: React.FC = () => {
   return (
     <>
       <Night />
-      <SiteSet frame={frame} sign />
+      <SiteSet frame={frame} sign={f < pit - 2} />
       <Milo frame={frame} position={[2.2, 0, -3.2]} rotation={[0, 0.4, 0]} lamp={{ beam: 3 }} blinkSeed={6} look={-0.5} />
       <Rain frame={frame} center={[1, 4, -4]} size={[10, 9, 12]} count={300} opacity={0.32} />
       <Shot frame={f} duration={len} {...fly(a, b)} span={[Math.max(10, pit - 16), Math.max(24, pit)]} ease="inOut" />
@@ -206,16 +212,19 @@ export const BauStakes: React.FC = () => {
 export const BauPipe: React.FC = () => {
   const { frame, beat, shot, f, len, from } = useShots("pipe");
   if (shot === 0) {
+    // Ohr am Rohr: Milo kniet rechts neben dem Rohr, beugt sich seitlich hin, Gesicht zur Kamera (P2-6)
     const k = knockAt(frame, beat("miloEarToPipe") + 20, [130, 220]);
-    const a = frameOn([0.15, 1.3, -0.5], 3.9, 0.55, 0.5, [1, 0.1, 0.75]);
-    const b = frameOn([0.15, 1.3, -0.5], 3.4, 0.55, 0.5, [0.95, 0.1, 0.8]);
+    const a = frameOn([0.5, 1.15, 0], 3.7, 0.55, 0.5, [0.1, 0.15, 1]);
+    const b = frameOn([0.4, 1.15, 0], 3.2, 0.55, 0.5, [0.08, 0.15, 1]);
     return (
       <>
         <Night hemi={0.45} />
-        <SiteSet frame={frame} pipeGlow={0.1 + 0.6 * k} />
+        <SiteSet frame={frame} pipe={false} />
+        <Pipe top={1.25} glow={0.1 + 0.6 * k} />
         <Pebbles jump={k} />
-        <Pebbles center={[0, 1.0, 0]} ring={0.27} count={4} jump={k} seed={9} />
-        <Milo frame={frame} position={[0.25, 0, -1.05]} rotation={[0, 0.25, 0]} kneel={1} lean={0.3} nod={0.08} tilt={0.35} eyes={k > 0.2 ? "wide" : "closed"} mouth="flat" reach={[0.9, 0.8]} lamp={{ beam: 1.6 }} blinkSeed={7} />
+        <Pebbles center={[0, 1.25, 0]} ring={0.27} count={4} jump={k} seed={9} />
+        <Milo frame={frame} position={[1.85, 0, 0]} rotation={[0, -Math.PI / 2, 0]} kneel={1} lean={0.8} look={Math.PI / 2 - 0.25} eyes={k > 0.2 ? "wide" : "closed"} mouth="flat" reach={[0.7, 0.4]} lamp={{ beam: 0, on: 0.8 }} blinkSeed={7} />
+        <pointLight position={[1.0, 2.2, 1.6]} color={B.amber} intensity={5} distance={4} decay={2} />
         <Drizzle frame={frame} at={[0, 2, -0.5]} size={[5, 4, 4]} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="out" punch={k > 0.95 ? f : undefined} />
       </>
@@ -318,12 +327,12 @@ export const BauRadio: React.FC = () => {
     const talk0 = beat("radioBaseLed") + 13;
     const led = frame >= talk0 && Math.floor(frame / 5) % 2 === 0 ? 1 : 0;
     const wk: V3 = [0.25, 2.15, 0.55];
-    const a = frameOn([0.15, 2.2, 0.3], 2.3, 0.52, 0.5, [0.2, 0.08, 1]);
-    const b = frameOn([0.15, 2.2, 0.3], 1.95, 0.52, 0.5, [0.15, 0.06, 1]);
+    const a = frameOn([0.15, 2.2, 0.3], 2.5, 0.68, 0.5, [0.2, 0.08, 1]);
+    const b = frameOn([0.15, 2.2, 0.3], 2.2, 0.68, 0.5, [0.15, 0.06, 1]);
     return (
       <>
         <Night hemi={0.45} />
-        <SiteSet frame={frame} lampsOn={0.7} />
+        <SiteSet frame={frame} lampsOn={0.7} clock="" />
         <Milo frame={frame} position={[-0.25, 0, -0.55]} rotation={[0, 0.15, 0]} look={0.25} nod={0.12} mouth="flat" brow={0.6} lamp={{ beam: 2.5, on: 0.9 }} blinkSeed={10} />
         <Walkie position={wk} rotation={[0, -0.25, 0.08]} led={led} />
         <pointLight position={[0.5, 2.6, 1.6]} color={B.amber} intensity={3} distance={4} decay={2} />
@@ -334,12 +343,13 @@ export const BauRadio: React.FC = () => {
   }
   // Einschub: Bohrprofil auf dem Tablet, Ken-Burns nach unten – nur Fels
   const tab: V3 = [0, 1.6, 0];
-  const a = frameOn([0, 2.1, 0.03], 2.05, 0.5, 0.5, [0, 0.05, 1]);
-  const b = frameOn([0, 1.4, 0.03], 1.6, 0.5, 0.5, [0, 0.03, 1]);
+  // Bohrprofil zwischen Text oben und Untertitel unten (kein Text auf Text, P2-10)
+  const a = frameOn([0, 1.62, 0.03], 2.95, 0.45, 0.5, [0, 0.05, 1]);
+  const b = frameOn([0, 1.7, 0.03], 2.75, 0.45, 0.5, [0, 0.03, 1]);
   return (
     <>
       <Night hemi={0.6} />
-      <SiteSet frame={frame} city={false} lampsOn={0.5} />
+      <SiteSet frame={frame} city={false} lampsOn={0.5} clock="" />
       <Tablet position={tab} show="bore" />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
@@ -398,14 +408,14 @@ export const BauTape: React.FC = () => {
 export const BauNote: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("note");
   if (shot === 0) {
-    const unfold = 0.45 + 0.55 * win(frame, 0, beat("noteTextStopKnocking") - 6);
+    const unfold = 0.8 + 0.2 * win(frame, beat("noteOnTapeEnd"), beat("noteTextStopKnocking") - 4);
     const paper: V3 = [0, 1.55, 0.5];
     const a = frameOn([0, 1.75, 0.5], 2.7, 0.5, 0.5, [0.1, 0.2, 1]);
     const b = frameOn(paper, 2.0, 0.5, 0.5, [0.06, 0.18, 1]);
     return (
       <>
         <Night hemi={0.5} />
-        <SiteSet frame={frame} lampsOn={0.6} city={false} />
+        <SiteSet frame={frame} lampsOn={0.6} city={false} clock="" />
         <Paper position={paper} rotation={[-0.15, 0, 0.03]} w={1.2} h={0.8} lines={["STOP", "KNOCKING."]} unfold={unfold} />
         {/* nasses Bandende mit Draht */}
         <TapeBand from={[0.05, 1.98, 0.5]} to={[0.12, 3.4, 0.6]} />
@@ -428,7 +438,7 @@ export const BauNote: React.FC = () => {
   return (
     <>
       <Night hemi={0.7} />
-      <SiteSet frame={frame} lampsOn={0.5} city={false} />
+      <SiteSet frame={frame} lampsOn={0.5} city={false} pipe={false} clock="" />
       <Paper position={[0, 2.25, 0.3]} w={1.5} h={0.72} lines={["STOP", "KNOCKING."]} />
       <Paper position={[0, 1.25, 0.3]} w={1.6} h={0.72} lines={["2:00 ALL QUIET", "– M."]} ruled />
       <mesh position={[0, 1.75, 0.29]}>
