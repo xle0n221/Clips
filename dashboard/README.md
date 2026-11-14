@@ -43,6 +43,9 @@ Die Seite erzeugt den Slug aus dem Thema (Umlaute → ae/oe/ue/ss, max. 40 Zeich
 | `priority` | true \| null (optional) | Seite / Nutzer | Knopf „Als Nächstes“ auf wartenden Karten: wird vor älteren Themen übernommen |
 | `publish` | null \| `{ youtube?: { title, description, hashtags[] }, tiktok?: { caption, hashtags[] }, note?, upload? }` (optional) | Sitzung | Texte zum Veröffentlichen; aufklappbarer Bereich „Veröffentlichen“ mit Kopier-Knöpfen (bei `done` offen). Hashtags mit oder ohne `#` |
 | `publish.upload` | `{ status: "plan"\|"hold"\|"skip", reason?, type, lengthSec, tiktok?: { date, timeDe, slot, local: { newYork, losAngeles, london }, calc }, youtube?: { … }, dstNote? }` | Sitzung (Rolle Veröffentlichung) | Upload-Plan je Plattform mit Ortszeiten (Regel `docs/prompts/knowtoon-upload-strategie.md` §4–5); `skip` = nicht veröffentlichen, `hold` = zurückgestellt, je mit Grund |
+| `score`, `scoreNote`, `type`, `source` | number, string, "Story"\|"Wissen"\|"What-if", "autopilot" (optional) | Sitzung (Trend-Scout) | Bewertung aus der täglichen Marktanalyse (Autopilot §1), Auswahlreihenfolge |
+| `stage: "parked"` | – | Sitzung | Video geparkt (Autopilot §2), Grund in `statusText` |
+| `meta/report` | `{ date, lines: { trends, fertig, inArbeit, geparkt, neueThemen, probleme }, updatedAt }` | Sitzung | Tagesbericht (Autopilot §5) |
 | `analytics` | null \| `{ tiktok?: {…}, youtube?: {…} }` je `{ date, timeDe, slot, views1h, views24h, views48h, views7d, avgWatchSec, completionPct, newFollowers, topCountries, shares, updatedAt }` | Seite / Nutzer | Kennzahlen je Plattform, Formular „Kennzahlen“ auf der Fertig-Karte; leer = `null` = „fehlt“; Zahlen als number, sonst Text wie eingegeben (Upload-Prompt §6) |
 
 Zusätzliche optionale Felder in `review`:

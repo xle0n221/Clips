@@ -21,6 +21,8 @@ getrennt je Video unter `episodes/<slug>.json` und `public/episodes/<slug>/`; da
 Der frühere Abholer, der jedes Mal eine neue Sitzung startete, ist deaktiviert (nicht gelöscht).
 
 ## 1. Auswahl (in dieser Reihenfolge, genau ein Video)
+**Autopilot (Nutzer 14.11.2026, `docs/prompts/knowtoon-autopilot.md`):** Entscheidungen von Claude selbst (`decision.via = "autopilot"` mit Belegen). Ein Video in Arbeit geht vor; sonst das wartende Thema mit dem höchsten `score` (tägliche Marktanalyse), höchstens 2 derselben `type` hintereinander. Pause bei 6 fertigen, ungeposteten Videos. Nicht bestanden nach 2 Runden + nächstgrößerem Modell → `stage: "parked"`, Grund in `statusText`. Die Punkte unten gelten weiter, wo sie nicht widersprechen (`docs/prompts/konflikte.md`).
+
 1. `review` gesetzt **und** `decision` gesetzt **und** nicht `busy` → Entscheidung umsetzen.
 2. `resume: true` und nicht `busy` → der Nutzer hat nach Fehler/Blocker „Erneut versuchen“ bzw.
    „Erledigt – weitermachen“ gedrückt: auf dem Branch des Videos dort weitermachen, wo es stand.

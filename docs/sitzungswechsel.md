@@ -43,3 +43,7 @@ Jede per `create_session` gestartete Sitzung zählt eine Stufe tiefer; ab **Tief
 starten und keine geplanten Aufgaben anlegen, auslösen oder wieder einschalten (Abschalten geht noch). Deshalb:
 1. Vor dem Wechsel mit `get_session` die `lineage.depth` der **neuen** Sitzung prüfen; ist sie 8, legt die **alte** Sitzung den neuen Abholer an (`persistent_session_id` = neue Sitzung) und stellt meta/pickup um – die neue kann es nicht.
 2. Die Kette wird nur zurückgesetzt, wenn der Nutzer selbst eine neue Sitzung startet (Tiefe 0).
+
+
+## Abholer-Wortlaut im Autopilot (14.11.2026, für die nächste Sitzung mit Rechten zum Ändern)
+Diese Sitzung konnte `trig_01NLm7wDjZkjX4TVWdW1r2uy` nicht ändern (Lineage-Tiefe 8). Neue Sitzung: Auftrag mit diesem Inhalt anlegen oder ersetzen: Autopilot nach `docs/prompts/knowtoon-autopilot.md` – 0. brachliegende Arbeit fortsetzen; 1. videos + meta/report lesen, analytics → docs/analytics/uploads.md; 2. erster Lauf des Tages: Marktanalyse (Trend-Scout, sonnet) → docs/trends/<datum>.md, Warteschlange neu bewerten; 3. Herstellung mit Selbstfreigabe (Noten ≥ 9 mit Beleg, Prüfer ≠ Ersteller), sonst parken; Pause bei 6 ungeposteten; 4. Fertig → Bereit zum Posten, MP4 per SendUserFile; 5. Tagesbericht docs/berichte/<datum>.md + meta/report; 6. Konflikte → docs/prompts/konflikte.md; 7. nichts zu tun → ein Satz.
