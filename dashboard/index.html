@@ -239,7 +239,8 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       </select>
       <label class="sr" for="vstyle">Sprechstil</label>
       <select id="vstyle" name="vstyle" title="Wie die Stimme klingen soll (Melodie, Betonung, Pausen)">
-        <option value="lebendig" selected>Sprechstil: Lebendig (Standard)</option>
+        <option value="auto" selected>Sprechstil: Automatisch – passend zum Thema (Standard)</option>
+        <option value="lebendig">Sprechstil: Lebendig</option>
         <option value="spannend">Sprechstil: Spannend</option>
         <option value="witzig">Sprechstil: Witzig</option>
         <option value="ruhig">Sprechstil: Ruhig</option>
@@ -320,7 +321,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
   const blobUrl = (id) => "/_blob/" + encodeURIComponent(id);
   const WPS_MIN = 2.3, WPS_MAX = 2.6; // Ziel-Sprechtempo inkl. Pausen seit 12.11.2026 (Nutzer: Videos insgesamt langsamer, angenehm zu schauen)
   const WPS_LOW_OK = 2.3;
-  const STYLE_NAME = { lebendig: "lebendig", spannend: "spannend", witzig: "witzig", ruhig: "ruhig", aus: "unbearbeitet" };
+  const STYLE_NAME = { auto: "Sprechart automatisch", lebendig: "lebendig", spannend: "spannend", witzig: "witzig", ruhig: "ruhig", aus: "unbearbeitet" };
   const de = (n, d) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
   const sceneDrafts = {};
   const drafts = {};      // Feedback-Entwürfe je Video, überleben Neuzeichnen
@@ -936,7 +937,7 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
     const btn = $("listenBtn");
     if (player && !player.paused) { player.pause(); btn.textContent = "▶ Anhören"; return; }
     // Probe passend zu Stimme UND Sprechstil (voices/style-<stil>-<stimme>.mp3)
-    player = new Audio("voices/style-" + ($("vstyle").value || "lebendig") + "-" + $("voice").value + ".mp3");
+    player = new Audio("voices/style-" + ((($("vstyle").value || "lebendig") === "auto") ? "spannend" : ($("vstyle").value || "lebendig")) + "-" + $("voice").value + ".mp3");
     btn.textContent = "■ Stopp";
     player.addEventListener("ended", () => { btn.textContent = "▶ Anhören"; });
     player.play().catch(() => { btn.textContent = "▶ Anhören"; $("addMsg").className = "msg err"; $("addMsg").textContent = "Hörprobe konnte nicht abgespielt werden."; });
@@ -967,12 +968,12 @@ select { font: inherit; color: var(--fg); background: var(--bg); border: 1px sol
       await db.collection("videos").doc(id).set({
         inspiration,
         topic, lengthSec: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null, note: $("note").value.trim(),
-        voice: $("voice").value || "am_michael", voicePreset: $("vstyle").value || "lebendig",
+        voice: $("voice").value || "am_michael", voicePreset: $("vstyle").value || "auto",
         stage: "queued", statusText: "", review: null, decision: null,
         branch: null, sessionId: null, busy: false, updatedAt: new Date().toISOString()
       });
       $("dupHint").hidden = true; $("lenHint").textContent = "";
-      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "am_michael"; $("vstyle").value = "lebendig";
+      $("topic").value = ""; $("len").value = ""; $("note").value = ""; $("voice").value = "am_michael"; $("vstyle").value = "auto";
       $("inspFiles").value = ""; $("inspCount").textContent = "optional – Bilder, kurze Videos oder PDFs";
       msg.textContent = `„${topic}“ hinzugefügt (ID ${id}).`;
       wake("add", id);

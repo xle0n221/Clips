@@ -3,7 +3,7 @@
   "title": "Something Under the Site Knocked Back",
   "engine": "chatterbox",
   "voice": "am_michael",
-  "voicePreset": "lebendig",
+  "voicePreset": "spannend",
   "speed": 1.08,
   "pauseMs": 350,
   "sceneGapMs": 250,
@@ -31,7 +31,7 @@
   },
   "narratorMood": {
     "mood": "angespannt-flüsternd, bedrückend",
-    "why": "Nacht-Horror auf einer leeren Baustelle: nah am Mikro, leise und gefasst wie jemand, der nachts flüstert, damit das Klopfen lauter wirkt als die Stimme; nur Twist und Funkruf werden lauter – altersgerecht unheimlich statt schrill. Bild: kalt marineblau, nur Amber (Milo) und Türkis (das Unten) leuchten."
+    "why": "Nacht-Horror auf einer leeren Baustelle: nah am Mikro, leise und gefasst wie jemand, der nachts flüstert, damit das Klopfen lauter wirkt als die Stimme; nur Twist und Funkruf werden lauter – altersgerecht unheimlich statt schrill. Bild: kalt marineblau, nur Amber (Milo) und Türkis (das Unten) leuchten. Sprechart (Pflicht, clip-regeln.md 14.11.2026): voicePreset 'spannend' statt Dashboard-Standard 'lebendig' (Horror → spannend + tense/serious, Flüstern in der Spannung); setup calm/serious, Spannung tense (leiser, langsamer), Twist dramatic (lauter), Ende calm (flach). Tempo bleibt im Ziel: bei gesetztem emotion-Objekt wirkt nur speed × emotion.speed (Preset-speed 0,86 nicht, scripts/make_episode.py), pauseMs 350 überschreibt Preset-Pause 650."
   },
   "soundBed": {
     "why": "KnowToon-Prompt STEP 5: Ambient passend zum Ort (Tropfen in der Grube, Wind/Stadtbrummen = nächtliche Baustelle), Basstreffer vor jeder Enthüllung, ein scharfer Metall-Akzent beim Twist ('face'), ohne Gesang. Klang-IDs aus der earshot-Klangbank (sfx list 14.11.2026), Eignung noch per earshot rank zu prüfen. Cue-'boom' an den 8 Enthüllungs-Wörtern mit Basstreffer weggelassen (Doppelungs-Lehre Zeit-Welt).",
@@ -183,11 +183,11 @@
     ],
     "bars": []
   },
-  "note": "v1 (14.11.2026, Drehbuch). Paket: docs/paket-bauarbeiter.md. 184 Skriptwörter (ohne * und |), 16 Szenen à 5–16 W, alle Sätze ≤ 12 W mit genau einem Akzent, 0 fehlende Cue-Wörter (Skript-Prüfung). Plan 2,6 W/s → ≈ 71 s Sprache + 0,5 s Cover + 2 s End-Card ≈ 73 s (Spanne 2,5–2,75 W/s: 69–76 s). Re-Hook-Szene ab Wort 80/184 = 43 % ('Something tugs' schon bei 37 %). Kette: Boden klopft 3× → Milo allein → Guss um 6 (nichts kommt mehr raus) → Rohr nicht im Plan → antwortet → Basis: unten nur Fels → Maßband 40 m, Ruck → Zettel → eigene Handschrift → Licht schaut hoch → zweiter Milo (Twist) → gespiegelte Baustelle, hört Klopfen von oben → beide gießen → Funk klopft nur → Beton versiegelt → drei Klopfer → von oben (Loop zum Hook 'From below'). Wird es > 80 s: zuerst 'with his wrench' und 'Down the pipe,' kürzen.",
+  "note": "v1 (14.11.2026, Drehbuch). Paket: docs/paket-bauarbeiter.md. 184 Skriptwörter (ohne * und |), 16 Szenen à 5–16 W, alle Sätze ≤ 12 W mit genau einem Akzent, 0 fehlende Cue-Wörter (Skript-Prüfung). Plan 2,6 W/s → ≈ 71 s Sprache + 0,5 s Cover + 2 s End-Card ≈ 73 s (Spanne 2,5–2,75 W/s: 69–76 s). Re-Hook-Szene ab Wort 80/184 = 43 % ('Something tugs' schon bei 37 %). Kette: Boden klopft 3× → Milo allein → Guss um 6 (nichts kommt mehr raus) → Rohr nicht im Plan → antwortet → Basis: unten nur Fels → Maßband 40 m, Ruck → Zettel → eigene Handschrift → Licht schaut hoch → zweiter Milo (Twist) → gespiegelte Baustelle, hört Klopfen von oben → beide gießen → Funk klopft nur → Beton versiegelt → drei Klopfer → von oben (Loop zum Hook 'From below'). Wird es > 80 s: zuerst 'with his wrench' und 'Down the pipe,' kürzen. v1.1 (14.11.2026, Sprechart-Pflicht): voicePreset spannend, delivery serious/calm/tense/dramatic/calm je Abschnitt.",
   "scenes": [
     {
       "id": "hook",
-      "delivery": "calm",
+      "delivery": "serious",
       "emotion": {
         "exag": 0.55,
         "cfg": 0.5,
@@ -260,7 +260,7 @@
     },
     {
       "id": "pour",
-      "delivery": "calm",
+      "delivery": "serious",
       "emotion": {
         "exag": 0.55,
         "cfg": 0.5,
@@ -531,7 +531,7 @@
     },
     {
       "id": "mirror",
-      "delivery": "punch",
+      "delivery": "dramatic",
       "emotion": {
         "exag": 0.65,
         "cfg": 0.4,
@@ -565,7 +565,7 @@
     },
     {
       "id": "below",
-      "delivery": "punch",
+      "delivery": "dramatic",
       "emotion": {
         "exag": 0.65,
         "cfg": 0.4,
@@ -645,7 +645,7 @@
     },
     {
       "id": "stop",
-      "delivery": "punch",
+      "delivery": "dramatic",
       "emotion": {
         "exag": 0.65,
         "cfg": 0.4,
@@ -755,7 +755,7 @@
     "prompt": "STEP 4/4b 'NARRATION & VOICE' (Nutzer 13.11.2026), umgesetzt mit Chatterbox wie Zeit-Welt.",
     "tempo": "Ziel 2,5–2,75 W/s: 184 W → 67–74 s Sprache + 2,5 s ≈ 69–76 s; über Pausen, speed 1,08 (Twist emotion.speed 1,03, Spannung 0,97).",
     "chatterbox": "exaggeration 0,55–0,65, cfg_weight 0,40–0,50, temperature 0,70–0,80 je Szene im Feld emotion.",
-    "emotionMap": "setup = gefasst, leise-neugierig (calm, gain −1 dB) · tension = langsamer, leiser, leichtes Flüstern (tense, speed 0,97, gain −2,5 dB, Satzende −3 dB) · twist (mirror, below, stop) = lauter, schneller, abgehackt (punch, exag 0,65, speed 1,03, +1,5 dB) · ending = flach und tief (calm, −2 dB, Satzende −3,5 dB).",
+    "emotionMap": "voicePreset spannend · setup (hook serious, milo calm, pour serious) = gefasst, leise-neugierig (calm, gain −1 dB) · tension = langsamer, leiser, leichtes Flüstern (tense, speed 0,97, gain −2,5 dB, Satzende −3 dB) · twist (mirror, below, stop; delivery dramatic) = lauter, schneller, abgehackt (punch, exag 0,65, speed 1,03, +1,5 dB) · ending = flach und tief (calm, −2 dB, Satzende −3,5 dB).",
     "pauses": "' | ' vor jeder Enthüllung = gap_ms + 250 ms → 0,45–0,51 s; vor der letzten Zeile ('From above.') genau 0,5 s (above gap_ms 250 + 250).",
     "rules": "Sätze ≤ 12 Wörter, genau ein *Akzentwort* je Satz, keine Füllwörter, kein Overacting (kein Schreien bei 'Stop the pour!' – gepresst statt laut), eine Sprechzeile je Szene.",
     "conflict": "Wie Zeit-Welt: Repo-Regel 2,3–2,6 W/s / Satzpause 450–640 ms gilt nicht, KnowToon-Prompt 2,5–2,75 W/s geht vor; Whisper ≥ 98 % und leiser werdendes Satzende bleiben Pflicht (scripts/stimm_messung.py + earshot)."
