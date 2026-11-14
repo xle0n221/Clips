@@ -168,6 +168,12 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
   Drehbuch die **Grundlaune** fest: Feld `narratorMood` = `{ "mood": "…", "why": "1 Satz zum Thema" }`, z. B.
   düster-ernst (Krieg, Tragödie), neugierig-staunend (Wissenschaft, Weltall), verschmitzt-ironisch (Kurioses, Satire),
   warm-nachdenklich (Lebensgeschichten), angespannt-flüsternd (Mystery/Horror), locker-cool (Games, Popkultur), sachlich-ruhig (heikle Nachrichten, reale Vorwürfe).
+- **Sprechart PFLICHT bei JEDEM Clip, automatisch zugewiesen** (Nutzer 14.11.2026, Großschreibung des Nutzers: „WICHTIG: achte bei jedem Clip auf die Sprechart. Bei jedem Thema muss eine passende Sprechart sein und automatisch von dir zugewiesen sein. BEI JEDEM CLIP“):
+  Das Drehbuch legt **ohne Rückfrage** fest: `voicePreset` (lebendig · spannend · witzig · ruhig) passend zum Thema – das Dashboard-Standardfeld „lebendig“ wird dabei **überschrieben**, wenn es nicht passt –,
+  `narratorMood` (Grundlaune + Begründung) und je Szene `delivery`/`emotion` (calm, warm, serious, sad, awe, tense, ironic, playful, indignant, excited, triumphant, angry, dramatic).
+  Zuordnung (Ausgangspunkt): Horror/Mystery → spannend + tense/serious, Flüstern in der Spannung · Wissen/Weltall → lebendig + awe/warm · Kurioses/Satire → witzig + ironic/playful ·
+  Lebensgeschichte/Tragödie → ruhig + warm/sad · Geschichte/Krieg → spannend + serious/dramatic · Games/Popkultur → lebendig + playful/excited · heikle Nachrichten → ruhig + serious.
+  Prüfung: Retention-Kritiker benotet „Sprechart passt zum Thema“ (Teil der Mindestnote 9); die Hörprobe nennt Sprechart + Laune und die earshot-Messwerte.
 - Die Grundlaune bestimmt `voicePreset`, die Szenen-`delivery`/`emotion` (exaggeration, Tempo, Pausen) und die Musikstimmung; Szenen
   dürfen davon für Spannung/Wendung abweichen, kehren aber zur Grundlaune zurück. Der Retention-Kritiker prüft, ob Laune und Thema zusammenpassen;
   die Hörprobe nennt die gewählte Laune.
