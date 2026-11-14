@@ -70,3 +70,31 @@ Grundlage: Kontaktabzug `out/bauarbeiter-kontakt.png` (41 Bilder), eigene Standb
 
 **Note Design: 8,5 / 10**
 Beleg: Stil, Thema, Cover und End-Card erfüllen den Maßstab (Untertitel ca. 14 : 1, Cover 0,2 s sauber); Abzug für D1 (1,4 : 1 Sticker), die leere Fear-Szene mit Sticker-Doppelung (58,5-61,5 s), dunkle Szenen 64-69 s mit Mittel-Lum. 11-17 und überstrahltes Gesicht 70,5 s. 9 wird erreicht, wenn D1-D5 behoben und f1575, f1845, f2060, f2115 neu gemessen (Sticker >= 3 : 1, Mittel-Lum. >= 20 bei f2060) sind.
+
+## Regie Runde 2
+Stand 14.11.2026 · Regie-Kritiker · Grundlage: `scripts/bauarbeiter_shots.mjs` (neu gelaufen), Kontaktabzug `out/bauarbeiter-kontakt.png` (20:10, 41 Bilder), eigene Ansicht von `out/bauarbeiter-r2/` 19,5/10,0/81,5/67,2 s. Kein Voll-Render. Hinweis: onScreen-Texte sind neu formuliert („Platten“); Zaun-Uhr in r2-Bildern 28,5/79,5 s nicht beurteilt (Endstand nur im Kontaktabzug).
+
+### Messung neu
+34 Shots, Ø 2,42 s, max 4,53 s (turn-Halt), min 1,03 s (vorher 0,87 s); Phrasen 55, alle 2–5 Wörter, 191/191 Abgleich. Alle Zahlenregeln weiter erfüllt.
+
+### Nachprüfung der Befunde
+| Nr. | Befund R1 | Stand R2 |
+| --- | --- | --- |
+| P1-1 turn 67–69,6 s | erledigt. 67,2 s: Stern mit Teal-Gesicht, ca. 190 px, auf Sternenfeld lesbar; 68,7 s größer, 69,6/70,5 s Gesicht + „ALL OF THEM“. Ohne Ton verständlich. |
+| P1-2 below 52,4 s | größtenteils erledigt. Platte „A COPY OF LOT 9“ lesbar; Bild bis ca. 53,3 s (≈ 0,9 s) noch schwarze Scheibe mit Ring, dann gespiegelte Baustelle 53,5 s. → P3. |
+| P1-3 fear 60,5 s | erledigt. Helm unten + Lichtkegel 60,8 s, Himmelsglanz 61,5 s; dunkel, aber Figur da. |
+| P2-4 Schild 16,5 s | erledigt (Schild nicht mehr in Textzone; stakes/pour sauber). Rest: pour 73,5 s Untertitel liegt auf Lkw/Figur (P3, wie vom Ersteller gemeldet). |
+| P2-5 Fleck/X note | erledigt: kein Fleck 40,5 s, X nicht mehr auf Untertiteln (hook, stakes, note). |
+| P2-6 pipe 19,5 s | **offen (P2).** Kopf jetzt ca. 70° gekippt, liegt fast waagerecht, das Rohr fehlt weiter im Bild; „Ohr am Rohr“ nicht lesbar (wirkt wie Umfallen). Vorschlag: Kamera aufziehen, Rohr (rot, unten) mit ins Bild, Kopf nur ca. 25° neigen, Ohr am Rohr. |
+| P2-7 ritual Hand | gebessert, ausreichend: 10,0 s Faust sichtbar neben dem Helm (Schlag in der Luft), Helm groß; 10,5 s Hand angeschnitten am Rand (P3). |
+| P2-8 hope 64,5 s | erledigt: Milo mit Oberkörper, schräger Winkel, Uhr entfernt. |
+| P2-9 Text auf Text | erledigt: Plattenhintergrund (6,3–14,5 : 1 laut Ersteller, im Bild sehr gut lesbar); Bohrprotokoll 31,5 s klein, ROCK-Zeilen unter Untertitel; Cover-Unterzeile unter Titel, frei vom Helm; mirror-Lampe unter Platte. |
+| P2-10 answer2 | **teilweise.** 79,5 s Gesicht unten noch angeschnitten, Helm ganz. 80,5 s: Röhre ohne Motiv (leeres Teal, ≈ 1 s, vom Ersteller gemeldet, P3). 81,5/82,0 s: Gelber Sticker „NOW HE'S BELOW“ liegt auf Helm/Lampe und wiederholt zusammen mit Platte „HE BECAME THE BELOW“ und Untertitel „NOW HE'S THE ONE BELOW“ dieselbe Aussage dreifach → P2: Sticker streichen oder auf Platte reduzieren, Helmlampe freilegen. Dritte Lot 9 („crane up“) ist weiter nicht als Baustelle sichtbar (P3). |
+| P3 mirror | 1,13/1,03/1,23 s – 49,5 s Gesicht gut lesbar; erledigt. |
+| Ersteller-P3 | note 37,5 s leerer Zettel (bestätigt, P3: Bleistiftschrift fehlt anfangs), pour 73,5 s Untertitel über Lkw (bestätigt), answer2 80,5 s Röhre ohne Motiv (bestätigt). |
+
+### Höhepunkt-Lage: trägt das?
+Gemessen bei Länge ≈ 84,2 s: erster lesbarer Stern 67,2 s = 79,8 %, Enthüllung (Gesicht, „ALL OF THEM“) 69,5–70,5 s = 82,5–83,7 %, Halt-Ende 71,5 s = 84,9 %. Der Aufbau fear (68 %) → hope (74 %) → Wendung beginnt im Fenster 70–80 %; die Wendung ist ein einziger 4,5-s-Block, dessen Beginn im Fenster liegt und dessen Scheitel (Grauen-Gesicht) 2–4 Punkte danach kommt. Urteil: trägt knapp. Begründung: das Fenster zielt auf den Beginn der Wendung (Stille + erster Stern ist der Wechsel von Erleichterung zu Grauen), der Scheitel liegt innerhalb der Retention-Kurve vor der Auflösung (pour/knocks/answer2 = 15 %), und 79,8 % ist nahe dem Grenzwert. Ohne Zeitpuffer: bei jeder weiteren Verlängerung vor 67 s kippt es unter 80 %-Anfang nicht, bei Kürzung vor 67 s darüber. Lieber Wendung nicht später als 67,2 s legen.
+
+### Note: **8,5 / 10** (Regie)
+Beleg: alle Messregeln erfüllt (Ø 2,42 s, max 4,53 s, Phrasen 2–5, Schlussbild gepflanzt/wiederholt/umgedeutet, Höhepunkt-Start 79,8 %), alle P1 und fünf P2 behoben, Höhepunkt jetzt ohne Ton lesbar. Unter 9 bleibt: pipe 19,5 s (Verb „horcht am Rohr“ nicht lesbar, Pose kippt) und answer2 81,5–82,0 s (Sticker auf Helm, dreifache Wiederholung des Satzes), dazu P3 (below 0,9 s schwarz, note-Zettel, pour-Untertitel, Röhre ohne Motiv, dritte Lot 9 unsichtbar). Beide P2 beheben → Nachprüfung 4 Bilder → ≥ 9.
