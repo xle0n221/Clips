@@ -42,3 +42,31 @@ Stand 14.11.2026 · Regie-Kritiker · Grundlage: `scripts/bauarbeiter_shots.mts`
 
 ### Note: **8,0 / 10** (Regie)
 Beleg: Alle gemessenen Zahlenregeln erfüllt (Ø 2,42 s, max 4,53 s, Phrasen 2–5, Schlussbild gepflanzt → wiederholt → umgedeutet), starkes Cover, klare Farblogik amber/teal. Abzug, weil drei Stellen ohne Ton nicht lesen (turn 67–69,6 s, below 52,4 s, fear 60,5 s) – genau am Höhepunkt – und 9 Einzel-Lesbarkeitsmängel (Text auf Text, angeschnittene Schilder, unsichtbares Klopfen). Für ≥ 9: P1 1–3 und P2 4–8 beheben, dann Nachprüfung der Befund-Stellen (~20 Bilder) und Höhepunkt-Position im JSON auf 80/84 % korrigieren.
+
+## Design Runde 1 (Design-Kritiker, 14.11.2026)
+
+Grundlage: Kontaktabzug `out/bauarbeiter-kontakt.png` (41 Bilder), eigene Standbilder f6, f1575, f1665, f1845, f1935, f2060, f2115, f2475, f2500 (1080x1920, swangle), Pixelmessung. Kein Voll-Render.
+
+**Messwerte**
+- Mittlere Luminanz (0-255): Cover f6 47,0 · below f1575 31,3 / f1665 31,9 · fear f1845 24,9 · hope f1935 16,5 · turn f2060 11,2 (Sternenhimmel, Hintergrund im Untertitelfeld 2,4) · f2115 63,2 (Gesicht, ausgeblichen).
+- Untertitel gelb mit schwarzem Rand: in allen gemessenen Bildern 12.000-26.000 gelbe Pixel im Feld y 1380-1520, Unterkante ~1490 (innerhalb der Zone). Gelb gegen schwarze Kontur ca. 14 : 1 - bestanden, auch auf dem hellen Mund-Ring (f1575) und dem grünen Leuchten (f2115).
+- Oberer Sticker (grau, Fade): f1575 (52,5 s) Grau (80,86,85) auf Creme-Ring (114,108,81) nur 1,4 : 1.
+
+**Was gut ist**
+- Themen-Treue: Cover (Milo mit Helm, Rohr, Steine, "WHO KNOCKED BACK?") und Szenen 7,5-46 s (Bohrprotokoll, Zettel, Funkgerät, Maßband) verraten das Thema ohne Ton. Stil durchgängig 3D-Klotz, keine Marken-/Film-/Spielfiguren (Hartschalenhelm, Schnurrbart, Schnauzer-Gesicht sind eigenständig).
+- Cover 0,2 s: Titel 3 Zeilen gelb, groß, über Kopf/Helm, lesbar; Cover-Fenster ohne Blinzeln-Artefakt.
+- End-Card "KnowToon" im Suchfeld (f2500) vorhanden, Kontrast Schrift/Weiß hoch.
+
+**Befunde**
+- D1 (P2) below 52,5 s (f1575): Sticker "A SECOND SITE BELOW" blendet grau ein, genau über dem hellen Creme-Ring: 1,4 : 1, praktisch unlesbar. Vorschlag: Sticker erst nach Fade-in-Ende über hellem Grund zeigen, oder dunkle Platte/Rand wie `hud2d.plate`.
+- D2 (P2) fear 58,5-61,5 s (f1845): Bild fast leer (Schräge Balken + Fels, mittlere Lum. 24,9), keine Figur und kein Objekt; Sticker oben und Untertitel unten sagen denselben Satz "IS SOMEONE ABOVE HIM?" (Doppelung). Vorschlag: Milo/Lampe als Fixpunkt (Blick nach oben, Lichtkegel) oder Sticker weglassen/auf anderes Stichwort ("ABOVE").
+- D3 (P2) Sticker-Doppelung allgemein: Sticker wiederholt den Untertitel fast wörtlich in 8+ Szenen (hook 1,5 s, ritual, stakes, answer, radio, note, look, fear, hope, knocks). Auf dem Handy doppelter Text auf ca. 40 % der Fläche. Vorschlag: Sticker nur bei Schlüsselbegriffen (2:14, 6:00, BASE, LOT 9), sonst entfallen.
+- D4 (P3) hope 64,5 s (f1935) und turn 67,5-69,6 s (f2028-2088): Mittlere Lum. 16,5 bzw. 11,2; Figur (Milo, dunkel auf dunkel) bzw. winziger Lampenpunkt (ca. 80 px hoch bei f2060). Lesbar nur über die Sterne, kein Fokus. Vorschlag: Lampenpunkt in f2028-2058 mindestens 3x größer oder Kamera näher; Hope: Rim-Light auf Milo.
+- D5 (P3) turn 70,5-71,3 s (f2115): Gesicht im Zentrum ausgeblichen (reines Weiß unter dem Nasenklotz, Lampe überstrahlt Mund/Augen), Hut flach wie Regalbrett. Vorschlag: Lampenintensität -30 % im Nahbild, Hut mit Krempe/Wölbung wie bei Milo, damit "dasselbe Gesicht" erkennbar bleibt.
+- D6 (P3) Cover f6: "Lot 9 · 2:14 AM" liegt auf dem Helm/Lampenring (weiß auf Gold, mit Kontur lesbar, aber unruhig); "BACK?" überlappt Helm-Oberkante. Vorschlag: Untertext 60 px nach oben auf dunklen Grund oder Titel eine Zeile höher.
+- D7 (P3) Mehrere Bilder (hook, pipe, note, tape, answer) zeigen ein halbtransparentes "X" über Figur/Rohr unten (f6 y ~1600-1760, x 450-630) – wirkt wie Fehler-Overlay und kollidiert mit der Untertitel-Unterkante. Vorschlag: X als Teil der Bodenmarkierung klar flach auf den Boden legen oder weglassen.
+- D8 (P3) answer2 82,5 s (f2475): leere Suchleiste ohne Text, Tippen beginnt erst später, und Szene wirkt 2 s lang wie Leerlauf (Gesicht verschwindet vorher). Vorschlag: Tippen sofort beginnen lassen; die End-Card dauert insgesamt 2527 Bilder (84,2 s) – Dauer passt zu 62-90 s.
+- D9 (P3) Kontaktabzug note 37,5 s und answer 25,5 s: "STOP KNOCKING."-Zettel bei 40,5 s, Sticker "2:14" rot gegen dunkles Blau ~ 3 : 1 grob geschätzt, nicht gemessen. Vorschlag: bei der Umsetzung messen.
+
+**Note Design: 8,5 / 10**
+Beleg: Stil, Thema, Cover und End-Card erfüllen den Maßstab (Untertitel ca. 14 : 1, Cover 0,2 s sauber); Abzug für D1 (1,4 : 1 Sticker), die leere Fear-Szene mit Sticker-Doppelung (58,5-61,5 s), dunkle Szenen 64-69 s mit Mittel-Lum. 11-17 und überstrahltes Gesicht 70,5 s. 9 wird erreicht, wenn D1-D5 behoben und f1575, f1845, f2060, f2115 neu gemessen (Sticker >= 3 : 1, Mittel-Lum. >= 20 bei f2060) sind.
