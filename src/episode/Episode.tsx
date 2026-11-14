@@ -16,6 +16,7 @@ import { Captions } from "./overlays/Captions";
 import { Cover, coverClear, coverFrames } from "./overlays/Cover";
 import { EndCard } from "./overlays/EndCard";
 import { FilmLook } from "./overlays/FilmLook";
+import { OnScreenText } from "./overlays/OnScreenText";
 import { CutFlash, Grade, Sticker } from "./overlays/Effects";
 import { loadCaptionFont } from "./overlays/fonts";
 import { hudBottom } from "./overlays/Hud";
@@ -95,8 +96,8 @@ const withConfig = (t: Timeline, cfg: EpisodeConfig): Timeline => ({
     const key = "transition" as const;
     return { ...s, [key]: cfg.transitions?.[s.id] ?? s[key] };
   }),
-  // Text-Zähler zeichnet kit2d/TimelineHUD; das Zahlen-HUD bleibt aus
-  hud: cfg.hud2d ? undefined : t.hud,
+  // Text-Zähler zeichnet kit2d/TimelineHUD; das Zahlen-HUD bleibt aus (ebenso mit `noHud`)
+  hud: cfg.hud2d || cfg.noHud ? undefined : t.hud,
   // Pill-Ende je Szene auf einen Beat legen (optional, ohne Eintrag unverändert)
   cues: cfg.labelUntil
     ? t.cues.map((c) => (c.label && !c.untilBeat && cfg.labelUntil?.[c.scene] ? { ...c, untilBeat: cfg.labelUntil[c.scene] } : c))
@@ -197,6 +198,8 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
     ? Math.min(durationInFrames - 1, toF(timeline.scenes[timeline.scenes.length - 1].endMs))
     : Infinity;
   const emph = emphMap(timeline);
+  // Handlungs-Phrase je Szene (optional: timeline.onScreen oder Episoden-Zusatz)
+  const onScreen = timeline.onScreen ?? cfg?.onScreen;
   const base = `episodes/${episode}`;
 
   return (
@@ -301,11 +304,11 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
               duration={dur}
               tilt={i % 2 ? 3 : -3}
               top={
-                (timeline.hud
+                (cfg?.stickerTop ?? (timeline.hud
                   ? hudBottom(timeline.hud) + 30
                   : cfg?.hud2d
                     ? TIMELINE_HUD_BOTTOM + 30
-                    : 300) + shift
+                    : 300)) + shift
               }
             />
           </Sequence>
@@ -313,8 +316,21 @@ export const Episode: React.FC<Props> = ({ episode, timeline: rawTimeline, capti
       })}
 
       <EpisodeOverlays timeline={timeline} ends={ends} fps={fps} layer="above" />
+      {onScreen ? (
+        <OnScreenText
+          items={timeline.scenes
+            .map((s, i) => ({ text: onScreen[s.id] ?? "", from: Math.max(starts[i], coverClear(timeline.cover)), to: Math.min(ends[i], endCardFrom) }))
+            .filter((x) => x.text && x.to > x.from)}
+        />
+      ) : null}
       {frame >= coverFrames(timeline.cover) && frame < endCardFrom ? (
-        <Captions captions={captions} emph={emph.size ? emph : undefined} mode={timeline.captionMode} variant={timeline.captionStyle} />
+        <Captions
+          captions={captions}
+          emph={emph.size ? emph : undefined}
+          mode={timeline.captionMode}
+          variant={timeline.captionStyle}
+          phrases={timeline.phrases ?? cfg?.phrases}
+        />
       ) : null}
       <Grade />
       {timeline.cover ? <Cover cover={timeline.cover} art={cfg?.coverArt} /> : null}

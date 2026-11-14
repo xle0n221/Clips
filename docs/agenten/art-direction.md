@@ -22,6 +22,7 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 14.11.2026 · Bauarbeiter (Cinematic 3D, Horror) · Eigene Figur MILO (`scenes/bauarbeiterSets.tsx`): KLEINER Würfelkopf auf breitem Kastenrumpf liest sich klar anders als Zeit-Welt-Großkopf; Erkennung = gelber Helm + Stirnlampe + Schnurrbart-Klotz, der Doppelgänger nur über Lichtfarbe (Türkis statt Amber) – im Kontaktabzug ohne Ton sofort „gleicher Mann, andere Seite“. Falle: kniend + vorgebeugt + Kopf geneigt zeigt der Kamera nur die Helmkrone (Gesicht weg) → in Kniestellungen nod ≤ 0,2, lean ≤ 0,3. Schild/Uhr am Zaun lagen in vielen Einstellungen im oberen Text-Drittel → Schild nur in den Szenen, die es erzählen (`sign`-Prop). Beleg `out/bauarbeiter-kontakt.png`.
 - 13.11.2026 · Zeit-Welt (Cinematic 3D, KnowToon STEP 2) · Eigene Klotzfigur statt Marken-Optik: Kopf als abgerundeter Quader
   BREITER als der Rumpf (Spielzeug-Großkopf), runde Punktaugen mit Glanzpunkt, Fäustlinge, trapezförmiger Rumpf – kein Noppen-Kopf,
   keine C-Hände, kein Pixel-Gesicht. Erkennung: Ida = petrol Hemd + Senf-Schürze + Messing-Lupe am Stirnband; Anton = weiße Buschbrauen
