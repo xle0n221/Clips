@@ -11,6 +11,8 @@ Bewertet Drehbuch (und später Schnitt) danach, ob Zuschauer bis zum Ende bleibe
 - Begründung mit Referenzvideos (`referenz-analyse-2.md`)
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Sprechart-Pflicht: `voicePreset`, `narratorMood` und `delivery`-Verlauf gegen die Zuordnung in `clip-regeln.md` halten und in der Note nennen (Bauarbeiter, 14.11.2026).
+- Einzel-Einstellungen > 4 s auch bei Push-in teilen – der Prompt-Self-Check zählt Einstellungen, nicht Bewegung (Bauarbeiter, 14.11.2026).
 - Cliffhanger-Anker: jedes Schlüssel-Substantiv der letzten 10 s muss vorher **gesprochen** sein, ein Schild im Bild reicht nicht (Zeit-Welt, 13.11.2026).
 - Spannungsteil gegen Prompt-Rhythmus halten: keine lauten Emotionen (excited/indignant) zwischen Setup und Twist (Zeit-Welt, 13.11.2026).
 - Erst die ersten 3 s, dann den Schluss (Loop), dann die Mitte prüfen.
@@ -19,6 +21,7 @@ Bewertet Drehbuch (und später Schnitt) danach, ob Zuschauer bis zum Ende bleibe
 - Von Stimme: Länge in Skriptwörtern bewerten – die Messung in `stimme-casting.md` (Methode) zählt Skriptwörter; das löst die offene Frage aus dem Rom-Review („Skript- oder Sprechwörter?“) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 14.11.2026 · Bauarbeiter v1 → v1.2 (Horror, 184 W ≈ 73 s) · Note 8 → 9: Hook ohne Ton (Kiesel springen, Cover), Re-Hook 44 % mit konkreter Frage (Zettel), Twist 68 %, Loop below↔above. Befund: `rehook` 4,2 s in einer Einstellung (Self-Check „kein Shot > 4 s“) → 2 Einstellungen; Sprechart geprüft (spannend + angespannt-flüsternd + tense→dramatic→calm) = passt. Offenes erstes Klopfen bewusst gelassen, weil der Stapel es trägt. Experiment Twist-Satz hörbar vorbereiten (Lehre Zeit-Welt): „that Milo hears knocking from above“ steht vor dem Schluss → 1 von 1 Schlusszeile ohne Erklärung verständlich · `docs/paket-bauarbeiter.md` „Prüfung (14.11.2026)“.
 - 13.11.2026 · Publish-Text Zeit-Welt (Fiktion) · 9 in Runde 1: Titel = Hook-Satz (Einlösung ≈ 2 s), Caption endet mit der Kommentar-Frage des Videos; nur Nachweis-Klammer ergänzt (NASA-Credit), Hook unverändert. Lehre: bei Fiktion den Fiktions-Hinweis ans Ende der Caption, nicht vorn – Hook bleibt die erste Zeile · `out/publish-in-dieser-welt-zahlen-die-menschen-mit-i.json`.
 - 13.11.2026 · Publish-Text Jason GTA 6 · 8 → 9: Titel „Who is Jason from GTA 6? …“ (Frage ohne Einsatz vorn) → Kontrast-Hook gespiegelt „From the Army to working for drug runners: Jason, GTA 6“ (55 Z.); Caption ebenso. Experiment Titel = Hook (3. Anwendung): Einlösung ≈ 3 s (Kontrast komplett) · `out/publish-wer-ist-eigentlich-jason-aus-gta-6.json`.
 - 13.11.2026 · Zeit-Welt v1 → v1.1 (KnowToon-Prompt, 116 s) · Note 8 → 9: Hook ohne Ton trägt (Preisschild + Cover), Szenen ≤ 7,2 s, Twist-Kette klar. Befunde: Cliffhanger „The Glass Office.“ war im Ton nie vorbereitet (nur Schild) → `empty`: „Every kid knows: the Glass Office comes. And you disappear.“ (+4 W) macht „verschwinden“ zur Drohung, die das Klopfen einlöst; Spannungsszenen `tower`/`rent` standen auf excited/indignant (lauter) gegen „tension slower and quieter“ → serious/tense; End-Card-Prompt hatte verkürzten Stilblock. Experiment Cliffhanger-Anker: jedes Substantiv der letzten 10 s im Sprechtext davor suchen – 1 von 3 (Glass Office, Grandpa, jar) fehlte im Ton. Re-Hook 45 % bleibt späteste Stelle bisher, getragen von 3 Einsatz-Stufen · `docs/paket-zeit-welt.md` „Faktenprüfung (13.11.2026)“.
@@ -58,3 +61,4 @@ Rest: Mitte (`streets`, `detention`) kurz und mit Bildwechsel okay; `ear` als `n
 | 13.11.2026 | Lucia GTA 6 v2 → v2.1 (Drehbuch) | 8 → 9 (Retention-Kritiker) | v1-Befunde umgesetzt, Mittel-Wende `first`; Hook-Pointe per Umstellung von ~4 s auf ~1,3 s |
 | 13.11.2026 | Jason GTA 6 v1 → v1.1 (Drehbuch) | 9 (Retention-Kritiker) | Kontrast-Hook + Cover, Re-Hook 34 %, Loop nahtlos; Wiederholung „drug runner“ per „Even“ zur Steigerung |
 | 13.11.2026 | Zeit-Welt v1 → v1.1 (Paket + Drehbuch) | 8 → 9 (Retention-Kritiker) | Glass Office im Ton vorbereitet, Spannung leiser, Stilblock End-Card; Re-Hook 45 % |
+| 14.11.2026 | Bauarbeiter v1 → v1.2 (Paket + Drehbuch) | 8 → 9 (Retention-Kritiker) | Hook/Re-Hook/Twist/Loop stark, Sprechart passt; rehook-Einstellung > 4 s geteilt |

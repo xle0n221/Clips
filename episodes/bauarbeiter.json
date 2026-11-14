@@ -4,7 +4,7 @@
   "engine": "chatterbox",
   "voice": "am_michael",
   "voicePreset": "spannend",
-  "speed": 1.08,
+  "speed": 1.05,
   "pauseMs": 350,
   "sceneGapMs": 250,
   "lengthSec": 73,
@@ -183,7 +183,7 @@
     ],
     "bars": []
   },
-  "note": "v1 (14.11.2026, Drehbuch). Paket: docs/paket-bauarbeiter.md. 184 Skriptwörter (ohne * und |), 16 Szenen à 5–16 W, alle Sätze ≤ 12 W mit genau einem Akzent, 0 fehlende Cue-Wörter (Skript-Prüfung). Plan 2,6 W/s → ≈ 71 s Sprache + 0,5 s Cover + 2 s End-Card ≈ 73 s (Spanne 2,5–2,75 W/s: 69–76 s). Re-Hook-Szene ab Wort 80/184 = 43 % ('Something tugs' schon bei 37 %). Kette: Boden klopft 3× → Milo allein → Guss um 6 (nichts kommt mehr raus) → Rohr nicht im Plan → antwortet → Basis: unten nur Fels → Maßband 40 m, Ruck → Zettel → eigene Handschrift → Licht schaut hoch → zweiter Milo (Twist) → gespiegelte Baustelle, hört Klopfen von oben → beide gießen → Funk klopft nur → Beton versiegelt → drei Klopfer → von oben (Loop zum Hook 'From below'). Wird es > 80 s: zuerst 'with his wrench' und 'Down the pipe,' kürzen. v1.1 (14.11.2026, Sprechart-Pflicht): voicePreset spannend, delivery serious/calm/tense/dramatic/calm je Abschnitt.",
+  "note": "v1 (14.11.2026, Drehbuch). Paket: docs/paket-bauarbeiter.md. 184 Skriptwörter (ohne * und |), 16 Szenen à 5–16 W, alle Sätze ≤ 12 W mit genau einem Akzent, 0 fehlende Cue-Wörter (Skript-Prüfung). Plan 2,6 W/s → ≈ 71 s Sprache + 0,5 s Cover + 2 s End-Card ≈ 73 s (Spanne 2,5–2,75 W/s: 69–76 s). Re-Hook-Szene ab Wort 80/184 = 43 % ('Something tugs' schon bei 37 %). Kette: Boden klopft 3× → Milo allein → Guss um 6 (nichts kommt mehr raus) → Rohr nicht im Plan → antwortet → Basis: unten nur Fels → Maßband 40 m, Ruck → Zettel → eigene Handschrift → Licht schaut hoch → zweiter Milo (Twist) → gespiegelte Baustelle, hört Klopfen von oben → beide gießen → Funk klopft nur → Beton versiegelt → drei Klopfer → von oben (Loop zum Hook 'From below'). Wird es > 80 s: zuerst 'with his wrench' und 'Down the pipe,' kürzen. v1.1 (14.11.2026, Sprechart-Pflicht): voicePreset spannend, delivery serious/calm/tense/dramatic/calm je Abschnitt. v1.2 (14.11.2026, Prüfung Fakten/Retention): speed 1,08 → 1,05 (NARRATOR.max_speed in scripts/voice_fx.py ist 1,05, 1,08 wurde ohnehin gekappt); rehook in 2 Einstellungen (≤ 4 s); echtes Bohrkern-Foto ohne Lot-9-Beschriftung, mit Quellenzeile.",
   "scenes": [
     {
       "id": "hook",
@@ -371,7 +371,7 @@
         "gain_db": -2.5
       },
       "text": "He calls *base*. | \"Anyone working *below* Lot Nine?\" | \"Below is solid *rock*, Milo.\"",
-      "visual": "Detail: Funkgerät mit Aufkleber 'BASE', LED blinkt im Takt der Stimme (Stimme von ROSA = nur Funkgerät, keine Figur im Bild). ECHTES FOTO (Platzhalter B2, gemeinfrei USGS, Suchbegriff usgs.gov 'rock core samples' / 'drill core'): echte Gesteins-Bohrkerne auf MILOs Tablet als 'BORE LOG LOT 9', Ken-Burns. Auf 'rock' Schnitt: MILO blickt von oben ins Rohr, das Funkgerät rauscht.",
+      "visual": "Detail: Funkgerät mit Aufkleber 'BASE', LED blinkt im Takt der Stimme (Stimme von ROSA = nur Funkgerät, keine Figur im Bild). ECHTES FOTO (Platzhalter B2, gemeinfrei USGS, Suchbegriff usgs.gov 'rock core samples' / 'drill core'): echte Gesteins-Bohrkerne auf MILOs Tablet mit Kopfzeile 'BORE LOG' und kleiner Quellenzeile 'Foto: USGS (Beispielbild)' – echtes Foto nicht als echtes 'Lot 9' ausgeben; Ken-Burns. Auf 'rock' Schnitt: MILO blickt von oben ins Rohr, das Funkgerät rauscht.",
       "sources": [
         "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung.",
         "Echtes Foto B2: Platzhalter, Datei + Lizenz noch nicht geprüft. Gezeigt nur als 'Bohrkern-Beispiel' im Tablet – keine Aussage über echten Untergrund."
@@ -445,7 +445,7 @@
         "gain_db": -2.5
       },
       "text": "He *reels* it back up. | Tied to the end… | a *note*.",
-      "visual": "Sehr langsamer Push-in, ECU: das Maßband kommt Stück für Stück aus dem Rohr, nass, mit Kreidestaub; am Ende ein gefalteter Zettel, mit Draht festgebunden. Klopfen im Bett hört auf, Musik-Filter zu (1 Takt).",
+      "visual": "Einstellung 1 (≈ 2,4 s), sehr langsamer Push-in, ECU: das Maßband kommt Stück für Stück aus dem Rohr, nass, mit Kreidestaub. Einstellung 2 ab 'Tied' (≈ 1,8 s), Insert/Close-up: am Ende ein gefalteter Zettel, mit Draht festgebunden, MILOs Klotzhand greift danach. Klopfen im Bett hört auf, Musik-Filter zu (1 Takt). (Zwei Einstellungen: KnowToon-Self-Check 'kein Shot > 4 s unverändert'.)",
       "sources": [
         "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
       ],
