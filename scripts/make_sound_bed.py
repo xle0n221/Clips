@@ -16,6 +16,7 @@ Aufruf (earshot-venv hat numpy + soundfile):
   tickLouder:  [{"scene": "rehook", "db": 8}]          # Ticken lauter (Re-Hook)
   tickOff:     [{"scene": "unpaid"}]                    # Ticken aus (Zeit ohne Preis)
   silence:     [{"scene": "painted", "word": "painted", "ms": 500}]  # Bett 0,5 s still vor dem Twist-Akzent
+  knocks:      [{"scene": "pipe", "word": "three", "count": 3, "gapsMs": [220, 600], "sound": "knock/desk", "db": -11, "muffle": true}]
   tailMs:      2000                                     # End-Card: Bett blendet aus
 """
 from __future__ import annotations
@@ -157,6 +158,23 @@ def main(path: Path) -> None:
                 x = render(sid, tmp)
                 place(bed, x, w, db(tw.get("db", -14)))
 
+        # 5b) Story-Klopfer: `count` Schläge ab dem Wort (+ offsetMs), Abstände `gapsMs` (Liste) oder gleichmäßig `gapMs`;
+        #     "muffle": true = gedämpft (grober Tiefpass, z. B. aus dem Rohr)
+        knocks = []
+        for kn in cfg.get("knocks", []):
+            w = word_s(kn["scene"], kn["word"]) + kn.get("offsetMs", 0) / 1000
+            x = render(kn["sound"], tmp)
+            if kn.get("muffle") or "Tiefpass" in kn.get("note", ""):
+                x = np.convolve(x, np.ones(24) / 24, mode="same").astype(np.float32)
+                x *= (np.max(np.abs(render(kn["sound"], tmp))) / (np.max(np.abs(x)) + 1e-9))
+            gaps = kn.get("gapsMs") or [kn.get("gapMs", 300)] * (kn.get("count", 3) - 1)
+            t = w
+            for i in range(kn.get("count", 3)):
+                place(bed, x, t, db(kn.get("db", -12)))
+                if i < len(gaps):
+                    t += gaps[i] / 1000
+            knocks.append((kn["scene"], kn["word"], round(w, 3)))
+
         # 6) End-Card: Bett blendet in den letzten tailMs aus
         tail = cfg.get("tailMs", 0)
         if tail:
@@ -169,7 +187,7 @@ def main(path: Path) -> None:
         if pk > db(-1):
             bed *= db(-1) / pk
         sf.write(str(out_dir / "bed.wav"), bed, SR, subtype="PCM_16")
-    print(f"bed.wav: {total_ms / 1000:.2f} s, {len(hits)} Basstreffer {hits}, Spitze {20 * np.log10(max(pk, 1e-9)):.1f} dBFS")
+    print(f"bed.wav: {total_ms / 1000:.2f} s, {len(hits)} Basstreffer {hits}, {len(knocks)} Klopf-Folgen, Spitze {20 * np.log10(max(pk, 1e-9)):.1f} dBFS")
 
 
 if __name__ == "__main__":
