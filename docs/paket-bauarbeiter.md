@@ -155,7 +155,9 @@ Zeiten geplant mit **2,6 W/s** inkl. Pausen (STEP 4b: 2,5–2,75 W/s) + 0,6 s St
 
 **Thumbnail:** Bild bei 0:00 (erste 0,5 s) wählen – Cover „WHO KNOCKED BACK?“ mit Rohr und Helm.
 
-## Echte Bilder und Videos (Platzhalter, Nachweise offen → `docs/bildnachweise-bauarbeiter.md`)
+## Echte Bilder und Videos – GESTRICHEN (Nutzer 14.11.2026: „Lass es mit den echten Bildern. Das frisst Zeit“)
+B1 → gezeichneter Lageplan an der Pinnwand, B2 → Cartoon-Gesteinsschnitt „BORE LOG“, V1 → eigene 3D-Betonmischer. Tabelle unten nur als Verlauf.
+
 | Nr. | Szene | Einsatz | Suchbegriff / Quelle (gemeinfrei, US-Behörde) | Status |
 | --- | --- | --- | --- | --- |
 | B1 | ritual | echtes Baustellen-Foto an der Pinnwand im Bauwagen | images.nasa.gov „construction site“ / „excavation“ | offen |

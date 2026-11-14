@@ -94,7 +94,10 @@ Themen-Treue: Milo trägt einen orangen Anzug mit Antenne statt eines erkennbare
 - Unverändert für jeden Stil: Themen-Treue (Standbild ohne Ton verrät das Thema), unteres Drittel frei für Untertitel,
   Schnitt auf Beats, Qualitäts-Tor Note ≥ 9.
 
-## Echte Bilder und Videos – Pflicht in jedem Clip (Vorgabe des Nutzers 13.11.2026: „Allgemein in jedem Clip wenn möglich echte Bilder und Videos passend miteinblenden, wenn es möglich ist urheberrechtlich … ab jetzt in jedem Clip“)
+## Echte Bilder und Videos – AUFGEHOBEN (Nutzer 14.11.2026: „Lass es mit den echten Bildern. Das frisst Zeit“)
+- **Ab 14.11.2026 keine echten Fotos/Videos mehr suchen oder einbauen** – kein Recherche-, Lizenz- oder Einbauaufwand; Szenen zeigen alles gezeichnet/3D. Die folgende alte Regel gilt nicht mehr und bleibt nur als Verlauf stehen.
+
+### (alt) Pflicht in jedem Clip (Vorgabe des Nutzers 13.11.2026: „Allgemein in jedem Clip wenn möglich echte Bilder und Videos passend miteinblenden, wenn es möglich ist urheberrechtlich … ab jetzt in jedem Clip“)
 - **Jeder Clip** blendet passende echte Fotos **und** Videoclips ein, sofern frei lizenziert oder gemeinfrei. Recherche sucht sie mit (Liste in `docs/bildnachweise-<thema>.md`), Szenen bauen sie ein (z. B. als Foto-Rahmen, Hintergrund, Polaroid, Ken-Burns-Fahrt), Regie-Kritik prüft es. Gibt es nichts Passendes mit freier Lizenz, das in der Freigabe begründen.
 - Videoquellen: Wikimedia Commons (WebM/OGV, Lizenz je Datei), NASA/NOAA/NPS-Videos (gemeinfrei). Nur Ausschnitte, die zum Gesagten passen.
 - **Erlaubt und erwünscht:** echte Fotos/Videos mit freier Lizenz oder gemeinfrei – Wikimedia Commons (CC0, CC BY, CC BY-SA, Public Domain),

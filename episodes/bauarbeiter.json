@@ -21,7 +21,7 @@
     "cta": "Follow before the next knock.",
     "seconds": 2
   },
-  "sources": "Fiktion (eigene Geschichte, eigene Baustelle 'Lot 9', eigene Figuren Milo/Rosa). Keine Tatsachenbehauptung über echte Baustellen, Untergrund oder Geräusche; Zahlen (2:14, 40 m, 6:00) sind erfunden und nur Requisiten. Echte Bilder/Videos: Platzhalter B1, B2, V1 (gemeinfreie US-Behördenquellen gesucht), Nachweise offen → docs/bildnachweise-bauarbeiter.md.",
+  "sources": "Fiktion (eigene Geschichte, eigene Baustelle 'Lot 9', eigene Figuren Milo/Rosa). Keine Tatsachenbehauptung über echte Baustellen, Untergrund oder Geräusche; Zahlen (2:14, 40 m, 6:00) sind erfunden und nur Requisiten. Keine echten Bilder/Videos (Nutzer 14.11.2026).",
   "pointe": "Who knocked back? Milo himself, from a site below – and when the concrete seals the pipe, the lucky three knocks on his hard hat come from above: now he's the one below.",
   "originality": "Eigene Geschichte, kein Nacherzählen: kein Monster, keine Kreatur, keine Figur aus Horrorfilmen, -spielen oder Creepypastas. Generische Motive (Klopfen aus dem Boden, Doppelgänger) neu verknüpft: gestapelte, gespiegelte Baustellen, verbunden durch ein Rohr, das nicht im Plan steht; Pointe = Milo wird selbst zum 'Unten'. Klotzfiguren eigenes Design (breite Schultern, kleiner Kopf, Schnurrbart-Klotz), keine Spielzeugmarke, keine Firmenlogos auf Lkw/Helmen.",
   "music": {
@@ -237,7 +237,7 @@
     ],
     "bars": []
   },
-  "note": "v2 (14.11.2026, Erweiterung 'Continuous Improvement', docs/prompts/knowtoon-erweiterung-verbesserung.md). 187 Skriptwörter, 17 Szenen, 33 Einstellungen (Ø 2,27 s, −47 % ggü. zeit-welt 4,3 s), längste Einstellung 5,2 s = einziger Halt am Höhepunkt. Kette: Boden klopft zurück in Milos Rhythmus → Ritual 3× Helm (Schlussbild gepflanzt) → allein, Guss um 6 → Rohr nicht im Plan → kopiert Rhythmus → Basis: nur Fels → Maßband 40 m, Ruck → Zettel in eigener Schrift (Re-Hook 42 %) → Stirnlampe schaut hoch → zweiter Milo, klopft 3× Helm (Wiederholung) → zweite Baustelle unten → ist jemand über ihm? (Einsatz 66 %) → Sterne, er ist oben (Hoffnung 72 %) → Sterne sind Stirnlampen (Wendung 77 %, Halt, Stille davor) → Beton versiegelt Rohr → 3 Klopfer auf den Helm von oben → 'The knocker was always Milo. Now he's the one below.' Skript-Prüfung: Sätze ≤ 12 W, 1 Akzent je Satz, Cue-Wörter vorhanden, captions 2–5 W (Ausnahme 'For luck.' = 2), onScreen ≤ 5 W, why ≤ 8 W: 0 Verstöße. Vorher v1 (184 W, 16 Szenen, Doppelpour-Ende). v2.1 (14.11.2026, Prüfung v2): Ritual als hör- und lesbares Muster 'Two quick, one slow' (+4 W → 191 W, ≈ 76,5 s), damit 'secret rhythm' im Hook eingelöst wird; knocks gapsMs [220,600]; turn-Halt endet auf EINEM lesbaren 'Stern' (Rohr + kopfüber Helm + Stirnlampe); Bohrkern-Foto ohne Lot-9-Beschriftung; speed 1,05 (= NARRATOR.max_speed).",
+  "note": "v2 (14.11.2026, Erweiterung 'Continuous Improvement', docs/prompts/knowtoon-erweiterung-verbesserung.md). 187 Skriptwörter, 17 Szenen, 33 Einstellungen (Ø 2,27 s, −47 % ggü. zeit-welt 4,3 s), längste Einstellung 5,2 s = einziger Halt am Höhepunkt. Kette: Boden klopft zurück in Milos Rhythmus → Ritual 3× Helm (Schlussbild gepflanzt) → allein, Guss um 6 → Rohr nicht im Plan → kopiert Rhythmus → Basis: nur Fels → Maßband 40 m, Ruck → Zettel in eigener Schrift (Re-Hook 42 %) → Stirnlampe schaut hoch → zweiter Milo, klopft 3× Helm (Wiederholung) → zweite Baustelle unten → ist jemand über ihm? (Einsatz 66 %) → Sterne, er ist oben (Hoffnung 72 %) → Sterne sind Stirnlampen (Wendung 77 %, Halt, Stille davor) → Beton versiegelt Rohr → 3 Klopfer auf den Helm von oben → 'The knocker was always Milo. Now he's the one below.' Skript-Prüfung: Sätze ≤ 12 W, 1 Akzent je Satz, Cue-Wörter vorhanden, captions 2–5 W (Ausnahme 'For luck.' = 2), onScreen ≤ 5 W, why ≤ 8 W: 0 Verstöße. Vorher v1 (184 W, 16 Szenen, Doppelpour-Ende). v2.1 (14.11.2026, Prüfung v2): Ritual als hör- und lesbares Muster 'Two quick, one slow' (+4 W → 191 W, ≈ 76,5 s), damit 'secret rhythm' im Hook eingelöst wird; knocks gapsMs [220,600]; turn-Halt endet auf EINEM lesbaren 'Stern' (Rohr + kopfüber Helm + Stirnlampe); Bohrkern-Foto ohne Lot-9-Beschriftung. v2.2 (14.11.2026): echte Bilder/Videos gestrichen (Nutzer) – Lageplan, Cartoon-Gesteinsschnitt, eigene Mischer; speed 1,05 (= NARRATOR.max_speed).",
   "scenes": [
     {
       "id": "hook",
@@ -318,11 +318,11 @@
       "text": "Every shift, Milo knocks his hard hat three times. | Two quick, one *slow*. | For *luck*.",
       "onScreen": "MILO'S LUCKY THREE KNOCKS",
       "why": "because: the rhythm is his secret",
-      "visual": "SHOT 1 (medium, warm amber): flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles in a clear pattern – tap, tap, … TAP (two quick, one slow; small pause before the slow third tap), a little smile; real public-domain construction-site photo (B1) pinned on the trailer corkboard behind him / SHOT 2 (detail): his knuckles on the hard hat, third tap, dust puffs off the brim (PLANTED FINAL IMAGE: three knocks on the hard hat)",
+      "visual": "SHOT 1 (medium, warm amber): flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles in a clear pattern – tap, tap, … TAP (two quick, one slow; small pause before the slow third tap), a little smile; a hand-drawn site plan of Lot 9 pinned on the trailer corkboard behind him / SHOT 2 (detail): his knuckles on the hard hat, third tap, dust puffs off the brim (PLANTED FINAL IMAGE: three knocks on the hard hat)",
       "shots": [
         {
           "type": "medium, warm amber",
-          "desc": "flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles in a clear pattern – tap, tap, … TAP (two quick, one slow; small pause before the slow third tap), a little smile; real public-domain construction-site photo (B1) pinned on the trailer corkboard behind him",
+          "desc": "flashback-free routine at the site trailer door: MILO taps his yellow hard hat three times with his knuckles in a clear pattern – tap, tap, … TAP (two quick, one slow; small pause before the slow third tap), a little smile; a hand-drawn site plan of Lot 9 pinned on the trailer corkboard behind him",
           "t": [
             5.1,
             8.0
@@ -338,8 +338,7 @@
         }
       ],
       "sources": [
-        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung.",
-        "Echtes Foto B1: Platzhalter, Datei + Lizenz offen (images.nasa.gov 'construction site' / 'excavation')."
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
       ],
       "cues": [
         {
@@ -562,7 +561,7 @@
       "text": "He calls *base*. | \"Below Lot Nine is solid *rock*, Milo.\"",
       "onScreen": "BASE: ONLY ROCK BELOW",
       "why": "but: it answers, so he asks",
-      "visual": "SHOT 1 (detail): walkie-talkie with a 'BASE' sticker, LED blinking with the voice (ROSA is only a radio voice) / SHOT 2 (insert): on MILO's tablet a real public-domain photo of rock drill cores under a header 'BORE LOG' with a small credit line 'Photo: USGS (example)' (B2; the real photo is never labeled as the fictional Lot 9), Ken Burns",
+      "visual": "SHOT 1 (detail): walkie-talkie with a 'BASE' sticker, LED blinking with the voice (ROSA is only a radio voice) / SHOT 2 (insert): on MILO's tablet a cartoon cross-section of grey rock layers under a header 'BORE LOG', solid all the way down, Ken Burns",
       "shots": [
         {
           "type": "detail",
@@ -574,7 +573,7 @@
         },
         {
           "type": "insert",
-          "desc": "on MILO's tablet a real public-domain photo of rock drill cores under a header 'BORE LOG' with a small credit line 'Photo: USGS (example)' (B2; the real photo is never labeled as the fictional Lot 9), Ken Burns",
+          "desc": "on MILO's tablet a cartoon cross-section of grey rock layers under a header 'BORE LOG', solid all the way down, Ken Burns",
           "t": [
             27.0,
             28.9
@@ -582,8 +581,7 @@
         }
       ],
       "sources": [
-        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung.",
-        "Echtes Foto B2: Platzhalter, Lizenz offen (usgs.gov 'rock core samples'); nur Beispielbild, keine Aussage über echten Untergrund."
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
       ],
       "cues": [
         {
@@ -593,7 +591,7 @@
         },
         {
           "word": "rock",
-          "beat": "tabletRealRockCore"
+          "beat": "tabletRockLayers"
         }
       ],
       "captions": [
@@ -1085,11 +1083,11 @@
       "text": "At six, the trucks *pour*. | Concrete seals the *pipe*.",
       "onScreen": "CONCRETE SEALS THE PIPE",
       "why": "so: six o'clock, the pipe seals",
-      "visual": "SHOT 1 (real footage → match cut): real public-domain concrete pour (V1, 2 s, night graded) → original blocky mixer trucks at the pit edge, first blue of dawn / SHOT 2 (slow-motion detail): grey concrete flowing over the pipe opening, the teal glow going out",
+      "visual": "SHOT 1 (wide): original blocky mixer trucks at the pit edge, first blue of dawn / SHOT 2 (slow-motion detail): grey concrete flowing over the pipe opening, the teal glow going out",
       "shots": [
         {
-          "type": "real footage → match cut",
-          "desc": "real public-domain concrete pour (V1, 2 s, night graded) → original blocky mixer trucks at the pit edge, first blue of dawn",
+          "type": "wide",
+          "desc": "original blocky mixer trucks at the pit edge, first blue of dawn",
           "t": [
             64.5,
             66.3
@@ -1105,13 +1103,12 @@
         }
       ],
       "sources": [
-        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung.",
-        "Echtes Video V1: Platzhalter, Lizenz offen (images.nasa.gov 'concrete pour')."
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
       ],
       "cues": [
         {
           "word": "pour",
-          "beat": "realConcretePourThenTrucks",
+          "beat": "concretePourTrucks",
           "sfx": "whoosh",
           "hud": {
             "id": "pour",
