@@ -112,3 +112,6 @@ Prüfbilder: `RomeKitTest` Bilder 7–133 (je Einstellung eins), vorher/nachher 
 | `TimelineStele` | Standardjahre 117 AD/285 AD nicht freigegeben | Standard `ROME_YEARS` = 27 BC, 193, 395, 410, 455, 476, 1453 AD. **Behoben** |
 | design-system.md §6 | Querbusch „nach Vegetius“ – laut Faktencheck nicht belegt | Als reine Stil-Entscheidung markiert, nicht im Sprechtext behaupten. **Behoben** |
 | Offen | `fall`-Totale: Ruine (`ruin`) im Dunst schwach lesbar; Stele-Kappe in Einst. 7 angeschnitten (nur Prüfkamera); Wirkung von memo/`far` im echten Render messen | **Offen** – Regie/Szenen-Agent |
+
+## 14.11.2026 · „In This City, You Pay With Time“ (erstes KnowToon-Video) – Nutzer: „Das Video ist sehr gut“
+Was dieses Video ausmacht (beibehalten für künftige KnowToon-Videos): Video-Paket-Prompt des Nutzers (docs/prompts/knowtoon-videopaket.md) als Grundlage; eigene 3D-Klotzfiguren mit einem Schlüsselobjekt (Sand-Glas) und einer Farblogik (Gold nur als Sand); Stimme Michael, ruhig-unheimliche Grundlaune, 2,64 W/s; gelbe Wort-für-Wort-Untertitel; Basstreffer vor Enthüllungen + Glas-Akzent beim Twist; Ø 2,3 s je Einstellung; echte NASA-Aufnahmen eingebunden; End-Card „KnowToon“. Jede Prüfrolle ≥ 9 nach je einer Nacharbeitsrunde. Technik: Render in Abschnitten (scripts/render_chunks.sh) wegen Container-Neustarts.
