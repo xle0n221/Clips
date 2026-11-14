@@ -1,0 +1,55 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "At 2:14 AM, the Ground Under Lot 9 Knocked Back",
+      "description": "An original animated horror short. Night-shift worker Milo knocks on his hard hat for luck: two quick, one slow. Tonight, something under the construction site answers in the same rhythm. Who is knocking? Watch to the last knock.\n\nThis story is fiction. All characters and places are invented.",
+      "hashtags": [
+        "#KnowToon",
+        "#HorrorStory",
+        "#Animation",
+        "#ShortStory",
+        "#NightShift"
+      ]
+    },
+    "tiktok": {
+      "caption": "2:14 AM. The ground under Lot 9 knocked back, in Milo's secret rhythm. Who's knocking? Watch to the last knock. (Fiction.)",
+      "hashtags": [
+        "#KnowToon",
+        "#HorrorStory",
+        "#Animation",
+        "#ShortStory",
+        "#NightShift"
+      ]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „WHO KNOCKED BACK?“ mit Rohr und Helm.",
+    "note": "Hashtags aus docs/paket-bauarbeiter.md §7 (Reichweite unbelegt [HYPOTHESE]; hashtags/current hat nur Wissens-/Weltraum-Kombis). Vor dem Posten in Creator Search Insights / YouTube-Suche gegenprüfen. Keine Realaussagen, reine Fiktion.",
+    "upload": {
+      "status": "plan",
+      "type": "Story",
+      "lengthSec": null,
+      "tiktok": {
+        "date": "16.11.2026",
+        "timeDe": "22:00",
+        "slot": "B",
+        "local": {
+          "newYork": "16:00",
+          "losAngeles": "13:00",
+          "london": "21:00"
+        },
+        "calc": "22:00 Berlin (UTC+1) = 21:00 UTC → New York UTC-5 = 16:00 · Los Angeles UTC-8 = 13:00 · London UTC+0 = 21:00"
+      },
+      "youtube": {
+        "date": "16.11.2026",
+        "timeDe": "23:00",
+        "slot": "B",
+        "local": {
+          "newYork": "17:00",
+          "losAngeles": "14:00",
+          "london": "22:00"
+        },
+        "calc": "23:00 Berlin (UTC+1) = 22:00 UTC → New York UTC-5 = 17:00 · Los Angeles UTC-8 = 14:00 · London UTC+0 = 22:00"
+      },
+      "dstNote": "USA und Europa stehen beide auf Winterzeit (EU/UK seit 25.10.2026, USA seit 01.11.2026, laut tzdata 2026e) – keine Abweichung. Nächste Abweichung 14.03.–27.03.2027."
+    }
+  }
+}
