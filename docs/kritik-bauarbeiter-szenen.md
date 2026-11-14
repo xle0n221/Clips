@@ -125,3 +125,26 @@ Endstand (Commit 5318cd7) selbst nachgerendert: f6, f1215, f1575, f1845, f1935, 
 
 **Note Design: 9,0 / 10**
 Beleg: Sticker 1,4 → ca. 15 : 1 (f1575), Dunkelstellen 20,3-33,7 (vorher 11,2-24,9, Ziel >= 20 erreicht), Gesicht 70,5 s ohne Überstrahlung, Cover und End-Card sauber, Untertitel ca. 14 : 1, keine wörtliche Sticker-Doppelung in den geprüften Bildern. Kein Aufschlag über 9, weil fear (20,3) knapp an der Grenze liegt, die Uhr (D9) nicht selbst gemessen wurde und die Zettel-Linien lesbarkeitsmindernd sind.
+
+## Regie Runde 3
+Stand 14.11.2026 · Regie-Kritiker · Grundlage: 11 Einzelbilder `out/bauarbeiter-r3/` (20:17–20:20, neuer als Runde-2-Stand, vor Commit 20:21), Messskript neu gelaufen. Kein Voll-Render. Nicht gesehen: 80,5 s und pour 73,5 s (nicht in r3).
+
+### Messung
+34 Shots, Ø 2,42 s, max 4,53 s (turn-Halt), min 1,03 s; 55 Phrasen, alle 2–5 Wörter, 191/191. Unverändert erfüllt.
+
+### Nachprüfung
+| Nr. | Befund | Stand R3 |
+| --- | --- | --- |
+| P2-1 pipe 19,5 s | **erledigt.** 18,0 s: Wange am roten Rohr, Augen zu, Kopf ca. 25° geneigt, Kiesel springen; 19,5 s: Augen offen, Kopf am Rohr. Verb „horcht am Rohr“ ohne Ton lesbar. |
+| P2-2 answer2 81,5–82,0 s | **erledigt.** Sticker weg, Helm + Lampe frei, Hand am Helm (Klopf-Geste); Platte „THE STACK NEVER ENDS“ + Untertitel „NOW HE'S THE ONE BELOW“ sagen nicht mehr dasselbe. 79,5 s: Gesicht komplett im Bild, Untertitel auf Brust, nicht auf Gesicht. |
+| P3 below 52,4–53,3 s | gebessert: schwarze Scheibe nur noch bis ca. 53,1 s (≈ 0,7 s, tolerierbar), 53,2 s zeigt Teal-Milo + rotes Rohr. |
+| P3 note 37,5 s | Zettel jetzt mit Schrift; ECU schneidet „STOP“ oben ab, „KNOCKING.“ voll lesbar, 40,5 s sauber (kein Fleck, kein X). P3: erste Zeile ab 37,5 s nicht komplett lesbar, Kamera 0,3 s später oder tiefer. |
+| P3 fear 61,5 s | Helm/Objekt unten + Lichtkegel, dunkel, aber Figur da. P3: Objekt unten (Helm von hinten?) nicht eindeutig. |
+| 67,2 s | unverändert gut: Stern mit Teal-Gesicht. |
+| Nicht geprüft | answer2 80,5 s (Röhre ohne Motiv), pour 73,5 s (Untertitel über Lkw), dritte Lot 9 („crane up“) – Ersteller meldet sie nicht als erledigt; bleiben P3. |
+
+### Höhepunkt-Lage
+Unverändert: Wendungsbeginn 79,8 % (Länge ≈ 84,2 s), Enthüllung 82,5–83,7 %. Ich bewerte es wie Runde 2 als tragend (Fenster zielt auf Beginn der Wendung).
+
+### Note: **9,0 / 10** (Regie)
+Beleg: alle Messregeln (Ø 2,42 s, max 4,53 s ≤ 6 s, Phrasen 2–5, Schlussbild gepflanzt/wiederholt/umgedeutet, Wendungsbeginn 79,8 %) erfüllt, alle P1 und alle P2 behoben und per Bild belegt, Höhepunkt und Schluss ohne Ton lesbar. Nicht höher wegen P3: note 37,5 s „STOP“ abgeschnitten, answer2 80,5 s leere Röhre, dritte Lot 9 nicht sichtbar, pour-Untertitel über Lkw, fear 61,5 s dunkel. Freigabe aus Regie-Sicht möglich.
