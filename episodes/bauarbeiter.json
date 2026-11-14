@@ -1,0 +1,769 @@
+{
+  "id": "bauarbeiter",
+  "title": "Something Under the Site Knocked Back",
+  "engine": "chatterbox",
+  "voice": "am_michael",
+  "voicePreset": "lebendig",
+  "speed": 1.08,
+  "pauseMs": 350,
+  "sceneGapMs": 250,
+  "lengthSec": 73,
+  "years": [],
+  "say": {},
+  "cover": {
+    "text": "IT KNOCKED BACK",
+    "sub": "Lot 9 · 2:14 AM",
+    "frames": 15
+  },
+  "captionStyle": "word-by-word-yellow",
+  "endCard": {
+    "handle": "KnowToon",
+    "cta": "Follow before the next knock.",
+    "seconds": 2
+  },
+  "sources": "Fiktion (eigene Geschichte, eigene Baustelle 'Lot 9', eigene Figuren Milo/Rosa). Keine Tatsachenbehauptung über echte Baustellen, Untergrund oder Geräusche; Zahlen (2:14, 40 m, 6:00) sind erfunden und nur Requisiten. Echte Bilder/Videos: Platzhalter B1, B2, V1 (gemeinfreie US-Behördenquellen gesucht), Nachweise offen → docs/bildnachweise-bauarbeiter.md.",
+  "pointe": "The knocking was never a monster below – it was another Milo; every site has someone under it, and once the concrete seals the pipe, Milo is the one below.",
+  "originality": "Eigene Geschichte, kein Nacherzählen: kein Monster, keine Kreatur, keine Figur aus Horrorfilmen, -spielen oder Creepypastas. Generische Motive (Klopfen aus dem Boden, Doppelgänger) neu verknüpft: gestapelte, gespiegelte Baustellen, verbunden durch ein Rohr, das nicht im Plan steht; Pointe = Milo wird selbst zum 'Unten'. Klotzfiguren eigenes Design (breite Schultern, kleiner Kopf, Schnurrbart-Klotz), keine Spielzeugmarke, keine Firmenlogos auf Lkw/Helmen.",
+  "music": {
+    "mood": "dark",
+    "bpm": 66,
+    "why": "Horror bei Nacht: langsamer, fast leerer Dark-Ambient-Trap in Moll ohne Gesang – tiefe Drone/Pad, gedämpftes Rhodes, einzelnes Glocken-Motiv wie eine Spieluhr, 808 als Herzschlag erst ab 'pipe'; klar anders als Zeit-Welt (epic 92) und Lucia/Jensen (dark 128/136) durch halbes Tempo und kaum Drums, und anders als Jason (chill 84). Trend nicht belegt (docs/trends/aktuell.md: noch kein Lauf), Wahl nach Thema. Bei 'rehook' Filter zu + 1 Takt Pause; bei 'mirror' 0,5 s Stille, dann voll; ab 'three' nur Drone; End-Card Ausklang. Offen für Musik-Rolle: ob gen_dark bei 66 BPM sparsam genug klingt (Clap/Hats ausdünnen) – mit earshot prüfen."
+  },
+  "narratorMood": {
+    "mood": "angespannt-flüsternd, bedrückend",
+    "why": "Nacht-Horror auf einer leeren Baustelle: nah am Mikro, leise und gefasst wie jemand, der nachts flüstert, damit das Klopfen lauter wirkt als die Stimme; nur Twist und Funkruf werden lauter – altersgerecht unheimlich statt schrill. Bild: kalt marineblau, nur Amber (Milo) und Türkis (das Unten) leuchten."
+  },
+  "soundBed": {
+    "why": "KnowToon-Prompt STEP 5: Ambient passend zum Ort (Tropfen in der Grube, Wind/Stadtbrummen = nächtliche Baustelle), Basstreffer vor jeder Enthüllung, ein scharfer Metall-Akzent beim Twist ('face'), ohne Gesang. Klang-IDs aus der earshot-Klangbank (sfx list 14.11.2026), Eignung noch per earshot rank zu prüfen. Cue-'boom' an den 8 Enthüllungs-Wörtern mit Basstreffer weggelassen (Doppelungs-Lehre Zeit-Welt).",
+    "tick": {
+      "sound": "drip/drop",
+      "tock": "drip/tiny",
+      "db": -36,
+      "period": 2.0
+    },
+    "room": {
+      "db": -40,
+      "rain_db": -48
+    },
+    "reveals": [
+      {
+        "scene": "hook",
+        "word": "below"
+      },
+      {
+        "scene": "pour",
+        "word": "out"
+      },
+      {
+        "scene": "pipe",
+        "word": "plans"
+      },
+      {
+        "scene": "tape",
+        "word": "tugs"
+      },
+      {
+        "scene": "note",
+        "word": "handwriting"
+      },
+      {
+        "scene": "look",
+        "word": "light"
+      },
+      {
+        "scene": "below",
+        "word": "above"
+      },
+      {
+        "scene": "stop",
+        "word": "knocks"
+      }
+    ],
+    "revealSound": {
+      "sound": "pro_impact/deep",
+      "db": -14
+    },
+    "twist": {
+      "scene": "mirror",
+      "word": "face",
+      "sounds": [
+        "impact/metal",
+        "knock/snap"
+      ],
+      "db": -12
+    },
+    "tickLouder": [
+      {
+        "scene": "look",
+        "db": 6
+      }
+    ],
+    "tickOff": [
+      {
+        "scene": "dawn"
+      },
+      {
+        "scene": "stop"
+      }
+    ],
+    "silence": [
+      {
+        "scene": "mirror",
+        "word": "face",
+        "ms": 500
+      }
+    ],
+    "knocks": [
+      {
+        "scene": "hook",
+        "word": "knocked",
+        "count": 3,
+        "gapMs": 420,
+        "sound": "knock/desk",
+        "db": -10,
+        "note": "Klopfen aus dem Rohr, tief/gedämpft (Tiefpass)"
+      },
+      {
+        "scene": "answer",
+        "word": "twice",
+        "count": 2,
+        "gapMs": 380,
+        "sound": "knock/wood",
+        "db": -12,
+        "note": "Milos Schraubenschlüssel, metallischer"
+      },
+      {
+        "scene": "answer",
+        "word": "Two",
+        "count": 2,
+        "gapMs": 380,
+        "sound": "knock/desk",
+        "db": -12,
+        "note": "Antwort von unten"
+      },
+      {
+        "scene": "stop",
+        "word": "back",
+        "count": 3,
+        "gapMs": 360,
+        "sound": "knock/plastic",
+        "db": -12,
+        "note": "aus dem Funk-Lautsprecher (Bandpass)"
+      },
+      {
+        "scene": "three",
+        "word": "knocks",
+        "count": 3,
+        "gapMs": 450,
+        "sound": "knock/desk",
+        "db": -9,
+        "note": "von oben: heller, mit Hall"
+      }
+    ],
+    "tailMs": 2000
+  },
+  "style": {
+    "look": "3d",
+    "why": "Vorgabe des Prompts (Cinematic 3D, Klotzfiguren); Horror lebt hier von Licht und Material – Lichtkegel im Rohr, nasser Beton, Nieselregen, Volumenlicht, Tiefenunschärfe – das kann das 3D-Bau-Kit (src/episode/kit/) besser als 2D.",
+    "characters": "MILO = eigene Klotzfigur, Anfang 40: breite kastige Schultern, kleiner Würfelkopf, kurze Beine, runde Punkt-Augen, einfacher Mund, dunkelbrauner Schnurrbart-Klotz, gelber Helm mit runder Stirnlampe (amber), orange Warnweste mit silbernen Streifen, marineblaue Latzhose, roter Schraubenschlüssel. MILO UNTEN = identisch, aber türkis beleuchtet. ROSA = nur Stimme im Funkgerät (Aufkleber 'BASE'), keine Figur. Keine Monster, keine Waffen, kein Blut. Schlüsselobjekt: rostrotes Eisenrohr mit Kreide-X, das nicht im Bauplan steht. Farblogik: Welt kalt marineblau; Amber = Milos Seite (Lampen, Helm); Türkis = das Unten (und am Schluss das Oben)."
+  },
+  "hud": {
+    "title": "LOT 9 · NIGHT SHIFT",
+    "counters": [
+      {
+        "id": "clock",
+        "label": "TIME",
+        "value": "2:14 AM"
+      },
+      {
+        "id": "pour",
+        "label": "POUR IN",
+        "value": "—"
+      }
+    ],
+    "bars": []
+  },
+  "note": "v1 (14.11.2026, Drehbuch). Paket: docs/paket-bauarbeiter.md. 184 Skriptwörter (ohne * und |), 16 Szenen à 5–16 W, alle Sätze ≤ 12 W mit genau einem Akzent, 0 fehlende Cue-Wörter (Skript-Prüfung). Plan 2,6 W/s → ≈ 71 s Sprache + 0,5 s Cover + 2 s End-Card ≈ 73 s (Spanne 2,5–2,75 W/s: 69–76 s). Re-Hook-Szene ab Wort 80/184 = 43 % ('Something tugs' schon bei 37 %). Kette: Boden klopft 3× → Milo allein → Guss um 6 (nichts kommt mehr raus) → Rohr nicht im Plan → antwortet → Basis: unten nur Fels → Maßband 40 m, Ruck → Zettel → eigene Handschrift → Licht schaut hoch → zweiter Milo (Twist) → gespiegelte Baustelle, hört Klopfen von oben → beide gießen → Funk klopft nur → Beton versiegelt → drei Klopfer → von oben (Loop zum Hook 'From below'). Wird es > 80 s: zuerst 'with his wrench' und 'Down the pipe,' kürzen.",
+  "scenes": [
+    {
+      "id": "hook",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 240,
+        "comma_ms": 170,
+        "end_db": 2.5,
+        "gain_db": -1.0
+      },
+      "text": "At two in the morning, the *ground* knocked. | *Three* times. | From *below*.",
+      "visual": "COVER 0–0,5 s (Bilder 0–14, ohne Untertitel): Extreme Nahaufnahme von oben, nasser Baugruben-Boden bei Nacht, ein rostrotes Eisenrohr ragt schräg aus dem Schlamm, Kreide-X daneben; MILOs gelber Helm mit runder Stirnlampe liegt im Vordergrund und wirft einen amberfarbenen Lichtkegel aufs Rohr; Staub/Nieselregen im Lichtkegel. Titel 'IT KNOCKED BACK' in Akzentgelb, oberes Drittel; klein 'LOT 9 · 2:14 AM'. Ab 0,5 s langsamer Push-in aufs Rohr; Kiesel auf dem Rohr hüpfen bei jedem Klopfen (Ton-aus-tauglich: man SIEHT das Klopfen). Auf 'Three' Schnitt (≈ 2,5 s): Low-Angle, MILOs Gesicht im Halbdunkel, Augen groß. Auf 'below' Detail: Digitaluhr am Bauzaun springt 2:14.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "ground",
+          "beat": "pipeMacroPebblesJump",
+          "sfx": "boom"
+        },
+        {
+          "word": "Three",
+          "beat": "miloLowAngleEyes"
+        },
+        {
+          "word": "below",
+          "beat": "siteClock214",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "clock",
+            "value": "2:14 AM"
+          }
+        }
+      ],
+      "section": "setup"
+    },
+    {
+      "id": "milo",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 240,
+        "comma_ms": 170,
+        "end_db": 2.5,
+        "gain_db": -1.0
+      },
+      "text": "Milo guards a building site at *night*. | *Alone*.",
+      "visual": "Totale (Weitwinkel, von oben, Kran-Perspektive): eigene Baustelle 'LOT 9' – Grube, Bagger, Kran, Bauzaun mit Planen, amberfarbene Natriumlampen, Rest der Stadt kalt marineblau. ECHTES FOTO (Platzhalter B1, gemeinfrei US-Behörde, Suchbegriff images.nasa.gov 'construction site night' / 'excavation'): als Foto an der Pinnwand im Bauwagen, Ken-Burns, Kamera fährt vom Foto auf das Bauwagen-Fenster. Auf 'Alone' Over-the-shoulder: MILO allein am Bauwagen, eine Thermoskanne dampft, leere Stühle.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung.",
+        "Echtes Foto B1: Platzhalter, Datei + Lizenz noch nicht geprüft (Recherche → docs/bildnachweise-bauarbeiter.md)."
+      ],
+      "cues": [
+        {
+          "word": "night",
+          "beat": "craneWideLot9",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "Alone",
+          "beat": "otsMiloEmptyChairs",
+          "sfx": "pop"
+        }
+      ],
+      "section": "setup"
+    },
+    {
+      "id": "pour",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.75,
+        "speed": 1.0,
+        "gap_ms": 240,
+        "comma_ms": 170,
+        "end_db": 2.5,
+        "gain_db": -1.0
+      },
+      "text": "At six, the trucks pour the *foundation*. | After that, nothing gets *out*.",
+      "visual": "Detail: Schild am Bauzaun 'CONCRETE POUR · 6:00 AM' (eigenes Design), Regentropfen laufen darüber. Schnitt: Low-Angle in die leere Fundament-Grube mit Bewehrungsstahl-Gitter, amberfarbene Lampen spiegeln in Pfützen. Auf 'out' langsames Zufahren auf das Eisenrohr in der Mitte des Gitters. HUD erscheint: 'POUR IN' 3:46.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "foundation",
+          "beat": "pourSign",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "pour",
+            "value": "3:46"
+          }
+        },
+        {
+          "word": "out",
+          "beat": "pitLowAngleRebar"
+        }
+      ],
+      "section": "setup"
+    },
+    {
+      "id": "pipe",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "The knocks come from an old iron *pipe*. | It's not on the *plans*.",
+      "visual": "Medium: MILO kniet am Rohr, Ohr nah dran, Kiesel zittern. Schnitt Over-the-shoulder auf sein Tablet: eigener Bauplan (blaue Linien, 'LOT 9 · FOUNDATION'), an der Rohr-Stelle nur leeres Raster; ein roter Kreis blinkt dort, wo das Rohr sein müsste. Licht kälter, Kamera langsamer.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "pipe",
+          "beat": "miloEarToPipe",
+          "sfx": "pop"
+        },
+        {
+          "word": "plans",
+          "beat": "tabletPlanEmpty",
+          "sfx": "ding",
+          "sticker": "NOT ON THE PLANS",
+          "color": "#FFD23F"
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "answer",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "Milo taps it *twice* with his wrench. | Two knocks *answer*.",
+      "visual": "Detail: MILOs roter Schraubenschlüssel tippt zweimal aufs Rohr (sichtbares Zittern, Rost rieselt). Stille 0,4 s. Schnitt: Makro auf das Rohr – zwei Kiesel springen von allein, jedes Mal ein schwacher türkiser Lichtpuls aus der Rohröffnung (erste Spur der Unter-Farbe). Reaction-Close-up: MILO weicht zurück.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "twice",
+          "beat": "wrenchTaps"
+        },
+        {
+          "word": "answer",
+          "beat": "pipePebblesTealPulse"
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "radio",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "He calls *base*. | \"Anyone working *below* Lot Nine?\" | \"Below is solid *rock*, Milo.\"",
+      "visual": "Detail: Funkgerät mit Aufkleber 'BASE', LED blinkt im Takt der Stimme (Stimme von ROSA = nur Funkgerät, keine Figur im Bild). ECHTES FOTO (Platzhalter B2, gemeinfrei USGS, Suchbegriff usgs.gov 'rock core samples' / 'drill core'): echte Gesteins-Bohrkerne auf MILOs Tablet als 'BORE LOG LOT 9', Ken-Burns. Auf 'rock' Schnitt: MILO blickt von oben ins Rohr, das Funkgerät rauscht.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung.",
+        "Echtes Foto B2: Platzhalter, Datei + Lizenz noch nicht geprüft. Gezeigt nur als 'Bohrkern-Beispiel' im Tablet – keine Aussage über echten Untergrund."
+      ],
+      "cues": [
+        {
+          "word": "base",
+          "beat": "radioBaseLed",
+          "sfx": "pop"
+        },
+        {
+          "word": "below",
+          "beat": "tabletRealRockCore"
+        },
+        {
+          "word": "rock",
+          "beat": "miloLooksDownPipe",
+          "sfx": "boom"
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "tape",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "He lowers his tape measure into the *pipe*. | *Forty* meters. | Something *tugs*.",
+      "visual": "Close-up: gelbes Maßband rollt ins Rohr, Ziffern laufen am Rand (eigene Skala, sichtbar 10 · 20 · 30 · 40 m). HUD 'TAPE' zählt mit. Auf 'Forty' stoppt die Rolle. Auf 'tugs' Ruck: Band reißt MILO fast aus der Hand, Kamera zuckt (einziger schneller Schnitt der Mitte).",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "pipe",
+          "beat": "tapeIntoPipe",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "Forty",
+          "beat": "tapeStops40",
+          "sticker": "40 M",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "tugs",
+          "beat": "tapeJerk"
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "rehook",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "He *reels* it back up. | Tied to the end… | a *note*.",
+      "visual": "Sehr langsamer Push-in, ECU: das Maßband kommt Stück für Stück aus dem Rohr, nass, mit Kreidestaub; am Ende ein gefalteter Zettel, mit Draht festgebunden. Klopfen im Bett hört auf, Musik-Filter zu (1 Takt).",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "reels",
+          "beat": "tapeReelsBack"
+        },
+        {
+          "word": "note",
+          "beat": "noteOnTapeEnd",
+          "sfx": "ding"
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "note",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "Two words, scrawled in *pencil*. | \"Stop *knocking*.\" | It's Milo's own *handwriting*.",
+      "visual": "Insert: MILOs Klotzhände falten den Zettel auf, Bleistift-Krakel 'STOP KNOCKING.' Match-Cut: daneben MILOs eigenes Schichtbuch im Bauwagen ('2:00 ALL QUIET – M.'), gleiche Schrift, gleiche krumme K. Split-Screen 50/50, Kamera schiebt beide zusammen.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "pencil",
+          "beat": "noteUnfold"
+        },
+        {
+          "word": "knocking",
+          "beat": "noteTextStopKnocking",
+          "sticker": "STOP KNOCKING.",
+          "color": "#FFD23F"
+        },
+        {
+          "word": "handwriting",
+          "beat": "matchLogbookHandwriting"
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "look",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "He kneels and shines his headlamp *down*. | Far below… | another *light* looks up.",
+      "visual": "Point-of-view von oben ins Rohr: MILOs amberfarbener Lichtkegel gleitet die rostigen Wände hinab, Staub schwebt. Ganz unten ein kleiner türkiser Punkt. Auf 'light' wird der Punkt größer und blendet zurück; Gegen-Schuss (Low-Angle aus dem Rohr nach oben): MILOs Gesicht im Rohrkreis.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "down",
+          "beat": "povPipeDown",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "light",
+          "beat": "tealLightLooksUp"
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "mirror",
+      "delivery": "punch",
+      "emotion": {
+        "exag": 0.65,
+        "cfg": 0.4,
+        "temp": 0.8,
+        "speed": 1.03,
+        "gap_ms": 200,
+        "comma_ms": 140,
+        "end_db": 1.0,
+        "gain_db": 1.5
+      },
+      "text": "A *headlamp*. | A yellow *hard hat*. | And *Milo's* own face.",
+      "visual": "TWIST. Schnell, kurze Schnitte (je ≈ 1,2 s): Makro türkise Stirnlampe → gelber Helm → ganzes Gesicht: ein zweiter MILO, identisch (Schnurrbart-Klotz, Warnweste), aber türkis beleuchtet, blickt nach oben. Auf 'face' 0,5 s Stille, dann scharfer Metall-Akzent; Match-Cut beider Gesichter (oben amber, unten türkis).",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "headlamp",
+          "beat": "tealHeadlampMacro"
+        },
+        {
+          "word": "hat",
+          "beat": "yellowHardHat"
+        },
+        {
+          "word": "face",
+          "beat": "miloBelowFace"
+        }
+      ],
+      "section": "twist"
+    },
+    {
+      "id": "below",
+      "delivery": "punch",
+      "emotion": {
+        "exag": 0.65,
+        "cfg": 0.4,
+        "temp": 0.8,
+        "speed": 1.03,
+        "gap_ms": 200,
+        "comma_ms": 140,
+        "end_db": 1.0,
+        "gain_db": 1.5
+      },
+      "text": "Down there is another building *site*. | Another *night* shift. | And that Milo hears knocking from *above*.",
+      "visual": "Kamera stürzt durchs Rohr nach unten (Vertigo-Fahrt) und kommt in einer zweiten Baustelle an: identisches LOT 9, kopfüber gespiegelt, alles türkis statt amber – gleicher Kran, gleicher Bauwagen, gleiches Schild. Unten-MILO tippt mit seinem Schraubenschlüssel nach OBEN ans Rohr. Auf 'above' Schnitt zurück nach oben: unser MILO hört es.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "site",
+          "beat": "vertigoDownMirrorSite",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "night",
+          "beat": "mirrorTrailerTeal"
+        },
+        {
+          "word": "above",
+          "beat": "miloBelowTapsUp"
+        }
+      ],
+      "section": "twist"
+    },
+    {
+      "id": "dawn",
+      "delivery": "tense",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.45,
+        "temp": 0.75,
+        "speed": 0.97,
+        "gap_ms": 260,
+        "comma_ms": 190,
+        "end_db": 3.0,
+        "gain_db": -2.5
+      },
+      "text": "At six, the trucks *arrive*. | Down the pipe, trucks *rumble* too. | Both sites start to *pour*.",
+      "visual": "Erstes Blau der Dämmerung. ECHTES VIDEO (Platzhalter V1, gemeinfrei, Suchbegriff images.nasa.gov 'concrete pour'): echte Beton-Ausgießung, 2 s vollflächig mit Nacht-Farbkorrektur, Match-Cut auf eigene Klotz-Mischer-Lkw mit drehenden Trommeln, die an der Grube halten. Detail: Rohr vibriert, Echo-Brummen von unten. HUD 'POUR IN' → 0:00.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung.",
+        "Echtes Video V1: Platzhalter, Datei + Lizenz noch nicht geprüft."
+      ],
+      "cues": [
+        {
+          "word": "arrive",
+          "beat": "realConcretePourThenTrucks",
+          "sfx": "whoosh",
+          "hud": {
+            "id": "clock",
+            "value": "6:00 AM"
+          }
+        },
+        {
+          "word": "rumble",
+          "beat": "pipeVibrates"
+        },
+        {
+          "word": "pour",
+          "beat": "chuteOpens",
+          "sfx": "boom",
+          "hud": {
+            "id": "pour",
+            "value": "NOW"
+          }
+        }
+      ],
+      "section": "tension"
+    },
+    {
+      "id": "stop",
+      "delivery": "punch",
+      "emotion": {
+        "exag": 0.65,
+        "cfg": 0.4,
+        "temp": 0.8,
+        "speed": 1.03,
+        "gap_ms": 200,
+        "comma_ms": 140,
+        "end_db": 1.0,
+        "gain_db": 1.5
+      },
+      "text": "Milo grabs the *radio*. | \"Stop the *pour*!\" | The radio only *knocks* back.",
+      "visual": "Schnelle Schnitte: MILO rennt durch Matsch (Tracking links→rechts, Lampen ziehen vorbei), packt das Funkgerät, schreit hinein (Close-up, Mund weit). Detail: Funkgerät-LED blinkt dreimal türkis – statt Stimme drei Klopfer aus dem Lautsprecher.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "radio",
+          "beat": "miloRunsGrabsRadio",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "pour",
+          "beat": "miloShoutsCloseUp"
+        },
+        {
+          "word": "knocks",
+          "beat": "radioLedTealThree"
+        }
+      ],
+      "section": "twist"
+    },
+    {
+      "id": "three",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.7,
+        "speed": 0.98,
+        "gap_ms": 250,
+        "comma_ms": 190,
+        "end_db": 3.5,
+        "gain_db": -2.0
+      },
+      "text": "Concrete seals the *pipe*. | Then Milo *hears* it. | *Three* knocks.",
+      "visual": "Ruhig, kalt. Detail-Zeitlupe: grauer Beton fließt über die Rohröffnung, die letzte türkise Spur erlischt. Medium: MILO steht allein in der Mitte der frischen Betonfläche, nur seine amberfarbene Stirnlampe leuchtet. Auf 'Three' bleibt die Kamera still; HUD blendet aus.",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "pipe",
+          "beat": "concreteCoversPipe"
+        },
+        {
+          "word": "hears",
+          "beat": "miloAloneOnSlab",
+          "hud": {
+            "id": "pour",
+            "value": "SEALED"
+          }
+        },
+        {
+          "word": "Three",
+          "beat": "hudOut"
+        }
+      ],
+      "section": "ending"
+    },
+    {
+      "id": "above",
+      "delivery": "calm",
+      "emotion": {
+        "exag": 0.55,
+        "cfg": 0.5,
+        "temp": 0.7,
+        "speed": 0.98,
+        "gap_ms": 250,
+        "comma_ms": 190,
+        "end_db": 3.5,
+        "gain_db": -2.0
+      },
+      "text": "Not from *below*. | From *above*.",
+      "visual": "0,5 s Pause vor der letzten Zeile. Langsamer Tilt nach oben über MILOs Helm in den dunklen Himmel: dort oben, wo Sterne sein sollten, ein flacher Betondeckel mit einem winzigen Rohr, aus dem ein türkiser Lichtkegel herableuchtet. MILOs Lampe flackert türkis. Danach End-Card (2 s).",
+      "sources": [
+        "Fiktion (eigene Geschichte, Lot 9 und Figuren erfunden) – keine Tatsachenbehauptung."
+      ],
+      "cues": [
+        {
+          "word": "below",
+          "beat": "tiltUpSky",
+          "sfx": "whoosh"
+        },
+        {
+          "word": "above",
+          "beat": "ceilingPipeTealLight",
+          "sticker": "FROM ABOVE",
+          "color": "#FFD23F"
+        }
+      ],
+      "section": "ending"
+    }
+  ],
+  "voiceProfile": "male, young adult – am_michael (Standardstimme, Nutzer 13.11.2026); Grundlaune angespannt-flüsternd.",
+  "voiceNotes": {
+    "prompt": "STEP 4/4b 'NARRATION & VOICE' (Nutzer 13.11.2026), umgesetzt mit Chatterbox wie Zeit-Welt.",
+    "tempo": "Ziel 2,5–2,75 W/s: 184 W → 67–74 s Sprache + 2,5 s ≈ 69–76 s; über Pausen, speed 1,08 (Twist emotion.speed 1,03, Spannung 0,97).",
+    "chatterbox": "exaggeration 0,55–0,65, cfg_weight 0,40–0,50, temperature 0,70–0,80 je Szene im Feld emotion.",
+    "emotionMap": "setup = gefasst, leise-neugierig (calm, gain −1 dB) · tension = langsamer, leiser, leichtes Flüstern (tense, speed 0,97, gain −2,5 dB, Satzende −3 dB) · twist (mirror, below, stop) = lauter, schneller, abgehackt (punch, exag 0,65, speed 1,03, +1,5 dB) · ending = flach und tief (calm, −2 dB, Satzende −3,5 dB).",
+    "pauses": "' | ' vor jeder Enthüllung = gap_ms + 250 ms → 0,45–0,51 s; vor der letzten Zeile ('From above.') genau 0,5 s (above gap_ms 250 + 250).",
+    "rules": "Sätze ≤ 12 Wörter, genau ein *Akzentwort* je Satz, keine Füllwörter, kein Overacting (kein Schreien bei 'Stop the pour!' – gepresst statt laut), eine Sprechzeile je Szene.",
+    "conflict": "Wie Zeit-Welt: Repo-Regel 2,3–2,6 W/s / Satzpause 450–640 ms gilt nicht, KnowToon-Prompt 2,5–2,75 W/s geht vor; Whisper ≥ 98 % und leiser werdendes Satzende bleiben Pflicht (scripts/stimm_messung.py + earshot)."
+  },
+  "version": "v1 (14.11.2026, Drehbuch nach KnowToon-Paket-Prompt)",
+  "narrator": {
+    "max_speed": 1.1,
+    "piece_extra_ms": 80,
+    "scene_gap_ms": 250
+  }
+}
