@@ -1,4 +1,4 @@
-# Video-Paket-Prompt des Nutzers (13.11.2026; STEP 4b „NARRATION & VOICE“ am 13.11. vom Nutzer ergänzt – Original-STEP 4 bleibt) – für das nächste Video und künftige, wenn der Nutzer es so will
+# Video-Paket-Prompt des Nutzers (13.11.2026; STEP 4b „NARRATION & VOICE“ am 13.11. vom Nutzer ergänzt – Original-STEP 4 bleibt) – **Standard für jedes Video ab 14.11.2026** (Nutzer: „Ab jetzt alle Videos so wie das“)
 Vorgabe des Nutzers: „Benutze für das nächste Video diesen Prompt und gib mir eine Vorschau … Videos müssen 9/10 sein.“
 Kanal (TikTok und YouTube): **KnowToon** → End-Card-Suchleiste tippt „KnowToon“.
 Eingesetzte Werte: Language **ENGLISCH** (Nutzer 13.11.2026: „Sprache immer englisch“ – gilt statt DEUTSCH im Prompt) · Length 90–140 s · Audience ALLE · Channel @KnowToon · Series NEIN.
@@ -70,3 +70,4 @@ Revise until all five answers are yes.
   Emotion je Abschnitt über `delivery` (setup relaxed/curious · tension quiet/whisper · twist louder/clipped · ending flat/low, 0,5 s Pause vor der letzten Zeile),
   Pause 0,3–0,6 s vor jeder Enthüllung (` | `), Sätze ≤ 12 Wörter, Akzentwort je Satz `*…*`, eine Sprechzeile je Shot.
 - **Schnitt-Tempo (Orchestrator-Entscheid 13.11.2026):** Für Videos nach diesem Prompt gilt STEP 3 „Change the shot every 2–4 s“ statt der Hausregel „Einstellungen eher 3–4 s“ (Prompt des Nutzers ist neuer und ausdrücklich); Szenen ≤ 8 s.
+- **Gilt für jedes Video (Nutzer 14.11.2026):** Vorbild ist „In This City, You Pay With Time“ (episodes/zeit-welt.json, src/episode/scenes/zeitwelt*). Je Thema neu: Welt, Farblogik, Schlüsselobjekt, Musik, Erzähler-Laune; gleich bleiben: 3D-Klotzfiguren (immer eigene, originale Figuren – nie Marken-/Spiel-/Filmfiguren nachbauen), Stimme Michael, 2,5–2,75 W/s, Shotwechsel 2–4 s, gelbe Wort-für-Wort-Untertitel, Basstreffer vor Enthüllungen, echte frei lizenzierte Bilder, End-Card „KnowToon“, Render über scripts/render_chunks.sh, Mindestnote 9.
