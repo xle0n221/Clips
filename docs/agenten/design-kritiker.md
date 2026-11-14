@@ -41,6 +41,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 | --- | --- | --- | --- |
 | 14.11.2026 | Bauarbeiter Runde 1 (Kontaktabzug + 9 Standbilder) | 8,5 (Design-Kritiker) | Sticker 1,4 : 1 bei 52,5 s, leere Fear-Szene mit Sticker-Doppelung, dunkle Szenen 64-69 s, Gesicht ausgeblichen 70,5 s |
 | 14.11.2026 | Bauarbeiter Runde 2 (9 Standbilder nachgerendert) | 9,0 (Design-Kritiker) | Sticker 1,4 → ca. 15 : 1, Dunkelstellen 20-34, D1-D8 behoben; Uhr (D9) ungemessen, Zettel-Linien P3 |
+| 14.11.2026 | Bauarbeiter Runde 3 (8 Standbilder, Nachkontrolle) | 9,0 (Design-Kritiker) | hält: Sticker >= 15 : 1, Lum. 18-59; 52,6 s fast schwarz (18,3), Uhr ungemessen |
 | 13.11.2026 | ZeitWelt Runde 2 (Cover + 24 Nachprüfbilder) | 9,0 (Design-Kritiker) | Ida im Cover, Doppel-Sticker weg, ISS-Lichter im Glas; Rest P3 |
 | 13.11.2026 | ZeitWelt (3D, Cover + 57 Einzelbilder) | 8,5 (Design-Kritiker) | Cover ohne Hauptfigur, Sticker doppelt zum Schild, ISS-Video in Spiegelung unkenntlich |
 | 13.11.2026 | Jason GTA 6 Runde 2 (Cover + 20 Nachprüfbilder) | 9,0 (Design-Kritiker) | Cover ohne Blinzeln, keine Doppelung; echte Fotos fehlen (begründen) |

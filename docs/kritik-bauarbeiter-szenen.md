@@ -148,3 +148,20 @@ Unverändert: Wendungsbeginn 79,8 % (Länge ≈ 84,2 s), Enthüllung 82,5–83,7
 
 ### Note: **9,0 / 10** (Regie)
 Beleg: alle Messregeln (Ø 2,42 s, max 4,53 s ≤ 6 s, Phrasen 2–5, Schlussbild gepflanzt/wiederholt/umgedeutet, Wendungsbeginn 79,8 %) erfüllt, alle P1 und alle P2 behoben und per Bild belegt, Höhepunkt und Schluss ohne Ton lesbar. Nicht höher wegen P3: note 37,5 s „STOP“ abgeschnitten, answer2 80,5 s leere Röhre, dritte Lot 9 nicht sichtbar, pour-Untertitel über Lkw, fear 61,5 s dunkel. Freigabe aus Regie-Sicht möglich.
+
+## Design Runde 3 (Design-Kritiker, 14.11.2026, Nachkontrolle)
+
+Endstand (Commit 0cbb41c) nachgerendert: f560 (18,7 s), f1125, f1215, f1578 (52,6 s), f1596 (53,2 s), f1845, f2385, f2460; Luminanz und Sticker-Band gemessen.
+
+**Messwerte (mittlere Luminanz)**: pipe f560 53,5 · note f1125 59,0 / f1215 48,8 · below f1578 18,3 / f1596 35,7 · fear f1845 22,9 (vorher 20,3) · answer2 f2385 46,6 / f2460 48,1. Sticker-Band: unteres Dezil Y 0,0-0,001, 98-%-Quantil Y 0,95-1,0 → Platte/Schrift >= 15 : 1 in allen 8 Bildern (answer2 jetzt zweizeilige Platte, „THE STACK NEVER ENDS“, ohne Doppel-Sticker).
+
+**Geprüft**
+- pipe 18,7 s: Milo lehnt am Rohr (Pose mit Rohr, Kopf, Helm, Steine lesbar), Sticker „A PIPE NOBODY PLANNED“ ≠ Untertitel; Untertitel auf hellem Boden mit schwarzer Kontur lesbar. Besser als Runde 1.
+- note 40,5 s: Zettel-Linien kreuzen die Schrift nicht mehr (Linien bei y 920/1065/1210 zwischen den Zeilen); nur die mittlere Linie berührt knapp die Unterkante von „QUIET“ (P3). Goldener Querbalken zwischen den Zetteln bleibt ohne Funktion (P3).
+- below: 53,2 s f1596 sauber (35,7); 52,6 s f1578 Lum. 18,3 (Runde 2: 23,2): Ring nur noch als dünne Sichel unten, sonst fast schwarz – Sticker (Platte) und Untertitel lesbar, aber der Raum wirkt leer. Unter 20, P3 (Übergangsbild).
+- fear 61,5 s: 22,9, besser als zuvor.
+- answer2 79,5 s / 82,0 s: Milo grün, Untertitel gelb/schwarz auf Jacke lesbar (schwarze Kontur), Sticker ohne Doppelung, Lum. 46-48.
+- D9-Uhr: in keinem dieser Bilder sichtbar, weiterhin nur Erstellerwert 5,9 : 1 (nicht selbst gemessen).
+
+**Note Design: 9,0 / 10 (hält)**
+Beleg: Sticker-Band >= 15 : 1 in 8 von 8 Bildern, Luminanz 18,3-59,0, nur f1578 (52,6 s) unter 20 (Übergangsbild, P3); Zettel-Linien weitgehend behoben; pipe und answer2 besser als vorher. Nicht höher: D9-Uhr ungemessen, leerer Moment 52,6 s, Querbalken/Restlinie P3.
