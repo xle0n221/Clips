@@ -22,6 +22,7 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - Von Recherche/Faktenprüfer: Kostüm-Standardwerte gegen die Bild-Hinweise der Quellen-Datei prüfen. Rom: `Goth` `fur = true` widerspricht „keine Felle als ‚Steinzeit‘-Klischee“ (`quellen-roemisches-reich.md`) → Konflikt in `design-system.md` §2.4 vermerkt, Entscheidung offen (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 15.11.2026 · Sonne verschwindet (Cinematic 3D) · **Experiment Farblogik als Erzählmittel:** GOLD nur für Sonnenlicht, das noch unterwegs ist (Strand, Lichtband, Saturn-Glanz, Zeitanzeige-Rahmen), INDIGO/SCHWARZ = Welt ohne Sonne, EISBLAU = Kälte, GRÜN nur an der Tiefsee-Quelle. Im Kontaktabzug ohne Ton liest sich die Wende allein über die Farbe (turn: blau-gold → schwarz + kaltes Gesicht), Loop-Bild = Hook-Bild (gleiche `HookFrame`-Kamera). Eigene Figuren JUNO (Würfelkopf, Zopf-Klötze, gelber Sonnenhut, orange Uhr) und GRANDPA ODE (Kasten, Bart-Klotz, runde Brille, Senf-Strickjacke) sofort unterscheidbar; Erkennung je Einstellung über Hut bzw. Brille+Bart. Zeitanzeige als dunkle Tafel (#070B1E, Gold-Rand, Zahl #FFD23F ≈ 13 : 1, Beschriftung weiß ≈ 19 : 1). Falle: Himmelskörper hinter dem Nebel – `Halo` nebelt mit, darum `Glow` mit `fog={false}`; Sonnen-Halo hinter Cover-Titel vermeiden (Cover zeigt die leere Scheibe mit Ring statt der hellen Sonne). Beleg `out/sonne-kontakt.jpg`.
 - 14.11.2026 · Bauarbeiter Runde 2 · Fixpunkt in Leer-Einstellungen: Helm-Silhouette von hinten unten im Bild + heller Kegel (fear 60,8 s) trägt den Himmel-Schwenk; Rim-Licht (Punktlicht amber hinter der Figur, 14) holt Milo aus dem Nachthimmel (hope Lum 16,5 → 34,9). Nahes Lampengesicht brennt nicht aus, wenn Halo und Lampenstärke mit der Nähe abnehmen (turn 70,5 s). Kreide-X am Rohr weggelassen (lag im Untertitel-Band). Beleg `out/bauarbeiter-r2/`.
 - 14.11.2026 · Bauarbeiter (Cinematic 3D, Horror) · Eigene Figur MILO (`scenes/bauarbeiterSets.tsx`): KLEINER Würfelkopf auf breitem Kastenrumpf liest sich klar anders als Zeit-Welt-Großkopf; Erkennung = gelber Helm + Stirnlampe + Schnurrbart-Klotz, der Doppelgänger nur über Lichtfarbe (Türkis statt Amber) – im Kontaktabzug ohne Ton sofort „gleicher Mann, andere Seite“. Falle: kniend + vorgebeugt + Kopf geneigt zeigt der Kamera nur die Helmkrone (Gesicht weg) → in Kniestellungen nod ≤ 0,2, lean ≤ 0,3. Schild/Uhr am Zaun lagen in vielen Einstellungen im oberen Text-Drittel → Schild nur in den Szenen, die es erzählen (`sign`-Prop). Beleg `out/bauarbeiter-kontakt.png`.
 - 13.11.2026 · Zeit-Welt (Cinematic 3D, KnowToon STEP 2) · Eigene Klotzfigur statt Marken-Optik: Kopf als abgerundeter Quader
@@ -87,6 +88,7 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 - 08.11.2026 · Rom-Kit · 10 Befunde behoben (Kolosseum, Bart, Thron, Halstuch, Gefahrenlicht, Stimmungen) · Kontaktabzug vorher/nachher in `verbesserungen.md`.
 
 ## Nächste Experimente (je Clip mindestens eins ausprobieren und messen)
+- NEU (15.11.2026): Tiefsee/Unterwasser lesbarer: Kaustik-Muster auf dem Boden + hellerer Nebel testen, mittlere Luminanz der Tauch-Einstellung messen (Sonne `ocean` ≈ dunkel).
 - NEU: Split-Screen links/rechts (zwei `Stage2D` mit CSS-`clipPath`, UFC-Ende) gegen oben/unten testen – oben/unten kollidiert mit Untertitel-Drittel.
 - NEU: Papierschatten-Kosten messen: gleiche Szene mit/ohne `filter="url(#paper)"`, s/Bild bei freier CPU.
 - NEU: Sitzende Figur frontal (`Figure pose="sit"`) liest sich nur mäßig (Arme verdecken Knie) – Dreiviertel-Ansicht der Beine testen.
@@ -109,3 +111,4 @@ Bau-Kit pro Thema (`src/episode/kit/<thema>.tsx`), Design-System. Prüfer: Desig
 | 08.11.2026 | Rom-Kit | – | Monumentalität und Kontrast schwach → behoben |
 | 09.11.2026 | Common-Kit | – (Prüfung Design-Kritiker offen) | Erstausgabe, 4 Prüfrunden selbst |
 | 12.11.2026 | Rolls-Royce (2D) v1 | – (Design-Kritiker offen) | Sticker-Look, eigene Autos ohne Markenzeichen |
+| 15.11.2026 | Sonne verschwindet (3D) v1 | – (Design-Kritiker offen) | Farblogik Gold/Indigo/Eisblau, eigene Figuren Juno + Grandpa Ode |

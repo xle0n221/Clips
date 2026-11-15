@@ -615,11 +615,11 @@ export const SonArrive: React.FC = () => {
   }
   // Fotofinish: zwei Bahnen zur Erde – die Welle trifft zuerst, das Licht 1,7 s später
   const ap = beat("photoFinish");
-  const hitW = ap - 26;
-  const hitL = ap + 4;
+  const hitW = ap - 40;
+  const hitL = ap + 11; // Licht 51 Bilder = 1,7 s nach der Welle (GW170817)
   const lane = (x: number, hit: number, kind: "ripple" | "light") => {
     const p = Math.min(1, Math.max(0, 1 - (hit - frame) / 40));
-    const y = lerp(6, 0.9, p);
+    const y = lerp(3.3, 0.9, p);
     const done = frame >= hit;
     return (
       <group position={[x, 0, 0]}>
@@ -632,12 +632,12 @@ export const SonArrive: React.FC = () => {
           <Halo at={[0, y, 0]} size={1.6} color="#FFFFFF" opacity={0.95} />
         )}
         {done ? <Halo at={[0, 0.8, 0.2]} size={2.2 + Math.max(0, 8 - (frame - hit)) * 0.2} color={kind === "ripple" ? S.gold : "#FFFFFF"} opacity={0.8} /> : null}
-        <TextLabel text={kind === "ripple" ? "RIPPLE" : "LIGHT"} width={1.6} height={0.36} position={[0, -0.25, 0.4]} color={kind === "ripple" ? "#FFD23F" : "#FFFFFF"} bg={S.hud} />
+        <TextLabel text={kind === "ripple" ? "RIPPLE" : "LIGHT"} width={1.8} height={0.44} position={[0, 3.7, 0.4]} color={kind === "ripple" ? "#FFD23F" : "#FFFFFF"} bg={S.hud} />
         <TextLabel text={done ? (kind === "ripple" ? "1ST" : "+1.7 S") : ""} width={1.4} height={0.34} position={[0, 2.2, 0.4]} color={kind === "ripple" ? "#FFD23F" : "#FFFFFF"} />
       </group>
     );
   };
-  const cam = frameOn([0, 2.2, 0], 8.5, 0.6, 0.5, [0, 0.1, 1]);
+  const cam = frameOn([0, 0.8, 0], 8.4, 0.58, 0.5, [0, 0.1, 1]);
   return (
     <>
       <SpaceSet frame={frame} sunLight={0.8} sunAt={[-20, 10, 20]} />
@@ -648,14 +648,14 @@ export const SonArrive: React.FC = () => {
         <meshBasicMaterial color="#FFFFFF" toneMapped={false} />
       </mesh>
       {[-1, 1].map((sd) => (
-        <mesh key={sd} position={[sd * 0, 3.4, -0.02]}>
-          <planeGeometry args={[0.04, 5.2]} />
+        <mesh key={sd} position={[sd * 0, 2.4, -0.02]}>
+          <planeGeometry args={[0.04, 3.2]} />
           <meshBasicMaterial color="#5A6A9A" />
         </mesh>
       ))}
       {lane(-1.05, hitW, "ripple")}
       {lane(1.05, hitL, "light")}
-      <Shot frame={f} duration={len} {...fly(cam, frameOn([0, 2.2, 0], 7.8, 0.6, 0.5, [0, 0.1, 1]))} />
+      <Shot frame={f} duration={len} {...fly(cam, frameOn([0, 0.8, 0], 8.0, 0.58, 0.5, [0, 0.1, 1]))} />
     </>
   );
 };

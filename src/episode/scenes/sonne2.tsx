@@ -490,8 +490,8 @@ export const SonTally: React.FC = () => {
     // Geteiltes Bild: links goldener Balken „8 MIN“ (Sonnenlicht), rechts 15× so hoher Balken „2 H“ (Saturn-Glanz) – maßstabsgetreu
     const g1 = ramp(frame, beat("bar8min") - 10, beat("bar8min") + 6);
     const g2 = ramp(frame, beat("bar2h") - 14, beat("bar2h") + 10);
-    const unit = 0.3;
-    const cam = { pos: [0, 1.7, 15] as V3, look: [0, 1.7, 0] as V3, fov: 40 };
+    const unit = 0.26;
+    const cam = { pos: [0, 1.1, 15] as V3, look: [0, 1.1, 0] as V3, fov: 40 };
     const bar = (x: number, h: number, color: string, label: string, sub: string, on: number) => (
       <group position={[x, 0, 0]}>
         <mesh position={[0, (h * on) / 2, 0]}>
@@ -500,7 +500,7 @@ export const SonTally: React.FC = () => {
         </mesh>
         <Halo at={[0, h * on, 0.3]} size={2.2} color={color} opacity={0.6 * on} />
         <TextLabel text={label} width={2.2} height={0.62} position={[0, h * on + 0.6, 0.3]} color="#FFD23F" opacity={on} />
-        <TextLabel text={sub} width={2.6} height={0.38} position={[0, h * on + 1.2, 0.3]} color="#FFFFFF" opacity={on} />
+        <TextLabel text={sub} width={2.6} height={0.38} position={[0, -0.42, 0.3]} color="#FFFFFF" opacity={Math.max(0.35, on)} />
       </group>
     );
     return (
@@ -516,7 +516,7 @@ export const SonTally: React.FC = () => {
         </mesh>
         {bar(-1.7, unit, S.gold, "8 MIN", "SUNLIGHT", g1)}
         {bar(1.7, unit * 15, S.goldPale, "2 H", "SATURN", g2)}
-        <Shot frame={f} duration={len} from={cam.pos} to={[0, 1.7, 14.4]} look={cam.look} fov={cam.fov} />
+        <Shot frame={f} duration={len} from={cam.pos} to={[0, 1.1, 14.4]} look={cam.look} fov={cam.fov} />
       </>
     );
   }
