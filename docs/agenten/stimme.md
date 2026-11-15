@@ -61,6 +61,7 @@ Stimme und Sprechweise wählen und einstellen (Chatterbox `scripts/tts_chatterbo
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
 | 15.11.2026 | sonne-verschwindet Station 2 Runde 2 | – (Messung, nicht gehört) | Kommas 170–300 ms, Kanten 0, Szenen ≤ 2,90 W/s; Gesamt 2,51 nur mit atempo 1,11 |
+| 15.11.2026 | sonne-verschwindet Station 2 Kurzprüfung (Prüfer, earshot) | 9/10 | birds /z/ hörbar (HF 97 %), ±1 dB; hope p_real 0,78; Mix-Stille 0,68 s, earshot „quiet room tone“; Raumton −72 dBFS maskiert. Hinweis: 7 Untertitel mit Dauer 0 („sunshine.“ ~0,6 s zu spät) |
 | 15.11.2026 | sonne-verschwindet Station 2 Nachprüfung (Prüfer, earshot) | 8/10 | Runde-1-Pflichten erfüllt (Komma 190, Kanten 0, Musik-Plan da); Rest: „birds“ +5 dB ohne hörbares /z/ (direkt digitale Null), hope p_real 0,63 / A/B klar schwächer, Gesamt-Stille vor turn nur 0,42 s |
 | 15.11.2026 | sonne-verschwindet Station 2 (Prüfer, earshot) | 7/10 | Komma 80 ms (3× 0 ms) statt 160–240; Musik ohne 0,6 s Stille vor turn (−26…−33 dB), gen_epic ignoriert sparseUntilScene; earshot-Zwangswahl „rushed“ auch bei zeit-welt >99 % → kein Beleg |
 | 15.11.2026 | sonne-verschwindet Station 2 (Ersteller) | – (Messung, nicht gehört) | 2,30 → 2,51 W/s ohne Textänderung über cfg + Pausen; Kanten = Zischlaut-Enden |
