@@ -74,3 +74,26 @@ Stand 15.11.2026 · Regie-Kritiker · Grundlage: `scripts/sonne_shots.mjs` (geme
 
 ### Note: **8,0 / 10** (Regie)
 Beleg: Alle Zahlenregeln erfüllt (48 Shots, Ø 2,25 s, Halt 4,83 s, Höhepunkt 74 %, Loop). Abzug, weil zwei Bildzahlen dem faktengeprüften Text widersprechen bzw. aus dem Bild ragen (seven 7:23 bei „one minute left“, arrive-Zähler angeschnitten) und drei Einstellungen ihr Verb ohne Ton nicht zeigen (five Gähnen, speed Wettrennen, ocean dive). Für ≥ 9: P1 1–2 und P2 3–7 beheben; Nachprüfung an 73,9 / 47,4 / 49,4 / 65,0 / 37,5 / 93,5 / 104,0 s (~12 Bilder).
+
+## Design Runde 2 (Design-Kritiker, 15.11.2026)
+
+Grundlage: Kontaktabzug v3 nicht eingesehen, eigene Standbilder f5, f40, f1418, f1804, f2244, f2538, f3107, f3155 (`out/s3d/r*.png`), Luminanz gemessen. Kein Voll-Render.
+
+**Messwerte (mittlere Luminanz):** Cover f5 85,9 · hook f40 109,4 · arrive f1418 17,2 · four f1804 62,1 · seven f2244 102,8 · turn f2538 29,3 · tally f3107 11,0 / f3155 28,4. Keine Platte unter 7 : 1 sichtbar (Zähler gelb/weiß auf Blau-Schwarz, HUD-Rot #FF8A80 auf dunkler Platte; nicht exakt nachgemessen, Sichtprüfung deutlich heller als Runde 1).
+
+**Status der Befunde Runde 1**
+- P1-1 arrive: Zähler „124 345 142 / YEARS“ passt jetzt in ca. 100 % der Breite mit Rand, „YEARS“ weiß voll deckend – erledigt. Endwert 130 000 000 am Szenenende nicht gesehen (Zwischenstand).
+- P1-2 seven: HUD 7:16 bei f2244 (Soll 7:19 am Shot-Ende); läuft vermutlich hoch, nur Zwischenwert gesehen – als erledigt geführt, Endwert ungeprüft.
+- P2-3 Hut: eisblau statt oliv (turn f2538) – erledigt, Farblogik passt; Hut liest sich nun wie blaue Kappe/Helm, akzeptabel.
+- P2-4 HUD-Rot hell (#FF8A80) und „ORBIT: CURVED“ lesbar (ca. 28 px) – erledigt.
+- P2-5 four: Gesicht frei, Brille und Lächeln lesbar – erledigt.
+- P2-6 Doppelungen: hook „THE CLOCK STARTS NOW“ ohne Dopplung zu „Nobody knows yet“ – erledigt; tally f3107: Untertitel „EIGHT MINUTES OF LIGHT“ steht noch neben Sticker „SUNLIGHT 8 MIN · SATURN 2 H“ (Zahl weiter doppelt, Balkenlabel nun nur „SUNLIGHT / SATURN“) – teilweise. zero/gravity-Sticker nicht eigens gerendert (nur Text laut Koordinator).
+- P2-7 Hook-Sticker liegt noch schräg auf dem Goldring – offen (P3).
+
+**Restmängel**
+- P3: tally f3107: Balken „SATURN“ grau auf Schwarz, Balken kaum sichtbar (Lum. 11) – Balken heller/höher; Sticker oben zweizeilig „2 H“ allein in Zeile 2 (Umbruch).
+- P3: Hook-Sticker auf dem Ring; Sticker auf Zahl-Doppelung tally.
+- P3: arrive-Endwert und seven-Endwert im Voll-Render gegen Sprechtext prüfen.
+
+### Note: **9,0 / 10** (Design)
+Beleg: beide P1 und die P2-Befunde 3-5 behoben (Zähler im Bild, HUD 7:16, Hut eisblau, ORBIT-Zeile lesbar, Grandpa-Gesicht frei), Cover/End-Card unverändert stark, Luminanz 11-110 ohne leere Bilder. Abzug (nicht unter 9): tally-Sticker doppelt zum Untertitel, schwacher Saturn-Balken, Endwerte der Zähler nicht gesehen.
