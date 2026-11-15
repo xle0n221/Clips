@@ -26,7 +26,7 @@
     "upload": {
       "status": "plan",
       "type": "What-if",
-      "lengthSec": 110.9,
+      "lengthSec": 112.4,
       "tiktok": {
         "date": "16.11.2026",
         "timeDe": "17:00",
@@ -49,7 +49,7 @@
         },
         "calc": "18:00 Berlin (UTC+1) = 17:00 UTC → New York UTC-5 = 12:00 · Los Angeles UTC-8 = 09:00 · London UTC+0 = 17:00"
       },
-      "dstNote": "USA und Europa stehen beide auf Winterzeit (EU/UK seit 25.10.2026, USA seit 01.11.2026, laut tzdata 2026e) – keine Abweichung. Nächste Abweichung 14.03.–27.03.2027. lengthSec 110.9 ist ein Planwert und wird nach dem Render korrigiert."
+      "dstNote": "USA und Europa stehen beide auf Winterzeit (EU/UK seit 25.10.2026, USA seit 01.11.2026, laut tzdata 2026e) – keine Abweichung. Nächste Abweichung 14.03.–27.03.2027."
     }
   }
 }

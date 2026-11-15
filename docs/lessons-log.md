@@ -25,3 +25,12 @@ Title: At 2:14 AM, the Ground Under Lot 9 Knocked Back (Bauarbeiter)
 Length / cuts: 84,3 s, 34 Shots, Ø 2,42 s, max 4,53 s; 55 Phrasen à 2–5 Wörter; 2,31 W/s
 Noten: Fakten 9 · Retention 9 · Hörprobe 9 · Regie 9,0 · Design 9,0 · Endkontrolle 9
 Stats: noch keine (Upload geplant 16.11.2026 Slot B)
+7. (15.11.2026, Sonne) Höheres Chatterbox-`cfg` frisst Komma-Pausen und Neuvertonungen verschieben Wort-Beats → Komma-Stille nach dem Wort-Tail einfügen (`comma_whisper`), Aufzählungen stückweise sprechen (`splitCommas`), nach jeder Neuvertonung Shots/HUD-Werte an den Wortzeiten neu messen.
+8. (15.11.2026, Sonne) `gen_epic` ignorierte den Musik-Plan → Musik-Abschnitte (`music.sections`, `silenceBefore`) im Werkzeug umsetzen und die Stille im Gesamtmix (nicht nur in der Musik) messen.
+9. (15.11.2026, Sonne) Tempo-Untergrenze und „nicht beschleunigen“ kollidieren (K14) → Tempo über das Sprechen (cfg), atempo ≤ 1,05; HUD-Zähler, die eine Zahl sprechen, stehen am gesprochenen Wort auf dem Endwert.
+
+## PREVIOUS VIDEO (fertig 15.11.2026, angefügt)
+Title: What If the Sun Vanished? The First 8:19 (sonne-verschwindet, What-if)
+Length / cuts: 112,4 s, 48 Shots, Ø 2,30 s, max 4,87 s (Halt); 79 Phrasen à 2–5 W; 2,45 W/s
+Noten: Fakten 9 · Retention 9,0 · Hörprobe 9 · Regie 9,0 · Design 9,0 · Endkontrolle 9
+Stats: noch keine (Upload geplant 16.11.2026 Slot A)
