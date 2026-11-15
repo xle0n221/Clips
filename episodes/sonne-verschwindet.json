@@ -716,7 +716,7 @@
         "gain_db": -2.5
       },
       "text": "In twenty seventeen, we saw two dead stars *crash*. | Their *gravity ripples* and their light raced together.",
-      "onScreen": "NEUTRON STARS: THE PROOF",
+      "onScreen": "NEUTRON STARS: THE TEST",
       "why": "because: dead stars proved it",
       "visual": "SHOT 1 (wide, deep space): two small, heavy, dark-blue glowing balls ('dead stars') spiral around each other in a distant galaxy / SHOT 2 (ECU): they crash: a bright flash plus a golden grid ripple leaving at the same instant / SHOT 3 (tracking): the flash and the ripple fly side by side through starry space, a calendar sticker '2017' fades in at the end",
       "shots": [
@@ -1080,7 +1080,7 @@
       "text": "*Seven* minutes. | Juno closes her eyes in the *warmth*. | One warm minute *left*.",
       "onScreen": "SHE DOZES. THE TIMER DOESN'T",
       "why": "but: her warm minute is running out",
-      "visual": "SHOT 1 (slow push-in, ECU): Juno closes her eyes, golden light on her face (STEP 1: the viewer cares – this is her last warm minute) / SHOT 2 (insert): HUD timer 'SUN GONE FOR 7:00' – ticking louder while Juno dozes",
+      "visual": "SHOT 1 (slow push-in, ECU): Juno closes her eyes, golden light on her face (STEP 1: the viewer cares – this is her last warm minute) / SHOT 2 (insert): HUD timer 'SUN GONE FOR 7:19' – ticking louder while Juno dozes",
       "shots": [
         {
           "type": "slow push-in, ECU",
@@ -1092,7 +1092,7 @@
         },
         {
           "type": "insert",
-          "desc": "HUD timer 'SUN GONE FOR 7:00' – ticking louder while Juno dozes",
+          "desc": "HUD timer 'SUN GONE FOR 7:19' – ticking louder while Juno dozes",
           "t": [
             71.0,
             73.5
@@ -1109,7 +1109,7 @@
           "beat": "junoClosesEyes",
           "hud": {
             "id": "sungone",
-            "value": "7:00"
+            "value": "7:19"
           }
         },
         {
