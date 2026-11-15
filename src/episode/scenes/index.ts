@@ -12,6 +12,7 @@ import { LUCIA_CONFIG, LUCIA_SCENES } from "./lucia";
 import { JASON_CONFIG, JASON_SCENES } from "./jason";
 import { ZEIT_CONFIG, ZEIT_SCENES } from "./zeitwelt";
 import { BAU_CONFIG, BAU_SCENES } from "./bauarbeiter";
+import { SONNE_CONFIG, SONNE_SCENES } from "./sonne";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -45,6 +46,8 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "jason-gta6": JASON_SCENES,
   "zeit-welt": ZEIT_SCENES,
   bauarbeiter: BAU_SCENES,
+  "sonne-verschwindet": SONNE_SCENES,
+  "sonne-dummy": SONNE_SCENES, // TEMP Szenenbau-Test, vor Abgabe entfernen
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -101,5 +104,7 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "jason-gta6": JASON_CONFIG,
   "zeit-welt": ZEIT_CONFIG,
   bauarbeiter: BAU_CONFIG,
+  "sonne-verschwindet": SONNE_CONFIG,
+  "sonne-dummy": SONNE_CONFIG, // TEMP
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

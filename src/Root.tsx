@@ -171,6 +171,18 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      <Composition
+        id="SonneVerschwindet"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 110}
+        schema={episodeSchema}
+        defaultProps={{ episode: "sonne-verschwindet" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* Prüf-Komposition des 2D-Bau-Kits (src/episode/kit2d/) */}
       <Composition
         id="Kit2DTest"
