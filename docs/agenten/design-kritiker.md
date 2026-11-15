@@ -19,6 +19,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 - Untertitel-Zone mit den Werten aus dem Code prüfen: Unterkante y 1520 (`Captions.tsx` `paddingBottom: 400`), eine Zeile ≈ 1420–1520, zwei Zeilen ab ≈ 1325 (`design-system.md` §4.6) (übertragen vom Wissensverwalter 09.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 15.11.2026 · Sonne verschwindet Runde 1 · Experiment: HUD-/Zähler-Zahlen gegen Sprechtext und JSON-Soll geprüft (arrive „101 707 107“ läuft aus dem Bild, seven 7:23 statt 7:19) und Farblogik als Pixelprüfung (Hut unter Kaltlicht oliv = Grün außerhalb der Quelle). Prüfregel: Zahlen-Overlays immer auf Randabschnitt und Wert gegen Sprechtext prüfen; Farbmischung von Licht und Objektfarbe gegen Palettenregel · `docs/kritik-sonne-szenen.md`
 - 14.11.2026 · Bauarbeiter Runde 2 · Ersteller-Messwerte nachgerendert statt übernommen (Abweichung 0,2-2,3, fear 20,3 knapp); Prüfregel: Endstand immer selbst rendern, Ersteller-Zahlen nur gegenprüfen; Sticker-Platte per Y-Dezil im Sticker-Band messbar · `docs/kritik-bauarbeiter-szenen.md` Design Runde 2
 - 14.11.2026 · Bauarbeiter (3D, KnowToon) · Experiment: Pixelmessung von Sticker-Grau gegen Szenen-Grund im Fade-in (1,4 : 1 auf hellem Mund-Ring, 52,5 s) und Dunkelstellen per mittlerer Luminanz (11-17 bei 64-69 s); Prüfregel: Sticker-Kontrast auch während des Einblendens messen, Sticker, die den Untertitel wörtlich wiederholen, als Doppelung führen · `docs/kritik-bauarbeiter-szenen.md` Design Runde 1
 - 13.11.2026 · ZeitWelt Runde 2 · Neue Kollisionsart: Sticker über Bildnachweis-Zeile (1748, 84,3 s) – Prüfregel: Nachweis-Zeilen echter Bilder gegen alle Sticker/Labels derselben Einstellung prüfen, nicht nur gegen Untertitel · `docs/kritik-zeitwelt-szenen.md` Runde 2 N1
@@ -39,6 +40,7 @@ Prüft Art Direction und Overlays mit Standbildern (vorher/nachher), misst Kontr
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 15.11.2026 | Sonne verschwindet Runde 1 (Kontaktabzug + 7 Standbilder) | 8,5 (Design-Kritiker) | arrive-Zähler abgeschnitten/falsch, seven 7:23, Hut oliv im turn, Sticker-Doppelungen |
 | 14.11.2026 | Bauarbeiter Runde 1 (Kontaktabzug + 9 Standbilder) | 8,5 (Design-Kritiker) | Sticker 1,4 : 1 bei 52,5 s, leere Fear-Szene mit Sticker-Doppelung, dunkle Szenen 64-69 s, Gesicht ausgeblichen 70,5 s |
 | 14.11.2026 | Bauarbeiter Runde 2 (9 Standbilder nachgerendert) | 9,0 (Design-Kritiker) | Sticker 1,4 → ca. 15 : 1, Dunkelstellen 20-34, D1-D8 behoben; Uhr (D9) ungemessen, Zettel-Linien P3 |
 | 14.11.2026 | Bauarbeiter Runde 3 (8 Standbilder, Nachkontrolle) | 9,0 (Design-Kritiker) | hält: Sticker >= 15 : 1, Lum. 18-59; 52,6 s fast schwarz (18,3), Uhr ungemessen |
