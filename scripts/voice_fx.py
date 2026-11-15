@@ -89,6 +89,7 @@ NARRATOR = {
     "qc_tries": 3,           # Aussprache-Prüfung je Satz (faster-whisper small.en): bis zu 3 Aufnahmen, beste gewinnt
     # Ab 15.11.2026 (sonne-verschwindet), je Video über Drehbuch-`narrator` einschalten; Standard aus = bitgleich wie vorher:
     "comma_whisper": False,  # Komma/Doppelpunkt-Pause an der Whisper-Wortgrenze einfügen, auch ohne Stille in der Aufnahme
+    "room_tone_db": None,    # leiser rosa Raumton über die ganze Stimme (dBFS RMS, z. B. −72), statt digitaler Null
     "end_soft_ms": 0,        # weicher Ausklang: letzte N ms vor dem Sprachende (Pegel < Satzpegel −30 dB) auf −24 dB rampen
 }
 EMOTIONS["angry"] = EMOTIONS["indignant"]

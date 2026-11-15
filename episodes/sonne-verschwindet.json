@@ -193,7 +193,8 @@
     "scene_gap_ms": 215,
     "qc_tries": 6,
     "comma_whisper": true,
-    "end_soft_ms": 60
+    "end_soft_ms": 60,
+    "room_tone_db": -72
   },
   "captionNote": "Erweiterung Regel 4 + K6: Untertitel als 2–5-Wort-Phrasen (Feld captions je Szene, Wortfolge = Sprechtext, per Skript geprüft), gelb mit dickem schwarzem Rand, unteres Drittel; je Szene eine Handlungs-Phrase (onScreen, oberes Drittel), die die Handlung in ANDEREN Worten benennt (K13). Lesetest: nur onScreen gelesen erzählt die Geschichte.",
   "hookQuestion": {
@@ -1136,11 +1137,12 @@
     },
     {
       "id": "hope",
+      "splitCommas": true,
       "section": "tension",
       "delivery": "warm",
       "emotion": {
         "exag": 0.5,
-        "cfg": 0.75,
+        "cfg": 0.6,
         "temp": 0.75,
         "speed": 1.0,
         "gap_ms": 280,

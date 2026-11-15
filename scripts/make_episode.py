@@ -226,14 +226,14 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None
         if at < es:
             es += add
     # Satzende leiser (Frage nur halb, weil die Frage oben endet); Ausklang weich ausblenden
-    drop = e["end_db"] * (0.5 if text.rstrip().endswith("?") else 1.0)
+    drop = e["end_db"] * (0.5 if text.rstrip().endswith(("?", ",")) else 1.0)
     g = np.zeros(len(y))
     w = int(NARRATOR["end_win_s"] * sr)
     ws = max(0, es - w)
     g[ws:es] = -drop * (1 - np.cos(np.linspace(0, np.pi, es - ws))) / 2
     g[es:] = -drop
     y = y * (10 ** (g / 20)).astype(np.float32)
-    soft = int(NARRATOR.get("end_soft_ms", 0) * sr / 1000) if soften else 0
+    soft = int(NARRATOR.get("end_soft_ms", 0) * sr / 1000) if soften and not text.rstrip().endswith(",") else 0
     if soft:  # weicher Ausklang (15.11.2026): der letzte laute 10-ms-Block (≥ Satzpegel −26 dB) fällt bei Zischlaut-Enden in
         # einem Schritt in die Stille. Die letzten `soft` ms dB-linear so absenken, dass dieser Block bei −32 dB landet (danach
         # gehalten) – die Stille beginnt aus leisem Pegel, keine Kante. Reine Absenkung, Länge unverändert.
@@ -382,7 +382,10 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
         for i, p in enumerate(pieces):
             if e:
                 sents = []
-                for s in sentences(p):
+                # Szenen-Feld `splitCommas` (15.11.2026): Aufzählungen ohne Sprechpause („Waves, birds, sunshine.“) Stück für
+                # Stück aufnehmen – jedes Wort behält seinen natürlichen Ausklang, Pause = comma_ms
+                split = (lambda t: re.split(r"(?<=,)\s+", t)) if sc.get("splitCommas") else (lambda t: [t])
+                for s in [f for t in sentences(p) for f in split(t)]:
                     text = speakable(s)
                     seed = int(hashlib.sha1(text.encode()).hexdigest()[:8], 16)
                     job = {"text": text, "voice": voice_id, "exaggeration": e["exag"], "cfg": e["cfg"], "temperature": e["temp"]}
@@ -445,13 +448,23 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
                 y = tighten_pauses(sf.read(parts["out"], dtype="float32")[0], cap)
                 t = tempo
             else:
-                segs = []
+                segs, frag = [], []
                 for k, (text, _, _) in enumerate(parts):
                     cuts = comma_cuts(chosen[text], text, comma_cache) if NARRATOR.get("comma_whisper") else None
                     segs.append(narrate_sentence(sf.read(str(chosen[text]), dtype="float32")[0], text, e, cuts))
+                    frag.append(len(segs) - 1)
+                    if not text.rstrip().endswith(","):  # Ende einer Aufzählung (splitCommas): Stücke auf gleichen Pegel (±4 dB)
+                        if len(frag) > 1:
+                            lv = []
+                            for j in frag:
+                                d = _frames_db(segs[j], SAMPLE_RATE // 100)
+                                lv.append(10 * np.log10(np.mean(10 ** (d[d > d.max() - 20] / 10))))
+                            for j, l in zip(frag, lv):
+                                segs[j] = segs[j] * np.float32(10 ** (float(np.clip(np.mean(lv) - l, -4, 4)) / 20))
+                        frag = []
                     if k < len(parts) - 1:
-                        gap = e["gap_ms"] / 1000 + (0.06 if text.rstrip().endswith("?") else 0) \
-                            - NARRATOR["tail_keep_s"] - NARRATOR["head_keep_s"]
+                        gap = (e["comma_ms"] if text.rstrip().endswith(",") else e["gap_ms"]) / 1000 \
+                            + (0.06 if text.rstrip().endswith("?") else 0) - NARRATOR["tail_keep_s"] - NARRATOR["head_keep_s"]
                         segs.append(np.zeros(int(max(0.0, gap) * SAMPLE_RATE), np.float32))
                 y = np.concatenate(segs) * np.float32(10 ** (e["gain_db"] / 20))
                 t = tempo * e["speed"]
@@ -547,6 +560,12 @@ def synth_track(ep: dict, voice: Voice | None, post: bool = True, log=print) -> 
         if log:
             log(f"  {sc['id']:<8} {len(audio) / SAMPLE_RATE:5.2f} s")
     track = np.concatenate(parts)
+    if engine == "chatterbox" and NARRATOR.get("room_tone_db") is not None:  # leiser Raumton statt digitaler Null zwischen Sätzen
+        rng = np.random.default_rng(7)  # (15.11.2026, sonne: earshot realness hope 0,66 → 0,74 mit −72 dB); Standard aus
+        F = np.fft.rfft(rng.standard_normal(len(track)))
+        F /= np.sqrt(np.maximum(np.fft.rfftfreq(len(track), 1 / SAMPLE_RATE), 50) / 50)  # rosa
+        n = np.fft.irfft(F, len(track))
+        track = (track + n * (10 ** (NARRATOR["room_tone_db"] / 20) / np.sqrt(np.mean(n ** 2)))).astype(np.float32)
     if post and style.get("post"):  # gleiche Länge, Szenen-/Wortzeiten bleiben gültig
         track = post_process(track, style["post"])
     return track, scenes, words
