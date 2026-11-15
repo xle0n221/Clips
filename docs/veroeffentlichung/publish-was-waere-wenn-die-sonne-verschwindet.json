@@ -1,0 +1,55 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "What If the Sun Vanished? The First 8:19",
+      "description": "A thought experiment, not a prediction: the Sun cannot simply vanish. But if it did, Earth would keep shining and orbiting for about 8 minutes 19 seconds, because light and changes in gravity both need that long to cross 150 million km. Watch what Juno and her grandpa see, and what Saturn does two hours later.\n\nSources (NASA):\n- Earth-Sun distance and light travel time: https://science.nasa.gov/earth/facts/\n- 1 astronomical unit and the speed of light: https://science.nasa.gov/universe/glossary/\n- Gravitational waves travel at the speed of light (2017 neutron star crash): https://science.nasa.gov/universe/stories/quick-reads/when-dead-stars-collide/\n- Saturn's distance from the Sun: https://science.nasa.gov/saturn/facts/\n\nThe story characters are invented. The 8:19 figure is calculated from NASA's values (149,597,870.7 km divided by 299,792.458 km/s).",
+      "hashtags": [
+        "#KnowToon",
+        "#WhatIf",
+        "#Space",
+        "#Sun",
+        "#ScienceAnimation"
+      ]
+    },
+    "tiktok": {
+      "caption": "What if the Sun vanished? For about 8 minutes 19 seconds, nobody would know – not even gravity. Watch what Saturn does after. (What-if thought experiment; sources in the description.)",
+      "hashtags": [
+        "#KnowToon",
+        "#WhatIf",
+        "#Space",
+        "#Sun",
+        "#ScienceAnimation"
+      ]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „THE SUN IS GONE“ – leerer schwarzer Kreis am blauen Himmel, Juno lächelt noch im goldenen Licht.",
+    "note": "Hashtags aus docs/paket-sonne-verschwindet.md §7 (Reichweite unbelegt [HYPOTHESE]; docs/trends/aktuell.md nennt keine Hashtag-Daten, nur What-if mit Countdown als stabil starkes Format [HYPOTHESE/Blog-Indiz]). Vor dem Posten in Creator Search Insights / YouTube-Suche gegenprüfen. Fakten gegen docs/quellen-sonne-verschwindet.md: 8:19 = Q2 (Herleitung H aus NASA-Glossar + c), 150 Mio. km = Q1/Q4, Gravitationsänderungen mit Lichtgeschwindigkeit = Q5, Saturn ~2 h später = Q9 (Herleitung, bei Opposition). Titel/Caption ohne „right now“ und ohne Kausal-/Vorhersage-Behauptung; What-if klar als Gedankenexperiment. Beschreibung-Quellen: nur NASA-URLs, die in der Quellen-Datei per Zitat geprüft sind.",
+    "upload": {
+      "status": "plan",
+      "type": "What-if",
+      "lengthSec": 110.9,
+      "tiktok": {
+        "date": "16.11.2026",
+        "timeDe": "17:00",
+        "slot": "A",
+        "local": {
+          "newYork": "11:00",
+          "losAngeles": "08:00",
+          "london": "16:00"
+        },
+        "calc": "17:00 Berlin (UTC+1) = 16:00 UTC → New York UTC-5 = 11:00 · Los Angeles UTC-8 = 08:00 · London UTC+0 = 16:00"
+      },
+      "youtube": {
+        "date": "16.11.2026",
+        "timeDe": "18:00",
+        "slot": "A",
+        "local": {
+          "newYork": "12:00",
+          "losAngeles": "09:00",
+          "london": "17:00"
+        },
+        "calc": "18:00 Berlin (UTC+1) = 17:00 UTC → New York UTC-5 = 12:00 · Los Angeles UTC-8 = 09:00 · London UTC+0 = 17:00"
+      },
+      "dstNote": "USA und Europa stehen beide auf Winterzeit (EU/UK seit 25.10.2026, USA seit 01.11.2026, laut tzdata 2026e) – keine Abweichung. Nächste Abweichung 14.03.–27.03.2027. lengthSec 110.9 ist ein Planwert und wird nach dem Render korrigiert."
+    }
+  }
+}
