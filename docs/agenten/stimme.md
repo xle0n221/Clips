@@ -56,6 +56,7 @@ Stimme und Sprechweise wählen und einstellen (Chatterbox `scripts/tts_chatterbo
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 15.11.2026 | sonne-verschwindet Station 2 (Prüfer, earshot) | 7/10 | Komma 80 ms (3× 0 ms) statt 160–240; Musik ohne 0,6 s Stille vor turn (−26…−33 dB), gen_epic ignoriert sparseUntilScene; earshot-Zwangswahl „rushed“ auch bei zeit-welt >99 % → kein Beleg |
 | 15.11.2026 | sonne-verschwindet Station 2 (Ersteller) | – (Messung, nicht gehört) | 2,30 → 2,51 W/s ohne Textänderung über cfg + Pausen; Kanten = Zischlaut-Enden |
 | 13.11.2026 | zeit-welt Casting (8 Stimmen) | – (Messung, Nutzer wählt) | fenrir misst eher „News-Anchor“; echo trifft Profil am besten |
 | 12.11.2026 abends | Tyson/UFC/Rolls Erzähler-Fassung | – (Messung, nicht gehört) | Pausen/Satzende im Ziel, Whisper ≥ 97,8 %, aber Gesamt 1,75–2,06 W/s |
