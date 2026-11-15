@@ -51,15 +51,15 @@
  {
   "text": " Earth",
   "startMs": 2240,
-  "endMs": 2400,
-  "timestampMs": 2320,
+  "endMs": 2380,
+  "timestampMs": 2310,
   "confidence": null
  },
  {
   "text": " will",
-  "startMs": 2400,
+  "startMs": 2380,
   "endMs": 2620,
-  "timestampMs": 2510,
+  "timestampMs": 2500,
   "confidence": null
  },
  {
@@ -92,9 +92,9 @@
  },
  {
   "text": " Meet",
-  "startMs": 4840,
+  "startMs": 4860,
   "endMs": 5040,
-  "timestampMs": 4940,
+  "timestampMs": 4950,
   "confidence": null
  },
  {
@@ -134,9 +134,9 @@
  },
  {
   "text": " Sunlight",
-  "startMs": 8300,
+  "startMs": 8280,
   "endMs": 8600,
-  "timestampMs": 8450,
+  "timestampMs": 8440,
   "confidence": null
  },
  {
@@ -156,15 +156,15 @@
  {
   "text": " warm",
   "startMs": 8960,
-  "endMs": 9240,
-  "timestampMs": 9100,
+  "endMs": 9260,
+  "timestampMs": 9110,
   "confidence": null
  },
  {
   "text": " on",
-  "startMs": 9240,
+  "startMs": 9260,
   "endMs": 9400,
-  "timestampMs": 9320,
+  "timestampMs": 9330,
   "confidence": null
  },
  {
@@ -408,15 +408,15 @@
  {
   "text": " now,",
   "startMs": 21480,
-  "endMs": 21860,
-  "timestampMs": 21670,
+  "endMs": 21840,
+  "timestampMs": 21660,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 22120,
+  "startMs": 22160,
   "endMs": 22280,
-  "timestampMs": 22200,
+  "timestampMs": 22220,
   "confidence": null
  },
  {
@@ -449,100 +449,100 @@
  },
  {
   "text": " Its",
-  "startMs": 24400,
-  "endMs": 24540,
+  "startMs": 24380,
+  "endMs": 24560,
   "timestampMs": 24470,
   "confidence": null
  },
  {
   "text": " last",
-  "startMs": 24540,
-  "endMs": 24820,
-  "timestampMs": 24680,
+  "startMs": 24560,
+  "endMs": 24860,
+  "timestampMs": 24710,
   "confidence": null
  },
  {
   "text": " light",
-  "startMs": 24820,
+  "startMs": 24860,
   "endMs": 25180,
-  "timestampMs": 25000,
+  "timestampMs": 25020,
   "confidence": null
  },
  {
   "text": " is",
   "startMs": 25180,
-  "endMs": 25400,
-  "timestampMs": 25290,
+  "endMs": 25380,
+  "timestampMs": 25280,
   "confidence": null
  },
  {
   "text": " still",
-  "startMs": 25400,
-  "endMs": 25580,
-  "timestampMs": 25490,
+  "startMs": 25380,
+  "endMs": 25560,
+  "timestampMs": 25470,
   "confidence": null
  },
  {
   "text": " on",
-  "startMs": 25580,
-  "endMs": 25760,
-  "timestampMs": 25670,
+  "startMs": 25560,
+  "endMs": 25740,
+  "timestampMs": 25650,
   "confidence": null
  },
  {
   "text": " its",
-  "startMs": 25760,
+  "startMs": 25740,
   "endMs": 25880,
-  "timestampMs": 25820,
+  "timestampMs": 25810,
   "confidence": null
  },
  {
   "text": " way.",
   "startMs": 25880,
-  "endMs": 26180,
-  "timestampMs": 26030,
+  "endMs": 26160,
+  "timestampMs": 26020,
   "confidence": null
  },
  {
   "text": " A",
-  "startMs": 27340,
-  "endMs": 27340,
-  "timestampMs": 27340,
+  "startMs": 26780,
+  "endMs": 26967,
+  "timestampMs": 26873,
   "confidence": null
  },
  {
   "text": " hundred",
-  "startMs": 27340,
-  "endMs": 27340,
-  "timestampMs": 27340,
+  "startMs": 26967,
+  "endMs": 27153,
+  "timestampMs": 27060,
   "confidence": null
  },
  {
   "text": " fifty",
-  "startMs": 27340,
+  "startMs": 27153,
   "endMs": 27340,
-  "timestampMs": 27340,
+  "timestampMs": 27247,
   "confidence": null
  },
  {
   "text": " million",
   "startMs": 27340,
-  "endMs": 27900,
-  "timestampMs": 27620,
+  "endMs": 27920,
+  "timestampMs": 27630,
   "confidence": null
  },
  {
   "text": " kilometers",
-  "startMs": 27900,
-  "endMs": 28520,
-  "timestampMs": 28210,
+  "startMs": 27920,
+  "endMs": 28440,
+  "timestampMs": 28180,
   "confidence": null
  },
  {
   "text": " of",
-  "startMs": 28520,
+  "startMs": 28440,
   "endMs": 28840,
-  "timestampMs": 28680,
+  "timestampMs": 28640,
   "confidence": null
  },
  {
@@ -554,16 +554,16 @@
  },
  {
   "text": " With",
-  "startMs": 29540,
-  "endMs": 29680,
-  "timestampMs": 29610,
+  "startMs": 29060,
+  "endMs": 29640,
+  "timestampMs": 29350,
   "confidence": null
  },
  {
   "text": " nothing",
-  "startMs": 29680,
+  "startMs": 29640,
   "endMs": 30020,
-  "timestampMs": 29850,
+  "timestampMs": 29830,
   "confidence": null
  },
  {
@@ -576,29 +576,29 @@
  {
   "text": " it.",
   "startMs": 30380,
-  "endMs": 30760,
-  "timestampMs": 30570,
+  "endMs": 30920,
+  "timestampMs": 30650,
   "confidence": null
  },
  {
   "text": " But",
-  "startMs": 31080,
-  "endMs": 31180,
-  "timestampMs": 31130,
+  "startMs": 31160,
+  "endMs": 31160,
+  "timestampMs": 31160,
   "confidence": null
  },
  {
   "text": " wait.",
-  "startMs": 31180,
-  "endMs": 31400,
+  "startMs": 31160,
+  "endMs": 31420,
   "timestampMs": 31290,
   "confidence": null
  },
  {
   "text": " No",
-  "startMs": 31800,
+  "startMs": 31840,
   "endMs": 31940,
-  "timestampMs": 31870,
+  "timestampMs": 31890,
   "confidence": null
  },
  {
@@ -625,29 +625,29 @@
  {
   "text": " pull.",
   "startMs": 32820,
-  "endMs": 33060,
-  "timestampMs": 32940,
+  "endMs": 33080,
+  "timestampMs": 32950,
   "confidence": null
  },
  {
   "text": " Shouldn't",
-  "startMs": 33560,
-  "endMs": 33840,
+  "startMs": 33580,
+  "endMs": 33820,
   "timestampMs": 33700,
   "confidence": null
  },
  {
   "text": " Earth",
-  "startMs": 33840,
-  "endMs": 33980,
+  "startMs": 33820,
+  "endMs": 34000,
   "timestampMs": 33910,
   "confidence": null
  },
  {
   "text": " fly",
-  "startMs": 33980,
+  "startMs": 34000,
   "endMs": 34280,
-  "timestampMs": 34130,
+  "timestampMs": 34140,
   "confidence": null
  },
  {
@@ -666,30 +666,30 @@
  },
  {
   "text": " Nope.",
-  "startMs": 35300,
+  "startMs": 35380,
   "endMs": 35580,
-  "timestampMs": 35440,
+  "timestampMs": 35480,
   "confidence": null
  },
  {
   "text": " Gravity",
-  "startMs": 36360,
-  "endMs": 36360,
-  "timestampMs": 36360,
+  "startMs": 36380,
+  "endMs": 36380,
+  "timestampMs": 36380,
   "confidence": null
  },
  {
   "text": " isn't",
-  "startMs": 36360,
-  "endMs": 36700,
+  "startMs": 36380,
+  "endMs": 36680,
   "timestampMs": 36530,
   "confidence": null
  },
  {
   "text": " instant",
-  "startMs": 36700,
+  "startMs": 36680,
   "endMs": 36960,
-  "timestampMs": 36830,
+  "timestampMs": 36820,
   "confidence": null
  },
  {
@@ -702,15 +702,15 @@
  {
   "text": " Its",
   "startMs": 37620,
-  "endMs": 37760,
-  "timestampMs": 37690,
+  "endMs": 37740,
+  "timestampMs": 37680,
   "confidence": null
  },
  {
   "text": " changes",
-  "startMs": 37760,
+  "startMs": 37740,
   "endMs": 38140,
-  "timestampMs": 37950,
+  "timestampMs": 37940,
   "confidence": null
  },
  {
@@ -744,64 +744,64 @@
  {
   "text": " of",
   "startMs": 39000,
-  "endMs": 39140,
-  "timestampMs": 39070,
+  "endMs": 39120,
+  "timestampMs": 39060,
   "confidence": null
  },
  {
   "text": " light.",
-  "startMs": 39140,
+  "startMs": 39120,
   "endMs": 39380,
-  "timestampMs": 39260,
+  "timestampMs": 39250,
   "confidence": null
  },
  {
   "text": " In",
   "startMs": 39760,
-  "endMs": 39900,
-  "timestampMs": 39830,
+  "endMs": 39880,
+  "timestampMs": 39820,
   "confidence": null
  },
  {
   "text": " twenty",
-  "startMs": 39900,
-  "endMs": 40160,
-  "timestampMs": 40030,
+  "startMs": 39880,
+  "endMs": 40170,
+  "timestampMs": 40025,
   "confidence": null
  },
  {
   "text": " seventeen,",
-  "startMs": 40160,
-  "endMs": 40420,
-  "timestampMs": 40290,
+  "startMs": 40170,
+  "endMs": 40460,
+  "timestampMs": 40315,
   "confidence": null
  },
  {
   "text": " we",
-  "startMs": 40980,
+  "startMs": 41020,
   "endMs": 41120,
-  "timestampMs": 41050,
+  "timestampMs": 41070,
   "confidence": null
  },
  {
   "text": " saw",
   "startMs": 41120,
-  "endMs": 41340,
-  "timestampMs": 41230,
+  "endMs": 41360,
+  "timestampMs": 41240,
   "confidence": null
  },
  {
   "text": " two",
-  "startMs": 41340,
-  "endMs": 41680,
-  "timestampMs": 41510,
+  "startMs": 41360,
+  "endMs": 41700,
+  "timestampMs": 41530,
   "confidence": null
  },
  {
   "text": " dead",
-  "startMs": 41680,
+  "startMs": 41700,
   "endMs": 42020,
-  "timestampMs": 41850,
+  "timestampMs": 41860,
   "confidence": null
  },
  {
@@ -820,9 +820,9 @@
  },
  {
   "text": " Their",
-  "startMs": 43460,
+  "startMs": 43480,
   "endMs": 43620,
-  "timestampMs": 43540,
+  "timestampMs": 43550,
   "confidence": null
  },
  {
@@ -835,15 +835,15 @@
  {
   "text": " ripples",
   "startMs": 44000,
-  "endMs": 44340,
-  "timestampMs": 44170,
+  "endMs": 44320,
+  "timestampMs": 44160,
   "confidence": null
  },
  {
   "text": " and",
-  "startMs": 44340,
+  "startMs": 44320,
   "endMs": 44720,
-  "timestampMs": 44530,
+  "timestampMs": 44520,
   "confidence": null
  },
  {
@@ -856,22 +856,22 @@
  {
   "text": " light",
   "startMs": 44840,
-  "endMs": 45020,
-  "timestampMs": 44930,
+  "endMs": 45040,
+  "timestampMs": 44940,
   "confidence": null
  },
  {
   "text": " raced",
-  "startMs": 45020,
-  "endMs": 45300,
-  "timestampMs": 45160,
+  "startMs": 45040,
+  "endMs": 45320,
+  "timestampMs": 45180,
   "confidence": null
  },
  {
   "text": " together.",
-  "startMs": 45300,
-  "endMs": 45660,
-  "timestampMs": 45480,
+  "startMs": 45320,
+  "endMs": 45680,
+  "timestampMs": 45500,
   "confidence": null
  },
  {
@@ -905,29 +905,29 @@
  {
   "text": " million",
   "startMs": 47000,
-  "endMs": 47420,
-  "timestampMs": 47210,
+  "endMs": 47380,
+  "timestampMs": 47190,
   "confidence": null
  },
  {
   "text": " years\u2026",
-  "startMs": 47420,
+  "startMs": 47380,
   "endMs": 47900,
-  "timestampMs": 47660,
+  "timestampMs": 47640,
   "confidence": null
  },
  {
   "text": " they",
-  "startMs": 48460,
-  "endMs": 48740,
-  "timestampMs": 48600,
+  "startMs": 48420,
+  "endMs": 48760,
+  "timestampMs": 48590,
   "confidence": null
  },
  {
   "text": " arrived",
-  "startMs": 48740,
+  "startMs": 48760,
   "endMs": 49140,
-  "timestampMs": 48940,
+  "timestampMs": 48950,
   "confidence": null
  },
  {
@@ -940,29 +940,29 @@
  {
   "text": " two",
   "startMs": 49440,
-  "endMs": 49740,
-  "timestampMs": 49590,
+  "endMs": 49720,
+  "timestampMs": 49580,
   "confidence": null
  },
  {
   "text": " seconds",
-  "startMs": 49740,
-  "endMs": 50040,
-  "timestampMs": 49890,
+  "startMs": 49720,
+  "endMs": 50020,
+  "timestampMs": 49870,
   "confidence": null
  },
  {
   "text": " apart.",
-  "startMs": 50040,
+  "startMs": 50020,
   "endMs": 50400,
-  "timestampMs": 50220,
+  "timestampMs": 50210,
   "confidence": null
  },
  {
   "text": " So",
-  "startMs": 51060,
+  "startMs": 50860,
   "endMs": 51080,
-  "timestampMs": 51070,
+  "timestampMs": 50970,
   "confidence": null
  },
  {
@@ -988,9 +988,9 @@
  },
  {
   "text": " Earth",
-  "startMs": 52200,
+  "startMs": 52160,
   "endMs": 52440,
-  "timestampMs": 52320,
+  "timestampMs": 52300,
   "confidence": null
  },
  {
@@ -1017,29 +1017,29 @@
  {
   "text": " empty",
   "startMs": 53320,
-  "endMs": 53480,
-  "timestampMs": 53400,
+  "endMs": 53500,
+  "timestampMs": 53410,
   "confidence": null
  },
  {
   "text": " spot.",
-  "startMs": 53480,
-  "endMs": 53880,
+  "startMs": 53500,
+  "endMs": 53860,
   "timestampMs": 53680,
   "confidence": null
  },
  {
   "text": " Juno",
-  "startMs": 54540,
-  "endMs": 55280,
-  "timestampMs": 54910,
+  "startMs": 54320,
+  "endMs": 55300,
+  "timestampMs": 54810,
   "confidence": null
  },
  {
   "text": " has",
-  "startMs": 55280,
+  "startMs": 55540,
   "endMs": 55580,
-  "timestampMs": 55430,
+  "timestampMs": 55560,
   "confidence": null
  },
  {
@@ -1073,15 +1073,15 @@
  {
   "text": " anyone.",
   "startMs": 57180,
-  "endMs": 57560,
-  "timestampMs": 57370,
+  "endMs": 57580,
+  "timestampMs": 57380,
   "confidence": null
  },
  {
   "text": " Not",
-  "startMs": 58000,
+  "startMs": 57920,
   "endMs": 58040,
-  "timestampMs": 58020,
+  "timestampMs": 57980,
   "confidence": null
  },
  {
@@ -1093,37 +1093,37 @@
  },
  {
   "text": " Four",
-  "startMs": 59060,
+  "startMs": 59120,
   "endMs": 59140,
-  "timestampMs": 59100,
+  "timestampMs": 59130,
   "confidence": null
  },
  {
   "text": " minutes",
   "startMs": 59140,
-  "endMs": 59380,
-  "timestampMs": 59260,
+  "endMs": 59360,
+  "timestampMs": 59250,
   "confidence": null
  },
  {
   "text": " in.",
-  "startMs": 59380,
+  "startMs": 59360,
   "endMs": 59680,
-  "timestampMs": 59530,
+  "timestampMs": 59520,
   "confidence": null
  },
  {
   "text": " Grandpa",
   "startMs": 60380,
-  "endMs": 60620,
-  "timestampMs": 60500,
+  "endMs": 60640,
+  "timestampMs": 60510,
   "confidence": null
  },
  {
   "text": " zooms",
-  "startMs": 60620,
+  "startMs": 60640,
   "endMs": 61040,
-  "timestampMs": 60830,
+  "timestampMs": 60840,
   "confidence": null
  },
  {
@@ -1143,22 +1143,22 @@
  {
   "text": " Saturn's",
   "startMs": 61460,
-  "endMs": 61880,
-  "timestampMs": 61670,
+  "endMs": 61900,
+  "timestampMs": 61680,
   "confidence": null
  },
  {
   "text": " rings.",
-  "startMs": 61880,
-  "endMs": 62120,
+  "startMs": 61900,
+  "endMs": 62100,
   "timestampMs": 62000,
   "confidence": null
  },
  {
   "text": " Still",
-  "startMs": 62940,
+  "startMs": 62700,
   "endMs": 63100,
-  "timestampMs": 63020,
+  "timestampMs": 62900,
   "confidence": null
  },
  {
@@ -1170,65 +1170,65 @@
  },
  {
   "text": " Five",
-  "startMs": 64320,
+  "startMs": 64360,
   "endMs": 64760,
-  "timestampMs": 64540,
+  "timestampMs": 64560,
   "confidence": null
  },
  {
   "text": " minutes.",
   "startMs": 64760,
-  "endMs": 65320,
-  "timestampMs": 65040,
+  "endMs": 65300,
+  "timestampMs": 65030,
   "confidence": null
  },
  {
   "text": " Grandpa",
-  "startMs": 65900,
-  "endMs": 66220,
-  "timestampMs": 66060,
+  "startMs": 65740,
+  "endMs": 66200,
+  "timestampMs": 65970,
   "confidence": null
  },
  {
   "text": " yawns",
-  "startMs": 66220,
+  "startMs": 66200,
   "endMs": 66760,
-  "timestampMs": 66490,
+  "timestampMs": 66480,
   "confidence": null
  },
  {
   "text": " goodnight.",
   "startMs": 66760,
-  "endMs": 67550,
-  "timestampMs": 67155,
+  "endMs": 67100,
+  "timestampMs": 66930,
   "confidence": null
  },
  {
   "text": " Juno",
-  "startMs": 67550,
+  "startMs": 67560,
   "endMs": 68340,
-  "timestampMs": 67945,
+  "timestampMs": 67950,
   "confidence": null
  },
  {
   "text": " begs:",
-  "startMs": 68340,
-  "endMs": 68640,
-  "timestampMs": 68490,
+  "startMs": 68500,
+  "endMs": 68760,
+  "timestampMs": 68630,
   "confidence": null
  },
  {
   "text": " \"Stay",
-  "startMs": 69180,
-  "endMs": 69320,
-  "timestampMs": 69250,
+  "startMs": 69000,
+  "endMs": 69340,
+  "timestampMs": 69170,
   "confidence": null
  },
  {
   "text": " on",
-  "startMs": 69320,
+  "startMs": 69340,
   "endMs": 69480,
-  "timestampMs": 69400,
+  "timestampMs": 69410,
   "confidence": null
  },
  {
@@ -1241,8 +1241,8 @@
  {
   "text": " line!\"",
   "startMs": 69580,
-  "endMs": 69920,
-  "timestampMs": 69750,
+  "endMs": 69940,
+  "timestampMs": 69760,
   "confidence": null
  },
  {
@@ -1262,22 +1262,22 @@
  {
   "text": " Juno",
   "startMs": 71820,
-  "endMs": 72580,
-  "timestampMs": 72200,
+  "endMs": 72540,
+  "timestampMs": 72180,
   "confidence": null
  },
  {
   "text": " closes",
-  "startMs": 72580,
-  "endMs": 72900,
-  "timestampMs": 72740,
+  "startMs": 72780,
+  "endMs": 72920,
+  "timestampMs": 72850,
   "confidence": null
  },
  {
   "text": " her",
-  "startMs": 72900,
+  "startMs": 72920,
   "endMs": 73140,
-  "timestampMs": 73020,
+  "timestampMs": 73030,
   "confidence": null
  },
  {
@@ -1290,15 +1290,15 @@
  {
   "text": " in",
   "startMs": 73420,
-  "endMs": 73660,
-  "timestampMs": 73540,
+  "endMs": 73680,
+  "timestampMs": 73550,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 73660,
+  "startMs": 73680,
   "endMs": 73800,
-  "timestampMs": 73730,
+  "timestampMs": 73740,
   "confidence": null
  },
  {
@@ -1310,23 +1310,23 @@
  },
  {
   "text": " One",
-  "startMs": 74080,
-  "endMs": 74720,
-  "timestampMs": 74400,
+  "startMs": 74560,
+  "endMs": 74780,
+  "timestampMs": 74670,
   "confidence": null
  },
  {
   "text": " warm",
-  "startMs": 74720,
-  "endMs": 75180,
-  "timestampMs": 74950,
+  "startMs": 74780,
+  "endMs": 75220,
+  "timestampMs": 75000,
   "confidence": null
  },
  {
   "text": " minute",
-  "startMs": 75180,
+  "startMs": 75220,
   "endMs": 75440,
-  "timestampMs": 75310,
+  "timestampMs": 75330,
   "confidence": null
  },
  {
@@ -1338,30 +1338,30 @@
  },
  {
   "text": " Eight",
-  "startMs": 76320,
+  "startMs": 76300,
   "endMs": 76480,
-  "timestampMs": 76400,
+  "timestampMs": 76390,
   "confidence": null
  },
  {
   "text": " minutes.",
   "startMs": 76480,
-  "endMs": 76900,
-  "timestampMs": 76690,
+  "endMs": 76820,
+  "timestampMs": 76650,
   "confidence": null
  },
  {
   "text": " Waves,",
-  "startMs": 77380,
-  "endMs": 77620,
-  "timestampMs": 77500,
+  "startMs": 77400,
+  "endMs": 77540,
+  "timestampMs": 77470,
   "confidence": null
  },
  {
   "text": " birds,",
-  "startMs": 78180,
-  "endMs": 78360,
-  "timestampMs": 78270,
+  "startMs": 78300,
+  "endMs": 78340,
+  "timestampMs": 78320,
   "confidence": null
  },
  {
@@ -1373,534 +1373,534 @@
  },
  {
   "text": " Maybe",
-  "startMs": 79600,
-  "endMs": 79740,
-  "timestampMs": 79670,
+  "startMs": 79620,
+  "endMs": 79780,
+  "timestampMs": 79700,
   "confidence": null
  },
  {
   "text": " it's",
-  "startMs": 79740,
-  "endMs": 80000,
-  "timestampMs": 79870,
+  "startMs": 79780,
+  "endMs": 80020,
+  "timestampMs": 79900,
   "confidence": null
  },
  {
   "text": " all",
-  "startMs": 80000,
-  "endMs": 80160,
-  "timestampMs": 80080,
+  "startMs": 80020,
+  "endMs": 80180,
+  "timestampMs": 80100,
   "confidence": null
  },
  {
   "text": " fine.",
-  "startMs": 80160,
-  "endMs": 80500,
-  "timestampMs": 80330,
+  "startMs": 80180,
+  "endMs": 80520,
+  "timestampMs": 80350,
   "confidence": null
  },
  {
   "text": " Eight",
-  "startMs": 81020,
-  "endMs": 81200,
-  "timestampMs": 81110,
+  "startMs": 81340,
+  "endMs": 81500,
+  "timestampMs": 81420,
   "confidence": null
  },
  {
   "text": " minutes,",
-  "startMs": 81200,
-  "endMs": 81440,
-  "timestampMs": 81320,
+  "startMs": 81500,
+  "endMs": 81820,
+  "timestampMs": 81660,
   "confidence": null
  },
  {
   "text": " nineteen",
-  "startMs": 81800,
-  "endMs": 82100,
-  "timestampMs": 81950,
+  "startMs": 82160,
+  "endMs": 82440,
+  "timestampMs": 82300,
   "confidence": null
  },
  {
   "text": " seconds.",
-  "startMs": 82100,
-  "endMs": 82420,
-  "timestampMs": 82260,
+  "startMs": 82440,
+  "endMs": 82720,
+  "timestampMs": 82580,
   "confidence": null
  },
  {
   "text": " The",
-  "startMs": 82720,
-  "endMs": 82820,
-  "timestampMs": 82770,
+  "startMs": 83040,
+  "endMs": 83140,
+  "timestampMs": 83090,
   "confidence": null
  },
  {
   "text": " sky",
-  "startMs": 82820,
-  "endMs": 83080,
-  "timestampMs": 82950,
+  "startMs": 83140,
+  "endMs": 83400,
+  "timestampMs": 83270,
   "confidence": null
  },
  {
   "text": " goes",
-  "startMs": 83080,
-  "endMs": 83360,
-  "timestampMs": 83220,
+  "startMs": 83400,
+  "endMs": 83680,
+  "timestampMs": 83540,
   "confidence": null
  },
  {
   "text": " black.",
-  "startMs": 83360,
-  "endMs": 83680,
-  "timestampMs": 83520,
+  "startMs": 83680,
+  "endMs": 84000,
+  "timestampMs": 83840,
   "confidence": null
  },
  {
   "text": " And",
-  "startMs": 84020,
-  "endMs": 84200,
-  "timestampMs": 84110,
+  "startMs": 84320,
+  "endMs": 84520,
+  "timestampMs": 84420,
   "confidence": null
  },
  {
   "text": " Earth",
-  "startMs": 84200,
-  "endMs": 84580,
-  "timestampMs": 84390,
+  "startMs": 84520,
+  "endMs": 84880,
+  "timestampMs": 84700,
   "confidence": null
  },
  {
   "text": " lets",
-  "startMs": 84580,
-  "endMs": 85020,
-  "timestampMs": 84800,
+  "startMs": 84880,
+  "endMs": 85360,
+  "timestampMs": 85120,
   "confidence": null
  },
  {
   "text": " go.",
-  "startMs": 85020,
-  "endMs": 85400,
-  "timestampMs": 85210,
+  "startMs": 85360,
+  "endMs": 85720,
+  "timestampMs": 85540,
   "confidence": null
  },
  {
   "text": " Earth",
-  "startMs": 85880,
-  "endMs": 86080,
-  "timestampMs": 85980,
+  "startMs": 86200,
+  "endMs": 86400,
+  "timestampMs": 86300,
   "confidence": null
  },
  {
   "text": " flies",
-  "startMs": 86080,
-  "endMs": 86420,
-  "timestampMs": 86250,
+  "startMs": 86400,
+  "endMs": 86740,
+  "timestampMs": 86570,
   "confidence": null
  },
  {
   "text": " off",
-  "startMs": 86420,
-  "endMs": 86640,
-  "timestampMs": 86530,
+  "startMs": 86740,
+  "endMs": 86960,
+  "timestampMs": 86850,
   "confidence": null
  },
  {
   "text": " straight.",
-  "startMs": 86640,
-  "endMs": 86940,
-  "timestampMs": 86790,
+  "startMs": 86960,
+  "endMs": 87260,
+  "timestampMs": 87110,
   "confidence": null
  },
  {
   "text": " Thirty",
-  "startMs": 87340,
-  "endMs": 87500,
-  "timestampMs": 87420,
+  "startMs": 87680,
+  "endMs": 87820,
+  "timestampMs": 87750,
   "confidence": null
  },
  {
   "text": " kilometers",
-  "startMs": 87500,
-  "endMs": 87880,
-  "timestampMs": 87690,
+  "startMs": 87820,
+  "endMs": 88200,
+  "timestampMs": 88010,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 87880,
-  "endMs": 88160,
-  "timestampMs": 88020,
+  "startMs": 88200,
+  "endMs": 88460,
+  "timestampMs": 88330,
   "confidence": null
  },
  {
   "text": " second.",
-  "startMs": 88160,
-  "endMs": 88440,
-  "timestampMs": 88300,
+  "startMs": 88460,
+  "endMs": 88740,
+  "timestampMs": 88600,
   "confidence": null
  },
  {
   "text": " Seconds",
-  "startMs": 89020,
-  "endMs": 89200,
-  "timestampMs": 89110,
+  "startMs": 89340,
+  "endMs": 89540,
+  "timestampMs": 89440,
   "confidence": null
  },
  {
   "text": " later,",
-  "startMs": 89200,
-  "endMs": 89580,
-  "timestampMs": 89390,
+  "startMs": 89540,
+  "endMs": 89900,
+  "timestampMs": 89720,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 89980,
-  "endMs": 90060,
-  "timestampMs": 90020,
+  "startMs": 90240,
+  "endMs": 90380,
+  "timestampMs": 90310,
   "confidence": null
  },
  {
   "text": " full",
-  "startMs": 90060,
-  "endMs": 90320,
-  "timestampMs": 90190,
+  "startMs": 90380,
+  "endMs": 90640,
+  "timestampMs": 90510,
   "confidence": null
  },
  {
   "text": " Moon",
-  "startMs": 90320,
-  "endMs": 90520,
-  "timestampMs": 90420,
+  "startMs": 90640,
+  "endMs": 90840,
+  "timestampMs": 90740,
   "confidence": null
  },
  {
   "text": " goes",
-  "startMs": 90520,
-  "endMs": 90780,
-  "timestampMs": 90650,
+  "startMs": 90840,
+  "endMs": 91100,
+  "timestampMs": 90970,
   "confidence": null
  },
  {
   "text": " dark.",
-  "startMs": 90780,
-  "endMs": 91140,
-  "timestampMs": 90960,
+  "startMs": 91100,
+  "endMs": 91440,
+  "timestampMs": 91270,
   "confidence": null
  },
  {
   "text": " Saturn",
-  "startMs": 91860,
-  "endMs": 91860,
-  "timestampMs": 91860,
+  "startMs": 92180,
+  "endMs": 92180,
+  "timestampMs": 92180,
   "confidence": null
  },
  {
   "text": " doesn't.",
-  "startMs": 91860,
-  "endMs": 92340,
-  "timestampMs": 92100,
+  "startMs": 92180,
+  "endMs": 92620,
+  "timestampMs": 92400,
   "confidence": null
  },
  {
   "text": " Over",
-  "startMs": 92940,
-  "endMs": 92940,
-  "timestampMs": 92940,
+  "startMs": 93060,
+  "endMs": 93280,
+  "timestampMs": 93170,
   "confidence": null
  },
  {
   "text": " time,",
-  "startMs": 92940,
-  "endMs": 93360,
-  "timestampMs": 93150,
+  "startMs": 93280,
+  "endMs": 93680,
+  "timestampMs": 93480,
   "confidence": null
  },
  {
   "text": " ice",
-  "startMs": 93700,
-  "endMs": 93800,
-  "timestampMs": 93750,
+  "startMs": 93980,
+  "endMs": 94140,
+  "timestampMs": 94060,
   "confidence": null
  },
  {
   "text": " seals",
-  "startMs": 93800,
-  "endMs": 94280,
-  "timestampMs": 94040,
+  "startMs": 94140,
+  "endMs": 94620,
+  "timestampMs": 94380,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 94280,
-  "endMs": 94560,
-  "timestampMs": 94420,
+  "startMs": 94620,
+  "endMs": 94880,
+  "timestampMs": 94750,
   "confidence": null
  },
  {
   "text": " seas.",
-  "startMs": 94560,
-  "endMs": 94840,
-  "timestampMs": 94700,
+  "startMs": 94880,
+  "endMs": 95140,
+  "timestampMs": 95010,
   "confidence": null
  },
  {
   "text": " At",
-  "startMs": 95300,
-  "endMs": 95400,
-  "timestampMs": 95350,
+  "startMs": 95540,
+  "endMs": 95720,
+  "timestampMs": 95630,
   "confidence": null
  },
  {
   "text": " hot",
-  "startMs": 95400,
-  "endMs": 95600,
-  "timestampMs": 95500,
+  "startMs": 95720,
+  "endMs": 95920,
+  "timestampMs": 95820,
   "confidence": null
  },
  {
   "text": " vents,",
-  "startMs": 95600,
-  "endMs": 95860,
-  "timestampMs": 95730,
+  "startMs": 95920,
+  "endMs": 96180,
+  "timestampMs": 96050,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 96200,
-  "endMs": 96300,
-  "timestampMs": 96250,
+  "startMs": 96500,
+  "endMs": 96620,
+  "timestampMs": 96560,
   "confidence": null
  },
  {
   "text": " few",
-  "startMs": 96300,
-  "endMs": 96460,
-  "timestampMs": 96380,
+  "startMs": 96620,
+  "endMs": 96780,
+  "timestampMs": 96700,
   "confidence": null
  },
  {
   "text": " microbes",
-  "startMs": 96460,
-  "endMs": 96820,
-  "timestampMs": 96640,
+  "startMs": 96780,
+  "endMs": 97120,
+  "timestampMs": 96950,
   "confidence": null
  },
  {
   "text": " survive.",
-  "startMs": 96820,
-  "endMs": 97260,
-  "timestampMs": 97040,
+  "startMs": 97120,
+  "endMs": 97600,
+  "timestampMs": 97360,
   "confidence": null
  },
  {
   "text": " Two",
-  "startMs": 98060,
-  "endMs": 98200,
-  "timestampMs": 98130,
+  "startMs": 98360,
+  "endMs": 98540,
+  "timestampMs": 98450,
   "confidence": null
  },
  {
   "text": " hours",
-  "startMs": 98200,
-  "endMs": 98540,
-  "timestampMs": 98370,
-  "confidence": null
- },
- {
-  "text": " after",
   "startMs": 98540,
   "endMs": 98860,
   "timestampMs": 98700,
   "confidence": null
  },
  {
-  "text": " the",
+  "text": " after",
   "startMs": 98860,
-  "endMs": 99040,
-  "timestampMs": 98950,
+  "endMs": 99200,
+  "timestampMs": 99030,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 99200,
+  "endMs": 99360,
+  "timestampMs": 99280,
   "confidence": null
  },
  {
   "text": " dark,",
-  "startMs": 99040,
-  "endMs": 99280,
-  "timestampMs": 99160,
+  "startMs": 99360,
+  "endMs": 99600,
+  "timestampMs": 99480,
   "confidence": null
  },
  {
   "text": " Saturn",
-  "startMs": 99880,
-  "endMs": 99880,
-  "timestampMs": 99880,
+  "startMs": 100220,
+  "endMs": 100220,
+  "timestampMs": 100220,
   "confidence": null
  },
  {
   "text": " still",
-  "startMs": 99880,
-  "endMs": 100240,
-  "timestampMs": 100060,
+  "startMs": 100220,
+  "endMs": 100560,
+  "timestampMs": 100390,
   "confidence": null
  },
  {
   "text": " glows\u2026",
-  "startMs": 100240,
-  "endMs": 100660,
-  "timestampMs": 100450,
+  "startMs": 100560,
+  "endMs": 100960,
+  "timestampMs": 100760,
   "confidence": null
  },
  {
   "text": " for",
-  "startMs": 101040,
-  "endMs": 101180,
-  "timestampMs": 101110,
+  "startMs": 101300,
+  "endMs": 101500,
+  "timestampMs": 101400,
   "confidence": null
  },
  {
   "text": " a",
-  "startMs": 101180,
-  "endMs": 101360,
-  "timestampMs": 101270,
+  "startMs": 101500,
+  "endMs": 101680,
+  "timestampMs": 101590,
   "confidence": null
  },
  {
   "text": " vanished",
-  "startMs": 101360,
-  "endMs": 101720,
-  "timestampMs": 101540,
+  "startMs": 101680,
+  "endMs": 102060,
+  "timestampMs": 101870,
   "confidence": null
  },
  {
   "text": " Sun.",
-  "startMs": 101720,
-  "endMs": 102300,
-  "timestampMs": 102010,
+  "startMs": 102060,
+  "endMs": 102620,
+  "timestampMs": 102340,
   "confidence": null
  },
  {
   "text": " Eight",
-  "startMs": 102760,
-  "endMs": 102960,
-  "timestampMs": 102860,
+  "startMs": 103100,
+  "endMs": 103280,
+  "timestampMs": 103190,
   "confidence": null
  },
  {
   "text": " minutes",
-  "startMs": 102960,
-  "endMs": 103200,
-  "timestampMs": 103080,
+  "startMs": 103280,
+  "endMs": 103540,
+  "timestampMs": 103410,
   "confidence": null
  },
  {
   "text": " of",
-  "startMs": 103200,
-  "endMs": 103400,
-  "timestampMs": 103300,
+  "startMs": 103540,
+  "endMs": 103720,
+  "timestampMs": 103630,
   "confidence": null
  },
  {
   "text": " light.",
-  "startMs": 103400,
-  "endMs": 103620,
-  "timestampMs": 103510,
+  "startMs": 103720,
+  "endMs": 103940,
+  "timestampMs": 103830,
   "confidence": null
  },
  {
   "text": " Two",
-  "startMs": 103620,
-  "endMs": 104240,
-  "timestampMs": 103930,
-  "confidence": null
- },
- {
-  "text": " hours",
-  "startMs": 104240,
-  "endMs": 104760,
+  "startMs": 104380,
+  "endMs": 104620,
   "timestampMs": 104500,
   "confidence": null
  },
  {
+  "text": " hours",
+  "startMs": 104620,
+  "endMs": 105160,
+  "timestampMs": 104890,
+  "confidence": null
+ },
+ {
   "text": " of",
-  "startMs": 104760,
-  "endMs": 105120,
-  "timestampMs": 104940,
+  "startMs": 105160,
+  "endMs": 105440,
+  "timestampMs": 105300,
   "confidence": null
  },
  {
   "text": " glow.",
-  "startMs": 105120,
-  "endMs": 105420,
-  "timestampMs": 105270,
+  "startMs": 105440,
+  "endMs": 105720,
+  "timestampMs": 105580,
   "confidence": null
  },
  {
   "text": " Then",
-  "startMs": 106100,
-  "endMs": 106280,
-  "timestampMs": 106190,
+  "startMs": 106360,
+  "endMs": 106600,
+  "timestampMs": 106480,
   "confidence": null
  },
  {
   "text": " Saturn",
-  "startMs": 106280,
-  "endMs": 106600,
-  "timestampMs": 106440,
+  "startMs": 106600,
+  "endMs": 106960,
+  "timestampMs": 106780,
   "confidence": null
  },
  {
   "text": " goes",
-  "startMs": 106600,
-  "endMs": 106900,
-  "timestampMs": 106750,
+  "startMs": 106960,
+  "endMs": 107200,
+  "timestampMs": 107080,
   "confidence": null
  },
  {
   "text": " dark\u2026",
-  "startMs": 106900,
-  "endMs": 107280,
-  "timestampMs": 107090,
+  "startMs": 107200,
+  "endMs": 107600,
+  "timestampMs": 107400,
   "confidence": null
  },
  {
   "text": " and",
-  "startMs": 107280,
-  "endMs": 107740,
-  "timestampMs": 107510,
+  "startMs": 107960,
+  "endMs": 108060,
+  "timestampMs": 108010,
   "confidence": null
  },
  {
   "text": " the",
-  "startMs": 107740,
-  "endMs": 107860,
-  "timestampMs": 107800,
+  "startMs": 108060,
+  "endMs": 108200,
+  "timestampMs": 108130,
   "confidence": null
  },
  {
   "text": " Sun",
-  "startMs": 107860,
-  "endMs": 108100,
-  "timestampMs": 107980,
+  "startMs": 108200,
+  "endMs": 108420,
+  "timestampMs": 108310,
   "confidence": null
  },
  {
   "text": " has",
-  "startMs": 108100,
-  "endMs": 108300,
-  "timestampMs": 108200,
+  "startMs": 108420,
+  "endMs": 108620,
+  "timestampMs": 108520,
   "confidence": null
  },
  {
   "text": " just",
-  "startMs": 108300,
-  "endMs": 108520,
-  "timestampMs": 108410,
+  "startMs": 108620,
+  "endMs": 108860,
+  "timestampMs": 108740,
   "confidence": null
  },
  {
   "text": " vanished.",
-  "startMs": 108520,
-  "endMs": 108880,
-  "timestampMs": 108700,
+  "startMs": 108860,
+  "endMs": 109200,
+  "timestampMs": 109030,
   "confidence": null
  }
 ]

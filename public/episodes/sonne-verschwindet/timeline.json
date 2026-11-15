@@ -1,7 +1,7 @@
 {
  "id": "sonne-verschwindet",
  "title": "What If the Sun Vanished? The First 8:19",
- "durationMs": 110043,
+ "durationMs": 110366,
  "scenes": [
   {
    "id": "hook",
@@ -81,42 +81,42 @@
   {
    "id": "hope",
    "startMs": 76253,
-   "endMs": 80970
+   "endMs": 81294
   },
   {
    "id": "turn",
-   "startMs": 80970,
-   "endMs": 85831
+   "startMs": 81294,
+   "endMs": 86154
   },
   {
    "id": "straight",
-   "startMs": 85831,
-   "endMs": 88845
+   "startMs": 86154,
+   "endMs": 89168
   },
   {
    "id": "moon",
-   "startMs": 88845,
-   "endMs": 92697
+   "startMs": 89168,
+   "endMs": 93020
   },
   {
    "id": "ocean",
-   "startMs": 92697,
-   "endMs": 97766
+   "startMs": 93020,
+   "endMs": 98090
   },
   {
    "id": "saturn",
-   "startMs": 97766,
-   "endMs": 102735
+   "startMs": 98090,
+   "endMs": 103059
   },
   {
    "id": "tally",
-   "startMs": 102735,
-   "endMs": 105997
+   "startMs": 103059,
+   "endMs": 106321
   },
   {
    "id": "answer2",
-   "startMs": 105997,
-   "endMs": 109443
+   "startMs": 106321,
+   "endMs": 109766
   }
  ],
  "cues": [
@@ -280,7 +280,7 @@
   {
    "emph": true,
    "scene": "gravity",
-   "atMs": 31180
+   "atMs": 31160
   },
   {
    "emph": true,
@@ -295,29 +295,29 @@
   {
    "beat": "gridRipple",
    "scene": "speed",
-   "atMs": 36700
+   "atMs": 36680
   },
   {
    "beat": "rippleAndLightRace",
    "sticker": "SPEED: c",
    "color": "#FFD23F",
    "scene": "speed",
-   "atMs": 39140
+   "atMs": 39120
   },
   {
    "emph": true,
    "scene": "speed",
-   "atMs": 35300
+   "atMs": 35380
   },
   {
    "emph": true,
    "scene": "speed",
-   "atMs": 36700
+   "atMs": 36680
   },
   {
    "emph": true,
    "scene": "speed",
-   "atMs": 39140
+   "atMs": 39120
   },
   {
    "beat": "deadStarsCrash",
@@ -328,7 +328,7 @@
   {
    "beat": "flashRippleSideBySide",
    "scene": "proof",
-   "atMs": 45300
+   "atMs": 45320
   },
   {
    "emph": true,
@@ -348,19 +348,19 @@
   {
    "beat": "galaxyTimelapse",
    "scene": "arrive",
-   "atMs": 47420
+   "atMs": 47380
   },
   {
    "beat": "photoFinish",
    "sticker": "1.7 S",
    "color": "#FFD23F",
    "scene": "arrive",
-   "atMs": 50040
+   "atMs": 50020
   },
   {
    "emph": true,
    "scene": "arrive",
-   "atMs": 50040
+   "atMs": 50020
   },
   {
    "beat": "orbitEmptySpot",
@@ -412,22 +412,22 @@
     "value": "4:00"
    },
    "scene": "four",
-   "atMs": 59060
+   "atMs": 59120
   },
   {
    "beat": "eyepieceRings",
    "scene": "four",
-   "atMs": 61880
+   "atMs": 61900
   },
   {
    "emph": true,
    "scene": "four",
-   "atMs": 59060
+   "atMs": 59120
   },
   {
    "emph": true,
    "scene": "four",
-   "atMs": 61880
+   "atMs": 61900
   },
   {
    "emph": true,
@@ -441,22 +441,22 @@
     "value": "5:00"
    },
    "scene": "five",
-   "atMs": 66220
+   "atMs": 66200
   },
   {
    "beat": "junoHoldsPhone",
    "scene": "five",
-   "atMs": 68340
+   "atMs": 68500
   },
   {
    "emph": true,
    "scene": "five",
-   "atMs": 64320
+   "atMs": 64360
   },
   {
    "emph": true,
    "scene": "five",
-   "atMs": 66220
+   "atMs": 66200
   },
   {
    "emph": true,
@@ -504,12 +504,12 @@
     "value": "8:18"
    },
    "scene": "hope",
-   "atMs": 80160
+   "atMs": 80180
   },
   {
    "emph": true,
    "scene": "hope",
-   "atMs": 76320
+   "atMs": 76300
   },
   {
    "emph": true,
@@ -519,7 +519,7 @@
   {
    "emph": true,
    "scene": "hope",
-   "atMs": 80160
+   "atMs": 80180
   },
   {
    "beat": "skyGoesBlack",
@@ -528,12 +528,12 @@
     "value": "8:19"
    },
    "scene": "turn",
-   "atMs": 82100
+   "atMs": 82440
   },
   {
    "beat": "noonStars",
    "scene": "turn",
-   "atMs": 83360
+   "atMs": 83680
   },
   {
    "beat": "junoEyesOpen",
@@ -542,140 +542,140 @@
     "value": "STRAIGHT"
    },
    "scene": "turn",
-   "atMs": 85020
+   "atMs": 85360
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 82100
+   "atMs": 82440
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 83360
+   "atMs": 83680
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 85020
+   "atMs": 85360
   },
   {
    "beat": "orbitSnaps",
    "scene": "straight",
-   "atMs": 86640
+   "atMs": 86960
   },
   {
    "beat": "speedTag30",
    "sticker": "30 KM/S",
    "color": "#FFD23F",
    "scene": "straight",
-   "atMs": 88160
+   "atMs": 88460
   },
   {
    "emph": true,
    "scene": "straight",
-   "atMs": 86640
+   "atMs": 86960
   },
   {
    "emph": true,
    "scene": "straight",
-   "atMs": 88160
+   "atMs": 88460
   },
   {
    "beat": "moonFades",
    "scene": "moon",
-   "atMs": 90780
+   "atMs": 91100
   },
   {
    "beat": "saturnStillShining",
    "sfx": "ding",
    "scene": "moon",
-   "atMs": 91860
+   "atMs": 92180
   },
   {
    "emph": true,
    "scene": "moon",
-   "atMs": 90780
+   "atMs": 91100
   },
   {
    "emph": true,
    "scene": "moon",
-   "atMs": 91860
+   "atMs": 92180
   },
   {
    "beat": "iceSkinCreeps",
    "scene": "ocean",
-   "atMs": 94560
+   "atMs": 94880
   },
   {
    "beat": "ventMicrobes",
    "sfx": "whoosh",
    "scene": "ocean",
-   "atMs": 96820
+   "atMs": 97120
   },
   {
    "emph": true,
    "scene": "ocean",
-   "atMs": 94560
+   "atMs": 94880
   },
   {
    "emph": true,
    "scene": "ocean",
-   "atMs": 96820
+   "atMs": 97120
   },
   {
    "beat": "saturnPlus2h",
    "sticker": "+2 H",
    "color": "#FFD23F",
    "scene": "saturn",
-   "atMs": 100240
+   "atMs": 100560
   },
   {
    "beat": "grandpaStares",
    "scene": "saturn",
-   "atMs": 101720
+   "atMs": 102060
   },
   {
    "emph": true,
    "scene": "saturn",
-   "atMs": 101720
+   "atMs": 102060
   },
   {
    "beat": "bar8min",
    "scene": "tally",
-   "atMs": 103400
+   "atMs": 103720
   },
   {
    "beat": "bar2h",
    "scene": "tally",
-   "atMs": 105120
+   "atMs": 105440
   },
   {
    "emph": true,
    "scene": "tally",
-   "atMs": 103400
+   "atMs": 103720
   },
   {
    "emph": true,
    "scene": "tally",
-   "atMs": 105120
+   "atMs": 105440
   },
   {
    "beat": "saturnFades",
    "sticker": "SATURN'S ECHO ENDS",
    "color": "#FFD23F",
    "scene": "answer2",
-   "atMs": 106900
+   "atMs": 107200
   },
   {
    "beat": "loopToHook",
    "scene": "answer2",
-   "atMs": 108520
+   "atMs": 108860
   },
   {
    "emph": true,
    "scene": "answer2",
-   "atMs": 108520
+   "atMs": 108860
   }
  ],
  "hud": {
