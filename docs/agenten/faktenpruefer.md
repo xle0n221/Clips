@@ -87,3 +87,4 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 | 14.11.2026 | Bauarbeiter v2 → v2.1 | 8 → 9 | 2 v1.2-Befunde zurückgekehrt (Foto-Beschriftung, speed), korrigiert |
 | 14.11.2026 | Sonne verschwindet v1 | 8 (eigene Note fürs Drehbuch) | Zahlen 4/4 nachgerechnet, Kern primär (NASA); Zeitleiste Ozean, 2 Echo-Sticker, 1 Sticker-Zuspitzung, Caption „right now“ |
 | 15.11.2026 | Sonne verschwindet v2 | 8 (eigene Note fürs Drehbuch) | 5/5 Pflicht umgesetzt; neuer Zählerfehler `seven` (7:00 vs. „one minute left“) |
+| 15.11.2026 | Sonne verschwindet v2.1 | 9 (eigene Note fürs Drehbuch) | A1 umgesetzt (seven HUD 7:19 = 1:00 Rest), proof „THE TEST“; 0 Restmängel |
