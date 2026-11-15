@@ -145,7 +145,7 @@ def _frames_db(y: np.ndarray, hop: int) -> np.ndarray:
     return 20 * np.log10(np.sqrt(np.mean(y[: n * hop].reshape(n, hop).astype(np.float64) ** 2, axis=1)) + 1e-9)
 
 
-def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None) -> np.ndarray:
+def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None, soften: bool = True) -> np.ndarray:
     """Ein Chatterbox-Satz wie ein Erzähler (Nutzer 12.11.2026 abends): Anfang/Ende sauber, Ausklang behalten und weich
     ausblenden (kein harter Schnitt), Pausen an Komma/Doppelpunkt/inneren Satzenden auf Sollwert verlängern (nie kürzen),
     letzte ~0,45 s um end_db leiser. Keine Tonhöhen-Bearbeitung."""
@@ -185,18 +185,20 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None
         if cuts and pos in cuts and ch not in ".!?…":  # Whisper-Wortgrenze (NARRATOR.comma_whisper)
             target = e["comma_ms"] + (80 if ch in ":—–" else 0)
             a, b = int(cuts[pos][0] * sr) - s0, int(cuts[pos][1] * sr) - s0
-            near = [r for r in runs if r not in used and r[0] * hop <= b + int(0.05 * sr) and r[1] * hop >= a - int(0.05 * sr)]
-            if near:
-                r = max(near, key=lambda r: r[1] - r[0])
-                used.add(r)
-                add = int((target - (r[1] - r[0]) * 10) / 1000 * sr)
-                if add > 0:
-                    inserts.append(((r[0] + r[1]) // 2 * hop, add))
-            else:  # keine Stille: an der leisesten 10-ms-Stelle zwischen den Wörtern einfügen (8 ms Aus-/Einblendung)
-                lo, hi = max(0, (a - int(0.04 * sr)) // hop), min(len(db) - 1, (b + int(0.04 * sr)) // hop)
-                if hi > lo:
-                    k = lo + int(np.argmin(db[lo:hi + 1]))
-                    inserts.append((k * hop + hop // 2, -int(target / 1000 * sr)))  # negativ = mit Blende
+            lo, hi = max(0, a // hop), min(len(db) - 1, (b + int(0.04 * sr)) // hop)
+            if hi <= lo:
+                continue
+            # vorhandene echte Stille (wie stimm_messung: deutlich unter Sprachpegel) zwischen den Wörtern
+            deep = db[lo:hi + 1] < level - 38
+            best, cur, bstart = 0, 0, 0
+            for k, qd in enumerate(deep):
+                cur = cur + 1 if qd else 0
+                if cur > best:
+                    best, bstart = cur, k - cur + 1
+            add = int((target - best * 10) / 1000 * sr)
+            if add > 0:
+                k = lo + (bstart + best // 2 if best >= 3 else int(np.argmin(db[lo:hi + 1])))
+                inserts.append((k * hop + hop // 2, -add))  # negativ = mit 8-ms-Blende einfügen
             continue
         if ch in ".!?…":
             target = e["gap_ms"] - 1000 * (NARRATOR["tail_keep_s"] + NARRATOR["head_keep_s"]) / 2 + (60 if ch == "?" else 0)
@@ -227,18 +229,19 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None
     g[ws:es] = -drop * (1 - np.cos(np.linspace(0, np.pi, es - ws))) / 2
     g[es:] = -drop
     y = y * (10 ** (g / 20)).astype(np.float32)
-    soft = int(NARRATOR.get("end_soft_ms", 0) * sr / 1000)
-    if soft:  # weicher Ausklang (15.11.2026): Zischlaut-/Plosiv-Enden nicht binnen 10 ms in die Stille fallen lassen
+    soft = int(NARRATOR.get("end_soft_ms", 0) * sr / 1000) if soften else 0
+    if soft:  # weicher Ausklang (15.11.2026): der letzte laute 10-ms-Block (≥ Satzpegel −26 dB) fällt bei Zischlaut-Enden in
+        # einem Schritt in die Stille. Die letzten `soft` ms dB-linear so absenken, dass dieser Block bei −32 dB landet (danach
+        # gehalten) – die Stille beginnt aus leisem Pegel, keine Kante. Reine Absenkung, Länge unverändert.
         dbe = _frames_db(y, hop)
-        live = np.nonzero(dbe >= level - 30)[0]
+        live = np.nonzero(dbe >= level - 26)[0]
         if len(live):
-            q = (live[-1] + 1) * hop
-            r0 = max(0, q - soft)
-            ramp = np.full(len(y), -24.0)
-            ramp[:r0] = 0.0
-            r1 = min(len(y), q + int(0.01 * sr))
-            ramp[r0:r1] = np.linspace(0, -24, r1 - r0)
-            y = y * (10 ** (ramp / 20)).astype(np.float32)
+            qf = live[-1]
+            att = float(dbe[qf] - (level - (38 if text.rstrip().endswith("…") else 32)))  # Ellipse klingt länger aus
+            c = (qf + 1) * hop
+            k = np.arange(len(y)) - (c - soft)
+            g = np.clip(-att * k / max(1, soft - hop), -att, 0.0)
+            y = y * (10 ** (g / 20)).astype(np.float32)
     fi = min(len(y), int(0.01 * sr))
     y[:fi] *= np.linspace(0, 1, fi, dtype=np.float32)
     # Ausblendung über den Ausklang; endet die Aufnahme kurz nach dem letzten Laut (Chatterbox schneidet manchmal selbst),
@@ -405,7 +408,7 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
         for text, job, seed, em in pending:
             f = job_path({**job, "seed": seed + attempt})
             bad = qc_score(f, text, ep, qc)
-            if bad == 0 and hard_edge(narrate_sentence(sf.read(str(f), dtype="float32")[0], text, em)):
+            if bad == 0 and hard_edge(narrate_sentence(sf.read(str(f), dtype="float32")[0], text, em, soften=False)):
                 bad = 0.5  # harte Kante am Satzende (stimm_messung): neuen Seed versuchen, sonst bleibt der beste
             tries[text].append((bad, attempt, f))
             if bad == 0 or attempt == NARRATOR["qc_tries"] - 1:
@@ -635,6 +638,22 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
         (ROOT / "out" / f"{ep['id']}-whisper.json").write_text(json.dumps(whisper, indent=1) + "\n")
 
     captions = align([w["word"] for w in words], whisper)
+    # Erstes Wort einer Szene: Whisper legt den Start oft in die Pause davor (sonne 15.11.2026: „Eight“ 524 ms vor der
+    # Szene) → frühestens am ersten hörbaren 10-ms-Block der Szene (Sprachpegel −35 dB). Betrifft nur zu frühe Starts.
+    hop = SAMPLE_RATE // 100
+    dbv = 20 * np.log10(np.sqrt(np.mean(track[: len(track) // hop * hop].reshape(-1, hop).astype(np.float64) ** 2, axis=1)) + 1e-9)
+    thr = float(np.median(dbv[dbv > np.percentile(dbv, 40)])) - 35
+    k = 0
+    for sc in scenes:
+        n_w = sum(1 for w in words if w["scene"] == sc["id"])
+        if n_w and captions[k]["startMs"] < sc["startMs"]:
+            f = int(sc["startMs"] / 10)
+            while f < len(dbv) - 1 and dbv[f] < thr:
+                f += 1
+            c = captions[k]
+            c["startMs"] = min(f * 10, c["endMs"] - 80)
+            c["timestampMs"] = (c["startMs"] + c["endMs"]) // 2
+        k += n_w
     matched = sum(
         1 for blk in difflib.SequenceMatcher(
             a=[norm(w["word"]) for w in words], b=[norm(c["text"]) for c in whisper], autojunk=False
