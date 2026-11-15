@@ -11,6 +11,7 @@ Prüft Szenen per Kontaktabzug (alle 3 s) und Einzelbildern: Bildausschnitt, Les
 - Vergleich mit Referenzwerten
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Jede Zahl im Bild (HUD, Zähler, Label) an der Sekunde ihres gesprochenen Worts rendern und gegen die Faktenliste halten; Hochzähler zusätzlich am Endwert auf Bildbreite prüfen (Sonne 15.11.).
 - Zuerst ohne Ton ansehen: Versteht man jede Einstellung?
 - Dann mit Untertiteln: verdeckt etwas?
 - Von Retention-Kritiker: Kontaktabzug in der Reihenfolge erste 3 s → Schluss/Loop → Mitte prüfen (`agenten/retention-kritiker.md`) (übertragen vom Wissensverwalter 09.11.2026).
@@ -19,6 +20,7 @@ Prüft Szenen per Kontaktabzug (alle 3 s) und Einzelbildern: Bildausschnitt, Les
 - Vor dem Rendern Bildpositionen mit einer Projektion nachrechnen (Mathematik von `aim`); spart Render-Runden (Rom: 2 Prüfrunden à 20/5 Bilder statt Versuch und Irrtum).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 15.11.2026 · Sonne verschwindet (3D, KnowToon, 48 Shots) · Experiment: **HUD-/Bildzahlen gegen die faktengeprüfte Liste** an genau der Sekunde des gesprochenen Worts rendern (Cue-`atMs` aus `timeline.json`) statt im Raster – fand 7:23 statt 7:19 bei „One warm minute left“ (Uhr zählt ab früherem Beat hoch, `CLOCK.seven`). Neu: **Hochzähler am Endwert prüfen** – „130 000 000“ ragt nur am Schluss des Rollens links/rechts aus dem Bild (47,45 s), Zwischenwerte passen. Bewegung als 2-Frame-Folge (8 Bilder, 45 s) reicht für Umschlag/Augen-Pop. Achtung: Kritik-Datei kann schon Abschnitte anderer Rollen enthalten → vor `Write` immer `git status`/lesen, sonst überschreiben (passiert, aus HEAD wiederhergestellt) · `docs/kritik-sonne-szenen.md` Regie R1, `out/s3/regie-r1*.jpg`
 - 14.11.2026 · Bauarbeiter Runde 3 · 11 gezielte Einzelbilder + Messskript (kein Raster) genügen, wenn nur 2 P2 + P3 offen; Bild-Zeitstempel (20:17) < Commit (20:21) prüfen. Pose-Fix per Vorher/Nachher an derselben Sekunde (18,0 + 19,5 s) belegt; Sticker-Entfernung löst Dreifach-Text. Abgeschnittene erste Wörter in ECU-Push-ins (note 37,5 s) als eigene Prüffrage · `docs/kritik-bauarbeiter-szenen.md` Runde 3
 - 14.11.2026 · Bauarbeiter Runde 2 · Nachprüfung aus neuem Kontaktabzug (41 Bilder) + 4 Einzelbilder aus `out/bauarbeiter-r2/` reicht; Einzelbilder können hinter dem Endstand liegen (Zaun-Uhr) → nur Kontaktabzug mit Zeitstempel > Commit vertrauen. Neue Fehlerquelle bei Nacharbeit: onScreen-Plate + Sticker + Untertitel sagen dasselbe dreifach (answer2 81,5 s) und Sticker deckt Helm; Pose-Fix kippt zu stark (pipe 19,5 s, Kopf 70°). Höhepunkt-Fenster misst Beginn der Wendung (79,8 %), Scheitel 83 % – Urteil „trägt knapp“ · `docs/kritik-bauarbeiter-szenen.md` Runde 2
 - 14.11.2026 · Bauarbeiter (3D, KnowToon, 34 Shots) · Experiment: `scripts/bauarbeiter_shots.mts` liefert Shotlänge/Phrasen gemessen, daraus Höhepunkt-Position selbst nachrechnen – JSON nannte 77 %, real turn 79,5 %, Enthüllung 84 % (Länge inkl. End-Card). Neu: Prozentangaben in Drehbuch-JSON nach Neuvertonung nachprüfen; bei Horror-Höhepunkt Mitte des Halts auf Leere prüfen (3 von 4 Halt-Sekunden schwarz); Chalk-X/Schilder als Dauer-Requisit gegen Untertitelzone prüfen. Kontaktabzug neuer als Quellen → kein Neu-Render nötig · `docs/kritik-bauarbeiter-szenen.md`
@@ -53,6 +55,7 @@ Prüft Szenen per Kontaktabzug (alle 3 s) und Einzelbildern: Bildausschnitt, Les
 ## Bewertungsverlauf
 | Datum | Clip | Note (Prüfer) | Wichtigster Grund |
 | --- | --- | --- | --- |
+| 15.11.2026 | Sonne verschwindet (3D, 23 Szenen, Kontaktabzug + 44 eigene Bilder) | 8,0 (Regie-Kritiker) | seven-HUD 7:23 ≠ 7:19, arrive-Zähler angeschnitten, Verb unsichtbar (five, speed, ocean dive) |
 | 13.11.2026 | ZeitWelt Runde 2 (24 Nachprüfbilder + 3 Bewegungs-Dreier) | 9,0 (Regie-Kritiker) | Twist, knock, Text-auf-Text behoben; Rest P3 |
 | 13.11.2026 | ZeitWelt (3D, 21 Szenen, 57 Einzelbilder + 1-s-Raster) | 8,0 (Regie-Kritiker) | Untertitel auf Franklin-Karte/Nachweis, knock-Szene zu dunkel, Twist halb lesbar |
 | 13.11.2026 | Jason GTA 6 Runde 2 (20 Nachprüfbilder) | 9,0 (Regie-Kritiker) | leeres Bild, Dach, Titel behoben; Rest P3 Karten-Label |

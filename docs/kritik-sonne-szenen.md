@@ -33,3 +33,44 @@ P3
 
 ### Note: **8,5 / 10** (Design)
 Beleg: Themen-Treue, Farblogik, Figuren-Konsistenz, Cover und End-Card stark; keine Marken. Abzug für zwei Zahlen-Fehler (arrive abgeschnitten/falsche Zahl, seven 7:23 statt 7:19), olivfarbenen Hut im turn-Bild (Farblogik) und drei Sticker-Doppelungen (K13). Für ≥ 9: P1 1-2 und P2 3-6 beheben, danach Nachprüfung f1386, f2196, f2478, f1789 und tally.
+
+## Regie Runde 1
+Stand 15.11.2026 · Regie-Kritiker · Grundlage: `scripts/sonne_shots.mjs` (gemessen), Kontaktabzug `out/sonne-kontakt-v2.jpg` (02:57, neuer als alle Quellen ≤ 02:51), eigene Standbilder `out/s3/regie-r1.jpg` (24), `out/s3/regie-r1b.jpg` (12), Bewegungsfolge `out/s3/regie-r1c.jpg` (8 Bilder im 2-Frame-Abstand an turn 81,6 s und 83,0 s). Kein Voll-Render.
+
+### Gemessen
+| Regel | Messwert | Urteil |
+| --- | --- | --- |
+| Shots ≤ 4 s, Halt ≤ 6 s | 48 Shots, Ø 2,25 s, max 4,83 s (turn-Halt), five Shot 1 3,97 s | erfüllt |
+| keine Shots < ~1,2 s ohne Grund | min 1,07 s (ocean „dive through ice“), sonst ≥ 1,30 s | 1 Verstoß (P2-5) |
+| Phrasen 2–5 Wörter | 79 Phrasen, 272/272 Wörter, Anzeige 0,58–2,72 s | erfüllt |
+| Höhepunkt 70–80 % | Gesamtlänge 109,9 s (answer2 endet 107,93 + End-Card 2 s): turn-Start 78,97 s = 71,8 %, Himmel schwarz 81,66 s = 74,3 %, Augen auf 83,08 s = 75,6 % | erfüllt |
+| Eingepflanztes Ende / Loop | 107,8 s = Bildaufbau des Covers (Ring, Juno, Strand) → End-Card 107,9–109,9 s „KnowToon“ → Cover | erfüllt |
+| Cover 0–0,5 s | 0,1/0,4 s: „THE SUN IS GONE / Nobody knows yet“ groß, Juno ganz im Bild, schwarzer Ring = Thema ohne Ton | erfüllt (Makel P3-8) |
+| Schnitt hart, Kamera sanft | alle Übergänge `cut`, Fahrten `fly()` linear/eased; turn-Umschlag Tag→Nacht in 2 Bildern (81,6→81,73 s), Augen-Pop sauber über 3 Bilder | erfüllt |
+| HUD = Sprechtext (Fakten) | turn 8:19 ✓, hope 8:16→8:18 ✓, zero 0:11 ✓, **seven 7:22/7:23** ✗, **arrive Zähler angeschnitten** ✗ | 2 Verstöße (P1) |
+
+### Befunde (P1 = vor Freigabe, P2 = sollte, P3 = kann)
+**P1**
+1. **seven 72,5–74,6 s (Insert-Timer)**: HUD zeigt 7:22 (73,0 s) und 7:23 (73,9 s), genau während „One warm minute left“ (Cue `watchOneMinute` 73,86 s). Faktengeprüft ist 7:19 (8:19 − 7:19 = 60 s); 7:23 ergibt 56 s. Ursache: `CLOCK.seven = { beat: "junoClosesEyes", sec: 439, max: 459 }` (`sonneSets.tsx` 1861) zählt ab dem Augenschließen ≈ 69,2 s hoch. Vorschlag: auf das Wort ankern und stehen lassen, z. B. `seven: { beat: "watchOneMinute", sec: 439, max: 439, pre: 420 }` (läuft 7:00 → 7:19 bis „One warm minute left“, dann steht 7:19).
+2. **arrive 45,1–47,5 s (Zähler „130 000 000 YEARS“)**: Die Zahl ist breiter als das Bild – 47,2 s „.29 744 756“, 47,45 s „.30 000 00(0)“: erste und letzte Ziffer außerhalb. Bei 46,2 s (Kontaktabzug) liest man „101 707 107“ zu „hundred thirty million“. Vorschlag: `TextLabel width` 4,1 → ≈ 3,0 (Platte 4,4 → 3,3) oder Kamera z 12,5 → ≥ 15; Zahl bis ≈ 60 % des Shots fertig rollen (`u = frame / (0.6·end)`) und ≥ 0,8 s auf 130 000 000 stehen lassen, damit die gesprochene Zahl gelesen wird.
+
+**P2**
+3. **five 63,1–67,1 s (OTS-Telefon, 3,97 s)**: Bild = Junos Hinterkopf als Klotz-Anschnitt (Hut, Haar, Ohr füllen 2/3), Opa im Telefon nur ≈ 60 px, das Gähnen („Grandpa yawns goodnight“, 65,0 s) ist nicht erkennbar; 4 s fast stehend. Vorschlag: Telefon in die Bildmitte, Display ≥ 40 % Bildbreite, Opa-Gesicht mit offenem Gähnmund groß; Juno nur als Schulter/Hutkante am Rand.
+4. **speed 36,2–38,7 s (Shot 2 „tracking race with c“)**: zeigt nur die Erde über dem Gitter (36,6/37,9 s); weder Welle noch Lichtschale „rennen“ – das Verb „at the speed of light“ ist ohne Ton unsichtbar. Vorschlag: Gitter-Welle und Lichtschale nebeneinander auf die Erde zulaufen lassen (wie arrive-Fotofinish), Labels „RIPPLE“/„LIGHT“ optional.
+5. **ocean 93,1–94,2 s (Shot 2 „dive through ice“, 1,07 s)**: 93,2 s = leeres Blau mit Lichtstrahlen, weder Eis noch Figur; einziger Shot < 1,2 s. Vorschlag: Eiskante/Unterseite der Eisschicht oben im Kader zeigen und auf ≥ 1,3 s strecken (`iceSkinCreeps + 14` → +8) oder Shot streichen und Weitwinkel direkt auf den Schlot schneiden.
+6. **tally 104,0 s**: Label „2 H“ über dem Saturn-Balken ragt in die onScreen-Platte („SUNLIGHT 8 MIN · SATURN 2 H“) und ist oben angeschnitten. Bei 102,6 s ist der Saturn-Balken noch leer und das Label fehlt. Vorschlag: Balken-Maximum ≈ 15 % niedriger (Kopf ≤ y 0,22) oder Label seitlich neben die Balkenspitze.
+7. **arrive 49,4 s (Fotofinish)**: „1.7 S“ dreifach – Sticker „1.7 S“ zwischen den Bahnen, Bahn-Label „+1.7 S“, onScreen „A PHOTO FINISH: 1.7 S“ (Lehre Bauarbeiter P2-2). Vorschlag: Sticker per `stickerHide: ["1.7 S"]` aus; das Bahn-Label trägt die Zahl am Ort.
+
+**P3**
+8. Cover-Ausblendung 0,6 s: Titel „THE SUN IS GONE“ blendet noch halbtransparent über dem Ring, während der Untertitel „THE SUN JUST VANISHED“ schon steht (Doppeltext für ≈ 0,2 s). Vorschlag: Titel bis 0,5 s ganz aus.
+9. turn 82,0–83,8 s: Nacht = flaches Schwarz, Sterne in 1080er-Standbildern nicht erkennbar; das Kippen „noon turns to night“ trägt allein Junos kaltes Gesicht. Vorschlag: 20–30 hellere Sterne (≥ 4 px) und Strandleute als Silhouetten, die hochschauen.
+10. hook 2,5 s: Sticker „WHAT HAPPENS AT 8:19?“ ist klein (≈ 25 % Bildbreite) und konkurriert mit der Uhr; Schrift auf Handy ~11 px hoch. Vorschlag: größer (≥ 45 % Breite) oder weglassen, die onScreen-Phrase trägt.
+11. old 17,5 s / juno 9,3 s: Untertitel liegt auf Junos Mund/Kinn – lesbar, aber Gesicht im Close-up verdeckt. Vorschlag: Kopf 5–8 % höher im Kader.
+
+### Was gut ist
+- Höhepunkt sitzt mittig im Fenster (74 %), Umschlag Tag→Nacht + Augen-Pop liest ohne Ton; HUD wird rot (alert) – Bild sagt „etwas ist passiert“.
+- Farblogik Gold (Licht unterwegs) / Schwarz-Indigo / Eisblau hält durchgehend; Ringe als Leitmotiv (Sonne weg, Licht-Schale, Okular, Bahn).
+- Loop sauber: answer2 107,8 s ≙ Cover, End-Card vollständig getippt (109,8 s „KnowToon“, „FOLLOWING“).
+
+### Note: **8,0 / 10** (Regie)
+Beleg: Alle Zahlenregeln erfüllt (48 Shots, Ø 2,25 s, Halt 4,83 s, Höhepunkt 74 %, Loop). Abzug, weil zwei Bildzahlen dem faktengeprüften Text widersprechen bzw. aus dem Bild ragen (seven 7:23 bei „one minute left“, arrive-Zähler angeschnitten) und drei Einstellungen ihr Verb ohne Ton nicht zeigen (five Gähnen, speed Wettrennen, ocean dive). Für ≥ 9: P1 1–2 und P2 3–7 beheben; Nachprüfung an 73,9 / 47,4 / 49,4 / 65,0 / 37,5 / 93,5 / 104,0 s (~12 Bilder).
