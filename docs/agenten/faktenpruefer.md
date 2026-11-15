@@ -11,6 +11,7 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 - Unterscheidet Fakt / Legende / Pointe (keine Sachbehauptung)
 
 ## Checkliste (aktueller bester Stand – nur Erprobtes)
+- Wird ein Zähler umgedeutet (Restzeit ↔ verstrichene Zeit), jeden Wert gegen den Sprechtext derselben Szene neu rechnen – Mengenangaben („one minute left“) kippen still (Sonne v2, 15.11.2026).
 - Zeitwörter zwischen Szenen als Zeitleiste lesen: ein Satz ohne Zeitangabe zwischen „Seconds later“ und „Two hours later“ behauptet, dass er in diesem Fenster passiert (Eis auf den Ozeanen < 2 h) (Sonne, 14.11.2026).
 - Ist der Fachartikel-Host gesperrt, erst erreichbare Behörden-Seiten desselben Fakts suchen (science.nasa.gov Glossar/Basics, nasa.gov-Pressemitteilung) – ersetzt Wikipedia als Beleg (Sonne, 14.11.2026).
 - „right now“/„today“ in Caption bei Mittelwerten prüfen: 8:19 gilt für 1 AE, am Datum der Veröffentlichung kann der Wert abweichen (Sonne, 14.11.2026).
@@ -39,6 +40,7 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 - Wikipedia-API drosselt (HTTP 429) über den geteilten Proxy: Artikel einzeln mit 15–20 s Abstand laden, nicht abbrechen und nicht umgehen (Tyson, 12.11.2026).
 
 ## Gelernt (neueste oben; Datum · Clip · Befund · Beleg)
+- 15.11.2026 · Sonne verschwindet v2 · Note 8: 5/5 Pflichtpunkte umgesetzt (grep: „LAST ECHO“, „DEEP SURVIVES“, „right now“ in Caption, „THE ECHO ENDS“ 0 Treffer). Neuer Fehler durch Umstellung der Uhr (Restzeit → verstrichene Zeit): `seven` HUD 7:00 + „One warm minute left“ = 1:19 Rest → HUD 7:19. Experiment Rückfall-Prüfung + Zähler-Umstellung: Jeden HUD-Wert gegen den Satz derselben Szene neu rechnen, 1 von 9 Zählerwerten falsch.
 - 14.11.2026 · Sonne verschwindet v1 · Note 8 (→ 9 nach Pflicht-Änderungen): 23 Zitate auf 11 neu geladenen Seiten per Teilstring 23/23 (1 NASA-Pressemitteilung ohne „1.7 seconds“, Wert aber in der NASA-Quick-Read). Abbott 2017/IAU/BIPM/NIST/ADS/Crossref/LIGO/arXiv gesperrt, PubMed reCAPTCHA. Experiment Behörden-Ersatz: 3 von 3 Wikipedia-only-Werten (AE, c, 8:19) über NASA-Glossar + NASA Basics „Units“ primär belegt. Befunde: Ozean-Szene zwischen „Seconds later“ und „Two hours later“ (Zeitleiste), Sticker „LAST ECHO“/„THE ECHO ENDS“ (Uranus/Neptun länger, Herleitung ≈ 8 h), „THE DEEP SURVIVES“ (Fallstrick 5), Caption „right now“ (14.11.: ≈ 8 min 13 s) · `docs/quellen-sonne-verschwindet.md`.
 - 14.11.2026 · Bauarbeiter v2 → v2.1 · Note 8 → 9: Sprechtext weiter ohne Realaussage. Beide v1.2-Befunde waren in v2 **wieder da** (Foto „BORE LOG LOT 9“, `speed` 1,08 ≤ 1,1), weil v2 neu aus v1 geschrieben wurde. Experiment Rückfall-Prüfung: alte Befunde per grep in der neuen Fassung suchen – 2 von 2 wieder gefunden · `docs/paket-bauarbeiter.md` „Prüfung v2 (14.11.2026)“.
 - 14.11.2026 · Bauarbeiter („Something Under the Site Knocked Back“, reine Fiktion/Horror) v1 → v1.2 · Note 8 → 9: Sprechtext ohne Realaussage. 2 Befunde außerhalb des Sprechtexts: echtes USGS-Bohrkern-Foto als „BORE LOG LOT 9“ beschriftet (echtes Bild als erfundenen Ort ausgegeben) → „BORE LOG“ + Quellenzeile; Paket-Angabe „max_speed 1,1“ falsch gegen `scripts/voice_fx.py` (1,05). Experiment Pipeline-Angaben gegen Code prüfen: 1 von 1 Technik-Behauptung im Paket war falsch · `docs/paket-bauarbeiter.md` „Prüfung (14.11.2026)“.
@@ -84,3 +86,4 @@ Jedes Zitat gegen die Quelle prüfen (Recherche) und jeden Satz des Drehbuchs ge
 | 14.11.2026 | Bauarbeiter v1 → v1.2 | 8 → 9 | Reine Fiktion sauber; echtes Foto mit erfundener Ortsangabe, falsche max_speed-Angabe korrigiert |
 | 14.11.2026 | Bauarbeiter v2 → v2.1 | 8 → 9 | 2 v1.2-Befunde zurückgekehrt (Foto-Beschriftung, speed), korrigiert |
 | 14.11.2026 | Sonne verschwindet v1 | 8 (eigene Note fürs Drehbuch) | Zahlen 4/4 nachgerechnet, Kern primär (NASA); Zeitleiste Ozean, 2 Echo-Sticker, 1 Sticker-Zuspitzung, Caption „right now“ |
+| 15.11.2026 | Sonne verschwindet v2 | 8 (eigene Note fürs Drehbuch) | 5/5 Pflicht umgesetzt; neuer Zählerfehler `seven` (7:00 vs. „one minute left“) |
