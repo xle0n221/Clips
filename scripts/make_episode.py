@@ -197,8 +197,12 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None
                     best, bstart = cur, k - cur + 1
             add = int((target - best * 10) / 1000 * sr)
             if add > 0:
-                k = lo + (bstart + best // 2 if best >= 3 else int(np.argmin(db[lo:hi + 1])))
-                inserts.append((k * hop + hop // 2, -add))  # negativ = mit 8-ms-Blende einfügen
+                if best >= 3:
+                    k = lo + bstart + best // 2
+                else:  # keine Stille: erst nach dem Ausklang des Wortes (≥ 40 ms nach Whisper-Wortende) an der leisesten Stelle
+                    lo2 = min(hi, lo + 4)
+                    k = lo2 + int(np.argmin(db[lo2:hi + 1]))
+                inserts.append((k * hop + hop // 2, -add))  # negativ = mit Blende einfügen (30 ms aus, 8 ms ein)
             continue
         if ch in ".!?…":
             target = e["gap_ms"] - 1000 * (NARRATOR["tail_keep_s"] + NARRATOR["head_keep_s"]) / 2 + (60 if ch == "?" else 0)
@@ -214,9 +218,9 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None
             inserts.append(((r[0] + r[1]) // 2 * hop, add))
     for at, add in sorted(inserts, reverse=True):
         if add < 0:  # Einfügen ohne vorhandene Stille: kurz aus- und wieder einblenden, damit kein Knack entsteht
-            add, f = -add, int(0.008 * sr)
+            add, f, fo = -add, int(0.008 * sr), int(0.03 * sr)
             y = y.copy()
-            y[max(0, at - f):at] *= np.linspace(1, 0, at - max(0, at - f), dtype=np.float32)
+            y[max(0, at - fo):at] *= ((1 + np.cos(np.linspace(0, np.pi, at - max(0, at - fo)))) / 2).astype(np.float32)
             y[at:at + f] *= np.linspace(0, 1, len(y[at:at + f]), dtype=np.float32)
         y = np.concatenate([y[:at], np.zeros(add, np.float32), y[at:]])
         if at < es:
@@ -530,6 +534,11 @@ def synth_track(ep: dict, voice: Voice | None, post: bool = True, log=print) -> 
             p_gap = np.zeros(int(SAMPLE_RATE * max(0.0, (e["gap_ms"] + NARRATOR["piece_extra_ms"]) / 1000 - edge)), np.float32)
             s_gap = np.zeros(int(SAMPLE_RATE * max(ep.get("sceneGapMs", 0), NARRATOR["scene_gap_ms"]) / 1000), np.float32)
         audio = np.concatenate([x for i, p in enumerate(pieces) for x in ((p_gap,) if i else ()) + (synth(i, p),)])
+        if sc.get("pauseBeforeMs") and scenes:  # zusätzliche Stille vor der Szene (z. B. Musik-Stille vor der Wende), zählt zur Vorszene
+            extra = np.zeros(int(SAMPLE_RATE * sc["pauseBeforeMs"] / 1000), np.float32)
+            parts.append(extra)
+            cursor += len(extra)
+            scenes[-1]["endMs"] = round(cursor / SAMPLE_RATE * 1000)
         start = cursor / SAMPLE_RATE * 1000
         parts += [audio, s_gap]
         cursor += len(audio) + len(s_gap)

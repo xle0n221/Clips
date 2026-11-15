@@ -35,7 +35,7 @@
       "ocean": "padOnly"
     },
     "silenceBefore": {
-      "turn": 0.6
+      "turn": 0.85
     },
     "why": "Weltall/großes Ereignis → Preset 'epic' (cineastischer Rap-Beat, Klavier + Streicherfläche), aber deutlich anders als Zeit-Welt (epic 92): halbes Gefühl durch 78 BPM, Dur-nahe Neo-Soul-Akkorde (maj7/9) im sonnigen Teil, Moll ab 'turn'; anders als Bauarbeiter (dark 66). Tick-Motiv der Zeitanzeige als Hi-Hat-Raster. Trend: docs/trends/aktuell.md (15.11.) – Sound-Trends 'Ich kann das nicht bestätigen' → Trend nicht belegt, Wahl nach Thema. Bis 'gravity' nur Klavier/Pad (sparsam), Drums ab 'gravity'; bei 'hope' warmer Dur-Akkord; vor 'turn' 0,6 s totale Stille, dann tiefer Streicher-Drone in Moll ohne Drums; ab 'ocean' Klavier allein; End-Card Ausklang."
   },
@@ -143,7 +143,7 @@
       {
         "scene": "turn",
         "word": "Eight",
-        "ms": 600
+        "ms": 850
       },
       {
         "scene": "answer2",
@@ -1140,7 +1140,7 @@
       "delivery": "warm",
       "emotion": {
         "exag": 0.5,
-        "cfg": 0.95,
+        "cfg": 0.75,
         "temp": 0.75,
         "speed": 1.0,
         "gap_ms": 280,
@@ -1197,6 +1197,7 @@
     },
     {
       "id": "turn",
+      "pauseBeforeMs": 250,
       "section": "twist",
       "delivery": "dramatic",
       "emotion": {
