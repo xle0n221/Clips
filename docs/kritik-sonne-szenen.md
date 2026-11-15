@@ -97,3 +97,36 @@ Grundlage: Kontaktabzug v3 nicht eingesehen, eigene Standbilder f5, f40, f1418, 
 
 ### Note: **9,0 / 10** (Design)
 Beleg: beide P1 und die P2-Befunde 3-5 behoben (Zähler im Bild, HUD 7:16, Hut eisblau, ORBIT-Zeile lesbar, Grandpa-Gesicht frei), Cover/End-Card unverändert stark, Luminanz 11-110 ohne leere Bilder. Abzug (nicht unter 9): tally-Sticker doppelt zum Untertitel, schwacher Saturn-Balken, Endwerte der Zähler nicht gesehen.
+
+## Regie Runde 2
+Stand 15.11.2026 · Regie-Kritiker · Grundlage: Neuvertonung (Timeline 08:29, 111,4 s inkl. End-Card), `scripts/sonne_shots.mjs` (48 Shots, Ø 2,28 s, max 4,87 s turn-Halt, min 1,07 s), Kontaktabzug `out/sonne-kontakt-v3.jpg` (08:36), 26 eigene Standbilder an den neuen Wortzeiten aus `captions.json` (`out/s3/regie-r2.jpg`, frisches Bundle). Kein Voll-Render.
+
+### Nachprüfung Runde 1
+| Befund | Stelle (neu) | Ergebnis |
+| --- | --- | --- |
+| P1-1 seven 7:19 | Wort „left.“ 75,44 s | 74,4 s 7:15 → **75,45 s 7:19** → 75,9 s 7:19 (steht) ✓ |
+| P1-2 arrive-Zähler | „hundred“ 46,59 / „million“ 47,0 / „years…“ 47,42 s | 77 461 675 → 111 786 441 → 128 412 086 → **130 000 000** ab ≈ 47,6 s, steht bis 48,7 s (≈ 1,1 s); Zahl + „YEARS“ ganz im Bild ✓ (Endwert ≈ 0,2 s nach „years“, nicht beim Wort – vertretbar, Zähler rollt auf die gesprochene Zahl zu) |
+| P2-3 five | 65,2 / 66,6 / 67,6 s | Telefon groß, Opa mit offenem Gähnmund und geschlossenen Augen bei „yawns goodnight“ ✓ |
+| P2-4 speed | 39,3 s | „SPEED: c“, Bahnen LIGHT/RIPPLE als Bogen auf die Erde ✓ (Rest P3-a) |
+| P2-5 ocean ≥ 1,3 s | dive 94,70–96,23 s = 1,53 s | ✓; Eis in Shot 1 (94,0 s Schollen) lesbar |
+| P2-6 tally „2 H“ | 104,0 / 105,4 / 105,9 s | Balken unter der Platte, kein Anschnitt ✓ (Werte stehen nur noch in der Platte) |
+| P2-7 „1.7 S“ einmal im Bild | 50,3 / 50,7 s | Sticker weg; im Bild nur Bahn-Label „+1.7 S“ (ab Lichtankunft) + Platte ✓ |
+| Höhepunkt | turn 80,97 s = 72,7 %, Himmel schwarz 83,36 s = 74,8 %, Augen auf 85,02 s = 76,3 % (von 111,4 s) | ✓ im Fenster; ±0,2 s Verschiebung ändert < 0,2 % |
+| Loop / End-Card | 109,2 s = Cover-Bildaufbau, 111,2 s „KnowToon“ getippt | ✓ |
+
+### Min 1,07 s – welcher Shot?
+**orbit Shot 2 „close-up NOTHING HERE“ 53,20–54,27 s** (durch die Neuvertonung: `orbitEmptySpot − 4` liegt jetzt 1,07 s vor Szenenende; vorher 1,30 s). Bei 53,3 s ist „NOTHING HERE“ noch kaum sichtbar, bei 53,9 s lesbar; Bild = derselbe Ring + Erde wie Shot 1, liest sich als Ranschnitt.
+
+### Restmängel
+**P2**
+1. orbit 53,2 s: Shot 2 nur 1,07 s ohne erzählerischen Grund. Vorschlag: Schnitt früher (`orbitEmptySpot − 14` → ≈ 1,4 s) oder Shot mit Shot 1 verschmelzen (Push-in statt Schnitt).
+
+**P3**
+- a. speed 37,40–≈ 38,3 s: Shot 2 beginnt mit Erde allein auf dem Gitter (38,0 s), das Rennen erscheint erst ≈ 1 s später – Bahnen ab Shot-Beginn zeigen.
+- b. ocean dive 94,9 s: heller Lichtkegel von oben liest sich eher als Scheinwerfer als „durchs Eis“; Eiskante oben im Kader wäre klarer.
+- c. five: hellbraunes Teleskop/Stab läuft diagonal über Opas Kinn (66,6 s) – leicht verrückt, Mund bleibt frei.
+- d. Cover 0,6 s: Titel blendet noch über den Untertitel (aus R1 offen).
+- e. turn Nacht ohne erkennbare Sterne, hook-Sticker klein, Untertitel auf Mund old/juno (aus R1 offen).
+
+### Note: **9,0 / 10** (Regie)
+Beleg: alle P1/P2 aus Runde 1 an den neuen Wortzeiten belegt erledigt (seven 7:19 genau auf „left“ 75,45 s, Zähler ganz im Bild mit 130 000 000 vor dem nächsten Satz, five/speed/ocean zeigen ihr Verb, „1.7 S“ nicht mehr dreifach). Höhepunkt 74,8 %, Shots ≤ 4 s, Loop sauber. Rest: ein neuer Mikro-Shot (orbit 1,07 s, P2, Ranschnitt ohne Lesbarkeitsschaden) und P3-Feinheiten – keine Freigabe-Hürde. Sollte die Stille vor turn noch wandern: nur seven 7:19 auf „left“ und den orbit-Shot nachmessen.

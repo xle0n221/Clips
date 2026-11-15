@@ -27,7 +27,7 @@ export const SONNE_SHOTS: Record<string, { readonly names: readonly string[]; re
     cuts: (b) => [b("deadStarsCrash") - 8, b("flashRippleSideBySide") - 50],
   },
   arrive: { names: ["time-lapse galaxies 130M years", "photo finish 1.7 s"], cuts: (b) => [b("photoFinish") - 40] },
-  orbit: { names: ["top-down orbit around empty spot", "close-up NOTHING HERE"], cuts: (b) => [b("orbitEmptySpot") - 4] },
+  orbit: { names: ["top-down orbit around empty spot", "close-up NOTHING HERE"], cuts: (b) => [b("orbitEmptySpot") - 14] },
   rehook: { names: ["medium Juno hums + timer 3:00", "wide crowd all normal"], cuts: (b) => [b("beachCrowdNormal") - 46] },
   four: { names: ["close-up Grandpa at telescope", "eyepiece POV rings"], cuts: (b) => [b("eyepieceRings") - 30] },
   five: { names: ["OTS phone Grandpa yawns", "close-up Juno holds phone + 5:00"], cuts: (b) => [b("junoHoldsPhone") - 6] },
