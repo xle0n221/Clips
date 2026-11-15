@@ -237,7 +237,7 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None
         live = np.nonzero(dbe >= level - 26)[0]
         if len(live):
             qf = live[-1]
-            att = float(dbe[qf] - (level - (38 if text.rstrip().endswith("…") else 32)))  # Ellipse klingt länger aus
+            att = float(dbe[qf] - (level - (44 if text.rstrip().endswith("…") else 32)))  # Ellipse klingt länger aus
             c = (qf + 1) * hop
             k = np.arange(len(y)) - (c - soft)
             g = np.clip(-att * k / max(1, soft - hop), -att, 0.0)

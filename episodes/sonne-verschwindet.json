@@ -6,7 +6,7 @@
   "voicePreset": "lebendig",
   "speed": 1.05,
   "pauseMs": 350,
-  "sceneGapMs": 225,
+  "sceneGapMs": 215,
   "lengthSec": 107,
   "years": [],
   "say": {
@@ -190,7 +190,7 @@
   "narrator": {
     "max_speed": 1.1,
     "piece_extra_ms": 45,
-    "scene_gap_ms": 225,
+    "scene_gap_ms": 215,
     "qc_tries": 6,
     "comma_whisper": true,
     "end_soft_ms": 60
@@ -231,11 +231,11 @@
       "delivery": "awe",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.75,
+        "cfg": 0.95,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 240,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 5.5,
         "gain_db": -1.0
       },
@@ -294,11 +294,11 @@
       "delivery": "warm",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.75,
+        "cfg": 0.95,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 240,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 5.5,
         "gain_db": -1.0
       },
@@ -354,7 +354,7 @@
         "temp": 0.75,
         "speed": 1.0,
         "gap_ms": 240,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 5.5,
         "gain_db": -1.0
       },
@@ -421,7 +421,7 @@
         "temp": 0.75,
         "speed": 0.98,
         "gap_ms": 240,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 5.5,
         "gain_db": -1.0
       },
@@ -478,7 +478,7 @@
         "temp": 0.75,
         "speed": 0.93,
         "gap_ms": 520,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -543,11 +543,11 @@
       "delivery": "tense",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -601,11 +601,11 @@
       "delivery": "serious",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -657,11 +657,11 @@
       "delivery": "serious",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -716,11 +716,11 @@
       "delivery": "awe",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -782,11 +782,11 @@
       "delivery": "awe",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -841,11 +841,11 @@
       "delivery": "tense",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -898,11 +898,11 @@
       "delivery": "tense",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -957,11 +957,11 @@
       "delivery": "warm",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -1018,11 +1018,11 @@
       "delivery": "playful",
       "emotion": {
         "exag": 0.6,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -1.0
       },
@@ -1078,11 +1078,11 @@
       "delivery": "tense",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 260,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.0,
         "gain_db": -2.5
       },
@@ -1140,11 +1140,11 @@
       "delivery": "warm",
       "emotion": {
         "exag": 0.5,
-        "cfg": 0.75,
+        "cfg": 0.95,
         "temp": 0.75,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 280,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 5.0,
         "gain_db": -1.0
       },
@@ -1201,11 +1201,11 @@
       "delivery": "dramatic",
       "emotion": {
         "exag": 0.65,
-        "cfg": 0.65,
+        "cfg": 0.85,
         "temp": 0.8,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 200,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 3.5,
         "gain_db": 1.5
       },
@@ -1264,11 +1264,11 @@
       "delivery": "dramatic",
       "emotion": {
         "exag": 0.65,
-        "cfg": 0.65,
+        "cfg": 0.85,
         "temp": 0.8,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 200,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 3.5,
         "gain_db": 1.5
       },
@@ -1320,11 +1320,11 @@
       "delivery": "awe",
       "emotion": {
         "exag": 0.65,
-        "cfg": 0.65,
+        "cfg": 0.85,
         "temp": 0.8,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 200,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 3.5,
         "gain_db": 1.5
       },
@@ -1377,11 +1377,11 @@
       "delivery": "calm",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.75,
+        "cfg": 0.95,
         "temp": 0.7,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 250,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.5,
         "gain_db": -2.0
       },
@@ -1443,11 +1443,11 @@
       "delivery": "calm",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.75,
+        "cfg": 0.95,
         "temp": 0.7,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 250,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.5,
         "gain_db": -2.0
       },
@@ -1501,11 +1501,11 @@
       "delivery": "calm",
       "emotion": {
         "exag": 0.55,
-        "cfg": 0.75,
+        "cfg": 0.95,
         "temp": 0.7,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 250,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 6.5,
         "gain_db": -2.0
       },
@@ -1556,11 +1556,11 @@
       "delivery": "tense",
       "emotion": {
         "exag": 0.6,
-        "cfg": 0.7,
+        "cfg": 0.9,
         "temp": 0.7,
-        "speed": 1.06,
+        "speed": 1.0,
         "gap_ms": 250,
-        "comma_ms": 225,
+        "comma_ms": 200,
         "end_db": 2.5,
         "gain_db": 0.0
       },
