@@ -1485,23 +1485,25 @@ export const EarthBall: React.FC<{ readonly position: V3; readonly radius?: numb
 );
 
 /** Kugelschale aus Licht (das letzte Sonnenlicht), Radius r, Stärke `on`. Additiv, mit hellem Rand (Fresnel-Näherung: zwei Schalen). */
-export const LightShell: React.FC<{ readonly center?: V3; readonly r: number; readonly on?: number; readonly color?: string }> = ({ center = [0, 0, 0], r, on = 1, color = S.gold }) =>
-  on <= 0.01 ? null : (
+export const LightShell: React.FC<{ readonly center?: V3; readonly r: number; readonly on?: number; readonly color?: string }> = ({ center = [0, 0, 0], r, on = 1, color = S.gold }) => {
+  if (on <= 0.01) return null;
+  const tube = Math.min(0.35, Math.max(0.05, r * 0.012));
+  const rings: V3[] = [[Math.PI / 2, 0, 0], [0, 0, 0], [0, Math.PI / 4, 0], [0, -Math.PI / 4, 0], [0, Math.PI / 2, 0], [Math.PI / 2 - 0.5, 0, 0], [Math.PI / 2 + 0.5, 0, 0]];
+  return (
     <group position={center}>
       <mesh>
         <sphereGeometry args={[r, 64, 32]} />
         <meshBasicMaterial color={color} transparent opacity={0.08 * on} blending={AdditiveBlending} depthWrite={false} side={DoubleSide} toneMapped={false} />
       </mesh>
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[r, Math.max(0.05, r * 0.012), 8, 96]} />
-        <meshBasicMaterial color={S.goldHot} transparent opacity={0.9 * on} blending={AdditiveBlending} depthWrite={false} toneMapped={false} />
-      </mesh>
-      <mesh>
-        <torusGeometry args={[r, Math.max(0.05, r * 0.012), 8, 96]} />
-        <meshBasicMaterial color={S.goldHot} transparent opacity={0.6 * on} blending={AdditiveBlending} depthWrite={false} toneMapped={false} />
-      </mesh>
+      {rings.map((rot, i) => (
+        <mesh key={i} rotation={rot} scale={i > 4 ? [Math.cos(0.5), Math.cos(0.5), 1] : 1} position={i === 5 ? [0, Math.sin(0.5) * r, 0] : i === 6 ? [0, -Math.sin(0.5) * r, 0] : [0, 0, 0]}>
+          <torusGeometry args={[r, tube, 8, 160]} />
+          <meshBasicMaterial color={S.goldHot} transparent opacity={(i < 2 ? 0.9 : 0.55) * on} blending={AdditiveBlending} depthWrite={false} toneMapped={false} />
+        </mesh>
+      ))}
     </group>
   );
+};
 
 /**
  * Leuchtendes Lichtband (Röhre) von `from` nach `to`. `head` 0..1 = wie weit das Band schon reicht, `tail` 0..1 = wo es beginnt
@@ -1770,7 +1772,7 @@ export const IceSheet: React.FC<{ readonly t: number; readonly y?: number; reado
         return (
           <mesh key={i} position={[p.x, 0.01 * i * 0.01, p.z]} rotation={[-Math.PI / 2, 0, p.a]} scale={k}>
             <circleGeometry args={[p.s, 6]} />
-            <meshStandardMaterial map={tex} color="#FFFFFF" roughness={0.35} metalness={0.05} transparent opacity={0.92} />
+            <meshStandardMaterial map={tex} color="#FFFFFF" roughness={0.35} metalness={0.05} transparent opacity={0.95} emissive="#7FA8D8" emissiveIntensity={0.35} />
           </mesh>
         );
       })}
@@ -1806,15 +1808,15 @@ export const Vent: React.FC<{ readonly position: V3; readonly frame: number; rea
         <cylinderGeometry args={[0.2, 0.55, 1.1, 8]} />
         <meshStandardMaterial color="#332A24" roughness={0.95} />
       </mesh>
-      <pointLight position={[0, 2.4, 0.4]} color="#FF8A4A" intensity={2.5} distance={4} decay={2} />
+      <pointLight position={[0, 2.4, 0.8]} color="#FF8A4A" intensity={6} distance={6} decay={2} />
       <Halo at={[0, 2.35, 0]} size={1.2} color="#FF9A50" opacity={0.6} />
       <points geometry={smoke}>
         <pointsMaterial map={softDot()} color="#1A1614" size={0.9} sizeAttenuation transparent opacity={0.85} depthWrite={false} />
       </points>
       {dots.map((d, i) => (
-        <Halo key={i} at={[d[0], d[1] + Math.sin(frame * 0.05 + i) * 0.1, d[2]]} size={0.28 + 0.12 * Math.sin(frame * 0.2 + d[3] * 9)} color={S.vent} opacity={0.95 * microbes} />
+        <Halo key={i} at={[d[0], d[1] + Math.sin(frame * 0.05 + i) * 0.1, d[2]]} size={0.42 + 0.14 * Math.sin(frame * 0.2 + d[3] * 9)} color={S.vent} opacity={0.95 * microbes} />
       ))}
-      {microbes > 0.05 ? <pointLight position={[0, 1, 1]} color={S.vent} intensity={1.5 * microbes} distance={4} decay={2} /> : null}
+      {microbes > 0.05 ? <pointLight position={[0, 1, 1]} color={S.vent} intensity={4 * microbes} distance={5} decay={2} /> : null}
     </group>
   );
 };
@@ -1864,7 +1866,7 @@ export const clockText = (scene: string, frame: number, beat: (n: string) => num
   const c = CLOCK[scene];
   if (!c) return "0:00";
   const b = beat(c.beat);
-  if (c.pre !== undefined && frame < b) return mmss(c.pre + Math.max(0, frame) / 30);
+  if (c.pre !== undefined && frame < b) return mmss(c.pre + ((c.sec - c.pre) * Math.max(0, frame)) / Math.max(1, b));
   const t = b > 1e8 ? 0 : Math.max(0, frame - b) / 30;
   return mmss(Math.min(c.max, c.sec + t));
 };

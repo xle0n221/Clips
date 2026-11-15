@@ -1,0 +1,708 @@
+{
+ "id": "sonne-verschwindet",
+ "title": "What If the Sun Vanished? The First 8:19",
+ "durationMs": 118154,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 5451
+  },
+  {
+   "id": "juno",
+   "startMs": 5451,
+   "endMs": 11915
+  },
+  {
+   "id": "grandpa",
+   "startMs": 11915,
+   "endMs": 18531
+  },
+  {
+   "id": "old",
+   "startMs": 18531,
+   "endMs": 22759
+  },
+  {
+   "id": "zero",
+   "startMs": 22759,
+   "endMs": 27923
+  },
+  {
+   "id": "distance",
+   "startMs": 27923,
+   "endMs": 32417
+  },
+  {
+   "id": "gravity",
+   "startMs": 32417,
+   "endMs": 36923
+  },
+  {
+   "id": "speed",
+   "startMs": 36923,
+   "endMs": 42176
+  },
+  {
+   "id": "proof",
+   "startMs": 42176,
+   "endMs": 49673
+  },
+  {
+   "id": "arrive",
+   "startMs": 49673,
+   "endMs": 54764
+  },
+  {
+   "id": "orbit",
+   "startMs": 54764,
+   "endMs": 58403
+  },
+  {
+   "id": "rehook",
+   "startMs": 58403,
+   "endMs": 64130
+  },
+  {
+   "id": "four",
+   "startMs": 64130,
+   "endMs": 69427
+  },
+  {
+   "id": "five",
+   "startMs": 69427,
+   "endMs": 75905
+  },
+  {
+   "id": "seven",
+   "startMs": 75905,
+   "endMs": 81956
+  },
+  {
+   "id": "hope",
+   "startMs": 81956,
+   "endMs": 86937
+  },
+  {
+   "id": "turn",
+   "startMs": 86937,
+   "endMs": 92188
+  },
+  {
+   "id": "straight",
+   "startMs": 92188,
+   "endMs": 95577
+  },
+  {
+   "id": "moon",
+   "startMs": 95577,
+   "endMs": 99458
+  },
+  {
+   "id": "ocean",
+   "startMs": 99458,
+   "endMs": 104977
+  },
+  {
+   "id": "saturn",
+   "startMs": 104977,
+   "endMs": 110515
+  },
+  {
+   "id": "tally",
+   "startMs": 110515,
+   "endMs": 114096
+  },
+  {
+   "id": "answer2",
+   "startMs": 114096,
+   "endMs": 117554
+  }
+ ],
+ "cues": [
+  {
+   "beat": "sunBlinksOut",
+   "sticker": "WHAT HAPPENS AT 8:19?",
+   "color": "#FFD23F",
+   "scene": "hook",
+   "atMs": 1140
+  },
+  {
+   "beat": "hudTimerStarts",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "sungone",
+    "value": "0:00"
+   },
+   "scene": "hook",
+   "atMs": 4520
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1140
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4520
+  },
+  {
+   "beat": "beachWideJuno",
+   "scene": "juno",
+   "atMs": 5980
+  },
+  {
+   "beat": "junoFaceGolden",
+   "scene": "juno",
+   "atMs": 11080
+  },
+  {
+   "emph": true,
+   "scene": "juno",
+   "atMs": 5980
+  },
+  {
+   "emph": true,
+   "scene": "juno",
+   "atMs": 8760
+  },
+  {
+   "emph": true,
+   "scene": "juno",
+   "atMs": 11080
+  },
+  {
+   "beat": "videoCallGrandpa",
+   "sfx": "pop",
+   "scene": "grandpa",
+   "atMs": 12980
+  },
+  {
+   "beat": "eyepieceSaturn",
+   "sfx": "ding",
+   "scene": "grandpa",
+   "atMs": 17600
+  },
+  {
+   "emph": true,
+   "scene": "grandpa",
+   "atMs": 12980
+  },
+  {
+   "emph": true,
+   "scene": "grandpa",
+   "atMs": 14080
+  },
+  {
+   "emph": true,
+   "scene": "grandpa",
+   "atMs": 17600
+  },
+  {
+   "beat": "sunbeamTag8Min",
+   "scene": "old",
+   "atMs": 19880
+  },
+  {
+   "beat": "pullBackAlongBeam",
+   "sfx": "whoosh",
+   "scene": "old",
+   "atMs": 22040
+  },
+  {
+   "emph": true,
+   "scene": "old",
+   "atMs": 19880
+  },
+  {
+   "emph": true,
+   "scene": "old",
+   "atMs": 22040
+  },
+  {
+   "beat": "emptySpotLightShell",
+   "hud": {
+    "id": "sungone",
+    "value": "0:10"
+   },
+   "scene": "zero",
+   "atMs": 24900
+  },
+  {
+   "beat": "rideLightShell",
+   "scene": "zero",
+   "atMs": 27200
+  },
+  {
+   "emph": true,
+   "scene": "zero",
+   "atMs": 24900
+  },
+  {
+   "emph": true,
+   "scene": "zero",
+   "atMs": 27200
+  },
+  {
+   "beat": "ribbon150Mkm",
+   "sticker": "150 000 000 KM",
+   "color": "#FFD23F",
+   "scene": "distance",
+   "atMs": 30180
+  },
+  {
+   "beat": "ribbonTailBlack",
+   "scene": "distance",
+   "atMs": 31360
+  },
+  {
+   "emph": true,
+   "scene": "distance",
+   "atMs": 30180
+  },
+  {
+   "emph": true,
+   "scene": "distance",
+   "atMs": 31360
+  },
+  {
+   "beat": "modelStringCut",
+   "sfx": "pop",
+   "scene": "gravity",
+   "atMs": 34440
+  },
+  {
+   "beat": "grandpaEyebrow",
+   "scene": "gravity",
+   "atMs": 36160
+  },
+  {
+   "emph": true,
+   "scene": "gravity",
+   "atMs": 32660
+  },
+  {
+   "emph": true,
+   "scene": "gravity",
+   "atMs": 34440
+  },
+  {
+   "emph": true,
+   "scene": "gravity",
+   "atMs": 36160
+  },
+  {
+   "beat": "gridRipple",
+   "scene": "speed",
+   "atMs": 38520
+  },
+  {
+   "beat": "rippleAndLightRace",
+   "sticker": "SPEED: c",
+   "color": "#FFD23F",
+   "scene": "speed",
+   "atMs": 41500
+  },
+  {
+   "emph": true,
+   "scene": "speed",
+   "atMs": 36980
+  },
+  {
+   "emph": true,
+   "scene": "speed",
+   "atMs": 38520
+  },
+  {
+   "emph": true,
+   "scene": "speed",
+   "atMs": 41500
+  },
+  {
+   "beat": "deadStarsCrash",
+   "sfx": "whoosh",
+   "scene": "proof",
+   "atMs": 44980
+  },
+  {
+   "beat": "flashRippleSideBySide",
+   "scene": "proof",
+   "atMs": 48560
+  },
+  {
+   "emph": true,
+   "scene": "proof",
+   "atMs": 44980
+  },
+  {
+   "emph": true,
+   "scene": "proof",
+   "atMs": 46260
+  },
+  {
+   "emph": true,
+   "scene": "proof",
+   "atMs": 46740
+  },
+  {
+   "beat": "galaxyTimelapse",
+   "scene": "arrive",
+   "atMs": 51100
+  },
+  {
+   "beat": "photoFinish",
+   "sticker": "1.7 S",
+   "color": "#FFD23F",
+   "scene": "arrive",
+   "atMs": 53900
+  },
+  {
+   "emph": true,
+   "scene": "arrive",
+   "atMs": 53900
+  },
+  {
+   "beat": "orbitEmptySpot",
+   "hud": {
+    "id": "sungone",
+    "value": "2:00"
+   },
+   "scene": "orbit",
+   "atMs": 57240
+  },
+  {
+   "emph": true,
+   "scene": "orbit",
+   "atMs": 57240
+  },
+  {
+   "beat": "junoHumming",
+   "hud": {
+    "id": "sungone",
+    "value": "3:00"
+   },
+   "scene": "rehook",
+   "atMs": 60640
+  },
+  {
+   "beat": "beachCrowdNormal",
+   "scene": "rehook",
+   "atMs": 63340
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 60640
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 62160
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 63340
+  },
+  {
+   "beat": "grandpaTelescope",
+   "hud": {
+    "id": "sungone",
+    "value": "4:00"
+   },
+   "scene": "four",
+   "atMs": 64540
+  },
+  {
+   "beat": "eyepieceRings",
+   "scene": "four",
+   "atMs": 67300
+  },
+  {
+   "emph": true,
+   "scene": "four",
+   "atMs": 64540
+  },
+  {
+   "emph": true,
+   "scene": "four",
+   "atMs": 67300
+  },
+  {
+   "emph": true,
+   "scene": "four",
+   "atMs": 68440
+  },
+  {
+   "beat": "grandpaYawns",
+   "hud": {
+    "id": "sungone",
+    "value": "5:00"
+   },
+   "scene": "five",
+   "atMs": 71300
+  },
+  {
+   "beat": "junoHoldsPhone",
+   "scene": "five",
+   "atMs": 73420
+  },
+  {
+   "emph": true,
+   "scene": "five",
+   "atMs": 69580
+  },
+  {
+   "emph": true,
+   "scene": "five",
+   "atMs": 71300
+  },
+  {
+   "emph": true,
+   "scene": "five",
+   "atMs": 74960
+  },
+  {
+   "beat": "junoClosesEyes",
+   "hud": {
+    "id": "sungone",
+    "value": "7:19"
+   },
+   "scene": "seven",
+   "atMs": 76100
+  },
+  {
+   "beat": "watchOneMinute",
+   "scene": "seven",
+   "atMs": 81060
+  },
+  {
+   "emph": true,
+   "scene": "seven",
+   "atMs": 76100
+  },
+  {
+   "emph": true,
+   "scene": "seven",
+   "atMs": 79500
+  },
+  {
+   "emph": true,
+   "scene": "seven",
+   "atMs": 81060
+  },
+  {
+   "beat": "beachGlitter",
+   "scene": "hope",
+   "atMs": 84940
+  },
+  {
+   "beat": "junoStretches",
+   "hud": {
+    "id": "sungone",
+    "value": "8:18"
+   },
+   "scene": "hope",
+   "atMs": 86020
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 82020
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 84940
+  },
+  {
+   "emph": true,
+   "scene": "hope",
+   "atMs": 86020
+  },
+  {
+   "beat": "skyGoesBlack",
+   "hud": {
+    "id": "sungone",
+    "value": "8:19"
+   },
+   "scene": "turn",
+   "atMs": 88140
+  },
+  {
+   "beat": "noonStars",
+   "scene": "turn",
+   "atMs": 89580
+  },
+  {
+   "beat": "junoEyesOpen",
+   "hud": {
+    "id": "orbit",
+    "value": "STRAIGHT"
+   },
+   "scene": "turn",
+   "atMs": 91380
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 88140
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 89580
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 91380
+  },
+  {
+   "beat": "orbitSnaps",
+   "scene": "straight",
+   "atMs": 93060
+  },
+  {
+   "beat": "speedTag30",
+   "sticker": "30 KM/S",
+   "color": "#FFD23F",
+   "scene": "straight",
+   "atMs": 94800
+  },
+  {
+   "emph": true,
+   "scene": "straight",
+   "atMs": 93060
+  },
+  {
+   "emph": true,
+   "scene": "straight",
+   "atMs": 94800
+  },
+  {
+   "beat": "moonFades",
+   "scene": "moon",
+   "atMs": 97420
+  },
+  {
+   "beat": "saturnStillShining",
+   "sfx": "ding",
+   "scene": "moon",
+   "atMs": 98460
+  },
+  {
+   "emph": true,
+   "scene": "moon",
+   "atMs": 97420
+  },
+  {
+   "emph": true,
+   "scene": "moon",
+   "atMs": 98460
+  },
+  {
+   "beat": "iceSkinCreeps",
+   "scene": "ocean",
+   "atMs": 101400
+  },
+  {
+   "beat": "ventMicrobes",
+   "sfx": "whoosh",
+   "scene": "ocean",
+   "atMs": 103860
+  },
+  {
+   "emph": true,
+   "scene": "ocean",
+   "atMs": 101400
+  },
+  {
+   "emph": true,
+   "scene": "ocean",
+   "atMs": 103860
+  },
+  {
+   "beat": "saturnPlus2h",
+   "sticker": "+2 H",
+   "color": "#FFD23F",
+   "scene": "saturn",
+   "atMs": 107680
+  },
+  {
+   "beat": "grandpaStares",
+   "scene": "saturn",
+   "atMs": 109380
+  },
+  {
+   "emph": true,
+   "scene": "saturn",
+   "atMs": 109380
+  },
+  {
+   "beat": "bar8min",
+   "scene": "tally",
+   "atMs": 111200
+  },
+  {
+   "beat": "bar2h",
+   "scene": "tally",
+   "atMs": 113100
+  },
+  {
+   "emph": true,
+   "scene": "tally",
+   "atMs": 111200
+  },
+  {
+   "emph": true,
+   "scene": "tally",
+   "atMs": 113100
+  },
+  {
+   "beat": "saturnFades",
+   "sticker": "SATURN'S ECHO ENDS",
+   "color": "#FFD23F",
+   "scene": "answer2",
+   "atMs": 114940
+  },
+  {
+   "beat": "loopToHook",
+   "scene": "answer2",
+   "atMs": 116640
+  },
+  {
+   "emph": true,
+   "scene": "answer2",
+   "atMs": 116640
+  }
+ ],
+ "hud": {
+  "title": "WHAT IF THE SUN VANISHED",
+  "counters": [
+   {
+    "id": "sungone",
+    "label": "SUN GONE FOR",
+    "value": "0:00"
+   },
+   {
+    "id": "orbit",
+    "label": "ORBIT",
+    "value": "CURVED"
+   }
+  ],
+  "bars": []
+ },
+ "cover": {
+  "text": "THE SUN IS GONE",
+  "sub": "Nobody knows yet",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow before the lights go out.",
+  "seconds": 2
+ }
+}

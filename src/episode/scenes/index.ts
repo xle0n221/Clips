@@ -47,7 +47,6 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "zeit-welt": ZEIT_SCENES,
   bauarbeiter: BAU_SCENES,
   "sonne-verschwindet": SONNE_SCENES,
-  "sonne-dummy": SONNE_SCENES, // TEMP Szenenbau-Test, vor Abgabe entfernen
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -105,6 +104,5 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "zeit-welt": ZEIT_CONFIG,
   bauarbeiter: BAU_CONFIG,
   "sonne-verschwindet": SONNE_CONFIG,
-  "sonne-dummy": SONNE_CONFIG, // TEMP
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

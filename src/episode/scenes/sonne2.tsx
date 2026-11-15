@@ -25,6 +25,7 @@ import {
   Juno,
   junoHead,
   lerp,
+  LightShaft,
   Motes,
   Ode,
   ODE_SCOPE,
@@ -72,7 +73,7 @@ export const SonRehook: React.FC = () => {
     const face: V3 = [head[0], head[1] + 0.3, head[2] + 0.4];
     const a = frameOn(face, 4.6, 0.56, 0.5, [0.75, 0.75, 0.55]);
     const b = frameOn(face, 4.0, 0.56, 0.5, [0.7, 0.78, 0.5]);
-    const hud = hudAt(b, 0.5, 0.3, 6, 0.6);
+    const hud = hudAt(b, 0.5, 0.3, 3.4, 0.6);
     const hum = 0.25 + 0.2 * Math.sin(frame * 0.35);
     return (
       <>
@@ -118,13 +119,14 @@ export const SonFour: React.FC = () => {
   if (shot === 0) {
     // Nah: Grandpa mit dem Auge am Okular, lächelt (Zeitanzeige 4:00)
     const h = odeScopeHead();
-    const a = frameOn(h, 3.8, 0.5, 0.42, [0.85, 0.12, -0.55]);
-    const b = frameOn(h, 3.3, 0.5, 0.42, [0.8, 0.12, -0.6]);
-    const hud = hudAt(b, 0.5, 0.26, 6, 0.55);
+    const a = frameOn(h, 4.4, 0.5, 0.45, [0.75, -0.08, -1]);
+    const b = frameOn(h, 3.9, 0.5, 0.45, [0.7, -0.08, -1]);
+    const hud = hudAt(b, 0.5, 0.25, 3.2, 0.5);
     return (
       <>
         <BalconySet frame={frame} />
         <Ode frame={frame} position={ODE_SCOPE.position} rotation={ODE_SCOPE.rotation} lean={ODE_SCOPE.lean} nod={ODE_SCOPE.nod} mouth="grin" eyes="closed" reach={[1.1, 1.0]} />
+        <pointLight position={[h[0] + 1.2, h[1] + 0.3, h[2] - 1.6]} color="#FFE3B8" intensity={6} distance={5} decay={2} />
         <HudPanel value={clockText("four", frame, beat)} {...hud} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -151,8 +153,8 @@ export const SonFive: React.FC = () => {
     // Über die Schulter: auf dem Bildschirm gähnt Grandpa, sein Daumen wandert zum roten Auflegen-Knopf
     const y = beat("grandpaYawns");
     const thumb = ramp(frame, y + 6, y + 40);
-    const a = frameOn(phoneP, 2.3, 0.44, 0.52, [-0.32, 0.22, -1]);
-    const b = frameOn(phoneP, 1.9, 0.44, 0.52, [-0.3, 0.2, -1]);
+    const a = frameOn(phoneP, 2.6, 0.44, 0.45, [-0.85, 0.3, -1]);
+    const b = frameOn(phoneP, 2.2, 0.44, 0.45, [-0.8, 0.3, -1]);
     return (
       <>
         <BeachSet frame={frame} day={1} umbrella={false} />
@@ -171,7 +173,7 @@ export const SonFive: React.FC = () => {
   // Nah: Juno sitzt auf, grinst und hält das Telefon ganz nah ans Gesicht (Zeitanzeige 5:00)
   const a = frameOn(head, 3.0, 0.56, 0.56, [0.15, 0.04, 1]);
   const b = frameOn(head, 2.6, 0.56, 0.56, [0.12, 0.05, 1]);
-  const hud = hudAt(b, 0.5, 0.25, 5, 0.56);
+  const hud = hudAt(b, 0.5, 0.24, 2.0, 0.56);
   const beg = ramp(frame, beat("junoHoldsPhone") - 4, beat("junoHoldsPhone") + 10);
   return (
     <>
@@ -246,7 +248,7 @@ export const SonHope: React.FC = () => {
   const s = ramp(frame, beat("junoStretches") - 18, beat("junoStretches") + 6) * (1 - ramp(f, len - 10, len) * 0.3);
   const a = frameOn(head, 4.0, 0.58, 0.5, [-0.1, 0.06, 1]);
   const b = frameOn(head, 3.6, 0.58, 0.5, [-0.08, 0.06, 1]);
-  const hud = hudAt(b, 0.5, 0.25, 5.5, 0.56);
+  const hud = hudAt(b, 0.5, 0.24, 2.8, 0.56);
   return (
     <>
       <BeachSet frame={frame} day={1} gulls umbrella={false} />
@@ -273,7 +275,7 @@ export const SonTurn: React.FC = () => {
   const pop = eyePopAt(frame, go - 2, 1.5, 1.2);
   const a = frameOn(head, 5.2, 0.6, 0.5, [0.06, -0.08, 1]);
   const b = frameOn(head, 3.9, 0.6, 0.5, [0.04, -0.06, 1]);
-  const hud = hudAt(b, 0.5, 0.26, 6.5, 0.58);
+  const hud = hudAt(b, 0.5, 0.25, 3.2, 0.58);
   return (
     <>
       <BeachSet frame={frame} day={day} stars={stars} crowd lookUp={0.5 * stars} glitter={day} umbrella={false} />
@@ -378,16 +380,16 @@ export const SonOcean: React.FC = () => {
   const { frame, beat, shot, f, len, cuts } = useShots("ocean");
   if (shot === 0) {
     // Totale über dem Meer im Sternenlicht: eine weiße Eishaut kriecht darüber (Zeitsprung „OVER TIME“)
-    const t = ramp(frame, 0, (cuts[0] ?? 60) + 10, (x) => x) * 0.75 + 0.1;
-    const a = frameOn([0, 0, -12], 26, 0.55, 0.5, [0, 0.32, 1]);
-    const b = frameOn([0, 0, -12], 24, 0.55, 0.5, [0, 0.3, 1]);
+    const t = ramp(frame, 0, (cuts[0] ?? 60) + 10, (x) => x) * 0.6 + 0.3;
+    const a = frameOn([0, 0, -8], 18, 0.58, 0.5, [0, 0.42, 1]);
+    const b = frameOn([0, 0, -8], 16, 0.58, 0.5, [0, 0.4, 1]);
     const tag = atScreen(b, 0.5, 0.3, 10);
     return (
       <>
         <color attach="background" args={[S.nightTop]} />
         <fog attach="fog" args={["#050818", 30, 140]} />
         <hemisphereLight args={["#3A4A8A", "#05060C", 0.5]} />
-        <directionalLight position={[-10, 20, 10]} color={S.iceBlue} intensity={1.2} />
+        <directionalLight position={[-10, 20, 10]} color={S.iceBlue} intensity={2.2} />
         <SkyDome day={0} />
         <Stars show={1} frame={frame} upper />
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, -40]}>
@@ -410,8 +412,8 @@ export const SonOcean: React.FC = () => {
     return (
       <>
         <color attach="background" args={[under ? "#02101C" : S.nightTop]} />
-        <fog attach="fog" args={[under ? "#03182A" : "#050818", under ? 2 : 30, under ? 26 : 140]} />
-        <hemisphereLight args={["#5A8AC0", "#02060C", 0.7]} />
+        <fog attach="fog" args={[under ? "#0A2C48" : "#050818", under ? 3 : 30, under ? 30 : 140]} />
+        <hemisphereLight args={["#7AAAE0", "#02060C", 1.1]} />
         <directionalLight position={[-6, 20, 6]} color={S.iceBlue} intensity={1.0} />
         {!under ? <SkyDome day={0} /> : null}
         <IceSheet t={1} size={70} y={0} />
@@ -420,6 +422,9 @@ export const SonOcean: React.FC = () => {
           <meshStandardMaterial color="#9FC8E8" transparent opacity={0.5} side={2} />
         </mesh>
         <Motes frame={frame} center={[0, y, 0]} size={[10, 14, 10]} count={160} drift={[0, 0.03, 0]} color="#BFE0FF" dot={0.06} opacity={0.6} seed={31} />
+        {[-3, 0.5, 3.5].map((x, i) => (
+          <LightShaft key={i} from={[x, -0.2, -2 - i]} to={[x * 1.4, -16, -4 - i]} radius={2.2} top={0.9} color="#9FD0FF" opacity={0.16} />
+        ))}
         <SeaFloor y={-20} />
         <Vent position={[0.5, -20, -3]} frame={frame} microbes={0.6} />
         <Shot frame={f} duration={len} from={[0.6, y, 4]} look={[0.3, y - 6, -1]} fov={46} ease="linear" />
@@ -435,7 +440,7 @@ export const SonOcean: React.FC = () => {
     <>
       <color attach="background" args={["#020A12"]} />
       <fog attach="fog" args={["#03121E", 4, 22]} />
-      <hemisphereLight args={["#3A6A90", "#02060C", 0.45]} />
+      <hemisphereLight args={["#4A7AA0", "#02060C", 0.9]} />
       <SeaFloor y={0} />
       <Vent position={[0, 0, 0]} frame={frame} microbes={m} />
       <Motes frame={frame} center={[0, 2, 0]} size={[6, 6, 6]} count={80} drift={[0, 0.01, 0]} color="#9FD0FF" dot={0.04} opacity={0.4} seed={33} />
@@ -460,8 +465,8 @@ export const SonSaturn: React.FC = () => {
   }
   // Nah: Grandpa im Schal, Atem sichtbar, große runde Augen am Okular (Schlussbild bekommt neue Bedeutung)
   const h = odeScopeHead();
-  const a = frameOn(h, 3.6, 0.48, 0.4, [0.9, 0.1, -0.45]);
-  const b = frameOn(h, 3.0, 0.48, 0.4, [0.85, 0.1, -0.5]);
+  const a = frameOn(h, 4.0, 0.5, 0.45, [0.75, -0.08, -1]);
+  const b = frameOn(h, 3.4, 0.5, 0.45, [0.7, -0.08, -1]);
   const breath = Math.max(0, Math.sin(frame * 0.09)) ** 2;
   const sun = beat("grandpaStares");
   return (
@@ -470,6 +475,7 @@ export const SonSaturn: React.FC = () => {
       <Ode frame={frame} position={ODE_SCOPE.position} rotation={ODE_SCOPE.rotation} lean={ODE_SCOPE.lean - 0.12} nod={ODE_SCOPE.nod - 0.1} eyes="wide" eyePop={eyePopAt(frame, sun, 1.4, 1.2)} mouth="o" scarf breath={breath} reach={[1.1, 1.0]} />
       <Motes frame={frame} center={[EYEPIECE[0], EYEPIECE[1] + 0.5, EYEPIECE[2]]} size={[4, 3, 4]} count={70} drift={[0.002, -0.006, 0]} color="#E6F2FF" dot={0.04} opacity={0.7} seed={41} />
       <Halo at={EYEPIECE} size={0.6} color={S.gold} opacity={0.55} />
+      <pointLight position={[h[0] + 1.2, h[1] + 0.3, h[2] - 1.6]} color="#DDE8FF" intensity={6} distance={5} decay={2} />
       <Shot frame={f} duration={len} {...fly(a, b)} />
     </>
   );
@@ -484,8 +490,8 @@ export const SonTally: React.FC = () => {
     // Geteiltes Bild: links goldener Balken „8 MIN“ (Sonnenlicht), rechts 15× so hoher Balken „2 H“ (Saturn-Glanz) – maßstabsgetreu
     const g1 = ramp(frame, beat("bar8min") - 10, beat("bar8min") + 6);
     const g2 = ramp(frame, beat("bar2h") - 14, beat("bar2h") + 10);
-    const unit = 0.48;
-    const cam = { pos: [0, 3.6, 13.8] as V3, look: [0, 3.6, 0] as V3, fov: 40 };
+    const unit = 0.3;
+    const cam = { pos: [0, 1.7, 15] as V3, look: [0, 1.7, 0] as V3, fov: 40 };
     const bar = (x: number, h: number, color: string, label: string, sub: string, on: number) => (
       <group position={[x, 0, 0]}>
         <mesh position={[0, (h * on) / 2, 0]}>
@@ -494,7 +500,7 @@ export const SonTally: React.FC = () => {
         </mesh>
         <Halo at={[0, h * on, 0.3]} size={2.2} color={color} opacity={0.6 * on} />
         <TextLabel text={label} width={2.2} height={0.62} position={[0, h * on + 0.6, 0.3]} color="#FFD23F" opacity={on} />
-        <TextLabel text={sub} width={2.6} height={0.38} position={[0, -0.42, 0.3]} color="#FFFFFF" opacity={Math.max(0.35, on)} />
+        <TextLabel text={sub} width={2.6} height={0.38} position={[0, h * on + 1.2, 0.3]} color="#FFFFFF" opacity={on} />
       </group>
     );
     return (
@@ -504,13 +510,13 @@ export const SonTally: React.FC = () => {
           <planeGeometry args={[7, 0.05]} />
           <meshBasicMaterial color="#5A6A9A" />
         </mesh>
-        <mesh position={[0, 3.6, -0.3]}>
-          <planeGeometry args={[0.04, 9]} />
+        <mesh position={[0, 2.4, -0.3]}>
+          <planeGeometry args={[0.04, 5.6]} />
           <meshBasicMaterial color="#2A3460" />
         </mesh>
         {bar(-1.7, unit, S.gold, "8 MIN", "SUNLIGHT", g1)}
         {bar(1.7, unit * 15, S.goldPale, "2 H", "SATURN", g2)}
-        <Shot frame={f} duration={len} from={cam.pos} to={[0, 3.6, 13.2]} look={cam.look} fov={cam.fov} />
+        <Shot frame={f} duration={len} from={cam.pos} to={[0, 1.7, 14.4]} look={cam.look} fov={cam.fov} />
       </>
     );
   }
@@ -531,7 +537,7 @@ export const SonAnswer2: React.FC = () => {
   if (shot === 0) {
     // Okular-POV: Saturn erlischt im Okular
     const d = beat("saturnFades");
-    const glow = 0.55 * (1 - ramp(frame, d - 4, d + 16));
+    const glow = 1 - ramp(frame, d - 10, d + 12);
     return (
       <>
         <EyepieceView frame={frame} size={1.25} glow={glow} stars={1 - ramp(frame, d, d + 20) * 0.6} />

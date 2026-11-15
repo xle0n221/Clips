@@ -107,7 +107,7 @@ export const SonHook: React.FC = () => {
   const watch: V3 = [0, 2.2, 0];
   const a = frameOn(watch, 4.2, 0.62, 0.5, [0.1, -0.35, 1]);
   const b = frameOn(watch, 3.7, 0.62, 0.5, [0.05, -0.38, 1]);
-  const hud = hudAt(b, 0.5, 0.33, 6, 0.66);
+  const hud = hudAt(b, 0.5, 0.3, 3.2, 0.66);
   return (
     <>
       <BeachSet frame={frame} day={1} umbrella={false} towel={false} gulls />
@@ -116,10 +116,6 @@ export const SonHook: React.FC = () => {
       <group position={[0, 2.2, -0.4]} rotation={[-0.25, 0, 0]}>
         <mesh position={[0, -0.15, -1.2]}>
           <boxGeometry args={[0.85, 0.75, 2.0]} />
-          <meshStandardMaterial color={S.skin} roughness={0.6} />
-        </mesh>
-        <mesh position={[0, 0, 1.1]}>
-          <boxGeometry args={[0.9, 0.7, 0.9]} />
           <meshStandardMaterial color={S.skin} roughness={0.6} />
         </mesh>
       </group>
@@ -166,19 +162,19 @@ export const SonJuno: React.FC = () => {
 /* ------------------------------------------------------------------ */
 /* 3 grandpa – „On the phone, her grandpa. | Night on his side of the world. | His telescope is aimed at Saturn.“ */
 /* ------------------------------------------------------------------ */
-const PHONE_BEACH: V3 = [0.75, 0.62, -0.95];
+const PHONE_BEACH: V3 = [1.0, 0.62, -0.5];
 export const SonGrandpa: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("grandpa");
   if (shot === 0) {
     // Über die Schulter: Telefon steht auf dem Handtuch, Videotelefonat mit Grandpa (Nacht, Vollmond)
     const pop = ramp(frame, beat("videoCallGrandpa") - 6, beat("videoCallGrandpa") + 4);
-    const a = frameOn(PHONE_BEACH, 2.0, 0.44, 0.56, [-0.32, 0.14, -1]);
-    const b = frameOn(PHONE_BEACH, 1.7, 0.44, 0.56, [-0.3, 0.12, -1]);
+    const a = frameOn(PHONE_BEACH, 2.6, 0.46, 0.62, [0.3, 0.2, 1]);
+    const b = frameOn(PHONE_BEACH, 2.2, 0.46, 0.62, [0.26, 0.2, 1]);
     return (
       <>
         <BeachSet frame={frame} day={1} umbrella />
         <Juno frame={frame} position={JUNO_LIE} pose="lie" eyes="dot" mouth="grin" glow={1} look={0.4} />
-        <Phone position={PHONE_BEACH} rotation={[-0.1, Math.PI - 0.32, 0]} scale={0.9 * (0.85 + 0.15 * pop)} mood="wave" />
+        <Phone position={PHONE_BEACH} rotation={[-0.12, 0.28, 0]} scale={0.9 * (0.85 + 0.15 * pop)} mood="wave" />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
     );
@@ -249,7 +245,7 @@ export const SonOld: React.FC = () => {
   const L = Math.hypot(...dir);
   const n: V3 = [dir[0] / L, dir[1] / L, dir[2] / L];
   const dist = lerp(4, 46, u * u * (3 - 2 * u));
-  const camPos: V3 = [n[0] * dist + 1.2, n[1] * dist + 1.6, n[2] * dist + 0.4];
+  const camPos: V3 = [n[0] * dist + 1.2 + dist * 0.22, n[1] * dist + 1.6 + dist * 0.12, n[2] * dist + 0.4];
   return (
     <>
       <SpaceSet frame={frame} sunLight={1} sunAt={SPOT_FAR} />
@@ -285,8 +281,9 @@ export const SonZero: React.FC = () => {
   if (shot === 1) {
     // Mitfahrt auf der Vorderkante der Lichtschale; weit vorn die winzige blaue Erde
     const r = shellR;
-    const earthP: V3 = [0, -4, r + 140];
-    const camP: V3 = [2.2, 1.2, r - 1.5];
+    const camP: V3 = [0.42 * r, 0.1 * r, r - 14];
+    const lookP: V3 = [0, 0, r + 30];
+    const earthP: V3 = [camP[0] + (lookP[0] - camP[0]) * 3.2, camP[1] + (lookP[1] - camP[1]) * 3.2 - 6, camP[2] + (lookP[2] - camP[2]) * 3.2];
     return (
       <>
         <SpaceSet frame={frame} />
@@ -294,7 +291,7 @@ export const SonZero: React.FC = () => {
         <EarthBall position={earthP} radius={2} glow={1} />
         <Glow at={earthP} size={14} color="#7FB8FF" opacity={0.7} />
         <Motes frame={frame} center={[0, 0, r]} size={[16, 20, 4]} count={90} drift={[0, 0, 0.2]} color={S.goldHot} dot={0.07} opacity={0.75} seed={11} />
-        <Shot frame={f} duration={len} from={camP} to={[1.8, 1.0, r + 1.2]} look={earthP} fov={44} ease="linear" />
+        <Shot frame={f} duration={len} from={camP} to={[0.42 * r, 0.1 * r, r - 10]} look={lookP} fov={50} ease="linear" />
       </>
     );
   }
@@ -328,7 +325,7 @@ export const SonDistance: React.FC = () => {
       <>
         <SpaceSet frame={frame} sunLight={1} sunAt={D_SPOT} />
         <SunDisc position={D_SPOT} radius={3.4} on={0} ring={0.25} ghost={0.8} />
-        <Ribbon from={D_SPOT} to={D_EARTH} width={1.6} frame={frame} />
+        <Ribbon from={D_SPOT} to={D_EARTH} width={2.4} frame={frame} />
         <EarthBall position={D_EARTH} radius={2.6} glow={1} spin={frame * 0.004} />
         <Glow at={D_EARTH} size={22} color="#7FB8FF" opacity={0.6} />
         {/* Maßlinie (weiß, mit Strichen) */}
@@ -391,8 +388,8 @@ export const SonGravity: React.FC = () => {
     const tang: V3 = [-Math.sin(ang), 0, Math.cos(ang)];
     const marble: V3 = frame < cutAt ? [Math.cos(angAt(frame)) * R, 0.16, Math.sin(angAt(frame)) * R] : [base[0] + tang[0] * R * w * after, 0.16, base[2] + tang[2] * R * w * after];
     const snip = ramp(frame, cutAt - 10, cutAt);
-    const a = frameOn([0, 0.3, 0.2], 3.8, 0.5, 0.5, [0.25, 0.75, 1]);
-    const b = frameOn([0, 0.3, 0.2], 3.3, 0.5, 0.5, [0.2, 0.7, 1]);
+    const a = frameOn([0, 0.3, 0.2], 3.2, 0.5, 0.5, [0.25, 0.75, 1]);
+    const b = frameOn([0, 0.3, 0.2], 2.7, 0.5, 0.5, [0.2, 0.7, 1]);
     return (
       <>
         <BeachSet frame={frame} day={1} umbrella={false} towel />
@@ -640,7 +637,7 @@ export const SonArrive: React.FC = () => {
       </group>
     );
   };
-  const cam = frameOn([0, 1.8, 0], 8.5, 0.48, 0.5, [0, 0.1, 1]);
+  const cam = frameOn([0, 2.2, 0], 8.5, 0.6, 0.5, [0, 0.1, 1]);
   return (
     <>
       <SpaceSet frame={frame} sunLight={0.8} sunAt={[-20, 10, 20]} />
@@ -658,7 +655,7 @@ export const SonArrive: React.FC = () => {
       ))}
       {lane(-1.05, hitW, "ripple")}
       {lane(1.05, hitL, "light")}
-      <Shot frame={f} duration={len} {...fly(cam, frameOn([0, 1.8, 0], 7.8, 0.48, 0.5, [0, 0.1, 1]))} />
+      <Shot frame={f} duration={len} {...fly(cam, frameOn([0, 2.2, 0], 7.8, 0.6, 0.5, [0, 0.1, 1]))} />
     </>
   );
 };
