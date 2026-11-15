@@ -145,8 +145,8 @@ export const SonJuno: React.FC = () => {
   }
   // Gesicht von oben, Goldlicht auf den Wangen (PFLANZUNG Wärme)
   const face: V3 = [head[0], head[1] + 0.43, head[2]];
-  const a = frameOn(face, 2.6, 0.45, 0.5, [0.1, 1, 0.35]);
-  const b = frameOn(face, 2.2, 0.45, 0.5, [0.06, 1, 0.3]);
+  const a = frameOn(face, 2.6, 0.4, 0.5, [0.1, 1, 0.35]);
+  const b = frameOn(face, 2.2, 0.4, 0.5, [0.06, 1, 0.3]);
   return (
     <>
       <BeachSet frame={frame} day={1} umbrella={false} />
@@ -214,8 +214,8 @@ export const SonOld: React.FC = () => {
     // Makro: ein einzelner Sonnenstrahl als goldenes Band berührt Junos Wange, Schild „8 MIN OLD“
     const head = junoHead(JUNO_LIE, "lie");
     const cheek: V3 = [head[0] + 0.26, head[1] + 0.44, head[2] + 0.1];
-    const a = frameOn(cheek, 2.4, 0.56, 0.42, [0.2, 1, 0.45]);
-    const b = frameOn(cheek, 2.0, 0.56, 0.44, [0.18, 1, 0.42]);
+    const a = frameOn(cheek, 2.4, 0.48, 0.42, [0.2, 1, 0.45]);
+    const b = frameOn(cheek, 2.0, 0.48, 0.44, [0.18, 1, 0.42]);
     const src: V3 = [cheek[0] + 2.4, cheek[1] + 6, cheek[2] - 2.6];
     const reach = ramp(f, 0, 14);
     const tagIn = ramp(frame, beat("sunbeamTag8Min") - 6, beat("sunbeamTag8Min") + 4);
@@ -479,15 +479,20 @@ export const SonSpeed: React.FC = () => {
     );
   }
   // Mitfahrt: Welle und Lichtschale rasen gemeinsam auf die blaue Erde zu (Tempo-Schild „c“ als Sticker)
-  const r = 8 + f * 0.12;
-  const earthP: V3 = [0, 0.8, 26];
+  // Seitenansicht: Gitterwelle und Lichtring laufen Seite an Seite auf die Erde zu
+  const r = 9 + f * 0.17;
+  const earthP: V3 = [0, 1.0, 24];
+  const lbl = (txt: string, y: number, col: string) => <TextLabel text={txt} width={3.4} height={0.8} position={[-2.2, y, r + 0.6]} rotation={[0, -Math.PI / 2, 0]} color={col} bg={S.hud} />;
   return (
     <>
       <SpaceSet frame={frame} sunLight={0.6} sunAt={[0, 0, -30]} />
-      <SpaceGrid size={60} step={1.4} y={0} dip={3} rippleR={r} center={[0, 0, 0]} />
-      <LightShell center={[0, 0, 0]} r={r} on={0.9} />
-      <EarthBall position={earthP} radius={1.2} glow={1} spin={frame * 0.005} />
-      <Shot frame={f} duration={len} from={[3.5, 2.8, r - 4]} to={[3.2, 2.6, r - 2.5]} look={[0, 0.2, r + 8]} fov={46} ease="linear" />
+      <SpaceGrid size={60} step={1.4} y={0} dip={3} rippleR={r} ripple={1.6} center={[0, 0, 0]} />
+      <LightShell center={[0, 0, 0]} r={r} on={1} />
+      <Halo at={[0, 2.6, r]} size={3.5} color="#FFFFFF" opacity={0.9} />
+      {lbl("LIGHT", 3.9, "#FFFFFF")}
+      {lbl("RIPPLE", -1.4, "#FFD23F")}
+      <EarthBall position={earthP} radius={1.6} glow={1} spin={frame * 0.005} />
+      <Shot frame={f} duration={len} from={[-30, 4, 18]} to={[-30, 4, 20]} look={[0, 0.8, 20]} fov={40} ease="linear" />
     </>
   );
 };
@@ -584,9 +589,10 @@ export const SonArrive: React.FC = () => {
   const { frame, beat, shot, f, len, cuts } = useShots("arrive");
   if (shot === 0) {
     // Zeitraffer: Blitz und Welle durchqueren ein Galaxienfeld, Zähler „130 000 000 YEARS“ rollt hoch
+    // Zähler fertig bei 60 % des Shots, dann ≥ 0,8 s stehend auf 130 000 000 (gesprochen „a hundred thirty million years“)
     const end = cuts[0] ?? 60;
-    const u = Math.min(1, frame / Math.max(1, end - 6));
-    const years = 130000000 * (1 - Math.pow(1 - u, 2.2));
+    const u = Math.min(1, frame / Math.max(1, 0.6 * end));
+    const years = u >= 1 ? 130000000 : 130000000 * (1 - Math.pow(1 - u, 2.2));
     const cam = { pos: [0, 0, 14] as V3, look: [0, 0, 0] as V3, fov: 44 };
     const lbl = atScreen(cam, 0.5, 0.3, 8);
     return (
@@ -603,11 +609,11 @@ export const SonArrive: React.FC = () => {
         </group>
         <group position={lbl} rotation={faceTo(lbl, cam.pos)}>
           <mesh position={[0, 0, -0.02]}>
-            <planeGeometry args={[4.4, 1.2]} />
-            <meshBasicMaterial color={S.hud} transparent opacity={0.9} toneMapped={false} />
+            <planeGeometry args={[3.0, 1.3]} />
+            <meshBasicMaterial color={S.hud} toneMapped={false} />
           </mesh>
-          <TextLabel text={fmtBig(years)} width={4.1} height={0.62} position={[0, 0.16, 0]} color="#FFD23F" />
-          <TextLabel text="YEARS" width={2} height={0.34} position={[0, -0.36, 0]} color="#FFFFFF" />
+          <TextLabel text={fmtBig(years)} width={2.8} height={0.56} position={[0, 0.2, 0]} color="#FFD23F" />
+          <TextLabel text="YEARS" width={2.2} height={0.46} position={[0, -0.34, 0]} color="#FFFFFF" />
         </group>
         <Shot frame={f} duration={len} from={cam.pos} to={[0, 0, 12.5]} look={cam.look} fov={cam.fov} ease="linear" />
       </>
@@ -679,7 +685,7 @@ export const SonOrbit: React.FC = () => {
         <SpaceSet frame={frame} sunLight={1} sunAt={[0, 30, 0]} />
         <SunDisc position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} radius={2} on={0} ring={0.2} ghost={1} />
         <OrbitDots radius={ORBIT_R} n={90} on={0.8} dot={0.1} />
-        <EarthBall position={e} radius={0.9} moon moonAngle={frame * 0.05} glow={1} spin={frame * 0.01} />
+        <EarthBall position={e} radius={1.4} moon moonAngle={frame * 0.05} glow={1} spin={frame * 0.01} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
     );
@@ -697,7 +703,7 @@ export const SonOrbit: React.FC = () => {
       {ahead.map((p, i) => (
         <Halo key={i} at={p} size={0.9 - i * 0.06} color={S.goldHot} opacity={0.9 * (0.6 + 0.4 * Math.sin(frame * 0.3 - i))} />
       ))}
-      <EarthBall position={e} radius={0.9} moon moonAngle={frame * 0.05} glow={1} spin={frame * 0.01} />
+      <EarthBall position={e} radius={1.4} moon moonAngle={frame * 0.05} glow={1} spin={frame * 0.01} />
       {lbl > 0.01 ? (
         <group position={tagP} rotation={faceTo(tagP, cam.pos)} scale={0.8 + 0.2 * lbl}>
           <TextLabel text="NOTHING HERE" width={3.4} height={0.62} position={[0, 0, 0]} color="#FFD23F" bg={S.hud} opacity={lbl} />

@@ -320,6 +320,9 @@ const iceTex = () =>
     }
   }, [5, 5]);
 
+/** Eis-Textur (auch für die Unterseite der Eisdecke beim Tauchen). */
+export const iceUnderTex = () => iceTex();
+
 /** Fensterraster der Häuser in der Nacht (wenige warmweiß). */
 const windowsTex = (seed: number) =>
   canvasTex(`swin-${seed}`, 128, 256, (c) => {
@@ -525,11 +528,11 @@ export const Juno: React.FC<JunoProps> = (p) => {
           <group position={[0, 0.47, -0.02]} rotation={[-0.12, 0, 0]}>
             <mesh castShadow>
               <cylinderGeometry args={[0.78, 0.8, 0.05, 36]} />
-              <Plastic color={S.hat} rough={0.55} />
+              <Plastic color={cold > 0.5 ? "#A9C2E0" : S.hat} rough={0.55} />
             </mesh>
             <mesh position={[0, 0.17, 0]} castShadow>
               <cylinderGeometry args={[0.42, 0.47, 0.32, 30]} />
-              <Plastic color={S.hat} rough={0.55} />
+              <Plastic color={cold > 0.5 ? "#A9C2E0" : S.hat} rough={0.55} />
             </mesh>
             <mesh position={[0, 0.06, 0]}>
               <cylinderGeometry args={[0.475, 0.475, 0.09, 30]} />
@@ -1258,16 +1261,16 @@ export const HudPanel: React.FC<{
   const s = scale * (0.6 + 0.4 * Math.min(1, pop)) * (1 + Math.max(0, Math.sin(Math.min(1, pop) * Math.PI)) * 0.08);
   return (
     <group position={position} rotation={rotation} scale={s}>
-      <RoundedBox args={[3.1, orbit ? 1.95 : 1.5, 0.08]} radius={0.12} position={[0, orbit ? -0.22 : 0, -0.05]}>
-        <meshBasicMaterial color={S.hud} transparent opacity={0.92 * Math.min(1, pop)} toneMapped={false} />
+      <RoundedBox args={[3.1, orbit ? 2.1 : 1.5, 0.08]} radius={0.12} position={[0, orbit ? -0.3 : 0, -0.05]}>
+        <meshBasicMaterial color={S.hud} transparent={pop < 1} opacity={0.92 * Math.min(1, pop) + (pop >= 1 ? 0.08 : 0)} toneMapped={false} />
       </RoundedBox>
-      <mesh position={[0, orbit ? -0.22 : 0, -0.1]}>
-        <planeGeometry args={[3.24, orbit ? 2.09 : 1.64]} />
-        <meshBasicMaterial color={S.gold} transparent opacity={0.85 * Math.min(1, pop)} toneMapped={false} />
+      <mesh position={[0, orbit ? -0.3 : 0, -0.1]}>
+        <planeGeometry args={[3.24, orbit ? 2.24 : 1.64]} />
+        <meshBasicMaterial color={S.gold} transparent={pop < 1} opacity={Math.min(1, pop)} toneMapped={false} />
       </mesh>
       <TextLabel text={label} width={2.8} height={0.38} position={[0, 0.42, 0.01]} color="#FFFFFF" opacity={Math.min(1, pop)} />
-      <TextLabel text={value} width={2.8} height={0.85} position={[0, -0.2, 0.01]} color={alert > 0.5 ? "#FF5A4E" : "#FFD23F"} opacity={Math.min(1, pop)} />
-      {orbit ? <TextLabel text={`ORBIT: ${orbit}`} width={2.8} height={0.32} position={[0, -0.86, 0.01]} color={orbit === "STRAIGHT" ? "#FF8A7A" : "#BFD4FF"} opacity={Math.min(1, pop)} /> : null}
+      <TextLabel text={value} width={2.8} height={0.85} position={[0, -0.2, 0.01]} color={alert > 0.5 ? "#FF8A80" : "#FFD23F"} opacity={Math.min(1, pop)} />
+      {orbit ? <TextLabel text={`ORBIT: ${orbit}`} width={2.9} height={0.46} position={[0, -0.95, 0.01]} color={orbit === "STRAIGHT" ? "#FF8A80" : "#BFD4FF"} opacity={Math.min(1, pop)} /> : null}
     </group>
   );
 };
@@ -1858,7 +1861,8 @@ export const CLOCK: Record<string, { readonly beat: string; readonly sec: number
   rehook: { beat: "junoHumming", sec: 180, max: 239 },
   four: { beat: "grandpaTelescope", sec: 240, max: 299 },
   five: { beat: "grandpaYawns", sec: 300, max: 359 },
-  seven: { beat: "junoClosesEyes", sec: 439, max: 459 },
+  // 7:19 steht ab „One warm minute left“ (8:19 − 7:19 = 60 s, faktengeprüft) – vorher 7:00 → 7:19
+  seven: { beat: "watchOneMinute", sec: 439, max: 439, pre: 420 },
   hope: { beat: "junoStretches", sec: 498, max: 498, pre: 480 },
   turn: { beat: "skyGoesBlack", sec: 499, max: 499 },
 };

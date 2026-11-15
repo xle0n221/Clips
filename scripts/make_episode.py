@@ -145,7 +145,7 @@ def _frames_db(y: np.ndarray, hop: int) -> np.ndarray:
     return 20 * np.log10(np.sqrt(np.mean(y[: n * hop].reshape(n, hop).astype(np.float64) ** 2, axis=1)) + 1e-9)
 
 
-def narrate_sentence(y: np.ndarray, text: str, e: dict) -> np.ndarray:
+def narrate_sentence(y: np.ndarray, text: str, e: dict, cuts: dict | None = None) -> np.ndarray:
     """Ein Chatterbox-Satz wie ein Erzähler (Nutzer 12.11.2026 abends): Anfang/Ende sauber, Ausklang behalten und weich
     ausblenden (kein harter Schnitt), Pausen an Komma/Doppelpunkt/inneren Satzenden auf Sollwert verlängern (nie kürzen),
     letzte ~0,45 s um end_db leiser. Keine Tonhöhen-Bearbeitung."""
@@ -182,6 +182,22 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict) -> np.ndarray:
     used, inserts = set(), []
     for pos, ch in marks:
         rel = pos / max(1, len(text))
+        if cuts and pos in cuts and ch not in ".!?…":  # Whisper-Wortgrenze (NARRATOR.comma_whisper)
+            target = e["comma_ms"] + (80 if ch in ":—–" else 0)
+            a, b = int(cuts[pos][0] * sr) - s0, int(cuts[pos][1] * sr) - s0
+            near = [r for r in runs if r not in used and r[0] * hop <= b + int(0.05 * sr) and r[1] * hop >= a - int(0.05 * sr)]
+            if near:
+                r = max(near, key=lambda r: r[1] - r[0])
+                used.add(r)
+                add = int((target - (r[1] - r[0]) * 10) / 1000 * sr)
+                if add > 0:
+                    inserts.append(((r[0] + r[1]) // 2 * hop, add))
+            else:  # keine Stille: an der leisesten 10-ms-Stelle zwischen den Wörtern einfügen (8 ms Aus-/Einblendung)
+                lo, hi = max(0, (a - int(0.04 * sr)) // hop), min(len(db) - 1, (b + int(0.04 * sr)) // hop)
+                if hi > lo:
+                    k = lo + int(np.argmin(db[lo:hi + 1]))
+                    inserts.append((k * hop + hop // 2, -int(target / 1000 * sr)))  # negativ = mit Blende
+            continue
         if ch in ".!?…":
             target = e["gap_ms"] - 1000 * (NARRATOR["tail_keep_s"] + NARRATOR["head_keep_s"]) / 2 + (60 if ch == "?" else 0)
         else:
@@ -195,6 +211,11 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict) -> np.ndarray:
         if add > 0:
             inserts.append(((r[0] + r[1]) // 2 * hop, add))
     for at, add in sorted(inserts, reverse=True):
+        if add < 0:  # Einfügen ohne vorhandene Stille: kurz aus- und wieder einblenden, damit kein Knack entsteht
+            add, f = -add, int(0.008 * sr)
+            y = y.copy()
+            y[max(0, at - f):at] *= np.linspace(1, 0, at - max(0, at - f), dtype=np.float32)
+            y[at:at + f] *= np.linspace(0, 1, len(y[at:at + f]), dtype=np.float32)
         y = np.concatenate([y[:at], np.zeros(add, np.float32), y[at:]])
         if at < es:
             es += add
@@ -206,6 +227,18 @@ def narrate_sentence(y: np.ndarray, text: str, e: dict) -> np.ndarray:
     g[ws:es] = -drop * (1 - np.cos(np.linspace(0, np.pi, es - ws))) / 2
     g[es:] = -drop
     y = y * (10 ** (g / 20)).astype(np.float32)
+    soft = int(NARRATOR.get("end_soft_ms", 0) * sr / 1000)
+    if soft:  # weicher Ausklang (15.11.2026): Zischlaut-/Plosiv-Enden nicht binnen 10 ms in die Stille fallen lassen
+        dbe = _frames_db(y, hop)
+        live = np.nonzero(dbe >= level - 30)[0]
+        if len(live):
+            q = (live[-1] + 1) * hop
+            r0 = max(0, q - soft)
+            ramp = np.full(len(y), -24.0)
+            ramp[:r0] = 0.0
+            r1 = min(len(y), q + int(0.01 * sr))
+            ramp[r0:r1] = np.linspace(0, -24, r1 - r0)
+            y = y * (10 ** (ramp / 20)).astype(np.float32)
     fi = min(len(y), int(0.01 * sr))
     y[:fi] *= np.linspace(0, 1, fi, dtype=np.float32)
     # Ausblendung über den Ausklang; endet die Aufnahme kurz nach dem letzten Laut (Chatterbox schneidet manchmal selbst),
@@ -263,6 +296,46 @@ def qc_score(path: Path, tts_text: str, ep: dict, cache: dict) -> int:
     m = sum(x.size for x in difflib.SequenceMatcher(a=a, b=b, autojunk=False).get_matching_blocks())
     cache[key] = (len(a) - m) + (len(b) - m)
     return cache[key]
+
+
+def comma_cuts(path: Path, text: str, cache: dict) -> dict:
+    """Wortgrenzen an Komma/Doppelpunkt/Strich laut faster-whisper (Wortzeiten) in der Rohaufnahme:
+    {Zeichenposition des Satzzeichens: (Ende Wort, Anfang nächstes Wort) in s}. Zwischenspeicher out/cb-cache/commas.json."""
+    global _WHISPER
+    key = path.name + ":" + hashlib.sha1(text.encode()).hexdigest()[:8]
+    if key not in cache:
+        import soundfile as sf
+
+        if _WHISPER is None:
+            import os
+
+            os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
+            from faster_whisper import WhisperModel
+
+            _WHISPER = WhisperModel("small.en", device="cpu", compute_type="int8")
+        y = sf.read(str(path), dtype="float32")[0]
+        t16 = np.arange(0, len(y) / SAMPLE_RATE, 1 / 16000)
+        y16 = np.interp(t16, np.arange(len(y)) / SAMPLE_RATE, y).astype(np.float32)
+        segs, _ = _WHISPER.transcribe(y16, language="en", beam_size=5, word_timestamps=True)
+        cache[key] = [(w.word, w.start, w.end) for sg in segs for w in sg.words]
+    heard = [w for w in cache[key] if norm(w[0])]
+    toks = [(m.start(), m.group(0)) for m in re.finditer(r"\S+", text)]
+    a, b = [norm(t) for _, t in toks], [norm(w[0]) for w in heard]
+    idx = {}
+    for blk in difflib.SequenceMatcher(a=a, b=b, autojunk=False).get_matching_blocks():
+        for k in range(blk.size):
+            idx[blk.a + k] = blk.b + k
+    out = {}
+    for k, (start, tok) in enumerate(toks[:-1]):
+        if not re.search(r"[,;:—–]$", tok):
+            continue
+        j = idx.get(k)
+        jn = idx.get(k + 1)
+        if j is not None and j + 1 < len(heard):
+            out[start + len(tok) - 1] = (heard[j][2], heard[j + 1][1])
+        elif jn is not None and jn > 0:
+            out[start + len(tok) - 1] = (heard[jn - 1][2], heard[jn][1])
+    return out
 
 
 def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tuple[str, int], np.ndarray]:
@@ -357,6 +430,8 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
         tempo = NARRATOR["max_speed"]
     cap = ep.get("maxPauseMs", 300) / 1000  # nur Modus ohne emotion (Stand bis 11.11.2026)
 
+    comma_file = cache / "commas.json"
+    comma_cache = json.loads(comma_file.read_text()) if comma_file.exists() and NARRATOR.get("comma_whisper") else {}
     with tempfile.TemporaryDirectory() as tmp:
         def load(i: int, parts, e: dict | None) -> np.ndarray:
             if e is None:
@@ -365,7 +440,8 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
             else:
                 segs = []
                 for k, (text, _, _) in enumerate(parts):
-                    segs.append(narrate_sentence(sf.read(str(chosen[text]), dtype="float32")[0], text, e))
+                    cuts = comma_cuts(chosen[text], text, comma_cache) if NARRATOR.get("comma_whisper") else None
+                    segs.append(narrate_sentence(sf.read(str(chosen[text]), dtype="float32")[0], text, e, cuts))
                     if k < len(parts) - 1:
                         gap = e["gap_ms"] / 1000 + (0.06 if text.rstrip().endswith("?") else 0) \
                             - NARRATOR["tail_keep_s"] - NARRATOR["head_keep_s"]
@@ -379,7 +455,10 @@ def chatterbox_scenes(ep: dict, preset: dict | None, voice_id: str) -> dict[tupl
             subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(a), "-af", f"atempo={t:.3f}", str(b)], check=True)
             return sf.read(str(b), dtype="float32")[0]
 
-        return {(sid, i): load(n, parts, e) for n, (sid, i, parts, e) in enumerate(keys)}
+        res = {(sid, i): load(n, parts, e) for n, (sid, i, parts, e) in enumerate(keys)}
+        if NARRATOR.get("comma_whisper"):
+            comma_file.write_text(json.dumps(comma_cache))
+        return res
 
 
 def tighten_pauses(y: np.ndarray, max_s: float = 0.30, keep_s: float = 0.25, thr_db: float = -40.0) -> np.ndarray:
@@ -459,6 +538,21 @@ def synth_track(ep: dict, voice: Voice | None, post: bool = True, log=print) -> 
     if post and style.get("post"):  # gleiche Länge, Szenen-/Wortzeiten bleiben gültig
         track = post_process(track, style["post"])
     return track, scenes, words
+
+
+def music_plan(mus: dict, at: dict[str, float]) -> dict | None:
+    """Musik-Plan aus dem Drehbuch (nur gen_epic): music.sections {"<Szene>": "drone" | "padOnly"} und
+    music.silenceBefore {"<Szene>": Sekunden}; Szenen-IDs → Startzeit laut timeline. Ohne die Felder: None (unverändert).
+    sparseUntilScene gilt dann auch für epic (kein Schlagzeug/808 davor)."""
+    if not (mus.get("sections") or mus.get("silenceBefore")):
+        return None
+    plan: dict = {"sparse": at.get(mus.get("sparseUntilScene"), 0.0)}
+    for sid, kind in (mus.get("sections") or {}).items():
+        if sid not in at or kind not in ("drone", "padOnly"):
+            raise SystemExit(f"music.sections: unbekannte Szene/Art {sid!r}: {kind!r}")
+        plan[kind] = at[sid]
+    plan["silence"] = [(at[sid] - float(sec), at[sid]) for sid, sec in (mus.get("silenceBefore") or {}).items() if sid in at]
+    return plan
 
 
 def bind_cues(ep: dict, words: list[dict], captions: list[dict]) -> list[dict]:
@@ -578,9 +672,11 @@ def main(path: Path, voice_name: str | None = None, speed: float | None = None, 
     (out_dir / "timeline.json").write_text(json.dumps(timeline, indent=1) + "\n")
 
     mus = ep.get("music") or {}  # {"mood": "dark", "bpm": 140, "why": "..."} – fehlt: alter Loop "upbeat"
+    at = {sc["id"]: sc["startMs"] / 1000 for sc in timeline["scenes"]}
+    plan = music_plan(mus, at)
     make_music(out_dir / "music.wav", seconds=timeline["durationMs"] / 1000 + 1, bpm=mus.get("bpm"),
                mood=mus.get("mood", "upbeat"), seed=mus.get("seed", ep["id"]),
-               sparse_until=next((sc["startMs"] / 1000 for sc in timeline["scenes"] if sc["id"] == mus.get("sparseUntilScene")), 0.0))
+               sparse_until=at.get(mus.get("sparseUntilScene"), 0.0), plan=plan)
     make_sfx(ROOT / "public" / "sfx")
     print(f"Fertig: {out_dir.relative_to(ROOT)}")
 

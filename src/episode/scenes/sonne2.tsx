@@ -19,9 +19,11 @@ import {
   faceTo,
   fly,
   frameOn,
+  Glow,
   Halo,
   HudPanel,
   IceSheet,
+  iceUnderTex,
   Juno,
   junoHead,
   lerp,
@@ -119,14 +121,14 @@ export const SonFour: React.FC = () => {
   if (shot === 0) {
     // Nah: Grandpa mit dem Auge am Okular, lächelt (Zeitanzeige 4:00)
     const h = odeScopeHead();
-    const a = frameOn(h, 4.4, 0.5, 0.45, [0.75, -0.08, -1]);
-    const b = frameOn(h, 3.9, 0.5, 0.45, [0.7, -0.08, -1]);
+    const a = frameOn(h, 4.4, 0.46, 0.5, [0.45, -0.55, -1]);
+    const b = frameOn(h, 3.9, 0.46, 0.5, [0.42, -0.55, -1]);
     const hud = hudAt(b, 0.5, 0.25, 3.2, 0.5);
     return (
       <>
         <BalconySet frame={frame} />
         <Ode frame={frame} position={ODE_SCOPE.position} rotation={ODE_SCOPE.rotation} lean={ODE_SCOPE.lean} nod={ODE_SCOPE.nod} mouth="grin" eyes="closed" reach={[1.1, 1.0]} />
-        <pointLight position={[h[0] + 1.2, h[1] + 0.3, h[2] - 1.6]} color="#FFE3B8" intensity={6} distance={5} decay={2} />
+        <pointLight position={[h[0] + 0.8, h[1] - 1.2, h[2] - 1.6]} color="#FFE3B8" intensity={6} distance={5} decay={2} />
         <HudPanel value={clockText("four", frame, beat)} {...hud} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -148,18 +150,19 @@ export const SonFour: React.FC = () => {
 export const SonFive: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("five");
   const head = junoHead(JUNO_SIT, "sit");
-  const phoneP: V3 = [head[0] + 0.25, head[1] - 0.15, head[2] + 1.1];
+  const phoneP: V3 = [head[0] + 0.8, head[1] - 0.05, head[2] + 1.0];
   if (shot === 0) {
     // Über die Schulter: auf dem Bildschirm gähnt Grandpa, sein Daumen wandert zum roten Auflegen-Knopf
     const y = beat("grandpaYawns");
     const thumb = ramp(frame, y + 6, y + 40);
-    const a = frameOn(phoneP, 2.6, 0.44, 0.45, [-0.85, 0.3, -1]);
-    const b = frameOn(phoneP, 2.2, 0.44, 0.45, [-0.8, 0.3, -1]);
+    // Telefon groß mittig (Display ≈ 55 % Bildbreite), Junos Hutkante nur am linken Rand
+    const a = frameOn(phoneP, 1.75, 0.44, 0.5, [0.55, 0.12, -1]);
+    const b = frameOn(phoneP, 1.5, 0.44, 0.5, [0.5, 0.12, -1]);
     return (
       <>
         <BeachSet frame={frame} day={1} umbrella={false} />
-        <Juno frame={frame} position={JUNO_SIT} pose="sit" eyes="dot" mouth="o" reach={[1.2, 1.25]} spread={[0.2, 0.2]} glow={1} />
-        <group position={phoneP} rotation={[0.1, Math.PI, 0]}>
+        <Juno frame={frame} position={JUNO_SIT} pose="sit" eyes="dot" mouth="o" reach={[0.3, 1.25]} spread={[0.2, 0.45]} glow={1} />
+        <group position={phoneP} rotation={[0.1, Math.PI - 0.5, 0]}>
           <Phone position={[0, 0, 0]} scale={1.1} mood={frame >= y - 4 ? "yawn" : "wave"} />
           {/* Grandpas Daumen (im Bild) Richtung roter Knopf */}
           <RoundedBox args={[0.12, 0.2, 0.04]} radius={0.03} position={[lerp(0.22, 0.02, thumb), lerp(-0.1, -0.34, thumb), 0.06]} rotation={[0, 0, 0.4]}>
@@ -263,6 +266,13 @@ export const SonHope: React.FC = () => {
 /* ------------------------------------------------------------------ */
 /* 17 turn – „Eight minutes, nineteen seconds. | The sky goes black. | And Earth lets go.“ (einziger Halt) */
 /* ------------------------------------------------------------------ */
+const BRIGHT: readonly (readonly [number, number, number])[] = Array.from({ length: 28 }, (_, i) => {
+  const a = Math.sin(i * 12.9898) * 43758.5453;
+  const b2 = Math.sin(i * 78.233) * 12345.678;
+  const fx = a - Math.floor(a);
+  const fy = b2 - Math.floor(b2);
+  return [0.05 + fx * 0.9, 0.18 + fy * 0.32, 1.6 + (i % 4) * 0.5] as const;
+});
 export const SonTurn: React.FC = () => {
   const { frame, beat, f, len } = useShots("turn");
   const head = junoHead(JUNO_SIT, "sit", 1, SIT_LEAN);
@@ -295,6 +305,10 @@ export const SonTurn: React.FC = () => {
       />
       {/* Gesichtslicht: golden, dann kaltes Sternenblau */}
       <pointLight position={[0.6, head[1] + 1.2, head[2] + 1.5]} color={day > 0.5 ? S.gold : S.iceBlue} intensity={day > 0.5 ? 5 : 3.5} distance={4} decay={2} />
+      {/* helle Mittags-Sterne (≥ 4 px), deterministisch an Bildstellen über dem Horizont */}
+      {stars > 0.01
+        ? BRIGHT.map(([x, y, s], i) => <Glow key={i} at={atScreen(b, x, y, 120)} size={s} color="#F4F6FF" opacity={stars * (0.75 + 0.25 * Math.sin(frame * 0.3 + i))} />)
+        : null}
       <HudPanel value={clockText("turn", frame, beat)} {...hud} alert={1 - day} orbit={frame >= go ? "STRAIGHT" : "CURVED"} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" punch={frame >= bk ? bk : undefined} />
     </>
@@ -406,20 +420,22 @@ export const SonOcean: React.FC = () => {
   }
   if (shot === 1) {
     // Tauchfahrt: durch das Eis ins dunkle Wasser bis zum Meeresgrund
+    // unter der Eisdecke: erst die helle Eis-Unterseite (oben im Bild), dann hinab Richtung Schlot
     const u = ramp(f, 0, len, (x) => x * x * (3 - 2 * x));
-    const y = lerp(3, -16, u);
-    const under = y < 0;
+    const y = lerp(-1.2, -15, u);
+    const under = true;
+    const lookY = lerp(y + 2.2, y - 6, u);
     return (
       <>
         <color attach="background" args={[under ? "#02101C" : S.nightTop]} />
-        <fog attach="fog" args={[under ? "#0A2C48" : "#050818", under ? 3 : 30, under ? 30 : 140]} />
+        <fog attach="fog" args={[under ? "#123E62" : "#050818", under ? 4 : 30, under ? 34 : 140]} />
         <hemisphereLight args={["#7AAAE0", "#02060C", 1.1]} />
         <directionalLight position={[-6, 20, 6]} color={S.iceBlue} intensity={1.0} />
         {!under ? <SkyDome day={0} /> : null}
         <IceSheet t={1} size={70} y={0} />
         <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}>
           <planeGeometry args={[200, 200]} />
-          <meshStandardMaterial color="#9FC8E8" transparent opacity={0.5} side={2} />
+          <meshStandardMaterial map={iceUnderTex()} color="#DCEEFF" emissive="#8FBCE8" emissiveIntensity={0.6} side={2} />
         </mesh>
         <Motes frame={frame} center={[0, y, 0]} size={[10, 14, 10]} count={160} drift={[0, 0.03, 0]} color="#BFE0FF" dot={0.06} opacity={0.6} seed={31} />
         {[-3, 0.5, 3.5].map((x, i) => (
@@ -427,15 +443,15 @@ export const SonOcean: React.FC = () => {
         ))}
         <SeaFloor y={-20} />
         <Vent position={[0.5, -20, -3]} frame={frame} microbes={0.6} />
-        <Shot frame={f} duration={len} from={[0.6, y, 4]} look={[0.3, y - 6, -1]} fov={46} ease="linear" />
+        <Shot frame={f} duration={len} from={[0.6, y, 4]} look={[0.3, lookY, -4]} fov={50} ease="linear" />
       </>
     );
   }
   // Makro: Schlot pafft warmen schwarzen Rauch, ein paar grün glimmende Mikroben-Punkte
   const sv = beat("ventMicrobes");
   const m = 0.5 + 0.5 * ramp(frame, sv - 8, sv + 6);
-  const a = frameOn([0, 1.7, 0], 4.6, 0.5, 0.5, [0.3, 0.12, 1]);
-  const b = frameOn([0, 1.8, 0], 3.9, 0.5, 0.5, [0.25, 0.14, 1]);
+  const a = frameOn([0, 1.3, 0], 4.8, 0.42, 0.5, [0.3, 0.12, 1]);
+  const b = frameOn([0, 1.4, 0], 4.2, 0.42, 0.5, [0.25, 0.14, 1]);
   return (
     <>
       <color attach="background" args={["#020A12"]} />
@@ -465,8 +481,8 @@ export const SonSaturn: React.FC = () => {
   }
   // Nah: Grandpa im Schal, Atem sichtbar, große runde Augen am Okular (Schlussbild bekommt neue Bedeutung)
   const h = odeScopeHead();
-  const a = frameOn(h, 4.0, 0.5, 0.45, [0.75, -0.08, -1]);
-  const b = frameOn(h, 3.4, 0.5, 0.45, [0.7, -0.08, -1]);
+  const a = frameOn(h, 4.0, 0.46, 0.5, [0.45, -0.55, -1]);
+  const b = frameOn(h, 3.4, 0.46, 0.5, [0.42, -0.55, -1]);
   const breath = Math.max(0, Math.sin(frame * 0.09)) ** 2;
   const sun = beat("grandpaStares");
   return (
@@ -475,7 +491,7 @@ export const SonSaturn: React.FC = () => {
       <Ode frame={frame} position={ODE_SCOPE.position} rotation={ODE_SCOPE.rotation} lean={ODE_SCOPE.lean - 0.12} nod={ODE_SCOPE.nod - 0.1} eyes="wide" eyePop={eyePopAt(frame, sun, 1.4, 1.2)} mouth="o" scarf breath={breath} reach={[1.1, 1.0]} />
       <Motes frame={frame} center={[EYEPIECE[0], EYEPIECE[1] + 0.5, EYEPIECE[2]]} size={[4, 3, 4]} count={70} drift={[0.002, -0.006, 0]} color="#E6F2FF" dot={0.04} opacity={0.7} seed={41} />
       <Halo at={EYEPIECE} size={0.6} color={S.gold} opacity={0.55} />
-      <pointLight position={[h[0] + 1.2, h[1] + 0.3, h[2] - 1.6]} color="#DDE8FF" intensity={6} distance={5} decay={2} />
+      <pointLight position={[h[0] + 0.8, h[1] - 1.2, h[2] - 1.6]} color="#DDE8FF" intensity={6} distance={5} decay={2} />
       <Shot frame={f} duration={len} {...fly(a, b)} />
     </>
   );
@@ -492,15 +508,15 @@ export const SonTally: React.FC = () => {
     const g2 = ramp(frame, beat("bar2h") - 14, beat("bar2h") + 10);
     const unit = 0.26;
     const cam = { pos: [0, 1.1, 15] as V3, look: [0, 1.1, 0] as V3, fov: 40 };
-    const bar = (x: number, h: number, color: string, label: string, sub: string, on: number) => (
+    const bar = (x: number, h: number, color: string, sub: string, on: number) => (
       <group position={[x, 0, 0]}>
         <mesh position={[0, (h * on) / 2, 0]}>
           <boxGeometry args={[1.5, Math.max(0.001, h * on), 0.4]} />
           <meshBasicMaterial color={color} toneMapped={false} />
         </mesh>
         <Halo at={[0, h * on, 0.3]} size={2.2} color={color} opacity={0.6 * on} />
-        <TextLabel text={label} width={2.2} height={0.62} position={[0, h * on + 0.6, 0.3]} color="#FFD23F" opacity={on} />
-        <TextLabel text={sub} width={2.6} height={0.38} position={[0, -0.42, 0.3]} color="#FFFFFF" opacity={Math.max(0.35, on)} />
+        {/* Zahlen stehen schon in Phrase + Untertitel (K13): am Balken nur, WESSEN Licht es ist */}
+        <TextLabel text={sub} width={2.8} height={0.5} position={[0, -0.5, 0.3]} color="#FFFFFF" opacity={Math.max(0.45, on)} />
       </group>
     );
     return (
@@ -514,8 +530,8 @@ export const SonTally: React.FC = () => {
           <planeGeometry args={[0.04, 5.6]} />
           <meshBasicMaterial color="#2A3460" />
         </mesh>
-        {bar(-1.7, unit, S.gold, "8 MIN", "SUNLIGHT", g1)}
-        {bar(1.7, unit * 15, S.goldPale, "2 H", "SATURN", g2)}
+        {bar(-1.7, unit, S.gold, "SUNLIGHT", g1)}
+        {bar(1.7, unit * 15, S.goldPale, "SATURN", g2)}
         <Shot frame={f} duration={len} from={cam.pos} to={[0, 1.1, 14.4]} look={cam.look} fov={cam.fov} />
       </>
     );

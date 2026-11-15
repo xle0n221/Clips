@@ -59,7 +59,7 @@ export const SONNE_CONFIG: EpisodeConfig = {
   noHud: true,
   stickerTop: 430,
   onScreenPlate: true,
-  // Schluss: Phrase „THEN SATURN'S ECHO ENDS“ sagt es schon (Lehre Bauarbeiter P2-2: keine Dreifach-Aussage)
-  stickerHide: ["SATURN'S ECHO ENDS"],
+  // „1.7 S“: Bahn-Label „+1.7 S“ + Phrase tragen die Zahl (Regie R1 P2-7). Schluss: Phrase „THEN SATURN'S ECHO ENDS“ sagt es schon (Lehre Bauarbeiter P2-2: keine Dreifach-Aussage)
+  stickerHide: ["SATURN'S ECHO ENDS", "1.7 S"],
   endCardTypeFrom: 2,
 };

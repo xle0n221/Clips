@@ -319,6 +319,9 @@ class Song:
         self.intro = (4 if 4 * self.beat <= 2.0 else 2) * self.beat
         self.nbars = int(np.ceil((seconds - self.intro) / self.bar)) + 1
         self.sparse = 0.0  # Sekunden: davor nur Flächen (kein Schlagzeug/808), nur gen_dark (Drehbuch music.sparseUntilScene)
+        # Musik-Plan (nur gen_epic, Drehbuch music.sections/silenceBefore): {"sparse": s, "drone": s, "padOnly": s,
+        # "silence": [(von, bis), ...]}. Leer = Arrangement unverändert (bitgleich wie vorher).
+        self.plan: dict = {}
 
     def t(self, bar, beat=0.0):
         return self.intro + bar * self.bar + beat * self.beat
@@ -460,6 +463,28 @@ def gen_funny(mix, s, key, prog, rng, kit):
             kit.roll(mix, t0 + s.beat * 3.5, s.beat / 2, 3, 0.18)
 
 
+class _Cut:
+    """Mix-Hülle für den Musik-Plan: ein Klang, der vor einer Grenze beginnt, endet an ihr (30 ms Ausblendung)."""
+
+    def __init__(self, mix, bounds):
+        self._m, self._b = mix, bounds
+        self.kicks, self.bus, self.n = mix.kicks, mix.bus, mix.n
+        self.limit = None  # Takt mit Grenze: alter Abschnitt nur bis hierher
+
+    def add(self, bus, start, sig, gain=1.0):
+        if self.limit is not None and start >= self.limit - 1e-6:
+            return
+        end = start + len(sig) / SR
+        for b in self._b:
+            if start < b - 1e-6 < end:
+                k = max(1, round((b - start) * SR))
+                sig = sig[:k].copy()
+                f = min(len(sig), int(0.03 * SR))
+                sig[len(sig) - f:] *= np.linspace(1, 0, f)
+                break
+        self._m.add(bus, start, sig, gain)
+
+
 def gen_epic(mix, s, key, prog, rng, kit):
     """Cineastischer Rap-Beat: Klavier + Streicherfläche, Boom-Bap-Drums (2 & 4), Taikos an Abschnittsgrenzen."""
     notes, rhythm = _motif(rng, scale=(0, 2, 3, 7, 8, 12))
@@ -467,17 +492,52 @@ def gen_epic(mix, s, key, prog, rng, kit):
     r0 = 48 + key + prog[0][0]
     mix.add("music", 0, braam(r0 - 12, s.intro + 0.5, rng), 0.10)
     play_chord(mix, keys, 0, voicing(r0, prog[0][1]), s.intro + 0.5, 0.11)
+    plan = s.plan
+    if plan:  # Abschnittsgrenzen exakt (nicht auf den Takt gerundet): Klänge der Vorstufe enden dort (30 ms Ausblendung)
+        mix = _Cut(mix, sorted([plan[k] for k in ("drone", "padOnly") if k in plan] + [a for a, _ in plan.get("silence", [])]))
+
+    def mode_at(t):
+        return "padOnly" if t >= plan.get("padOnly", 1e9) else "drone" if t >= plan.get("drone", 1e9) else ""
+
+    def mode_bar(mode, t, dur, vc, bar):
+        if mode == "padOnly":  # Ausklang: nur Klavier-Akkord + Fläche, kein Bass/Schlagzeug
+            mix.add("music", t, pad([_hz(m) for m in vc[:3]], dur, rng, fc=800, att=0.8), 0.08)
+            play_chord(mix, keys, t, vc, dur * 0.9, 0.06)
+        else:  # Wende: Moll-Drone auf dem Grundton, keine Drums, kein Klavier
+            tonic = 48 + key
+            mix.add("music", t, pad([_hz(m) for m in voicing(tonic, "m7", 50)[:3]] + [_hz(tonic - 12)], dur, rng, fc=500, att=0.6), 0.10)
+            if bar % 2 == 0 or dur < s.bar:
+                mix.add("music", t, braam(tonic - 12, s.bar * 2.2, rng), 0.08)
+            mix.add("bass", t, i808(_hz(bass_note(tonic)), _hz(bass_note(tonic)), dur, drive=1.0), 0.30)
+
     for bar in range(s.nbars):
         sec = s.section(bar)
         deg, q = prog[bar % 4]
         r = 48 + key + deg
         t0 = s.t(bar)
         vc = voicing(r, q)
+        if plan:
+            mix.limit = None
+            m0 = mode_at(t0)
+            if m0:
+                mode_bar(m0, t0, s.bar, vc, bar)
+                b = plan.get("padOnly", 1e9)
+                if m0 == "drone" and t0 < b < t0 + s.bar:
+                    mode_bar("padOnly", b, t0 + s.bar - b, vc, bar)
+                continue
+            for k in ("drone", "padOnly"):
+                b = plan.get(k, 1e9)
+                if t0 < b < t0 + s.bar:  # Grenze mitten im Takt: neuer Abschnitt beginnt exakt dort
+                    mode_bar(k, b, t0 + s.bar - b, vc, bar)
+                    mix.limit = b
+                    break
         mix.add("music", t0, pad([_hz(m) for m in vc[:3]] + [_hz(r - 12)], s.bar, rng, fc=1100, att=0.5), 0.09)
         play_chord(mix, keys, t0, vc, s.bar * 0.9, 0.08)
+        quiet = bool(plan) and t0 < plan.get("sparse", 0.0) - 0.05  # vor der Zielszene: kein Schlagzeug, kein 808
         if bar % 4 == 0:
             mix.add("music", t0, braam(r - 12, s.bar * 1.2, rng), 0.07)
-            mix.add("drums", t0, kit.taiko, 0.40)
+            if not quiet:
+                mix.add("drums", t0, kit.taiko, 0.40)
         if sec in ("B", "A2"):  # Klavier-Motiv, in A2 mit 16tel-Ostinato darunter
             for j in range(8):
                 if rhythm[(j + (2 if sec == "A2" else 0)) % 8]:
@@ -485,6 +545,8 @@ def gen_epic(mix, s, key, prog, rng, kit):
             if sec == "A2":
                 for j in range(16):
                     mix.add("music", t0 + j * s.beat / 4, guitar(_hz(r + (0, 7, 12, 7)[j % 4]), 0.25, 0.3), 0.06)
+        if quiet:
+            continue
         b = bass_note(r)
         mix.add("bass", t0, i808(_hz(b), _hz(b), s.bar * 0.95, drive=1.1), 0.50)
         if sec == "C" and bar % 4 == 0:
@@ -580,12 +642,14 @@ def describe(mood: str, seed: int, bpm: float | None = None) -> dict:
     }
 
 
-def render(seconds: float, mood: str, bpm: float | None = None, seed: int = 0, sparse_until: float = 0.0) -> np.ndarray:
+def render(seconds: float, mood: str, bpm: float | None = None, seed: int = 0, sparse_until: float = 0.0,
+           plan: dict | None = None) -> np.ndarray:
     d = describe(mood, seed, bpm)
     mood, rng = d["mood"], d["_rng"]
     print(f"Musik: {mood}, {d['bpm']} BPM, {d['key']}, {d['chords']} (Seed {seed})")
     song = Song(seconds, d["bpm"])
     song.sparse = sparse_until
+    song.plan = dict(plan or {})
     mix = Mix(seconds)
     kit = Kit(rng)
     GEN[mood](mix, song, d["_key"], BANKS[mood][d["_var"]], rng, kit)
@@ -616,4 +680,11 @@ def render(seconds: float, mood: str, bpm: float | None = None, seed: int = 0, s
     out = np.tanh(out / 0.95) * 0.95  # weicher Limiter, keine harte Begrenzung
     n = mix.n
     fade = np.minimum(1, np.minimum(np.arange(n) / (SR * 0.02), (n - np.arange(n)) / (SR * 1.5)))
+    for a, b in song.plan.get("silence", []):  # echte Stille (z. B. 0,6 s vor der Wende): 0,25 s ausblenden, 10 ms einblenden
+        i0, i1, fo, fi = int(a * SR), int(b * SR), int(0.25 * SR), int(0.01 * SR)
+        g = np.ones(n)
+        g[max(0, i0 - fo):i0] = np.linspace(1, 0, i0 - max(0, i0 - fo))
+        g[i0:i1] = 0
+        g[i1:i1 + fi] = np.linspace(0, 1, len(g[i1:i1 + fi]))
+        fade = fade * g
     return out * fade

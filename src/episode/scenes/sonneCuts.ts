@@ -38,7 +38,7 @@ export const SONNE_SHOTS: Record<string, { readonly names: readonly string[]; re
   moon: { names: ["medium balcony, Moon goes dark", "eyepiece POV Saturn still shining"], cuts: (b) => [b("saturnStillShining") - 18] },
   ocean: {
     names: ["wide ice skin creeps over sea", "dive through ice", "macro vent + microbes"],
-    cuts: (b) => [b("iceSkinCreeps") + 14, b("ventMicrobes") - 18],
+    cuts: (b) => [b("iceSkinCreeps") + 4, b("ventMicrobes") - 18],
   },
   saturn: { names: ["eyepiece POV Saturn +2 h", "close-up Grandpa in scarf"], cuts: (b) => [b("grandpaStares") - 32] },
   tally: { names: ["split bars 8 MIN vs 2 H (Saturn glow dims in answer2)"], cuts: () => [] },

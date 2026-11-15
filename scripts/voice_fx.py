@@ -87,6 +87,9 @@ NARRATOR = {
     "inner_max_s": 0.9,      # nur Stillen > 0,9 s im Satz kürzen (auf 0,7 s); vorher > 0,3 s → 0,25 s (abgehackt)
     "inner_keep_s": 0.7,
     "qc_tries": 3,           # Aussprache-Prüfung je Satz (faster-whisper small.en): bis zu 3 Aufnahmen, beste gewinnt
+    # Ab 15.11.2026 (sonne-verschwindet), je Video über Drehbuch-`narrator` einschalten; Standard aus = bitgleich wie vorher:
+    "comma_whisper": False,  # Komma/Doppelpunkt-Pause an der Whisper-Wortgrenze einfügen, auch ohne Stille in der Aufnahme
+    "end_soft_ms": 0,        # weicher Ausklang: letzte N ms vor dem Sprachende (Pegel < Satzpegel −30 dB) auf −24 dB rampen
 }
 EMOTIONS["angry"] = EMOTIONS["indignant"]
 EMOTIONS["dramatic"] = EMOTIONS["tense"]
