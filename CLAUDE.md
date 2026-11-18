@@ -4,6 +4,7 @@
 - **Standard: sparsam bei gleicher Qualität** (Vorgabe des Nutzers) – nur so viele Agenten wie nötig, neue
   Sitzung je Video, kurze Aufträge/Antworten, Warten ohne Abfragen; Prüfpaare und Freigaben bleiben.
   Details: `docs/agenten/README.md` → „Sparsam arbeiten“ und „Modellwahl je Aufgabe“ (haiku leicht · sonnet Standard · opus schwer).
+- **PRODUKTION GESTOPPT (Nutzer 18.11.2026: „Produktion stoppen“)** – keine neuen Videos, keine Agenten, kein Render, bis der Nutzer sie wieder freigibt; der Abholer prüft nur Dashboard-Entscheidungen. Virus-Stadt zurück auf `queued` (keine Dateien angelegt). Außerdem (Nutzer): „Bitte ab jetzt immer automatisch in eine neue Sitzung wechseln“ – nach `docs/sitzungswechsel.md`; diese Sitzung kann es technisch nicht (Tiefe 8), die nächste vom Nutzer gestartete Sitzung setzt es um.
 - **AUTOPILOT (Nutzer 14.11.2026, dauerhaft):** `docs/prompts/knowtoon-autopilot.md` – Claude findet Themen (tägliche Marktanalyse), stellt her, prüft, **gibt selbst frei** (Noten ≥ 9 mit Beleg, nie schwächer), legt unter „Bereit zum Posten“ ab; Nutzer postet nur. Konflikte → `docs/prompts/konflikte.md`. Im Zweifel parken.
 - **Alles automatisch** (Vorgabe Nutzer 11.11.2026): keine Rückfragen im Chat; Umgebungsänderungen (Hosts, Setup-Skript) bei echtem Bedarf sofort selbst beantragen – Details `docs/claude-arbeitsweise.md` → „Automatik“.
 - **Sitzung automatisch erneuern, ohne Rückfrage**, sobald sie zu lang wird: `docs/sitzungswechsel.md`.
