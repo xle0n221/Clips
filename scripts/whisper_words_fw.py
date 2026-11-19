@@ -1,5 +1,6 @@
 """Wort-Zeitstempel mit faster-whisper – Rückfall, wenn whisper.cpp (scripts/whisper-words.mjs) fehlt.
     .venv/bin/python scripts/whisper_words_fw.py <in.wav 16 kHz mono> <out.json> [sprache] [modell]
+    WHISPER_NAMES="Marta, Bo" (optional): Eigennamen als initial_prompt, damit erfundene Namen richtig geschrieben werden.
 Ausgabe wie @remotion/captions: [{text, startMs, endMs, timestampMs, confidence}].
 Audio wird mit soundfile geladen und als Array übergeben (Dateipfad scheitert in Cloud-Containern an `av`)."""
 import json
@@ -21,7 +22,9 @@ if audio.ndim > 1:
 if sr != 16000:
     raise SystemExit(f"{src}: erwartet 16 kHz, hat {sr}")
 model = WhisperModel(name, device="cpu", compute_type="int8")
-segs, _ = model.transcribe(np.ascontiguousarray(audio), language=lang, word_timestamps=True, beam_size=5)
+names = os.environ.get("WHISPER_NAMES", "").strip()
+prompt = f"Names: {names}." if names else None
+segs, _ = model.transcribe(np.ascontiguousarray(audio), language=lang, word_timestamps=True, beam_size=5, initial_prompt=prompt)
 out = []
 for s in segs:
     for w in s.words or []:

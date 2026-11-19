@@ -81,6 +81,7 @@ def main() -> None:
     ap.add_argument("--episode", type=Path)
     ap.add_argument("--whisper", type=Path, help="vorhandenes Whisper-JSON (sonst neu transkribieren)")
     ap.add_argument("--json", type=Path)
+    ap.add_argument("--names", help="Eigennamen für Whisper, z. B. \"Marta, Bo\" (initial_prompt; nur Schreibweise, ändert nichts am Hören)")
     a = ap.parse_args()
     d = a.dir or ROOT / "public" / "episodes" / a.id
     ep = json.loads((a.episode or ROOT / "episodes" / f"{a.id}.json").read_text())
@@ -170,6 +171,8 @@ def main() -> None:
         if not np.isnan(st[-1]) and not np.all(np.isnan(st[:-1])):
             fdrops.append(st[-1] - float(np.nanmedian(st[:-1])))
     dur_s = tl["durationMs"] / 1000
+    if a.names:
+        os.environ["WHISPER_NAMES"] = a.names
     wsp = json.loads(a.whisper.read_text()) if a.whisper else whisper_words(d / "voice.wav")
     wsp = [c for c in wsp if norm(c["text"])]
     A, B = [norm(w["w"]) for w in words], [norm(c["text"]) for c in wsp]
