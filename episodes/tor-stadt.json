@@ -1,13 +1,13 @@
 {
  "id": "tor-stadt",
- "title": "In This City, the Gate Needs Everyone's Yes",
+ "title": "In This City, the Gate Needs 1,000 Yeses",
  "engine": "chatterbox",
  "voice": "am_michael",
  "voicePreset": "witzig",
  "speed": 1.05,
  "pauseMs": 350,
  "sceneGapMs": 215,
- "lengthSec": 65,
+ "lengthSec": 66,
  "years": [],
  "say": {
   "Yesbury": "YES-bury"
@@ -54,7 +54,7 @@
   "reveals": [
    {
     "scene": "hook",
-    "word": "everyone"
+    "word": "thousand"
    },
    {
     "scene": "world",
@@ -183,20 +183,20 @@
   ],
   "bars": []
  },
- "note": "v1 (19.11.2026, Autopilot). 164 Skriptwörter, 15 Szenen, 32 Einstellungen inkl. End-Card (Ø 2.04 s), Plan 65.2 s bei 2.6 W/s inkl. Pausen (K15 61–70 s inkl. End-Card). Skript-Prüfung (scratchpad build_tor.py): Sätze ≤ 12 W, 1 Akzent je Satz, captions 2–5 W und Wortfolge = Sprechtext, K13-Schnitt onScreen/Sticker ∩ captions ≤ 1 Wort außer Eigennamen, Cue-Wörter vorhanden, Szenen ≤ 8 s, Einstellungen ≤ 4 s (Halt ≤ 6 s): 0 Verstöße. Alle Zeiten Plan – nach der Vertonung an den Wortzeiten neu messen (Lesson 7).",
+ "note": "v2 (19.11.2026, Nacharbeit Runde 2: Titel/hook/rule auf 1,000 yeses, world pflanzt meeting, onScreen doors/stinger, max_speed 1,05). 165 Skriptwörter, 15 Szenen, 32 Einstellungen inkl. End-Card (Ø 2.05 s), Plan 65.6 s bei 2.6 W/s inkl. Pausen (K15 61–70 s inkl. End-Card). Skript-Prüfung (scratchpad build_tor.py): Sätze ≤ 12 W, 1 Akzent je Satz, captions 2–5 W und Wortfolge = Sprechtext, K13-Schnitt onScreen/Sticker ∩ captions ≤ 1 Wort außer Eigennamen, Cue-Wörter vorhanden, Szenen ≤ 8 s, Einstellungen ≤ 4 s (Halt ≤ 6 s): 0 Verstöße. Alle Zeiten Plan – nach der Vertonung an den Wortzeiten neu messen (Lesson 7).",
  "voiceProfile": "male, young adult – am_michael (Standardstimme, Nutzer 13.11.2026); Grundlaune trocken-verschmitzt, Wärme für Pip.",
  "voiceNotes": {
   "prompt": "STEP 4/4b 'NARRATION & VOICE' (Nutzer 13.11.2026), umgesetzt mit Chatterbox wie Sonne/Bauarbeiter; Komma-/Ende-Mechanik aus Sonne (narrator.comma_whisper, end_soft_ms, room_tone_db).",
-  "tempo": "K15 61–70 s inkl. End-Card; K4/K14 2,45–2,75 W/s inkl. Pausen. Länge = W/Rate + 0,15 s (Stimmstart) + 2,0 s End-Card. Beide Ränder einhalten: W/2,75 + 2,15 ≥ 61 → W ≥ 162; W/2,45 + 2,15 ≤ 70 → W ≤ 166. Gewählt 164 W → 61.8 s (2,75) bis 69.1 s (2,45), Plan 2,6 W/s ≈ 65.2 s.",
+  "tempo": "K15 61–70 s inkl. End-Card; K4/K14 2,45–2,75 W/s inkl. Pausen. Länge = W/Rate + 0,15 s (Stimmstart) + 2,0 s End-Card. Beide Ränder einhalten: W/2,75 + 2,15 ≥ 61 → W ≥ 162; W/2,45 + 2,15 ≤ 70 → W ≤ 166. Gewählt 165 W → 62.1 s (2,75) bis 69.5 s (2,45), Plan 2,6 W/s ≈ 65.6 s.",
   "chatterbox": "exaggeration 0,50–0,65, cfg 0,85–0,95, temperature 0,70–0,80, emotion.speed 1,0 je Szene (Feld emotion); speed 1,05 = Obergrenze atempo (K14).",
   "emotionMap": "voicePreset witzig · setup (hook, rule ironic; world playful; pip warm) = trocken, verschmitzt · tension (posters playful, doors/hollis ironic, hide tense mit leisem Flüstern, stakes sad, hope awe) = leiser, langsamer bis zum Tiefpunkt, dann staunend · twist (turn dramatic, open excited) = lauter, abgehackt, +1,0–1,5 dB · ending (sea awe, first calm, stinger deadpan) = ruhig, tief, Satzende −6 bis −6,5 dB.",
   "pauses": "' | ' vor jeder Enthüllung ≈ 0,45–0,5 s; vor 'turn' 0,6 s totale Stille (music.silenceBefore + soundBed.silence + pauseBeforeMs 250); vor der letzten Zeile ('Now the gate needs a thousand yeses… from nine hundred ninety-nine people.') 0,5 s (pauseBeforeMs 300 + Szenenpause); letzte Zeile flach und tief (Basis-Prompt 4b).",
   "rules": "Sätze ≤ 12 Wörter, genau ein *Akzentwort* je Satz (Skript-Prüfung 0 Verstöße), keine Füllwörter, kein Overacting; Zahlen gesprochen ausgeschrieben ('eighty-three', 'nine hundred ninety-nine'), Ziffern nur im Bild (K9: Whisper-Abgleich nach Zahlen-Normalisierung).",
   "conflict": "K14: Tempo über cfg statt atempo; wird die gemessene Rate < 2,45 W/s, wächst das Video über 70 s → dann Szenenpausen (sceneGapMs 215 → 180) und gap_ms am unteren Rand (≥ 250 ms Satzpause, K12) statt Beschleunigen; reicht das nicht, Szene 'first' (7 W) streichen."
  },
- "version": "v1 (19.11.2026, Autopilot; Basis-Prompt + Erweiterung 'Continuous Improvement'; K15 61–70 s)",
+ "version": "v2 (19.11.2026, Nacharbeit Runde 2 nach Fakten 8 / Retention 9: Regel-Wortlaut einheitlich 1,000 yeses; v1 Autopilot; Basis-Prompt + Erweiterung 'Continuous Improvement'; K15 61–70 s)",
  "narrator": {
-  "max_speed": 1.1,
+  "max_speed": 1.05,
   "piece_extra_ms": 45,
   "scene_gap_ms": 215,
   "qc_tries": 6,
@@ -219,16 +219,16 @@
  "emotionalPeak": {
   "emotion": "triumphant comic relief (verschmitzter Triumph) nach Verzweiflung",
   "steps": {
-   "stakes": "stakes (36.7 s ≈ 59 % der Wörter): 'Pip stares at the painted sea. Eighty-three years… and counting.'",
-   "hope": "hope (40.5 s ≈ 65 %): 'But the gate never asks… what the yes is for.'",
-   "turn": "turn (44.9 s ≈ 71 %, Trick-Frage 'over' ≈ 76 %, 'yeses' ≈ 78 %): 'Who wants this meeting to be over?' – 'One thousand yeses. Even Hollis.'"
+   "stakes": "stakes (37.1 s ≈ 59 % der Wörter): 'Pip stares at the painted sea. Eighty-three years… and counting.'",
+   "hope": "hope (40.9 s ≈ 65 %): 'But the gate never asks… what the yes is for.'",
+   "turn": "turn (45.3 s ≈ 71 %, Trick-Frage 'over' ≈ 76 %, 'yeses' ≈ 78 %): 'Who wants this meeting to be over?' – 'One thousand yeses. Even Hollis.'"
   },
   "silenceBefore": "0,6 s totale Stille (Musik + Bett + Tick aus) vor 'turn'",
   "hold": "turn Einstellung 2 = einzige Einstellung > 4 s (≤ 6 s)"
  },
  "shotPlan": {
   "shots": 32,
-  "avgSec": 2.04,
+  "avgSec": 2.05,
   "previous": "Sonne 112,4 s / 48 Shots Ø 2,30 s, max 4,87 s (Halt)",
   "reduction": "11 %",
   "maxSec": "≈ 3.7 (nur Halt im 'turn'), sonst ≤ 2.7"
@@ -248,7 +248,7 @@
     "end_db": 5.0,
     "gain_db": -0.5
    },
-   "text": "Nobody has left this city in *eighty-three* years. | The gate needs one yes… | from *everyone*.",
+   "text": "Nobody has left this city in *eighty-three* years. | The gate needs one yes… | from all one *thousand*.",
    "onScreen": "A TOWN WITH NO WAY OUT",
    "why": "start: result before cause",
    "visual": "SHOT 1 (ECU, slow push-in, COVER 0–0,5 s ohne Untertitel): the giant round brass GATE of Yesbury, shut tight, the sea painted on its two doors in teal and white; above it the brass flip counter 'YES 999 / 1,000' (PLANT: the counter); a tiny PIP in her mustard raincoat stands before it, looking up; cover title 'NOBODY CAN LEAVE' in accent yellow, upper third, small 'the gate needs 1,000 yeses'; sticker 'WILL THE GATE EVER OPEN?' until 2,0 s / SHOT 2 (low-angle wide): the gate towers over the town wall; a rusty plaque 'SHUT FOR 83 YEARS'; pigeons on the counter / SHOT 3 (detail): a thick brass keyhole with cobwebs, the painted sea flaking around it",
@@ -258,23 +258,23 @@
      "desc": "the giant round brass GATE of Yesbury, shut tight, the sea painted on its two doors in teal and white; above it the brass flip counter 'YES 999 / 1,000' (PLANT: the counter); a tiny PIP in her mustard raincoat stands before it, looking up; cover title 'NOBODY CAN LEAVE' in accent yellow, upper third, small 'the gate needs 1,000 yeses'; sticker 'WILL THE GATE EVER OPEN?' until 2,0 s",
      "t": [
       0.15,
-      2.05
+      2.31
      ]
     },
     {
      "type": "low-angle wide",
      "desc": "the gate towers over the town wall; a rusty plaque 'SHUT FOR 83 YEARS'; pigeons on the counter",
      "t": [
-      2.05,
-      3.96
+      2.31,
+      4.47
      ]
     },
     {
      "type": "detail",
      "desc": "a thick brass keyhole with cobwebs, the painted sea flaking around it",
      "t": [
-      3.96,
-      5.86
+      4.47,
+      6.63
      ]
     }
    ],
@@ -293,7 +293,7 @@
      }
     },
     {
-     "word": "everyone",
+     "word": "thousand",
      "beat": "keyholeCobweb",
      "sfx": "whoosh"
     }
@@ -302,7 +302,7 @@
     "Nobody has left this city",
     "in eighty-three years.",
     "The gate needs one yes…",
-    "from everyone."
+    "from all one thousand."
    ]
   },
   {
@@ -319,7 +319,7 @@
     "end_db": 5.0,
     "gain_db": -0.5
    },
-   "text": "All one *thousand* people. | At the exact same *second*.",
+   "text": "Every single *person*. | At the exact same *second*.",
    "onScreen": "PERFECT SYNC, OR NOTHING",
    "why": "because: that is the gate's rule",
    "visual": "SHOT 1 (top-down wide): the whole town square packed with 1,000 blocky people in cream and terracotta clothes, all facing the gate / SHOT 2 (close-up): a big brass stopwatch on a pole in the square, its hand snapping onto one second mark",
@@ -328,16 +328,16 @@
      "type": "top-down wide",
      "desc": "the whole town square packed with 1,000 blocky people in cream and terracotta clothes, all facing the gate",
      "t": [
-      5.86,
-      7.58
+      6.63,
+      8.15
      ]
     },
     {
      "type": "close-up",
      "desc": "a big brass stopwatch on a pole in the square, its hand snapping onto one second mark",
      "t": [
-      7.58,
-      9.29
+      8.15,
+      9.67
      ]
     }
    ],
@@ -346,7 +346,7 @@
    ],
    "cues": [
     {
-     "word": "thousand",
+     "word": "person",
      "beat": "squareTopDown",
      "hud": {
       "id": "yes",
@@ -360,7 +360,7 @@
     }
    ],
    "captions": [
-    "All one thousand people.",
+    "Every single person.",
     "At the exact same second."
    ]
   },
@@ -378,33 +378,33 @@
     "end_db": 4.5,
     "gain_db": 0.0
    },
-   "text": "This is *Yesbury*. | Every Sunday: a gate *vote*. | And every Sunday… | one voice says *no*.",
+   "text": "This is *Yesbury*. | Every Sunday: a gate *meeting*. | And every Sunday… | one voice says *no*.",
    "onScreen": "WEEK AFTER WEEK: 999",
    "why": "so: they try every week",
-   "visual": "SHOT 1 (wide, crane down): terracotta rooftops inside a high round wall, a banner 'SUNDAY VOTE · NOON' across the square / SHOT 2 (medium): the crowd raises 999 green YES paddles at once, the counter flips up to '999 / 1,000' / SHOT 3 (detail): somewhere in the crowd a single red NO paddle pops up – face hidden, only a navy sleeve with a brass button",
+   "visual": "SHOT 1 (wide, crane down): terracotta rooftops inside a high round wall, a banner 'SUNDAY GATE MEETING · NOON' across the square / SHOT 2 (medium): the crowd raises 999 green YES paddles at once, the counter flips up to '999 / 1,000' / SHOT 3 (detail): somewhere in the crowd a single red NO paddle pops up – face hidden, only a navy sleeve with a brass button",
    "shots": [
     {
      "type": "wide, crane down",
-     "desc": "terracotta rooftops inside a high round wall, a banner 'SUNDAY VOTE · NOON' across the square",
+     "desc": "terracotta rooftops inside a high round wall, a banner 'SUNDAY GATE MEETING · NOON' across the square",
      "t": [
-      9.29,
-      11.2
+      9.67,
+      11.58
      ]
     },
     {
      "type": "medium",
      "desc": "the crowd raises 999 green YES paddles at once, the counter flips up to '999 / 1,000'",
      "t": [
-      11.2,
-      13.1
+      11.58,
+      13.48
      ]
     },
     {
      "type": "detail",
      "desc": "somewhere in the crowd a single red NO paddle pops up – face hidden, only a navy sleeve with a brass button",
      "t": [
-      13.1,
-      15.01
+      13.48,
+      15.39
      ]
     }
    ],
@@ -417,7 +417,7 @@
      "beat": "rooftopsCrane"
     },
     {
-     "word": "vote",
+     "word": "meeting",
      "beat": "paddlesUp",
      "hud": {
       "id": "yes",
@@ -432,7 +432,7 @@
    ],
    "captions": [
     "This is Yesbury.",
-    "Every Sunday: a gate vote.",
+    "Every Sunday: a gate meeting.",
     "And every Sunday…",
     "one voice says no."
    ]
@@ -460,16 +460,16 @@
      "type": "medium close-up",
      "desc": "PIP (young woman, blocky, mustard raincoat, teal scarf, red boots) leans her forehead on the gate, eyes closed, smiling",
      "t": [
-      15.01,
-      17.29
+      15.39,
+      17.68
      ]
     },
     {
      "type": "macro",
      "desc": "her blocky hand touches a painted wave; flakes of teal paint come off on her fingers (PLANT: the painted sea)",
      "t": [
-      17.29,
-      19.58
+      17.68,
+      19.96
      ]
     }
    ],
@@ -516,16 +516,16 @@
      "type": "quick montage, wide",
      "desc": "Pip pastes bright yellow posters 'SAY YES ON SUNDAY!' on every wall, a smiling cartoon gate drawn on them",
      "t": [
-      19.58,
-      21.86
+      19.96,
+      22.25
      ]
     },
     {
      "type": "medium, rack focus",
      "desc": "Sunday: 999 green paddles, the counter clatters to '999 / 1,000' (REPEAT 1: the counter); focus pulls to Pip in front – her hopeful face drops, one red NO paddle in the corner of frame",
      "t": [
-      21.86,
-      24.15
+      22.25,
+      24.53
      ]
     }
    ],
@@ -573,7 +573,7 @@
     "gain_db": -0.5
    },
    "text": "She knocks on every *door*. | Everyone swears: *yes*. | So who's *lying*?",
-   "onScreen": "PLAN 2: 1,000 HOUSE CALLS",
+   "onScreen": "PLAN 2: HOUSE CALLS",
    "why": "but: nobody admits the no",
    "visual": "SHOT 1 (tracking, fast, over-the-shoulder): Pip runs along a street of identical terracotta doors, knocking; door after door, blocky neighbours nod with hands on hearts – a baker, a granny, twins / SHOT 2 (close-up): Pip squints at her clipboard: 1,000 ticks under 'YES'; a big question mark sticker",
    "shots": [
@@ -581,16 +581,16 @@
      "type": "tracking, fast, over-the-shoulder",
      "desc": "Pip runs along a street of identical terracotta doors, knocking; door after door, blocky neighbours nod with hands on hearts – a baker, a granny, twins",
      "t": [
-      24.15,
-      26.25
+      24.53,
+      26.63
      ]
     },
     {
      "type": "close-up",
      "desc": "Pip squints at her clipboard: 1,000 ticks under 'YES'; a big question mark sticker",
      "t": [
-      26.25,
-      28.34
+      26.63,
+      28.72
      ]
     }
    ],
@@ -638,24 +638,24 @@
      "type": "low-angle, from behind a barrel",
      "desc": "Pip peeks out at the gate, the counter glowing above; the square murmurs",
      "t": [
-      28.34,
-      29.99
+      28.72,
+      30.37
      ]
     },
     {
      "type": "slow push-in",
      "desc": "beside the gate, inside a tiny guard booth, a red NO paddle rises – held by a navy sleeve with brass buttons",
      "t": [
-      29.99,
-      31.64
+      30.37,
+      32.03
      ]
     },
     {
      "type": "close-up",
      "desc": "MISTER HOLLIS (tall narrow box body, grey block moustache, bushy block eyebrows, navy gatekeeper uniform, peaked cap, huge ring of keys) lowers the paddle, glances around",
      "t": [
-      31.64,
-      33.29
+      32.03,
+      33.68
      ]
     }
    ],
@@ -702,16 +702,16 @@
      "type": "medium",
      "desc": "Hollis polishes his huge key ring with pride, a framed 'GATEKEEPER · 83 YEARS' certificate behind him",
      "t": [
-      33.29,
-      35.01
+      33.68,
+      35.39
      ]
     },
     {
      "type": "insert",
      "desc": "a tiny booth sign 'GATEKEEPER – ONLY NEEDED WHILE SHUT' swings in the wind",
      "t": [
-      35.01,
-      36.72
+      35.39,
+      37.1
      ]
     }
    ],
@@ -757,16 +757,16 @@
      "type": "wide, dusk",
      "desc": "the empty square at violet dusk, Pip sits alone at the foot of the gate, posters peeling off the walls (REPEAT: the painted sea)",
      "t": [
-      36.72,
-      38.63
+      37.1,
+      39.01
      ]
     },
     {
      "type": "close-up",
      "desc": "a flake of painted sea drifts down past Pip's sad round-dot eyes (STEP 1: the viewer cares)",
      "t": [
-      38.63,
-      40.53
+      39.01,
+      40.91
      ]
     }
    ],
@@ -814,16 +814,16 @@
      "type": "macro",
      "desc": "the old brass rule plate on the gate: 'OPENS AT 1,000 YES' – nothing else written; Pip's eyes widen (STEP 2: hope rises)",
      "t": [
-      40.53,
-      42.44
+      40.91,
+      42.82
      ]
     },
     {
      "type": "close-up",
      "desc": "Pip's grin spreads; the stopwatch ticks louder – then 0,6 s TOTAL SILENCE",
      "t": [
-      42.44,
-      44.34
+      42.82,
+      44.72
      ]
     }
    ],
@@ -871,16 +871,16 @@
      "type": "low-angle medium",
      "desc": "after the silence: Pip jumps onto a crate in the Sunday square and shouts through a paper cone; her hand-painted cardboard sign reads 'MEETING OVER?' (diegetic prop, so the question reads without sound)",
      "t": [
-      44.94,
-      46.54
+      45.32,
+      46.92
      ]
     },
     {
      "type": "HOLD ≤ 6 s, slow push-in",
      "desc": "ONE deliberate HOLD: all 1,000 blocky people throw up green YES paddles in the same instant, Hollis yelling YES loudest with his cap flying off, the counter flips to '1,000 / 1,000' and glows gold (STEP 3: the turn; emotion: triumphant comic relief)",
      "t": [
-      46.54,
-      50.27
+      46.92,
+      50.66
      ]
     }
    ],
@@ -939,16 +939,16 @@
      "type": "wide",
      "desc": "the painted sea splits down the middle as the two doors swing open; daylight floods the square",
      "t": [
-      50.27,
-      51.99
+      50.66,
+      52.37
      ]
     },
     {
      "type": "slow motion, side",
      "desc": "Pip leaps through the gap, scarf flying, the doors already closing behind her",
      "t": [
-      51.99,
-      53.7
+      52.37,
+      54.09
      ]
     }
    ],
@@ -995,8 +995,8 @@
      "type": "wide, outside, slow crane down",
      "desc": "Pip on a sunny cliff path, the real turquoise sea glittering below, gulls; the camera sinks to her boots in the surf, a real wave rinses the teal paint from her fingers (FINAL PAYOFF 1: painted sea → real sea)",
      "t": [
-      53.7,
-      56.37
+      54.09,
+      56.75
      ]
     }
    ],
@@ -1041,8 +1041,8 @@
      "type": "medium, pull-back to wide",
      "desc": "outside the wall, the rusty plaque 'SHUT FOR 83 YEARS' – Pip scratches a little '1 LEFT' under it with a pebble; pull back: the high round wall, the gate shut again, the brass counter glowing on top",
      "t": [
-      56.37,
-      58.66
+      56.75,
+      59.04
      ]
     }
    ],
@@ -1083,7 +1083,7 @@
     "gain_db": -2.0
    },
    "text": "Now the gate needs a thousand yeses… | from *nine hundred ninety-nine* people.",
-   "onScreen": "THE REST: LOCKED IN FOR GOOD",
+   "onScreen": "THE REST: LOCKED IN",
    "why": "but: her exit made the rule impossible",
    "visual": "SHOT 1 (medium, inside): back in the square: 999 people stand frozen with paddles; Hollis, cap in hand, slowly puts his NO paddle back on its hook / SHOT 2 (match cut, slow push-in): match cut to the opening frame: the shut gate, the painted sea with a gap where Pip's flakes came off, the counter '999 / 1,000' – now the most it can ever show (FINAL IMAGE new meaning); then end card",
    "shots": [
@@ -1091,16 +1091,16 @@
      "type": "medium, inside",
      "desc": "back in the square: 999 people stand frozen with paddles; Hollis, cap in hand, slowly puts his NO paddle back on its hook",
      "t": [
-      58.66,
-      60.94
+      59.04,
+      61.33
      ]
     },
     {
      "type": "match cut, slow push-in",
      "desc": "match cut to the opening frame: the shut gate, the painted sea with a gap where Pip's flakes came off, the counter '999 / 1,000' – now the most it can ever show (FINAL IMAGE new meaning); then end card",
      "t": [
-      60.94,
-      63.23
+      61.33,
+      63.61
      ]
     }
    ],
