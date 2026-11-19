@@ -277,8 +277,8 @@ export const TorOpen: React.FC = () => {
   const people = useTownCrowd();
   const o = beat("doorsSplit");
   const j = beat("pipLeaps");
-  // genau eine Sekunde offen: auf ab „opens“, ab j + 12 wieder zu
-  const open = ramp(frame, o - 4, o + 12) * (1 - ramp(frame, j + 6, j + 26));
+  // „opens…“ = nur ein Spalt Licht; ganz auf erst bei „second“ (≈ j − 35), zu, sobald Pip durch ist (≈ j + 10) → ≈ 1,2 s weit offen
+  const open = Math.max(0.24 * ramp(frame, o - 4, o + 12), ramp(frame, j - 34, j - 24)) * (1 - ramp(frame, j + 12, j + 20));
   if (shot === 0) {
     const a = cam([1.5, 5.2, 19], [0, 4.0, 0], 40);
     const b = cam([1.2, 4.8, 16.5], [0, 3.8, 0], 40);
@@ -293,7 +293,7 @@ export const TorOpen: React.FC = () => {
       </>
     );
   }
-  // Zeitlupe von der Seite: Pip springt durch den Spalt, Schal fliegt, die Flügel schließen schon
+  // Zeitlupe von der Seite: Pip springt durch die offenen Flügel, Schal fliegt, direkt hinter ihm schlagen sie zu
   const leap = ramp(frame, j - 10, j + 34, (x) => x);
   const px: V3 = [0.2, 0.2 + Math.sin(leap * Math.PI) * 1.2, lerp(2.2, -2.6, leap)];
   const a = cam([5.0, 3.4, 9.0], [0, 2.6, -1], 40);
@@ -301,8 +301,8 @@ export const TorOpen: React.FC = () => {
   return (
     <>
       <DayLight target={[0, 0, 2]} />
-      <Square frame={frame} counter="1,000 / 1,000" glow={1} open={Math.max(open, 0.15 * (1 - ramp(frame, j + 26, j + 40)))} />
-      <OutsideGlow on={Math.max(open, 0.3)} />
+      <Square frame={frame} counter="1,000 / 1,000" glow={1} open={open} />
+      <OutsideGlow on={Math.max(open, 0.3 * (1 - ramp(frame, j + 12, j + 20)))} />
       <Blok frame={frame} who="pip" position={px} rotation={[-0.25, Math.PI, 0]} reach={[2.2, 2.2]} spread={[0.5, 0.5]} walk={0.4} eyes="happy" mouth="grin" scarfFly={1} look={0.6} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
