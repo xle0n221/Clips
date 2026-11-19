@@ -144,14 +144,14 @@ export const TorHope: React.FC = () => {
     // Makro: Regeltafel „OPENS AT 1,000 YES“ – sonst steht nichts da; Pips Augen weiten sich
     const ask = beat("rulePlate");
     const pop = 1 + 0.3 * ramp(frame, ask, ask + 8, Easing.out(Easing.back(2)));
-    const a = frameOn([RULE_PLATE[0] + 0.55, RULE_PLATE[1] - 0.35, RULE_PLATE[2]], 3.3, 0.45, 0.5, [0.12, 0.04, 1]);
-    const b = frameOn([RULE_PLATE[0] + 0.55, RULE_PLATE[1] - 0.35, RULE_PLATE[2]], 2.9, 0.45, 0.5, [0.1, 0.04, 1]);
+    const a = frameOn([RULE_PLATE[0] + 0.3, RULE_PLATE[1] - 0.4, RULE_PLATE[2]], 3.8, 0.42, 0.5, [0.1, 0.04, 1]);
+    const b = frameOn([RULE_PLATE[0] + 0.3, RULE_PLATE[1] - 0.4, RULE_PLATE[2]], 3.4, 0.42, 0.5, [0.08, 0.04, 1]);
     return (
       <>
         <DuskLight target={[-2, 0, 2]} />
         <Square frame={frame} counter="999 / 1,000" lit={0.6} />
-        <Crate position={[RULE_PLATE[0] + 1.25, 0, 1.4]} s={1.1} />
-        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 1.25, 1.1, 1.4]} rotation={[0, -0.55, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
+        <Crate position={[RULE_PLATE[0] + 1.35, 0, 1.4]} s={1.6} />
+        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 1.35, 1.6, 1.4]} rotation={[0, -0.55, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
         <pointLight position={[RULE_PLATE[0] + 0.5, RULE_PLATE[1] + 0.6, 1.6]} color="#FFD9A0" intensity={4} distance={4} decay={2} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -189,8 +189,8 @@ export const TorTurn: React.FC = () => {
     const st = beat("pipOnCrate");
     const up = ramp(frame, st - 6, st + 6, Easing.out(Easing.back(1.5)));
     const head = headOf("pip", pipPos);
-    const a = frameOn([head[0], head[1] - 0.6, head[2]], 8.0, 0.46, 0.5, [0.08, 0.12, 1]);
-    const b = frameOn([head[0], head[1] - 0.6, head[2]], 7.0, 0.46, 0.5, [0.06, 0.12, 1]);
+    const a = frameOn([head[0] - 0.4, head[1] - 0.1, head[2]], 9.0, 0.5, 0.5, [0.08, 0.12, 1]);
+    const b = frameOn([head[0] - 0.4, head[1] - 0.1, head[2]], 8.0, 0.5, 0.5, [0.06, 0.12, 1]);
     return (
       <>
         <DayLight target={[0, 0, 4]} />
@@ -351,8 +351,8 @@ export const TorFirst: React.FC = () => {
   const s = beat("pipScratchesPlaque");
   const scratch = ramp(frame, s - 6, s + 18);
   const plq: V3 = [PLAQUE[0], PLAQUE[1], -0.1];
-  const pip: V3 = [PLAQUE[0] - 1.1, 0, -1.5];
-  const a = cam([plq[0] - 3.2, 2.6, -8.8], [plq[0] - 0.3, 1.7, 0], 40);
+  const pip: V3 = [PLAQUE[0] - 1.6, 0, -0.9];
+  const a = cam([plq[0] - 1.6, 2.4, -11], [plq[0] - 0.8, 1.9, 0], 40);
   const b = cam([-5, 6.5, -30], [0, 5.2, 0], 40);
   return (
     <>
@@ -367,7 +367,7 @@ export const TorFirst: React.FC = () => {
         <meshStandardMaterial color="#D9C49A" roughness={0.95} />
       </mesh>
       <GateWall counter="0 / 1,000" backCounter scratch={scratch} />
-      <Blok frame={frame} who="pip" position={pip} rotation={[0, 0.5, 0]} reach={[0.3, 1.45]} spread={[0.1, -0.05]} eyes="happy" mouth="grin" look={-0.5} paint={0} />
+      <Blok frame={frame} who="pip" position={pip} rotation={[0, Math.PI, 0]} reach={[0.2, 0.15]} spread={[1.2 + 0.08 * Math.sin(frame * 0.8), 0.1]} eyes="happy" mouth="grin" look={0.35} paint={0} />
       <Shot frame={f} duration={len} {...fly(a, b)} span={[Math.min(len - 30, beat("pullBackWall") - 10), len]} ease="inOut" />
     </>
   );
@@ -380,12 +380,12 @@ export const TorStinger: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("stinger");
   const people = useTownCrowd(999);
   if (shot === 0) {
-    // drinnen: 999 Klötze erstarrt mit erhobenen Kellen, Zähler bleibt auf „yeses“ bei 999 stehen; Hollis hängt die NO-Kelle an den Haken
+    // drinnen: 999 Klötze erstarrt mit erhobenen Kellen, Zähler bleibt auf „yeses“ bei 999 stehen; Hollis lässt die NO-Kelle sinken
     const y = beat("frozenSquare");
     const hang = ramp(frame, 6, Math.max(20, y + 10));
-    const hp: V3 = [BOOTH[0] - 1.9, 0, BOOTH[2] + 1.7];
-    const a = cam([8.5, 4.6, 17], [1.6, 4.4, 1], 40);
-    const b = cam([8.0, 4.4, 15.5], [1.8, 4.3, 1], 40);
+    const hp: V3 = [3.6, 0, 5.4];
+    const a = cam([6.8, 4.4, 17.5], [0.6, 4.6, 1], 40);
+    const b = cam([6.3, 4.2, 16], [0.8, 4.5, 1], 40);
     return (
       <>
         <DayLight target={[2, 0, 6]} />
@@ -395,25 +395,15 @@ export const TorStinger: React.FC = () => {
           frame={frame}
           who="hollis"
           position={hp}
-          rotation={[0, 0.55, 0]}
+          rotation={[0, 0.35, 0]}
           eyes="sad"
           mouth="frown"
           cap={false}
-          reach={[1.0, lerp(1.6, 2.3, hang)]}
+          reach={[1.0, lerp(1.6, 0.15, hang)]}
           spread={[-0.4, 0.15]}
           holdL={<HollisCap position={[0, -0.1, 0.2]} rotation={[-1.4, 0, 0]} />}
-          holdR={hang < 0.95 ? <Paddle color={T.no} /> : null}
+          holdR={<Paddle color={T.no} rotation={[0, 0, -0.4 * hang]} />}
         />
-        {/* Haken an der Häuschen-Seite, Kelle hängt dort am Ende */}
-        <mesh position={[BOOTH[0] - 1.25, 2.9, BOOTH[2] + 0.4]}>
-          <boxGeometry args={[0.14, 0.14, 0.3]} />
-          <meshStandardMaterial color={T.brass} metalness={0.8} roughness={0.3} />
-        </mesh>
-        {hang >= 0.95 ? (
-          <group position={[BOOTH[0] - 1.3, 1.95, BOOTH[2] + 0.5]} rotation={[0, -Math.PI / 2, 0]}>
-            <Paddle color={T.no} />
-          </group>
-        ) : null}
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
     );
