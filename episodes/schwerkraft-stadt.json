@@ -23,9 +23,9 @@
     "cta": "Follow. We'll catch you.",
     "seconds": 2
   },
-  "sources": "Reine Fiktion (Welt-Regel-Short im Muster 'In this city, …', docs/trends/2026-11-19.md Thema #1). Keine Tatsachenbehauptung im Sprechtext: Die Regel 'Schwerkraft zieht zum schwersten Menschen' und 'je leichter, desto weniger hält sie dich' sind erfundene Regeln dieser Stadt (in echter Physik fallen leichte und schwere Körper gleich schnell) – deshalb keine Primärquelle nötig. Figuren (Big Marta, Pip), Stadt, Stadtwaage und alle Requisiten erfunden. Keine echten Bilder/Videos (Nutzer 14.11.2026), keine Marken, kein Roblox-Look, keine fremden Figuren.",
-  "pointe": "Everyone in this city fights to stay light so the world won't fall on them – but when the lightest kid floats away, only the heaviest person can pull him back: someone has to be heavy enough to catch you. Loop: 'So here, nothing falls down. It falls toward Big Marta.' → Hook.",
-  "originality": "Eigene Welt-Regel (Schwerkraft zum schwersten Menschen) – in der Marktanalyse 19.11. nicht belegt/kopiert (dort: nobody goes home, Preis/Zahl über dem Kopf, Statuen, 10.000 Wörter, Erinnerungen). Abstand zu zeit-welt (Bezahlen mit Zeit): keine Währung, kein Sandglas, keine Behörde; Twist ist keine Lüge der Welt, sondern eine Umdeutung der Regel (Last → Halt). Eigene Klotzfiguren Marta und Pip, eigenes Schlüsselobjekt Stadtwaage mit Klapptafel. Sensibilität: Martas Gewicht kommt sichtbar aus dem, was sie auffängt (Schürzentaschen, Stapel) – kein Körper-Witz, sie ist die Heldin; 'Big Marta' ist Spitzname, nie Spott.",
+  "sources": "Reine Fiktion (Welt-Regel-Short im Muster 'In this city, …', docs/trends/2026-11-19.md Thema #1). Keine Tatsachenbehauptung im Sprechtext: Die Regeln 'Schwerkraft zieht zu dem, der am meisten trägt' und 'je weniger du trägst, desto weniger hält sie dich' sind erfundene Regeln dieser Stadt (in echter Physik fallen leichte und schwere Körper gleich schnell) – deshalb keine Primärquelle nötig. Figuren (Granny Marta, Bo), Stadt, Stadtwaage und alle Requisiten erfunden. Caption kennzeichnet 'A tiny tale' + '(Fiction.)'. Keine echten Bilder/Videos (Nutzer 14.11.2026), keine Marken, kein Roblox-Look, keine fremden Figuren.",
+  "pointe": "Everyone in this city fights to carry nothing so the world won't fall on them – but when the lightest kid floats away, only the one who carries the most can pull him back: someone has to carry enough to catch you. Loop: 'So here, nothing falls down. It falls toward Granny Marta.' → Hook.",
+  "originality": "Eigene Welt-Regel (Schwerkraft zu dem, der am meisten trägt) – in der Marktanalyse 19.11. nicht belegt/kopiert (dort: nobody goes home, Preis/Zahl über dem Kopf, Statuen, 10.000 Wörter, Erinnerungen). Abstand zu zeit-welt (Bezahlen mit Zeit): keine Währung, kein Sandglas, keine Behörde; Twist ist keine Lüge der Welt, sondern eine Umdeutung der Regel (Last → Halt). Eigene Klotzfiguren Granny Marta und Bo, eigenes Schlüsselobjekt Stadtwaage mit Klapptafel. Sensibilität (Runde 2, Orchestrator + Fakten/Retention): Regel auf LAST statt Körpergewicht; Marta ist nicht breiter als andere, ihr Gewicht kommt sichtbar aus vollen Schürzentaschen, Sack und Stapel (ab 'rule'); die Waage wiegt nie ihren Körper; Spitzname 'Granny Marta' statt 'Big Marta'.",
   "music": {
     "mood": "funny",
     "bpm": 92,
@@ -40,7 +40,7 @@
   },
   "narratorMood": {
     "mood": "verschmitzt-ironisch, staunend; ab der Gefahr leise-gespannt, am Ende warm und ruhig",
-    "why": "Absurde Welt-Regel mit Pointe (Kurioses/Satire → witzig + ironic/playful) – der Erzähler wundert sich augenzwinkernd über eine Stadt, die vor dem Schwersein flieht; als Pip wegtreibt, leiser und gespannt; die Rettung ist zärtlich, das Ende ruhig. Sprechart (Pflicht, clip-regeln.md 14.11.2026): voicePreset 'witzig' überschreibt den Dashboard-Standard 'lebendig', weil der Ton ironisch ist; die emotion-Objekte je Szene setzen exag/cfg/Tempo (bei gesetztem emotion-Objekt wirkt nur speed × emotion.speed, scripts/make_episode.py – das hohe Preset-Tempo 1,12 von 'witzig' greift also nicht)."
+    "why": "Absurde Welt-Regel mit Pointe (Kurioses/Satire → witzig + ironic/playful) – der Erzähler wundert sich augenzwinkernd über eine Stadt, die vor jeder Last flieht; als Bo wegtreibt, leiser und gespannt; die Rettung ist zärtlich, das Ende ruhig. Sprechart (Pflicht, clip-regeln.md 14.11.2026): voicePreset 'witzig' überschreibt den Dashboard-Standard 'lebendig', weil der Ton ironisch ist; die emotion-Objekte je Szene setzen exag/cfg/Tempo (bei gesetztem emotion-Objekt wirkt nur speed × emotion.speed, scripts/make_episode.py – das hohe Preset-Tempo 1,12 von 'witzig' greift also nicht)."
   },
   "soundBed": {
     "why": "KnowToon-Prompt STEP 5: Ambient passend zum Ort – Wind über einer schiefen Stadt, leiser Schräg-Regen (room, rain_db als Rausch-Pegel), Basstreffer vor jeder Enthüllung, ein scharfer Akzent auf der Wendung ('Marta' in turn), ohne Gesang. Kein Uhr-Tick (keine Zeitanzeige). Klang-IDs aus der earshot-Klangbank wie Sonne; Eignung per earshot rank vor dem Mix prüfen. Wind-Böe in 'gust' über Cue-whoosh; eigener Wind-Klang optional (Ton prüft).",
@@ -71,7 +71,7 @@
       },
       {
         "scene": "marta",
-        "word": "caught"
+        "word": "heavier"
       },
       {
         "scene": "loop",
@@ -109,7 +109,7 @@
   "style": {
     "look": "3d",
     "why": "Vorgabe Basis-Prompt + K7 (3D-Klotzfiguren), Vorbild 'In This City, You Pay With Time'. Das Thema lebt von schiefem Raum: eine schüsselförmige Stadt, deren Straßen, Laternen und Dächer zu einem Punkt kippen, Dinge, die seitwärts fallen, ein Kind, das zwischen Dächern aufsteigt – Perspektive, Volumenlicht, Rim-Light, Regen- und Laub-Partikel kann das 3D-Bau-Kit (src/episode/kit/) besser als 2D. Zug der Schwerkraft als sichtbare 3D-Linien in derselben Welt, keine flache Infografik.",
-    "characters": "BIG MARTA = eigene Klotzfigur, ca. 60: breiter, standfester Kastenkörper, runde Punkt-Augen, freundlicher einfacher Mund, grauer Dutt-Klotz, rostrote Strickjacke, große geflickte Schürzentaschen voller aufgefangener Dinge (Schlüssel, Teetasse, Hutkrempe), orange Katze als Begleiter. PIP = eigene Klotzfigur, ca. 8: kleiner Würfelkopf, mintgrüne Regenjacke, gelbe Kappe, sechs himmelblaue Ballons an Jacke und Gürtelschlaufen, Turnschuhe. Stadtleute: einfache Klotzfiguren mit Ballon-Hüten (zwei Ballons je Hut). Schlüsselobjekt: die Messing-STADTWAAGE am Platz mit Klapptafel 'CENTER OF GRAVITY: MARTA' (HUD greift sie auf) + Martas offene Arme (Schlussbild). Farblogik: Bernstein/Amber = Zug der Schwerkraft (Zuglinien, Laternen, Martas Veranda) · Himmelblau/Weiß = Leichtigkeit (Ballons, Luft, Wolken) · Terrakotta-Pastell = Stadt; Rostrot nur an Marta. Kein Roblox-Look (keine glatten Lego-/Roblox-Proportionen, keine Spiel-UI, keine Marken-Hashtags), keine Marken, keine echten Bilder."
+    "characters": "GRANNY MARTA = eigene Klotzfigur, ca. 60: gleiche Körpergröße und -breite wie alle Stadtleute (NICHT breiter), runde Punkt-Augen, freundlicher einfacher Mund, grauer Dutt-Klotz, rostrote Strickjacke, große geflickte Schürzentaschen voller aufgefangener Dinge (Schlüssel, Teetasse, Hutkrempe) und ein vollgestopfter Sack auf dem Rücken – ihr Gewicht ist die LAST, die man ab 'rule' sieht; orange Katze als Begleiter. BO = eigene Klotzfigur, ca. 8: kleiner Würfelkopf, mintgrüne Regenjacke, gelbe Kappe, sechs himmelblaue Ballons an Jacke und Gürtelschlaufen, umgestülpte leere Taschen, Turnschuhe. Stadtleute: einfache Klotzfiguren mit Ballon-Hüten (zwei Ballons je Hut) und leeren Taschen. Schlüsselobjekt: die Messing-STADTWAAGE am Platz mit Klapptafel 'CENTER OF GRAVITY: MARTA' – ihre Schale wiegt Lasten (Taschen/Sack), nie Körper (HUD greift sie auf) + Martas offene Arme (Schlussbild). Farblogik: Bernstein/Amber = Zug der Schwerkraft (Zuglinien, Laternen, Martas Veranda) · Himmelblau/Weiß = Leichtigkeit (Ballons, Luft, Wolken) · Terrakotta-Pastell = Stadt; Rostrot nur an Marta. Kein Roblox-Look (keine glatten Lego-/Roblox-Proportionen, keine Spiel-UI, keine Marken-Hashtags), keine Marken, keine echten Bilder."
   },
   "hud": {
     "title": "IN THIS CITY",
@@ -120,25 +120,25 @@
         "value": "MARTA"
       },
       {
-        "id": "pip",
-        "label": "PIP",
+        "id": "bo",
+        "label": "BO",
         "value": "GROUNDED"
       }
     ],
     "bars": []
   },
-  "note": "v1 (19.11.2026, Autopilot). 164 Skriptwörter, 15 Szenen, 31 Einstellungen inkl. End-Card (Ø 2,16 s, max 5,10 s Halt turn, min 1,51 s), 48 Phrasen à 2–5 W. Plan 2,54 W/s → 66,8 s inkl. End-Card (Spanne 61,8 s bei 2,75 W/s bis 69,1 s bei 2,45 W/s; Nutzer 19.11./K15 61–70 s). Re-Hook 'But being too light is worse.' bei 39,5 % (Wort 68/164 = 41 %), Wendung turn 71–72 %, Enthüllung 'toward Marta' ≈ 78 %, Nachspann nach der Wendung 31 W = 19 % (≤ 25 %). Skript-Prüfung (scratchpad build_sk.py, im Paket beschrieben): Sätze ≤ 12 W, 1 Akzent je Satz, captions 2–5 W und Wortfolge = Sprechtext, K13-Schnitt onScreen ∩ Untertitel-Inhaltswörter = 0 in 15/15 Szenen, Cue-Wörter vorhanden, Einstellungen 1,3–4 s außer turn (≤ 6 s), Szenen ≤ 8 s, why ≤ 8 W: 0 Verstöße. HUD-Werte stehen auf dem gesprochenen Cue-Wort (Lesson 9): PIP GROUNDED 'worse' → FLOATING 'hits' → TOO HIGH 'up' → SLOWING 'caught' → FALLING 'fall' → SAFE 'arms'. Offen: music.sections für gen_funny (Ton).",
+  "note": "v1.1 (19.11.2026, Nacharbeit Runde 2 nach Fakten 8 / Retention 8,5): Regel auf Last ('whoever carries the most', 'The less you carry…'), Big Marta → Granny Marta (Figur nicht breiter, Gewicht = Taschen/Sack/Stapel, Waage wiegt nie Körper), Pip → Bo, Hook-Frage 'WHY DOES IT ALL FALL TO HER?', light-onScreen 'EVERYONE FLEES HER PULL', marta 'She grabs it all… to get heavier.' + 'SHE LOADS UP ON PURPOSE'. 166 Skriptwörter, 15 Szenen, 31 Einstellungen inkl. End-Card (Ø 2,18 s, max 5,09 s Halt turn, min 1,50 s), 48 Phrasen à 2–5 W. Plan 2,54 W/s → 67,6 s inkl. End-Card (62,5 s bei 2,75 W/s bis 69,9 s bei 2,45 W/s); Plan B > 69,5 s: 'Everyone stays light.' streichen. Re-Hook 'But being too light is worse.' bei 39,6 % (Wort 69/166), Wende turn 72 %, Enthüllung 'toward Marta' ≈ 78 %, Nachspann 31 W = 19 %. Skript-Prüfung (scratchpad sk/build_sk.py): Sätze ≤ 12 W, 1 Akzent je Satz, captions 2–5 W = Sprechtext, K13-Schnitt 0 in 15/15, Cue-Wörter vorhanden, Einstellungen 1,3–4 s außer turn (≤ 6 s), Szenen ≤ 8 s, why ≤ 8 W: 0 Verstöße. HUD 'BO' am Cue-Wort: GROUNDED 'worse' → FLOATING 'hits' → TOO HIGH 'up' → SLOWING 'heavier' → FALLING 'fall' → SAFE 'arms'. Offen: music.sections für gen_funny (Ton).",
   "voiceProfile": "male, young adult – am_michael (Standardstimme, Nutzer 13.11.2026); Grundlaune verschmitzt-ironisch-staunend, Spannung beim Wegtreiben, Ende warm-ruhig.",
   "voiceNotes": {
     "prompt": "STEP 4/4b 'NARRATION & VOICE' (Nutzer 13.11.2026), umgesetzt mit Chatterbox wie Sonne (Mechanik 15.11.: comma_whisper, end_soft_ms, splitCommas, pauseBeforeMs, room_tone_db).",
-    "tempo": "Nutzer 19.11. (K15): 61–70 s inkl. End-Card. 164 Skriptwörter. Gesamtdauer = 0,15 s Vorlauf + 164 W / Rate + 2,0 s End-Card. Plan 2,54 W/s (Szenen 2,59 W/s inkl. Satz-/Szenenpausen + 0,85 s Stille vor turn + 0,5 s vor loop) → Sprache endet 64,8 s, Video 66,8 s. Spanne: 2,45 W/s → 69,1 s · 2,75 W/s → 61,8 s – beide in 61–70 s (K4/K14: ≥ 2,45, atempo ≤ 1,05).",
+    "tempo": "Nutzer 19.11. (K15): 61–70 s inkl. End-Card. 166 Skriptwörter (v1.1). Gesamtdauer = 0,15 s Vorlauf + 166 W / Rate + 2,0 s End-Card. Plan 2,54 W/s (Szenen 2,59 W/s inkl. Satz-/Szenenpausen + 0,85 s Stille vor turn + 0,5 s vor loop) → Sprache endet 65,6 s, Video 67,6 s. Spanne: 2,75 W/s → 62,5 s · 2,45 W/s → 69,9 s. Plan B (Koordinator): misst das Video nach der Vertonung > 69,5 s, wird in 'answer' der Satz 'Everyone stays light.' gestrichen (−3 W → 163 W, ≈ −1,2 s; Hook-Antwort bleibt im zweiten Satz).",
     "chatterbox": "exaggeration 0,50–0,65, cfg 0,85–0,95 (höheres cfg = schnelleres Sprechen, K14/Lesson 9), temperature 0,70–0,82 je Szene im Feld emotion; speed 1,05 = Obergrenze (narrator.max_speed 1,05).",
-    "emotionMap": "voicePreset witzig · setup (hook, rule, slide, light; ironic/playful) = verschmitzt, staunend (−0,5 dB) · tension (dump ironic, lonely sad, rehook/gust/town tense, pip playful, marta warm) = ab rehook leiser, gespannter (−2,5 dB) · hope (marta) = entschlossen, offener · twist (turn dramatic) = lauter, getragen (exag 0,65, +1,5 dB) · ending (catch warm, answer calm) = warm, tief (−1,5/−2 dB, Satzende −6 dB) · loop ironic, end_db 2,5 (kein starkes Absenken) → springt in den Hook.",
+    "emotionMap": "voicePreset witzig · setup (hook, rule, slide, light; ironic/playful) = verschmitzt, staunend (−0,5 dB) · tension (dump ironic, lonely sad, rehook/gust/town tense, bo playful, marta warm) = ab rehook leiser, gespannter (−2,5 dB) · hope (marta) = entschlossen, offener · twist (turn dramatic) = lauter, getragen (exag 0,65, +1,5 dB) · ending (catch warm, answer calm) = warm, tief (−1,5/−2 dB, Satzende −6 dB) · loop ironic, end_db 2,5 (kein starkes Absenken) → springt in den Hook.",
     "pauses": "' | ' vor jeder Enthüllung ≈ 0,45–0,55 s; vor 'turn' 0,85 s totale Stille (pauseBeforeMs 250 + Musik/Bett still); vor der Loop-Szene 0,5 s (STEP 4b: 0,5 s vor der letzten Zeile). Maßstab K12 (Satzpause ≥ 250 ms, Szene ≥ 430 ms, Satzende ≤ −1,0 dB).",
     "rules": "Sätze ≤ 12 Wörter, genau ein *Akzentwort* je Satz (Skript-Prüfung 0 Verstöße), keine Füllwörter, kein Overacting; keine gesprochenen Zahlen (Ballon-Zahl nur im Bild); Whisper ≥ 98 % (K9).",
-    "conflict": "K4/K14/K15: Tempo ≥ 2,45 W/s ohne Beschleunigen über 1,05 – Tempo aus cfg; nach der Vertonung Länge messen (Ziel 61–70 s inkl. End-Card), bei > 70 s zuerst Szenenpausen auf Untergrenze, dann Text kürzen (nach dem Höhepunkt)."
+    "conflict": "K4/K14/K15: Tempo ≥ 2,45 W/s ohne Beschleunigen über 1,05 – Tempo aus cfg; nach der Vertonung Länge messen (Ziel 61–70 s inkl. End-Card), bei > 69,5 s Plan B ('Everyone stays light.' in answer streichen), danach Szenenpausen an die Untergrenze."
   },
-  "version": "v1 (19.11.2026, Autopilot; Basis-Prompt + Erweiterung 'Continuous Improvement', Nutzervorgabe 61–70 s)",
+  "version": "v1.1 (19.11.2026, Nacharbeit Runde 2: Fakten 8 / Retention 8,5 → Last-Regel, Granny Marta, Bo, neue Hook-Frage; v1 Autopilot)",
   "narrator": {
     "max_speed": 1.05,
     "piece_extra_ms": 45,
@@ -150,32 +150,32 @@
   },
   "captionNote": "Erweiterung Regel 4 + K6: Untertitel als 2–5-Wort-Phrasen (Feld captions je Szene, Wortfolge = Sprechtext, per Skript geprüft), gelb mit dickem schwarzem Rand, unteres Drittel; je Szene eine Handlungs-Phrase (onScreen, oberes Drittel) in ANDEREN Worten (K13: Schnitt mit den Untertitel-Inhaltswörtern der Szene ≤ 1, gemessen 0 in allen 15 Szenen). Lesetest: nur onScreen gelesen erzählt die Geschichte.",
   "hookQuestion": {
-    "text": "WHO'D WANT TO BE HER?",
-    "shownBy": "Cover 0–0,5 s ('IT ALL FALLS TO HER') + Sticker 'WHO'D WANT TO BE HER?' bis 2,0 s + seitwärts fallender Apfel (ohne Ton lesbar)",
-    "answer": "Nobody wants to be the heaviest – but someone has to be heavy enough to catch you (Marta pulls the floating Pip back into her arms), and the loop lands back on 'In this city, nothing falls down.'"
+    "text": "WHY DOES IT ALL FALL TO HER?",
+    "shownBy": "Cover 0–0,5 s ('IT ALL FALLS TO HER') + Sticker 'WHY DOES IT ALL FALL TO HER?' 0,5–2,0 s + seitwärts fallender Apfel (ohne Ton lesbar)",
+    "answer": "Literally because she carries the most (rule) – and in the end because someone has to carry enough to catch you: Marta loads up on purpose and pulls the floating Bo back into her arms; the loop lands back on 'In this city, nothing falls down.'"
   },
   "finalImage": {
-    "image": "Martas offene Arme, die auffangen (Schlussworte: 'falls toward Big Marta')",
-    "plant": "hook (Schlussworte 'It falls toward Big Marta', 0 %) + slide (Marta fängt die Katze, Bild ≈ 13 %)",
+    "image": "Martas offene Arme, die auffangen (Schlussworte: 'falls toward Granny Marta')",
+    "plant": "hook (Schlussworte 'It falls toward Granny Marta', 0 %) + slide (Marta fängt die Katze, Bild ≈ 13 %)",
     "repeat": "lonely (leere Arme, 'No hugs in years.', ≈ 33 %) + turn ('fall… toward Marta', ≈ 72 %)",
-    "payoff": "catch/answer/loop (≈ 78–91 %): Die Arme, auf die alles fällt, fangen jetzt ein Kind – 'falls toward Big Marta' heißt am Ende nicht mehr Last, sondern Halt."
+    "payoff": "catch/answer/loop (≈ 78–91 %): Die Arme, auf die alles fällt, fangen jetzt ein Kind – 'falls toward Granny Marta' heißt am Ende nicht mehr Last, sondern Halt."
   },
   "emotionalPeak": {
     "emotion": "tender relief after fear (zärtliche Erleichterung nach Angst)",
     "steps": {
-      "stakes": "gust/town (34,9–43,0 s ≈ 52–64 %): Pip treibt über die Dächer, die ganze Stadt ist zu leicht, um ihn zu halten",
-      "hope": "marta (43,0 s ≈ 64 %): 'Only Marta does the opposite. She grabs everything she ever caught.'",
-      "turn": "turn (Stille ab 47,25 s ≈ 71 %, Sprache 48,1 s ≈ 72 %, 'toward Marta' ≈ 52,0 s ≈ 78 %): 'High above, Pip stops rising. And starts to fall… toward Marta.'"
+      "stakes": "gust/town (35,3–43,4 s ≈ 52–64 %): Bo treibt über die Dächer, die ganze Stadt trägt zu wenig, um ihn zu halten",
+      "hope": "marta (43,4 s ≈ 64 %): 'Only Marta does the opposite. She grabs it all… to get heavier.'",
+      "turn": "turn (Stille ab 48,0 s ≈ 71 %, Sprache 48,9 s ≈ 72 %, 'toward Marta' ≈ 52,8 s ≈ 78 %): 'High above, Bo stops rising. And starts to fall… toward Marta.'"
     },
     "silenceBefore": "0,85 s totale Stille (Musik + Bett) vor 'turn'",
-    "hold": "turn = einzige Einstellung > 4 s (5,10 s inkl. Stille, ≤ 6 s)"
+    "hold": "turn = einzige Einstellung > 4 s (5,09 s inkl. Stille, ≤ 6 s)"
   },
   "shotPlan": {
     "shots": 31,
-    "avgSec": 2.16,
+    "avgSec": 2.18,
     "previous": "Sonne 112,4 s / 48 Shots Ø 2,30 s, max 4,87 s (Halt)",
-    "maxSec": "5.10 (nur Halt 'turn'), sonst ≤ 2.42",
-    "minSec": 1.51
+    "maxSec": "5.09 (nur Halt 'turn'), sonst ≤ 2.42",
+    "minSec": 1.5
   },
   "scenes": [
     {
@@ -192,14 +192,14 @@
         "end_db": 5.0,
         "gain_db": -0.5
       },
-      "text": "In this city, nothing falls *down*. | It falls toward Big *Marta*.",
+      "text": "In this city, nothing falls *down*. | It falls toward Granny *Marta*.",
       "onScreen": "AN APPLE DROPS SIDEWAYS",
       "why": "start: result before cause",
-      "visual": "SHOT 1 (ECU, slow push-in, COVER 0–0,5 s ohne Untertitel): a blocky toy hand lets go of a red apple above a cobbled street – the apple drops SIDEWAYS, curving away to the left (visible without sound); cover title 'IT ALL FALLS TO HER' in accent yellow, upper third, small 'Gravity has a favorite'; title fully gone by 0,5 s (no overlap with the first caption); hook question sticker 'WHO'D WANT TO BE HER?' ≥ 45 % frame width, 0,5–2,0 s, not on Marta's face / SHOT 2 (wide, low-angle, tracking the apple): the apple rolls along a tilted street, past leaning lamp posts, and stops at the boots of BIG MARTA on her porch at the bottom of the bowl-shaped town; amber pull-lines curve toward her; HUD 'CENTER OF GRAVITY: MARTA' pops in",
+      "visual": "SHOT 1 (ECU, slow push-in, COVER 0–0,5 s ohne Untertitel): a blocky toy hand lets go of a red apple above a cobbled street – the apple drops SIDEWAYS, curving away to the left (visible without sound); cover title 'IT ALL FALLS TO HER' in accent yellow, upper third, small 'Gravity has a favorite'; title fully gone by 0,5 s (no overlap with the first caption); hook question sticker 'WHY DOES IT ALL FALL TO HER?' ≥ 45 % frame width, 0,5–2,0 s, not on Marta's face / SHOT 2 (wide, low-angle, tracking the apple): the apple rolls along a tilted street, past leaning lamp posts, and stops at the boots of GRANNY MARTA on her porch at the bottom of the bowl-shaped town; amber pull-lines curve toward her; HUD 'CENTER OF GRAVITY: MARTA' pops in",
       "shots": [
         {
           "type": "ECU, slow push-in, COVER 0–0,5 s ohne Untertitel",
-          "desc": "a blocky toy hand lets go of a red apple above a cobbled street – the apple drops SIDEWAYS, curving away to the left (visible without sound); cover title 'IT ALL FALLS TO HER' in accent yellow, upper third, small 'Gravity has a favorite'; title fully gone by 0,5 s (no overlap with the first caption); hook question sticker 'WHO'D WANT TO BE HER?' ≥ 45 % frame width, 0,5–2,0 s, not on Marta's face",
+          "desc": "a blocky toy hand lets go of a red apple above a cobbled street – the apple drops SIDEWAYS, curving away to the left (visible without sound); cover title 'IT ALL FALLS TO HER' in accent yellow, upper third, small 'Gravity has a favorite'; title fully gone by 0,5 s (no overlap with the first caption); hook question sticker 'WHY DOES IT ALL FALL TO HER?' ≥ 45 % frame width, 0,5–2,0 s, not on Marta's face",
           "t": [
             0.0,
             2.42
@@ -207,7 +207,7 @@
         },
         {
           "type": "wide, low-angle, tracking the apple",
-          "desc": "the apple rolls along a tilted street, past leaning lamp posts, and stops at the boots of BIG MARTA on her porch at the bottom of the bowl-shaped town; amber pull-lines curve toward her; HUD 'CENTER OF GRAVITY: MARTA' pops in",
+          "desc": "the apple rolls along a tilted street, past leaning lamp posts, and stops at the boots of GRANNY MARTA on her porch at the bottom of the bowl-shaped town; amber pull-lines curve toward her; HUD 'CENTER OF GRAVITY: MARTA' pops in",
           "t": [
             2.42,
             4.4
@@ -215,13 +215,13 @@
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
           "word": "down",
           "beat": "appleDropsSideways",
-          "sticker": "WHO'D WANT TO BE HER?",
+          "sticker": "WHY DOES IT ALL FALL TO HER?",
           "color": "#FFD23F"
         },
         {
@@ -237,7 +237,7 @@
       "captions": [
         "In this city,",
         "nothing falls down.",
-        "It falls toward Big Marta."
+        "It falls toward Granny Marta."
       ]
     },
     {
@@ -254,34 +254,34 @@
         "end_db": 4.5,
         "gain_db": -0.5
       },
-      "text": "Gravity here pulls toward the heaviest *person*. | Right now, that's *Marta*.",
+      "text": "Gravity here pulls toward whoever carries the *most*. | Right now, that's *Marta*.",
       "onScreen": "THE TOWN SCALE PICKS HER",
-      "why": "because: the heaviest one wins",
-      "visual": "SHOT 1 (medium, town square): the giant brass TOWN SCALE in the square, its big name board flipping letter by letter (split-flap) to 'MARTA'; tiny townsfolk with balloon hats glance at it nervously / SHOT 2 (close-up, slight low angle): BIG MARTA on her porch: broad, sturdy, kind round-dot eyes, grey bun, rust-red cardigan, huge patched apron pockets bulging with caught things (keys, a teacup, a hat brim); she gives the camera a tired little wave",
+      "why": "because: the biggest load wins",
+      "visual": "SHOT 1 (medium, town square): the giant brass TOWN SCALE in the square: its pan holds a small model of an overstuffed apron pocket (it weighs LOADS, never bodies), its big name board flipping letter by letter (split-flap) to 'MARTA'; tiny townsfolk with balloon hats glance at it nervously / SHOT 2 (close-up, slight low angle): GRANNY MARTA on her porch – the same body size as every other townsperson; kind round-dot eyes, grey bun, rust-red cardigan, huge patched apron pockets bulging with caught things (keys, a teacup, a hat brim) and a stuffed sack on her back – the load is what makes her heavy; she gives the camera a tired little wave",
       "shots": [
         {
           "type": "medium, town square",
-          "desc": "the giant brass TOWN SCALE in the square, its big name board flipping letter by letter (split-flap) to 'MARTA'; tiny townsfolk with balloon hats glance at it nervously",
+          "desc": "the giant brass TOWN SCALE in the square: its pan holds a small model of an overstuffed apron pocket (it weighs LOADS, never bodies), its big name board flipping letter by letter (split-flap) to 'MARTA'; tiny townsfolk with balloon hats glance at it nervously",
           "t": [
             4.4,
-            6.52
+            6.71
           ]
         },
         {
           "type": "close-up, slight low angle",
-          "desc": "BIG MARTA on her porch: broad, sturdy, kind round-dot eyes, grey bun, rust-red cardigan, huge patched apron pockets bulging with caught things (keys, a teacup, a hat brim); she gives the camera a tired little wave",
+          "desc": "GRANNY MARTA on her porch – the same body size as every other townsperson; kind round-dot eyes, grey bun, rust-red cardigan, huge patched apron pockets bulging with caught things (keys, a teacup, a hat brim) and a stuffed sack on her back – the load is what makes her heavy; she gives the camera a tired little wave",
           "t": [
-            6.52,
-            8.64
+            6.71,
+            9.03
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
-          "word": "person",
+          "word": "most",
           "beat": "scaleBoardFlips"
         },
         {
@@ -291,7 +291,7 @@
       ],
       "captions": [
         "Gravity here pulls",
-        "toward the heaviest person.",
+        "toward whoever carries the most.",
         "Right now, that's Marta."
       ]
     },
@@ -319,29 +319,29 @@
           "type": "high wide, crane down",
           "desc": "the whole bowl-shaped town: every street, roof and lamp post leans toward Marta's little house in the center like a funnel; rain falls diagonally toward it",
           "t": [
-            8.64,
-            10.45
+            9.03,
+            10.84
           ]
         },
         {
           "type": "insert, ground level",
           "desc": "a hat and a soggy letter skid sideways along the wet cobbles, rain streaks slanting toward the porch",
           "t": [
-            10.45,
-            11.96
+            10.84,
+            12.34
           ]
         },
         {
           "type": "medium, Marta's porch (PLANT final image: her arms catch)",
           "desc": "a hat, a tumbling orange cat and slanted rain fly in from the side; Marta catches the cat in both arms without looking, rain drumming on her umbrella that points sideways",
           "t": [
-            11.96,
-            13.66
+            12.34,
+            14.05
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -380,7 +380,7 @@
         "gain_db": -0.5
       },
       "text": "So everyone fights to stay *light*. | Balloon hats, empty *pockets*.",
-      "onScreen": "NOBODY WANTS HER SPOT",
+      "onScreen": "EVERYONE FLEES HER PULL",
       "why": "so: nobody wants her place",
       "visual": "SHOT 1 (medium, street, left-to-right): blocky townsfolk walk on tiptoe, each wearing a hat tied to two sky-blue balloons; a man drops his briefcase like it's hot / SHOT 2 (detail, insert): a hand turns a coat pocket inside out – empty, a single moth flies out; behind, a woman shakes coins from her purse, the coins roll away downhill",
       "shots": [
@@ -388,21 +388,21 @@
           "type": "medium, street, left-to-right",
           "desc": "blocky townsfolk walk on tiptoe, each wearing a hat tied to two sky-blue balloons; a man drops his briefcase like it's hot",
           "t": [
-            13.66,
-            15.59
+            14.05,
+            15.98
           ]
         },
         {
           "type": "detail, insert",
           "desc": "a hand turns a coat pocket inside out – empty, a single moth flies out; behind, a woman shakes coins from her purse, the coins roll away downhill",
           "t": [
-            15.59,
-            17.52
+            15.98,
+            17.91
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -444,21 +444,21 @@
           "type": "tracking, downhill",
           "desc": "umbrellas, shoes, a bicycle and a teapot roll and bounce down the tilted streets toward Marta's porch",
           "t": [
-            17.52,
-            19.84
+            17.91,
+            20.23
           ]
         },
         {
           "type": "medium, Marta's porch",
           "desc": "Marta, surrounded by a growing pile of caught things, stuffs a key into her apron pocket; the TOWN SCALE needle in the background ticks further; the amber pull-lines thicken",
           "t": [
-            19.84,
-            22.16
+            20.23,
+            22.54
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -500,21 +500,21 @@
           "type": "wide, street corner",
           "desc": "a neighbour waves from far up the hill, steps one foot closer and instantly skids, grabbing a lamp post in panic",
           "t": [
-            22.16,
-            24.07
+            22.54,
+            24.46
           ]
         },
         {
           "type": "close-up, warm dusk light (REPEAT final image: empty arms)",
           "desc": "Marta alone on her porch bench at dusk, the orange cat on her lap, her open arms resting empty on her knees; a faded photo of a hug on the wall behind her",
           "t": [
-            24.07,
-            26.4
+            24.46,
+            26.79
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -554,26 +554,26 @@
       "text": "But being too light is *worse*.",
       "onScreen": "THE OTHER DANGER",
       "why": "but: light has a danger too",
-      "visual": "SHOT 1 (very slow push-in, ECU): a single sky-blue balloon string slipping through a small blocky hand, the wind starting to whistle; the HUD 'PIP' line pops in",
+      "visual": "SHOT 1 (very slow push-in, ECU): a single sky-blue balloon string slipping through a small blocky hand, the wind starting to whistle; the HUD 'BO' line pops in",
       "shots": [
         {
           "type": "very slow push-in, ECU",
-          "desc": "a single sky-blue balloon string slipping through a small blocky hand, the wind starting to whistle; the HUD 'PIP' line pops in",
+          "desc": "a single sky-blue balloon string slipping through a small blocky hand, the wind starting to whistle; the HUD 'BO' line pops in",
           "t": [
-            26.4,
-            28.72
+            26.79,
+            29.11
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
           "word": "worse",
           "beat": "balloonStringSlips",
           "hud": {
-            "id": "pip",
+            "id": "bo",
             "value": "GROUNDED"
           }
         }
@@ -584,7 +584,7 @@
       ]
     },
     {
-      "id": "pip",
+      "id": "bo",
       "section": "tension",
       "delivery": "playful",
       "emotion": {
@@ -597,43 +597,43 @@
         "end_db": 4.5,
         "gain_db": -0.5
       },
-      "text": "Pip is the lightest kid in *town*. | The less you weigh… the less it *holds* you.",
-      "onScreen": "PIP BARELY TOUCHES DOWN",
-      "why": "because: lightness weakens the pull",
-      "visual": "SHOT 1 (medium, low angle): PIP, a small blocky boy (about 8) in a mint-green rain jacket and yellow cap, six sky-blue balloons tied to his jacket, bouncing along the street in slow, moon-like hops / SHOT 2 (close-up): Pip grins up at his six balloons, proudly holding the strings; a neighbour with a balloon hat gives him a thumbs-up / SHOT 3 (detail, ground level): Pip's sneakers barely touch the cobbles; the amber pull-lines around him are thin and faint compared to the thick ones near Marta",
+      "text": "Bo is the lightest kid in *town*. | The less you carry… the less it *holds* you.",
+      "onScreen": "BO BARELY TOUCHES DOWN",
+      "why": "because: an empty load weakens the pull",
+      "visual": "SHOT 1 (medium, low angle): BO, a small blocky boy (about 8) in a mint-green rain jacket and yellow cap, six sky-blue balloons tied to his jacket, bouncing along the street in slow, moon-like hops / SHOT 2 (close-up): Bo grins up at his six balloons, proudly holding the strings; a neighbour with a balloon hat gives him a thumbs-up / SHOT 3 (detail, ground level): Bo's sneakers barely touch the cobbles; the amber pull-lines around him are thin and faint compared to the thick ones near Marta",
       "shots": [
         {
           "type": "medium, low angle",
-          "desc": "PIP, a small blocky boy (about 8) in a mint-green rain jacket and yellow cap, six sky-blue balloons tied to his jacket, bouncing along the street in slow, moon-like hops",
+          "desc": "BO, a small blocky boy (about 8) in a mint-green rain jacket and yellow cap, six sky-blue balloons tied to his jacket, bouncing along the street in slow, moon-like hops",
           "t": [
-            28.72,
-            30.82
+            29.11,
+            31.21
           ]
         },
         {
           "type": "close-up",
-          "desc": "Pip grins up at his six balloons, proudly holding the strings; a neighbour with a balloon hat gives him a thumbs-up",
+          "desc": "Bo grins up at his six balloons, proudly holding the strings; a neighbour with a balloon hat gives him a thumbs-up",
           "t": [
-            30.82,
-            32.55
+            31.21,
+            32.94
           ]
         },
         {
           "type": "detail, ground level",
-          "desc": "Pip's sneakers barely touch the cobbles; the amber pull-lines around him are thin and faint compared to the thick ones near Marta",
+          "desc": "Bo's sneakers barely touch the cobbles; the amber pull-lines around him are thin and faint compared to the thick ones near Marta",
           "t": [
-            32.55,
-            34.9
+            32.94,
+            35.29
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
           "word": "town",
-          "beat": "pipHops"
+          "beat": "boHops"
         },
         {
           "word": "holds",
@@ -641,9 +641,9 @@
         }
       ],
       "captions": [
-        "Pip is the lightest",
+        "Bo is the lightest",
         "kid in town.",
-        "The less you weigh…",
+        "The less you carry…",
         "the less it holds you."
       ]
     },
@@ -661,30 +661,30 @@
         "end_db": 5.5,
         "gain_db": -2.5
       },
-      "text": "Then a gust *hits*. | Pip floats up, past the *roofs*.",
+      "text": "Then a gust *hits*. | Bo floats up, past the *roofs*.",
       "onScreen": "THE WIND TAKES HIM",
       "why": "so: the wind lifts him",
-      "visual": "SHOT 1 (medium, street): a hard gust whips leaves and hats sideways; Pip's feet leave the ground, his cap flies off / SHOT 2 (high angle looking down, rising): Pip drifting up past chimneys and leaning roofs, balloons tugging, the town shrinking below him",
+      "visual": "SHOT 1 (medium, street): a hard gust whips leaves and hats sideways; Bo's feet leave the ground, his cap flies off / SHOT 2 (high angle looking down, rising): Bo drifting up past chimneys and leaning roofs, balloons tugging, the town shrinking below him",
       "shots": [
         {
           "type": "medium, street",
-          "desc": "a hard gust whips leaves and hats sideways; Pip's feet leave the ground, his cap flies off",
+          "desc": "a hard gust whips leaves and hats sideways; Bo's feet leave the ground, his cap flies off",
           "t": [
-            34.9,
-            36.64
+            35.29,
+            37.02
           ]
         },
         {
           "type": "high angle looking down, rising",
-          "desc": "Pip drifting up past chimneys and leaning roofs, balloons tugging, the town shrinking below him",
+          "desc": "Bo drifting up past chimneys and leaning roofs, balloons tugging, the town shrinking below him",
           "t": [
-            36.64,
-            38.76
+            37.02,
+            39.15
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -692,18 +692,18 @@
           "beat": "gustHits",
           "sfx": "whoosh",
           "hud": {
-            "id": "pip",
+            "id": "bo",
             "value": "FLOATING"
           }
         },
         {
           "word": "roofs",
-          "beat": "pipPastRoofs"
+          "beat": "boPastRoofs"
         }
       ],
       "captions": [
         "Then a gust hits.",
-        "Pip floats up,",
+        "Bo floats up,",
         "past the roofs."
       ]
     },
@@ -724,40 +724,40 @@
       "text": "The whole town reaches *up*. | But nobody's heavy enough to *pull*.",
       "onScreen": "ALL TOO LIGHT TO HELP",
       "why": "but: they're all too light",
-      "visual": "SHOT 1 (wide, low angle from the street): townsfolk with balloon hats stretch their arms up toward tiny Pip in the sky; one jumps and floats a little himself, flailing / SHOT 2 (over-the-shoulder from Pip, looking down): the crowd far below, arms raised, helpless; Pip's balloons tug him higher into the clouds",
+      "visual": "SHOT 1 (wide, low angle from the street): townsfolk with balloon hats stretch their arms up toward tiny Bo in the sky; one jumps and floats a little himself, flailing / SHOT 2 (over-the-shoulder from Bo, looking down): the crowd far below, arms raised, helpless; Bo's balloons tug him higher into the clouds",
       "shots": [
         {
           "type": "wide, low angle from the street",
-          "desc": "townsfolk with balloon hats stretch their arms up toward tiny Pip in the sky; one jumps and floats a little himself, flailing",
+          "desc": "townsfolk with balloon hats stretch their arms up toward tiny Bo in the sky; one jumps and floats a little himself, flailing",
           "t": [
-            38.76,
-            40.88
+            39.15,
+            41.27
           ]
         },
         {
-          "type": "over-the-shoulder from Pip, looking down",
-          "desc": "the crowd far below, arms raised, helpless; Pip's balloons tug him higher into the clouds",
+          "type": "over-the-shoulder from Bo, looking down",
+          "desc": "the crowd far below, arms raised, helpless; Bo's balloons tug him higher into the clouds",
           "t": [
-            40.88,
-            43.01
+            41.27,
+            43.39
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
           "word": "up",
           "beat": "crowdReaches",
           "hud": {
-            "id": "pip",
+            "id": "bo",
             "value": "TOO HIGH"
           }
         },
         {
           "word": "pull",
-          "beat": "pipLooksDown"
+          "beat": "boLooksDown"
         }
       ],
       "captions": [
@@ -780,8 +780,8 @@
         "end_db": 4.0,
         "gain_db": -0.5
       },
-      "text": "Only Marta does the *opposite*. | She grabs everything she ever *caught*.",
-      "onScreen": "SHE MAKES HERSELF HEAVIER",
+      "text": "Only Marta does the *opposite*. | She grabs it all… to get *heavier*.",
+      "onScreen": "SHE LOADS UP ON PURPOSE",
       "why": "but: Marta chooses to get heavier",
       "visual": "SHOT 1 (medium, Marta's porch, slow push-in): Marta stands up from her bench, plants her feet, rolls up her sleeves; the orange cat jumps on her shoulder (STEP 2: hope – music opens to a warm chord) / SHOT 2 (wide, porch, fast arm movements): Marta scoops the whole pile into her arms and apron – umbrellas, teapot, bicycle wheel, hats; the TOWN SCALE needle swings hard toward her; the amber pull-lines grow thick and reach upward; then 0,85 s TOTAL SILENCE",
       "shots": [
@@ -789,21 +789,21 @@
           "type": "medium, Marta's porch, slow push-in",
           "desc": "Marta stands up from her bench, plants her feet, rolls up her sleeves; the orange cat jumps on her shoulder (STEP 2: hope – music opens to a warm chord)",
           "t": [
-            43.01,
-            45.13
+            43.39,
+            45.71
           ]
         },
         {
           "type": "wide, porch, fast arm movements",
           "desc": "Marta scoops the whole pile into her arms and apron – umbrellas, teapot, bicycle wheel, hats; the TOWN SCALE needle swings hard toward her; the amber pull-lines grow thick and reach upward; then 0,85 s TOTAL SILENCE",
           "t": [
-            45.13,
-            47.25
+            45.71,
+            48.03
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -811,10 +811,10 @@
           "beat": "martaStandsUp"
         },
         {
-          "word": "caught",
+          "word": "heavier",
           "beat": "martaScoopsPile",
           "hud": {
-            "id": "pip",
+            "id": "bo",
             "value": "SLOWING"
           }
         }
@@ -822,8 +822,8 @@
       "captions": [
         "Only Marta does",
         "the opposite.",
-        "She grabs everything",
-        "she ever caught."
+        "She grabs it all…",
+        "to get heavier."
       ],
       "peak": "hope"
     },
@@ -842,33 +842,33 @@
         "end_db": 3.5,
         "gain_db": 1.5
       },
-      "text": "High above, Pip stops *rising*. | And starts to fall… toward *Marta*.",
+      "text": "High above, Bo stops *rising*. | And starts to fall… toward *Marta*.",
       "onScreen": "THE PULL REACHES HIM",
       "why": "so: her pull finally reaches him",
-      "visual": "SHOT 1 (ONE deliberate HOLD ≤ 6 s, slow push-in, from silence): after 0,85 s total silence: Pip hangs still in the clouds for one beat, balloons trembling – then the thick amber pull-line touches him, he turns head-down and starts to fall, gently at first, toward the tiny glowing porch far below; HUD 'PIP' switches to 'FALLING' (STEP 3: the turn; emotion: tender relief after fear)",
+      "visual": "SHOT 1 (ONE deliberate HOLD ≤ 6 s, slow push-in, from silence): after 0,85 s total silence: Bo hangs still in the clouds for one beat, balloons trembling – then the thick amber pull-line touches him, he turns head-down and starts to fall, gently at first, toward the tiny glowing porch far below; HUD 'BO' switches to 'FALLING' (STEP 3: the turn; emotion: tender relief after fear)",
       "shots": [
         {
           "type": "ONE deliberate HOLD ≤ 6 s, slow push-in, from silence",
-          "desc": "after 0,85 s total silence: Pip hangs still in the clouds for one beat, balloons trembling – then the thick amber pull-line touches him, he turns head-down and starts to fall, gently at first, toward the tiny glowing porch far below; HUD 'PIP' switches to 'FALLING' (STEP 3: the turn; emotion: tender relief after fear)",
+          "desc": "after 0,85 s total silence: Bo hangs still in the clouds for one beat, balloons trembling – then the thick amber pull-line touches him, he turns head-down and starts to fall, gently at first, toward the tiny glowing porch far below; HUD 'BO' switches to 'FALLING' (STEP 3: the turn; emotion: tender relief after fear)",
           "t": [
-            47.25,
-            52.35
+            48.03,
+            53.12
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
           "word": "rising",
-          "beat": "pipHangsStill"
+          "beat": "boHangsStill"
         },
         {
           "word": "fall",
-          "beat": "pipTurnsAndFalls",
+          "beat": "boTurnsAndFalls",
           "hud": {
-            "id": "pip",
+            "id": "bo",
             "value": "FALLING"
           }
         },
@@ -879,7 +879,7 @@
       ],
       "captions": [
         "High above,",
-        "Pip stops rising.",
+        "Bo stops rising.",
         "And starts to fall…",
         "toward Marta."
       ],
@@ -901,36 +901,36 @@
         "gain_db": -1.5
       },
       "text": "Right into her *arms*. | Her first hug in *years*.",
-      "onScreen": "PIP LANDS SAFE",
+      "onScreen": "BO LANDS SAFE",
       "why": "so: she catches him",
-      "visual": "SHOT 1 (medium, Marta's porch (PAYOFF final image: her arms)): Pip drops softly into Marta's open arms, balloons bobbing above them; the orange cat tumbles off her shoulder / SHOT 2 (close-up, warm golden dusk light): Marta hugs Pip tight, eyes closed, a small smile; Pip hugs back; HUD 'PIP: SAFE'",
+      "visual": "SHOT 1 (medium, Marta's porch (PAYOFF final image: her arms)): Bo drops softly into Marta's open arms, balloons bobbing above them; the orange cat tumbles off her shoulder / SHOT 2 (close-up, warm golden dusk light): Marta hugs Bo tight, eyes closed, a small smile; Bo hugs back; HUD 'BO: SAFE'",
       "shots": [
         {
           "type": "medium, Marta's porch (PAYOFF final image: her arms)",
-          "desc": "Pip drops softly into Marta's open arms, balloons bobbing above them; the orange cat tumbles off her shoulder",
+          "desc": "Bo drops softly into Marta's open arms, balloons bobbing above them; the orange cat tumbles off her shoulder",
           "t": [
-            52.35,
-            54.09
+            53.12,
+            54.86
           ]
         },
         {
           "type": "close-up, warm golden dusk light",
-          "desc": "Marta hugs Pip tight, eyes closed, a small smile; Pip hugs back; HUD 'PIP: SAFE'",
+          "desc": "Marta hugs Bo tight, eyes closed, a small smile; Bo hugs back; HUD 'BO: SAFE'",
           "t": [
-            54.09,
-            55.83
+            54.86,
+            56.6
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
           "word": "arms",
-          "beat": "pipLandsInArms",
+          "beat": "boLandsInArms",
           "hud": {
-            "id": "pip",
+            "id": "bo",
             "value": "SAFE"
           }
         },
@@ -967,21 +967,21 @@
           "type": "high wide, dusk",
           "desc": "the whole tilted town at dusk; tiny balloon hats bobbing in every street, all of them on long strings",
           "t": [
-            55.83,
-            58.14
+            56.6,
+            58.92
           ]
         },
         {
           "type": "medium, Marta's porch",
           "desc": "neighbours carefully edge down the hill holding on to a rope, one by one, toward Marta's porch – for the first time someone brings her tea",
           "t": [
-            58.14,
-            60.46
+            58.92,
+            61.23
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -1014,30 +1014,30 @@
         "end_db": 2.5,
         "gain_db": 0.0
       },
-      "text": "So here, nothing falls *down*. | It falls toward Big *Marta*.",
+      "text": "So here, nothing falls *down*. | It falls toward Granny *Marta*.",
       "onScreen": "THE TOWN LEANS ON HER",
       "why": "so: back to the start",
-      "visual": "SHOT 1 (close-up, Marta's porch): Marta, Pip and the cat on the bench; Pip lets go of one balloon on purpose – it drifts sideways toward Marta and bumps her nose; she laughs / SHOT 2 (match cut, slow push-in): match cut back to the opening shot: the blocky hand lets go of the red apple above the cobbled street, the apple drops sideways – loop into the hook, then end card",
+      "visual": "SHOT 1 (close-up, Marta's porch): Marta, Bo and the cat on the bench; Bo lets go of one balloon on purpose – it drifts sideways toward Marta and bumps her nose; she laughs / SHOT 2 (match cut, slow push-in): match cut back to the opening shot: the blocky hand lets go of the red apple above the cobbled street, the apple drops sideways – loop into the hook, then end card",
       "shots": [
         {
           "type": "close-up, Marta's porch",
-          "desc": "Marta, Pip and the cat on the bench; Pip lets go of one balloon on purpose – it drifts sideways toward Marta and bumps her nose; she laughs",
+          "desc": "Marta, Bo and the cat on the bench; Bo lets go of one balloon on purpose – it drifts sideways toward Marta and bumps her nose; she laughs",
           "t": [
-            60.46,
-            62.64
+            61.23,
+            63.41
           ]
         },
         {
           "type": "match cut, slow push-in",
           "desc": "match cut back to the opening shot: the blocky hand lets go of the red apple above the cobbled street, the apple drops sideways – loop into the hook, then end card",
           "t": [
-            62.64,
-            64.82
+            63.41,
+            65.59
           ]
         }
       ],
       "sources": [
-        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Pip und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
+        "Fiktion (Welt-Regel): Stadt, Regel 'Schwerkraft zieht zum schwersten Menschen', 'je leichter, desto weniger Zug', Marta, Bo und alle Requisiten sind erfunden – keine Tatsachenbehauptung, keine reale Physik behauptet."
       ],
       "cues": [
         {
@@ -1052,7 +1052,7 @@
       "captions": [
         "So here,",
         "nothing falls down.",
-        "It falls toward Big Marta."
+        "It falls toward Granny Marta."
       ]
     }
   ]

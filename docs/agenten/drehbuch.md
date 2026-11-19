@@ -79,6 +79,7 @@ Englisches Sprechskript mit Szenen, Cues, HUD, Auswahlkarten. Ergebnis `episodes
 | 13.11.2026 | Lucia GTA 6 v1 | 7/10 (Selbstprüfung) | 9 Beats aus Freigabeliste, 150 W im Budget, Re-Hook 41 %; WS-Beats (luck, Trailer 2, way out) warten auf Faktenprüfer |
 | 13.11.2026 | Zeit-Welt v1 | offen (Prüfer) | 246 W, 21 Szenen ≤ 15 W, Re-Hook 44 %, Twist = umgedrehte Welt-Regel; Franklin-Wortlaut unbestätigt |
 | 13.11.2026 | Jason GTA 6 v1 | offen (Prüfer) | 11 Beats aus Freigabeliste, 157 W, Hook-Pointe 1,2 s, Re-Hook 34 %; WS-Beats J2/J3/J7/J8 warten auf Faktenprüfer |
+| 19.11.2026 | Schwerkraft-Stadt v1.1 | Runde 2 Nacharbeit (v1: Fakten 8, Retention 8,5) | Regel auf Last statt Körper („whoever carries the most“), Granny Marta, Bo, Hook-Frage „WHY DOES IT ALL FALL TO HER?“ → 166 W, 62,5–69,9 s, Plan B −3 W. Lehre: Welt-Regeln über Körpermerkmale schon im Konzept auf Besitz/Last umstellen |
 | 19.11.2026 | Schwerkraft-Stadt v1 | offen (Prüfer), Selbstnote 9 | 164 W ≈ 66,8 s inkl. End-Card (61,8–69,1 s), 15 Szenen, 31 Einstellungen Ø 2,16 s, Re-Hook 40 %, Wende 72 % / Enthüllung 78 %, K13-Schnitt 0, reine Fiktion |
 | 15.11.2026 | Sonne verschwindet v2 | offen (Prüfer Runde 2) | v1: Fakten 8, Retention 8,6 (K13-Wiederholungen, Uhr-Richtung, kein Loop, Zeitleiste) → alle Pflichtpunkte umgesetzt |
 | 14.11.2026 | Sonne verschwindet v1 | offen (Prüfer), Selbstnote 9 | 266 W ≈ 105 s, 22 Szenen, 48 Einstellungen Ø 2,19 s, Höhepunkt 72–74 %, Saturn gepflanzt 10 % / 56 % / 89 % |
