@@ -24,3 +24,4 @@ Upload-Slots: nächste freie Slots ab 20.11. (A TT 17 / YT 18, B TT 22 / YT 23 D
 
 ## Nachtrag 19.11. abends
 Schwerkraft-Stadt: Szenen v1 an echter Stimme (30 Shots, Ø 2,18 s, 67,47 s, turn 71,9 %); Kontaktabzug out/schwerkraft-kontakt-r3.jpg (nicht im Repo). Offen: rule Shot 1 unbekanntes orangefarbenes Objekt vor der Waage; marta Shot 2 Zuglinien überstrahlen Marta; Cover frames 15→9; bed.wav fehlt; Kleinkram (slide/light/catch/town/answer). Danach Station 2 (Hörprüfer) + Station 3 (Regie/Design).
+Tor-Stadt: Szenen v1 an echter Stimme (31 Shots, Ø 2,23 s, 69,75 s – knapp unter 70!, Zähler-Werte am Wort korrekt); Kontaktabzug out/tor-kontakt.jpg. Offen: K13 „MEETING OVER?“-Pappe + „83 YEARS“-Schild; Tor ~4 s offen vs. „exactly one second“; Häuschen-Schild teils unter Untertitel; Kratzer „1 LEFT“ spät; bed.wav fehlt. Stimme-Agent-Bericht (Messwerte) stand bei Übergabe noch aus – stimm_messung für beide neu laufen lassen.
