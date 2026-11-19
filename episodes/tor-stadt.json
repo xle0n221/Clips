@@ -10,7 +10,7 @@
  "lengthSec": 66,
  "years": [],
  "say": {
-  "Yesbury": "YES-bury"
+  "Yesbury": "Yes-berry"
  },
  "cover": {
   "text": "NOBODY CAN LEAVE",
@@ -240,10 +240,10 @@
    "delivery": "ironic",
    "emotion": {
     "exag": 0.58,
-    "cfg": 0.92,
+    "cfg": 1.05,
     "temp": 0.78,
     "speed": 1.0,
-    "gap_ms": 240,
+    "gap_ms": 225,
     "comma_ms": 200,
     "end_db": 5.0,
     "gain_db": -0.5
@@ -311,10 +311,10 @@
    "delivery": "ironic",
    "emotion": {
     "exag": 0.58,
-    "cfg": 0.92,
+    "cfg": 1.05,
     "temp": 0.78,
     "speed": 1.0,
-    "gap_ms": 240,
+    "gap_ms": 225,
     "comma_ms": 200,
     "end_db": 5.0,
     "gain_db": -0.5
@@ -370,10 +370,10 @@
    "delivery": "playful",
    "emotion": {
     "exag": 0.62,
-    "cfg": 0.9,
+    "cfg": 1.05,
     "temp": 0.8,
     "speed": 1.0,
-    "gap_ms": 230,
+    "gap_ms": 215,
     "comma_ms": 190,
     "end_db": 4.5,
     "gain_db": 0.0
@@ -499,10 +499,10 @@
    "delivery": "playful",
    "emotion": {
     "exag": 0.62,
-    "cfg": 0.9,
+    "cfg": 1.05,
     "temp": 0.8,
     "speed": 1.0,
-    "gap_ms": 230,
+    "gap_ms": 215,
     "comma_ms": 190,
     "end_db": 4.5,
     "gain_db": 0.0
@@ -564,10 +564,10 @@
    "delivery": "ironic",
    "emotion": {
     "exag": 0.58,
-    "cfg": 0.92,
+    "cfg": 1.05,
     "temp": 0.78,
     "speed": 1.0,
-    "gap_ms": 240,
+    "gap_ms": 225,
     "comma_ms": 200,
     "end_db": 5.0,
     "gain_db": -0.5
@@ -621,10 +621,10 @@
    "delivery": "tense",
    "emotion": {
     "exag": 0.52,
-    "cfg": 0.9,
+    "cfg": 1.05,
     "temp": 0.75,
     "speed": 1.0,
-    "gap_ms": 260,
+    "gap_ms": 245,
     "comma_ms": 210,
     "end_db": 5.5,
     "gain_db": -2.5
@@ -854,10 +854,10 @@
    "delivery": "dramatic",
    "emotion": {
     "exag": 0.65,
-    "cfg": 0.85,
+    "cfg": 1.05,
     "temp": 0.75,
     "speed": 1.0,
-    "gap_ms": 250,
+    "gap_ms": 235,
     "comma_ms": 190,
     "end_db": 3.0,
     "gain_db": 1.5
@@ -922,10 +922,10 @@
    "delivery": "excited",
    "emotion": {
     "exag": 0.65,
-    "cfg": 0.88,
+    "cfg": 1.05,
     "temp": 0.8,
     "speed": 1.0,
-    "gap_ms": 230,
+    "gap_ms": 215,
     "comma_ms": 180,
     "end_db": 3.5,
     "gain_db": 1.0
@@ -1129,7 +1129,7 @@
     "from nine hundred",
     "ninety-nine people."
    ],
-   "pauseBeforeMs": 300
+   "pauseBeforeMs": 250
   }
  ]
 }

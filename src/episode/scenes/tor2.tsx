@@ -144,14 +144,14 @@ export const TorHope: React.FC = () => {
     // Makro: Regeltafel „OPENS AT 1,000 YES“ – sonst steht nichts da; Pips Augen weiten sich
     const ask = beat("rulePlate");
     const pop = 1 + 0.3 * ramp(frame, ask, ask + 8, Easing.out(Easing.back(2)));
-    const a = frameOn([RULE_PLATE[0] + 0.3, RULE_PLATE[1] - 0.4, RULE_PLATE[2]], 3.8, 0.42, 0.5, [0.1, 0.04, 1]);
-    const b = frameOn([RULE_PLATE[0] + 0.3, RULE_PLATE[1] - 0.4, RULE_PLATE[2]], 3.4, 0.42, 0.5, [0.08, 0.04, 1]);
+    const a = frameOn([RULE_PLATE[0] + 0.6, RULE_PLATE[1] - 0.7, RULE_PLATE[2]], 4.6, 0.4, 0.5, [0.1, 0.04, 1]);
+    const b = frameOn([RULE_PLATE[0] + 0.6, RULE_PLATE[1] - 0.7, RULE_PLATE[2]], 4.2, 0.4, 0.5, [0.08, 0.04, 1]);
     return (
       <>
         <DuskLight target={[-2, 0, 2]} />
         <Square frame={frame} counter="999 / 1,000" lit={0.6} />
-        <Crate position={[RULE_PLATE[0] + 1.35, 0, 1.4]} s={1.6} />
-        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 1.35, 1.6, 1.4]} rotation={[0, -0.55, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
+        <Crate position={[RULE_PLATE[0] + 2.2, 0, 0.9]} s={1.6} />
+        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 2.2, 1.6, 0.9]} scale={0.85} rotation={[0, -0.55, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
         <pointLight position={[RULE_PLATE[0] + 0.5, RULE_PLATE[1] + 0.6, 1.6]} color="#FFD9A0" intensity={4} distance={4} decay={2} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>

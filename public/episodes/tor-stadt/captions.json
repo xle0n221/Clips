@@ -1,0 +1,1157 @@
+[
+ {
+  "text": "Nobody",
+  "startMs": 200,
+  "endMs": 460,
+  "timestampMs": 330,
+  "confidence": null
+ },
+ {
+  "text": " has",
+  "startMs": 460,
+  "endMs": 780,
+  "timestampMs": 620,
+  "confidence": null
+ },
+ {
+  "text": " left",
+  "startMs": 780,
+  "endMs": 1020,
+  "timestampMs": 900,
+  "confidence": null
+ },
+ {
+  "text": " this",
+  "startMs": 1020,
+  "endMs": 1300,
+  "timestampMs": 1160,
+  "confidence": null
+ },
+ {
+  "text": " city",
+  "startMs": 1300,
+  "endMs": 1520,
+  "timestampMs": 1410,
+  "confidence": null
+ },
+ {
+  "text": " in",
+  "startMs": 1520,
+  "endMs": 1740,
+  "timestampMs": 1630,
+  "confidence": null
+ },
+ {
+  "text": " eighty-three",
+  "startMs": 1740,
+  "endMs": 2140,
+  "timestampMs": 1940,
+  "confidence": null
+ },
+ {
+  "text": " years.",
+  "startMs": 2140,
+  "endMs": 2660,
+  "timestampMs": 2400,
+  "confidence": null
+ },
+ {
+  "text": " The",
+  "startMs": 3400,
+  "endMs": 3440,
+  "timestampMs": 3420,
+  "confidence": null
+ },
+ {
+  "text": " gate",
+  "startMs": 3440,
+  "endMs": 3680,
+  "timestampMs": 3560,
+  "confidence": null
+ },
+ {
+  "text": " needs",
+  "startMs": 3680,
+  "endMs": 4080,
+  "timestampMs": 3880,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 4080,
+  "endMs": 4500,
+  "timestampMs": 4290,
+  "confidence": null
+ },
+ {
+  "text": " yes\u2026",
+  "startMs": 4720,
+  "endMs": 5040,
+  "timestampMs": 4880,
+  "confidence": null
+ },
+ {
+  "text": " from",
+  "startMs": 5540,
+  "endMs": 5680,
+  "timestampMs": 5610,
+  "confidence": null
+ },
+ {
+  "text": " all",
+  "startMs": 5680,
+  "endMs": 6180,
+  "timestampMs": 5930,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 6180,
+  "endMs": 6670,
+  "timestampMs": 6425,
+  "confidence": null
+ },
+ {
+  "text": " thousand.",
+  "startMs": 6670,
+  "endMs": 7160,
+  "timestampMs": 6915,
+  "confidence": null
+ },
+ {
+  "text": " Every",
+  "startMs": 7560,
+  "endMs": 7900,
+  "timestampMs": 7730,
+  "confidence": null
+ },
+ {
+  "text": " single",
+  "startMs": 7900,
+  "endMs": 8280,
+  "timestampMs": 8090,
+  "confidence": null
+ },
+ {
+  "text": " person.",
+  "startMs": 8280,
+  "endMs": 8880,
+  "timestampMs": 8580,
+  "confidence": null
+ },
+ {
+  "text": " At",
+  "startMs": 8880,
+  "endMs": 9320,
+  "timestampMs": 9100,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 9320,
+  "endMs": 9480,
+  "timestampMs": 9400,
+  "confidence": null
+ },
+ {
+  "text": " exact",
+  "startMs": 9480,
+  "endMs": 9880,
+  "timestampMs": 9680,
+  "confidence": null
+ },
+ {
+  "text": " same",
+  "startMs": 9880,
+  "endMs": 10320,
+  "timestampMs": 10100,
+  "confidence": null
+ },
+ {
+  "text": " second.",
+  "startMs": 10320,
+  "endMs": 10760,
+  "timestampMs": 10540,
+  "confidence": null
+ },
+ {
+  "text": " This",
+  "startMs": 11300,
+  "endMs": 11580,
+  "timestampMs": 11440,
+  "confidence": null
+ },
+ {
+  "text": " is",
+  "startMs": 11580,
+  "endMs": 11880,
+  "timestampMs": 11730,
+  "confidence": null
+ },
+ {
+  "text": " Yesbury.",
+  "startMs": 11880,
+  "endMs": 12900,
+  "timestampMs": 12390,
+  "confidence": null
+ },
+ {
+  "text": " Every",
+  "startMs": 13360,
+  "endMs": 13560,
+  "timestampMs": 13460,
+  "confidence": null
+ },
+ {
+  "text": " Sunday:",
+  "startMs": 13560,
+  "endMs": 13920,
+  "timestampMs": 13740,
+  "confidence": null
+ },
+ {
+  "text": " a",
+  "startMs": 14240,
+  "endMs": 14420,
+  "timestampMs": 14330,
+  "confidence": null
+ },
+ {
+  "text": " gate",
+  "startMs": 14420,
+  "endMs": 14600,
+  "timestampMs": 14510,
+  "confidence": null
+ },
+ {
+  "text": " meeting.",
+  "startMs": 14600,
+  "endMs": 14860,
+  "timestampMs": 14730,
+  "confidence": null
+ },
+ {
+  "text": " And",
+  "startMs": 15280,
+  "endMs": 15360,
+  "timestampMs": 15320,
+  "confidence": null
+ },
+ {
+  "text": " every",
+  "startMs": 15360,
+  "endMs": 15600,
+  "timestampMs": 15480,
+  "confidence": null
+ },
+ {
+  "text": " Sunday\u2026",
+  "startMs": 15600,
+  "endMs": 15960,
+  "timestampMs": 15780,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 16200,
+  "endMs": 16380,
+  "timestampMs": 16290,
+  "confidence": null
+ },
+ {
+  "text": " voice",
+  "startMs": 16380,
+  "endMs": 16620,
+  "timestampMs": 16500,
+  "confidence": null
+ },
+ {
+  "text": " says",
+  "startMs": 16620,
+  "endMs": 16820,
+  "timestampMs": 16720,
+  "confidence": null
+ },
+ {
+  "text": " no.",
+  "startMs": 16820,
+  "endMs": 17120,
+  "timestampMs": 16970,
+  "confidence": null
+ },
+ {
+  "text": " Meet",
+  "startMs": 17700,
+  "endMs": 17860,
+  "timestampMs": 17780,
+  "confidence": null
+ },
+ {
+  "text": " Pip.",
+  "startMs": 17860,
+  "endMs": 18100,
+  "timestampMs": 17980,
+  "confidence": null
+ },
+ {
+  "text": " She",
+  "startMs": 18520,
+  "endMs": 18680,
+  "timestampMs": 18600,
+  "confidence": null
+ },
+ {
+  "text": " has",
+  "startMs": 18680,
+  "endMs": 18860,
+  "timestampMs": 18770,
+  "confidence": null
+ },
+ {
+  "text": " only",
+  "startMs": 18860,
+  "endMs": 19260,
+  "timestampMs": 19060,
+  "confidence": null
+ },
+ {
+  "text": " seen",
+  "startMs": 19260,
+  "endMs": 19660,
+  "timestampMs": 19460,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 19660,
+  "endMs": 19920,
+  "timestampMs": 19790,
+  "confidence": null
+ },
+ {
+  "text": " sea\u2026",
+  "startMs": 19920,
+  "endMs": 20220,
+  "timestampMs": 20070,
+  "confidence": null
+ },
+ {
+  "text": " painted",
+  "startMs": 20580,
+  "endMs": 20760,
+  "timestampMs": 20670,
+  "confidence": null
+ },
+ {
+  "text": " on",
+  "startMs": 20760,
+  "endMs": 20960,
+  "timestampMs": 20860,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 20960,
+  "endMs": 21100,
+  "timestampMs": 21030,
+  "confidence": null
+ },
+ {
+  "text": " gate.",
+  "startMs": 21100,
+  "endMs": 21300,
+  "timestampMs": 21200,
+  "confidence": null
+ },
+ {
+  "text": " So",
+  "startMs": 21720,
+  "endMs": 21960,
+  "timestampMs": 21840,
+  "confidence": null
+ },
+ {
+  "text": " Pip",
+  "startMs": 21960,
+  "endMs": 22200,
+  "timestampMs": 22080,
+  "confidence": null
+ },
+ {
+  "text": " hangs",
+  "startMs": 22200,
+  "endMs": 22500,
+  "timestampMs": 22350,
+  "confidence": null
+ },
+ {
+  "text": " posters.",
+  "startMs": 22500,
+  "endMs": 22880,
+  "timestampMs": 22690,
+  "confidence": null
+ },
+ {
+  "text": " Sunday:",
+  "startMs": 23540,
+  "endMs": 23700,
+  "timestampMs": 23620,
+  "confidence": null
+ },
+ {
+  "text": " nine",
+  "startMs": 24580,
+  "endMs": 24593,
+  "timestampMs": 24587,
+  "confidence": null
+ },
+ {
+  "text": " hundred",
+  "startMs": 24593,
+  "endMs": 24607,
+  "timestampMs": 24600,
+  "confidence": null
+ },
+ {
+  "text": " ninety-nine",
+  "startMs": 24607,
+  "endMs": 24620,
+  "timestampMs": 24613,
+  "confidence": null
+ },
+ {
+  "text": " yeses\u2026",
+  "startMs": 24620,
+  "endMs": 25340,
+  "timestampMs": 24980,
+  "confidence": null
+ },
+ {
+  "text": " and",
+  "startMs": 25540,
+  "endMs": 25720,
+  "timestampMs": 25630,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 25720,
+  "endMs": 26180,
+  "timestampMs": 25950,
+  "confidence": null
+ },
+ {
+  "text": " no.",
+  "startMs": 26180,
+  "endMs": 26820,
+  "timestampMs": 26500,
+  "confidence": null
+ },
+ {
+  "text": " She",
+  "startMs": 27440,
+  "endMs": 27640,
+  "timestampMs": 27540,
+  "confidence": null
+ },
+ {
+  "text": " knocks",
+  "startMs": 27640,
+  "endMs": 27940,
+  "timestampMs": 27790,
+  "confidence": null
+ },
+ {
+  "text": " on",
+  "startMs": 27940,
+  "endMs": 28160,
+  "timestampMs": 28050,
+  "confidence": null
+ },
+ {
+  "text": " every",
+  "startMs": 28160,
+  "endMs": 28440,
+  "timestampMs": 28300,
+  "confidence": null
+ },
+ {
+  "text": " door.",
+  "startMs": 28440,
+  "endMs": 28720,
+  "timestampMs": 28580,
+  "confidence": null
+ },
+ {
+  "text": " Everyone",
+  "startMs": 28720,
+  "endMs": 29300,
+  "timestampMs": 29010,
+  "confidence": null
+ },
+ {
+  "text": " swears:",
+  "startMs": 29300,
+  "endMs": 30020,
+  "timestampMs": 29660,
+  "confidence": null
+ },
+ {
+  "text": " yes.",
+  "startMs": 30260,
+  "endMs": 30600,
+  "timestampMs": 30430,
+  "confidence": null
+ },
+ {
+  "text": " So",
+  "startMs": 31160,
+  "endMs": 31200,
+  "timestampMs": 31180,
+  "confidence": null
+ },
+ {
+  "text": " who's",
+  "startMs": 31200,
+  "endMs": 31520,
+  "timestampMs": 31360,
+  "confidence": null
+ },
+ {
+  "text": " lying?",
+  "startMs": 31520,
+  "endMs": 31880,
+  "timestampMs": 31700,
+  "confidence": null
+ },
+ {
+  "text": " Next",
+  "startMs": 32820,
+  "endMs": 32820,
+  "timestampMs": 32820,
+  "confidence": null
+ },
+ {
+  "text": " Sunday,",
+  "startMs": 32820,
+  "endMs": 33220,
+  "timestampMs": 33020,
+  "confidence": null
+ },
+ {
+  "text": " Pip",
+  "startMs": 33680,
+  "endMs": 33700,
+  "timestampMs": 33690,
+  "confidence": null
+ },
+ {
+  "text": " hides",
+  "startMs": 33700,
+  "endMs": 34140,
+  "timestampMs": 33920,
+  "confidence": null
+ },
+ {
+  "text": " near",
+  "startMs": 34140,
+  "endMs": 34340,
+  "timestampMs": 34240,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 34340,
+  "endMs": 34480,
+  "timestampMs": 34410,
+  "confidence": null
+ },
+ {
+  "text": " gate.",
+  "startMs": 34480,
+  "endMs": 34660,
+  "timestampMs": 34570,
+  "confidence": null
+ },
+ {
+  "text": " The",
+  "startMs": 35040,
+  "endMs": 35260,
+  "timestampMs": 35150,
+  "confidence": null
+ },
+ {
+  "text": " no",
+  "startMs": 35260,
+  "endMs": 35500,
+  "timestampMs": 35380,
+  "confidence": null
+ },
+ {
+  "text": " comes",
+  "startMs": 35500,
+  "endMs": 35860,
+  "timestampMs": 35680,
+  "confidence": null
+ },
+ {
+  "text": " from\u2026",
+  "startMs": 35860,
+  "endMs": 36260,
+  "timestampMs": 36060,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 36260,
+  "endMs": 36700,
+  "timestampMs": 36480,
+  "confidence": null
+ },
+ {
+  "text": " gatekeeper.",
+  "startMs": 36700,
+  "endMs": 37160,
+  "timestampMs": 36930,
+  "confidence": null
+ },
+ {
+  "text": " Mister",
+  "startMs": 37800,
+  "endMs": 37920,
+  "timestampMs": 37860,
+  "confidence": null
+ },
+ {
+  "text": " Hollis.",
+  "startMs": 38080,
+  "endMs": 38260,
+  "timestampMs": 38170,
+  "confidence": null
+ },
+ {
+  "text": " An",
+  "startMs": 38720,
+  "endMs": 38800,
+  "timestampMs": 38760,
+  "confidence": null
+ },
+ {
+  "text": " open",
+  "startMs": 38800,
+  "endMs": 39120,
+  "timestampMs": 38960,
+  "confidence": null
+ },
+ {
+  "text": " gate",
+  "startMs": 39120,
+  "endMs": 39420,
+  "timestampMs": 39270,
+  "confidence": null
+ },
+ {
+  "text": " would",
+  "startMs": 39420,
+  "endMs": 39680,
+  "timestampMs": 39550,
+  "confidence": null
+ },
+ {
+  "text": " end",
+  "startMs": 39680,
+  "endMs": 39880,
+  "timestampMs": 39780,
+  "confidence": null
+ },
+ {
+  "text": " his",
+  "startMs": 39880,
+  "endMs": 40080,
+  "timestampMs": 39980,
+  "confidence": null
+ },
+ {
+  "text": " job.",
+  "startMs": 40080,
+  "endMs": 40400,
+  "timestampMs": 40240,
+  "confidence": null
+ },
+ {
+  "text": " Pip",
+  "startMs": 40980,
+  "endMs": 41060,
+  "timestampMs": 41020,
+  "confidence": null
+ },
+ {
+  "text": " stares",
+  "startMs": 41060,
+  "endMs": 41420,
+  "timestampMs": 41240,
+  "confidence": null
+ },
+ {
+  "text": " at",
+  "startMs": 41420,
+  "endMs": 41680,
+  "timestampMs": 41550,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 41680,
+  "endMs": 41780,
+  "timestampMs": 41730,
+  "confidence": null
+ },
+ {
+  "text": " painted",
+  "startMs": 41780,
+  "endMs": 41980,
+  "timestampMs": 41880,
+  "confidence": null
+ },
+ {
+  "text": " sea.",
+  "startMs": 41980,
+  "endMs": 42360,
+  "timestampMs": 42170,
+  "confidence": null
+ },
+ {
+  "text": " Eighty-three",
+  "startMs": 42820,
+  "endMs": 43040,
+  "timestampMs": 42930,
+  "confidence": null
+ },
+ {
+  "text": " years\u2026",
+  "startMs": 43040,
+  "endMs": 43640,
+  "timestampMs": 43340,
+  "confidence": null
+ },
+ {
+  "text": " and",
+  "startMs": 44180,
+  "endMs": 44460,
+  "timestampMs": 44320,
+  "confidence": null
+ },
+ {
+  "text": " counting.",
+  "startMs": 44460,
+  "endMs": 44880,
+  "timestampMs": 44670,
+  "confidence": null
+ },
+ {
+  "text": " But",
+  "startMs": 45340,
+  "endMs": 45560,
+  "timestampMs": 45450,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 45560,
+  "endMs": 45720,
+  "timestampMs": 45640,
+  "confidence": null
+ },
+ {
+  "text": " gate",
+  "startMs": 45720,
+  "endMs": 45920,
+  "timestampMs": 45820,
+  "confidence": null
+ },
+ {
+  "text": " never",
+  "startMs": 45920,
+  "endMs": 46180,
+  "timestampMs": 46050,
+  "confidence": null
+ },
+ {
+  "text": " asks\u2026",
+  "startMs": 46180,
+  "endMs": 46660,
+  "timestampMs": 46420,
+  "confidence": null
+ },
+ {
+  "text": " what",
+  "startMs": 46660,
+  "endMs": 47160,
+  "timestampMs": 46910,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 47160,
+  "endMs": 47340,
+  "timestampMs": 47250,
+  "confidence": null
+ },
+ {
+  "text": " yes",
+  "startMs": 47340,
+  "endMs": 47580,
+  "timestampMs": 47460,
+  "confidence": null
+ },
+ {
+  "text": " is",
+  "startMs": 47580,
+  "endMs": 47800,
+  "timestampMs": 47690,
+  "confidence": null
+ },
+ {
+  "text": " for.",
+  "startMs": 47800,
+  "endMs": 48140,
+  "timestampMs": 47970,
+  "confidence": null
+ },
+ {
+  "text": " Pip",
+  "startMs": 48940,
+  "endMs": 49120,
+  "timestampMs": 49030,
+  "confidence": null
+ },
+ {
+  "text": " stands.",
+  "startMs": 49120,
+  "endMs": 49460,
+  "timestampMs": 49290,
+  "confidence": null
+ },
+ {
+  "text": " \"Who",
+  "startMs": 49920,
+  "endMs": 50080,
+  "timestampMs": 50000,
+  "confidence": null
+ },
+ {
+  "text": " wants",
+  "startMs": 50080,
+  "endMs": 50340,
+  "timestampMs": 50210,
+  "confidence": null
+ },
+ {
+  "text": " this",
+  "startMs": 50340,
+  "endMs": 50580,
+  "timestampMs": 50460,
+  "confidence": null
+ },
+ {
+  "text": " meeting",
+  "startMs": 50580,
+  "endMs": 50840,
+  "timestampMs": 50710,
+  "confidence": null
+ },
+ {
+  "text": " to",
+  "startMs": 50840,
+  "endMs": 51020,
+  "timestampMs": 50930,
+  "confidence": null
+ },
+ {
+  "text": " be",
+  "startMs": 51020,
+  "endMs": 51160,
+  "timestampMs": 51090,
+  "confidence": null
+ },
+ {
+  "text": " over?\"",
+  "startMs": 51160,
+  "endMs": 51440,
+  "timestampMs": 51300,
+  "confidence": null
+ },
+ {
+  "text": " One",
+  "startMs": 51840,
+  "endMs": 52170,
+  "timestampMs": 52005,
+  "confidence": null
+ },
+ {
+  "text": " thousand",
+  "startMs": 52170,
+  "endMs": 52500,
+  "timestampMs": 52335,
+  "confidence": null
+ },
+ {
+  "text": " yeses.",
+  "startMs": 52500,
+  "endMs": 53020,
+  "timestampMs": 52760,
+  "confidence": null
+ },
+ {
+  "text": " Even",
+  "startMs": 53220,
+  "endMs": 53460,
+  "timestampMs": 53340,
+  "confidence": null
+ },
+ {
+  "text": " Hollis.",
+  "startMs": 53460,
+  "endMs": 53820,
+  "timestampMs": 53640,
+  "confidence": null
+ },
+ {
+  "text": " The",
+  "startMs": 54380,
+  "endMs": 54560,
+  "timestampMs": 54470,
+  "confidence": null
+ },
+ {
+  "text": " gate",
+  "startMs": 54560,
+  "endMs": 54740,
+  "timestampMs": 54650,
+  "confidence": null
+ },
+ {
+  "text": " opens\u2026",
+  "startMs": 54740,
+  "endMs": 55180,
+  "timestampMs": 54960,
+  "confidence": null
+ },
+ {
+  "text": " for",
+  "startMs": 55180,
+  "endMs": 55760,
+  "timestampMs": 55470,
+  "confidence": null
+ },
+ {
+  "text": " exactly",
+  "startMs": 55760,
+  "endMs": 56260,
+  "timestampMs": 56010,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 56260,
+  "endMs": 57080,
+  "timestampMs": 56670,
+  "confidence": null
+ },
+ {
+  "text": " second.",
+  "startMs": 57080,
+  "endMs": 57660,
+  "timestampMs": 57370,
+  "confidence": null
+ },
+ {
+  "text": " Pip",
+  "startMs": 57660,
+  "endMs": 58240,
+  "timestampMs": 57950,
+  "confidence": null
+ },
+ {
+  "text": " jumps.",
+  "startMs": 58240,
+  "endMs": 58560,
+  "timestampMs": 58400,
+  "confidence": null
+ },
+ {
+  "text": " Behind",
+  "startMs": 59440,
+  "endMs": 59480,
+  "timestampMs": 59460,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 59480,
+  "endMs": 59660,
+  "timestampMs": 59570,
+  "confidence": null
+ },
+ {
+  "text": " painted",
+  "startMs": 59660,
+  "endMs": 59880,
+  "timestampMs": 59770,
+  "confidence": null
+ },
+ {
+  "text": " sea\u2026",
+  "startMs": 59880,
+  "endMs": 60200,
+  "timestampMs": 60040,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 60580,
+  "endMs": 60600,
+  "timestampMs": 60590,
+  "confidence": null
+ },
+ {
+  "text": " real",
+  "startMs": 60600,
+  "endMs": 60800,
+  "timestampMs": 60700,
+  "confidence": null
+ },
+ {
+  "text": " one.",
+  "startMs": 60800,
+  "endMs": 61060,
+  "timestampMs": 60930,
+  "confidence": null
+ },
+ {
+  "text": " First",
+  "startMs": 61700,
+  "endMs": 61780,
+  "timestampMs": 61740,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 61780,
+  "endMs": 62060,
+  "timestampMs": 61920,
+  "confidence": null
+ },
+ {
+  "text": " out",
+  "startMs": 62060,
+  "endMs": 62260,
+  "timestampMs": 62160,
+  "confidence": null
+ },
+ {
+  "text": " in",
+  "startMs": 62260,
+  "endMs": 62440,
+  "timestampMs": 62350,
+  "confidence": null
+ },
+ {
+  "text": " eighty-three",
+  "startMs": 62440,
+  "endMs": 62760,
+  "timestampMs": 62600,
+  "confidence": null
+ },
+ {
+  "text": " years.",
+  "startMs": 62760,
+  "endMs": 63300,
+  "timestampMs": 63030,
+  "confidence": null
+ },
+ {
+  "text": " Now",
+  "startMs": 64200,
+  "endMs": 64380,
+  "timestampMs": 64290,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 64380,
+  "endMs": 64600,
+  "timestampMs": 64490,
+  "confidence": null
+ },
+ {
+  "text": " gate",
+  "startMs": 64600,
+  "endMs": 64800,
+  "timestampMs": 64700,
+  "confidence": null
+ },
+ {
+  "text": " needs",
+  "startMs": 64800,
+  "endMs": 65240,
+  "timestampMs": 65020,
+  "confidence": null
+ },
+ {
+  "text": " a",
+  "startMs": 65240,
+  "endMs": 65590,
+  "timestampMs": 65415,
+  "confidence": null
+ },
+ {
+  "text": " thousand",
+  "startMs": 65590,
+  "endMs": 65940,
+  "timestampMs": 65765,
+  "confidence": null
+ },
+ {
+  "text": " yeses\u2026",
+  "startMs": 65940,
+  "endMs": 66480,
+  "timestampMs": 66210,
+  "confidence": null
+ },
+ {
+  "text": " from",
+  "startMs": 66720,
+  "endMs": 66860,
+  "timestampMs": 66790,
+  "confidence": null
+ },
+ {
+  "text": " nine",
+  "startMs": 66860,
+  "endMs": 67227,
+  "timestampMs": 67043,
+  "confidence": null
+ },
+ {
+  "text": " hundred",
+  "startMs": 67227,
+  "endMs": 67593,
+  "timestampMs": 67410,
+  "confidence": null
+ },
+ {
+  "text": " ninety-nine",
+  "startMs": 67593,
+  "endMs": 67960,
+  "timestampMs": 67777,
+  "confidence": null
+ },
+ {
+  "text": " people.",
+  "startMs": 67960,
+  "endMs": 68640,
+  "timestampMs": 68300,
+  "confidence": null
+ }
+]
