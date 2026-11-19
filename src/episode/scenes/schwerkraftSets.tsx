@@ -1102,7 +1102,7 @@ const BowlGround: React.FC<{ readonly rMax?: number; readonly dusk?: number }> =
 };
 
 /** Ringe kippender Häuser + Laternen um die Mitte. `skipNear` lässt den vorderen Sektor (Winkel ≈ 0) frei. */
-export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: readonly number[]; readonly gap?: number; readonly gapAt?: number; readonly lampLight?: boolean }> = ({ dusk = 0, rings = [9, 14, 20, 27, 35, 44], gap = 0.55, gapAt = 0, lampLight = false }) => {
+export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: readonly number[]; readonly gap?: number; readonly gapAt?: number; readonly lampLight?: boolean }> = ({ dusk = 0, rings = [9, 14, 20, 27, 35, 44], gap = 0.72, gapAt = 0, lampLight = false }) => {
   const items = useMemo(() => {
     const r = seeded(99);
     const out: { pos: V3; rot: V3; w: number; h: number; color: string; roof: string; seed: number }[] = [];

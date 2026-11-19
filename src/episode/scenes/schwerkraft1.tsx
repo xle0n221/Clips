@@ -99,7 +99,7 @@ export const TownSet: React.FC<{
     <TownLight dusk={dusk} target={target} />
     <BowlTown dusk={dusk} />
     <MartaHouse dusk={dusk} photo={photo} />
-    <StreetLamps light={lampLight} />
+    {lampLight > 0 ? <StreetLamps light={lampLight} from={14} /> : null}
     {scale ? <TownScale position={SCALE_POS} rotation={SCALE_ROT} needle={needle} name={scaleName} /> : null}
     {pull > 0 ? <PullFan to={[0, 1.4, -0.9]} frame={frame} reach={pull} width={pullWidth} r={16} n={9} /> : null}
     {clouds ? (
@@ -187,12 +187,12 @@ export const SkRule: React.FC = () => {
     // Stadtwaage: Schale trägt eine prall gefüllte Schürzentasche (LAST), Klapptafel blättert auf „most“ zu MARTA
     const flip = beat("scaleBoardFlips");
     const board: V3 = [SCALE_POS[0] + Math.sin(SCALE_ROT[1]) * 0.2, SCALE_POS[1] + 5.0, SCALE_POS[2] + Math.cos(SCALE_ROT[1]) * 0.2];
-    const dir: V3 = [Math.sin(SCALE_ROT[1]) + 0.05, 0.02, Math.cos(SCALE_ROT[1])];
-    const a = frameOn(board, 10.2, 0.27, 0.5, dir);
-    const b = frameOn(board, 9.4, 0.27, 0.5, dir);
+    const dir: V3 = [0.2, 0.06, 1]; // Kamera in der freien Hill Street (schräger lag sie in einem Haus, Kontaktabzug r2)
+    const a = frameOn([board[0], board[1] - 1.2, board[2]], 12.5, 0.4, 0.5, dir);
+    const b = frameOn([board[0], board[1] - 1.2, board[2]], 11.5, 0.4, 0.5, dir);
     const towns: { p: V3; c: number; look: number }[] = [
       { p: [SCALE_POS[0] + 2.2, bowlY(5.9), SCALE_POS[2] + 1.2], c: 1, look: 0.5 },
-      { p: [SCALE_POS[0] - 2.0, bowlY(6.4), SCALE_POS[2] + 1.6], c: 2, look: -0.4 },
+      { p: [SCALE_POS[0] - 1.9, bowlY(5.4), SCALE_POS[2] - 1.0], c: 2, look: 0.3 },
       { p: [SCALE_POS[0] + 2.9, bowlY(5.2), SCALE_POS[2] - 0.6], c: 4, look: 0.8 },
     ];
     const nerv = ramp(frame, flip, flip + 20);

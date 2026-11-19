@@ -666,9 +666,9 @@ export const Crowd: React.FC<{
   readonly scale?: number;
   readonly paddles?: boolean;
   readonly cheer?: number;
-}> = ({ people, frame, raise, scale = 0.45, paddles = true, cheer = 0 }) => {
+}> = ({ people, frame, raise, scale = 0.52, paddles = true, cheer = 0 }) => {
   const groups = useMemo(() => CROWD_COLS.map((c) => people.filter((p) => p.c === c)), [people]);
-  const place = (m: InstancedMesh | null, part: "body" | "head" | "arm" | "paddle", list: readonly Person[]) => {
+  const place = (m: InstancedMesh | null, part: "body" | "head" | "hair" | "arm" | "paddle", list: readonly Person[]) => {
     if (!m) return;
     for (let i = 0; i < list.length; i++) {
       const p = list[i];
@@ -688,6 +688,10 @@ export const Crowd: React.FC<{
         o3.position.set(0, 2.45, 0);
         o3.rotation.set(0, 0, 0);
         o3.scale.set(1.18, 0.98, 0.92);
+      } else if (part === "hair") {
+        o3.position.set(0, 2.98, -0.06);
+        o3.rotation.set(0, 0, 0);
+        o3.scale.set(1.26, 0.34, 1.02);
       } else if (part === "arm") {
         o3.position.set(0.68, 1.9 - Math.cos(a) * 0.42, Math.sin(a) * 0.42);
         o3.rotation.set(-a, 0, 0);
@@ -721,6 +725,10 @@ export const Crowd: React.FC<{
       <instancedMesh key={`h${n}`} ref={(m) => place(m, "head", people)} args={[undefined, undefined, n]} frustumCulled={false}>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color={T.skin} roughness={0.55} />
+      </instancedMesh>
+      <instancedMesh key={`r${n}`} ref={(m) => place(m, "hair", people)} args={[undefined, undefined, n]} frustumCulled={false}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="#3A2418" roughness={0.7} />
       </instancedMesh>
       {paddles ? (
         <>
@@ -1193,7 +1201,7 @@ export const Clipboard: React.FC<{ readonly position?: V3; readonly rotation?: V
 /** Torwächter-Häuschen (Fußpunkt, Fenster nach +z), Urkunde innen, Schild darunter. */
 export const Booth: React.FC<{ readonly position?: V3; readonly frame: number; readonly signSwing?: number; readonly interior?: boolean }> = ({ position = BOOTH, frame, signSwing = 0.6, interior = true }) => {
   const W = 2.4;
-  const H = 3.4;
+  const H = 4.2;
   const D = 2.2;
   return (
     <group position={position}>

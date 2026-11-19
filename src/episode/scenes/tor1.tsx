@@ -104,7 +104,7 @@ export const Square: React.FC<{
 export const useTownCrowd = (n = 1000) => useCrowdLayout(n, 40, 0.62, 0.7, CROWD_Z0, 17);
 
 /** Kamera des Eröffnungsbilds (Hook Shot 1 = Match-Cut-Ziel im stinger): hinter Pip, Blick hoch zu Tor + Zähler. */
-const HOOK_A = cam([2.6, 1.7, 21], [0.2, 5.9, 0], 40);
+const HOOK_A = cam([2.6, 1.7, 21], [0.2, 7.0, 0], 40);
 const HOOK_B = cam([2.3, 1.8, 19], [0.2, 5.9, 0], 40);
 export const PIP_HOOK: V3 = [1.3, 0, 4.2];
 
@@ -116,7 +116,7 @@ export const HookFrame: React.FC<{ readonly frame: number; readonly f: number; r
     {pip ? <Blok frame={0} who="pip" position={PIP_HOOK} rotation={[0, Math.PI - 0.2, 0]} nod={-0.32} look={0.15} eyes="dot" mouth="flat" blinkSeed={4} /> : null}
     <LightShaft from={[9, 16, 10]} to={[0.5, 0, 2]} radius={3.2} top={0.6} color="#FFE2B0" opacity={0.16} />
     <Motes frame={frame} center={[0.8, 3.5, 6]} size={[10, 7, 8]} count={70} drift={[0.003, 0.002, 0]} color="#FFE2B0" dot={0.06} opacity={0.55} seed={4} />
-    <Shot frame={f} duration={len} {...fly(HOOK_A, HOOK_B)} ease="out" />
+    <Shot frame={f} duration={len} {...fly(HOOK_A, HOOK_B)} ease="inOut" />
   </>
 );
 
@@ -301,13 +301,13 @@ export const TorWorld: React.FC = () => {
   const no = beat("redPaddle");
   const rise = ramp(frame, no - 6, no + 2, Easing.out(Easing.back(1.6)));
   const p: V3 = [2.6, 0.9, 10.2];
-  const a = frameOn([p[0], 2.2, p[2]], 3.6, 0.5, 0.5, [0.1, 0.12, 1]);
-  const b = frameOn([p[0], 2.3, p[2]], 3.1, 0.5, 0.5, [0.08, 0.12, 1]);
+  const a = frameOn([p[0], 2.2, p[2]], 4.0, 0.5, 0.5, [0.1, 0.5, 1]);
+  const b = frameOn([p[0], 2.3, p[2]], 3.4, 0.5, 0.5, [0.08, 0.5, 1]);
   return (
     <>
       <DayLight target={[2, 0, 8]} />
       <Square frame={frame} counter="999 / 1,000" />
-      <Crowd people={people.filter((q) => Math.hypot(q.x - p[0], q.z - p[2]) > 0.5)} frame={frame} raise={() => 1} />
+      <Crowd people={people.filter((q) => Math.hypot(q.x - p[0], q.z - p[2]) > 0.5 && !(q.z > p[2] && Math.abs(q.x - p[0]) < 3))} frame={frame} raise={() => 1} />
       {/* Köpfe der Menge im Vordergrund (unscharf durch Nähe) */}
       {[
         [p[0] - 1.0, 0, p[2] + 1.6],
@@ -326,18 +326,19 @@ export const TorWorld: React.FC = () => {
 /* ------------------------------------------------------------------ */
 const PIP_LEAN: V3 = [0.8, 0, 0.7];
 const PIP_TOUCH: V3 = [0.75, 0, 1.6];
+const SIDE = -Math.PI / 2;
 export const TorPip: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("pip");
   if (shot === 0) {
     // Stirn am Tor, Augen zu, Lächeln; Kopf zur Kamera gedreht
     const head = headOf("pip", PIP_LEAN);
-    const a = frameOn(head, 4.6, 0.5, 0.4, [1, 0.05, 0.45]);
-    const b = frameOn(head, 4.0, 0.5, 0.4, [1, 0.05, 0.5]);
+    const a = frameOn(head, 4.6, 0.5, 0.6, [-1, 0.05, 0.45]);
+    const b = frameOn(head, 4.0, 0.5, 0.6, [-1, 0.05, 0.5]);
     return (
       <>
         <DayLight target={[0, 0, 2]} />
         <Square frame={frame} counter="999 / 1,000" />
-        <Blok frame={frame} who="pip" position={PIP_LEAN} rotation={[0, Math.PI / 2, 0]} look={-0.15} eyes="closed" mouth="smile" reach={[0.3, 0.2]} spread={[0.1, 0.5]} />
+        <Blok frame={frame} who="pip" position={PIP_LEAN} rotation={[0, SIDE, 0]} look={0.15} eyes="closed" mouth="smile" reach={[0.2, 0.3]} spread={[0.5, 0.1]} />
         <pointLight position={[3, 3.4, 2.4]} color="#FFE2B0" intensity={5} distance={6} decay={2} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -347,13 +348,13 @@ export const TorPip: React.FC = () => {
   const t = beat("paintedWaveTouch");
   const paint = ramp(frame, t - 4, t + 10);
   const hand: V3 = [0.75, 1.45, 0.1];
-  const a = frameOn(hand, 2.4, 0.55, 0.5, [0.7, 0.15, 1]);
-  const b = frameOn(hand, 2.0, 0.55, 0.5, [0.65, 0.15, 1]);
+  const a = frameOn(hand, 2.4, 0.55, 0.5, [-0.7, 0.15, 1]);
+  const b = frameOn(hand, 2.0, 0.55, 0.5, [-0.65, 0.15, 1]);
   return (
     <>
       <DayLight target={[0, 0, 2]} />
       <Square frame={frame} counter="999 / 1,000" />
-      <Blok frame={frame} who="pip" position={PIP_TOUCH} rotation={[0, Math.PI / 2, 0]} look={-0.3} eyes="closed" mouth="smile" reach={[0.1, 0.05]} spread={[0.1, 1.13 - 0.05 * paint]} paint={paint} />
+      <Blok frame={frame} who="pip" position={PIP_TOUCH} rotation={[0, SIDE, 0]} look={0.3} eyes="closed" mouth="smile" reach={[0.05, 0.1]} spread={[1.13 - 0.05 * paint, 0.1]} paint={paint} />
       <pointLight position={[2.6, 2.4, 2.0]} color="#FFE2B0" intensity={4} distance={5} decay={2} />
       <Shot frame={f} duration={len} {...fly(a, b)} />
     </>
@@ -376,8 +377,8 @@ export const TorPosters: React.FC = () => {
     // Gasse: Pip klebt gelbe Plakate an jede Wand (eins nach dem anderen, auf „posters“ beginnend)
     const p0 = beat("posterMontage");
     const pipX = lerp(POSTER_SPOTS[0][0] + 0.9, POSTER_SPOTS[3][0] + 0.9, ramp(frame, 0, len, (x) => x));
-    const a = cam([1.5, 3.0, 12.5], [0.4, 2.4, 0], 40);
-    const b = cam([2.4, 2.9, 11.2], [1.6, 2.4, 0], 40);
+    const a = cam([0.8, 3.2, 17], [0.2, 2.6, 0], 40);
+    const b = cam([2.0, 3.1, 15.5], [1.4, 2.6, 0], 40);
     return (
       <>
         <DayLight target={[0, 0, 2]} />
@@ -399,8 +400,8 @@ export const TorPosters: React.FC = () => {
   const no = beat("pipFaceDrops");
   const drop = frame >= no;
   const pip: V3 = [3.2, 0, 4.6];
-  const a = cam([-6.5, 4.2, 17], [1.6, 4.6, 2], 40);
-  const b = cam([-5.2, 3.6, 13.5], [2.6, 3.6, 3.5], 40);
+  const a = cam([-6, 5.2, 21], [1.0, 5.2, 2], 40);
+  const b = cam([-5, 4.6, 18], [1.8, 4.6, 3], 40);
   return (
     <>
       <DayLight target={[0, 0, 6]} />
@@ -497,7 +498,7 @@ export const TorHide: React.FC = () => {
       <>
         <DayLight target={[0, 0, 4]} />
         <Square frame={frame} counter="999 / 1,000" glow={0.25} />
-        <Crowd people={people.filter((q) => q.z > 9.5)} frame={frame} raise={() => 1} />
+        <Crowd people={people.filter((q) => q.z > 9.5 && q.z < 12.5)} frame={frame} raise={() => 1} />
         <Barrel position={barrel} scale={1.25} />
         <Blok frame={frame} who="pip" position={pip} rotation={[0, Math.PI - 0.55, 0]} lean={0.15} nod={-0.2} look={-0.25} eyes="wide" mouth="flat" reach={[0.6, 0.3]} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
