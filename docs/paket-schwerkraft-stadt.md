@@ -151,7 +151,7 @@ Zeiten geplant mit **2,59 W/s je Szene** inkl. Pausen + 0,85 s Stille vor `turn`
 - **Stimme:** `am_michael` (Standard, Nutzer 13.11.2026), Chatterbox; male, young adult, nah am Mikro, warm mittel-tief.
 - **Grundlaune `narratorMood`: verschmitzt-ironisch und staunend; ab der Gefahr leise-gespannt, am Ende warm und ruhig** – wie jemand, der sich augenzwinkernd über eine Stadt wundert, die vor dem Schwersein flieht.
 - **Sprechart (Pflicht):** `voicePreset` **„witzig“** (Zuordnung Kurioses/Satire → witzig + ironic/playful) – **überschreibt** den Dashboard-Standard „lebendig“, weil der Ton ironisch ist. Das hohe Preset-Tempo (1,12) greift nicht: bei gesetztem `emotion`-Objekt wirkt nur `speed × emotion.speed` (`scripts/make_episode.py`).
-- **`delivery` je Szene:** hook, rule, light, dump **ironic** · slide, pip **playful** · lonely **sad** · rehook, gust, town **tense** · marta **warm** (Hoffnung) · **turn dramatic (Höhepunkt)** · catch **warm** · answer **calm** · loop **ironic** (end_db 2,5, springt in den Hook).
+- **`delivery` je Szene:** hook, rule, light, dump **ironic** · slide, bo **playful** · lonely **sad** · rehook, gust, town **tense** · marta **warm** (Hoffnung) · **turn dramatic (Höhepunkt)** · catch **warm** · answer **calm** · loop **ironic** (end_db 2,5, springt in den Hook).
 - **Speed:** `speed` 1,05 = `narrator.max_speed` 1,05 (atempo ≤ 1,05, K14); `emotion.speed` überall 1,0 – Tempo kommt aus `cfg` 0,85–0,95 (Lesson 9).
 - **Emotion je Abschnitt (Chatterbox):** setup/ironic = exag 0,60–0,62, cfg 0,90–0,92, −0,5 dB · tension = exag 0,55, cfg 0,88, −2,5 dB, Satzende −5,5 dB (sad: exag 0,50, gap 300 ms, −2 dB) · hope = exag 0,58, cfg 0,85 · twist = exag 0,65, cfg 0,85, +1,5 dB, gap 220 ms · ending = exag 0,50, cfg 0,90–0,95, −1,5/−2 dB, Satzende −6/−6,5 dB · loop = exag 0,58, end_db 2,5, 0 dB.
 - **Mechanik (Sonne 15.11.):** `narrator.comma_whisper` an (Komma-Stille nach dem Wort-Tail), `end_soft_ms` 60, `room_tone_db` −72, `splitCommas` in `slide` („Hats, cats, rain…“), `pauseBeforeMs` 250 vor `turn` (+ Musik/Bett-Stille 0,85 s) und 500 vor `loop`.
@@ -183,7 +183,7 @@ Zeiten geplant mit **2,59 W/s je Szene** inkl. Pausen + 0,85 s Stille vor `turn`
 | Punkt | Runde 1 | Befund Runde 1 → Überarbeitung | Runde 2 | Beleg im eigenen Skript |
 | --- | --- | --- | --- | --- |
 | Hook | 8 | Vorlage „the ground doesn't fall down“ ist unlogisch → „nothing falls down“ | **9** | „In this city, nothing falls *down*. It falls toward Granny *Marta*.“ – Widerspruch + Figur in 11 W, Apfel seitwärts, Frage ≤ 2 s. |
-| Szenenlogik | 9 | – | **9** | 15/15 Links ≤ 6 W, z. B. town → marta „but: Marta chooses to get heavier“, rehook → pip „because: lightness weakens the pull“. |
+| Szenenlogik | 9 | – | **9** | 15/15 Links ≤ 6 W, z. B. town → marta „but: Marta chooses to get heavier“, rehook → bo „because: lightness weakens the pull“. |
 | Tempo | 8 | Erstentwurf 215 W (> 70 s) → Szenen zusammengelegt (gust+drift, dump+heavier, rehook+Regel) und Füllsätze gestrichen → 166 → 164 W; bo/slide in 3 Einstellungen; v1.1 Last-Regel +2 W → 166 W (Obergrenze), Plan B −3 W | **9** | 166 W → 62,5–69,9 s (Plan 67,6 s), 31 Einstellungen Ø 2,18 s, min 1,50 s, max 2,42 s + Halt 5,09 s. |
 | On-Screen-Text | 9 | – | **9** | 48/48 Phrasen 2–5 W = Sprechtext; K13-Schnitt 0 in 15/15 Szenen; onScreen-Lesetest erzählt die Geschichte. |
 | Emotionaler Höhepunkt | 9 | – | **9** | stakes 52–64 % → hope 64 % → 0,85 s Stille 71 % → turn 72 %, „toward Marta“ ≈ 78 %; Nachspann 19 %. |
