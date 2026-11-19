@@ -319,7 +319,7 @@ class Song:
         self.intro = (4 if 4 * self.beat <= 2.0 else 2) * self.beat
         self.nbars = int(np.ceil((seconds - self.intro) / self.bar)) + 1
         self.sparse = 0.0  # Sekunden: davor nur Flächen (kein Schlagzeug/808), nur gen_dark (Drehbuch music.sparseUntilScene)
-        # Musik-Plan (nur gen_epic, Drehbuch music.sections/silenceBefore): {"sparse": s, "drone": s, "padOnly": s,
+        # Musik-Plan (gen_epic + gen_funny, Drehbuch music.sections/silenceBefore): {"sparse": s, "drone": s, "padOnly": s,
         # "silence": [(von, bis), ...]}. Leer = Arrangement unverändert (bitgleich wie vorher).
         self.plan: dict = {}
 
@@ -428,15 +428,47 @@ def gen_funny(mix, s, key, prog, rng, kit):
     """Bouncy R&B-Pop: Offbeat-Rhodes-Stabs, hüpfender Sinus-Bass, Snaps auf 2 und 4, Swing-16tel."""
     notes, rhythm = _motif(rng, length=8, scale=(0, 2, 4, 7, 9, 12, 14))
     sw = 0.22
+    plan = s.plan  # Musik-Plan wie gen_epic (sparse/drone/padOnly/silence); leer = bitgleich wie vorher
     for j in range(4):
         mix.add("music", j * s.intro / 4, rhodes(_hz(60 + key + (0, 4, 7, 11)[j]), 0.4, 0.9), 0.12)
-        mix.add("drums", j * s.intro / 4, kit.snap, 0.14)
+        if not (plan and plan.get("sparse", 0.0) > 0.05):  # sparse: Intro ohne Snaps
+            mix.add("drums", j * s.intro / 4, kit.snap, 0.14)
+    if plan:  # Abschnittsgrenzen exakt: Klänge der Vorstufe enden dort (30 ms Ausblendung)
+        mix = _Cut(mix, sorted([plan[k] for k in ("drone", "padOnly") if k in plan] + [a for a, _ in plan.get("silence", [])]))
+
+    def mode_at(t):
+        return "padOnly" if t >= plan.get("padOnly", 1e9) else "drone" if t >= plan.get("drone", 1e9) else ""
+
+    def mode_bar(mode, t, dur, vc):
+        if mode == "padOnly":  # Ausklang: gehaltener Rhodes-Akkord + Fläche, kein Bass/Schlagzeug
+            mix.add("music", t, pad([_hz(m) for m in vc[:3]], dur, rng, fc=900, att=0.6), 0.07)
+            play_chord(mix, rhodes, t, vc, dur * 0.9, 0.06, strum=0.02, bright=0.6)
+        else:  # Wende/Gefahr: Fläche auf dem Grundton + weicher tiefer Bass, keine Drums, keine Stabs
+            tonic = 48 + key
+            mix.add("music", t, pad([_hz(m) for m in voicing(tonic, "maj7", 50)[:3]] + [_hz(tonic - 12)], dur, rng, fc=600, att=0.6), 0.09)
+            mix.add("bass", t, soft_bass(_hz(bass_note(tonic) + 12), dur), 0.30)
+
     for bar in range(s.nbars):
         sec = s.section(bar)
         deg, q = prog[bar % 4]
         r = 48 + key + deg
         t0 = s.t(bar)
         vc = voicing(r, q, 58)
+        if plan:
+            mix.limit = None
+            m0 = mode_at(t0)
+            if m0:
+                mode_bar(m0, t0, s.bar, vc)
+                b = plan.get("padOnly", 1e9)
+                if m0 == "drone" and t0 < b < t0 + s.bar:
+                    mode_bar("padOnly", b, t0 + s.bar - b, vc)
+                continue
+            for k in ("drone", "padOnly"):
+                b = plan.get(k, 1e9)
+                if t0 < b < t0 + s.bar:  # Grenze mitten im Takt: neuer Abschnitt beginnt exakt dort
+                    mode_bar(k, b, t0 + s.bar - b, vc)
+                    mix.limit = b
+                    break
         for j in (1, 3, 4, 6) if bar % 2 else (1, 3, 5, 7):  # Offbeat-Stabs (kurz) – „Bounce“
             play_chord(mix, rhodes, t0 + j * s.beat / 2 + sw * s.beat / 4, vc, s.beat * 0.3, 0.07, strum=0.006, bright=0.9)
         if sec in ("B", "A2"):
@@ -444,6 +476,8 @@ def gen_funny(mix, s, key, prog, rng, kit):
                 if rhythm[(j + (3 if sec == "A2" else 0)) % 8]:
                     m = 72 + key + notes[j] + (12 if sec == "A2" and j in (3, 7) else 0)
                     mix.add("music", t0 + j * s.beat / 2, bell(_hz(m), 0.5), 0.08)
+        if plan and t0 < plan.get("sparse", 0.0) - 0.05:  # vor der Zielszene: nur Stabs/Glocke, kein Bass/Schlagzeug
+            continue
         if sec == "C" and bar % 4 == 0:
             for j in range(4):
                 mix.add("drums", t0 + j * s.beat, kit.snap, 0.2)

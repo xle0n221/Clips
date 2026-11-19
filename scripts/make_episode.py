@@ -572,9 +572,9 @@ def synth_track(ep: dict, voice: Voice | None, post: bool = True, log=print) -> 
 
 
 def music_plan(mus: dict, at: dict[str, float]) -> dict | None:
-    """Musik-Plan aus dem Drehbuch (nur gen_epic): music.sections {"<Szene>": "drone" | "padOnly"} und
+    """Musik-Plan aus dem Drehbuch (gen_epic, gen_funny): music.sections {"<Szene>": "drone" | "padOnly"} und
     music.silenceBefore {"<Szene>": Sekunden}; Szenen-IDs → Startzeit laut timeline. Ohne die Felder: None (unverändert).
-    sparseUntilScene gilt dann auch für epic (kein Schlagzeug/808 davor)."""
+    sparseUntilScene gilt dann auch für epic/funny (kein Schlagzeug/808 davor)."""
     if not (mus.get("sections") or mus.get("silenceBefore")):
         return None
     plan: dict = {"sparse": at.get(mus.get("sparseUntilScene"), 0.0)}
