@@ -666,7 +666,8 @@ export const Crowd: React.FC<{
   readonly scale?: number;
   readonly paddles?: boolean;
   readonly cheer?: number;
-}> = ({ people, frame, raise, scale = 0.52, paddles = true, cheer = 0 }) => {
+  readonly paddleColor?: string;
+}> = ({ people, frame, raise, scale = 0.52, paddles = true, cheer = 0, paddleColor = T.yes }) => {
   const groups = useMemo(() => CROWD_COLS.map((c) => people.filter((p) => p.c === c)), [people]);
   const place = (m: InstancedMesh | null, part: "body" | "head" | "hair" | "arm" | "paddle", list: readonly Person[]) => {
     if (!m) return;
@@ -738,7 +739,7 @@ export const Crowd: React.FC<{
           </instancedMesh>
           <instancedMesh key={`p${n}`} ref={(m) => place(m, "paddle", people)} args={[undefined, undefined, n]} frustumCulled={false}>
             <cylinderGeometry args={[0.36, 0.36, 0.07, 20]} />
-            <meshStandardMaterial color={T.yes} roughness={0.35} emissive={T.yes} emissiveIntensity={0.15} />
+            <meshStandardMaterial color={paddleColor} roughness={0.35} emissive={paddleColor} emissiveIntensity={0.15} />
           </instancedMesh>
         </>
       ) : null}

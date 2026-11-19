@@ -297,25 +297,20 @@ export const TorWorld: React.FC = () => {
       </>
     );
   }
-  // Eine rote NO-Kelle taucht auf – nur ein marineblauer Ärmel mit Messingknopf, Gesicht verborgen
+  // Totale von oben (Regie-Befund): 999 grüne Kellen, genau EINE rote mittig – die rote Kelle hebt sich auf „no“
   const no = beat("redPaddle");
   const rise = ramp(frame, no - 6, no + 2, Easing.out(Easing.back(1.6)));
-  const p: V3 = [2.6, 0.9, 10.2];
-  const a = frameOn([p[0], 2.2, p[2]], 4.0, 0.5, 0.5, [0.1, 0.5, 1]);
-  const b = frameOn([p[0], 2.3, p[2]], 3.4, 0.5, 0.5, [0.08, 0.5, 1]);
+  const mid = people.reduce((m, q) => (Math.hypot(q.x, q.z - 15.2) < Math.hypot(m.x, m.z - 15.2) ? q : m), people[0]);
+  const rest = people.filter((q) => q !== mid);
+  const a = cam([0, 19, 27.5], [0, 0.6, 15.6], 40);
+  const b = cam([0, 16.5, 25.0], [0, 0.6, 15.4], 40);
   return (
     <>
-      <DayLight target={[2, 0, 8]} />
+      <DayLight target={[0, 0, 14]} />
       <Square frame={frame} counter="999 / 1,000" />
-      <Crowd people={people.filter((q) => Math.hypot(q.x - p[0], q.z - p[2]) > 0.5 && !(q.z > p[2] && Math.abs(q.x - p[0]) < 3))} frame={frame} raise={() => 1} />
-      {/* Köpfe der Menge im Vordergrund (unscharf durch Nähe) */}
-      {[
-        [p[0] - 1.0, 0, p[2] + 1.6],
-        [p[0] + 0.9, 0, p[2] + 1.9],
-      ].map((q, i) => (
-        <Blok key={i} frame={frame} who="towns" position={q as V3} rotation={[0, Math.PI, 0]} scale={0.8} shirt={i ? T.cream : T.terra} reach={[0.1, Math.PI - 0.2]} holdR={<Paddle color={T.yes} rotation={[0, 0, 0]} />} />
-      ))}
-      <Sleeve position={p} rise={rise} />
+      <Crowd people={rest} frame={frame} raise={() => 1} />
+      <Crowd people={[{ ...mid, yaw: 0 }]} frame={frame} raise={() => rise} scale={0.78} paddleColor={T.no} />
+      <pointLight position={[mid.x, 3.2, mid.z + 0.6]} color="#FFD7C0" intensity={6 * rise} distance={4} decay={2} />
       <Shot frame={f} duration={len} {...fly(a, b)} />
     </>
   );
