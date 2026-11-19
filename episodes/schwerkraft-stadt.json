@@ -127,7 +127,7 @@
     ],
     "bars": []
   },
-  "note": "v1.1 (19.11.2026, Nacharbeit Runde 2 nach Fakten 8 / Retention 8,5): Regel auf Last ('whoever carries the most', 'The less you carry…'), Big Marta → Granny Marta (Figur nicht breiter, Gewicht = Taschen/Sack/Stapel, Waage wiegt nie Körper), Pip → Bo, Hook-Frage 'WHY DOES IT ALL FALL TO HER?', light-onScreen 'EVERYONE FLEES HER PULL', marta 'She grabs it all… to get heavier.' + 'SHE LOADS UP ON PURPOSE'. 166 Skriptwörter, 15 Szenen, 31 Einstellungen inkl. End-Card (Ø 2,18 s, max 5,09 s Halt turn, min 1,50 s), 48 Phrasen à 2–5 W. Plan 2,54 W/s → 67,6 s inkl. End-Card (62,5 s bei 2,75 W/s bis 69,9 s bei 2,45 W/s); Plan B > 69,5 s: 'Everyone stays light.' streichen. Re-Hook 'But being too light is worse.' bei 39,6 % (Wort 69/166), Wende turn 72 %, Enthüllung 'toward Marta' ≈ 78 %, Nachspann 31 W = 19 %. Skript-Prüfung (scratchpad sk/build_sk.py): Sätze ≤ 12 W, 1 Akzent je Satz, captions 2–5 W = Sprechtext, K13-Schnitt 0 in 15/15, Cue-Wörter vorhanden, Einstellungen 1,3–4 s außer turn (≤ 6 s), Szenen ≤ 8 s, why ≤ 8 W: 0 Verstöße. HUD 'BO' am Cue-Wort: GROUNDED 'worse' → FLOATING 'hits' → TOO HIGH 'up' → SLOWING 'heavier' → FALLING 'fall' → SAFE 'arms'. Offen: music.sections für gen_funny (Ton).",
+  "note": "v1.1 (19.11.2026, Nacharbeit Runde 2 nach Fakten 8 / Retention 8,5): Regel auf Last ('whoever carries the most', 'The less you carry…'), Big Marta → Granny Marta (Figur nicht breiter, Gewicht = Taschen/Sack/Stapel, Waage wiegt nie Körper), Pip → Bo, Hook-Frage 'WHY DOES IT ALL FALL TO HER?', light-onScreen 'THEY ALL RUN FROM HER PULL', marta 'She grabs it all… to get heavier.' + 'SHE LOADS UP ON PURPOSE'. 166 Skriptwörter, 15 Szenen, 31 Einstellungen inkl. End-Card (Ø 2,18 s, max 5,09 s Halt turn, min 1,50 s), 48 Phrasen à 2–5 W. Plan 2,54 W/s → 67,6 s inkl. End-Card (62,5 s bei 2,75 W/s bis 69,9 s bei 2,45 W/s); Plan B > 69,5 s: 'Everyone stays light.' streichen. Re-Hook 'But being too light is worse.' bei 39,6 % (Wort 69/166), Wende turn 72 %, Enthüllung 'toward Marta' ≈ 78 %, Nachspann 31 W = 19 %. Skript-Prüfung (scratchpad sk/build_sk.py): Sätze ≤ 12 W, 1 Akzent je Satz, captions 2–5 W = Sprechtext, K13-Schnitt 0 in 15/15, Cue-Wörter vorhanden, Einstellungen 1,3–4 s außer turn (≤ 6 s), Szenen ≤ 8 s, why ≤ 8 W: 0 Verstöße. HUD 'BO' am Cue-Wort: GROUNDED 'worse' → FLOATING 'hits' → TOO HIGH 'up' → SLOWING 'heavier' → FALLING 'fall' → SAFE 'arms'. Offen: music.sections für gen_funny (Ton).",
   "voiceProfile": "male, young adult – am_michael (Standardstimme, Nutzer 13.11.2026); Grundlaune verschmitzt-ironisch-staunend, Spannung beim Wegtreiben, Ende warm-ruhig.",
   "voiceNotes": {
     "prompt": "STEP 4/4b 'NARRATION & VOICE' (Nutzer 13.11.2026), umgesetzt mit Chatterbox wie Sonne (Mechanik 15.11.: comma_whisper, end_soft_ms, splitCommas, pauseBeforeMs, room_tone_db).",
@@ -380,7 +380,7 @@
         "gain_db": -0.5
       },
       "text": "So everyone fights to stay *light*. | Balloon hats, empty *pockets*.",
-      "onScreen": "EVERYONE FLEES HER PULL",
+      "onScreen": "THEY ALL RUN FROM HER PULL",
       "why": "so: nobody wants her place",
       "visual": "SHOT 1 (medium, street, left-to-right): blocky townsfolk walk on tiptoe, each wearing a hat tied to two sky-blue balloons; a man drops his briefcase like it's hot / SHOT 2 (detail, insert): a hand turns a coat pocket inside out – empty, a single moth flies out; behind, a woman shakes coins from her purse, the coins roll away downhill",
       "shots": [
