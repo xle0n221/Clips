@@ -104,7 +104,7 @@ export const Square: React.FC<{
 export const useTownCrowd = (n = 1000) => useCrowdLayout(n, 40, 0.62, 0.7, CROWD_Z0, 17);
 
 /** Kamera des Eröffnungsbilds (Hook Shot 1 = Match-Cut-Ziel im stinger): hinter Pip, Blick hoch zu Tor + Zähler. */
-const HOOK_A = cam([2.6, 1.7, 21], [0.2, 7.0, 0], 40);
+const HOOK_A = cam([2.6, 1.7, 21], [0.2, 8.3, 0], 40);
 const HOOK_B = cam([2.3, 1.8, 19], [0.2, 5.9, 0], 40);
 export const PIP_HOOK: V3 = [1.3, 0, 4.2];
 
@@ -236,8 +236,8 @@ export const TorRule: React.FC = () => {
   const people = useTownCrowd();
   if (shot === 0) {
     // Draufsicht: der ganze Platz voller Klötze, alle zum Tor gewandt
-    const a = cam([0, 40, 26], [0, 0, 13.5], 40);
-    const b = cam([0, 36, 24.5], [0, 0, 13.5], 40);
+    const a = cam([0, 30, 38], [0, 0, 12], 40);
+    const b = cam([0, 27, 35], [0, 0, 12], 40);
     return (
       <>
         <DayLight target={[0, 0, 12]} />
@@ -399,15 +399,15 @@ export const TorPosters: React.FC = () => {
   const y = beat("counter999again");
   const no = beat("pipFaceDrops");
   const drop = frame >= no;
-  const pip: V3 = [3.2, 0, 4.6];
-  const a = cam([-6, 5.2, 21], [1.0, 5.2, 2], 40);
-  const b = cam([-5, 4.6, 18], [1.8, 4.6, 3], 40);
+  const pip: V3 = [-2.6, 0, 12.0];
+  const a = cam([-6, 5.2, 21], [-0.4, 5.2, 2], 40);
+  const b = cam([-5.4, 4.4, 19.5], [-1.2, 3.8, 6], 40);
   return (
     <>
       <DayLight target={[0, 0, 6]} />
       <Square frame={frame} counter={rollTo(frame, 0, y, 0, 999)} />
-      <Crowd people={people} frame={frame} raise={() => 1} />
-      <Blok frame={frame} who="pip" position={pip} rotation={[0, -2.25, 0]} nod={drop ? 0.12 : -0.35} look={drop ? 0.5 : 0.2} eyes={drop ? "sad" : "wide"} mouth={drop ? "frown" : "smile"} reach={[0.2, 0.2]} />
+      <Crowd people={people.filter((q) => Math.hypot(q.x - pip[0], q.z - pip[2]) > 1.1 && !(q.z > pip[2] && q.x < pip[0] + 1.5))} frame={frame} raise={() => 1} />
+      <Blok frame={frame} who="pip" position={pip} rotation={[0, -0.35, 0]} nod={drop ? 0.12 : -0.35} look={drop ? 0.5 : 0.2} eyes={drop ? "sad" : "wide"} mouth={drop ? "frown" : "smile"} reach={[0.2, 0.2]} />
       {/* die eine rote Kelle am Häuschen */}
       <Sleeve position={[BOOTH[0] - 0.4, 1.2, BOOTH[2] + 1.4]} rise={1} />
       <Shot frame={f} duration={len} {...fly(a, b)} />
@@ -487,20 +487,18 @@ export const TorDoors: React.FC = () => {
 export const HOLLIS_IN: V3 = [BOOTH[0], 0, BOOTH[2] - 0.15];
 export const TorHide: React.FC = () => {
   const { frame, beat, shot, f, len, from } = useShots("hide");
-  const people = useTownCrowd();
   if (shot === 0) {
     // hinter dem Fass: Pip späht hervor, der Zähler leuchtet über dem Tor
-    const barrel: V3 = [-2.6, 0, 6.2];
-    const pip: V3 = [-3.3, 0, 6.9];
-    const a = cam([-6.6, 1.5, 15.5], [-0.6, 4.4, 0], 42);
-    const b = cam([-6.2, 1.6, 14.2], [-0.6, 4.6, 0], 42);
+    const barrel: V3 = [2.4, 0, 6.2];
+    const pip: V3 = [3.1, 0, 6.9];
+    const a = cam([9.5, 1.8, 12.5], [0.2, 4.2, 0], 42);
+    const b = cam([8.9, 1.9, 11.6], [0.2, 4.4, 0], 42);
     return (
       <>
         <DayLight target={[0, 0, 4]} />
         <Square frame={frame} counter="999 / 1,000" glow={0.25} />
-        <Crowd people={people.filter((q) => q.z > 9.5 && q.z < 12.5)} frame={frame} raise={() => 1} />
         <Barrel position={barrel} scale={1.25} />
-        <Blok frame={frame} who="pip" position={pip} rotation={[0, Math.PI - 0.55, 0]} lean={0.15} nod={-0.2} look={-0.25} eyes="wide" mouth="flat" reach={[0.6, 0.3]} />
+        <Blok frame={frame} who="pip" position={pip} rotation={[0, Math.PI + 0.7, 0]} lean={0.15} nod={-0.2} look={0.9} eyes="wide" mouth="flat" reach={[0.6, 0.3]} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
     );

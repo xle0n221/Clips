@@ -1,7 +1,7 @@
 {
  "id": "schwerkraft-stadt",
  "title": "In This City, Gravity Pulls Toward Marta",
- "durationMs": 66055,
+ "durationMs": 66949,
  "scenes": [
   {
    "id": "hook",
@@ -36,47 +36,47 @@
   {
    "id": "rehook",
    "startMs": 29631,
-   "endMs": 31693
+   "endMs": 31843
   },
   {
    "id": "bo",
-   "startMs": 31693,
-   "endMs": 36206
+   "startMs": 31843,
+   "endMs": 37283
   },
   {
    "id": "gust",
-   "startMs": 36206,
-   "endMs": 39991
+   "startMs": 37283,
+   "endMs": 41067
   },
   {
    "id": "town",
-   "startMs": 39991,
-   "endMs": 43860
+   "startMs": 41067,
+   "endMs": 44937
   },
   {
    "id": "marta",
-   "startMs": 43860,
-   "endMs": 48525
+   "startMs": 44937,
+   "endMs": 49602
   },
   {
    "id": "turn",
-   "startMs": 48525,
-   "endMs": 53311
+   "startMs": 49602,
+   "endMs": 54388
   },
   {
    "id": "catch",
-   "startMs": 53311,
-   "endMs": 56793
+   "startMs": 54388,
+   "endMs": 57687
   },
   {
    "id": "answer",
-   "startMs": 56793,
-   "endMs": 61371
+   "startMs": 57687,
+   "endMs": 62265
   },
   {
    "id": "loop",
-   "startMs": 61371,
-   "endMs": 65455
+   "startMs": 62265,
+   "endMs": 66349
   }
  ],
  "cues": [
@@ -136,7 +136,7 @@
    "beat": "catFliesIn",
    "sfx": "whoosh",
    "scene": "slide",
-   "atMs": 12960
+   "atMs": 12940
   },
   {
    "beat": "martaCatchesCat",
@@ -242,22 +242,22 @@
   {
    "beat": "boHops",
    "scene": "bo",
-   "atMs": 33040
+   "atMs": 33580
   },
   {
    "beat": "thinPullLines",
    "scene": "bo",
-   "atMs": 35440
+   "atMs": 36260
   },
   {
    "emph": true,
    "scene": "bo",
-   "atMs": 33040
+   "atMs": 33580
   },
   {
    "emph": true,
    "scene": "bo",
-   "atMs": 35440
+   "atMs": 36260
   },
   {
    "beat": "gustHits",
@@ -267,22 +267,22 @@
     "value": "FLOATING"
    },
    "scene": "gust",
-   "atMs": 36860
+   "atMs": 37940
   },
   {
    "beat": "boPastRoofs",
    "scene": "gust",
-   "atMs": 39280
+   "atMs": 40340
   },
   {
    "emph": true,
    "scene": "gust",
-   "atMs": 36860
+   "atMs": 37940
   },
   {
    "emph": true,
    "scene": "gust",
-   "atMs": 39280
+   "atMs": 40340
   },
   {
    "beat": "crowdReaches",
@@ -291,27 +291,27 @@
     "value": "TOO HIGH"
    },
    "scene": "town",
-   "atMs": 41340
+   "atMs": 42420
   },
   {
    "beat": "boLooksDown",
    "scene": "town",
-   "atMs": 43180
+   "atMs": 44240
   },
   {
    "emph": true,
    "scene": "town",
-   "atMs": 41340
+   "atMs": 42420
   },
   {
    "emph": true,
    "scene": "town",
-   "atMs": 43180
+   "atMs": 44240
   },
   {
    "beat": "martaStandsUp",
    "scene": "marta",
-   "atMs": 45520
+   "atMs": 46600
   },
   {
    "beat": "martaScoopsPile",
@@ -320,22 +320,22 @@
     "value": "SLOWING"
    },
    "scene": "marta",
-   "atMs": 47520
+   "atMs": 48600
   },
   {
    "emph": true,
    "scene": "marta",
-   "atMs": 45520
+   "atMs": 46600
   },
   {
    "emph": true,
    "scene": "marta",
-   "atMs": 47520
+   "atMs": 48600
   },
   {
    "beat": "boHangsStill",
    "scene": "turn",
-   "atMs": 50100
+   "atMs": 51180
   },
   {
    "beat": "boTurnsAndFalls",
@@ -344,22 +344,22 @@
     "value": "FALLING"
    },
    "scene": "turn",
-   "atMs": 51400
+   "atMs": 52480
   },
   {
    "beat": "pullLineGlows",
    "scene": "turn",
-   "atMs": 52100
+   "atMs": 53160
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 50100
+   "atMs": 51180
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 52100
+   "atMs": 53160
   },
   {
    "beat": "boLandsInArms",
@@ -368,62 +368,62 @@
     "value": "SAFE"
    },
    "scene": "catch",
-   "atMs": 54280
+   "atMs": 55360
   },
   {
    "beat": "hugClose",
    "scene": "catch",
-   "atMs": 56020
+   "atMs": 56900
   },
   {
    "emph": true,
    "scene": "catch",
-   "atMs": 54280
+   "atMs": 55360
   },
   {
    "emph": true,
    "scene": "catch",
-   "atMs": 56020
+   "atMs": 56900
   },
   {
    "beat": "duskTown",
    "scene": "answer",
-   "atMs": 57540
+   "atMs": 58440
   },
   {
    "beat": "neighboursCome",
    "scene": "answer",
-   "atMs": 60000
+   "atMs": 60900
   },
   {
    "emph": true,
    "scene": "answer",
-   "atMs": 57540
+   "atMs": 58440
   },
   {
    "emph": true,
    "scene": "answer",
-   "atMs": 60000
+   "atMs": 60900
   },
   {
    "beat": "balloonBumpsNose",
    "scene": "loop",
-   "atMs": 63000
+   "atMs": 63900
   },
   {
    "beat": "loopToHook",
    "scene": "loop",
-   "atMs": 64600
+   "atMs": 65500
   },
   {
    "emph": true,
    "scene": "loop",
-   "atMs": 63000
+   "atMs": 63900
   },
   {
    "emph": true,
    "scene": "loop",
-   "atMs": 64600
+   "atMs": 65500
   }
  ],
  "hud": {

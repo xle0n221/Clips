@@ -82,8 +82,8 @@ export const COUNTER_C: V3 = [0, 7.75, 0.42];
 /** Torwächter-Häuschen rechts neben dem Tor (Fußpunkt) */
 export const BOOTH: V3 = [6.6, 0, 1.6];
 /** Regel-Tafel (links am Tor) und Rostschild (rechts) */
-export const RULE_PLATE: V3 = [-3.55, 4.6, 0.08];
-export const PLAQUE: V3 = [3.55, 2.1, 0.08];
+export const RULE_PLATE: V3 = [-4.3, 4.6, 0.08];
+export const PLAQUE: V3 = [4.3, 2.1, 0.08];
 /** Pip vor dem Tor (Hook/Stakes) */
 export const PIP_GATE: V3 = [0.95, 0, 1.5];
 /** Stoppuhr am Mast (Fußpunkt), Zifferblatt bei y 4,6 */

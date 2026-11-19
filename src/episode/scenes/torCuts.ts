@@ -19,7 +19,7 @@ export const TOR_SHOTS: Record<string, { readonly names: readonly string[]; read
     cuts: (b) => [b("paddlesUp") - 8, b("redPaddle") - 34],
   },
   pip: { names: ["medium close-up Pip forehead on gate", "macro hand on painted wave"], cuts: (b) => [b("paintedWaveTouch") - 22] },
-  posters: { names: ["wide Pip pastes posters", "rack focus counter 999 → Pip's face drops"], cuts: (b) => [b("counter999again") - 50] },
+  posters: { names: ["wide Pip pastes posters", "rack focus counter 999 → Pip's face drops"], cuts: (b) => [b("counter999again") - 32] },
   doors: { names: ["tracking OTS Pip knocks, neighbours nod", "close-up clipboard 1,000 ticks"], cuts: (b) => [b("clipboardSquint") - 20] },
   hide: {
     names: ["low-angle Pip behind barrel", "push-in booth NO paddle rises", "close-up Hollis lowers paddle"],
