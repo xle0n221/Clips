@@ -1,82 +1,82 @@
 {
  "id": "tor-stadt",
  "title": "In This City, the Gate Needs 1,000 Yeses",
- "durationMs": 69749,
+ "durationMs": 68089,
  "scenes": [
   {
    "id": "hook",
    "startMs": 150,
-   "endMs": 7482
+   "endMs": 7442
   },
   {
    "id": "rule",
-   "startMs": 7482,
-   "endMs": 11208
+   "startMs": 7442,
+   "endMs": 11168
   },
   {
    "id": "world",
-   "startMs": 11208,
-   "endMs": 17547
+   "startMs": 11168,
+   "endMs": 17507
   },
   {
    "id": "pip",
-   "startMs": 17547,
-   "endMs": 21713
+   "startMs": 17507,
+   "endMs": 21673
   },
   {
    "id": "posters",
-   "startMs": 21713,
-   "endMs": 27391
+   "startMs": 21673,
+   "endMs": 27171
   },
   {
    "id": "doors",
-   "startMs": 27391,
-   "endMs": 32322
+   "startMs": 27171,
+   "endMs": 32102
   },
   {
    "id": "hide",
-   "startMs": 32322,
-   "endMs": 37652
+   "startMs": 32102,
+   "endMs": 37192
   },
   {
    "id": "hollis",
-   "startMs": 37652,
-   "endMs": 40833
+   "startMs": 37192,
+   "endMs": 40373
   },
   {
    "id": "stakes",
-   "startMs": 40833,
-   "endMs": 45335
+   "startMs": 40373,
+   "endMs": 44875
   },
   {
    "id": "hope",
-   "startMs": 45335,
-   "endMs": 48851
+   "startMs": 44875,
+   "endMs": 48291
   },
   {
    "id": "turn",
-   "startMs": 48851,
-   "endMs": 54283
+   "startMs": 48291,
+   "endMs": 53723
   },
   {
    "id": "open",
-   "startMs": 54283,
-   "endMs": 59051
+   "startMs": 53723,
+   "endMs": 58311
   },
   {
    "id": "sea",
-   "startMs": 59051,
-   "endMs": 61437
+   "startMs": 58311,
+   "endMs": 60697
   },
   {
    "id": "first",
-   "startMs": 61437,
-   "endMs": 64051
+   "startMs": 60697,
+   "endMs": 63111
   },
   {
    "id": "stinger",
-   "startMs": 64051,
-   "endMs": 69149
+   "startMs": 63111,
+   "endMs": 67950
   }
  ],
  "cues": [
@@ -95,7 +95,7 @@
    "beat": "keyholeCobweb",
    "sfx": "whoosh",
    "scene": "hook",
-   "atMs": 6670
+   "atMs": 6630
   },
   {
    "emph": true,
@@ -105,7 +105,7 @@
   {
    "emph": true,
    "scene": "hook",
-   "atMs": 6670
+   "atMs": 6630
   },
   {
    "beat": "squareTopDown",
@@ -114,28 +114,28 @@
     "value": "0 / 1,000"
    },
    "scene": "rule",
-   "atMs": 8280
+   "atMs": 8240
   },
   {
    "beat": "stopwatchSnap",
    "sfx": "pop",
    "scene": "rule",
-   "atMs": 10320
+   "atMs": 10280
   },
   {
    "emph": true,
    "scene": "rule",
-   "atMs": 8280
+   "atMs": 8240
   },
   {
    "emph": true,
    "scene": "rule",
-   "atMs": 10320
+   "atMs": 10280
   },
   {
    "beat": "rooftopsCrane",
    "scene": "world",
-   "atMs": 11880
+   "atMs": 11840
   },
   {
    "beat": "paddlesUp",
@@ -144,54 +144,54 @@
     "value": "999 / 1,000"
    },
    "scene": "world",
-   "atMs": 14600
+   "atMs": 14560
   },
   {
    "beat": "redPaddle",
    "sfx": "pop",
    "scene": "world",
-   "atMs": 16820
+   "atMs": 16780
   },
   {
    "emph": true,
    "scene": "world",
-   "atMs": 11880
+   "atMs": 11840
   },
   {
    "emph": true,
    "scene": "world",
-   "atMs": 14600
+   "atMs": 14560
   },
   {
    "emph": true,
    "scene": "world",
-   "atMs": 16820
+   "atMs": 16780
   },
   {
    "beat": "pipAtGate",
    "scene": "pip",
-   "atMs": 17860
+   "atMs": 17820
   },
   {
    "beat": "paintedWaveTouch",
    "scene": "pip",
-   "atMs": 20580
+   "atMs": 20540
   },
   {
    "emph": true,
    "scene": "pip",
-   "atMs": 17860
+   "atMs": 17820
   },
   {
    "emph": true,
    "scene": "pip",
-   "atMs": 20580
+   "atMs": 20540
   },
   {
    "beat": "posterMontage",
    "sfx": "pop",
    "scene": "posters",
-   "atMs": 22500
+   "atMs": 22460
   },
   {
    "beat": "counter999again",
@@ -200,131 +200,131 @@
     "value": "999 / 1,000"
    },
    "scene": "posters",
-   "atMs": 24620
+   "atMs": 24400
   },
   {
    "beat": "pipFaceDrops",
    "scene": "posters",
-   "atMs": 26180
+   "atMs": 25960
   },
   {
    "emph": true,
    "scene": "posters",
-   "atMs": 22500
+   "atMs": 22460
   },
   {
    "emph": true,
    "scene": "posters",
-   "atMs": 26180
+   "atMs": 25960
   },
   {
    "beat": "doorRun",
    "scene": "doors",
-   "atMs": 28440
+   "atMs": 28220
   },
   {
    "beat": "clipboardSquint",
    "sticker": "999 + 1 = ?",
    "color": "#FFD23F",
    "scene": "doors",
-   "atMs": 31520
+   "atMs": 31300
   },
   {
    "emph": true,
    "scene": "doors",
-   "atMs": 28440
+   "atMs": 28220
   },
   {
    "emph": true,
    "scene": "doors",
-   "atMs": 30260
+   "atMs": 30040
   },
   {
    "emph": true,
    "scene": "doors",
-   "atMs": 31520
+   "atMs": 31300
   },
   {
    "beat": "pipBehindBarrel",
    "scene": "hide",
-   "atMs": 33700
+   "atMs": 33240
   },
   {
    "beat": "hollisRevealed",
    "scene": "hide",
-   "atMs": 36700
+   "atMs": 36240
   },
   {
    "emph": true,
    "scene": "hide",
-   "atMs": 33700
+   "atMs": 33240
   },
   {
    "emph": true,
    "scene": "hide",
-   "atMs": 36700
+   "atMs": 36240
   },
   {
    "beat": "hollisKeys",
    "scene": "hollis",
-   "atMs": 38080
+   "atMs": 37620
   },
   {
    "beat": "boothSign",
    "scene": "hollis",
-   "atMs": 40080
+   "atMs": 39620
   },
   {
    "emph": true,
    "scene": "hollis",
-   "atMs": 38080
+   "atMs": 37620
   },
   {
    "emph": true,
    "scene": "hollis",
-   "atMs": 40080
+   "atMs": 39620
   },
   {
    "beat": "pipAloneDusk",
    "scene": "stakes",
-   "atMs": 41980
+   "atMs": 41520
   },
   {
    "beat": "paintFlakeFalls",
    "scene": "stakes",
-   "atMs": 44460
+   "atMs": 44000
   },
   {
    "emph": true,
    "scene": "stakes",
-   "atMs": 41980
+   "atMs": 41520
   },
   {
    "emph": true,
    "scene": "stakes",
-   "atMs": 44460
+   "atMs": 44000
   },
   {
    "beat": "rulePlate",
    "sticker": "OPENS AT: 1,000 YES",
    "color": "#FFD23F",
    "scene": "hope",
-   "atMs": 46180
+   "atMs": 45720
   },
   {
    "beat": "pipGrin",
    "scene": "hope",
-   "atMs": 47800
+   "atMs": 47340
   },
   {
    "emph": true,
    "scene": "hope",
-   "atMs": 47800
+   "atMs": 47340
   },
   {
    "beat": "pipOnCrate",
    "scene": "turn",
-   "atMs": 49120
+   "atMs": 48560
   },
   {
    "beat": "thousandPaddles",
@@ -333,68 +333,68 @@
     "value": "1,000 / 1,000"
    },
    "scene": "turn",
-   "atMs": 52500
+   "atMs": 51940
   },
   {
    "beat": "hollisYells",
    "scene": "turn",
-   "atMs": 53460
+   "atMs": 52900
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 49120
+   "atMs": 48560
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 51160
+   "atMs": 50600
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 52500
+   "atMs": 51940
   },
   {
    "emph": true,
    "scene": "turn",
-   "atMs": 53460
+   "atMs": 52900
   },
   {
    "beat": "doorsSplit",
    "sfx": "whoosh",
    "scene": "open",
-   "atMs": 54740
+   "atMs": 54180
   },
   {
    "beat": "pipLeaps",
    "scene": "open",
-   "atMs": 58240
+   "atMs": 57680
   },
   {
    "emph": true,
    "scene": "open",
-   "atMs": 57080
+   "atMs": 56520
   },
   {
    "emph": true,
    "scene": "open",
-   "atMs": 58240
+   "atMs": 57680
   },
   {
    "beat": "realSeaWide",
    "scene": "sea",
-   "atMs": 59660
+   "atMs": 58920
   },
   {
    "beat": "waveRinsesPaint",
    "scene": "sea",
-   "atMs": 60600
+   "atMs": 59860
   },
   {
    "emph": true,
    "scene": "sea",
-   "atMs": 60600
+   "atMs": 59860
   },
   {
    "beat": "pipScratchesPlaque",
@@ -403,17 +403,17 @@
     "value": "999"
    },
    "scene": "first",
-   "atMs": 62060
+   "atMs": 61320
   },
   {
    "beat": "pullBackWall",
    "scene": "first",
-   "atMs": 62760
+   "atMs": 62020
   },
   {
    "emph": true,
    "scene": "first",
-   "atMs": 62760
+   "atMs": 62020
   },
   {
    "beat": "frozenSquare",
@@ -422,29 +422,29 @@
     "value": "999 / 1,000"
    },
    "scene": "stinger",
-   "atMs": 65940
+   "atMs": 65000
   },
   {
    "beat": "loopToHook",
    "sticker": "MAX: 999",
    "color": "#FFD23F",
    "scene": "stinger",
-   "atMs": 67960
+   "atMs": 67020
   },
   {
    "emph": true,
    "scene": "stinger",
-   "atMs": 66860
+   "atMs": 65920
   },
   {
    "emph": true,
    "scene": "stinger",
-   "atMs": 67227
+   "atMs": 66287
   },
   {
    "emph": true,
    "scene": "stinger",
-   "atMs": 67593
+   "atMs": 66653
   }
  ],
  "hud": {
