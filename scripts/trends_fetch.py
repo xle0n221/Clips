@@ -63,7 +63,11 @@ def main() -> None:
     ap.add_argument("--youtube", type=int, default=25, help="YouTube Shorts gesamt (0 = aus)")
     ap.add_argument("--cap", type=float, default=0.15, help="Kostendeckel YouTube in USD (TikTok-Actor: mindestens 0,50)")
     ap.add_argument("--out", type=pathlib.Path, default=None)
+    ap.add_argument("--queries", default=None, help="Suchbegriffe mit | getrennt (ersetzt QUERIES)")
     a = ap.parse_args()
+    global QUERIES
+    if a.queries:
+        QUERIES = [q.strip() for q in a.queries.split("|") if q.strip()]
     today = dt.date.today().isoformat()
     out = a.out or pathlib.Path("out/trends") / today
     out.mkdir(parents=True, exist_ok=True)
