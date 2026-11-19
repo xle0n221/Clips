@@ -1,11 +1,11 @@
 // Shot-Längen + Phrasen-Statistik „tor-stadt“ (Tor-Stadt) (ohne Render). Aufruf: node --experimental-strip-types scripts/torstadt_shots.mjs [episode-ordner]
 import { readFileSync } from "node:fs";
 const EP = process.argv[2] ?? "tor-stadt";
-const BASE = process.argv[3] ?? `/home/user/Clips/public/episodes/${EP}`; // 2. Argument: anderer Ordner (z. B. Probe-Zeitplan)
-import { TOR_SHOTS as BAU_SHOTS, torCuts as bauCuts } from "/home/user/Clips/src/episode/scenes/torCuts.ts";
+const BASE = process.argv[3] ?? `public/episodes/${EP}`; // 2. Argument: anderer Ordner (z. B. Probe-Zeitplan)
+import { TOR_SHOTS as BAU_SHOTS, torCuts as bauCuts } from "../src/episode/scenes/torCuts.ts";
 const t = JSON.parse(readFileSync(`${BASE}/timeline.json`, "utf8"));
 const caps = JSON.parse(readFileSync(`${BASE}/captions.json`, "utf8"));
-const plan = JSON.parse(readFileSync("/home/user/Clips/episodes/tor-stadt.json", "utf8"));
+const plan = JSON.parse(readFileSync("episodes/tor-stadt.json", "utf8"));
 const F = 30, toF = (ms) => Math.round((ms / 1000) * F);
 const last = t.scenes[t.scenes.length - 1].endMs;
 const total = Math.ceil((Math.max(t.durationMs, last + t.endCard.seconds * 1000) / 1000) * F);

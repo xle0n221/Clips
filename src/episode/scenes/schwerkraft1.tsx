@@ -43,6 +43,7 @@ import {
   StreetLamps,
   TownLight,
   TownScale,
+  type ClearLine,
 } from "./schwerkraftSets";
 
 /* ------------------------------------------------------------------ */
@@ -94,10 +95,12 @@ export const TownSet: React.FC<{
   readonly target?: V3;
   readonly lampLight?: number;
   readonly scaleName?: string;
-}> = ({ frame, dusk = 0, pull = 0, pullWidth = 0.05, scale = true, needle = 0.8, photo = false, clouds = true, target = [0, 0, 0], lampLight = 0, scaleName = "MARTA" }) => (
+  /** Sichtlinie Kamera → Motiv von Häusern freihalten. */
+  readonly clear?: ClearLine;
+}> = ({ clear, frame, dusk = 0, pull = 0, pullWidth = 0.05, scale = true, needle = 0.8, photo = false, clouds = true, target = [0, 0, 0], lampLight = 0, scaleName = "MARTA" }) => (
   <>
     <TownLight dusk={dusk} target={target} />
-    <BowlTown dusk={dusk} />
+    <BowlTown dusk={dusk} clear={clear} />
     <MartaHouse dusk={dusk} photo={photo} />
     {lampLight > 0 ? <StreetLamps light={lampLight} from={14} /> : null}
     {scale ? <TownScale position={SCALE_POS} rotation={SCALE_ROT} needle={needle} name={scaleName} /> : null}
@@ -187,9 +190,9 @@ export const SkRule: React.FC = () => {
     // Stadtwaage: Schale trägt eine prall gefüllte Schürzentasche (LAST), Klapptafel blättert auf „most“ zu MARTA
     const flip = beat("scaleBoardFlips");
     const board: V3 = [SCALE_POS[0] + Math.sin(SCALE_ROT[1]) * 0.2, SCALE_POS[1] + 5.0, SCALE_POS[2] + Math.cos(SCALE_ROT[1]) * 0.2];
-    const dir: V3 = [0.2, 0.06, 1]; // Kamera in der freien Hill Street (schräger lag sie in einem Haus, Kontaktabzug r2)
-    const a = frameOn([board[0], board[1] - 1.2, board[2]], 12.5, 0.4, 0.5, dir);
-    const b = frameOn([board[0], board[1] - 1.2, board[2]], 11.5, 0.4, 0.5, dir);
+    const dir: V3 = [0.2, 0.12, 1]; // Hill Street; Häuser auf der Sichtlinie fallen per `clear` weg (Kontaktabzug r3: Haus vor der Linse)
+    const a = frameOn([board[0], board[1] - 1.2, board[2]], 10.5, 0.4, 0.5, dir);
+    const b = frameOn([board[0], board[1] - 1.2, board[2]], 9.6, 0.4, 0.5, dir);
     const towns: { p: V3; c: number; look: number }[] = [
       { p: [SCALE_POS[0] + 2.2, bowlY(5.9), SCALE_POS[2] + 1.2], c: 1, look: 0.5 },
       { p: [SCALE_POS[0] - 1.9, bowlY(5.4), SCALE_POS[2] - 1.0], c: 2, look: 0.3 },
@@ -198,7 +201,7 @@ export const SkRule: React.FC = () => {
     const nerv = ramp(frame, flip, flip + 20);
     return (
       <>
-        <TownSet frame={frame} needle={lerp(0.55, 0.85, ramp(frame, flip - 6, flip + 14))} scaleName={flapText("MARTA", frame, flip)} target={SCALE_POS} />
+        <TownSet clear={{ from: a.pos, to: SCALE_POS, r: 6 }} frame={frame} needle={lerp(0.55, 0.85, ramp(frame, flip - 6, flip + 14))} scaleName={flapText("MARTA", frame, flip)} target={SCALE_POS} />
         {towns.map((t, i) => (
           <Folk
             key={i}

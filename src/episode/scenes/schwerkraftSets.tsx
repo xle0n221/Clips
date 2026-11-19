@@ -1102,7 +1102,15 @@ const BowlGround: React.FC<{ readonly rMax?: number; readonly dusk?: number }> =
 };
 
 /** Ringe kippender Häuser + Laternen um die Mitte. `skipNear` lässt den vorderen Sektor (Winkel ≈ 0) frei. */
-export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: readonly number[]; readonly gap?: number; readonly gapAt?: number; readonly lampLight?: boolean }> = ({ dusk = 0, rings = [9, 14, 20, 27, 35, 44], gap = 0.72, gapAt = 0, lampLight = false }) => {
+/** Sichtlinie freihalten: Häuser näher als r an der Strecke from→to fallen weg (Kamera → Motiv). */
+export type ClearLine = { readonly from: V3; readonly to: V3; readonly r: number };
+const distToSeg = (p: V3, a: V3, b: V3) => {
+  const ab = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
+  const ap = [p[0] - a[0], p[1] - a[1], p[2] - a[2]];
+  const t = Math.max(0, Math.min(1, (ap[0] * ab[0] + ap[1] * ab[1] + ap[2] * ab[2]) / (ab[0] ** 2 + ab[1] ** 2 + ab[2] ** 2 || 1)));
+  return Math.hypot(ap[0] - t * ab[0], ap[1] - t * ab[1], ap[2] - t * ab[2]);
+};
+export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: readonly number[]; readonly gap?: number; readonly gapAt?: number; readonly lampLight?: boolean; readonly clear?: ClearLine }> = ({ dusk = 0, rings = [9, 14, 20, 27, 35, 44], gap = 0.72, gapAt = 0, lampLight = false, clear }) => {
   const items = useMemo(() => {
     const r = seeded(99);
     const out: { pos: V3; rot: V3; w: number; h: number; color: string; roof: string; seed: number }[] = [];
@@ -1117,11 +1125,12 @@ export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: reado
         const p = onBowl(rr, a, -0.2);
         const lean = slopeAt(rr) + 0.12 + r() * 0.08; // mehr als der Hang → kippt sichtbar zur Mitte
         const tilt = leanToCenter(p, lean);
+        if (clear && distToSeg([p[0], p[1] + 2, p[2]], clear.from, clear.to) < clear.r) continue;
         out.push({ pos: p, rot: [tilt[0], a, tilt[2]], w: 2.2 + r() * 1.2, h: 2.6 + r() * 2.2, color: G.walls[(i + ri) % G.walls.length], roof: r() < 0.7 ? G.roof : G.roofB, seed: ri * 50 + i });
       }
     });
     return { out, lamps };
-  }, [rings, gap, gapAt]);
+  }, [rings, gap, gapAt, clear?.from[0], clear?.from[1], clear?.from[2], clear?.to[0], clear?.to[2], clear?.r]);
   return (
     <>
       <BowlGround dusk={dusk} />

@@ -241,18 +241,18 @@ export const SkMarta: React.FC = () => {
   const take = ramp(frame, h - 26, h + 6);
   const reachUp = ramp(frame, h - 4, h + 30);
   const head = folkHead(MARTA);
-  const a = frameOn([0, 2.6, 0], 10.5, 0.5, 0.5, [0.25, 0.12, 1]);
-  const b = frameOn([0, 2.8, 0], 10, 0.5, 0.5, [0.25, 0.12, 1]);
+  const a = frameOn([0, 2.4, 0], 10.5, 0.5, 0.58, [0.25, 0.12, 1]);
+  const b = frameOn([0, 2.6, 0], 10, 0.5, 0.58, [0.25, 0.12, 1]);
   const hud = hudAt(camAt(f, len, a, b, "out"), 0.5, 0.24, 1.5, 0.5);
   const v = boState("marta", frame, beat);
   return (
     <>
-      <TownSet frame={frame} dusk={0.2} needle={lerp(0.9, 1.05, ramp(frame, h - 6, h + 4))} pull={1} pullWidth={lerp(0.06, 0.12, take)} target={MARTA} />
-      <Folk frame={frame} kind="marta" position={MARTA} load={lerp(0.9, 1.5, take)} sack sleeves reach={[0.6 + Math.sin(f * 0.5) * 0.5 * (1 - take) + 0.6 * take, 0.6 + Math.cos(f * 0.5) * 0.5 * (1 - take) + 0.6 * take]} spread={[0.5 * (1 - take), 0.5 * (1 - take)]} eyes="dot" mouth="flat" blinkSeed={3} holdL={take > 0.6 ? <Junk kind="teapot" position={[0.3, 0.1, 0.2]} scale={0.9} /> : null} holdR={take > 0.6 ? <Junk kind="umbrella" position={[-0.2, 0.1, 0.2]} scale={0.8} /> : null} />
+      <TownSet frame={frame} dusk={0.2} needle={lerp(0.9, 1.05, ramp(frame, h - 6, h + 4))} pull={0.35} pullWidth={lerp(0.025, 0.045, take)} target={MARTA} />
+      <Folk frame={frame} kind="marta" position={MARTA} load={lerp(0.9, 1.5, take)} sack sleeves reach={[0.6 + Math.sin(f * 0.5) * 0.5 * (1 - take) + 0.6 * take, 0.6 + Math.cos(f * 0.5) * 0.5 * (1 - take) + 0.6 * take]} spread={[0.5 * (1 - take), 0.5 * (1 - take)]} eyes="dot" mouth="flat" blinkSeed={3} holdL={take > 0.6 ? <Junk kind="teapot" position={[0.35, -0.45, 0.25]} scale={0.8} /> : null} holdR={take > 0.6 ? <Junk kind="umbrella" position={[-0.3, -0.5, 0.25]} rotation={[0, 0, 0.9]} scale={0.7} /> : null} />
       <Cat position={[0.5, 2.0, MARTA[2] - 0.35]} rotation={[0, -0.3, 0]} frame={frame} scale={0.6} />
       <Pile position={[0, 0.18, -0.15]} grow={0.95} take={take} />
       {/* der Zug wächst nach oben in den Himmel, zu Bo */}
-      <PullLine from={[2, 26, 6]} to={[head[0], head[1] + 0.6, head[2]]} bend={[0.5, 0, 1]} width={lerp(0.05, 0.14, reachUp)} reach={0.15 + 0.85 * reachUp} frame={frame} opacity={0.95} pulses={4} />
+      <PullLine from={[2, 26, 6]} to={[head[0] + 0.9, head[1] + 1.8, head[2]]} bend={[0.5, 0, 1]} width={lerp(0.04, 0.09, reachUp)} reach={0.15 + 0.85 * reachUp} frame={frame} opacity={0.7} pulses={4} />
       <Board label="BO" value={v} color={boColor(v)} {...hud} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="out" />
     </>

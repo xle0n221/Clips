@@ -1,12 +1,12 @@
 // Shot-Längen + Phrasen-Statistik „schwerkraft-stadt“ (ohne Render). Aufruf: node --experimental-strip-types scripts/schwerkraft_shots.mjs [episode-ordner]
 // Optional SK_PUB=<public-Ordner> (z. B. Platzhalter-Timeline vor der Vertonung); Standard public/.
 import { readFileSync } from "node:fs";
-const PUB = process.env.SK_PUB ?? "/home/user/Clips/public";
+const PUB = process.env.SK_PUB ?? "public";
 const EP = process.argv[2] ?? "schwerkraft-stadt";
-import { SCHWERKRAFT_SHOTS as BAU_SHOTS, schwerkraftCuts as bauCuts } from "/home/user/Clips/src/episode/scenes/schwerkraftCuts.ts";
+import { SCHWERKRAFT_SHOTS as BAU_SHOTS, schwerkraftCuts as bauCuts } from "../src/episode/scenes/schwerkraftCuts.ts";
 const t = JSON.parse(readFileSync(`${PUB}/episodes/${EP}/timeline.json`, "utf8"));
 const caps = JSON.parse(readFileSync(`${PUB}/episodes/${EP}/captions.json`, "utf8"));
-const plan = JSON.parse(readFileSync("/home/user/Clips/episodes/schwerkraft-stadt.json", "utf8"));
+const plan = JSON.parse(readFileSync("episodes/schwerkraft-stadt.json", "utf8"));
 const F = 30, toF = (ms) => Math.round((ms / 1000) * F);
 const last = t.scenes[t.scenes.length - 1].endMs;
 const total = Math.ceil((Math.max(t.durationMs, last + t.endCard.seconds * 1000) / 1000) * F);
