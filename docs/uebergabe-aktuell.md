@@ -21,3 +21,6 @@ Upload-Slots: nächste freie Slots ab 20.11. (A TT 17 / YT 18, B TT 22 / YT 23 D
 ## Sitzungswechsel (neue Sitzung, Tiefe 0)
 - Abholer `trig_01NLm7wDjZkjX4TVWdW1r2uy` zeigt noch auf die alte Sitzung → neuen Abholer mit `persistent_session_id` = neue Sitzung anlegen (Wortlaut in `docs/sitzungswechsel.md`, Abschnitt Autopilot), alten mit `update_trigger enabled=false` abschalten, `meta/pickup` im Dashboard umstellen.
 - Danach je Video eine neue Sitzung (Regel 18./19.11.).
+
+## Nachtrag 19.11. abends
+Schwerkraft-Stadt: Szenen v1 an echter Stimme (30 Shots, Ø 2,18 s, 67,47 s, turn 71,9 %); Kontaktabzug out/schwerkraft-kontakt-r3.jpg (nicht im Repo). Offen: rule Shot 1 unbekanntes orangefarbenes Objekt vor der Waage; marta Shot 2 Zuglinien überstrahlen Marta; Cover frames 15→9; bed.wav fehlt; Kleinkram (slide/light/catch/town/answer). Danach Station 2 (Hörprüfer) + Station 3 (Regie/Design).
