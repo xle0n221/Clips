@@ -23,16 +23,12 @@ import {
   cut,
   fly,
   frameOn,
-  GATE_C,
   GateWall,
   headOf,
-  KeyRing,
   lerp,
   LightShaft,
   Motes,
   Paddle,
-  PIP_GATE,
-  PLAQUE,
   Poster,
   ramp,
   SkyDome,
@@ -271,7 +267,7 @@ export const TorRule: React.FC = () => {
 /* 3 world – „This is Yesbury. | Every Sunday: a gate meeting. | And every Sunday… | one voice says no.“ */
 /* ------------------------------------------------------------------ */
 export const TorWorld: React.FC = () => {
-  const { frame, beat, shot, f, len, from } = useShots("world");
+  const { frame, beat, shot, f, len } = useShots("world");
   const people = useTownCrowd();
   const up = beat("paddlesUp");
   if (shot === 0) {
@@ -307,7 +303,6 @@ export const TorWorld: React.FC = () => {
   const p: V3 = [BOOTH[0] - 0.4, 1.2, BOOTH[2] + 1.4];
   const a = frameOn([p[0], 2.4, p[2]], 3.4, 0.5, 0.5, [-0.35, 0.08, 1]);
   const b = frameOn([p[0], 2.5, p[2]], 3.0, 0.5, 0.5, [-0.33, 0.08, 1]);
-  void from;
   return (
     <>
       <DayLight target={[4, 0, 4]} />
@@ -379,7 +374,6 @@ export const TorPosters: React.FC = () => {
   if (shot === 0) {
     // Gasse: Pip klebt gelbe Plakate an jede Wand (eins nach dem anderen, auf „posters“ beginnend)
     const p0 = beat("posterMontage");
-    const k = Math.min(3, Math.max(0, Math.floor((frame - p0 + 30) / 16)));
     const pipX = lerp(POSTER_SPOTS[0][0] + 0.9, POSTER_SPOTS[3][0] + 0.9, ramp(frame, 0, len, (x) => x));
     const a = cam([1.5, 3.0, 12.5], [0.4, 2.4, 0], 40);
     const b = cam([2.4, 2.9, 11.2], [1.6, 2.4, 0], 40);
@@ -395,7 +389,6 @@ export const TorPosters: React.FC = () => {
         ))}
         <Blok frame={frame} who="pip" position={[pipX, 0, 2.2]} rotation={[0, Math.PI - 0.5, 0]} walk={0.6} reach={[0.4, 1.5]} look={-0.5} eyes="happy" mouth="grin" />
         <Motes frame={frame} center={[1, 3, 4]} size={[10, 5, 5]} count={40} color="#FFE2B0" dot={0.05} opacity={0.5} seed={9} />
-        {k > 9 ? null : null}
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
     );
@@ -537,11 +530,7 @@ export const TorHide: React.FC = () => {
       <DayLight target={[5, 0, 2]} />
       <Square frame={frame} counter="999 / 1,000" />
       <Blok frame={frame} who="hollis" position={HOLLIS_IN} look={glance} eyes="dot" mouth="flat" brow={-0.4} reach={[0.2, lerp(Math.PI - 0.35, 0.9, lower)]} holdR={<Paddle color={T.no} />} blinkSeed={6} />
-      <KeyRing position={[HOLLIS_IN[0] - 0.9, 1.1, HOLLIS_IN[2] + 0.5]} scale={0} />
       <Shot frame={f} duration={len} {...fly(a, b)} />
     </>
   );
 };
-
-/** PLAQUE wird im hook-Kommentar genannt (Rostschild), Marker gegen „unused import“. */
-export const TOR_REFS = { PLAQUE, PIP_GATE, GATE_C };
