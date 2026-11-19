@@ -13,7 +13,7 @@
  */
 import { RoundedBox } from "@react-three/drei";
 import React, { useMemo } from "react";
-import { BackSide, CanvasTexture, Color, DoubleSide, InstancedMesh, Matrix4, Object3D, RepeatWrapping, Shape, SRGBColorSpace, Path } from "three";
+import { BackSide, CanvasTexture, DoubleSide, InstancedMesh, Matrix4, Object3D, RepeatWrapping, Shape, SRGBColorSpace, Path } from "three";
 import { V3 } from "../kit/camera";
 import { blinkAt } from "../kit/motion";
 import { seeded } from "../kit/toon";
@@ -635,7 +635,6 @@ const CROWD_COLS = [T.terra, T.cream, "#D98A5A", "#E8C9A0", "#B9553A", "#CFB48E"
 const m4 = new Matrix4();
 const m4b = new Matrix4();
 const o3 = new Object3D();
-const col = new Color();
 
 type Person = { x: number; z: number; yaw: number; s: number; c: string; hair: string; d: number };
 
@@ -655,8 +654,9 @@ export const useCrowdLayout = (n: number, cols: number, gapX: number, gapZ: numb
   }, [n, cols, gapX, gapZ, z0, seed, hole]);
 
 /**
- * Bis zu 1.000 Einwohner als vier InstancedMeshes (Rumpf, Kopf, Arm mit Kelle, Kelle). Blick nach −z (zum Tor).
- * `raise(i, d)` 0..1 hebt die YES-Kelle (d = Zufallswert je Person für Staffelung). `scale` = Figurengröße.
+ * Bis zu 1.000 Einwohner als InstancedMeshes (Rumpf je Kleiderfarbe, Kopf, Arm, Kelle). Blick nach −z (zum Tor).
+ * `raise(d, x, z)` 0..1 hebt die YES-Kelle (d = Zufallswert je Person für Staffelung). `scale` = Figurengröße.
+ * Farben über getrennte Meshes je Farbe (kein setColorAt: instanceColor nach dem ersten Render blieb unsichtbar).
  * Matrizen werden per Ref-Callback in JEDEM Render aus dem Frame gesetzt (deterministisch, kein useEffect).
  */
 export const Crowd: React.FC<{
@@ -667,11 +667,11 @@ export const Crowd: React.FC<{
   readonly paddles?: boolean;
   readonly cheer?: number;
 }> = ({ people, frame, raise, scale = 0.45, paddles = true, cheer = 0 }) => {
-  const n = people.length;
-  const place = (m: InstancedMesh | null, part: "body" | "head" | "arm" | "paddle") => {
+  const groups = useMemo(() => CROWD_COLS.map((c) => people.filter((p) => p.c === c)), [people]);
+  const place = (m: InstancedMesh | null, part: "body" | "head" | "arm" | "paddle", list: readonly Person[]) => {
     if (!m) return;
-    for (let i = 0; i < n; i++) {
-      const p = people[i];
+    for (let i = 0; i < list.length; i++) {
+      const p = list[i];
       const r = paddles ? raise(p.d, p.x, p.z) : 0;
       const hop = cheer * Math.max(0, Math.sin(frame * 0.5 + p.d * 9)) * 0.25;
       o3.position.set(p.x, hop * scale, p.z);
@@ -679,6 +679,7 @@ export const Crowd: React.FC<{
       o3.scale.setScalar(scale * p.s);
       o3.updateMatrix();
       m4.copy(o3.matrix);
+      const a = 0.15 + r * (Math.PI - 0.25);
       if (part === "body") {
         o3.position.set(0, 1.25, 0);
         o3.rotation.set(0, 0, 0);
@@ -687,53 +688,47 @@ export const Crowd: React.FC<{
         o3.position.set(0, 2.45, 0);
         o3.rotation.set(0, 0, 0);
         o3.scale.set(1.18, 0.98, 0.92);
+      } else if (part === "arm") {
+        o3.position.set(0.68, 1.9 - Math.cos(a) * 0.42, Math.sin(a) * 0.42);
+        o3.rotation.set(-a, 0, 0);
+        o3.scale.set(0.3, 0.86, 0.32);
       } else {
-        // Arm rechts (Figur-Sicht), dreht um die Schulter nach vorn/oben
-        const a = 0.15 + r * (Math.PI - 0.25);
-        const sx = 0.68;
-        const sy = 1.9;
-        const L = part === "arm" ? 0.42 : 0.95;
-        o3.position.set(sx, sy - Math.cos(a) * L, Math.sin(a) * L);
-        if (part === "arm") {
-          o3.rotation.set(-a, 0, 0);
-          o3.scale.set(0.3, 0.86, 0.32);
-        } else {
-          // Kelle: über der Hand, Fläche zur Kamera (Gesicht nach +z der Figur = weg vom Tor)
-          const hx = sx;
-          const hy = sy - Math.cos(a) * 0.95;
-          const hz = Math.sin(a) * 0.95;
-          o3.position.set(hx, hy + 0.55 * (r > 0.3 ? 1 : -0.2), hz + (r > 0.3 ? 0 : 0.25));
-          o3.rotation.set(Math.PI / 2, 0, 0);
-          o3.scale.set(1, 1, 1);
-        }
+        const hy = 1.9 - Math.cos(a) * 0.95;
+        const hz = Math.sin(a) * 0.95;
+        o3.position.set(0.68, hy + (r > 0.3 ? 0.55 : -0.11), hz + (r > 0.3 ? 0 : 0.25));
+        o3.rotation.set(Math.PI / 2, 0, 0);
+        o3.scale.set(1, 1, 1);
       }
       o3.updateMatrix();
       m4b.multiplyMatrices(m4, o3.matrix);
       m.setMatrixAt(i, m4b);
-      if (part === "body") m.setColorAt(i, col.set(p.c));
-      if (part === "head") m.setColorAt(i, col.set(p.hair === "#C8C2B8" ? "#EFC9A8" : T.skin));
     }
-    m.count = n;
+    m.count = list.length;
     m.instanceMatrix.needsUpdate = true;
-    if (m.instanceColor) m.instanceColor.needsUpdate = true;
+    m.computeBoundingSphere?.();
   };
+  const n = people.length;
   return (
     <group>
-      <instancedMesh key={`b${n}`} ref={(m) => place(m, "body")} args={[undefined, undefined, n]} frustumCulled={false} castShadow>
+      {groups.map((g, k) =>
+        g.length ? (
+          <instancedMesh key={`b${k}-${g.length}`} ref={(m) => place(m, "body", g)} args={[undefined, undefined, g.length]} frustumCulled={false} castShadow>
+            <boxGeometry args={[1, 1, 1]} />
+            <meshStandardMaterial color={CROWD_COLS[k]} roughness={0.6} />
+          </instancedMesh>
+        ) : null,
+      )}
+      <instancedMesh key={`h${n}`} ref={(m) => place(m, "head", people)} args={[undefined, undefined, n]} frustumCulled={false}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial roughness={0.6} />
-      </instancedMesh>
-      <instancedMesh key={`h${n}`} ref={(m) => place(m, "head")} args={[undefined, undefined, n]} frustumCulled={false}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial roughness={0.55} />
+        <meshStandardMaterial color={T.skin} roughness={0.55} />
       </instancedMesh>
       {paddles ? (
         <>
-          <instancedMesh key={`a${n}`} ref={(m) => place(m, "arm")} args={[undefined, undefined, n]} frustumCulled={false}>
+          <instancedMesh key={`a${n}`} ref={(m) => place(m, "arm", people)} args={[undefined, undefined, n]} frustumCulled={false}>
             <boxGeometry args={[1, 1, 1]} />
             <meshStandardMaterial color={T.cream} roughness={0.6} />
           </instancedMesh>
-          <instancedMesh key={`p${n}`} ref={(m) => place(m, "paddle")} args={[undefined, undefined, n]} frustumCulled={false}>
+          <instancedMesh key={`p${n}`} ref={(m) => place(m, "paddle", people)} args={[undefined, undefined, n]} frustumCulled={false}>
             <cylinderGeometry args={[0.36, 0.36, 0.07, 20]} />
             <meshStandardMaterial color={T.yes} roughness={0.35} emissive={T.yes} emissiveIntensity={0.15} />
           </instancedMesh>
@@ -1245,7 +1240,7 @@ export const Booth: React.FC<{ readonly position?: V3; readonly frame: number; r
         </>
       ) : null}
       {/* Schild unter dem Dach, schwingt */}
-      <group position={[0, H - 0.62, D / 2 + 0.25]} rotation={[0, 0, Math.sin(frame * 0.09) * 0.08 * signSwing]}>
+      <group position={[0, 1.2, D / 2 + 0.2]} rotation={[0, 0, Math.sin(frame * 0.09) * 0.06 * signSwing]}>
         {[-1, 1].map((sd) => (
           <mesh key={sd} position={[sd * 0.7, -0.12, 0]}>
             <boxGeometry args={[0.03, 0.25, 0.03]} />
@@ -1284,52 +1279,36 @@ export const Flakes: React.FC<{ readonly frame: number; readonly center: V3; rea
 /* Draußen: Meer, Klippe                                                */
 /* ------------------------------------------------------------------ */
 
-/** Echtes Meer (y 0, nach +z zur Kamera), Wellen-Schaumbänder, Strand und Klippe mit der Stadtmauer dahinter (−z). */
-export const SeaSet: React.FC<{ readonly frame: number; readonly wallCounter?: string }> = ({ frame, wallCounter = "0 / 1,000" }) => {
-  const foam = [0, 1, 2, 3, 4].map((k) => {
-    const ph = ((frame * 0.012 + k / 5) % 1 + 1) % 1;
-    return { z: 1.5 + ph * -3.2 + k * 0.0, k, a: Math.sin(ph * Math.PI) };
+/** Echtes Meer bis zum Horizont (−z), Strand zur Kamera (+z), Schaumbänder laufen an Land. */
+export const SeaSet: React.FC<{ readonly frame: number }> = ({ frame }) => {
+  const foam = [0, 1, 2, 3].map((k) => {
+    const ph = (((frame * 0.014 + k / 4) % 1) + 1) % 1;
+    return { z: -4 + ph * 5.5, k, a: Math.sin(ph * Math.PI) };
   });
   return (
     <group>
-      <SkyDome top="#5FB3E8" mid="#A9DDF2" bottom="#E9F6F4" radius={220} />
-      <hemisphereLight args={["#DFF3FF", "#C9A27A", 1.2]} />
-      {/* Meer */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 40]} receiveShadow>
-        <planeGeometry args={[400, 80]} />
-        <meshPhysicalMaterial color={T.sea} roughness={0.12} metalness={0.1} clearcoat={1} clearcoatRoughness={0.1} />
+      <SkyDome top="#3E9BE0" mid="#9BD3F0" bottom="#E4F4F6" radius={220} />
+      <hemisphereLight args={["#DFF3FF", "#C9A27A", 1.0]} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, -70]} receiveShadow>
+        <planeGeometry args={[440, 144]} />
+        <meshPhysicalMaterial color={T.sea} roughness={0.15} metalness={0.05} clearcoat={1} clearcoatRoughness={0.1} />
       </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 120]}>
-        <planeGeometry args={[400, 100]} />
-        <meshStandardMaterial color={T.seaDeep} roughness={0.2} />
-      </mesh>
-      {/* Strand-Rampe */}
-      <mesh rotation={[-Math.PI / 2 + 0.06, 0, 0]} position={[0, -0.05, -6]} receiveShadow>
-        <planeGeometry args={[200, 16]} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.0, 16]} receiveShadow>
+        <planeGeometry args={[440, 28]} />
         <meshStandardMaterial color="#E7CFA2" roughness={0.95} />
       </mesh>
-      {/* Schaumbänder laufen an den Strand */}
       {foam.map((f) => (
-        <mesh key={f.k} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.05 + f.k * 0.002, f.z + f.k * 0.9 - 1.6]}>
-          <planeGeometry args={[60, 0.35 + f.a * 0.3]} />
+        <mesh key={f.k} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.05 + f.k * 0.002, f.z]}>
+          <planeGeometry args={[80, 0.3 + f.a * 0.35]} />
           <meshBasicMaterial color={T.foam} transparent opacity={0.85 * f.a} depthWrite={false} />
         </mesh>
       ))}
-      {/* Klippe + Stadtmauer oben */}
-      <mesh position={[0, 4, -22]} castShadow receiveShadow>
-        <boxGeometry args={[90, 8, 14]} />
-        <meshStandardMaterial color="#D8C2A0" roughness={0.95} />
-      </mesh>
-      <group position={[-3, 8, -24]} scale={0.55} rotation={[0, Math.PI, 0]}>
-        <GateWall counter={wallCounter} backCounter wallR={26} />
-      </group>
-      {/* Glitzern */}
-      {Array.from({ length: 24 }, (_, i) => {
+      {Array.from({ length: 30 }, (_, i) => {
         const r = seeded(i + 40);
-        const x = (r() - 0.5) * 40;
-        const z = 4 + r() * 30;
+        const x = (r() - 0.5) * 50;
+        const z = -6 - r() * 40;
         const on = Math.max(0, Math.sin(frame * 0.3 + i * 1.7));
-        return on > 0.6 ? <Halo key={i} at={[x, 0.1, z]} size={0.5} color="#FFFFFF" opacity={on * 0.8} /> : null;
+        return on > 0.55 ? <Halo key={i} at={[x, 0.12, z]} size={0.7} color="#FFFFFF" opacity={on * 0.85} /> : null;
       })}
     </group>
   );

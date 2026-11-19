@@ -589,10 +589,10 @@
       "delivery": "playful",
       "emotion": {
         "exag": 0.62,
-        "cfg": 0.9,
+        "cfg": 0.55,
         "temp": 0.82,
-        "speed": 1.0,
-        "gap_ms": 240,
+        "speed": 0.95,
+        "gap_ms": 340,
         "comma_ms": 190,
         "end_db": 4.5,
         "gain_db": -0.5
@@ -645,7 +645,8 @@
         "kid in town.",
         "The less you carry…",
         "the less it holds you."
-      ]
+      ],
+      "pauseBeforeMs": 150
     },
     {
       "id": "gust",
@@ -893,7 +894,7 @@
       "emotion": {
         "exag": 0.5,
         "cfg": 0.9,
-        "temp": 0.72,
+        "temp": 0.74,
         "speed": 1.0,
         "gap_ms": 280,
         "comma_ms": 200,

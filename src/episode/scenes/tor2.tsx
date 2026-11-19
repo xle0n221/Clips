@@ -71,9 +71,9 @@ export const TorHollis: React.FC = () => {
     );
   }
   // Insert: Schild „ONLY NEEDED / WHILE SHUT“ schwingt im Wind
-  const sign: V3 = [BOOTH[0], 2.25, BOOTH[2] + 1.35];
-  const a = frameOn(sign, 2.6, 0.5, 0.5, [-0.18, -0.12, 1]);
-  const b = frameOn(sign, 2.2, 0.5, 0.5, [-0.14, -0.12, 1]);
+  const sign: V3 = [BOOTH[0], 0.6, BOOTH[2] + 1.35];
+  const a = frameOn(sign, 3.0, 0.5, 0.5, [-0.18, 0.15, 1]);
+  const b = frameOn(sign, 2.5, 0.5, 0.5, [-0.14, 0.15, 1]);
   return (
     <>
       <DayLight target={[5, 0, 2]} />
@@ -92,8 +92,8 @@ export const TorStakes: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("stakes");
   if (shot === 0) {
     // leerer Platz in violetter Dämmerung, Pip allein am Fuß des Tors, Plakate lösen sich
-    const a = cam([-4.5, 3.0, 17], [0.6, 3.8, 0], 40);
-    const b = cam([-3.8, 2.8, 15], [0.6, 3.6, 0], 40);
+    const a = cam([-5, 3.2, 22], [0.6, 4.6, 0], 40);
+    const b = cam([-4.3, 3.0, 19.5], [0.6, 4.4, 0], 40);
     return (
       <>
         <DuskLight />
@@ -144,13 +144,14 @@ export const TorHope: React.FC = () => {
     // Makro: Regeltafel „OPENS AT 1,000 YES“ – sonst steht nichts da; Pips Augen weiten sich
     const ask = beat("rulePlate");
     const pop = 1 + 0.3 * ramp(frame, ask, ask + 8, Easing.out(Easing.back(2)));
-    const a = frameOn(RULE_PLATE, 2.6, 0.44, 0.42, [0.18, 0.04, 1]);
-    const b = frameOn(RULE_PLATE, 2.2, 0.44, 0.42, [0.16, 0.04, 1]);
+    const a = frameOn([RULE_PLATE[0] + 0.55, RULE_PLATE[1] - 0.35, RULE_PLATE[2]], 3.3, 0.45, 0.5, [0.12, 0.04, 1]);
+    const b = frameOn([RULE_PLATE[0] + 0.55, RULE_PLATE[1] - 0.35, RULE_PLATE[2]], 2.9, 0.45, 0.5, [0.1, 0.04, 1]);
     return (
       <>
         <DuskLight target={[-2, 0, 2]} />
         <Square frame={frame} counter="999 / 1,000" lit={0.6} />
-        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 1.35, 4.6 - 2.4 - 0.62, 1.25]} rotation={[0, Math.PI + 0.75, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
+        <Crate position={[RULE_PLATE[0] + 1.25, 0, 1.4]} s={1.1} />
+        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 1.25, 1.1, 1.4]} rotation={[0, -0.55, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
         <pointLight position={[RULE_PLATE[0] + 0.5, RULE_PLATE[1] + 0.6, 1.6]} color="#FFD9A0" intensity={4} distance={4} decay={2} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -159,8 +160,8 @@ export const TorHope: React.FC = () => {
   // Nah: das Grinsen breitet sich aus, die Stoppuhr im Hintergrund
   const head = headOf("pip", pip);
   const g = ramp(frame, 0, 14);
-  const a = frameOn(head, 3.0, 0.5, 0.5, [0.25, 0.04, 1]);
-  const b = frameOn(head, 2.4, 0.5, 0.5, [0.22, 0.04, 1]);
+  const a = frameOn(head, 3.2, 0.52, 0.5, [0.25, 0.04, 1]);
+  const b = frameOn(head, 2.7, 0.52, 0.5, [0.22, 0.04, 1]);
   return (
     <>
       <DuskLight target={[-2, 0, 2]} />
@@ -188,8 +189,8 @@ export const TorTurn: React.FC = () => {
     const st = beat("pipOnCrate");
     const up = ramp(frame, st - 6, st + 6, Easing.out(Easing.back(1.5)));
     const head = headOf("pip", pipPos);
-    const a = frameOn([head[0], head[1] - 0.2, head[2]], 7.6, 0.46, 0.5, [0.08, -0.32, 1]);
-    const b = frameOn([head[0], head[1] - 0.2, head[2]], 6.6, 0.46, 0.5, [0.06, -0.3, 1]);
+    const a = frameOn([head[0], head[1] - 0.6, head[2]], 8.0, 0.46, 0.5, [0.08, 0.12, 1]);
+    const b = frameOn([head[0], head[1] - 0.6, head[2]], 7.0, 0.46, 0.5, [0.06, 0.12, 1]);
     return (
       <>
         <DayLight target={[0, 0, 4]} />
@@ -295,8 +296,8 @@ export const TorOpen: React.FC = () => {
   // Zeitlupe von der Seite: Pip springt durch den Spalt, Schal fliegt, die Flügel schließen schon
   const leap = ramp(frame, j - 10, j + 34, (x) => x);
   const px: V3 = [0.2, 0.2 + Math.sin(leap * Math.PI) * 1.2, lerp(2.2, -2.6, leap)];
-  const a = cam([5.6, 2.6, 4.6], [0, 2.5, -0.6], 40);
-  const b = cam([5.2, 2.5, 4.0], [0, 2.5, -1.0], 40);
+  const a = cam([5.0, 3.4, 9.0], [0, 2.6, -1], 40);
+  const b = cam([4.6, 3.3, 8.2], [0, 2.6, -1.2], 40);
   return (
     <>
       <DayLight target={[0, 0, 2]} />
@@ -316,8 +317,8 @@ export const TorSea: React.FC = () => {
   const r = beat("waveRinsesPaint");
   const paint = 1 - ramp(frame, r - 2, r + 16);
   const pip: V3 = [0, 0, 1.0];
-  const a = cam([1.8, 9.5, 17], [0, 4.0, -6], 40);
-  const b = cam([1.0, 1.5, 6.2], [0, 1.85, 0.6], 40);
+  const a = cam([1.6, 7.5, 16], [0, 2.4, -8], 40);
+  const b = cam([0.9, 1.4, 6.6], [0, 1.9, 0], 40);
   return (
     <>
       <color attach="background" args={["#BFE6F2"]} />
@@ -351,7 +352,7 @@ export const TorFirst: React.FC = () => {
   const scratch = ramp(frame, s - 6, s + 18);
   const plq: V3 = [PLAQUE[0], PLAQUE[1], -0.1];
   const pip: V3 = [PLAQUE[0] - 1.1, 0, -1.5];
-  const a = cam([plq[0] - 2.2, 2.2, -6.2], [plq[0] - 0.2, 1.6, 0], 40);
+  const a = cam([plq[0] - 3.2, 2.6, -8.8], [plq[0] - 0.3, 1.7, 0], 40);
   const b = cam([-5, 6.5, -30], [0, 5.2, 0], 40);
   return (
     <>
@@ -383,8 +384,8 @@ export const TorStinger: React.FC = () => {
     const y = beat("frozenSquare");
     const hang = ramp(frame, 6, Math.max(20, y + 10));
     const hp: V3 = [BOOTH[0] - 1.9, 0, BOOTH[2] + 1.7];
-    const a = cam([11.5, 3.4, 13], [2.2, 5.0, 0], 40);
-    const b = cam([10.6, 3.6, 11.6], [2.2, 5.0, 0], 40);
+    const a = cam([8.5, 4.6, 17], [1.6, 4.4, 1], 40);
+    const b = cam([8.0, 4.4, 15.5], [1.8, 4.3, 1], 40);
     return (
       <>
         <DayLight target={[2, 0, 6]} />

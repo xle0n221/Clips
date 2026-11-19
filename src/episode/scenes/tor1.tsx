@@ -104,9 +104,9 @@ export const Square: React.FC<{
 export const useTownCrowd = (n = 1000) => useCrowdLayout(n, 40, 0.62, 0.7, CROWD_Z0, 17);
 
 /** Kamera des Eröffnungsbilds (Hook Shot 1 = Match-Cut-Ziel im stinger): hinter Pip, Blick hoch zu Tor + Zähler. */
-const HOOK_A = cam([2.9, 1.15, 13.5], [0.25, 5.15, 0], 40);
-const HOOK_B = cam([2.5, 1.25, 12.2], [0.25, 5.2, 0], 40);
-export const PIP_HOOK: V3 = [1.65, 0, 8.2];
+const HOOK_A = cam([2.6, 1.7, 21], [0.2, 5.9, 0], 40);
+const HOOK_B = cam([2.3, 1.8, 19], [0.2, 5.9, 0], 40);
+export const PIP_HOOK: V3 = [1.3, 0, 4.2];
 
 /** Eröffnungsbild: geschlossenes Tor, gemaltes Meer, Zähler „999 / 1,000“; mit Pip (Hook) oder ohne + Farblücke (stinger). */
 export const HookFrame: React.FC<{ readonly frame: number; readonly f: number; readonly len: number; readonly pip: boolean; readonly gap: boolean }> = ({ frame, f, len, pip, gap }) => (
@@ -199,8 +199,8 @@ export const TorHook: React.FC = () => {
   if (shot === 0) return <HookFrame frame={frame} f={f} len={len} pip gap={false} />;
   if (shot === 1) {
     // Untersicht: Mauer ragt auf, Rostschild „SHUT FOR 83 YEARS“, Tauben auf dem Zähler
-    const a = cam([-3.6, 0.7, 9.5], [1.4, 5.6, 0], 42);
-    const b = cam([-3.0, 0.8, 8.6], [1.4, 5.9, 0], 42);
+    const a = cam([-4.6, 0.8, 15], [1.2, 5.4, 0], 42);
+    const b = cam([-4.0, 0.9, 13.6], [1.2, 5.6, 0], 42);
     return (
       <>
         <DayLight target={[0, 0, 4]} />
@@ -291,7 +291,7 @@ export const TorWorld: React.FC = () => {
     return (
       <>
         <DayLight target={[0, 0, 12]} />
-        <Square frame={frame} counter={rollTo(frame, up + 4, up + 20, 0, 999)} banner />
+        <Square frame={frame} counter={rollTo(frame, up + 4, up + 20, 0, 999)} />
         <Crowd people={people} frame={frame} raise={raise} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -300,18 +300,18 @@ export const TorWorld: React.FC = () => {
   // Eine rote NO-Kelle taucht auf – nur ein marineblauer Ärmel mit Messingknopf, Gesicht verborgen
   const no = beat("redPaddle");
   const rise = ramp(frame, no - 6, no + 2, Easing.out(Easing.back(1.6)));
-  const p: V3 = [BOOTH[0] - 0.4, 1.2, BOOTH[2] + 1.4];
-  const a = frameOn([p[0], 2.4, p[2]], 3.4, 0.5, 0.5, [-0.35, 0.08, 1]);
-  const b = frameOn([p[0], 2.5, p[2]], 3.0, 0.5, 0.5, [-0.33, 0.08, 1]);
+  const p: V3 = [2.6, 0.9, 10.2];
+  const a = frameOn([p[0], 2.2, p[2]], 3.6, 0.5, 0.5, [0.1, 0.12, 1]);
+  const b = frameOn([p[0], 2.3, p[2]], 3.1, 0.5, 0.5, [0.08, 0.12, 1]);
   return (
     <>
-      <DayLight target={[4, 0, 4]} />
+      <DayLight target={[2, 0, 8]} />
       <Square frame={frame} counter="999 / 1,000" />
-      <Crowd people={people} frame={frame} raise={() => 1} />
+      <Crowd people={people.filter((q) => Math.hypot(q.x - p[0], q.z - p[2]) > 0.5)} frame={frame} raise={() => 1} />
       {/* Köpfe der Menge im Vordergrund (unscharf durch Nähe) */}
       {[
-        [p[0] - 1.2, 0, p[2] + 2.2],
-        [p[0] + 0.9, 0, p[2] + 2.6],
+        [p[0] - 1.0, 0, p[2] + 1.6],
+        [p[0] + 0.9, 0, p[2] + 1.9],
       ].map((q, i) => (
         <Blok key={i} frame={frame} who="towns" position={q as V3} rotation={[0, Math.PI, 0]} scale={0.8} shirt={i ? T.cream : T.terra} reach={[0.1, Math.PI - 0.2]} holdR={<Paddle color={T.yes} rotation={[0, 0, 0]} />} />
       ))}
@@ -324,19 +324,20 @@ export const TorWorld: React.FC = () => {
 /* ------------------------------------------------------------------ */
 /* 4 pip – „Meet Pip. | She has only seen the sea… | painted on the gate.“ */
 /* ------------------------------------------------------------------ */
-const PIP_LEAN: V3 = [1.05, 0, 0.92];
+const PIP_LEAN: V3 = [0.8, 0, 0.7];
+const PIP_TOUCH: V3 = [0.75, 0, 1.6];
 export const TorPip: React.FC = () => {
   const { frame, beat, shot, f, len } = useShots("pip");
   if (shot === 0) {
     // Stirn am Tor, Augen zu, Lächeln; Kopf zur Kamera gedreht
     const head = headOf("pip", PIP_LEAN);
-    const a = frameOn(head, 4.6, 0.5, 0.42, [0.9, 0.05, 0.55]);
-    const b = frameOn(head, 4.0, 0.5, 0.42, [0.85, 0.05, 0.6]);
+    const a = frameOn(head, 4.6, 0.5, 0.4, [1, 0.05, 0.45]);
+    const b = frameOn(head, 4.0, 0.5, 0.4, [1, 0.05, 0.5]);
     return (
       <>
         <DayLight target={[0, 0, 2]} />
         <Square frame={frame} counter="999 / 1,000" />
-        <Blok frame={frame} who="pip" position={PIP_LEAN} rotation={[0, Math.PI, 0]} lean={0.12} look={-0.95} eyes="closed" mouth="smile" reach={[1.0, 0.5]} spread={[0.1, 0.2]} />
+        <Blok frame={frame} who="pip" position={PIP_LEAN} rotation={[0, Math.PI / 2, 0]} look={-0.15} eyes="closed" mouth="smile" reach={[0.3, 0.2]} spread={[0.1, 0.5]} />
         <pointLight position={[3, 3.4, 2.4]} color="#FFE2B0" intensity={5} distance={6} decay={2} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -345,14 +346,14 @@ export const TorPip: React.FC = () => {
   // Makro: Hand auf der gemalten Welle, türkise Farbflocken bleiben an den Fingern (PFLANZUNG gemaltes Meer)
   const t = beat("paintedWaveTouch");
   const paint = ramp(frame, t - 4, t + 10);
-  const hand: V3 = [1.25, 1.6, 0.1];
-  const a = frameOn(hand, 2.2, 0.5, 0.5, [0.55, 0.1, 1]);
-  const b = frameOn(hand, 1.8, 0.5, 0.5, [0.5, 0.1, 1]);
+  const hand: V3 = [0.75, 1.45, 0.1];
+  const a = frameOn(hand, 2.4, 0.55, 0.5, [0.7, 0.15, 1]);
+  const b = frameOn(hand, 2.0, 0.55, 0.5, [0.65, 0.15, 1]);
   return (
     <>
       <DayLight target={[0, 0, 2]} />
       <Square frame={frame} counter="999 / 1,000" />
-      <Blok frame={frame} who="pip" position={PIP_LEAN} rotation={[0, Math.PI, 0]} lean={0.1} look={-0.9} eyes="closed" mouth="smile" reach={[0.6, 1.25 - 0.08 * paint]} spread={[0.1, 0.0]} paint={paint} />
+      <Blok frame={frame} who="pip" position={PIP_TOUCH} rotation={[0, Math.PI / 2, 0]} look={-0.3} eyes="closed" mouth="smile" reach={[0.1, 0.05]} spread={[0.1, 1.13 - 0.05 * paint]} paint={paint} />
       <pointLight position={[2.6, 2.4, 2.0]} color="#FFE2B0" intensity={4} distance={5} decay={2} />
       <Shot frame={f} duration={len} {...fly(a, b)} />
     </>
@@ -398,8 +399,8 @@ export const TorPosters: React.FC = () => {
   const no = beat("pipFaceDrops");
   const drop = frame >= no;
   const pip: V3 = [3.2, 0, 4.6];
-  const a = cam([-7.5, 3.4, 9.5], [1.2, 4.6, 1.5], 40);
-  const b = cam([-5.8, 3.0, 9.4], [2.4, 3.6, 3.0], 40);
+  const a = cam([-6.5, 4.2, 17], [1.6, 4.6, 2], 40);
+  const b = cam([-5.2, 3.6, 13.5], [2.6, 3.6, 3.5], 40);
   return (
     <>
       <DayLight target={[0, 0, 6]} />
@@ -423,7 +424,7 @@ export const TorDoors: React.FC = () => {
     // Über die Schulter: Pip läuft die Gasse gleicher Terrakotta-Türen entlang, Nachbarn nicken, Hand auf dem Herzen
     const px = lerp(-5.6, 9.5, ramp(frame, 0, len, (x) => x));
     const head = headOf("pip", [px, 0, 2.4]);
-    const a = cam([px - 3.4, head[1] + 1.0, 6.4], [px + 2.2, 2.0, 0.6], 42);
+    const a = cam([px - 5.2, head[1] + 1.4, 9.0], [px + 2.4, 2.2, 0.8], 42);
     const nb: { who: "baker" | "granny" | "twin"; x: number; s: number }[] = [
       { who: "baker", x: STREET_X[1], s: 0.95 },
       { who: "granny", x: STREET_X[3], s: 0.9 },
@@ -490,8 +491,8 @@ export const TorHide: React.FC = () => {
     // hinter dem Fass: Pip späht hervor, der Zähler leuchtet über dem Tor
     const barrel: V3 = [-2.6, 0, 6.2];
     const pip: V3 = [-3.3, 0, 6.9];
-    const a = cam([-5.8, 1.05, 11.5], [-0.4, 4.4, 0], 42);
-    const b = cam([-5.4, 1.15, 10.6], [-0.4, 4.6, 0], 42);
+    const a = cam([-6.6, 1.5, 15.5], [-0.6, 4.4, 0], 42);
+    const b = cam([-6.2, 1.6, 14.2], [-0.6, 4.6, 0], 42);
     return (
       <>
         <DayLight target={[0, 0, 4]} />
