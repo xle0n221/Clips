@@ -79,7 +79,7 @@ def main() -> None:
         c["atMs"] = round(shift(c["atMs"]))
     if a.tail is not None:
         tl["scenes"][-1]["endMs"] = round(last_end + a.tail)
-    tl["durationMs"] = round(len(x) / sr * 1000)
+    tl["durationMs"] = round(tl["durationMs"] - total)  # make_episode hängt Nachlauf an; nur um die Schnitte kürzen
     (pub / "timeline.json").write_text(json.dumps(tl, indent=1) + "\n")
 
     # Musik wie make_episode.py
