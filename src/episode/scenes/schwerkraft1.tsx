@@ -4,7 +4,8 @@
  * Welt: Schüssel-Stadt (Boden y = K·r²), Martas Veranda in der Mitte, „Hill Street“ läuft von dort nach +z bergauf.
  */
 import React from "react";
-import { Shot, V3 } from "../kit/camera";
+import { Shot, shotPose, V3 } from "../kit/camera";
+import type { ShotEase } from "../kit/camera";
 import { useScene } from "../types";
 import { schwerkraftCuts } from "./schwerkraftCuts";
 import {
@@ -66,13 +67,19 @@ export const hudAt = (cam: Cam, xf: number, yf: number, d: number, frac = 0.6) =
   return { position, rotation: faceTo(position, cam.pos), scale: (frac * H * (1080 / 1920)) / 3.34 };
 };
 
+/** Aktuelle Kamera einer Fahrt a→b (wie <Shot>), damit Tafeln im Bild auch mitten in der Fahrt an ihrer Bildstelle stehen. */
+export const camAt = (f: number, len: number, a: Cam, b: Cam, ease: ShotEase): Cam => {
+  const p = shotPose({ frame: f, duration: len, ...fly(a, b), ease, shake: 0 });
+  return { pos: p.pos as V3, look: p.target as V3, fov: p.fov };
+};
+
 /** Marta steht auf der Veranda (Blick +z, zur Hill Street). */
 export const MARTA: V3 = [0, 0.18, -0.15];
 /** Marta sitzt auf der Bank. */
 export const MARTA_SIT: V3 = [0, 0.74, -1.3];
 /** Stadtwaage am Platz links hinter der Veranda (Front schräg zur Hill Street). */
-export const SCALE_POS: V3 = [-6.4, bowlY(6.6) - 0.1, -2.6];
-export const SCALE_ROT: V3 = [0, 0.75, 0];
+export const SCALE_POS: V3 = [-3.4, bowlY(5.6) - 0.05, 4.4];
+export const SCALE_ROT: V3 = [0, 0.35, 0];
 
 /** Stadt im Hintergrund + Martas Haus + Laternen der Hill Street; optional Zuglinien zur Veranda. */
 export const TownSet: React.FC<{
@@ -156,7 +163,7 @@ export const SkHook: React.FC = () => {
   const head = folkHead(MARTA);
   const a = frameOn([0, 2.0, 0.6], 7.2, 0.5, 0.5, [0.12, 0.02, 1]);
   const b = frameOn([0, 1.9, 0.4], 6.4, 0.5, 0.5, [0.1, 0.01, 1]);
-  const hud = hudAt(b, 0.5, 0.27, 1.6, 0.62);
+  const hud = hudAt(camAt(f, len, a, b, "out"), 0.5, 0.27, 1.6, 0.62);
   const look = ramp(frame, hit - 6, hit + 6);
   return (
     <>
@@ -184,9 +191,9 @@ export const SkRule: React.FC = () => {
     const a = frameOn(board, 10.2, 0.27, 0.5, dir);
     const b = frameOn(board, 9.4, 0.27, 0.5, dir);
     const towns: { p: V3; c: number; look: number }[] = [
-      { p: [SCALE_POS[0] + 2.8, SCALE_POS[1] - 0.1, SCALE_POS[2] + 3.2], c: 1, look: 0.5 },
-      { p: [SCALE_POS[0] + 0.6, SCALE_POS[1], SCALE_POS[2] + 4.4], c: 2, look: -0.2 },
-      { p: [SCALE_POS[0] - 2.0, SCALE_POS[1] + 0.2, SCALE_POS[2] + 2.8], c: 4, look: -0.6 },
+      { p: [SCALE_POS[0] + 2.2, bowlY(5.9), SCALE_POS[2] + 1.2], c: 1, look: 0.5 },
+      { p: [SCALE_POS[0] - 2.0, bowlY(6.4), SCALE_POS[2] + 1.6], c: 2, look: -0.4 },
+      { p: [SCALE_POS[0] + 2.9, bowlY(5.2), SCALE_POS[2] - 0.6], c: 4, look: 0.8 },
     ];
     const nerv = ramp(frame, flip, flip + 20);
     return (
@@ -199,7 +206,7 @@ export const SkRule: React.FC = () => {
             kind="towns"
             shirt={G.towns[t.c]}
             position={t.p}
-            rotation={[0, Math.PI + 0.75 + t.look * 0.4, 0]}
+            rotation={[0, Math.PI + SCALE_ROT[1] + t.look * 0.6, 0]}
             balloonHat
             tiptoe={0.6}
             nod={-0.3 + 0.1 * nerv}
@@ -265,8 +272,8 @@ export const SkSlide: React.FC = () => {
     const a = frameOn([p0[0], p0[1] + 0.5, p0[2]], 2.8, 0.55, 0.5, [-1, 0.15, -0.05]);
     const b = frameOn([p0[0], p0[1] + 0.5, p0[2] - 0.6], 2.8, 0.55, 0.5, [-1, 0.15, -0.05]);
     const s = f / 30;
-    const hatZ = p0[2] + 1.8 - 1.4 * s - 0.5 * s * s;
-    const letZ = p0[2] + 2.6 - 1.1 * s - 0.6 * s * s;
+    const hatZ = p0[2] + 0.7 - 0.9 * s - 0.3 * s * s;
+    const letZ = p0[2] + 1.0 - 0.7 * s - 0.3 * s * s;
     return (
       <>
         <TownSet frame={frame} target={p0} />
@@ -509,7 +516,7 @@ export const SkRehook: React.FC = () => {
   const top: V3 = [hand[0] + 0.25, hand[1] + 2.0 + slip * 0.5, hand[2] - 0.2];
   const a = frameOn([hand[0], hand[1] + 0.7, hand[2]], 3.6, 0.5, 0.5, [0.25, 0.05, 1]);
   const b = frameOn([hand[0], hand[1] + 0.7, hand[2]], 3.1, 0.5, 0.5, [0.25, 0.05, 1]);
-  const hud = hudAt(b, 0.5, 0.27, 1.4, 0.6);
+  const hud = hudAt(camAt(f, len, a, b, "linear"), 0.5, 0.27, 1.4, 0.6);
   const w = beat("balloonStringSlips");
   const v = boState("rehook", frame, beat);
   return (

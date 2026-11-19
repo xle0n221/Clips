@@ -1112,10 +1112,7 @@ export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: reado
       for (let i = 0; i < n; i++) {
         const a = (i / n) * Math.PI * 2 + ri * 0.21;
         const da = Math.atan2(Math.sin(a - gapAt), Math.cos(a - gapAt));
-        if (Math.abs(da) < gap) {
-          if (i % 2 === 0) lamps.push({ pos: onBowl(rad - 1.2, a + (da > 0 ? 0.1 : -0.1)), rot: [0, 0, 0] });
-          continue;
-        }
+        if (Math.abs(da) < gap) continue; // Hill Street bleibt frei (keine Masten quer vor der Kamera)
         const rr = rad + (r() - 0.5) * 1.2;
         const p = onBowl(rr, a, -0.2);
         const lean = slopeAt(rr) + 0.12 + r() * 0.08; // mehr als der Hang → kippt sichtbar zur Mitte
@@ -1146,7 +1143,7 @@ export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: reado
 export const StreetLamps: React.FC<{ readonly a?: number; readonly side?: number; readonly from?: number; readonly to?: number; readonly step?: number; readonly light?: number }> = ({ a = 0, side = 2.4, from = 4, to = 20, step = 4, light = 0 }) => {
   const out: React.ReactNode[] = [];
   for (let r = from, i = 0; r <= to; r += step, i++) {
-    const sd = 1; // nur +x-Seite: Kameras auf der −x-Seite haben freie Sicht (Kontaktabzug r0: Mast quer im Bild)
+    const sd = 1.25; // nur +x-Seite, weiter außen: Kameras auf der −x-Seite haben freie Sicht (Kontaktabzug r0: Mast quer im Bild)
     void i;
     const base = onBowl(r, a);
     const p: V3 = [base[0] + Math.cos(a) * side * sd, base[1], base[2] - Math.sin(a) * side * sd];

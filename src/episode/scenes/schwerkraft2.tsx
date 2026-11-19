@@ -4,7 +4,7 @@
  */
 import React from "react";
 import { Shot, V3 } from "../kit/camera";
-import { HookFrame, hudAt, MARTA, MARTA_SIT, TownSet, useShots } from "./schwerkraft1";
+import { camAt, HookFrame, hudAt, MARTA, MARTA_SIT, TownSet, useShots } from "./schwerkraft1";
 import {
   Balloon,
   Board,
@@ -79,8 +79,8 @@ export const SkBo: React.FC = () => {
   const z = 7.2;
   const lift = 0.15 + Math.abs(Math.sin(f * 0.08)) * 0.35;
   const p: V3 = [0.3, bowlY(z) + lift, z];
-  const a = frameOn([0.3, bowlY(z) + 0.6, z], 3.4, 0.52, 0.5, [0.25, 0.08, 1]);
-  const b = frameOn([0.3, bowlY(z) + 0.6, z - 0.3], 3.2, 0.52, 0.5, [0.25, 0.08, 1]);
+  const a = frameOn([0.3, bowlY(z) + 0.3, z], 3.0, 0.56, 0.5, [0.3, 0.05, 1]);
+  const b = frameOn([0.3, bowlY(z) + 0.3, z - 0.3], 2.8, 0.56, 0.5, [0.3, 0.05, 1]);
   return (
     <>
       <TownSet frame={frame} pull={1} pullWidth={0.07} target={p} />
@@ -185,7 +185,7 @@ export const SkTown: React.FC = () => {
           />
         ))}
         <Folk frame={frame} kind="bo" position={BO_SKY} rotation={[0, Math.PI, 0]} scale={BO_S} balloons={6} cap={false} spread={[1, 1]} blinkSeed={21} />
-        <BoBoard scene="town" frame={frame} beat={beat} cam={b} />
+        <BoBoard scene="town" frame={frame} beat={beat} cam={camAt(f, len, a, b, "out")} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="out" />
       </>
     );
@@ -203,7 +203,7 @@ export const SkTown: React.FC = () => {
       ))}
       <Folk frame={frame} kind="bo" position={p} rotation={[0.5, Math.PI + 0.3, 0]} scale={BO_S} balloons={6} cap={false} nod={0.5} eyes="wide" mouth="frown" spread={[0.6, 0.6]} reach={[0.8, 0.8]} blinkSeed={21} />
       <Cloud position={[h[0] - 9, h[1] - 9, h[2] - 10]} scale={1.6} seed={5} opacity={0.85} />
-      <BoBoard scene="town" frame={frame} beat={beat} cam={b} yf={0.26} />
+      <BoBoard scene="town" frame={frame} beat={beat} cam={camAt(f, len, a, b, "linear")} yf={0.26} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
   );
@@ -224,7 +224,7 @@ export const SkMarta: React.FC = () => {
     const head = folkHead([0, MARTA[1], MARTA[2] - 0.2]);
     const a = frameOn(head, 6.4, 0.4, 0.5, [0.1, -0.05, 1]);
     const b = frameOn(head, 4.9, 0.4, 0.5, [0.1, -0.05, 1]);
-    const hud = hudAt(b, 0.5, 0.26, 1.4, 0.5);
+    const hud = hudAt(camAt(f, len, a, b, "inOut"), 0.5, 0.26, 1.4, 0.5);
     return (
       <>
         <TownSet frame={frame} dusk={0.2} target={MARTA} />
@@ -243,7 +243,7 @@ export const SkMarta: React.FC = () => {
   const head = folkHead(MARTA);
   const a = frameOn([0, 2.6, 0], 10.5, 0.5, 0.5, [0.25, 0.12, 1]);
   const b = frameOn([0, 2.8, 0], 10, 0.5, 0.5, [0.25, 0.12, 1]);
-  const hud = hudAt(b, 0.5, 0.24, 1.5, 0.5);
+  const hud = hudAt(camAt(f, len, a, b, "out"), 0.5, 0.24, 1.5, 0.5);
   const v = boState("marta", frame, beat);
   return (
     <>
@@ -276,7 +276,7 @@ export const SkTurn: React.FC = () => {
   // Kamera seitlich über Bo, Blick schräg nach unten: unten die winzige leuchtende Veranda
   const a = frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]);
   const b = frameOn([h[0], h[1] - 0.9, h[2]], 7.6, 0.52, 0.5, [0.9, 0.5, 0.6]);
-  const hud = hudAt(b, 0.5, 0.25, 1.5, 0.44);
+  const hud = hudAt(camAt(f, len, a, b, "inOut"), 0.5, 0.25, 1.5, 0.44);
   const v = boState("turn", frame, beat);
   const glow = ramp(frame, beat("pullLineGlows") - 4, beat("pullLineGlows") + 8);
   return (
@@ -312,7 +312,7 @@ export const SkCatch: React.FC = () => {
     const head = folkHead(MARTA);
     const a = frameOn([head[0], head[1] + 0.4, head[2]], 7.2, 0.42, 0.5, [0.15, 0.05, 1]);
     const b = frameOn([head[0], head[1] + 0.3, head[2]], 6.4, 0.42, 0.5, [0.15, 0.05, 1]);
-    const hud = hudAt(b, 0.5, 0.24, 1.4, 0.48);
+    const hud = hudAt(camAt(f, len, a, b, "out"), 0.5, 0.24, 1.4, 0.48);
     const v = boState("catch", frame, beat);
     const catOff = ramp(frame, land - 2, land + 14);
     return (
