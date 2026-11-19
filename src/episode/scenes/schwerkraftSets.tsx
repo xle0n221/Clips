@@ -33,10 +33,21 @@ import { V3 } from "../kit/camera";
 import { blinkAt } from "../kit/motion";
 import { seeded } from "../kit/toon";
 import { atScreen, faceTo, Plastic, Matte } from "./sonneSets";
-import { Halo, TextLabel } from "./zeitweltSets";
+import { frameOn as zFrameOn, Halo, TextLabel } from "./zeitweltSets";
 
 export { atScreen, faceTo, Plastic, Matte };
-export { cut, fly, frameOn, Halo, lerp, lerp3, LightShaft, Motes, ramp, TextLabel } from "./zeitweltSets";
+export { cut, fly, Halo, lerp, lerp3, LightShaft, Motes, ramp, TextLabel } from "./zeitweltSets";
+
+/**
+ * Kamera-Ausschnitt wie `frameOn` (zeitweltSets), aber nie unter dem Schüssel-Boden: die Schüssel steigt zur Kamera
+ * hin an (y = K·r²), bergauf gestellte Kameras lagen im ersten Kontaktabzug unter dem Pflaster (schwarze Bilder).
+ * Liegt die Kamera tiefer als Boden + 1,2, wird nur die Kamera angehoben (Blickziel bleibt).
+ */
+export const frameOn = (p: V3, H: number, yf = 0.5, xf = 0.5, dir: V3 = [0, 0.1, 1], fov = 40) => {
+  const c = zFrameOn(p, H, yf, xf, dir, fov);
+  const floor = bowlY(Math.hypot(c.pos[0], c.pos[2])) + 1.2;
+  return c.pos[1] >= floor ? c : { ...c, pos: [c.pos[0], floor, c.pos[2]] as V3 };
+};
 
 /* ------------------------------------------------------------------ */
 /* Palette                                                              */
@@ -270,13 +281,13 @@ export const TownLight: React.FC<{ readonly dusk?: number; readonly target?: V3;
     <>
       <color attach="background" args={[dusk > 0.5 ? G.duskTop : G.skyTop]} />
       <fog attach="fog" args={[fogC, fog[0], fog[1]]} />
-      <hemisphereLight args={[dusk > 0.5 ? "#B9A8D8" : "#DCEBFF", dusk > 0.5 ? "#5A4048" : "#8A7A62", 0.85 - 0.25 * dusk]} />
+      <hemisphereLight args={[dusk > 0.5 ? "#B9A8D8" : "#DCEBFF", dusk > 0.5 ? "#5A4048" : "#8A7A62", 1.35 - 0.35 * dusk]} />
       <primitive object={kt} position={target} />
       <directionalLight
         position={[target[0] + 10, target[1] + 16, target[2] + 12]}
         target={kt}
         color={dusk > 0.5 ? "#FFC9A8" : "#FFF3DE"}
-        intensity={(1.9 - 0.9 * dusk) * keyI}
+        intensity={(2.6 - 1.1 * dusk) * keyI}
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
@@ -1091,7 +1102,7 @@ const BowlGround: React.FC<{ readonly rMax?: number; readonly dusk?: number }> =
 };
 
 /** Ringe kippender Häuser + Laternen um die Mitte. `skipNear` lässt den vorderen Sektor (Winkel ≈ 0) frei. */
-export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: readonly number[]; readonly gap?: number; readonly gapAt?: number; readonly lampLight?: boolean }> = ({ dusk = 0, rings = [9, 14, 20, 27, 35, 44], gap = 0.32, gapAt = 0, lampLight = false }) => {
+export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: readonly number[]; readonly gap?: number; readonly gapAt?: number; readonly lampLight?: boolean }> = ({ dusk = 0, rings = [9, 14, 20, 27, 35, 44], gap = 0.55, gapAt = 0, lampLight = false }) => {
   const items = useMemo(() => {
     const r = seeded(99);
     const out: { pos: V3; rot: V3; w: number; h: number; color: string; roof: string; seed: number }[] = [];
@@ -1135,7 +1146,8 @@ export const BowlTown: React.FC<{ readonly dusk?: number; readonly rings?: reado
 export const StreetLamps: React.FC<{ readonly a?: number; readonly side?: number; readonly from?: number; readonly to?: number; readonly step?: number; readonly light?: number }> = ({ a = 0, side = 2.4, from = 4, to = 20, step = 4, light = 0 }) => {
   const out: React.ReactNode[] = [];
   for (let r = from, i = 0; r <= to; r += step, i++) {
-    const sd = i % 2 ? 1 : -1;
+    const sd = 1; // nur +x-Seite: Kameras auf der −x-Seite haben freie Sicht (Kontaktabzug r0: Mast quer im Bild)
+    void i;
     const base = onBowl(r, a);
     const p: V3 = [base[0] + Math.cos(a) * side * sd, base[1], base[2] - Math.sin(a) * side * sd];
     out.push(<LeanLamp key={r} position={p} lean={leanToCenter(p, slopeAt(r) + 0.3)} light={light} />);

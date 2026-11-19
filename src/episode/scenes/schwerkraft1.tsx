@@ -94,7 +94,7 @@ export const TownSet: React.FC<{
     <MartaHouse dusk={dusk} photo={photo} />
     <StreetLamps light={lampLight} />
     {scale ? <TownScale position={SCALE_POS} rotation={SCALE_ROT} needle={needle} name={scaleName} /> : null}
-    {pull > 0 ? <PullFan to={[0, 1.4, 0]} frame={frame} reach={pull} width={pullWidth} r={16} n={9} /> : null}
+    {pull > 0 ? <PullFan to={[0, 1.4, -0.9]} frame={frame} reach={pull} width={pullWidth} r={16} n={9} /> : null}
     {clouds ? (
       <>
         <Cloud position={[-30, 46, -70]} scale={4} seed={1} />
@@ -156,11 +156,11 @@ export const SkHook: React.FC = () => {
   const head = folkHead(MARTA);
   const a = frameOn([0, 2.0, 0.6], 7.2, 0.5, 0.5, [0.12, 0.02, 1]);
   const b = frameOn([0, 1.9, 0.4], 6.4, 0.5, 0.5, [0.1, 0.01, 1]);
-  const hud = hudAt(b, 0.5, 0.27, 4.5, 0.62);
+  const hud = hudAt(b, 0.5, 0.27, 1.6, 0.62);
   const look = ramp(frame, hit - 6, hit + 6);
   return (
     <>
-      <TownSet frame={frame} pull={0.6} pullWidth={0.04} target={[0, 0, 0]} />
+      <TownSet frame={frame} target={[0, 0, 0]} />
       <Folk frame={frame} kind="marta" position={MARTA} load={0.55} sack nod={0.12 + 0.18 * look} eyes="dot" mouth="smile" reach={[0.15, 0.15]} blinkSeed={3} />
       <Cat position={[1.1, 0.18, -0.6]} rotation={[0, -0.4, 0]} frame={frame} scale={0.9} />
       <Junk kind="apple" position={apple} rotation={[0, 0, -r * 1.6]} scale={1.15} />
@@ -315,8 +315,8 @@ export const SkLight: React.FC = () => {
   if (shot === 0) {
     // Hill Street seitlich (Kamera −x): Stadtleute mit Ballon-Hüten auf Zehenspitzen, ein Mann lässt die Aktentasche fallen
     const c: V3 = onBowl(12, 0, 1.7);
-    const a = frameOn([c[0], c[1], c[2] - 0.6], 6.4, 0.45, 0.5, [-1, 0.08, 0.05]);
-    const b = frameOn([c[0], c[1] + 0.2, c[2] + 0.6], 6.4, 0.45, 0.5, [-1, 0.08, 0.05]);
+    const a = frameOn([c[0], c[1], c[2] - 0.6], 5.2, 0.45, 0.5, [-1, 0.1, 0.05]);
+    const b = frameOn([c[0], c[1] + 0.2, c[2] + 0.6], 5.2, 0.45, 0.5, [-1, 0.1, 0.05]);
     const walkers = [
       { z: 10.2, sh: 0, seed: 4 },
       { z: 12.0, sh: 2, seed: 6 },
@@ -358,8 +358,8 @@ export const SkLight: React.FC = () => {
   // Detail: eine Hand stülpt die Manteltasche um – leer, eine Motte flattert heraus; dahinter rollen Münzen bergab
   const P: V3 = onBowl(10, 0, 0);
   const pocket: V3 = [P[0] + 0.47, P[1] + 0.95, P[2] + 0.1];
-  const a = frameOn([pocket[0], pocket[1] + 0.2, pocket[2]], 2.6, 0.48, 0.42, [0.9, 0.12, 0.6]);
-  const b = frameOn([pocket[0], pocket[1] + 0.25, pocket[2]], 2.3, 0.48, 0.42, [0.9, 0.12, 0.6]);
+  const a = frameOn([pocket[0], pocket[1] + 0.3, pocket[2]], 3.6, 0.5, 0.42, [0.9, 0.12, 0.6]);
+  const b = frameOn([pocket[0], pocket[1] + 0.3, pocket[2]], 3.2, 0.5, 0.42, [0.9, 0.12, 0.6]);
   const out = ramp(f, 4, 16);
   const moth: V3 = [pocket[0] + 0.3 + f * 0.012, pocket[1] + 0.2 + f * 0.018, pocket[2] + Math.sin(f * 0.4) * 0.1];
   const coins = [0, 1, 2, 3].map((i) => {
@@ -436,7 +436,7 @@ export const SkDump: React.FC = () => {
   const grow = lerp(0.5, 0.85, ramp(frame, t - 40, t + 10));
   return (
     <>
-      <TownSet frame={frame} needle={lerp(0.85, 0.95, ramp(frame, t - 3, t + 3))} pull={1} pullWidth={lerp(0.05, 0.08, ramp(frame, t, t + 15))} target={MARTA} />
+      <TownSet frame={frame} needle={lerp(0.85, 0.95, ramp(frame, t - 3, t + 3))} target={MARTA} />
       <Folk frame={frame} kind="marta" position={MARTA} load={lerp(0.75, 0.95, ramp(f, 20, 30))} sack reach={[0.2, 0.5 + 0.6 * stuff]} spread={[0.1, -0.35 * stuff]} nod={0.2 * stuff} eyes="dot" mouth="flat" blinkSeed={3} holdR={stuff > 0.1 ? <Junk kind="key" position={[0, 0, 0.1]} scale={1.4} /> : null} />
       <Pile position={[0, 0.18, -0.15]} grow={grow} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="out" />
@@ -509,7 +509,7 @@ export const SkRehook: React.FC = () => {
   const top: V3 = [hand[0] + 0.25, hand[1] + 2.0 + slip * 0.5, hand[2] - 0.2];
   const a = frameOn([hand[0], hand[1] + 0.7, hand[2]], 3.6, 0.5, 0.5, [0.25, 0.05, 1]);
   const b = frameOn([hand[0], hand[1] + 0.7, hand[2]], 3.1, 0.5, 0.5, [0.25, 0.05, 1]);
-  const hud = hudAt(b, 0.5, 0.27, 2.2, 0.6);
+  const hud = hudAt(b, 0.5, 0.27, 1.4, 0.6);
   const w = beat("balloonStringSlips");
   const v = boState("rehook", frame, beat);
   return (

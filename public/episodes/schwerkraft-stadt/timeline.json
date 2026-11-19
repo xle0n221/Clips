@@ -1,0 +1,456 @@
+{
+ "id": "schwerkraft-stadt",
+ "title": "In This City, Gravity Pulls Toward Marta",
+ "durationMs": 66055,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4425
+  },
+  {
+   "id": "rule",
+   "startMs": 4425,
+   "endMs": 9093
+  },
+  {
+   "id": "slide",
+   "startMs": 9093,
+   "endMs": 15595
+  },
+  {
+   "id": "light",
+   "startMs": 15595,
+   "endMs": 20158
+  },
+  {
+   "id": "dump",
+   "startMs": 20158,
+   "endMs": 24580
+  },
+  {
+   "id": "lonely",
+   "startMs": 24580,
+   "endMs": 29631
+  },
+  {
+   "id": "rehook",
+   "startMs": 29631,
+   "endMs": 31693
+  },
+  {
+   "id": "bo",
+   "startMs": 31693,
+   "endMs": 36206
+  },
+  {
+   "id": "gust",
+   "startMs": 36206,
+   "endMs": 39991
+  },
+  {
+   "id": "town",
+   "startMs": 39991,
+   "endMs": 43860
+  },
+  {
+   "id": "marta",
+   "startMs": 43860,
+   "endMs": 48525
+  },
+  {
+   "id": "turn",
+   "startMs": 48525,
+   "endMs": 53311
+  },
+  {
+   "id": "catch",
+   "startMs": 53311,
+   "endMs": 56793
+  },
+  {
+   "id": "answer",
+   "startMs": 56793,
+   "endMs": 61371
+  },
+  {
+   "id": "loop",
+   "startMs": 61371,
+   "endMs": 65455
+  }
+ ],
+ "cues": [
+  {
+   "beat": "appleDropsSideways",
+   "sticker": "WHY DOES IT ALL FALL TO HER?",
+   "color": "#FFD23F",
+   "scene": "hook",
+   "atMs": 1940
+  },
+  {
+   "beat": "appleReachesMarta",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "center",
+    "value": "MARTA"
+   },
+   "scene": "hook",
+   "atMs": 3580
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1940
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3580
+  },
+  {
+   "beat": "scaleBoardFlips",
+   "scene": "rule",
+   "atMs": 6480
+  },
+  {
+   "beat": "martaWaves",
+   "scene": "rule",
+   "atMs": 8160
+  },
+  {
+   "emph": true,
+   "scene": "rule",
+   "atMs": 6480
+  },
+  {
+   "emph": true,
+   "scene": "rule",
+   "atMs": 8160
+  },
+  {
+   "beat": "townFunnel",
+   "scene": "slide",
+   "atMs": 10680
+  },
+  {
+   "beat": "catFliesIn",
+   "sfx": "whoosh",
+   "scene": "slide",
+   "atMs": 12960
+  },
+  {
+   "beat": "martaCatchesCat",
+   "scene": "slide",
+   "atMs": 10500
+  },
+  {
+   "emph": true,
+   "scene": "slide",
+   "atMs": 10680
+  },
+  {
+   "emph": true,
+   "scene": "slide",
+   "atMs": 14940
+  },
+  {
+   "beat": "balloonHats",
+   "scene": "light",
+   "atMs": 17140
+  },
+  {
+   "beat": "pocketInsideOut",
+   "sfx": "pop",
+   "scene": "light",
+   "atMs": 19160
+  },
+  {
+   "emph": true,
+   "scene": "light",
+   "atMs": 17140
+  },
+  {
+   "emph": true,
+   "scene": "light",
+   "atMs": 19160
+  },
+  {
+   "beat": "junkRollsDown",
+   "scene": "dump",
+   "atMs": 22040
+  },
+  {
+   "beat": "scaleNeedleTicks",
+   "scene": "dump",
+   "atMs": 23880
+  },
+  {
+   "emph": true,
+   "scene": "dump",
+   "atMs": 22040
+  },
+  {
+   "emph": true,
+   "scene": "dump",
+   "atMs": 23880
+  },
+  {
+   "beat": "neighbourWaves",
+   "scene": "lonely",
+   "atMs": 25120
+  },
+  {
+   "beat": "neighbourSkids",
+   "sfx": "whoosh",
+   "scene": "lonely",
+   "atMs": 27220
+  },
+  {
+   "beat": "martaAlone",
+   "scene": "lonely",
+   "atMs": 28840
+  },
+  {
+   "emph": true,
+   "scene": "lonely",
+   "atMs": 25120
+  },
+  {
+   "emph": true,
+   "scene": "lonely",
+   "atMs": 27220
+  },
+  {
+   "emph": true,
+   "scene": "lonely",
+   "atMs": 28840
+  },
+  {
+   "beat": "balloonStringSlips",
+   "hud": {
+    "id": "bo",
+    "value": "GROUNDED"
+   },
+   "scene": "rehook",
+   "atMs": 30880
+  },
+  {
+   "emph": true,
+   "scene": "rehook",
+   "atMs": 30880
+  },
+  {
+   "beat": "boHops",
+   "scene": "bo",
+   "atMs": 33040
+  },
+  {
+   "beat": "thinPullLines",
+   "scene": "bo",
+   "atMs": 35440
+  },
+  {
+   "emph": true,
+   "scene": "bo",
+   "atMs": 33040
+  },
+  {
+   "emph": true,
+   "scene": "bo",
+   "atMs": 35440
+  },
+  {
+   "beat": "gustHits",
+   "sfx": "whoosh",
+   "hud": {
+    "id": "bo",
+    "value": "FLOATING"
+   },
+   "scene": "gust",
+   "atMs": 36860
+  },
+  {
+   "beat": "boPastRoofs",
+   "scene": "gust",
+   "atMs": 39280
+  },
+  {
+   "emph": true,
+   "scene": "gust",
+   "atMs": 36860
+  },
+  {
+   "emph": true,
+   "scene": "gust",
+   "atMs": 39280
+  },
+  {
+   "beat": "crowdReaches",
+   "hud": {
+    "id": "bo",
+    "value": "TOO HIGH"
+   },
+   "scene": "town",
+   "atMs": 41340
+  },
+  {
+   "beat": "boLooksDown",
+   "scene": "town",
+   "atMs": 43180
+  },
+  {
+   "emph": true,
+   "scene": "town",
+   "atMs": 41340
+  },
+  {
+   "emph": true,
+   "scene": "town",
+   "atMs": 43180
+  },
+  {
+   "beat": "martaStandsUp",
+   "scene": "marta",
+   "atMs": 45520
+  },
+  {
+   "beat": "martaScoopsPile",
+   "hud": {
+    "id": "bo",
+    "value": "SLOWING"
+   },
+   "scene": "marta",
+   "atMs": 47520
+  },
+  {
+   "emph": true,
+   "scene": "marta",
+   "atMs": 45520
+  },
+  {
+   "emph": true,
+   "scene": "marta",
+   "atMs": 47520
+  },
+  {
+   "beat": "boHangsStill",
+   "scene": "turn",
+   "atMs": 50100
+  },
+  {
+   "beat": "boTurnsAndFalls",
+   "hud": {
+    "id": "bo",
+    "value": "FALLING"
+   },
+   "scene": "turn",
+   "atMs": 51400
+  },
+  {
+   "beat": "pullLineGlows",
+   "scene": "turn",
+   "atMs": 52100
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 50100
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 52100
+  },
+  {
+   "beat": "boLandsInArms",
+   "hud": {
+    "id": "bo",
+    "value": "SAFE"
+   },
+   "scene": "catch",
+   "atMs": 54280
+  },
+  {
+   "beat": "hugClose",
+   "scene": "catch",
+   "atMs": 56020
+  },
+  {
+   "emph": true,
+   "scene": "catch",
+   "atMs": 54280
+  },
+  {
+   "emph": true,
+   "scene": "catch",
+   "atMs": 56020
+  },
+  {
+   "beat": "duskTown",
+   "scene": "answer",
+   "atMs": 57540
+  },
+  {
+   "beat": "neighboursCome",
+   "scene": "answer",
+   "atMs": 60000
+  },
+  {
+   "emph": true,
+   "scene": "answer",
+   "atMs": 57540
+  },
+  {
+   "emph": true,
+   "scene": "answer",
+   "atMs": 60000
+  },
+  {
+   "beat": "balloonBumpsNose",
+   "scene": "loop",
+   "atMs": 63000
+  },
+  {
+   "beat": "loopToHook",
+   "scene": "loop",
+   "atMs": 64600
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 63000
+  },
+  {
+   "emph": true,
+   "scene": "loop",
+   "atMs": 64600
+  }
+ ],
+ "hud": {
+  "title": "IN THIS CITY",
+  "counters": [
+   {
+    "id": "center",
+    "label": "CENTER OF GRAVITY",
+    "value": "MARTA"
+   },
+   {
+    "id": "bo",
+    "label": "BO",
+    "value": "GROUNDED"
+   }
+  ],
+  "bars": []
+ },
+ "cover": {
+  "text": "IT ALL FALLS TO HER",
+  "sub": "Gravity has a favorite",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. We'll catch you.",
+  "seconds": 2
+ }
+}

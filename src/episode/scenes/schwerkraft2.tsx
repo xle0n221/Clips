@@ -34,7 +34,7 @@ const BO_S = 0.7;
 const boHead = (p: V3) => folkHead(p, BO_S, false, true);
 
 /** Bo-Anzeige im Bild (Zustand genau ab Cue-Wort). */
-const BoBoard: React.FC<{ readonly scene: string; readonly frame: number; readonly beat: (n: string) => number; readonly cam: { pos: V3; look: V3; fov: number }; readonly d?: number; readonly xf?: number; readonly yf?: number; readonly frac?: number }> = ({ scene, frame, beat, cam, d = 3, xf = 0.5, yf = 0.27, frac = 0.56 }) => {
+const BoBoard: React.FC<{ readonly scene: string; readonly frame: number; readonly beat: (n: string) => number; readonly cam: { pos: V3; look: V3; fov: number }; readonly d?: number; readonly xf?: number; readonly yf?: number; readonly frac?: number }> = ({ scene, frame, beat, cam, d = 1.5, xf = 0.5, yf = 0.27, frac = 0.56 }) => {
   const v = boState(scene, frame, beat);
   if (!v) return null;
   return <Board label="BO" value={v} color={boColor(v)} {...hudAt(cam, xf, yf, d, frac)} />;
@@ -185,7 +185,7 @@ export const SkTown: React.FC = () => {
           />
         ))}
         <Folk frame={frame} kind="bo" position={BO_SKY} rotation={[0, Math.PI, 0]} scale={BO_S} balloons={6} cap={false} spread={[1, 1]} blinkSeed={21} />
-        <BoBoard scene="town" frame={frame} beat={beat} cam={b} d={4} />
+        <BoBoard scene="town" frame={frame} beat={beat} cam={b} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="out" />
       </>
     );
@@ -202,8 +202,8 @@ export const SkTown: React.FC = () => {
         <Folk key={i} frame={frame} kind="towns" shirt={G.towns[c.c]} position={crowdAt(i)} rotation={[0, Math.PI, 0]} balloonHat nod={-0.6} reach={[2.8, 2.8]} eyes="wide" mouth="o" blinkSeed={c.s} />
       ))}
       <Folk frame={frame} kind="bo" position={p} rotation={[0.5, Math.PI + 0.3, 0]} scale={BO_S} balloons={6} cap={false} nod={0.5} eyes="wide" mouth="frown" spread={[0.6, 0.6]} reach={[0.8, 0.8]} blinkSeed={21} />
-      <Cloud position={[h[0] - 6, h[1] - 2, h[2] - 4]} scale={1.6} seed={5} opacity={0.85} />
-      <BoBoard scene="town" frame={frame} beat={beat} cam={b} d={4} yf={0.26} />
+      <Cloud position={[h[0] - 9, h[1] - 9, h[2] - 10]} scale={1.6} seed={5} opacity={0.85} />
+      <BoBoard scene="town" frame={frame} beat={beat} cam={b} yf={0.26} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
   );
@@ -224,7 +224,7 @@ export const SkMarta: React.FC = () => {
     const head = folkHead([0, MARTA[1], MARTA[2] - 0.2]);
     const a = frameOn(head, 6.4, 0.4, 0.5, [0.1, -0.05, 1]);
     const b = frameOn(head, 4.9, 0.4, 0.5, [0.1, -0.05, 1]);
-    const hud = hudAt(b, 0.5, 0.26, 2.6, 0.5);
+    const hud = hudAt(b, 0.5, 0.26, 1.4, 0.5);
     return (
       <>
         <TownSet frame={frame} dusk={0.2} target={MARTA} />
@@ -243,7 +243,7 @@ export const SkMarta: React.FC = () => {
   const head = folkHead(MARTA);
   const a = frameOn([0, 2.6, 0], 10.5, 0.5, 0.5, [0.25, 0.12, 1]);
   const b = frameOn([0, 2.8, 0], 10, 0.5, 0.5, [0.25, 0.12, 1]);
-  const hud = hudAt(b, 0.5, 0.24, 4.2, 0.5);
+  const hud = hudAt(b, 0.5, 0.24, 1.5, 0.5);
   const v = boState("marta", frame, beat);
   return (
     <>
@@ -274,9 +274,9 @@ export const SkTurn: React.FC = () => {
   const p: V3 = [BO0[0] - drop * 0.4, BO0[1] - 0.9 * drop * drop - 0.4 * drop + Math.sin(frame * 0.5) * 0.04 * (1 - flip), BO0[2] - drop * 0.3];
   const h = boHead(p);
   // Kamera seitlich über Bo, Blick schräg nach unten: unten die winzige leuchtende Veranda
-  const a = frameOn([h[0], h[1] - 1.2, h[2]], 9, 0.36, 0.5, [0.9, 0.55, 0.6]);
-  const b = frameOn([h[0], h[1] - 1.6, h[2]], 7.6, 0.4, 0.5, [0.9, 0.5, 0.6]);
-  const hud = hudAt(b, 0.5, 0.24, 4, 0.52);
+  const a = frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]);
+  const b = frameOn([h[0], h[1] - 0.9, h[2]], 7.6, 0.52, 0.5, [0.9, 0.5, 0.6]);
+  const hud = hudAt(b, 0.5, 0.25, 1.5, 0.44);
   const v = boState("turn", frame, beat);
   const glow = ramp(frame, beat("pullLineGlows") - 4, beat("pullLineGlows") + 8);
   return (
@@ -312,7 +312,7 @@ export const SkCatch: React.FC = () => {
     const head = folkHead(MARTA);
     const a = frameOn([head[0], head[1] + 0.4, head[2]], 7.2, 0.42, 0.5, [0.15, 0.05, 1]);
     const b = frameOn([head[0], head[1] + 0.3, head[2]], 6.4, 0.42, 0.5, [0.15, 0.05, 1]);
-    const hud = hudAt(b, 0.5, 0.24, 3, 0.5);
+    const hud = hudAt(b, 0.5, 0.24, 1.4, 0.48);
     const v = boState("catch", frame, beat);
     const catOff = ramp(frame, land - 2, land + 14);
     return (
@@ -329,14 +329,14 @@ export const SkCatch: React.FC = () => {
   }
   // Nah, goldenes Abendlicht: Marta drückt Bo fest, Augen zu, kleines Lächeln; Bo drückt zurück
   const head = folkHead(MARTA);
-  const a = frameOn([head[0] + 0.1, head[1] - 0.4, head[2]], 4.4, 0.4, 0.5, [0.35, 0.02, 1]);
-  const b = frameOn([head[0] + 0.1, head[1] - 0.4, head[2]], 3.9, 0.4, 0.5, [0.32, 0.02, 1]);
-  const bo: V3 = [0.05, 0.95, MARTA[2] + 0.5];
+  const a = frameOn([head[0] + 0.3, head[1] - 0.4, head[2]], 4.6, 0.4, 0.5, [-0.45, 0.02, 1]);
+  const b = frameOn([head[0] + 0.3, head[1] - 0.4, head[2]], 4.1, 0.4, 0.5, [-0.42, 0.02, 1]);
+  const bo: V3 = [0.62, 0.62, MARTA[2] + 0.55];
   return (
     <>
       <TownSet frame={frame} dusk={0.7} target={MARTA} />
       <Folk frame={frame} kind="marta" position={MARTA} load={1.0} sack sleeves reach={[1.3, 1.3]} spread={[-0.35, -0.35]} nod={0.12} tilt={0.1} eyes="closed" mouth="smile" blinkSeed={3} />
-      <Folk frame={frame} kind="bo" position={bo} rotation={[0, Math.PI, 0]} scale={BO_S} balloons={6} cap={false} reach={[1.5, 1.5]} spread={[-0.4, -0.4]} eyes="closed" mouth="smile" blinkSeed={21} />
+      <Folk frame={frame} kind="bo" position={bo} rotation={[0, Math.PI + 0.9, 0]} scale={BO_S} balloons={6} cap={false} reach={[1.5, 1.5]} spread={[-0.4, -0.4]} eyes="closed" mouth="smile" blinkSeed={21} />
       <pointLight position={[1.5, 3, 2.5]} color="#FFD9A8" intensity={6} distance={7} decay={2} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="inOut" />
     </>
@@ -381,8 +381,8 @@ export const SkAnswer: React.FC = () => {
     return [lerp(ropeTop[0], -1.6, Math.max(0, u)) + 0.4, bowlY(z), z] as V3;
   });
   const head = folkHead(MARTA);
-  const a = frameOn([-0.8, 2.4, 2.4], 8.4, 0.45, 0.5, [0.85, 0.18, 0.55]);
-  const b = frameOn([-0.8, 2.4, 2.4], 7.8, 0.45, 0.5, [0.8, 0.18, 0.6]);
+  const a = frameOn([-0.6, 2.2, 3.2], 8.4, 0.45, 0.5, [0.35, 0.3, 1]);
+  const b = frameOn([-0.6, 2.2, 3.0], 7.8, 0.45, 0.5, [0.32, 0.3, 1]);
   return (
     <>
       <TownSet frame={frame} dusk={0.95} target={[-1, 1, 3]} lampLight={2} />
