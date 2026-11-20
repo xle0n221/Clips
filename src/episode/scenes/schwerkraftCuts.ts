@@ -2,7 +2,7 @@
  * „In This City, Gravity Pulls Toward Marta“ (episodes/schwerkraft-stadt.json) – Schnittplan je Szene.
  * Reine Daten (kein React): Szenen UND das Mess-Skript (scripts/schwerkraft_shots.mjs) nutzen dieselbe Funktion.
  * Schnitte hängen an Wort-Beats (timeline.json), nie an festen Sekunden; Abstände in Bildern (30 fps).
- * Regeln: jede Einstellung 1,3–4 s (Regie Sonne R2: keine Mikro-Shots), nur `turn` ist ein Halt (≤ 6 s).
+ * Regeln: jede Einstellung 1,3–4 s (Regie Sonne R2: keine Mikro-Shots), auch `turn` (Regie Station 3: Schnitt auf „starts to fall“).
  * Hinweis: Cue „martaCatchesCat“ (slide) hängt am ERSTEN „her“ („toward her door“) → Schnitte nutzen ihn nicht.
  */
 export type BeatFn = (name: string) => number;
@@ -37,7 +37,7 @@ export const SCHWERKRAFT_SHOTS: Record<string, { readonly names: readonly string
   gust: { names: ["medium street, gust lifts Bo, cap flies", "high angle down, Bo rises past the roofs"], cuts: (b) => [b("boPastRoofs") - 40] },
   town: { names: ["wide low angle, crowd reaches up", "OTS from Bo, crowd far below"], cuts: (b) => [b("boLooksDown") - 40] },
   marta: { names: ["medium porch push-in, Marta stands up", "wide porch, she scoops the pile"], cuts: (b) => [b("martaScoopsPile") - 34] },
-  turn: { names: ["HOLD Bo stops rising, pull reaches him, falls"], cuts: () => [] },
+  turn: { names: ["Bo stops rising, pull line reaches him", "close-up Bo flips and falls toward Marta"], cuts: (b) => [b("boTurnsAndFalls") - 2] },
   catch: { names: ["medium porch, Bo lands in her arms", "close-up hug, eyes closed"], cuts: (b) => [b("hugClose") - 36] },
   answer: { names: ["high wide dusk, balloon hats everywhere", "medium, neighbours come down the rope"], cuts: (b) => [b("neighboursCome") - 50] },
   loop: { names: ["close-up bench, balloon bumps Marta's nose", "match cut to opening shot (apple)"], cuts: (b) => [b("loopToHook") - 40] },

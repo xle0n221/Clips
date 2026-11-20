@@ -5,7 +5,9 @@
 import React from "react";
 import { Shot, V3 } from "../kit/camera";
 import { camAt, HookFrame, hudAt, MARTA, MARTA_SIT, TownSet, useShots } from "./schwerkraft1";
+import type { Cam } from "./schwerkraft1";
 import {
+  atScreen,
   Balloon,
   Board,
   boColor,
@@ -130,11 +132,12 @@ export const SkGust: React.FC = () => {
   const rise = f * 0.11;
   const p: V3 = [1.6, 8 + rise, 9];
   const h = boHead(p);
-  const a = frameOn(h, 7, 0.42, 0.5, [0.15, 1.1, 0.5]);
-  const b = frameOn([h[0], h[1] + 0.5, h[2]], 8.2, 0.42, 0.5, [0.15, 1.2, 0.5]);
+  // Regie R5: von vorn-oben statt senkrecht (sonst verdeckt Bos Haarklotz das Gesicht); Waage aus (Tafel angeschnitten)
+  const a = frameOn(h, 7, 0.42, 0.5, [0.3, 0.6, 1]);
+  const b = frameOn([h[0], h[1] + 0.5, h[2]], 8.2, 0.42, 0.5, [0.3, 0.7, 1]);
   return (
     <>
-      <TownSet frame={frame} target={[1.6, 2, 9]} />
+      <TownSet frame={frame} target={[1.6, 2, 9]} scale={false} />
       <Folk frame={frame} kind="bo" position={p} rotation={[0.2, 0.4, 0.1]} scale={BO_S} balloons={6} cap={false} emptyPockets eyes="wide" mouth="o" nod={0.6} spread={[0.9, 0.9]} reach={[0.3, 0.3]} blinkSeed={21} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
@@ -191,18 +194,19 @@ export const SkTown: React.FC = () => {
     );
   }
   // Über die Schulter von Bo nach unten: die Menge weit unten, Arme erhoben, hilflos; Ballons ziehen ihn höher
-  const p: V3 = [1.2, 26 + f * 0.04, 8];
-  const h = boHead(p);
-  const a = frameOn([h[0], h[1] - 3, h[2] + 0.5], 8, 0.4, 0.5, [-0.2, 0.9, -0.45]);
-  const b = frameOn([h[0], h[1] - 3, h[2] + 0.5], 7.2, 0.4, 0.5, [-0.2, 0.95, -0.4]);
+  // Regie R6: Tele von Bos Schulter auf die Menge (mittleres Drittel), Bo angeschnitten am rechten Rand im Vordergrund
+  const lift = f * 0.04;
+  const a: Cam = { pos: [2.4, 30 + lift, 6.6], look: [0, bowlY(9.6) + 1.2, 9.4], fov: 24 };
+  const b: Cam = { pos: [2.4, 30.6 + lift, 6.6], look: [0, bowlY(9.6) + 1.2, 9.4], fov: 21 };
+  const cam = camAt(f, len, a, b, "linear");
+  const p: V3 = atScreen(cam, 0.95, 0.6, 4.2);
   return (
     <>
       <TownSet frame={frame} target={[0, 0, 9]} />
       {CROWD.map((c, i) => (
         <Folk key={i} frame={frame} kind="towns" shirt={G.towns[c.c]} position={crowdAt(i)} rotation={[0, Math.PI, 0]} balloonHat nod={-0.6} reach={[2.8, 2.8]} eyes="wide" mouth="o" blinkSeed={c.s} />
       ))}
-      <Folk frame={frame} kind="bo" position={p} rotation={[0.5, Math.PI + 0.3, 0]} scale={BO_S} balloons={6} cap={false} nod={0.5} eyes="wide" mouth="frown" spread={[0.6, 0.6]} reach={[0.8, 0.8]} blinkSeed={21} />
-      <Cloud position={[h[0] - 9, h[1] - 9, h[2] - 10]} scale={1.6} seed={5} opacity={0.85} />
+      <Folk frame={frame} kind="bo" position={p} rotation={[0.9, Math.PI - 0.5, 0]} scale={BO_S} balloons={0} cap={false} nod={0.5} eyes="wide" mouth="frown" spread={[0.6, 0.6]} reach={[1.6, 1.6]} blinkSeed={21} />
       <BoBoard scene="town" frame={frame} beat={beat} cam={camAt(f, len, a, b, "linear")} yf={0.26} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
@@ -263,7 +267,7 @@ export const SkMarta: React.FC = () => {
 /* 12 turn (HALT) – „High above, Bo stops rising. | And starts to fall… toward Marta.“ */
 /* ------------------------------------------------------------------ */
 export const SkTurn: React.FC = () => {
-  const { frame, beat, f, len } = useShots("turn");
+  const { frame, beat, shot, f, len } = useShots("turn");
   const still = beat("boHangsStill");
   const fall = beat("boTurnsAndFalls");
   // Bo hängt in den Wolken; die dicke Bernstein-Linie wächst von unten herauf und berührt ihn kurz vor „fall“
@@ -274,8 +278,9 @@ export const SkTurn: React.FC = () => {
   const p: V3 = [BO0[0] - drop * 0.4, BO0[1] - 0.9 * drop * drop - 0.4 * drop + Math.sin(frame * 0.5) * 0.04 * (1 - flip), BO0[2] - drop * 0.3];
   const h = boHead(p);
   // Kamera seitlich über Bo, Blick schräg nach unten: unten die winzige leuchtende Veranda
-  const a = frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]);
-  const b = frameOn([h[0], h[1] - 0.9, h[2]], 7.6, 0.52, 0.5, [0.9, 0.5, 0.6]);
+  // Regie R3: Schnitt auf „starts to fall“ → Nah, Bo kippt kopfüber (Kamera folgt dem Fall)
+  const a = shot === 0 ? frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]) : frameOn([p[0], p[1] - 0.4, p[2]], 4.4, 0.55, 0.5, [0.9, 0.25, 0.7]);
+  const b = shot === 0 ? frameOn([h[0], h[1] - 0.9, h[2]], 8.0, 0.52, 0.5, [0.9, 0.5, 0.6]) : frameOn([p[0], p[1] - 0.6, p[2]], 3.8, 0.55, 0.5, [0.9, 0.3, 0.7]);
   const hud = hudAt(camAt(f, len, a, b, "inOut"), 0.5, 0.25, 1.5, 0.44);
   const v = boState("turn", frame, beat);
   const glow = ramp(frame, beat("pullLineGlows") - 4, beat("pullLineGlows") + 8);
@@ -385,7 +390,8 @@ export const SkAnswer: React.FC = () => {
   const b = frameOn([-0.6, 2.2, 3.0], 7.8, 0.45, 0.5, [0.32, 0.3, 1]);
   return (
     <>
-      <TownSet frame={frame} dusk={0.95} target={[-1, 1, 3]} lampLight={2} />
+      {/* Regie R2: Haus auf der Sichtlinie (schwarzer Block) weg */}
+      <TownSet frame={frame} dusk={0.95} target={[-1, 1, 3]} lampLight={2} clear={{ from: a.pos, to: [-1, 1.5, 4], r: 3.5 }} />
       <Stick a={ropeTop} b={ropeLow} r={0.04} color="#C8B08A" basic={false} />
       {ns.map((p, i) => (
         <Folk

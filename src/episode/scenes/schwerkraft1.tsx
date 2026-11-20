@@ -97,11 +97,13 @@ export const TownSet: React.FC<{
   readonly scaleName?: string;
   /** Sichtlinie Kamera → Motiv von Häusern freihalten. */
   readonly clear?: ClearLine;
-}> = ({ clear, frame, dusk = 0, pull = 0, pullWidth = 0.05, scale = true, needle = 0.8, photo = false, clouds = true, target = [0, 0, 0], lampLight = 0, scaleName = "MARTA" }) => (
+  /** Martas Haus zeichnen (aus für Blicke aus dem Haus heraus). */
+  readonly house?: boolean;
+}> = ({ house = true, clear, frame, dusk = 0, pull = 0, pullWidth = 0.05, scale = true, needle = 0.8, photo = false, clouds = true, target = [0, 0, 0], lampLight = 0, scaleName = "MARTA" }) => (
   <>
     <TownLight dusk={dusk} target={target} />
     <BowlTown dusk={dusk} clear={clear} />
-    <MartaHouse dusk={dusk} photo={photo} />
+    {house ? <MartaHouse dusk={dusk} photo={photo} /> : null}
     {lampLight > 0 ? <StreetLamps light={lampLight} from={14} /> : null}
     {scale ? <TownScale position={SCALE_POS} rotation={SCALE_ROT} needle={needle} name={scaleName} /> : null}
     {pull > 0 ? <PullFan to={[0, 1.4, -0.9]} frame={frame} reach={pull} width={pullWidth} r={16} n={9} /> : null}
@@ -470,12 +472,17 @@ export const SkLonely: React.FC = () => {
     const lampP: V3 = [-2.4, bowlY(8.8), 8.8];
     const n: V3 = [-1.4 + 0.5 * slip, bowlY(z), z];
     // Regie R3: Marta vorn im Bild (sitzt allein auf der Verandakante, Rücken halb zur Kamera), Nachbar dahinter die Straße hinauf
-    const a: Cam = { pos: [1.7, 2.85, -1.4], look: [-1.0, 1.3, 9.5], fov: 46 };
-    const b: Cam = { pos: [1.6, 2.75, -1.15], look: [-1.0, 1.4, 9.5], fov: 43 };
+    // Kamera steht dort, wo sonst Martas Haus ist (Haus aus) → über ihre Schulter die Straße hinauf
+    const a: Cam = { pos: [-0.2, 3.9, -8.6], look: [-0.7, 2.2, 10], fov: 38 };
+    const b: Cam = { pos: [-0.2, 3.8, -8.0], look: [-0.7, 2.3, 10], fov: 36 };
     return (
       <>
-        <TownSet frame={frame} dusk={0.35} target={n} />
-        <Folk frame={frame} kind="marta" position={[1.05, 0.1, 1.5]} rotation={[0, -0.5, 0]} sit load={0.9} sack={false} reach={[0.9, 0.9]} spread={[0.3, 0.3]} nod={-0.08 + 0.12 * slip} eyes="dot" mouth="flat" blinkSeed={3} />
+        <TownSet frame={frame} dusk={0.35} target={n} house={false} scale={false} clear={{ from: [-0.2, 3.9, -12], to: [0, 1, 0], r: 3.5 }} />
+        <mesh position={[0.15, 0.24, -0.75]} castShadow receiveShadow>
+          <boxGeometry args={[1.8, 0.48, 0.62]} />
+          <meshStandardMaterial color={G.woodDark} roughness={0.8} />
+        </mesh>
+        <Folk frame={frame} kind="marta" position={[0.15, 0.52, -0.75]} rotation={[0, -0.35, 0]} sit load={0.9} sack={false} reach={[0.9, 0.9]} spread={[0.3, 0.3]} nod={-0.08 + 0.12 * slip} eyes="dot" mouth="flat" blinkSeed={3} />
         <Folk
           frame={frame}
           kind="towns"
