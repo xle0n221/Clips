@@ -357,7 +357,7 @@ export const TorFirst: React.FC = () => {
   const pip: V3 = [PLAQUE[0] - 1.6, 0, -0.9];
   const a = cam([plq[0] - 1.6, 2.4, -11], [plq[0] - 0.8, 1.9, 0], 40);
   // Rückzug erst in den letzten ~0,7 s und kürzer (Regie: „1 LEFT“ wurde zu früh winzig und stand am Untertitel)
-  const b = cam([-3.8, 4.6, -21], [-0.6, 4.4, 0], 40);
+  const b = cam([-3.4, 2.6, -17], [-0.8, 0.6, 0], 40);
   return (
     <>
       <Atmos bg="#CFE3EC" fog={[50, 160]} sky="#FFF1D6" ground="#7A8A4A" hemi={1.05} keyLight={{ pos: [-14, 20, -22], color: "#FFE2B0", intensity: 2.4, target: [0, 0, -4] }} />

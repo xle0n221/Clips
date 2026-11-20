@@ -193,8 +193,9 @@ export const SkRule: React.FC = () => {
     const flip = beat("scaleBoardFlips");
     const board: V3 = [SCALE_POS[0] + Math.sin(SCALE_ROT[1]) * 0.2, SCALE_POS[1] + 5.0, SCALE_POS[2] + Math.cos(SCALE_ROT[1]) * 0.2];
     const dir: V3 = [0.2, 0.12, 1]; // Hill Street; Häuser auf der Sichtlinie fallen per `clear` weg (Kontaktabzug r3: Haus vor der Linse)
-    const a = frameOn([board[0], board[1] - 1.2, board[2]], 10.5, 0.4, 0.5, dir);
-    const b = frameOn([board[0], board[1] - 1.2, board[2]], 9.6, 0.4, 0.5, dir);
+    // Regie R7: Tafel tiefer ins Bild (Phrasen-Pille oben bis y ≈ 130)
+    const a = frameOn([board[0], board[1] - 1.2, board[2]], 11.2, 0.47, 0.5, dir);
+    const b = frameOn([board[0], board[1] - 1.2, board[2]], 10.3, 0.47, 0.5, dir);
     const towns: { p: V3; c: number; look: number }[] = [
       { p: [SCALE_POS[0] + 2.2, bowlY(5.9), SCALE_POS[2] + 1.2], c: 1, look: 0.5 },
       { p: [SCALE_POS[0] - 1.9, bowlY(5.4), SCALE_POS[2] - 1.0], c: 2, look: 0.3 },
@@ -468,11 +469,13 @@ export const SkLonely: React.FC = () => {
     const z = lerp(11.6, 9.2, slip);
     const lampP: V3 = [-2.4, bowlY(8.8), 8.8];
     const n: V3 = [-1.4 + 0.5 * slip, bowlY(z), z];
-    const a = frameOn(onBowl(9.6, 0, 1.4), 7.5, 0.42, 0.5, [0.15, 0.25, -1]);
-    const b = frameOn(onBowl(9.4, 0, 1.4), 6.6, 0.42, 0.5, [0.15, 0.25, -1]);
+    // Regie R3: Marta vorn im Bild (sitzt allein auf der Verandakante, Rücken halb zur Kamera), Nachbar dahinter die Straße hinauf
+    const a: Cam = { pos: [1.35, 2.0, -1.25], look: [-0.7, 1.1, 9.5], fov: 40 };
+    const b: Cam = { pos: [1.15, 1.9, -1.0], look: [-0.8, 1.2, 9.5], fov: 38 };
     return (
       <>
         <TownSet frame={frame} dusk={0.35} target={n} />
+        <Folk frame={frame} kind="marta" position={[-0.25, 0.26, 0.5]} rotation={[0, 0.25, 0]} sit load={0.9} sack={false} reach={[0.9, 0.9]} spread={[0.3, 0.3]} nod={-0.08 + 0.12 * slip} eyes="dot" mouth="flat" blinkSeed={3} />
         <Folk
           frame={frame}
           kind="towns"
