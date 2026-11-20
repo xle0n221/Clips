@@ -40,6 +40,7 @@ Nicht mitten in einem laufenden Render oder während Agenten arbeiten – erst s
 | 19.11.2026 | session_01UNp77QHeWKBPJK78ThrGyX | session_01UNp77MtRT1w4ZDwHvrEHpp („Clips – weiter nach Übergabe“, vom Nutzer gestartet, Tiefe 1) | alte Sitzung Tiefe 8; Abholer trig_01NLm7wDjZkjX4TVWdW1r2uy aus → trig_01YFVees4t4feuwwe9gyvcmh |
 | 20.11.2026 | session_01UNp77MtRT1w4ZDwHvrEHpp | session_01UNp77QbmgR9ha8b4i9wViD („CLIPS – Orchestrator (ab 20.11.2026, nach Tor + Schwerkraft)“, Umgebung „Clips“) | Tor + Schwerkraft fertig, Verlauf lang; Abholer trig_01YFVees4t4feuwwe9gyvcmh aus → trig_01EyRuiZbGdYiSzo7QTd4vMa, meta/pickup v10 |
 | 20.11.2026 abends | session_01UNp77QbmgR9ha8b4i9wViD | session_01UNp77MwDdQvCYQekQ5vs48 („CLIPS – Orchestrator (ab 20.11. abends, 2 Videos/Tag, Hook-Reset)“) | Qualitäts-Reset, 2 Videos/Tag; Abholer trig_01EyRuiZbGdYiSzo7QTd4vMa aus → trig_01LpDfKfrFJNjXSCf77t13ds (leere Läufe ohne Nachricht) |
+| 20.11.2026 abends | session_01UNp77MwDdQvCYQekQ5vs48 (Orchestrator) | session_01UNp77PKkjFzGD2s8mqDXLD („CLIPS – Video 1 (20.11., Hook-Reset)“) | Video 1 des Tages in eigener Sitzung; Abholer bleibt beim Orchestrator |
 
 ## Grenze: Sitzungs-Tiefe (gelernt 13.11.2026)
 Jede per `create_session` gestartete Sitzung zählt eine Stufe tiefer; ab **Tiefe 8** darf eine Sitzung keine Sitzungen
