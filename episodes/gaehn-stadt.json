@@ -1,0 +1,621 @@
+{
+ "id": "gaehn-stadt",
+ "title": "In This City, One Yawn Puts Everyone to Sleep",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "speed": 1.05,
+ "pauseMs": 300,
+ "sceneGapMs": 190,
+ "lengthSec": 66,
+ "years": [],
+ "say": {},
+ "cover": {
+  "text": "ONE YAWN = EVERYONE SLEEPS",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for the next strange city.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire, Format 'In this city' + absurd-deadpan Erzähler, Marktanalyse 20.11.2026 in docs/berichte/markt-2026-11-20.md). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Ted übersteht alles, weil er zum ersten Mal auf die Straße schaut – dann sieht er sich selbst im Spiegel gähnen, kippt auf die Hupe, alle wachen schreiend auf. Letzte Zeile an die Zuschauer: 'If you just yawned… don't show anyone.'",
+ "originality": "Eigene Regel (ansteckendes Gähnen = sofortiger Schlaf), eigene Figuren (Ted, Oma mit Kissen). Abgrenzung: keine der belegten Trend-Regeln (Zeit, Erinnerung, Wörter, Zahl über dem Kopf) und keine früheren KnowToon-Regeln.",
+ "music": {
+  "mood": "funny",
+  "bpm": 98,
+  "silenceBefore": {
+   "sleep": 0.5,
+   "outro": 0.4
+  },
+  "why": "Absurde Alltags-Satire → 'funny' (bouncy R&B-Pop); 98 BPM für komisches Tempo; Stille vor dem Einschlaf-Moment und vor der Schlusspointe. Sound-Trends: Ich kann das nicht bestätigen (keine belegten Daten)."
+ },
+ "narratorMood": {
+  "mood": "trocken (deadpan), immer ernst über das Absurde, Höhepunkt dramatisch, Schluss flach",
+  "why": "Marktanalyse 20.11.: Kern absurder Kurzvideos ist 'ernster Erzähler + absurde Sache'; voicePreset 'witzig' + ironic/playful, Dashboard-Standard überschrieben."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Audit 20.11.: Schauspiel (große Augen mit Pupillen, Brauen, offene Münder) und kräftige Farben – das gelingt in flachem 2D-Cartoon mit dicken Konturen schneller, lesbarer und billiger zu rendern als mit Klotzfiguren.",
+  "characters": "TED: runder Busfahrer, knallblaue Uniform + Mütze, riesige Augenringe; OMA: lila Strickjacke, weißer Dutt; Fahrgäste in kräftigen Einzelfarben; Hintergründe kontrastarm-hell, Figuren gesättigt."
+ },
+ "narrator": {
+  "max_speed": 1.05,
+  "piece_extra_ms": 40,
+  "scene_gap_ms": 190,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 60,
+  "room_tone_db": -72
+ },
+ "hookQuestion": {
+  "text": "Can Ted cross the bridge without seeing one yawn?",
+  "shownBy": "Bild 1: gähnender Mann + kippende Menge; Frage im Text bei 'stakes' (~15 s)",
+  "answer": "Ja – und dann gähnt er selbst im Spiegel."
+ },
+ "finalImage": {
+  "image": "Gähnen im Spiegel / Oma 'shh' zum Zuschauer",
+  "plant": "hook (erstes Gähnen), danger (Oma mit Kissen)",
+  "payoff": "turn + outro"
+ },
+ "version": "v1 (20.11.2026, Qualitäts-Reset-Regeln docs/audit-2026-11-20.md)",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 170,
+    "end_db": 5.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, yawns are *contagious*. | One yawn, and everyone who sees it falls *asleep*. | Instantly.",
+   "visual": "SHOT 1 (ECU, COVER 0–0,5 s): a commuter in a lime jacket mid-yawn, mouth huge, in a busy street; behind him the first pedestrians already tipping over, eyes rolling shut / SHOT 2 (wide street, on 'asleep'): a domino wave of pedestrians collapsing, ice cream flying, a dog asleep mid-jump / SHOT 3 (close, 'Instantly'): a pigeon mid-flight closes its eyes and drops like a stone",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "yawns",
+     "beat": "yawnerOpens"
+    },
+    {
+     "word": "asleep",
+     "beat": "crowdDrops"
+    },
+    {
+     "word": "Instantly",
+     "beat": "pigeonDrops"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "yawns are contagious.",
+    "One yawn, and everyone",
+    "who sees it falls asleep.",
+    "Instantly."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 170,
+    "end_db": 5.0,
+    "gain_db": -0.5
+   },
+   "text": "So coffee is *free*. | Boring meetings are *illegal*. | And nobody opens their mouth too *wide*.",
+   "visual": "SHOT 1 (medium, café): a barista pours coffee from a giant pot into a bucket-sized mug, price board 'COFFEE 0.00' / SHOT 2 (medium, office): police tape across a meeting room, an officer drags out a man still clutching his pie-chart slide / SHOT 3 (wide, bus stop): four people waiting, each with a hand clamped over their mouth, eyes darting at each other",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "free",
+     "beat": "cafeFree"
+    },
+    {
+     "word": "illegal",
+     "beat": "meetingRaid"
+    },
+    {
+     "word": "wide",
+     "beat": "busStopMouths"
+    }
+   ],
+   "captions": [
+    "So coffee is free.",
+    "Boring meetings are illegal.",
+    "And nobody opens",
+    "their mouth too wide."
+   ]
+  },
+  {
+   "id": "ted",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 170,
+    "end_db": 5.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Ted. Ted drives the *bus*. | Ted has a newborn. | Ted has not slept in *three* days.",
+   "visual": "SHOT 1 (medium, depot): TED, round guy in a bright blue driver uniform and cap, waves next to his yellow bus, smiling through enormous eye bags / SHOT 2 (night bedroom, on 'newborn'): a baby screaming in a crib, Ted swaying with a bottle, wall clock 3:07 / SHOT 3 (ECU, on 'slept'): Ted's face, eye bags down to his chin, one eye twitching, a fly lands on his nose and he does not react",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Ted",
+     "beat": "tedWave"
+    },
+    {
+     "word": "newborn",
+     "beat": "babyNight"
+    },
+    {
+     "word": "slept",
+     "beat": "tedBags"
+    }
+   ],
+   "captions": [
+    "This is Ted.",
+    "Ted drives the bus.",
+    "Ted has a newborn.",
+    "Ted has not slept",
+    "in three days."
+   ]
+  },
+  {
+   "id": "stakes",
+   "section": "setup",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 210,
+    "comma_ms": 180,
+    "end_db": 5.0,
+    "gain_db": -1.5
+   },
+   "text": "Today, he has to drive *forty* people across the longest bridge in town… | without seeing a single *yawn*.",
+   "visual": "SHOT 1 (wide interior, on 'forty'): the bus packed with forty passengers, all holding a hand over their mouth / SHOT 2 (super wide, on 'bridge'): the tiny yellow bus on an endless bridge across a turquoise sea, no end in sight; slow push-in on 'yawn'",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "forty",
+     "beat": "busPacked"
+    },
+    {
+     "word": "bridge",
+     "beat": "bridgeWide"
+    },
+    {
+     "word": "yawn",
+     "beat": "bridgePush"
+    }
+   ],
+   "captions": [
+    "Today, he has to drive",
+    "forty people across",
+    "the longest bridge in town…",
+    "without seeing",
+    "a single yawn."
+   ]
+  },
+  {
+   "id": "fight",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.62,
+    "cfg": 1.05,
+    "temp": 0.8,
+    "speed": 1.0,
+    "gap_ms": 180,
+    "comma_ms": 160,
+    "end_db": 4.5,
+    "gain_db": 0.0
+   },
+   "text": "He bites a *lemon*. | He blasts heavy *metal*. | He slaps himself. | *Politely*.",
+   "visual": "SHOT 1 (close, driver cab): Ted bites a lemon, whole face puckers into a raisin / SHOT 2 (close, other angle): headphones on, Ted headbangs, sound waves shaking the cab / SHOT 3 (exterior through windshield): Ted slaps his own cheek, then gives his hand a polite little nod",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "lemon",
+     "beat": "lemonBite"
+    },
+    {
+     "word": "metal",
+     "beat": "metalBang"
+    },
+    {
+     "word": "slaps",
+     "beat": "slap"
+    },
+    {
+     "word": "Politely",
+     "beat": "politeBow"
+    }
+   ],
+   "captions": [
+    "He bites a lemon.",
+    "He blasts heavy metal.",
+    "He slaps himself.",
+    "Politely."
+   ]
+  },
+  {
+   "id": "crypto",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 170,
+    "end_db": 5.0,
+    "gain_db": -0.5
+   },
+   "text": "Then a man in row two starts explaining *crypto*. | Out loud. | For *eleven* minutes.",
+   "visual": "SHOT 1 (medium interior): a man in a shiny suit stands in the aisle with a tablet showing a zig-zag chart, mouth flapping, neighbours' eyes glazing / SHOT 2 (close, cab): dashboard clock jumps 8:01 → 8:12, Ted's left eye twitches harder",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "crypto",
+     "beat": "cryptoTalk"
+    },
+    {
+     "word": "eleven",
+     "beat": "clockJump"
+    }
+   ],
+   "captions": [
+    "Then a man in row two",
+    "starts explaining crypto.",
+    "Out loud.",
+    "For eleven minutes."
+   ]
+  },
+  {
+   "id": "danger",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 210,
+    "comma_ms": 180,
+    "end_db": 5.0,
+    "gain_db": -1.5
+   },
+   "text": "Row three is *wobbling*. | Row five is gone. | A grandma pulls out a *pillow*. | She knows.",
+   "visual": "SHOT 1 (medium interior): row three sways, eyelids at half mast / SHOT 2 (close): row-five man, eyes rolled up, jaw slowly dropping / SHOT 3 (close, window seat, bridge outside): a grandma calmly pulls out a pillow and a sleep mask, nods knowingly",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "wobbling",
+     "beat": "rowWobble"
+    },
+    {
+     "word": "five",
+     "beat": "rowGone"
+    },
+    {
+     "word": "pillow",
+     "beat": "grandmaPillow"
+    },
+    {
+     "word": "knows",
+     "beat": "grandmaNod"
+    }
+   ],
+   "captions": [
+    "Row three is wobbling.",
+    "Row five is gone.",
+    "A grandma pulls out",
+    "a pillow.",
+    "She knows."
+   ]
+  },
+  {
+   "id": "baby",
+   "section": "climax",
+   "delivery": "dramatic",
+   "emotion": {
+    "exag": 0.68,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 3.0,
+    "gain_db": 1.5
+   },
+   "text": "And then… | a baby *yawns*. | A *big* one.",
+   "visual": "SHOT 1 (close, stroller in aisle): a tiny baby, mouth starting to open, every passenger turns in horror / SHOT 2 (ECU, on 'big'): the baby's yawn fills the frame, a soft shockwave ripples out",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "baby",
+     "beat": "babyStroller"
+    },
+    {
+     "word": "big",
+     "beat": "babyMegaYawn"
+    }
+   ],
+   "captions": [
+    "And then…",
+    "a baby yawns.",
+    "A big one."
+   ],
+   "pauseBeforeMs": 250
+  },
+  {
+   "id": "sleep",
+   "section": "climax",
+   "delivery": "dramatic",
+   "emotion": {
+    "exag": 0.68,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 3.0,
+    "gain_db": 1.5
+   },
+   "text": "The whole bus falls asleep. | Except *Ted*.",
+   "visual": "SHOT 1 (wide interior): forty heads drop at once – thump, thump, thump – drool, Zzz bubbles / SHOT 2 (close, cab, on 'Ted'): Ted sits rigid, both eyes locked on the road, sweat drop",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "asleep",
+     "beat": "busThump"
+    },
+    {
+     "word": "Ted",
+     "beat": "tedRigid"
+    }
+   ],
+   "captions": [
+    "The whole bus",
+    "falls asleep.",
+    "Except Ted."
+   ]
+  },
+  {
+   "id": "why",
+   "section": "climax",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 170,
+    "end_db": 5.0,
+    "gain_db": -0.5
+   },
+   "text": "Because for the first time in his life, | Ted kept his eyes on the *road*.",
+   "visual": "SHOT 1 (ECU): Ted's eyes, pupils laser-locked forward, a lollipop-size sweat drop / SHOT 2 (exterior): the bus rolls dead straight along the bridge's centre line",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "first",
+     "beat": "tedLocked"
+    },
+    {
+     "word": "road",
+     "beat": "bridgeStraight"
+    }
+   ],
+   "captions": [
+    "Because for the first time",
+    "in his life,",
+    "Ted kept his eyes",
+    "on the road."
+   ]
+  },
+  {
+   "id": "hero",
+   "section": "resolution",
+   "delivery": "triumphant",
+   "emotion": {
+    "exag": 0.65,
+    "cfg": 1.05,
+    "temp": 0.8,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 170,
+    "end_db": 3.5,
+    "gain_db": 1.0
+   },
+   "text": "He parks. | Forty people, safe and *snoring*. | Ted is a *hero*.",
+   "visual": "SHOT 1 (wide, end of bridge stop): the bus stops, snore bubbles puff out of every window / SHOT 2 (low angle): Ted stands on the step, fists on hips, golden light, cap brim glinting",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "parks",
+     "beat": "busParks"
+    },
+    {
+     "word": "snoring",
+     "beat": "snoreWindows"
+    },
+    {
+     "word": "hero",
+     "beat": "heroPose"
+    }
+   ],
+   "captions": [
+    "He parks.",
+    "Forty people,",
+    "safe and snoring.",
+    "Ted is a hero."
+   ]
+  },
+  {
+   "id": "turn",
+   "section": "twist",
+   "delivery": "dramatic",
+   "emotion": {
+    "exag": 0.68,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 3.0,
+    "gain_db": 1.5
+   },
+   "text": "Then he checks the mirror… | and sees himself *yawn*.",
+   "visual": "SHOT 1 (close, cab): Ted glances up into the rear-view mirror, smug / SHOT 2 (ECU mirror, on 'yawn'): his reflection yawns huge / SHOT 3 (no words, 1 s): his head drops onto the horn – HOOONK – forty passengers jolt awake screaming",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "mirror",
+     "beat": "mirrorGlance"
+    },
+    {
+     "word": "yawn",
+     "beat": "mirrorYawn"
+    }
+   ],
+   "captions": [
+    "Then he checks the mirror…",
+    "and sees himself yawn."
+   ],
+   "pauseBeforeMs": 250
+  },
+  {
+   "id": "outro",
+   "section": "ending",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 0.95,
+    "temp": 0.7,
+    "speed": 1.0,
+    "gap_ms": 240,
+    "comma_ms": 190,
+    "end_db": 6.0,
+    "gain_db": -1.5
+   },
+   "text": "So if you just yawned… | don't show *anyone*.",
+   "visual": "SHOT 1 (close, grandma, to camera): the grandma lifts her sleep mask, looks straight at the viewer and does 'shh' / then end card",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Gähn-Regel, Ted, Fahrgäste sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "yawned",
+     "beat": "grandmaShh"
+    },
+    {
+     "word": "anyone",
+     "beat": "loopEyes"
+    }
+   ],
+   "captions": [
+    "So if you just yawned…",
+    "don't show anyone."
+   ],
+   "pauseBeforeMs": 1300
+  }
+ ],
+ "note": "167 Skriptwörter, 13 Szenen, Ziel 64–68 s inkl. End-Card.",
+ "soundBed": {
+  "why": "Ort-Ambient (Stadt-Raum leise), Basstreffer vor den Enthüllungen, drei dumpfe Kopf-Plumpser in der Sprechpause nach 'asleep' (Lesson 4), Hupe als stumme Pointe nach 'yawn' (eigene Synthese, earshot-Bank hat keine Hupe), Ausklang über End-Card.",
+  "room": {
+   "db": -42,
+   "rain_db": -60
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "asleep"
+   },
+   {
+    "scene": "stakes",
+    "word": "yawn"
+   },
+   {
+    "scene": "baby",
+    "word": "big"
+   },
+   {
+    "scene": "turn",
+    "word": "yawn"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -15
+  },
+  "knocks": [
+   {
+    "scene": "sleep",
+    "word": "asleep",
+    "count": 3,
+    "offsetMs": 420,
+    "gapMs": 140,
+    "sound": "pro_pop_in/deep",
+    "db": -9,
+    "note": "Plumpser in der gemessenen Pause 44,10–44,68 s"
+   }
+  ],
+  "horn": {
+   "scene": "turn",
+   "word": "yawn",
+   "offsetMs": 1000,
+   "ms": 1050,
+   "db": -15
+  },
+  "tailMs": 2000
+ }
+}

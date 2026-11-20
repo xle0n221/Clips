@@ -1,0 +1,32 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "In This City, One Yawn Puts Everyone to Sleep",
+      "description": "An original animated tiny satire: in this city, one yawn puts everyone who sees it to sleep – instantly. Ted, a bus driver who hasn't slept in three days, has to get forty passengers across the longest bridge in town without seeing a single yawn. Pure fiction – the city, the rule and all characters are invented.",
+      "hashtags": ["#KnowToon", "#Animation", "#Comedy", "#InThisCity", "#Yawn"]
+    },
+    "tiktok": {
+      "caption": "In this city, one yawn puts everyone to sleep. Ted has to drive 40 people across the bridge without seeing a single one. Did you yawn? 😴 (fiction)",
+      "hashtags": ["#KnowToon", "#Animation", "#Comedy", "#InThisCity", "#Yawn"]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „ONE YAWN = EVERYONE SLEEPS“, gähnender Mann, umkippende Passanten.",
+    "note": "Reine Fiktion (episodes/gaehn-stadt.json, Feld sources): keine Realfakten, keine Quellen-URLs nötig. Keine Marken-Hashtags. #InThisCity/#Yawn als Format-/Themen-Tag [HYPOTHESE: Reichweite unbelegt]. Länge 64,5 s inkl. End-Card (Regel 61–70 s).",
+    "upload": {
+      "status": "plan",
+      "type": "Story (Welt-Regel-Comedy)",
+      "lengthSec": 64.5,
+      "tiktok": {
+        "date": "21.11.2026", "timeDe": "17:00", "slot": "A",
+        "local": {"newYork": "11:00", "losAngeles": "08:00", "london": "16:00"},
+        "calc": "17:00 Berlin (UTC+1) = 16:00 UTC → New York UTC-5 = 11:00 · Los Angeles UTC-8 = 08:00 · London UTC+0 = 16:00"
+      },
+      "youtube": {
+        "date": "21.11.2026", "timeDe": "18:00", "slot": "A",
+        "local": {"newYork": "12:00", "losAngeles": "09:00", "london": "17:00"},
+        "calc": "18:00 Berlin (UTC+1) = 17:00 UTC → New York UTC-5 = 12:00 · Los Angeles UTC-8 = 09:00 · London UTC+0 = 17:00"
+      },
+      "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+      "slotNote": "20.11. Slot A/B sind mit Tor/Schwerkraft belegt → Video 1 vom 20.11. auf 21.11. Slot A; Video 2 des Tages bekommt 21.11. Slot B."
+    }
+  }
+}

@@ -49,3 +49,15 @@ Lessons:
 3. Kamera in der Bowl-Stadt: Häuser des Innenrings stehen vor der Linse – `TownSet clear` (Sichtlinie freihalten) statt Kamerawinkel raten; Bundle vor jedem Prüfbild neu (veraltetes Bundle täuschte „kamerafestes“ Objekt vor).
 4. Prüfrunden: Cover-Regel nur per Einzelbild 0,05/0,3/0,45 s prüfen; neue Nah-Shots auf Status-Tafel vs. Kopf prüfen; lange Untertitel-Phrasen teilen statt schrumpfen lassen.
 5. finalize.sh allein lieferte −0,5 dBTP; Limiter-Schwelle je Video messen (Tor 0,68 → −1,6 dBTP, Schwerkraft 0,6 → −1,5 dBTP).
+
+## PREVIOUS VIDEO (fertig 20.11.2026, angefügt)
+Title: In This City, One Yawn Puts Everyone to Sleep (gaehn-stadt, Welt-Regel-Comedy, 2D)
+Length / cuts: 64,5 s inkl. End-Card, 33 Einstellungen, Ø 1,9 s; 167 W, 2,65 W/s
+Audit (neuer Maßstab docs/audit-2026-11-20.md): Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 (docs/audit-gaehn-stadt.md)
+Stats: noch keine (Upload geplant 21.11.2026 Slot A)
+Lessons:
+1. 2D-Cartoon (eigene Figur `Person` mit Pupillen/Brauen/Mund-Formen, `scenes/gaehnSets.tsx`) liefert Schauspiel + Farbe schneller als 3D-Klötze und rendert 64 s in ~10 Min. (4 Kerne) – für Comedy-Welt-Regeln Standard-Kandidat.
+2. Untertitel liegen bei y ≈ 1400–1500 (Captions bottom 420): Gesichter über y ≈ 1250 komponieren; im ersten Kontaktabzug lagen 6 Gesichter unter dem Untertitel.
+3. Kontaktabzug VOR der Vertonung mit einer Schätz-Timeline (2,6 W/s) spart Wartezeit; nach der Vertonung nur gezielte `--at`-Bilder an Schnittstellen nachprüfen (Hook-Shot war bei echter Zeit nur 0,6 s lang).
+4. Hand vor dem Gesicht (Psst-Finger): Arm NACH dem Kopf zeichnen, sonst verdeckt.
+5. Fehlende Klänge (Hupe) per Synthese ins Bett (`scripts/add_horn.py`), Pegel −15 dB reicht für die Pointe (−11 dB war 6 LU über dem Rest).
