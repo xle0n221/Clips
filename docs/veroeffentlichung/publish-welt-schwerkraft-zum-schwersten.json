@@ -2,7 +2,7 @@
   "publish": {
     "youtube": {
       "title": "In This City, Gravity Pulls Toward Granny Marta",
-      "description": "An original animated tiny tale: in this city, whatever you let go of falls toward whoever carries the most, so everyone tries to carry nothing. Then the lightest kid floats away. The story is pure fiction – the rules of this city are invented (in real physics, light and heavy objects fall the same way) and the characters (Granny Marta, Bo) are made up.",
+      "description": "An original animated tiny tale: in this city, whatever you let go of falls toward whoever carries the most, so everyone tries to carry nothing. Then the lightest kid floats away. The story is pure fiction – the rules of this city are invented and the characters (Granny Marta, Bo) are made up.",
       "hashtags": [
         "#KnowToon",
         "#ShortStory",
@@ -22,7 +22,7 @@
       ]
     },
     "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „IT ALL FALLS TO HER“ – „Gravity has a favorite“, seitwärts fallender Apfel.",
-    "note": "Reine Fiktion (episodes/schwerkraft-stadt.json, Feld sources): einzige Sachaussage ‚in real physics, light and heavy objects fall the same way‘ ist als Abgrenzung zur Fiktion gedacht und stammt aus dem Drehbuch-Quellenfeld (Standardphysik, ohne Zahl; Primärquelle nicht eigens geprüft – Ich kann das nicht bestätigen, daher Satz bei Bedarf streichen). Titel = Drehbuch-Titel (46 Z.). Keine Marken-Hashtags; #InThisCity als Format-Tag [HYPOTHESE: Reichweite unbelegt]; vor dem Posten gegenprüfen. Länge laut Drehbuch 68,37 s (K15 61–70 s).",
+    "note": "Reine Fiktion (episodes/schwerkraft-stadt.json, Feld sources): Physik-Satz ohne geprüfte Primärquelle am 20.11. gestrichen (Harter Stopp, Autopilot) – Beschreibung enthält keine Sachaussage mehr. Titel = Drehbuch-Titel (46 Z.). Keine Marken-Hashtags; #InThisCity als Format-Tag [HYPOTHESE: Reichweite unbelegt]; vor dem Posten gegenprüfen. Länge laut Drehbuch 68,37 s (K15 61–70 s).",
     "upload": {
       "status": "plan",
       "type": "Story (Welt-Regel-Parabel)",
