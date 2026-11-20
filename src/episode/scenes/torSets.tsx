@@ -913,8 +913,8 @@ export const Plaque: React.FC<{ readonly position: V3; readonly rotation?: V3; r
     <TextLabel text="SHUT FOR" width={1.56} height={0.4} position={[0, 0.22, 0.01]} color="#F2E2C4" bg={T.rust} round={0.06} />
     <TextLabel text="83 YEARS" width={1.56} height={0.46} position={[0, -0.22, 0.01]} color="#F2E2C4" bg={T.rust} round={0.06} />
     {scratch > 0.01 ? (
-      <group position={[0, -0.86, 0.01]}>
-        <TextLabel text="1 LEFT" width={1.2} height={0.42} position={[0, 0, 0]} color="#FFFFFF" bg="#2A2420" round={0.1} opacity={Math.min(1, scratch * 1.4)} />
+      <group position={[-0.25, -0.95, 0.01]}>
+        <TextLabel text="1 LEFT" width={1.56} height={0.55} position={[0, 0, 0]} color="#FFFFFF" bg="#2A2420" round={0.1} opacity={Math.min(1, scratch * 1.4)} />
       </group>
     ) : null}
   </group>

@@ -162,8 +162,9 @@ export const TorHope: React.FC = () => {
   // Nah: das Grinsen breitet sich aus, die Stoppuhr im Hintergrund
   const head = headOf("pip", pip);
   const g = ramp(frame, 0, 14);
-  const a = frameOn(head, 3.2, 0.52, 0.5, [0.25, 0.04, 1]);
-  const b = frameOn(head, 2.7, 0.52, 0.5, [0.22, 0.04, 1]);
+  // Kopf höher im Bild → Zähler-Unterkante bleibt über dem oberen Bildrand
+  const a = frameOn(head, 3.2, 0.42, 0.5, [0.25, 0.04, 1]);
+  const b = frameOn(head, 2.7, 0.42, 0.5, [0.22, 0.04, 1]);
   return (
     <>
       <DuskLight target={[-2, 0, 2]} />
@@ -191,8 +192,9 @@ export const TorTurn: React.FC = () => {
     const st = beat("pipOnCrate");
     const up = ramp(frame, st - 6, st + 6, Easing.out(Easing.back(1.5)));
     const head = headOf("pip", pipPos);
-    const a = frameOn([head[0] - 0.4, head[1] - 0.1, head[2]], 9.0, 0.5, 0.5, [0.08, 0.12, 1]);
-    const b = frameOn([head[0] - 0.4, head[1] - 0.1, head[2]], 8.0, 0.5, 0.5, [0.06, 0.12, 1]);
+    // Bildziel tiefer: Zähler (Unterkante y ≈ 7,2) ganz über dem Bildrand statt angeschnitten hinter der Phrasen-Pille
+    const a = frameOn([head[0] - 0.4, head[1] - 1.2, head[2]], 9.0, 0.5, 0.5, [0.08, 0.12, 1]);
+    const b = frameOn([head[0] - 0.7, head[1] - 1.2, head[2]], 8.8, 0.5, 0.5, [0.06, 0.12, 1]);
     return (
       <>
         <DayLight target={[0, 0, 4]} />
@@ -206,7 +208,7 @@ export const TorTurn: React.FC = () => {
           eyes="wide"
           mouth="yell"
           nod={-0.1}
-          reach={[Math.PI - 0.35, 1.45]}
+          reach={[Math.PI - 0.75, 1.45]}
           spread={[0.25, -0.15]}
           holdL={<CardSign scale={0.85} rotation={[Math.PI, 0, 0]} />}
           holdR={<Cone rotation={[-0.25, 0.2, 0]} scale={0.9} />}
@@ -354,11 +356,12 @@ export const TorFirst: React.FC = () => {
   const s = beat("pipScratchesPlaque");
   const scratch = ramp(frame, s - 6, s + 18);
   const plq: V3 = [PLAQUE[0], PLAQUE[1], -0.1];
-  const pip: V3 = [PLAQUE[0] - 1.6, 0, -0.9];
-  const a = cam([plq[0] - 1.6, 2.4, -11], [plq[0] - 0.8, 1.9, 0], 40);
+  // Pip weiter weg vom Schild (Kopf/Schal verdeckten „1 LEFT“), Bildmitte zwischen beiden
+  const pip: V3 = [PLAQUE[0] - 2.3, 0, -0.9];
+  const a = cam([plq[0] - 1.9, 2.4, -11], [plq[0] - 1.1, 1.9, 0], 40);
   // Rückzug erst in den letzten ~0,7 s und kürzer (Regie: „1 LEFT“ wurde zu früh winzig und stand am Untertitel)
   // Rückzug bleibt auf Pip + Schild (beide über der Untertitel-Zone)
-  const b = cam([plq[0] - 2.0, 2.9, -16], [plq[0] - 0.9, 1.15, 0], 40);
+  const b = cam([plq[0] - 2.2, 2.9, -16], [plq[0] - 1.1, 1.15, 0], 40);
   return (
     <>
       <Atmos bg="#CFE3EC" fog={[50, 160]} sky="#FFF1D6" ground="#7A8A4A" hemi={1.05} keyLight={{ pos: [-14, 20, -22], color: "#FFE2B0", intensity: 2.4, target: [0, 0, -4] }} />
