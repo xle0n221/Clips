@@ -1200,7 +1200,7 @@ export const Clipboard: React.FC<{ readonly position?: V3; readonly rotation?: V
 );
 
 /** Torwächter-Häuschen (Fußpunkt, Fenster nach +z), Urkunde innen, Schild darunter. */
-export const Booth: React.FC<{ readonly position?: V3; readonly frame: number; readonly signSwing?: number; readonly interior?: boolean }> = ({ position = BOOTH, frame, signSwing = 0.6, interior = true }) => {
+export const Booth: React.FC<{ readonly position?: V3; readonly frame: number; readonly signSwing?: number; readonly interior?: boolean; readonly signText?: boolean }> = ({ position = BOOTH, frame, signSwing = 0.6, interior = true, signText = true }) => {
   const W = 2.4;
   const H = 4.2;
   const D = 2.2;
@@ -1256,8 +1256,18 @@ export const Booth: React.FC<{ readonly position?: V3; readonly frame: number; r
             <meshStandardMaterial color="#2A2A2E" metalness={0.6} />
           </mesh>
         ))}
-        <TextLabel text="ONLY NEEDED" width={1.9} height={0.34} position={[0, -0.42, 0.01]} color="#FFFFFF" bg={T.navyDark} round={0.06} />
-        <TextLabel text="WHILE SHUT" width={1.9} height={0.34} position={[0, -0.78, 0.01]} color="#FFFFFF" bg={T.navyDark} round={0.06} />
+        {signText ? (
+          <>
+            <TextLabel text="ONLY NEEDED" width={1.9} height={0.34} position={[0, -0.42, 0.01]} color="#FFFFFF" bg={T.navyDark} round={0.06} />
+            <TextLabel text="WHILE SHUT" width={1.9} height={0.34} position={[0, -0.78, 0.01]} color="#FFFFFF" bg={T.navyDark} round={0.06} />
+          </>
+        ) : (
+          // Einstellungen, in denen das Schild in der Untertitel-Zone stünde: Brett ohne Schrift (kein Text auf Text)
+          <mesh position={[0, -0.6, 0.01]}>
+            <planeGeometry args={[1.9, 0.7]} />
+            <meshStandardMaterial color={T.navyDark} roughness={0.6} />
+          </mesh>
+        )}
       </group>
     </group>
   );

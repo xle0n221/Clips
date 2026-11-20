@@ -118,7 +118,7 @@ export const TownSet: React.FC<{
 /* ------------------------------------------------------------------ */
 /* Eröffnungsbild (Hook Shot 1 = Loop-Ziel): Hand lässt den Apfel los, er fällt SEITWÄRTS nach links (zu Marta). */
 /* ------------------------------------------------------------------ */
-export const HAND: V3 = onBowl(11, 0, 2.7);
+export const HAND: V3 = onBowl(7, 0.3, 2.9);
 const APPLE0: V3 = [HAND[0], HAND[1] - 0.42, HAND[2] + 0.05];
 /** Apfel-Position t Frames nach dem Loslassen: beschleunigt Richtung Marta (−z, leicht abwärts). */
 export const appleAt = (t: number): V3 => {
@@ -127,7 +127,8 @@ export const appleAt = (t: number): V3 => {
   const d = 2.2 * s * s; // a = 4,4 E/s²
   return [APPLE0[0], APPLE0[1] - d * 0.22 - Math.sin(Math.min(1, s) * Math.PI) * 0.12, APPLE0[2] - d];
 };
-const hookCam = (k: number) => frameOn([HAND[0], HAND[1] - 0.6, HAND[2] - 0.5], lerp(4.4, 3.8, k), 0.42, 0.6, [-1, 0.12, 0.08]);
+/** Cover/Loop-Ziel: Tele-Blick von hinter der Hand die Hill Street hinab – Hand + Apfel vorn, Marta auf der Veranda im mittleren Drittel. */
+const hookCam = (k: number) => frameOn([0, 1.5, -0.1], lerp(8.4, 7.6, k), 0.62, 0.46, [0.12, 0.25, 1], 28);
 
 export const HookFrame: React.FC<{ readonly frame: number; readonly f: number; readonly len: number; readonly release: number }> = ({ frame, f, len, release }) => {
   const a = hookCam(0);
@@ -137,8 +138,9 @@ export const HookFrame: React.FC<{ readonly frame: number; readonly f: number; r
   const open = ramp(t, -3, 3);
   return (
     <>
-      <TownSet frame={frame} scale={false} target={HAND} />
-      <Mitten position={HAND} rotation={[0, -Math.PI / 2, 0.1]} open={open} sleeve={G.towns[3]} />
+      <TownSet frame={frame} scale={false} target={[0, 1, 2]} pull={1} pullWidth={0.04} />
+      <Folk frame={frame} kind="marta" position={MARTA} load={0.55} sack nod={-0.12} eyes="dot" mouth="smile" reach={[0.15, 0.15]} blinkSeed={3} />
+      <Mitten position={HAND} rotation={[0, 0, -0.3]} open={open} sleeve={G.towns[3]} />
       <Junk kind="apple" position={apple} rotation={[t * 0.06, 0, t * 0.12]} scale={1.15} />
       {/* der Zug: dünne Bernstein-Linie vom Apfel nach links zur (unsichtbaren) Veranda */}
       <PullLine from={apple} to={[0, 1.4, 0]} bend={[0, 1.4, 0]} width={0.025} frame={frame} reach={1} opacity={0.75} pulses={3} />
@@ -161,7 +163,7 @@ export const SkHook: React.FC = () => {
   // Totale, tief: Apfel rollt die Hill Street hinunter und bleibt an Martas Stiefeln liegen
   const hit = beat("appleReachesMarta");
   const k = ramp(frame, hit - 40, hit - 2, (x) => 1 - (1 - x) * (1 - x));
-  const r = lerp(9.5, 0.75, k);
+  const r = lerp(4.6, 0.75, k);
   const apple: V3 = r > 1.2 ? onBowl(r, 0.06, 0.22) : [0.12, 0.4, MARTA[2] + 0.75];
   const head = folkHead(MARTA);
   const a = frameOn([0, 2.0, 0.6], 7.2, 0.5, 0.5, [0.12, 0.02, 1]);

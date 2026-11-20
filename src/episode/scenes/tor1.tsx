@@ -89,12 +89,13 @@ export const Square: React.FC<{
   readonly lit?: number;
   readonly booth?: boolean;
   readonly signSwing?: number;
-}> = ({ frame, counter, glow = 0, open = 0, gap = false, sec = 0, banner = false, lit = 0, booth = true, signSwing = 0.6 }) => (
+  readonly signText?: boolean;
+}> = ({ frame, counter, glow = 0, open = 0, gap = false, sec = 0, banner = false, lit = 0, booth = true, signSwing = 0.6, signText = true }) => (
   <>
     <Cobbles />
     <GateWall counter={counter} glow={glow} open={open} gap={gap} />
     <TownRing lit={lit} />
-    {booth ? <Booth frame={frame} signSwing={signSwing} /> : null}
+    {booth ? <Booth frame={frame} signSwing={signSwing} signText={signText} /> : null}
     <Stopwatch sec={sec} />
     {banner ? <Banner position={[0, 6.6, 20]} text="SUNDAY  NOON" width={12} frame={frame} /> : null}
   </>
@@ -343,8 +344,9 @@ export const TorPip: React.FC = () => {
   const t = beat("paintedWaveTouch");
   const paint = ramp(frame, t - 4, t + 10);
   const hand: V3 = [0.75, 1.45, 0.1];
-  const a = frameOn(hand, 2.4, 0.55, 0.5, [-0.7, 0.15, 1]);
-  const b = frameOn(hand, 2.0, 0.55, 0.5, [-0.65, 0.15, 1]);
+  // weiter als vorher (Regie: Makro unklar) → Hand + mehrere gemalte Wellen lesbar
+  const a = frameOn(hand, 3.4, 0.55, 0.5, [-0.7, 0.15, 1]);
+  const b = frameOn(hand, 2.9, 0.55, 0.5, [-0.65, 0.15, 1]);
   return (
     <>
       <DayLight target={[0, 0, 2]} />
@@ -508,7 +510,7 @@ export const TorHide: React.FC = () => {
     return (
       <>
         <DayLight target={[5, 0, 2]} />
-        <Square frame={frame} counter="999 / 1,000" glow={0.25} />
+        <Square frame={frame} counter="999 / 1,000" glow={0.25} signText={false} />
         <Sleeve position={[BOOTH[0] - 0.3, 1.25, BOOTH[2] + 0.6]} rise={rise} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>

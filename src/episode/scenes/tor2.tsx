@@ -72,8 +72,9 @@ export const TorHollis: React.FC = () => {
   }
   // Insert: Schild „ONLY NEEDED / WHILE SHUT“ schwingt im Wind
   const sign: V3 = [BOOTH[0], 0.6, BOOTH[2] + 1.35];
-  const a = frameOn(sign, 3.0, 0.5, 0.5, [-0.18, 0.15, 1]);
-  const b = frameOn(sign, 2.5, 0.5, 0.5, [-0.14, 0.15, 1]);
+  // Schild (1,9 breit, schwingt ±0,14 rad) ganz im Bild: sichtbare Breite 0,5625·H ≥ 2,3 → H ≥ 4,2
+  const a = frameOn(sign, 4.7, 0.5, 0.5, [-0.18, 0.15, 1]);
+  const b = frameOn(sign, 4.25, 0.5, 0.5, [-0.14, 0.15, 1]);
   return (
     <>
       <DayLight target={[5, 0, 2]} />
@@ -144,14 +145,15 @@ export const TorHope: React.FC = () => {
     // Makro: Regeltafel „OPENS AT 1,000 YES“ – sonst steht nichts da; Pips Augen weiten sich
     const ask = beat("rulePlate");
     const pop = 1 + 0.3 * ramp(frame, ask, ask + 8, Easing.out(Easing.back(2)));
-    const a = frameOn([RULE_PLATE[0] + 0.6, RULE_PLATE[1] - 0.7, RULE_PLATE[2]], 4.6, 0.4, 0.5, [0.1, 0.04, 1]);
-    const b = frameOn([RULE_PLATE[0] + 0.6, RULE_PLATE[1] - 0.7, RULE_PLATE[2]], 4.2, 0.4, 0.5, [0.08, 0.04, 1]);
+    // Tafel (1,5 breit) ganz im Bild: Bildmitte 0,35 rechts der Tafel, sichtbare Breite ≥ 3,0 (H 5,3); Pip rückt näher
+    const a = frameOn([RULE_PLATE[0] + 0.35, RULE_PLATE[1] - 0.7, RULE_PLATE[2]], 5.8, 0.4, 0.5, [0.1, 0.04, 1]);
+    const b = frameOn([RULE_PLATE[0] + 0.35, RULE_PLATE[1] - 0.7, RULE_PLATE[2]], 5.3, 0.4, 0.5, [0.08, 0.04, 1]);
     return (
       <>
         <DuskLight target={[-2, 0, 2]} />
         <Square frame={frame} counter="999 / 1,000" lit={0.6} />
-        <Crate position={[RULE_PLATE[0] + 2.2, 0, 0.9]} s={1.6} />
-        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 2.2, 1.6, 0.9]} scale={0.85} rotation={[0, -0.55, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
+        <Crate position={[RULE_PLATE[0] + 1.6, 0, 0.9]} s={1.6} />
+        <Blok frame={frame} who="pip" position={[RULE_PLATE[0] + 1.6, 1.6, 0.9]} scale={0.85} rotation={[0, -0.55, 0]} eyes="wide" eyePop={pop} mouth="o" look={0} />
         <pointLight position={[RULE_PLATE[0] + 0.5, RULE_PLATE[1] + 0.6, 1.6]} color="#FFD9A0" intensity={4} distance={4} decay={2} />
         <Shot frame={f} duration={len} {...fly(a, b)} />
       </>
@@ -317,8 +319,9 @@ export const TorSea: React.FC = () => {
   const r = beat("waveRinsesPaint");
   const paint = 1 - ramp(frame, r - 2, r + 16);
   const pip: V3 = [0, 0, 1.0];
-  const a = cam([1.6, 7.5, 16], [0, 2.4, -8], 40);
-  const b = cam([0.9, 1.4, 6.6], [0, 1.9, 0], 40);
+  // näher an Pip (Regie: Pip zu klein) und flacher Blick → hinter dem Untertitel liegt Pips Körper/Sand statt Wellenmuster
+  const a = cam([1.4, 4.6, 11.5], [0, 1.9, -3], 40);
+  const b = cam([0.7, 1.7, 5.4], [0, 1.45, 0], 40);
   return (
     <>
       <color attach="background" args={["#BFE6F2"]} />
@@ -353,7 +356,8 @@ export const TorFirst: React.FC = () => {
   const plq: V3 = [PLAQUE[0], PLAQUE[1], -0.1];
   const pip: V3 = [PLAQUE[0] - 1.6, 0, -0.9];
   const a = cam([plq[0] - 1.6, 2.4, -11], [plq[0] - 0.8, 1.9, 0], 40);
-  const b = cam([-5, 6.5, -30], [0, 5.2, 0], 40);
+  // Rückzug erst in den letzten ~0,7 s und kürzer (Regie: „1 LEFT“ wurde zu früh winzig und stand am Untertitel)
+  const b = cam([-3.8, 4.6, -21], [-0.6, 4.4, 0], 40);
   return (
     <>
       <Atmos bg="#CFE3EC" fog={[50, 160]} sky="#FFF1D6" ground="#7A8A4A" hemi={1.05} keyLight={{ pos: [-14, 20, -22], color: "#FFE2B0", intensity: 2.4, target: [0, 0, -4] }} />
@@ -368,7 +372,7 @@ export const TorFirst: React.FC = () => {
       </mesh>
       <GateWall counter="0 / 1,000" backCounter scratch={scratch} />
       <Blok frame={frame} who="pip" position={pip} rotation={[0, Math.PI, 0]} reach={[0.2, 0.15]} spread={[1.2 + 0.08 * Math.sin(frame * 0.8), 0.1]} eyes="happy" mouth="grin" look={0.35} paint={0} />
-      <Shot frame={f} duration={len} {...fly(a, b)} span={[Math.min(len - 30, beat("pullBackWall") - 10), len]} ease="inOut" />
+      <Shot frame={f} duration={len} {...fly(a, b)} span={[Math.max(beat("pullBackWall") - 10, len - 22), len]} ease="inOut" />
     </>
   );
 };
@@ -389,7 +393,8 @@ export const TorStinger: React.FC = () => {
     return (
       <>
         <DayLight target={[2, 0, 6]} />
-        <Square frame={frame} counter={rollTo(frame, 0, y, 0, 999)} />
+        {/* neue Abstimmung: Zähler startet bei 0 und rollt in ~0,6 s auf 999 – steht genau auf „yeses“, dann fest */}
+        <Square frame={frame} counter={rollTo(frame, Math.max(0, y - 18), y, 0, 999)} />
         <Crowd people={people} frame={frame} raise={() => 1} />
         <Blok
           frame={frame}

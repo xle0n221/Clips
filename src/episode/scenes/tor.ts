@@ -52,6 +52,7 @@ export const TOR_CONFIG: EpisodeConfig = {
   stickerTop: 430,
   onScreenPlate: true,
   // „OPENS AT: 1,000 YES“: die Regeltafel im Bild trägt genau diesen Text (K13, keine Doppelung)
-  stickerHide: ["OPENS AT: 1,000 YES"],
+  // „WILL THE GATE EVER OPEN?“ (Hook): am Handy zu klein, Cover-Titel trägt den Hook allein (Design-Befund Station 3)
+  stickerHide: ["OPENS AT: 1,000 YES", "WILL THE GATE EVER OPEN?"],
   endCardTypeFrom: 2,
 };
