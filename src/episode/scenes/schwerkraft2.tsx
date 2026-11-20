@@ -279,9 +279,10 @@ export const SkTurn: React.FC = () => {
   const h = boHead(p);
   // Kamera seitlich über Bo, Blick schräg nach unten: unten die winzige leuchtende Veranda
   // Regie R3: Schnitt auf „starts to fall“ → Nah, Bo kippt kopfüber (Kamera folgt dem Fall)
-  const a = shot === 0 ? frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]) : frameOn([p[0], p[1] - 0.4, p[2]], 4.4, 0.55, 0.5, [-0.35, 0.05, 1]);
-  const b = shot === 0 ? frameOn([h[0], h[1] - 0.9, h[2]], 8.0, 0.52, 0.5, [0.9, 0.5, 0.6]) : frameOn([p[0], p[1] - 0.6, p[2]], 3.8, 0.55, 0.5, [-0.35, 0.08, 1]);
-  const hud = hudAt(camAt(f, len, a, b, "inOut"), 0.5, 0.25, 1.5, 0.44);
+  const a = shot === 0 ? frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]) : frameOn([p[0], p[1] - 0.4, p[2]], 4.8, 0.72, 0.5, [-0.35, 0.05, 1]);
+  const b = shot === 0 ? frameOn([h[0], h[1] - 0.9, h[2]], 8.0, 0.52, 0.5, [0.9, 0.5, 0.6]) : frameOn([p[0], p[1] - 0.6, p[2]], 4.0, 0.65, 0.5, [-0.35, 0.08, 1]);
+  // Design R3: im Nah-Shot Schild höher + kleiner, Bos Gesicht frei
+  const hud = shot === 0 ? hudAt(camAt(f, len, a, b, "inOut"), 0.5, 0.25, 1.5, 0.44) : hudAt(camAt(f, len, a, b, "inOut"), 0.5, 0.19, 1.2, 0.28);
   const v = boState("turn", frame, beat);
   const glow = ramp(frame, beat("pullLineGlows") - 4, beat("pullLineGlows") + 8);
   return (

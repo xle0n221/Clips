@@ -276,17 +276,20 @@ export const SkSlide: React.FC = () => {
   }
   if (shot === 1) {
     // Bodennah: Hut + aufgeweichter Brief rutschen seitwärts (nach links = zur Veranda), Regen schräg
-    const p0 = onBowl(7.5, 0.05);
-    const a = frameOn([p0[0], p0[1] + 0.5, p0[2]], 2.8, 0.55, 0.5, [-1, 0.15, -0.05]);
-    const b = frameOn([p0[0], p0[1] + 0.5, p0[2] - 0.6], 2.8, 0.55, 0.5, [-1, 0.15, -0.05]);
+    // Design R3: von hinten die Straße hinab – Hut + Brief groß vorn, sie fliegen von der Kamera weg zu Marta (Veranda + Zuglinien hinten)
+    const p0 = onBowl(4.6, 0.05);
+    const a: Cam = { pos: [0.55, 2.7, 7.6], look: [0, 1.35, 1.4], fov: 50 };
+    const b: Cam = { pos: [0.5, 2.6, 7.2], look: [0, 1.35, 1.2], fov: 48 };
     const s = f / 30;
-    const hatZ = p0[2] + 0.7 - 0.9 * s - 0.3 * s * s;
-    const letZ = p0[2] + 1.0 - 0.7 * s - 0.3 * s * s;
+    const hatZ = 5.6 - 0.9 * s - 0.35 * s * s;
+    const letZ = 5.9 - 0.7 * s - 0.35 * s * s;
     return (
       <>
-        <TownSet frame={frame} target={p0} />
-        <Junk kind="hat" position={[p0[0] + 0.3, bowlY(hatZ) + 0.05 + Math.abs(Math.sin(f * 0.3)) * 0.06, hatZ]} rotation={[0.2, f * 0.2, 0.35]} />
-        <Junk kind="letter" position={[p0[0] - 0.4, bowlY(letZ) + 0.03, letZ]} rotation={[0, f * 0.05, 0]} />
+        <TownSet frame={frame} target={p0} pull={1} pullWidth={0.05} />
+        <Folk frame={frame} kind="marta" position={MARTA} load={0.75} sack reach={[0.3, 0.3]} eyes="dot" mouth="smile" blinkSeed={3} />
+        <Junk kind="hat" position={[0.75, bowlY(hatZ) + 0.7 + Math.abs(Math.sin(f * 0.3)) * 0.25, hatZ]} rotation={[0.2, f * 0.2, 0.35]} scale={1.1} />
+        <Junk kind="letter" position={[-0.7, bowlY(letZ) + 1.0 + Math.sin(f * 0.25) * 0.15, letZ]} rotation={[0.6, f * 0.05, f * 0.12]} scale={1.5} />
+        <PullLine from={[0.75, bowlY(hatZ) + 0.7, hatZ]} to={[0, 1.4, MARTA[2] + 0.3]} width={0.025} frame={frame} opacity={0.7} />
         <SlantRain frame={frame} center={[p0[0], p0[1] + 1.5, p0[2]]} size={[6, 4, 8]} dir={[0, -0.55, -0.85]} count={260} opacity={0.5} seed={8} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
       </>
@@ -469,12 +472,11 @@ export const SkLonely: React.FC = () => {
     const sk = beat("neighbourSkids");
     const slip = ramp(frame, sk - 4, sk + 12);
     const z = lerp(11.6, 9.2, slip);
-    const lampP: V3 = [-2.4, bowlY(8.8), 8.8];
     const n: V3 = [-1.4 + 0.5 * slip, bowlY(z), z];
     // Regie R3: Marta vorn im Bild (sitzt allein auf der Verandakante, Rücken halb zur Kamera), Nachbar dahinter die Straße hinauf
     // Kamera steht dort, wo sonst Martas Haus ist (Haus aus) → über ihre Schulter die Straße hinauf
-    const a: Cam = { pos: [-0.2, 3.9, -8.6], look: [-0.7, 2.2, 10], fov: 38 };
-    const b: Cam = { pos: [-0.2, 3.8, -8.0], look: [-0.7, 2.3, 10], fov: 36 };
+    const a: Cam = { pos: [-0.2, 3.1, -8.6], look: [-0.7, 1.9, 10], fov: 38 };
+    const b: Cam = { pos: [-0.2, 3.0, -8.0], look: [-0.7, 2.0, 10], fov: 36 };
     return (
       <>
         <TownSet frame={frame} dusk={0.35} target={n} house={false} scale={false} clear={{ from: [-0.2, 3.9, -12], to: [0, 1, 0], r: 3.5 }} />
@@ -482,7 +484,7 @@ export const SkLonely: React.FC = () => {
           <boxGeometry args={[1.8, 0.48, 0.62]} />
           <meshStandardMaterial color={G.woodDark} roughness={0.8} />
         </mesh>
-        <Folk frame={frame} kind="marta" position={[0.15, 0.52, -0.75]} rotation={[0, -0.35, 0]} sit load={0.9} sack={false} reach={[0.9, 0.9]} spread={[0.3, 0.3]} nod={-0.08 + 0.12 * slip} eyes="dot" mouth="flat" blinkSeed={3} />
+        <Folk frame={frame} kind="marta" position={[0.35, 0.52, -0.75]} rotation={[0, -1.25, 0]} sit load={0.9} sack={false} reach={[0.9, 0.9]} spread={[0.3, 0.3]} nod={-0.08 + 0.12 * slip} eyes="dot" mouth="flat" blinkSeed={3} />
         <Folk
           frame={frame}
           kind="towns"
@@ -499,7 +501,6 @@ export const SkLonely: React.FC = () => {
         />
         {/* Stoß-Linie: der Zug reißt ihn bergab */}
         <PullLine from={folkHead(n)} to={[0, 1.4, 0]} width={0.03 + 0.03 * slip} frame={frame} opacity={0.4 + 0.5 * slip} bend={[0, 1, 0]} />
-        <Stick a={lampP} b={[lampP[0] + 0.4, lampP[1] + 3.4, lampP[2] - 0.6]} r={0.08} color="#2A2426" basic={false} />
         <Shot frame={f} duration={len} {...fly(a, b)} ease="out" />
       </>
     );
