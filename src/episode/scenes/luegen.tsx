@@ -362,6 +362,18 @@ const Photo: React.FC<{ readonly x: number; readonly y: number; readonly dadS: n
   </g>
 );
 
+/** Comic-Reaktionsfläche (eigenes „Set“ für Nah-Reaktionen): Farbe + Strahlen. */
+const ReactBg: React.FC<{ readonly a: string; readonly b: string; readonly f: number; readonly cx?: number; readonly cy?: number }> = ({ a, b, f, cx = 540, cy = 900 }) => (
+  <g>
+    <rect x={-2000} y={-2000} width={5000} height={5000} fill={a} />
+    {Array.from({ length: 16 }).map((_, k) => {
+      const t = (k / 16) * Math.PI * 2 + f * 0.004;
+      const t2 = t + Math.PI / 16;
+      return <path key={k} d={`M ${cx} ${cy} L ${cx + Math.cos(t) * 3000} ${cy + Math.sin(t) * 3000} L ${cx + Math.cos(t2) * 3000} ${cy + Math.sin(t2) * 3000} Z`} fill={b} />;
+    })}
+  </g>
+);
+
 /** Augen-Sterne beim Kopfstoß */
 const Stars: React.FC<{ readonly x: number; readonly y: number; readonly t: number }> = ({ x, y, t }) =>
   t < 0 || t > 40 ? null : (
@@ -700,7 +712,7 @@ export const LCasserole: React.FC = () => {
     return (
       <Shot cam={{ ...frameOn(540, 1247, 540, 760, 1.55), y: frameOn(540, 1247, 540, 760, 1.55).y + jolt(lf, 0, 6) }}>
         <Layer depth={0.8}>
-          <Room wall="#FFD9A8" floor={1700} />
+          <ReactBg a="#9BE35A" b="#B6F07A" f={lf} cx={540} cy={1247} />
         </Layer>
         <Layer>
           <Dave x={540} y={1650} s={1.2} seated eyes="squint" brows="sad" mouth="pucker" armL={40} bendL={120} armR={10} nod={chew * 3} />
@@ -708,7 +720,6 @@ export const LCasserole: React.FC = () => {
           <circle cx={625} cy={1295 - chew * 5} r={36} fill={P.skin} stroke={INK} strokeWidth={6} />
           <Sweat x={495} y={1245} s={0.5} o={clamp01((lf - 10) / 8)} />
           <Sweat x={585} y={1245} s={0.5} o={clamp01((lf - 14) / 8)} />
-          <Table y={1500} />
         </Layer>
       </Shot>
     );
@@ -741,11 +752,10 @@ export const LDad: React.FC = () => {
     return (
       <Shot cam={camPath(lf, [[0, frameOn(540, 1220, 540, 760, 1.3)], [len, frameOn(540, 1220, 540, 800, 1.4)]])}>
         <Layer depth={0.8}>
-          <Room wall="#FFD9A8" floor={1700} window night />
+          <ReactBg a="#FFD23F" b="#FFE27A" f={lf} cx={540} cy={1220} />
         </Layer>
         <Layer>
           <Dave x={540} y={1640} s={1.25} seated eyes="open" look={[0.3, 1]} brows="up" mouth="o" nod={10} armL={20} armR={60} bendR={80} />
-          <Table y={1450} />
         </Layer>
       </Shot>
     );
@@ -800,7 +810,7 @@ export const LQuestion: React.FC = () => {
     return (
       <Shot cam={camPath(lf, [[0, frameOn(i === 2 ? 420 : 540, 1109, i === 2 ? 400 : 540, 780, 1.4)], [len, frameOn(i === 2 ? 420 : 540, 1109, i === 2 ? 400 : 540, 760, 1.6)]])}>
         <Layer depth={0.8}>
-          <Room wall="#FFD9A8" floor={1700} />
+          {i === 2 ? <Room wall="#FFD9A8" floor={1700} /> : <ReactBg a="#2A2250" b="#3A2F6E" f={lf} cx={540} cy={1109} />}
           {i === 2 ? <Calendar x={720} y={900} s={0.6} circled={circled} /> : null}
         </Layer>
         <Layer>
@@ -830,7 +840,7 @@ export const LQuestion: React.FC = () => {
   return (
     <Shot cam={camPath(lf, [[0, frameOn(540, 1220, 540, 760, 1.5)], [len, frameOn(540, 1220, 540, 740, 1.75)]])}>
       <Layer depth={0.8}>
-        <Room wall="#FFD9A8" floor={1700} />
+        <ReactBg a="#FF4D5E" b="#FF7A86" f={lf} cx={540} cy={1220} />
       </Layer>
       <Layer>
         <Dave x={540} y={1640} s={1.25} seated f={lf} eyes="twitch" brows="worried" mouth="grin" armL={130} bendL={-20} armR={14} />

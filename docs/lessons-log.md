@@ -61,3 +61,17 @@ Lessons:
 3. Kontaktabzug VOR der Vertonung mit einer Schätz-Timeline (2,6 W/s) spart Wartezeit; nach der Vertonung nur gezielte `--at`-Bilder an Schnittstellen nachprüfen (Hook-Shot war bei echter Zeit nur 0,6 s lang).
 4. Hand vor dem Gesicht (Psst-Finger): Arm NACH dem Kopf zeichnen, sonst verdeckt.
 5. Fehlende Klänge (Hupe) per Synthese ins Bett (`scripts/add_horn.py`), Pegel −15 dB reicht für die Pointe (−11 dB war 6 LU über dem Rest).
+
+## PREVIOUS VIDEO (fertig 20.11.2026, angefügt)
+Title: In This City, Every Lie Makes You Shorter (luegen-stadt, Welt-Regel-Comedy, 2D)
+Length / cuts: 67,9 s inkl. End-Card, 28 Einstellungen (Ø 2,35 s); 167 W, 2,51 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 (docs/audit-luegen-stadt.md)
+Stats: noch keine (Upload geplant 21.11.2026 Slot B)
+Lessons:
+1. Satzende leiser wirkt erst mit `end_db` 7 + `narrator.end_win_s` 0,7 + `end_soft_ms` 80: −4,6 dB / 79 % leiser (Gähn: end_db 5 → −0,3 dB).
+2. Nah-Einstellungen mit `frameOn(kopfX, kopfY, 540, 760, zoom)` statt Kamera-Mitte raten – Kopf-Mitte stehend y − 416·s, sitzend y − 336·s; so liegen Gesichter sicher über den Untertiteln.
+3. Arme mit Ellenbogen (`bendL/bendR`) + `gest` (leichtes Mitschwingen) im 2D-`Person` – Standard 0 = altes Aussehen, alte Videos unverändert.
+4. Frischer Container: Chatterbox- und earshot-Setup NICHT parallel starten – earshot hängt sich per .pth an `.venv-cb` (torchaudio-Konflikt); Abhilfe: `zz-venv-cb.pth` entfernen, earshot läuft dann mit eigenem torch.
+5. Whisper-Ausreißer im Untertitel („Delicious“ 1 s zu früh) per Ausschnitt-Transkription (small.en, numpy-Eingabe) finden und Wortzeit in captions.json setzen; Homophone (grey/gray, chews/choose) sind keine Sprechfehler.
+6. Limiter 0,66 → −2,0 dBTP / −14,7 LUFS (finalize.sh allein −0,7 dBTP).
+7. Ein-Raum-Handlung (Abendessen) bricht die Regel „kein Set > 2 am Stück“ schnell – Reaktions-Nahaufnahmen auf eigene Comic-Flächen (Farbe + Strahlen, `ReactBg`) legen; vor dem Render die Set-Folge einmal durchzählen.

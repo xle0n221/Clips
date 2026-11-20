@@ -10,11 +10,11 @@
       "hashtags": ["#KnowToon", "#Animation", "#Comedy", "#InThisCity", "#Honesty"]
     },
     "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „EVERY LIE = 1 INCH SHORTER“, Angler mit ausgebreiteten Armen und Mini-Fisch vor der Messlatte.",
-    "note": "Reine Fiktion (episodes/luegen-stadt.json, Feld sources): keine Realfakten, keine Quellen-URLs nötig. Keine Marken-Hashtags. #InThisCity/#Honesty als Format-/Themen-Tag [HYPOTHESE: Reichweite unbelegt].",
+    "note": "Reine Fiktion (episodes/luegen-stadt.json, Feld sources): keine Realfakten, keine Quellen-URLs nötig. Keine Marken-Hashtags. #InThisCity/#Honesty als Format-/Themen-Tag [HYPOTHESE: Reichweite unbelegt]. Länge 67,9 s inkl. End-Card (Regel 61–70 s).",
     "upload": {
       "status": "plan",
       "type": "Story (Welt-Regel-Comedy)",
-      "lengthSec": 0,
+      "lengthSec": 67.9,
       "tiktok": {
         "date": "21.11.2026", "timeDe": "22:00", "slot": "B",
         "local": {"newYork": "16:00", "losAngeles": "13:00", "london": "21:00"},
