@@ -410,13 +410,13 @@ export const LHook: React.FC = () => {
     const at = Math.min(8, Math.max(4, W("lie", 0.2) - 6));
     const sh = ease(lf, at, at + 9);
     const s = lerp(0.95, 0.72, sh);
-    const cam = frameOn(600, 1180, 540, lerp(820, 860, ease(lf, 0, len)), lerp(1.45, 1.55, ease(lf, 0, len)));
+    const cam = frameOn(660, 1130, 540, lerp(840, 870, ease(lf, 0, len)), lerp(1.85, 1.95, ease(lf, 0, len)));
     const top = 1450 - 521 * s;
     return (
       <Shot cam={{ ...cam, y: cam.y + jolt(lf, at + 4, 10) }}>
         <Layer depth={0.7}>
           <Pier />
-          <Chart x={290} y0={1450} y1={700} mark={top} />
+          <Chart x={400} y0={1450} y1={700} mark={top} />
         </Layer>
         <Layer>
           <Person x={600} y={1450} s={s} shirt="#3FB86B" pants="#2B3A67" hair="side" hairColor="#6B3A1E" eyes={sh > 0.4 ? "wide" : "squint"} brows={sh > 0.4 ? "up" : "neutral"} mouth={sh > 0.4 ? "o" : "grin"} open={0.5} armL={100} armR={95} bendL={-10} bendR={-25} gest={4} />
@@ -469,8 +469,8 @@ export const LRules: React.FC = () => {
   if (i === 0) {
     // Autohaus: knöchelhoher Verkäufer auf dem Reifen, Kunde schaut hinunter
     const cam = camPath(lf, [
-      [0, { x: 560, y: 1080, zoom: 0.92 }],
-      [len, { x: 520, y: 1100, zoom: 1.02 }],
+      [0, { x: 560, y: 1150, zoom: 1.1 }],
+      [len, { x: 520, y: 1180, zoom: 1.25 }],
     ]);
     return (
       <Shot cam={cam}>
@@ -481,7 +481,7 @@ export const LRules: React.FC = () => {
         </Layer>
         <Layer>
           <Car x={380} y={1500} s={0.95} />
-          <Person x={95} y={1272} s={0.2} shirt="#2B2B3A" suit pants="#2B2B3A" hair="side" hairColor="#1B1210" eyes="open" look={[1, -1]} brows="up" mouth="talk" open={0.5 + 0.5 * Math.sin(lf * 0.9)} armL={160} armR={130} bendR={-30} gest={14} />
+          <Person x={380} y={1142} s={0.3} shirt="#2B2B3A" suit pants="#2B2B3A" hair="side" hairColor="#1B1210" eyes="open" look={[1, -1]} brows="up" mouth="talk" open={0.5 + 0.5 * Math.sin(lf * 0.9)} armL={160} armR={130} bendR={-30} gest={14} />
           <Person x={880} y={1500} s={0.95} shirt={P.teal} pants="#3B3F66" hair="bun" hairColor="#3A2618" skin={P.skin3} eyes="open" look={[-1, 1]} brows="worried" mouth="flat" armL={10} armR={25} bendR={70} />
         </Layer>
       </Shot>
@@ -506,7 +506,7 @@ export const LRules: React.FC = () => {
   }
   // Vogelhaus: daumengroßer Angler winkt aus dem runden Loch, Vogel auf dem Dach ärgert sich
   return (
-    <Shot cam={camPath(lf, [[0, { x: 540, y: 900, zoom: 1.0 }], [len, { x: 540, y: 820, zoom: 1.35 }]])}>
+    <Shot cam={camPath(lf, [[0, { x: 540, y: 900, zoom: 1.0 }], [len, { x: 540, y: 820, zoom: 1.9 }]])}>
       <Layer depth={0.5}>
         <Sky id="bird" a="#6FC8FF" b="#D9F4FF" />
         <circle cx={-80} cy={500} r={360} fill="#6CCB5F" stroke={INK} strokeWidth={8} />
@@ -555,7 +555,7 @@ export const LDave: React.FC = () => {
   // Büro: winziger (lügender) Chef auf dem Schreibtisch tobt, Dave sagt die Wahrheit
   const cam = camPath(lf, [
     [0, { x: 540, y: 1150, zoom: 1.0 }],
-    [len, { x: 600, y: 1170, zoom: 1.1 }],
+    [len, { x: 620, y: 1170, zoom: 1.3 }],
   ]);
   return (
     <Shot cam={cam}>
@@ -641,7 +641,7 @@ export const LSweater: React.FC = () => {
   if (i === 1) {
     // Nah Dave: starrt auf den Pulli, Auge zuckt, Schweiß
     return (
-      <Shot cam={{ x: 540, y: 820, zoom: 1.6 }}>
+      <Shot cam={frameOn(540, 1042, 540, 760, 1.6)}>
         <Layer depth={0.8}>
           <rect x={-1500} y={-1500} width={4000} height={4000} fill="#5B4BB5" />
         </Layer>
@@ -821,7 +821,7 @@ export const LQuestion: React.FC = () => {
           <Mia x={260} y={1640} s={0.95} seated eyes="closed" brows="up" mouth="grin" blush armL={150} bendL={-80} armR={150} bendR={-80} />
           <Hearts x={260} y={980} t={lf - 4} />
           <Dave x={780} y={1640} s={1.25} seated eyes="open" look={[-0.6, 0]} brows="neutral" mouth="smile" blush armL={14} armR={14} gest={4} />
-          <Table y={1450} />
+          <Table y={1580} />
         </Layer>
       </Shot>
     );

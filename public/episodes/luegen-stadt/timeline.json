@@ -1,0 +1,304 @@
+{
+ "id": "luegen-stadt",
+ "title": "In This City, Every Lie Makes You Shorter",
+ "durationMs": 66484,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4674
+  },
+  {
+   "id": "rules",
+   "startMs": 4674,
+   "endMs": 11439
+  },
+  {
+   "id": "dave",
+   "startMs": 11439,
+   "endMs": 17806
+  },
+  {
+   "id": "stakes",
+   "startMs": 17806,
+   "endMs": 24271
+  },
+  {
+   "id": "sweater",
+   "startMs": 24271,
+   "endMs": 29409
+  },
+  {
+   "id": "casserole",
+   "startMs": 29409,
+   "endMs": 38501
+  },
+  {
+   "id": "dad",
+   "startMs": 38501,
+   "endMs": 46257
+  },
+  {
+   "id": "question",
+   "startMs": 46257,
+   "endMs": 54629
+  },
+  {
+   "id": "turn",
+   "startMs": 54629,
+   "endMs": 60051
+  },
+  {
+   "id": "outro",
+   "startMs": 60051,
+   "endMs": 65884
+  }
+ ],
+ "cues": [
+  {
+   "beat": "fisherShrinks",
+   "scene": "hook",
+   "atMs": 1300
+  },
+  {
+   "beat": "fishStare",
+   "scene": "hook",
+   "atMs": 2800
+  },
+  {
+   "beat": "tapeSnap",
+   "scene": "hook",
+   "atMs": 3960
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 2120
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3960
+  },
+  {
+   "beat": "lotShot",
+   "scene": "rules",
+   "atMs": 5420
+  },
+  {
+   "beat": "dateShot",
+   "scene": "rules",
+   "atMs": 7080
+  },
+  {
+   "beat": "birdhouseShot",
+   "scene": "rules",
+   "atMs": 10620
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 6040
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 7860
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 10620
+  },
+  {
+   "beat": "daveBonk",
+   "scene": "dave",
+   "atMs": 12180
+  },
+  {
+   "beat": "bossShot",
+   "scene": "dave",
+   "atMs": 16400
+  },
+  {
+   "emph": true,
+   "scene": "dave",
+   "atMs": 17000
+  },
+  {
+   "beat": "porch",
+   "scene": "stakes",
+   "atMs": 19660
+  },
+  {
+   "beat": "potShot",
+   "scene": "stakes",
+   "atMs": 20420
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 19660
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 20420
+  },
+  {
+   "beat": "sweaterReveal",
+   "scene": "sweater",
+   "atMs": 26120
+  },
+  {
+   "beat": "daveStare",
+   "scene": "sweater",
+   "atMs": 27080
+  },
+  {
+   "beat": "braveBeat",
+   "scene": "sweater",
+   "atMs": 28220
+  },
+  {
+   "emph": true,
+   "scene": "sweater",
+   "atMs": 28220
+  },
+  {
+   "beat": "dishDown",
+   "scene": "casserole",
+   "atMs": 29900
+  },
+  {
+   "beat": "daveChews",
+   "scene": "casserole",
+   "atMs": 34820
+  },
+  {
+   "beat": "squint",
+   "scene": "casserole",
+   "atMs": 37180
+  },
+  {
+   "emph": true,
+   "scene": "casserole",
+   "atMs": 31620
+  },
+  {
+   "emph": true,
+   "scene": "casserole",
+   "atMs": 33020
+  },
+  {
+   "emph": true,
+   "scene": "casserole",
+   "atMs": 37700
+  },
+  {
+   "beat": "daveLooksDown",
+   "scene": "dad",
+   "atMs": 39700
+  },
+  {
+   "beat": "dadReveal",
+   "scene": "dad",
+   "atMs": 40260
+  },
+  {
+   "beat": "photos",
+   "scene": "dad",
+   "atMs": 42960
+  },
+  {
+   "emph": true,
+   "scene": "dad",
+   "atMs": 42000
+  },
+  {
+   "emph": true,
+   "scene": "dad",
+   "atMs": 42220
+  },
+  {
+   "emph": true,
+   "scene": "dad",
+   "atMs": 44680
+  },
+  {
+   "beat": "lindaLean",
+   "scene": "question",
+   "atMs": 46960
+  },
+  {
+   "beat": "yesBeat",
+   "scene": "question",
+   "atMs": 49140
+  },
+  {
+   "beat": "sundayBeat",
+   "scene": "question",
+   "atMs": 51640
+  },
+  {
+   "beat": "grin",
+   "scene": "question",
+   "atMs": 52660
+  },
+  {
+   "emph": true,
+   "scene": "question",
+   "atMs": 48040
+  },
+  {
+   "emph": true,
+   "scene": "question",
+   "atMs": 51440
+  },
+  {
+   "emph": true,
+   "scene": "question",
+   "atMs": 53840
+  },
+  {
+   "beat": "poof",
+   "scene": "turn",
+   "atMs": 54740
+  },
+  {
+   "beat": "fork",
+   "scene": "turn",
+   "atMs": 57300
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 54740
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 59380
+  },
+  {
+   "beat": "tape",
+   "scene": "outro",
+   "atMs": 64420
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 65080
+  }
+ ],
+ "cover": {
+  "text": "EVERY LIE = 1 INCH SHORTER",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for the next strange city.",
+  "seconds": 2
+ }
+}
