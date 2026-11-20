@@ -138,7 +138,7 @@ export const SkGust: React.FC = () => {
   return (
     <>
       <TownSet frame={frame} target={[1.6, 2, 9]} scale={false} />
-      <Folk frame={frame} kind="bo" position={p} rotation={[0.2, 0.4, 0.1]} scale={BO_S} balloons={6} cap={false} emptyPockets eyes="wide" mouth="o" nod={0.6} spread={[0.9, 0.9]} reach={[0.3, 0.3]} blinkSeed={21} />
+      <Folk frame={frame} kind="bo" position={p} rotation={[0.2, 0.4, 0.1]} scale={BO_S} balloons={6} cap={false} emptyPockets eyes="wide" mouth="o" nod={-0.35} spread={[0.9, 0.9]} reach={[0.3, 0.3]} blinkSeed={21} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
   );
@@ -199,14 +199,14 @@ export const SkTown: React.FC = () => {
   const a: Cam = { pos: [2.4, 30 + lift, 6.6], look: [0, bowlY(9.6) + 1.2, 9.4], fov: 24 };
   const b: Cam = { pos: [2.4, 30.6 + lift, 6.6], look: [0, bowlY(9.6) + 1.2, 9.4], fov: 21 };
   const cam = camAt(f, len, a, b, "linear");
-  const p: V3 = atScreen(cam, 0.95, 0.6, 4.2);
+  const p: V3 = atScreen(cam, 1.0, 0.74, 13);
   return (
     <>
       <TownSet frame={frame} target={[0, 0, 9]} />
       {CROWD.map((c, i) => (
         <Folk key={i} frame={frame} kind="towns" shirt={G.towns[c.c]} position={crowdAt(i)} rotation={[0, Math.PI, 0]} balloonHat nod={-0.6} reach={[2.8, 2.8]} eyes="wide" mouth="o" blinkSeed={c.s} />
       ))}
-      <Folk frame={frame} kind="bo" position={p} rotation={[0.9, Math.PI - 0.5, 0]} scale={BO_S} balloons={0} cap={false} nod={0.5} eyes="wide" mouth="frown" spread={[0.6, 0.6]} reach={[1.6, 1.6]} blinkSeed={21} />
+      <Folk frame={frame} kind="bo" position={p} rotation={[0.3, Math.PI - 0.5, 0]} scale={BO_S} balloons={0} cap={false} nod={0.5} eyes="wide" mouth="frown" spread={[0.6, 0.6]} reach={[1.6, 1.6]} blinkSeed={21} />
       <BoBoard scene="town" frame={frame} beat={beat} cam={camAt(f, len, a, b, "linear")} yf={0.26} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="linear" />
     </>
@@ -279,8 +279,8 @@ export const SkTurn: React.FC = () => {
   const h = boHead(p);
   // Kamera seitlich über Bo, Blick schräg nach unten: unten die winzige leuchtende Veranda
   // Regie R3: Schnitt auf „starts to fall“ → Nah, Bo kippt kopfüber (Kamera folgt dem Fall)
-  const a = shot === 0 ? frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]) : frameOn([p[0], p[1] - 0.4, p[2]], 4.4, 0.55, 0.5, [0.9, 0.25, 0.7]);
-  const b = shot === 0 ? frameOn([h[0], h[1] - 0.9, h[2]], 8.0, 0.52, 0.5, [0.9, 0.5, 0.6]) : frameOn([p[0], p[1] - 0.6, p[2]], 3.8, 0.55, 0.5, [0.9, 0.3, 0.7]);
+  const a = shot === 0 ? frameOn([h[0], h[1] - 0.6, h[2]], 9, 0.5, 0.5, [0.9, 0.55, 0.6]) : frameOn([p[0], p[1] - 0.4, p[2]], 4.4, 0.55, 0.5, [-0.35, 0.05, 1]);
+  const b = shot === 0 ? frameOn([h[0], h[1] - 0.9, h[2]], 8.0, 0.52, 0.5, [0.9, 0.5, 0.6]) : frameOn([p[0], p[1] - 0.6, p[2]], 3.8, 0.55, 0.5, [-0.35, 0.08, 1]);
   const hud = hudAt(camAt(f, len, a, b, "inOut"), 0.5, 0.25, 1.5, 0.44);
   const v = boState("turn", frame, beat);
   const glow = ramp(frame, beat("pullLineGlows") - 4, beat("pullLineGlows") + 8);
@@ -381,7 +381,8 @@ export const SkAnswer: React.FC = () => {
   const ropeLow: V3 = [-2.5, 1.4, 0.55];
   const step = f * 0.012;
   const ns = [0, 1, 2].map((i) => {
-    const u = Math.min(0.92, 0.35 + i * -0.2 + step + (i === 0 ? 0.25 : 0));
+    // Regie R2: alle drei Nachbarn ab dem ersten Bild sichtbar am Seil (vorher stand der hinterste dunkel direkt vor der Linse)
+    const u = Math.min(0.92, 0.5 - i * 0.16 + step + (i === 0 ? 0.25 : 0));
     const z = lerp(ropeTop[2], 1.6, Math.max(0, u));
     return [lerp(ropeTop[0], -1.6, Math.max(0, u)) + 0.4, bowlY(z), z] as V3;
   });
@@ -390,8 +391,8 @@ export const SkAnswer: React.FC = () => {
   const b = frameOn([-0.6, 2.2, 3.0], 7.8, 0.45, 0.5, [0.32, 0.3, 1]);
   return (
     <>
-      {/* Regie R2: Haus auf der Sichtlinie (schwarzer Block) weg */}
-      <TownSet frame={frame} dusk={0.95} target={[-1, 1, 3]} lampLight={2} clear={{ from: a.pos, to: [-1, 1.5, 4], r: 3.5 }} />
+      {/* Regie R2: Laternenmast vor der Linse (schwarzer Block) → Laternen aus, Fülllicht auf die Nachbarn */}
+      <TownSet frame={frame} dusk={0.95} target={[-1, 1, 3]} lampLight={0} />
       <Stick a={ropeTop} b={ropeLow} r={0.04} color="#C8B08A" basic={false} />
       {ns.map((p, i) => (
         <Folk
@@ -414,6 +415,7 @@ export const SkAnswer: React.FC = () => {
       <Folk frame={frame} kind="marta" position={[0.3, MARTA[1], MARTA[2]]} rotation={[0, -0.5, 0]} load={1.0} sack eyes="dot" mouth="smile" reach={[0.4, 0.9]} blinkSeed={3} />
       <Folk frame={frame} kind="bo" position={[1.3, 0.18, 0.3]} rotation={[0, -0.6, 0]} scale={BO_S} balloons={6} cap={false} mouth="grin" blinkSeed={21} />
       <Halo at={[head[0], 2.6, head[2] - 1]} size={3} color={G.amber} opacity={0.3} />
+      <pointLight position={[-0.5, 4.2, 7.5]} color="#FFD9A8" intensity={10} distance={12} decay={2} />
       <Shot frame={f} duration={len} {...fly(a, b)} ease="out" />
     </>
   );
