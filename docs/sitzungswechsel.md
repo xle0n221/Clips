@@ -41,6 +41,7 @@ Nicht mitten in einem laufenden Render oder während Agenten arbeiten – erst s
 | 20.11.2026 | session_01UNp77MtRT1w4ZDwHvrEHpp | session_01UNp77QbmgR9ha8b4i9wViD („CLIPS – Orchestrator (ab 20.11.2026, nach Tor + Schwerkraft)“, Umgebung „Clips“) | Tor + Schwerkraft fertig, Verlauf lang; Abholer trig_01YFVees4t4feuwwe9gyvcmh aus → trig_01EyRuiZbGdYiSzo7QTd4vMa, meta/pickup v10 |
 | 20.11.2026 abends | session_01UNp77QbmgR9ha8b4i9wViD | session_01UNp77MwDdQvCYQekQ5vs48 („CLIPS – Orchestrator (ab 20.11. abends, 2 Videos/Tag, Hook-Reset)“) | Qualitäts-Reset, 2 Videos/Tag; Abholer trig_01EyRuiZbGdYiSzo7QTd4vMa aus → trig_01LpDfKfrFJNjXSCf77t13ds (leere Läufe ohne Nachricht) |
 | 20.11.2026 abends | session_01UNp77MwDdQvCYQekQ5vs48 (Orchestrator) | session_01UNp77PKkjFzGD2s8mqDXLD („CLIPS – Video 1 (20.11., Hook-Reset)“) | Video 1 des Tages in eigener Sitzung; Abholer bleibt beim Orchestrator |
+| 20.11.2026 nachts | session_01UNp77MwDdQvCYQekQ5vs48 (Orchestrator) | session_01UNp77NwEQnkdwV347oHn4Q („CLIPS – Video 2 (20./21.11., Hook-Reset)“) | Video 1 Gähn-Stadt fertig; Video 2 in eigener Sitzung, Upload 21.11. Slot B |
 
 ## Grenze: Sitzungs-Tiefe (gelernt 13.11.2026)
 Jede per `create_session` gestartete Sitzung zählt eine Stufe tiefer; ab **Tiefe 8** darf eine Sitzung keine Sitzungen
