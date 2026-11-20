@@ -304,15 +304,15 @@ export const TorWorld: React.FC = () => {
   const mid = people.reduce((m, q) => (Math.hypot(q.x, q.z - 15.2) < Math.hypot(m.x, m.z - 15.2) ? q : m), people[0]);
   const rest = people.filter((q) => q !== mid);
   // schräg von oben hinter der Menge: Kellen-Scheiben (Blick +z) zeigen zur Kamera
-  const a = cam([0, 12.5, 31], [0, 0.8, 15.2], 40);
-  const b = cam([0, 11.0, 28.5], [0, 0.8, 15.2], 40);
+  const a = cam([0, 11.5, 25.5], [0, 0.6, 14.4], 40);
+  const b = cam([0, 10.2, 24.0], [0, 0.6, 14.4], 40);
   return (
     <>
       <DayLight target={[0, 0, 14]} />
       <Square frame={frame} counter="999 / 1,000" />
       <Crowd people={rest} frame={frame} raise={() => 1} />
       {/* die eine rote Kelle: größer und höher als alle grünen, damit sie in der Totale sofort liest */}
-      <group position={[mid.x, 0, mid.z]} scale={1.15}>
+      <group position={[mid.x, 0, mid.z]} rotation={[-0.55, 0, 0]} scale={1.9}>
         <Sleeve position={[0, 0.55, 0]} rise={rise} />
       </group>
       <pointLight position={[mid.x, 3.2, mid.z + 0.6]} color="#FFD7C0" intensity={6 * rise} distance={4} decay={2} />
