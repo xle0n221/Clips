@@ -1,0 +1,56 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "In This City, the Gate Needs 1,000 Yeses",
+      "description": "An original animated tiny satire: in Yesbury the only gate out opens only if all 1,000 residents say yes at the same second. Can one girl pull it off? The story is pure fiction – the town, the gate, the numbers and the characters (Pip, Mister Hollis) are invented. No real-world claims are made.",
+      "hashtags": [
+        "#KnowToon",
+        "#ShortStory",
+        "#Animation",
+        "#Satire",
+        "#InThisCity"
+      ]
+    },
+    "tiktok": {
+      "caption": "In this city, the gate opens only if all 1,000 people say yes at the same second. Would your town ever manage it? (A tiny satire – fiction.)",
+      "hashtags": [
+        "#KnowToon",
+        "#ShortStory",
+        "#Animation",
+        "#Satire",
+        "#InThisCity"
+      ]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „NOBODY CAN LEAVE“ – „the gate needs 1,000 yeses“, Zähler „YES 999 / 1,000“ über dem Tor.",
+    "note": "Reine Fiktion (episodes/tor-stadt.json, Feld sources): keine Realfakten, keine Quellen-URLs nötig; Caption/Beschreibung kennzeichnen Fiktion. Titel = Titel des Drehbuchs (Hook, 40 Z.). Keine Marken-Hashtags (kein Roblox o. Ä.); #InThisCity als Format-Tag [HYPOTHESE: Reichweite unbelegt, Muster aus docs/trends/2026-11-19.md]; vor dem Posten in Creator Search Insights / YouTube-Suche gegenprüfen. Länge laut Drehbuch 69,95 s (K15 61–70 s). Ausnahme zum Vorbild: ‚Welt‘-Video, daher kein Faktenblock; keine abgeleiteten Zahlen im Text über das Video hinaus.",
+    "upload": {
+      "status": "plan",
+      "type": "Story (Welt-Regel-Parabel)",
+      "lengthSec": 69.95,
+      "tiktok": {
+        "date": "20.11.2026",
+        "timeDe": "17:00",
+        "slot": "A",
+        "local": {
+          "newYork": "11:00",
+          "losAngeles": "08:00",
+          "london": "16:00"
+        },
+        "calc": "17:00 Berlin (UTC+1) = 16:00 UTC → New York UTC-5 = 11:00 · Los Angeles UTC-8 = 08:00 · London UTC+0 = 16:00"
+      },
+      "youtube": {
+        "date": "20.11.2026",
+        "timeDe": "18:00",
+        "slot": "A",
+        "local": {
+          "newYork": "12:00",
+          "losAngeles": "09:00",
+          "london": "17:00"
+        },
+        "calc": "18:00 Berlin (UTC+1) = 17:00 UTC → New York UTC-5 = 12:00 · Los Angeles UTC-8 = 09:00 · London UTC+0 = 17:00"
+      },
+      "dstNote": "USA und Europa stehen beide auf Winterzeit (EU/UK seit 25.10.2026, USA seit 01.11.2026) – keine Abweichung. Nächste Abweichung 14.03.–27.03.2027.",
+      "slotNote": "Am 20.11.2026 sind keine anderen Uploads geplant (Pläne in docs/veroeffentlichung/ enden am 16.11.). Zwei Videos = Slot A und Slot B (max. 2/Tag/Plattform); Tor zuerst, Schwerkraft danach."
+    }
+  }
+}

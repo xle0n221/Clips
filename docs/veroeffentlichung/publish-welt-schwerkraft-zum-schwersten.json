@@ -1,0 +1,56 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "In This City, Gravity Pulls Toward Granny Marta",
+      "description": "An original animated tiny tale: in this city, whatever you let go of falls toward whoever carries the most, so everyone tries to carry nothing. Then the lightest kid floats away. The story is pure fiction – the rules of this city are invented (in real physics, light and heavy objects fall the same way) and the characters (Granny Marta, Bo) are made up.",
+      "hashtags": [
+        "#KnowToon",
+        "#ShortStory",
+        "#Animation",
+        "#Fantasy",
+        "#InThisCity"
+      ]
+    },
+    "tiktok": {
+      "caption": "In this city, nothing falls down. It falls toward Granny Marta. Who would you want to catch you? (A tiny tale – fiction.)",
+      "hashtags": [
+        "#KnowToon",
+        "#ShortStory",
+        "#Animation",
+        "#Fantasy",
+        "#InThisCity"
+      ]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „IT ALL FALLS TO HER“ – „Gravity has a favorite“, seitwärts fallender Apfel.",
+    "note": "Reine Fiktion (episodes/schwerkraft-stadt.json, Feld sources): einzige Sachaussage ‚in real physics, light and heavy objects fall the same way‘ ist als Abgrenzung zur Fiktion gedacht und stammt aus dem Drehbuch-Quellenfeld (Standardphysik, ohne Zahl; Primärquelle nicht eigens geprüft – Ich kann das nicht bestätigen, daher Satz bei Bedarf streichen). Titel = Drehbuch-Titel (46 Z.). Keine Marken-Hashtags; #InThisCity als Format-Tag [HYPOTHESE: Reichweite unbelegt]; vor dem Posten gegenprüfen. Länge laut Drehbuch 68,37 s (K15 61–70 s).",
+    "upload": {
+      "status": "plan",
+      "type": "Story (Welt-Regel-Parabel)",
+      "lengthSec": 68.37,
+      "tiktok": {
+        "date": "20.11.2026",
+        "timeDe": "22:00",
+        "slot": "B",
+        "local": {
+          "newYork": "16:00",
+          "losAngeles": "13:00",
+          "london": "21:00"
+        },
+        "calc": "22:00 Berlin (UTC+1) = 21:00 UTC → New York UTC-5 = 16:00 · Los Angeles UTC-8 = 13:00 · London UTC+0 = 21:00"
+      },
+      "youtube": {
+        "date": "20.11.2026",
+        "timeDe": "23:00",
+        "slot": "B",
+        "local": {
+          "newYork": "17:00",
+          "losAngeles": "14:00",
+          "london": "22:00"
+        },
+        "calc": "23:00 Berlin (UTC+1) = 22:00 UTC → New York UTC-5 = 17:00 · Los Angeles UTC-8 = 14:00 · London UTC+0 = 22:00"
+      },
+      "dstNote": "USA und Europa stehen beide auf Winterzeit (EU/UK seit 25.10.2026, USA seit 01.11.2026) – keine Abweichung. Nächste Abweichung 14.03.–27.03.2027.",
+      "slotNote": "Am 20.11.2026 sind keine anderen Uploads geplant (Pläne in docs/veroeffentlichung/ enden am 16.11.). Zwei Videos = Slot A und Slot B (max. 2/Tag/Plattform); Tor zuerst, Schwerkraft danach."
+    }
+  }
+}
