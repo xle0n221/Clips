@@ -16,6 +16,7 @@ import { SONNE_CONFIG, SONNE_SCENES } from "./sonne";
 import { SCHWERKRAFT_CONFIG, SCHWERKRAFT_SCENES } from "./schwerkraft";
 import { TOR_CONFIG, TOR_SCENES } from "./tor";
 import { GAEHN_CONFIG, GAEHN_SCENES } from "./gaehn";
+import { LUEGEN_CONFIG, LUEGEN_SCENES } from "./luegen";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -53,6 +54,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "schwerkraft-stadt": SCHWERKRAFT_SCENES,
   "tor-stadt": TOR_SCENES,
   "gaehn-stadt": GAEHN_SCENES,
+  "luegen-stadt": LUEGEN_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -113,5 +115,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "schwerkraft-stadt": SCHWERKRAFT_CONFIG,
   "tor-stadt": TOR_CONFIG,
   "gaehn-stadt": GAEHN_CONFIG,
+  "luegen-stadt": LUEGEN_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

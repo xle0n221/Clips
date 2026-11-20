@@ -1,0 +1,506 @@
+{
+ "id": "luegen-stadt",
+ "title": "In This City, Every Lie Makes You Shorter",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "speed": 1.05,
+ "pauseMs": 300,
+ "sceneGapMs": 190,
+ "lengthSec": 66,
+ "years": [],
+ "say": {},
+ "cover": {
+  "text": "EVERY LIE = 1 INCH SHORTER",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for the next strange city.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire, Format 'In this city' + trockener Erzähler, Marktanalyse 20.11.2026 in docs/berichte/markt-2026-11-20.md, Video 2). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Dave besteht Pullover, Auflauf und 'Liebst du meine Tochter?' ehrlich – und schrumpft bei der Höflichkeitslüge 'I'd love to' (jeden Sonntag). Er landet neben dem 2-Zoll-Vater: 'Welcome to the family.' Letzte Zeile an die Zuschauer: 'Did you like this video? Careful how you answer.'",
+ "originality": "Eigene Regel (jede Lüge = 1 Zoll kleiner), eigene Figuren (Dave, Mia, Linda, der Salzstreuer-Vater). Keine Lügen-Nase (Fremdfigur gemieden); keine der belegten Trend-Regeln (Zeit, Erinnerung, Wörter, Zahl über dem Kopf) und keine früheren KnowToon-Regeln (Gähnen, Tor, Schwerkraft).",
+ "music": {
+  "mood": "funny",
+  "bpm": 92,
+  "silenceBefore": {
+   "turn": 0.5,
+   "outro": 0.4
+  },
+  "why": "Peinlicher Familien-Sitcom-Moment → 'funny' (bouncy R&B-Pop), Seed = Episoden-ID (anders als Gähn-Stadt), 92 BPM etwas schleichender für die Dinner-Spannung; Stille vor 'Poof' und vor der Schlusszeile. Sound-Trends: Ich kann das nicht bestätigen (keine belegten Daten)."
+ },
+ "narratorMood": {
+  "mood": "trocken (deadpan), ernst über das Absurde, Dialoge leicht gespielt, Höhepunkt angespannt, Schluss flach und leise",
+  "why": "Gleiche Machart wie Gähn-Stadt (ernster Erzähler + absurde Folge); voicePreset 'witzig' + ironic/playful; Satzenden stärker abgesenkt (end_db 7, Fenster 0,7 s) wegen Gähn-Audit 'Satzende kaum leiser'."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Gleicher 2D-Cartoon wie Gähn-Stadt (Schauspiel, Farbe, schnelle Renderzeit); Schrumpfen ist in 2D als reine Skalierung + Poof sofort lesbar. Neu: Arme mit Ellenbogen und Gesten (Gähn-Audit 'Arme steif').",
+  "characters": "DAVE: sehr groß, orange Hoodie, braune Locken; MIA: pinkes Kleid, Pferdeschwanz; LINDA (Mutter): riesiger gelber Strickpulli mit schielendem Katzengesicht, rote Lockenfrisur; DAD: 2 Zoll groß, Schnurrbart, blaues Hemd; Hintergründe hell-pastell, Figuren gesättigt."
+ },
+ "narrator": {
+  "max_speed": 1.05,
+  "piece_extra_ms": 40,
+  "scene_gap_ms": 190,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "hookQuestion": {
+  "text": "Can Dave survive one dinner without telling a lie?",
+  "shownBy": "Bild 1: Angler schrumpft bei 'THIS big'; Frage gesprochen in stakes (~17 s: 'How hard can it be?')",
+  "answer": "Fast – bei der Höflichkeitslüge 'I'd love to' schrumpft er (56 s)."
+ },
+ "finalImage": {
+  "image": "Mini-Dave + Mini-Dad auf dem Salzstreuer, Blick in die Kamera, Maßband",
+  "plant": "hook (Maßband, 'one inch'), dad (Salzstreuer)",
+  "payoff": "turn + outro"
+ },
+ "version": "v1 (20.11.2026, Video 2, Qualitäts-Reset-Regeln docs/audit-2026-11-20.md)",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, every lie makes you *shorter*. | One lie, | one *inch*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s): pier; a fisherman holds his arms wide 'THIS big' while a tiny fish dangles from his rod – POOF, he shrinks a notch against a height chart painted on the bait shack / SHOT 2 (low, 'One lie'): he is now knee-high, the tiny fish on the planks is as big as his head and stares at him / SHOT 3 (ECU, 'inch'): a tape measure snaps back one inch with a plink",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "lie",
+     "beat": "fisherShrinks"
+    },
+    {
+     "word": "One",
+     "beat": "fishStare"
+    },
+    {
+     "word": "inch",
+     "beat": "tapeSnap"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "every lie",
+    "makes you shorter.",
+    "One lie,",
+    "one inch."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "So car salesmen are *ankle-high*. | Dating profiles are *brutally* honest. | And every fisherman lives in a *birdhouse*.",
+   "visual": "SHOT 1 (wide, car lot): an ankle-high salesman in a suit stands on a car tyre, shouting up at a customer / SHOT 2 (medium, café): a woman looks down from her chair; her date is a tiny man standing on the sugar bowl, phone profile behind him says 6'2\" crossed out / SHOT 3 (wide, tree): a birdhouse on a pole, a thumb-sized fisherman waves from the round door, rod sticking out",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "salesmen",
+     "beat": "lotShot"
+    },
+    {
+     "word": "Dating",
+     "beat": "dateShot"
+    },
+    {
+     "word": "birdhouse",
+     "beat": "birdhouseShot"
+    }
+   ],
+   "captions": [
+    "So car salesmen",
+    "are ankle-high.",
+    "Dating profiles are",
+    "brutally honest.",
+    "And every fisherman",
+    "lives in a birdhouse."
+   ]
+  },
+  {
+   "id": "dave",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Dave. | Six foot four. | Dave has never told a single lie. | Not even to his *boss*.",
+   "visual": "SHOT 1 (low, hallway): Dave in an orange hoodie ducks under a doorframe and bonks his head anyway / SHOT 2 (medium, office): Dave towers over a tiny boss on the desk and says the meeting could have been an email, boss fumes",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Dave",
+     "beat": "daveBonk"
+    },
+    {
+     "word": "Not",
+     "beat": "bossShot"
+    }
+   ],
+   "captions": [
+    "This is Dave.",
+    "Six foot four.",
+    "Dave has never told",
+    "a single lie.",
+    "Not even to his boss."
+   ]
+  },
+  {
+   "id": "stakes",
+   "section": "setup",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 220,
+    "comma_ms": 180,
+    "end_db": 7.0,
+    "gain_db": -1.5
+   },
+   "text": "Tonight, he meets his girlfriend's *mother*. | She *cooked*. | One dinner. | No lies. | How hard can it be?",
+   "visual": "SHOT 1 (medium, porch at dusk): Dave and Mia (pink dress) at a front door, Dave adjusts his collar, rings the bell / SHOT 2 (ECU, kitchen): a pot of grey sludge bubbles; a single eye in the sludge opens",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "mother",
+     "beat": "porch"
+    },
+    {
+     "word": "cooked",
+     "beat": "potShot"
+    }
+   ],
+   "captions": [
+    "Tonight, he meets",
+    "his girlfriend's mother.",
+    "She cooked.",
+    "One dinner.",
+    "No lies.",
+    "How hard can it be?"
+   ]
+  },
+  {
+   "id": "sweater",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.62,
+    "cfg": 1.05,
+    "temp": 0.8,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 160,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "Question one. | \"Do you like my sweater?\" | Dave looks. | \"It's very… *brave*.\"",
+   "visual": "SHOT 1 (medium, doorway): the mother (Linda) opens the door in a huge knitted sweater with a cross-eyed cat face, beaming / SHOT 2 (close, Dave): Dave stares at the sweater, eye twitch, sweat / SHOT 3 (two-shot): Dave stays exactly the same height; Linda's eyebrow goes up",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "sweater",
+     "beat": "sweaterReveal"
+    },
+    {
+     "word": "looks",
+     "beat": "daveStare"
+    },
+    {
+     "word": "brave",
+     "beat": "braveBeat"
+    }
+   ],
+   "captions": [
+    "Question one.",
+    "\"Do you like",
+    "my sweater?\"",
+    "Dave looks.",
+    "\"It's very…",
+    "brave.\""
+   ]
+  },
+  {
+   "id": "casserole",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Then the casserole. | It's grey. | It *bubbles*. | Something in it *blinks*. | \"Is it good?\" | Dave chews. | \"I've never tasted anything like it.\" | Technically, *true*.",
+   "visual": "SHOT 1 (top, table): Linda sets down a grey casserole that bubbles; one eye in it blinks / SHOT 2 (close, Dave): Dave chews slowly, cheeks full, eyes watering / SHOT 3 (two-shot): Linda squints, leaning in; Dave still full height",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "casserole",
+     "beat": "dishDown"
+    },
+    {
+     "word": "chews",
+     "beat": "daveChews"
+    },
+    {
+     "word": "Technically",
+     "beat": "squint"
+    }
+   ],
+   "captions": [
+    "Then the casserole.",
+    "It's grey.",
+    "It bubbles.",
+    "Something in it blinks.",
+    "\"Is it good?\"",
+    "Dave chews.",
+    "\"I've never tasted",
+    "anything like it.\"",
+    "Technically, true."
+   ]
+  },
+  {
+   "id": "dad",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Then Dave notices the dad. | Two inches tall. | Sitting on the *salt shaker*. | Thirty years of \"Yes, dear. | *Delicious*.\"",
+   "visual": "SHOT 1 (medium, table): Dave looks down at the table, confused / SHOT 2 (macro, salt shaker): a two-inch dad with a moustache sits on the salt shaker, eating a single grain of rice with a toothpick fork, gives a weary nod / SHOT 3 (flashback, sepia wedding photo row): the dad shrinking photo by photo, each with a plate",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "dad",
+     "beat": "daveLooksDown"
+    },
+    {
+     "word": "Two",
+     "beat": "dadReveal"
+    },
+    {
+     "word": "Thirty",
+     "beat": "photos"
+    }
+   ],
+   "captions": [
+    "Then Dave notices",
+    "the dad.",
+    "Two inches tall.",
+    "Sitting on",
+    "the salt shaker.",
+    "Thirty years of",
+    "\"Yes, dear.",
+    "Delicious.\""
+   ]
+  },
+  {
+   "id": "question",
+   "section": "climax",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.68,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 240,
+    "comma_ms": 180,
+    "end_db": 5.0,
+    "gain_db": 1.5
+   },
+   "text": "Then Linda leans in. | \"Do you *love* my daughter?\" | \"Yes.\" | Still tall. | \"Then you'll come *every* Sunday?\" | Dave smiles. | \"I'd *love* to.\"",
+   "visual": "SHOT 1 (ECU, Linda): Linda leans into camera, eyes narrow / SHOT 2 (close, Dave + Mia): 'Yes' – Mia beams, hearts; Dave still tall / SHOT 3 (ECU, Linda): 'every Sunday' – calendar on the wall behind her with every Sunday circled in red / SHOT 4 (close, Dave): forced huge grin, sweat",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "leans",
+     "beat": "lindaLean"
+    },
+    {
+     "word": "Yes",
+     "beat": "yesBeat"
+    },
+    {
+     "word": "Sunday",
+     "beat": "sundayBeat"
+    },
+    {
+     "word": "smiles",
+     "beat": "grin"
+    }
+   ],
+   "captions": [
+    "Then Linda leans in.",
+    "\"Do you love",
+    "my daughter?\"",
+    "\"Yes.\"",
+    "Still tall.",
+    "\"Then you'll come",
+    "every Sunday?\"",
+    "Dave smiles.",
+    "\"I'd love to.\""
+   ]
+  },
+  {
+   "id": "turn",
+   "section": "twist",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.62,
+    "cfg": 1.05,
+    "temp": 0.8,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 160,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "*Poof*. | Dave lands next to Dad. | Dad hands him a tiny fork. | \"Welcome to the *family*.\"",
+   "visual": "SHOT 1 (medium, table): POOF cloud, Dave's chair suddenly empty, hoodie flutters down / SHOT 2 (macro, salt shaker): two-inch Dave lands next to Dad, both tiny; Dad hands him a toothpick fork, pats his back; giant Linda smiles in the background",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Poof",
+     "beat": "poof"
+    },
+    {
+     "word": "hands",
+     "beat": "fork"
+    }
+   ],
+   "captions": [
+    "Poof.",
+    "Dave lands",
+    "next to Dad.",
+    "Dad hands him",
+    "a tiny fork.",
+    "\"Welcome",
+    "to the family.\""
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "ending",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 0.95,
+    "temp": 0.7,
+    "speed": 1.0,
+    "gap_ms": 260,
+    "comma_ms": 200,
+    "end_db": 8.0,
+    "gain_db": -1.5
+   },
+   "text": "So… | did you like this video? | Careful how you *answer*.",
+   "visual": "SHOT 1 (close, to camera): tiny Dad and tiny Dave on the salt shaker look straight into the lens; Dad slowly raises an eyebrow and holds up a tape measure",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Lügen-Regel, Dave, Mia, ihre Eltern sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Careful",
+     "beat": "tape"
+    }
+   ],
+   "captions": [
+    "So…",
+    "did you like this video?",
+    "Careful how you answer."
+   ]
+  }
+ ],
+ "note": "167 Skriptwörter, 10 Szenen, Ziel 63–68 s inkl. End-Card.",
+ "soundBed": {
+  "why": "Ort-Ambient leise, Basstreffer vor den Enthüllungen (Schrumpfen im Hook, Vater-Reveal, Poof), Ausklang über End-Card.",
+  "room": {
+   "db": -42,
+   "rain_db": -60
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "lie"
+   },
+   {
+    "scene": "dad",
+    "word": "Two"
+   },
+   {
+    "scene": "question",
+    "word": "Sunday"
+   },
+   {
+    "scene": "turn",
+    "word": "Poof"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -15
+  },
+  "tailMs": 2000
+ }
+}

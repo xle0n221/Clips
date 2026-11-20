@@ -206,12 +206,21 @@ export type PersonProps = Omit<FaceProps, "r"> & {
   readonly cardigan?: boolean;
   /** Zeigefinger der rechten Hand nach oben (Psst) */
   readonly finger?: boolean;
+  /** Ellenbogen-Beugung in Grad (Lügen-Stadt, Gähn-Audit „Arme steif“); 0 = gerade wie bisher */
+  readonly bendL?: number;
+  readonly bendR?: number;
+  /** Gestik: Arme schwingen leicht mit (Grad Amplitude), 0 = aus */
+  readonly gest?: number;
+  /** Zeichnung auf dem Oberkörper (Körper-Koordinaten, Ursprung Füße) */
+  readonly chest?: React.ReactNode;
+  /** Schnurrbart */
+  readonly stache?: boolean;
   /** Hand der rechten Seite hält etwas (gezeichnet von der Szene) – liefert nichts extra */
 };
 
 /** Ursprung = Mitte zwischen den Füßen (stehend) bzw. Sitzfläche (sitzend). Höhe stehend ≈ 560 px bei s = 1. */
 export const Person: React.FC<PersonProps> = (p) => {
-  const { x, y, s = 1, shirt = P.red, pants = "#3B3F66", hair = "side", hairColor = "#4A2E1E", armL = 8, armR = 8, lean = 0, nod = 0, seated, cap, handMouth, mask = 0, headphones, flip, suit, cardigan, finger } = p;
+  const { x, y, s = 1, shirt = P.red, pants = "#3B3F66", hair = "side", hairColor = "#4A2E1E", armL = 8, armR = 8, lean = 0, nod = 0, seated, cap, handMouth, mask = 0, headphones, flip, suit, cardigan, finger, bendL = 0, bendR = 0, gest = 0, chest, stache } = p;
   const skin = p.skin ?? P.skin;
   const r = 105;
   // Leben (Audit 20.11.: Squash & Stretch): Atmen je Figur versetzt, Kopf streckt sich beim großen Gähnen/Schreien
@@ -223,16 +232,23 @@ export const Person: React.FC<PersonProps> = (p) => {
   const bodyH = 210;
   const headY = bodyTop - r * 0.82;
   const sh = bodyTop + 40;
-  const arm = (side: -1 | 1, deg: number) => {
+  const arm = (side: -1 | 1, deg0: number) => {
+    const bend = side === -1 ? bendL : bendR;
+    const deg = deg0 + (gest ? gest * Math.sin(fr * 0.21 + ph + side) : 0);
     const a = (deg * Math.PI) / 180;
     const L = 130;
     const sx = side * 78;
-    const hx = sx + side * Math.sin(a) * L;
-    const hy = sh + Math.cos(a) * L;
+    const b = ((deg + bend + (gest ? gest * 0.8 * Math.sin(fr * 0.27 + ph * 2 + side) : 0)) * Math.PI) / 180;
+    const L1 = bend || gest ? L * 0.52 : L;
+    const exx = sx + side * Math.sin(a) * L1;
+    const eyy = sh + Math.cos(a) * L1;
+    const hx = bend || gest ? exx + side * Math.sin(b) * (L - L1) : exx;
+    const hy = bend || gest ? eyy + Math.cos(b) * (L - L1) : eyy;
+    const d = `M ${sx} ${sh} L ${exx} ${eyy} L ${hx} ${hy}`;
     return (
       <g key={side}>
-        <line x1={sx} y1={sh} x2={hx} y2={hy} stroke={INK} strokeWidth={46} strokeLinecap="round" />
-        <line x1={sx} y1={sh} x2={hx} y2={hy} stroke={cardigan ? P.purple : shirt} strokeWidth={32} strokeLinecap="round" />
+        <path d={d} fill="none" stroke={INK} strokeWidth={46} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={d} fill="none" stroke={cardigan ? P.purple : shirt} strokeWidth={32} strokeLinecap="round" strokeLinejoin="round" />
         {side === 1 && finger ? <rect x={hx - 9} y={hy - 70} width={18} height={70} rx={9} fill={skin} stroke={INK} strokeWidth={5} /> : null}
         <circle cx={hx} cy={hy} r={24} fill={skin} stroke={INK} strokeWidth={SW} />
       </g>
@@ -265,6 +281,7 @@ export const Person: React.FC<PersonProps> = (p) => {
           <path d={`M 40 ${bodyTop} L 10 ${bodyTop + bodyH} L 92 ${bodyTop + bodyH} Q 104 ${bodyTop + 10} 40 ${bodyTop} Z`} fill={P.purple} stroke={INK} strokeWidth={5} />
         </g>
       ) : null}
+      {chest}
       {cap ? <circle cx={-48} cy={bodyTop + 60} r={14} fill={P.bus} stroke={INK} strokeWidth={4} /> : null}
       <g transform={`translate(0 ${headY + breath * 4}) rotate(${nod}) scale(${1 - stretch * 0.4} ${1 + stretch})`}>
         {hair === "bun" ? <circle cx={0} cy={-r * 1.02} r={r * 0.42} fill={hairColor} stroke={INK} strokeWidth={SW} /> : null}
@@ -279,6 +296,7 @@ export const Person: React.FC<PersonProps> = (p) => {
         {hair === "bun" ? <path d={`M ${-r * 0.98} ${-r * 0.05} Q ${-r * 0.9} ${-r * 1.0} 0 ${-r * 1.0} Q ${r * 0.9} ${-r * 1.0} ${r * 0.98} ${-r * 0.05} Q 0 ${-r * 0.6} ${-r * 0.98} ${-r * 0.05} Z`} fill={hairColor} stroke={INK} strokeWidth={SW} strokeLinejoin="round" /> : null}
         {hair === "baby" ? <path d={`M -10 ${-r} q 20 -40 30 -10`} fill="none" stroke={hairColor} strokeWidth={10} strokeLinecap="round" /> : null}
         <Face {...p} r={r} skin={skin} />
+        {stache ? <path d={`M ${-r * 0.42} ${r * 0.4} Q ${-r * 0.2} ${r * 0.18} 0 ${r * 0.3} Q ${r * 0.2} ${r * 0.18} ${r * 0.42} ${r * 0.4} Q ${r * 0.2} ${r * 0.36} 0 ${r * 0.36} Q ${-r * 0.2} ${r * 0.36} ${-r * 0.42} ${r * 0.4} Z`} fill="#4A2E1E" stroke={INK} strokeWidth={5} strokeLinejoin="round" /> : null}
         {mask > 0 ? (
           <g transform={`translate(0 ${lerp(-r * 0.75, -r * 0.12, mask)})`}>
             <rect x={-r * 0.9} y={-r * 0.22} width={r * 1.8} height={r * 0.42} rx={r * 0.2} fill={P.pink} stroke={INK} strokeWidth={SW} />

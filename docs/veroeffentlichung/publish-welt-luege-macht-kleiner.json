@@ -1,0 +1,32 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "In This City, Every Lie Makes You Shorter",
+      "description": "An original animated tiny satire: in this city, every lie makes you one inch shorter. Dave is six foot four and has never told a single lie – tonight he meets his girlfriend's mother. And she cooked. Pure fiction – the city, the rule and all characters are invented.",
+      "hashtags": ["#KnowToon", "#Animation", "#Comedy", "#InThisCity", "#Honesty"]
+    },
+    "tiktok": {
+      "caption": "In this city, every lie makes you one inch shorter. Dave has to survive dinner with his girlfriend's mom. So… did you like this video? Careful. 📏 (fiction)",
+      "hashtags": ["#KnowToon", "#Animation", "#Comedy", "#InThisCity", "#Honesty"]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „EVERY LIE = 1 INCH SHORTER“, Angler mit ausgebreiteten Armen und Mini-Fisch vor der Messlatte.",
+    "note": "Reine Fiktion (episodes/luegen-stadt.json, Feld sources): keine Realfakten, keine Quellen-URLs nötig. Keine Marken-Hashtags. #InThisCity/#Honesty als Format-/Themen-Tag [HYPOTHESE: Reichweite unbelegt].",
+    "upload": {
+      "status": "plan",
+      "type": "Story (Welt-Regel-Comedy)",
+      "lengthSec": 0,
+      "tiktok": {
+        "date": "21.11.2026", "timeDe": "22:00", "slot": "B",
+        "local": {"newYork": "16:00", "losAngeles": "13:00", "london": "21:00"},
+        "calc": "22:00 Berlin (UTC+1) = 21:00 UTC → New York UTC-5 = 16:00 · Los Angeles UTC-8 = 13:00 · London UTC+0 = 21:00"
+      },
+      "youtube": {
+        "date": "21.11.2026", "timeDe": "23:00", "slot": "B",
+        "local": {"newYork": "17:00", "losAngeles": "14:00", "london": "22:00"},
+        "calc": "23:00 Berlin (UTC+1) = 22:00 UTC → New York UTC-5 = 17:00 · Los Angeles UTC-8 = 14:00 · London UTC+0 = 22:00"
+      },
+      "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+      "slotNote": "21.11. Slot A = Gähn-Stadt (Video 1 vom 20.11.), Slot B = dieses Video (Video 2 vom 20.11.)."
+    }
+  }
+}
