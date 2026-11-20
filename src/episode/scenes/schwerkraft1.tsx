@@ -118,7 +118,7 @@ export const TownSet: React.FC<{
 /* ------------------------------------------------------------------ */
 /* Eröffnungsbild (Hook Shot 1 = Loop-Ziel): Hand lässt den Apfel los, er fällt SEITWÄRTS nach links (zu Marta). */
 /* ------------------------------------------------------------------ */
-export const HAND: V3 = onBowl(7, 0.3, 2.9);
+export const HAND: V3 = onBowl(7, 0.24, 2.9);
 const APPLE0: V3 = [HAND[0], HAND[1] - 0.42, HAND[2] + 0.05];
 /** Apfel-Position t Frames nach dem Loslassen: beschleunigt Richtung Marta (−z, leicht abwärts). */
 export const appleAt = (t: number): V3 => {
@@ -470,12 +470,12 @@ export const SkLonely: React.FC = () => {
     const lampP: V3 = [-2.4, bowlY(8.8), 8.8];
     const n: V3 = [-1.4 + 0.5 * slip, bowlY(z), z];
     // Regie R3: Marta vorn im Bild (sitzt allein auf der Verandakante, Rücken halb zur Kamera), Nachbar dahinter die Straße hinauf
-    const a: Cam = { pos: [1.35, 2.0, -1.25], look: [-0.7, 1.1, 9.5], fov: 40 };
-    const b: Cam = { pos: [1.15, 1.9, -1.0], look: [-0.8, 1.2, 9.5], fov: 38 };
+    const a: Cam = { pos: [1.7, 2.85, -1.4], look: [-1.0, 1.3, 9.5], fov: 46 };
+    const b: Cam = { pos: [1.6, 2.75, -1.15], look: [-1.0, 1.4, 9.5], fov: 43 };
     return (
       <>
         <TownSet frame={frame} dusk={0.35} target={n} />
-        <Folk frame={frame} kind="marta" position={[-0.25, 0.26, 0.5]} rotation={[0, 0.25, 0]} sit load={0.9} sack={false} reach={[0.9, 0.9]} spread={[0.3, 0.3]} nod={-0.08 + 0.12 * slip} eyes="dot" mouth="flat" blinkSeed={3} />
+        <Folk frame={frame} kind="marta" position={[1.05, 0.1, 1.5]} rotation={[0, -0.5, 0]} sit load={0.9} sack={false} reach={[0.9, 0.9]} spread={[0.3, 0.3]} nod={-0.08 + 0.12 * slip} eyes="dot" mouth="flat" blinkSeed={3} />
         <Folk
           frame={frame}
           kind="towns"
