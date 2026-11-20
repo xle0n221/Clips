@@ -35,3 +35,6 @@ Nachtrag (alte Sitzung, 19.11. 19:30 UTC): Stimm-Agent gestoppt (Übergabe). Mes
 - stimm_messung (out/<id>-messung.json): Schwerkraft 66,9 s · 2,48 W/s · Satzpause 275 · Komma 180 · Szene 450 ms · Satzende −1,2 dB / −2,7 HT (76 % fallend) · 1 Kante 55,8 s · Whisper gesprochen 97,1 % (Rest nur „Bo“→„bowe“, „MAR-tuh“-Schreibung). Tor 69,7 s · 2,37 W/s · 275/230/460 ms · −0,8 dB / −1,9 HT · 0 Kanten · Whisper gesprochen 98,8 %.
 - Offen: Ton-Mischung rendern → Station 2 (Hörprüfer); Kleinkram + Tor-Punkte; Station 3.
 - Tor-Stimme geprüft: vollständig (165/165 Wörter in captions, 69,7 s, Whisper gesprochen 98,8 %) → keine Neuvertonung nötig.
+
+## Stand 20.11. ~03:40 UTC – beide Welt-Videos FERTIG
+Tor-Stadt und Schwerkraft-Stadt: stage done, publish vollständig, MP4 an Nutzer (out/ nicht im Repo), Upload 20.11. Slot A/B. Bericht docs/berichte/2026-11-20.md, Lessons docs/lessons-log.md. Nächste Sitzung: Autopilot normal (Dashboard-Auswahl / Marktanalyse), jedes neue Video in eigener Sitzung.

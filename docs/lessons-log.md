@@ -34,3 +34,18 @@ Title: What If the Sun Vanished? The First 8:19 (sonne-verschwindet, What-if)
 Length / cuts: 112,4 s, 48 Shots, Ø 2,30 s, max 4,87 s (Halt); 79 Phrasen à 2–5 W; 2,45 W/s
 Noten: Fakten 9 · Retention 9,0 · Hörprobe 9 · Regie 9,0 · Design 9,0 · Endkontrolle 9
 Stats: noch keine (Upload geplant 16.11.2026 Slot A)
+
+## PREVIOUS VIDEOS (fertig 20.11.2026, angefügt)
+Title: In This City, the Gate Needs 1,000 Yeses (tor-stadt, Welt-Regel)
+Length / cuts: 70,0 s inkl. End-Card, 31 Shots, Ø 2,19 s, max 3,83 s; 51 Phrasen à 2–5 W; 2,42 W/s
+Noten: Fakten 9 · Retention 9 · Ton 9 (R2) · Regie 9 (R2) · Design 9 (R3) · Endkontrolle 9 (R2)
+Title: In This City, Gravity Pulls Toward Granny Marta (schwerkraft-stadt, Welt-Regel)
+Length / cuts: 68,4 s inkl. End-Card, 31 Shots, Ø 2,14 s, max 3,13 s; 2,48 W/s
+Noten: Fakten 9 · Retention 9 · Ton 9 (R2) · Regie 9 (R2) · Design 9 (R3) · Endkontrolle 9
+Stats: noch keine (Upload geplant 20.11.2026: Tor Slot A, Schwerkraft Slot B)
+Lessons:
+1. Länge K15 (61–70 s INKL. End-Card) schon beim Drehbuch mit End-Card rechnen – Tor lag nach der Vertonung bei 71,15 s; ohne Neuvertonung gerettet mit `scripts/retime_pauses.py --cap 700 --tail 250`.
+2. Musik an Höhepunkten auf Stimmenniveau (Schwerkraft 55 s) → `scripts/duck_music.py` nach jeder Musik-Erzeugung; Musik/Bett nach jeder Neuvertonung neu aus der aktuellen Timeline erzeugen (Stille vor turn lag sonst falsch).
+3. Kamera in der Bowl-Stadt: Häuser des Innenrings stehen vor der Linse – `TownSet clear` (Sichtlinie freihalten) statt Kamerawinkel raten; Bundle vor jedem Prüfbild neu (veraltetes Bundle täuschte „kamerafestes“ Objekt vor).
+4. Prüfrunden: Cover-Regel nur per Einzelbild 0,05/0,3/0,45 s prüfen; neue Nah-Shots auf Status-Tafel vs. Kopf prüfen; lange Untertitel-Phrasen teilen statt schrumpfen lassen.
+5. finalize.sh allein lieferte −0,5 dBTP; Limiter-Schwelle je Video messen (Tor 0,68 → −1,6 dBTP, Schwerkraft 0,6 → −1,5 dBTP).
