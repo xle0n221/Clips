@@ -235,6 +235,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „What a Ghost Pepper Does Inside Your Body“ (KnowToon, Innenwelt-Cartoon 30 s): 2D (scenes/ghost.tsx) */}
+      <Composition
+        id="GhostPepper"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 30}
+        schema={episodeSchema}
+        defaultProps={{ episode: "ghost-pepper" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* Prüf-Komposition des 2D-Bau-Kits (src/episode/kit2d/) */}
       <Composition
         id="Kit2DTest"

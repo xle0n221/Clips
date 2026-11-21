@@ -75,3 +75,17 @@ Lessons:
 5. Whisper-Ausreißer im Untertitel („Delicious“ 1 s zu früh) per Ausschnitt-Transkription (small.en, numpy-Eingabe) finden und Wortzeit in captions.json setzen; Homophone (grey/gray, chews/choose) sind keine Sprechfehler.
 6. Limiter 0,66 → −2,0 dBTP / −14,7 LUFS (finalize.sh allein −0,7 dBTP).
 7. Ein-Raum-Handlung (Abendessen) bricht die Regel „kein Set > 2 am Stück“ schnell – Reaktions-Nahaufnahmen auf eigene Comic-Flächen (Farbe + Strahlen, `ReactBg`) legen; vor dem Render die Set-Folge einmal durchzählen.
+
+## PREVIOUS VIDEO (fertig 21.11.2026, angefügt)
+Title: What a Ghost Pepper Does Inside Your Body (ghost-pepper, Innenwelt-Cartoon, 2D, 30-s-Beispiel)
+Length / cuts: 30,3 s inkl. End-Card 1,5 s, 19 Einstellungen (Ø 1,5 s), 13 Bildwelten; 74 W, 2,50 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Fakten 9 (docs/audit-ghost-pepper.md)
+Stats: noch keine (Beispiel, Upload `hold`)
+Lessons:
+1. 30-s-Vorgabe: Chatterbox-Rohfassung lag bei 30,6 s Sprechzeit + End-Card → `retime_pauses.py --cap 330 --tail 250` + End-Card 1,5 s ergab 30,26 s ohne Neuvertonung; für 30 s ≈ 72 Skriptwörter planen.
+2. Whisper-Gegenprobe vor dem Render: „Inside“, „Tiny“, „Code red“ wurden undeutlich (96,2 %) → Wörter mit weichem Anlaut am Satzbeginn ersetzen („Down inside“, „Small“, „Red alert“) → 98,8 %. Render vorher abbrechen spart einen Durchlauf.
+3. Gleich lange Wortzeiten (Start = Start des nächsten Worts) erzeugen bei 1-Wort-Untertiteln doppelte Einblendungen → Starts nach der Vertonung auf ≥ 130 ms Abstand ziehen.
+4. Neue Bausteine: `captionStyle: "word-red"` (rot, weiße Kontur), `Person headS` (große Köpfe), Augen `"xx"` („><“), `scripts/add_bleep.py` (Zensur-Piep), `ReactBg` in `scenes/ghost.tsx` gegen Set-Wiederholung.
+5. Set-Folge VOR dem Render zählen: erst das Audit fand 5× Club-Tür in Folge (Regel max. 2) → ein Render zu viel.
+6. Präsenz 4–8 kHz zu hell (earshot) → EQ −3,5 dB @ 6 kHz vor dem Limiter 0,66 → −14,4 LUFS / −2,2 dBTP, „launch-grade“.
+7. Proxy sperrt Primärquellen-Hosts (nobelprize.org) → per `update_environment` freigeben; eurekalert.org liefert trotz Freigabe 403 → Zahl weglassen statt Sekundärquelle.

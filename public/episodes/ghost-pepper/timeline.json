@@ -1,0 +1,204 @@
+{
+ "id": "ghost-pepper",
+ "title": "What a Ghost Pepper Does Inside Your Body",
+ "durationMs": 29611,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 3708
+  },
+  {
+   "id": "dive",
+   "startMs": 3708,
+   "endMs": 8781
+  },
+  {
+   "id": "door",
+   "startMs": 8781,
+   "endMs": 14650
+  },
+  {
+   "id": "brain",
+   "startMs": 14650,
+   "endMs": 20128
+  },
+  {
+   "id": "panic",
+   "startMs": 20128,
+   "endMs": 23473
+  },
+  {
+   "id": "morning",
+   "startMs": 23473,
+   "endMs": 26747
+  },
+  {
+   "id": "outro",
+   "startMs": 26747,
+   "endMs": 28760
+  }
+ ],
+ "cues": [
+  {
+   "beat": "bite",
+   "scene": "hook",
+   "atMs": 1400
+  },
+  {
+   "beat": "tongue",
+   "scene": "hook",
+   "atMs": 2380
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1400
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3180
+  },
+  {
+   "beat": "strut",
+   "scene": "dive",
+   "atMs": 4940
+  },
+  {
+   "beat": "chain",
+   "scene": "dive",
+   "atMs": 7720
+  },
+  {
+   "emph": true,
+   "scene": "dive",
+   "atMs": 4000
+  },
+  {
+   "emph": true,
+   "scene": "dive",
+   "atMs": 4940
+  },
+  {
+   "emph": true,
+   "scene": "dive",
+   "atMs": 7720
+  },
+  {
+   "beat": "bouncer",
+   "scene": "door",
+   "atMs": 9670
+  },
+  {
+   "beat": "thermo",
+   "scene": "door",
+   "atMs": 12430
+  },
+  {
+   "beat": "yell",
+   "scene": "door",
+   "atMs": 13690
+  },
+  {
+   "emph": true,
+   "scene": "door",
+   "atMs": 13690
+  },
+  {
+   "beat": "lever",
+   "scene": "brain",
+   "atMs": 16650
+  },
+  {
+   "beat": "office",
+   "scene": "brain",
+   "atMs": 17360
+  },
+  {
+   "beat": "stamp",
+   "scene": "brain",
+   "atMs": 18980
+  },
+  {
+   "emph": true,
+   "scene": "brain",
+   "atMs": 16650
+  },
+  {
+   "emph": true,
+   "scene": "brain",
+   "atMs": 18100
+  },
+  {
+   "beat": "alarm",
+   "scene": "panic",
+   "atMs": 20190
+  },
+  {
+   "beat": "cry",
+   "scene": "panic",
+   "atMs": 22150
+  },
+  {
+   "beat": "face",
+   "scene": "panic",
+   "atMs": 22960
+  },
+  {
+   "emph": true,
+   "scene": "panic",
+   "atMs": 20190
+  },
+  {
+   "emph": true,
+   "scene": "panic",
+   "atMs": 22960
+  },
+  {
+   "beat": "toilet",
+   "scene": "morning",
+   "atMs": 23730
+  },
+  {
+   "beat": "exitDoor",
+   "scene": "morning",
+   "atMs": 24690
+  },
+  {
+   "beat": "scream",
+   "scene": "morning",
+   "atMs": 26270
+  },
+  {
+   "emph": true,
+   "scene": "morning",
+   "atMs": 23730
+  },
+  {
+   "emph": true,
+   "scene": "morning",
+   "atMs": 26270
+  },
+  {
+   "beat": "two",
+   "scene": "outro",
+   "atMs": 28190
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 28190
+  }
+ ],
+ "cover": {
+  "text": "GHOST PEPPER vs YOUR BODY",
+  "frames": 15
+ },
+ "captionStyle": "word-red",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for more inside stories.",
+  "seconds": 1.5
+ }
+}

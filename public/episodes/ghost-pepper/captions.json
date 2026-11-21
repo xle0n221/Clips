@@ -1,0 +1,520 @@
+[
+ {
+  "text": "This",
+  "startMs": 180,
+  "endMs": 340,
+  "timestampMs": 280,
+  "confidence": null
+ },
+ {
+  "text": " guy",
+  "startMs": 340,
+  "endMs": 640,
+  "timestampMs": 490,
+  "confidence": null
+ },
+ {
+  "text": " just",
+  "startMs": 640,
+  "endMs": 960,
+  "timestampMs": 800,
+  "confidence": null
+ },
+ {
+  "text": " ate",
+  "startMs": 960,
+  "endMs": 1220,
+  "timestampMs": 1090,
+  "confidence": null
+ },
+ {
+  "text": " a",
+  "startMs": 1220,
+  "endMs": 1400,
+  "timestampMs": 1310,
+  "confidence": null
+ },
+ {
+  "text": " ghost",
+  "startMs": 1400,
+  "endMs": 1660,
+  "timestampMs": 1530,
+  "confidence": null
+ },
+ {
+  "text": " pepper.",
+  "startMs": 1660,
+  "endMs": 1960,
+  "timestampMs": 1810,
+  "confidence": null
+ },
+ {
+  "text": " His",
+  "startMs": 2220,
+  "endMs": 2380,
+  "timestampMs": 2330,
+  "confidence": null
+ },
+ {
+  "text": " tongue",
+  "startMs": 2380,
+  "endMs": 2680,
+  "timestampMs": 2530,
+  "confidence": null
+ },
+ {
+  "text": " filed",
+  "startMs": 2680,
+  "endMs": 3040,
+  "timestampMs": 2860,
+  "confidence": null
+ },
+ {
+  "text": " a",
+  "startMs": 3040,
+  "endMs": 3180,
+  "timestampMs": 3110,
+  "confidence": null
+ },
+ {
+  "text": " complaint.",
+  "startMs": 3180,
+  "endMs": 3540,
+  "timestampMs": 3360,
+  "confidence": null
+ },
+ {
+  "text": " Down",
+  "startMs": 3840,
+  "endMs": 4000,
+  "timestampMs": 3970,
+  "confidence": null
+ },
+ {
+  "text": " inside,",
+  "startMs": 4000,
+  "endMs": 4420,
+  "timestampMs": 4210,
+  "confidence": null
+ },
+ {
+  "text": " meet",
+  "startMs": 4740,
+  "endMs": 4940,
+  "timestampMs": 4840,
+  "confidence": null
+ },
+ {
+  "text": " Capsaicin.",
+  "startMs": 4940,
+  "endMs": 6340,
+  "timestampMs": 5640,
+  "confidence": null
+ },
+ {
+  "text": " Small",
+  "startMs": 6670,
+  "endMs": 6930,
+  "timestampMs": 6800,
+  "confidence": null
+ },
+ {
+  "text": " molecule.",
+  "startMs": 6930,
+  "endMs": 7390,
+  "timestampMs": 7160,
+  "confidence": null
+ },
+ {
+  "text": " Huge",
+  "startMs": 7720,
+  "endMs": 7900,
+  "timestampMs": 7810,
+  "confidence": null
+ },
+ {
+  "text": " attitude.",
+  "startMs": 7900,
+  "endMs": 8480,
+  "timestampMs": 8190,
+  "confidence": null
+ },
+ {
+  "text": " He",
+  "startMs": 8810,
+  "endMs": 8970,
+  "timestampMs": 8910,
+  "confidence": null
+ },
+ {
+  "text": " walks",
+  "startMs": 8970,
+  "endMs": 9210,
+  "timestampMs": 9090,
+  "confidence": null
+ },
+ {
+  "text": " up",
+  "startMs": 9210,
+  "endMs": 9470,
+  "timestampMs": 9340,
+  "confidence": null
+ },
+ {
+  "text": " to",
+  "startMs": 9470,
+  "endMs": 9670,
+  "timestampMs": 9570,
+  "confidence": null
+ },
+ {
+  "text": " TRPV1,",
+  "startMs": 9670,
+  "endMs": 10650,
+  "timestampMs": 10160,
+  "confidence": null
+ },
+ {
+  "text": " your",
+  "startMs": 10930,
+  "endMs": 11090,
+  "timestampMs": 11040,
+  "confidence": null
+ },
+ {
+  "text": " heat",
+  "startMs": 11090,
+  "endMs": 11330,
+  "timestampMs": 11210,
+  "confidence": null
+ },
+ {
+  "text": " sensor.",
+  "startMs": 11330,
+  "endMs": 11670,
+  "timestampMs": 11500,
+  "confidence": null
+ },
+ {
+  "text": " Its",
+  "startMs": 11970,
+  "endMs": 12150,
+  "timestampMs": 12060,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 12150,
+  "endMs": 12430,
+  "timestampMs": 12290,
+  "confidence": null
+ },
+ {
+  "text": " job?",
+  "startMs": 12430,
+  "endMs": 12790,
+  "timestampMs": 12610,
+  "confidence": null
+ },
+ {
+  "text": " Yell",
+  "startMs": 13010,
+  "endMs": 13310,
+  "timestampMs": 13160,
+  "confidence": null
+ },
+ {
+  "text": " when",
+  "startMs": 13310,
+  "endMs": 13530,
+  "timestampMs": 13420,
+  "confidence": null
+ },
+ {
+  "text": " it's",
+  "startMs": 13530,
+  "endMs": 13690,
+  "timestampMs": 13610,
+  "confidence": null
+ },
+ {
+  "text": " painfully",
+  "startMs": 13690,
+  "endMs": 13990,
+  "timestampMs": 13840,
+  "confidence": null
+ },
+ {
+  "text": " hot.",
+  "startMs": 13990,
+  "endMs": 14350,
+  "timestampMs": 14170,
+  "confidence": null
+ },
+ {
+  "text": " But",
+  "startMs": 14650,
+  "endMs": 14810,
+  "timestampMs": 14765,
+  "confidence": null
+ },
+ {
+  "text": " he",
+  "startMs": 14810,
+  "endMs": 14910,
+  "timestampMs": 14860,
+  "confidence": null
+ },
+ {
+  "text": " brings",
+  "startMs": 14910,
+  "endMs": 15110,
+  "timestampMs": 15010,
+  "confidence": null
+ },
+ {
+  "text": " no",
+  "startMs": 15110,
+  "endMs": 15370,
+  "timestampMs": 15240,
+  "confidence": null
+ },
+ {
+  "text": " heat.",
+  "startMs": 15370,
+  "endMs": 15630,
+  "timestampMs": 15500,
+  "confidence": null
+ },
+ {
+  "text": " He",
+  "startMs": 15890,
+  "endMs": 16050,
+  "timestampMs": 15990,
+  "confidence": null
+ },
+ {
+  "text": " just",
+  "startMs": 16050,
+  "endMs": 16210,
+  "timestampMs": 16130,
+  "confidence": null
+ },
+ {
+  "text": " flips",
+  "startMs": 16210,
+  "endMs": 16470,
+  "timestampMs": 16340,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 16470,
+  "endMs": 16650,
+  "timestampMs": 16560,
+  "confidence": null
+ },
+ {
+  "text": " switch.",
+  "startMs": 16650,
+  "endMs": 16870,
+  "timestampMs": 16760,
+  "confidence": null
+ },
+ {
+  "text": " The",
+  "startMs": 17200,
+  "endMs": 17360,
+  "timestampMs": 17280,
+  "confidence": null
+ },
+ {
+  "text": " brain",
+  "startMs": 17360,
+  "endMs": 17640,
+  "timestampMs": 17500,
+  "confidence": null
+ },
+ {
+  "text": " reads",
+  "startMs": 17640,
+  "endMs": 18100,
+  "timestampMs": 17870,
+  "confidence": null
+ },
+ {
+  "text": " fire",
+  "startMs": 18100,
+  "endMs": 18480,
+  "timestampMs": 18290,
+  "confidence": null
+ },
+ {
+  "text": " and",
+  "startMs": 18480,
+  "endMs": 18980,
+  "timestampMs": 18730,
+  "confidence": null
+ },
+ {
+  "text": " signs",
+  "startMs": 18980,
+  "endMs": 19360,
+  "timestampMs": 19170,
+  "confidence": null
+ },
+ {
+  "text": " it",
+  "startMs": 19360,
+  "endMs": 19500,
+  "timestampMs": 19430,
+  "confidence": null
+ },
+ {
+  "text": " unread.",
+  "startMs": 19500,
+  "endMs": 19860,
+  "timestampMs": 19680,
+  "confidence": null
+ },
+ {
+  "text": " Red",
+  "startMs": 20190,
+  "endMs": 20410,
+  "timestampMs": 20300,
+  "confidence": null
+ },
+ {
+  "text": " alert.",
+  "startMs": 20410,
+  "endMs": 20690,
+  "timestampMs": 20550,
+  "confidence": null
+ },
+ {
+  "text": " Sirens.",
+  "startMs": 21020,
+  "endMs": 21400,
+  "timestampMs": 21210,
+  "confidence": null
+ },
+ {
+  "text": " Somebody's",
+  "startMs": 21730,
+  "endMs": 22150,
+  "timestampMs": 21940,
+  "confidence": null
+ },
+ {
+  "text": " crying.",
+  "startMs": 22150,
+  "endMs": 22450,
+  "timestampMs": 22300,
+  "confidence": null
+ },
+ {
+  "text": " It's",
+  "startMs": 22780,
+  "endMs": 22960,
+  "timestampMs": 22870,
+  "confidence": null
+ },
+ {
+  "text": " you.",
+  "startMs": 22960,
+  "endMs": 23200,
+  "timestampMs": 23080,
+  "confidence": null
+ },
+ {
+  "text": " Next",
+  "startMs": 23530,
+  "endMs": 23730,
+  "timestampMs": 23630,
+  "confidence": null
+ },
+ {
+  "text": " morning.",
+  "startMs": 23730,
+  "endMs": 24090,
+  "timestampMs": 23910,
+  "confidence": null
+ },
+ {
+  "text": " Same",
+  "startMs": 24090,
+  "endMs": 24690,
+  "timestampMs": 24390,
+  "confidence": null
+ },
+ {
+  "text": " sensors,",
+  "startMs": 24690,
+  "endMs": 25170,
+  "timestampMs": 24930,
+  "confidence": null
+ },
+ {
+  "text": " waiting",
+  "startMs": 25170,
+  "endMs": 25790,
+  "timestampMs": 25480,
+  "confidence": null
+ },
+ {
+  "text": " at",
+  "startMs": 25790,
+  "endMs": 26150,
+  "timestampMs": 25970,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 26150,
+  "endMs": 26270,
+  "timestampMs": 26210,
+  "confidence": null
+ },
+ {
+  "text": " exit.",
+  "startMs": 26270,
+  "endMs": 26610,
+  "timestampMs": 26440,
+  "confidence": null
+ },
+ {
+  "text": " And",
+  "startMs": 26940,
+  "endMs": 27100,
+  "timestampMs": 27040,
+  "confidence": null
+ },
+ {
+  "text": " tonight?",
+  "startMs": 27100,
+  "endMs": 27460,
+  "timestampMs": 27280,
+  "confidence": null
+ },
+ {
+  "text": " He's",
+  "startMs": 27790,
+  "endMs": 27930,
+  "timestampMs": 27860,
+  "confidence": null
+ },
+ {
+  "text": " buying",
+  "startMs": 27930,
+  "endMs": 28190,
+  "timestampMs": 28060,
+  "confidence": null
+ },
+ {
+  "text": " two.",
+  "startMs": 28190,
+  "endMs": 28510,
+  "timestampMs": 28350,
+  "confidence": null
+ }
+]

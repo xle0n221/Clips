@@ -41,7 +41,7 @@ const SW = 7; // Konturstärke
 /* Gesicht                                                            */
 /* ------------------------------------------------------------------ */
 
-export type Eyes = "open" | "half" | "closed" | "wide" | "rolled" | "squint" | "twitch";
+export type Eyes = "open" | "half" | "closed" | "wide" | "rolled" | "squint" | "twitch" | "xx";
 export type Brows = "neutral" | "up" | "angry" | "sad" | "worried" | "none";
 export type Mouth = "smile" | "flat" | "o" | "yawn" | "grin" | "frown" | "pucker" | "scream" | "talk" | "smug" | "drool" | "shh";
 
@@ -73,6 +73,11 @@ export const Face: React.FC<FaceProps> = ({ r, skin = P.skin, eyes = "open", loo
   const eye = (side: -1 | 1) => {
     const cx = side * ex;
     const lid = eyes === "half" ? 0.55 : eyes === "squint" ? 0.7 : eyes === "twitch" && side === -1 ? twitch : eyes === "rolled" ? 0.45 : 0;
+    if (eyes === "xx") {
+      // Anime-Kneifaugen „><“ (Innenwelt-Stil, Ghost-Pepper)
+      const k = -side;
+      return <path key={side} d={`M ${cx - k * erx} ${ey - ery * 0.8} L ${cx + k * erx} ${ey} L ${cx - k * erx} ${ey + ery * 0.8}`} fill="none" stroke={INK} strokeWidth={SW * 1.3} strokeLinecap="round" strokeLinejoin="round" />;
+    }
     if (eyes === "closed") {
       return <path key={side} d={`M ${cx - erx} ${ey} Q ${cx} ${ey + ery * 0.7} ${cx + erx} ${ey}`} fill="none" stroke={INK} strokeWidth={SW} strokeLinecap="round" />;
     }
@@ -215,12 +220,14 @@ export type PersonProps = Omit<FaceProps, "r"> & {
   readonly chest?: React.ReactNode;
   /** Schnurrbart */
   readonly stache?: boolean;
+  /** Kopf-Vergrößerung (Ghost-Pepper, Innenwelt-Stil „huge round heads“); Standard 1 = unverändert */
+  readonly headS?: number;
   /** Hand der rechten Seite hält etwas (gezeichnet von der Szene) – liefert nichts extra */
 };
 
 /** Ursprung = Mitte zwischen den Füßen (stehend) bzw. Sitzfläche (sitzend). Höhe stehend ≈ 560 px bei s = 1. */
 export const Person: React.FC<PersonProps> = (p) => {
-  const { x, y, s = 1, shirt = P.red, pants = "#3B3F66", hair = "side", hairColor = "#4A2E1E", armL = 8, armR = 8, lean = 0, nod = 0, seated, cap, handMouth, mask = 0, headphones, flip, suit, cardigan, finger, bendL = 0, bendR = 0, gest = 0, chest, stache } = p;
+  const { x, y, s = 1, shirt = P.red, pants = "#3B3F66", hair = "side", hairColor = "#4A2E1E", armL = 8, armR = 8, lean = 0, nod = 0, seated, cap, handMouth, mask = 0, headphones, flip, suit, cardigan, finger, bendL = 0, bendR = 0, gest = 0, chest, stache, headS = 1 } = p;
   const skin = p.skin ?? P.skin;
   const r = 105;
   // Leben (Audit 20.11.: Squash & Stretch): Atmen je Figur versetzt, Kopf streckt sich beim großen Gähnen/Schreien
@@ -230,7 +237,7 @@ export const Person: React.FC<PersonProps> = (p) => {
   const stretch = (p.mouth === "yawn" || p.mouth === "scream") ? clamp01(p.open ?? 0) * 0.1 : 0;
   const bodyTop = seated ? -250 : -330;
   const bodyH = 210;
-  const headY = bodyTop - r * 0.82;
+  const headY = bodyTop - r * 0.82 * headS;
   const sh = bodyTop + 40;
   const arm = (side: -1 | 1, deg0: number) => {
     const bend = side === -1 ? bendL : bendR;
@@ -283,7 +290,7 @@ export const Person: React.FC<PersonProps> = (p) => {
       ) : null}
       {chest}
       {cap ? <circle cx={-48} cy={bodyTop + 60} r={14} fill={P.bus} stroke={INK} strokeWidth={4} /> : null}
-      <g transform={`translate(0 ${headY + breath * 4}) rotate(${nod}) scale(${1 - stretch * 0.4} ${1 + stretch})`}>
+      <g transform={`translate(0 ${headY + breath * 4}) rotate(${nod}) scale(${(1 - stretch * 0.4) * headS} ${(1 + stretch) * headS})`}>
         {hair === "bun" ? <circle cx={0} cy={-r * 1.02} r={r * 0.42} fill={hairColor} stroke={INK} strokeWidth={SW} /> : null}
         {hair === "pony" ? <ellipse cx={r * 0.95} cy={-r * 0.2} rx={r * 0.25} ry={r * 0.5} fill={hairColor} stroke={INK} strokeWidth={SW} /> : null}
         <circle cx={0} cy={0} r={r} fill={skin} stroke={INK} strokeWidth={SW} />

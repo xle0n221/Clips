@@ -1,0 +1,326 @@
+{
+ "id": "ghost-pepper",
+ "title": "What a Ghost Pepper Does Inside Your Body",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "speed": 1.05,
+ "pauseMs": 260,
+ "sceneGapMs": 170,
+ "lengthSec": 30,
+ "years": [],
+ "say": {
+  "TRPV1": "T R P V one",
+  "Capsaicin": "cap-SAY-sin"
+ },
+ "cover": {
+  "text": "GHOST PEPPER vs YOUR BODY",
+  "frames": 15
+ },
+ "captionStyle": "word-red",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for more inside stories.",
+  "seconds": 1.5
+ },
+ "sources": "docs/quellen-ghost-pepper.md (Nobelpreis 2021 Pressemitteilung; Aniwan & Gonlachanvit 2014, PMC4102147). Figuren/Orte erfunden (Personifizierung).",
+ "format": "Innenwelt-Cartoon (docs/prompts/innenwelt-cartoon.md), 30-s-Beispiel, Nutzerauftrag 20.11.2026",
+ "pointe": "Am nächsten Morgen wartet derselbe Rezeptor am Ausgang; Loop: 'He's buying two' → 'This guy just ate a ghost pepper'.",
+ "music": {
+  "mood": "funny",
+  "bpm": 96,
+  "silenceBefore": {
+   "morning": 0.4
+  },
+  "why": "Zynische Körper-Komödie → 'funny' (bouncy R&B/Trap-Pop), Seed = Episoden-ID; Stille vor der Morgen-Pointe. Sound-Trends: Ich kann das nicht bestätigen (keine belegten Daten Nov. 2026)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-gelangweilt, leicht sadistisch, redet direkt mit dem Zuschauer; Panik-Szene minimal angespannter, Pointen flach",
+  "why": "Vorgabe Nutzer 20.11. + Prompt 'Erzähler: zynisch, gelangweilt, leicht sadistisch'; voicePreset witzig + ironic (wie Lügen-Stadt, bewährt)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Prompt-Stil-Block: 2D-Doodle, große runde weiße Köpfe, dicke schwarze Konturen, Nudel-Gliedmaßen, detaillierte warme Hintergründe mit Fluchtpunkt, Glow + Filmkorn.",
+  "characters": "GUY: weißer Rundkopf, rote Wangen, grünes Shirt; CAPSAICIN: rote Molekül-Kugel mit Hut, Sonnenbrille, Goldkette; TRPV1: Türsteher-Ionenkanal (lila Tür mit Gesicht + Thermometer); BRAIN: rosa Gehirn-Beamter mit Brille."
+ },
+ "narrator": {
+  "max_speed": 1.05,
+  "piece_extra_ms": 40,
+  "scene_gap_ms": 190,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "hookQuestion": {
+  "text": "What does a ghost pepper do inside you?",
+  "shownBy": "Bild 1: Kerl mit dampfenden Ohren + Pepper",
+  "answer": "Capsaicin schaltet den Hitzesensor TRPV1 – und am nächsten Morgen am Ausgang wieder."
+ },
+ "finalImage": {
+  "image": "Kerl hält zwei Ghost Peppers hoch (Pose wie Hook)",
+  "plant": "hook",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Club-Bass innen, Sirenen in panic, Piep über dem Schrei am Morgen.",
+  "room": {
+   "db": -44,
+   "rain_db": -70
+  },
+  "reveals": [
+   {
+    "scene": "door",
+    "word": "TRPV1"
+   },
+   {
+    "scene": "brain",
+    "word": "fire"
+   },
+   {
+    "scene": "morning",
+    "word": "exit"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -15
+  },
+  "tailMs": 1500,
+  "bleep": {
+   "scene": "morning",
+   "word": "exit",
+   "offsetMs": 120,
+   "ms": 650,
+   "db": -17,
+   "hz": 1000
+  }
+ },
+ "version": "v1 (21.11.2026)",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 170,
+    "comma_ms": 150,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This guy just ate a *ghost* pepper. | His tongue filed a *complaint*.",
+   "visual": "COVER 0–0,5 s: Big white-headed guy, cheeks red, steam from ears, half-eaten ghost pepper in hand, '>< ' eyes. Shot 2: tongue (with tiny face) slaps a complaint form on the counter.",
+   "cues": [
+    {
+     "word": "ghost",
+     "beat": "bite"
+    },
+    {
+     "word": "tongue",
+     "beat": "tongue"
+    }
+   ],
+   "sources": [
+    "docs/quellen-ghost-pepper.md"
+   ]
+  },
+  {
+   "id": "dive",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 170,
+    "comma_ms": 150,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Down *inside*, meet *Capsaicin*. | Small molecule. | *Huge* attitude.",
+   "visual": "Camera dives down the throat into a neon nightclub street; Capsaicin (red molecule ball with fedora, shades, gold chain) struts out of a pepper limo, kicks a saliva drop aside.",
+   "cues": [
+    {
+     "word": "Capsaicin",
+     "beat": "strut"
+    },
+    {
+     "word": "Huge",
+     "beat": "chain"
+    }
+   ],
+   "sources": [
+    "docs/quellen-ghost-pepper.md"
+   ]
+  },
+  {
+   "id": "door",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 170,
+    "comma_ms": 150,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "He walks up to TRPV1, | your heat sensor. | Its one job? | Yell when it's *painfully* hot.",
+   "visual": "Club entrance 'TRPV1 – HEAT ONLY'; bouncer = big ion-channel door with tiny face and thermometer; Capsaicin flashes a fake ID 'I AM 43°C'.",
+   "cues": [
+    {
+     "word": "TRPV1",
+     "beat": "bouncer"
+    },
+    {
+     "word": "job",
+     "beat": "thermo"
+    },
+    {
+     "word": "painfully",
+     "beat": "yell"
+    }
+   ],
+   "sources": [
+    "docs/quellen-ghost-pepper.md"
+   ]
+  },
+  {
+   "id": "brain",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 170,
+    "comma_ms": 150,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "But he brings no heat. | He just flips the *switch*. | The brain reads *fire* | and signs it unread.",
+   "visual": "Shot 1: Capsaicin yanks a big lever 'HEAT', bouncer's eyes go wide. Shot 2: Brain office (bureaucrat brain with glasses, coffee) stamps 'FIRE!!' without looking, sign 'NO THINKING AFTER 5PM'.",
+   "cues": [
+    {
+     "word": "switch",
+     "beat": "lever"
+    },
+    {
+     "word": "brain",
+     "beat": "office"
+    },
+    {
+     "word": "signs",
+     "beat": "stamp"
+    }
+   ],
+   "sources": [
+    "docs/quellen-ghost-pepper.md"
+   ]
+  },
+  {
+   "id": "panic",
+   "section": "climax",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.62,
+    "cfg": 1.0,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 150,
+    "end_db": 7.0,
+    "gain_db": 0.5
+   },
+   "text": "*Red* alert. | Sirens. | Somebody's crying. | It's *you*.",
+   "visual": "Shot 1: alarm lights in the body-factory, tiny cells running with buckets. Shot 2: outside, guy chugging water from a hose, crying waterfalls. Shot 3: push-in on his face 'It's you'.",
+   "cues": [
+    {
+     "word": "Red",
+     "beat": "alarm"
+    },
+    {
+     "word": "crying",
+     "beat": "cry"
+    },
+    {
+     "word": "you",
+     "beat": "face"
+    }
+   ],
+   "sources": [
+    "docs/quellen-ghost-pepper.md"
+   ]
+  },
+  {
+   "id": "morning",
+   "section": "twist",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 220,
+    "comma_ms": 150,
+    "end_db": 8.0,
+    "gain_db": -0.5
+   },
+   "text": "Next *morning*. | Same sensors, | waiting at the *exit*.",
+   "visual": "Shot 1: bathroom at dawn, guy on toilet, calm. Shot 2: down below, a second TRPV1 bouncer with the same face at a door 'EXIT', cracking knuckles; Capsaicin waves 'Hi again'. Shot 3: guy's face explodes, speech bubble '#@%&!' + bleep.",
+   "cues": [
+    {
+     "word": "morning",
+     "beat": "toilet"
+    },
+    {
+     "word": "sensors",
+     "beat": "exitDoor"
+    },
+    {
+     "word": "exit",
+     "beat": "scream"
+    }
+   ],
+   "sources": [
+    "docs/quellen-ghost-pepper.md"
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "ending",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.45,
+    "cfg": 1.0,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 240,
+    "comma_ms": 150,
+    "end_db": 8.0,
+    "gain_db": -1.5
+   },
+   "text": "And tonight? | He's buying *two*.",
+   "visual": "Guy at a market stall, sweaty, holding up two ghost peppers with a dead-eyed smile – same pose as the hook (loop).",
+   "cues": [
+    {
+     "word": "two",
+     "beat": "two"
+    }
+   ],
+   "sources": [
+    "docs/quellen-ghost-pepper.md"
+   ]
+  }
+ ],
+ "note": "74 Skriptwörter, 7 Szenen, Ziel 29–31 s inkl. End-Card 1,5 s."
+}

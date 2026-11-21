@@ -1,0 +1,21 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "What a Ghost Pepper Does Inside Your Body",
+      "description": "There is no fire. A chili molecule called capsaicin just tricks your heat sensor TRPV1 into screaming – and it is waiting at the exit the next morning. Animated comedy; characters are made up, the receptor is real (Nobel Prize in Physiology or Medicine 2021). Not medical advice.",
+      "hashtags": ["#KnowToon", "#Animation", "#GhostPepper", "#Body", "#Comedy"]
+    },
+    "tiktok": {
+      "caption": "There is no fire. Your heat sensor just got scammed by a molecule in a fedora. 🌶️ And it comes back for the exit.",
+      "hashtags": ["#KnowToon", "#Animation", "#GhostPepper", "#Body", "#Comedy"]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „GHOST PEPPER vs YOUR BODY“, Kerl mit Ghost Pepper an der Wange.",
+    "note": "Beispielvideo Innenwelt-Cartoon (docs/prompts/innenwelt-cartoon.md), 30 s auf Nutzerwunsch. Quellen docs/quellen-ghost-pepper.md (Nobelpreis 2021, PMC4102147). Hashtag-Reichweite: Ich kann das nicht bestätigen (keine belegten Daten).",
+    "upload": {
+      "status": "hold",
+      "reason": "Beispielvideo – Upload-Slot frei gelassen, bis der Nutzer entscheidet (Auftrag 20.11.2026).",
+      "type": "Wissen (Innenwelt-Comedy)",
+      "lengthSec": 30.3
+    }
+  }
+}

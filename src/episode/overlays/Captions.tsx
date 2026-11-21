@@ -109,10 +109,13 @@ const OneWord: React.FC<{ readonly text: string; readonly color?: string; readon
  * nur etwas größer + kräftigerer Pop – so bleibt die Farbe eindeutig „Untertitel“.
  */
 export const YELLOW_CAPTION = "#FFD400";
-const YellowWord: React.FC<{ readonly text: string; readonly key2: boolean; readonly bottom: number }> = ({
+/** „word-red“ (Innenwelt-Prompt 20.11.2026): 1 Wort, Großbuchstaben, rot mit weißer Kontur, Pop-in */
+export const RED_CAPTION = "#F01E2C";
+const YellowWord: React.FC<{ readonly text: string; readonly key2: boolean; readonly bottom: number; readonly red?: boolean }> = ({
   text,
   key2,
   bottom,
+  red,
 }) => {
   const frame = useCurrentFrame();
   const pop = interpolate(frame, [0, 2, 4], key2 ? [0.72, 1.12, 1] : [0.86, 1.05, 1], {
@@ -126,14 +129,14 @@ const YellowWord: React.FC<{ readonly text: string; readonly key2: boolean; read
           fontWeight: 900,
           fontSize: key2 ? 104 : 90,
           lineHeight: 1,
-          color: YELLOW_CAPTION,
+          color: red ? RED_CAPTION : YELLOW_CAPTION,
           textAlign: "center",
           maxWidth: 1000,
           whiteSpace: "nowrap",
           textTransform: "uppercase",
-          WebkitTextStroke: "20px #000",
+          WebkitTextStroke: red ? "22px #FFFFFF" : "20px #000",
           paintOrder: "stroke",
-          textShadow: "0 8px 0 rgba(0,0,0,0.85), 0 0 26px rgba(0,0,0,0.55)",
+          textShadow: red ? "0 10px 0 rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.45)" : "0 8px 0 rgba(0,0,0,0.85), 0 0 26px rgba(0,0,0,0.55)",
           transform: `scale(${pop})`,
           letterSpacing: 1,
         }}
@@ -266,6 +269,7 @@ export const Captions: React.FC<{
   if (variant === "phrase-yellow") return <PhraseCaptions captions={captions} phrases={phrases} fps={fps} bottom={bottom} />;
   if (variant === "word-by-word-yellow")
     return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} yellow />;
+  if (variant === "word-red") return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} yellow red />;
   if (mode === "word") return <WordCaptions captions={captions} emph={emph} fps={fps} bottom={bottom} />;
   return <PageCaptions captions={captions} emph={emph} fps={fps} />;
 };
@@ -277,7 +281,8 @@ const WordCaptions: React.FC<{
   readonly fps: number;
   readonly bottom: number;
   readonly yellow?: boolean;
-}> = ({ captions, emph, fps, bottom, yellow }) => {
+  readonly red?: boolean;
+}> = ({ captions, emph, fps, bottom, yellow, red }) => {
   const words = captions.filter((c) => c.text.trim() !== "");
   return (
     <AbsoluteFill>
@@ -289,7 +294,7 @@ const WordCaptions: React.FC<{
         return (
           <Sequence key={i} from={from} durationInFrames={dur} layout="none">
             {yellow ? (
-              <YellowWord text={w.text.trim().replace(/^["“]+/, "").replace(/["”.,:;…]+$/, "")} key2={Boolean(emph?.has(w.startMs))} bottom={bottom} />
+              <YellowWord text={w.text.trim().replace(/^["“]+/, "").replace(/["”.,:;…]+$/, "")} key2={Boolean(emph?.has(w.startMs))} bottom={bottom} red={red} />
             ) : (
               <OneWord text={w.text.trim()} color={emph?.get(w.startMs)} bottom={bottom} />
             )}
