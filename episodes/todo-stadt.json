@@ -1,0 +1,467 @@
+{
+ "id": "todo-stadt",
+ "title": "In This City, You Die When Your To-Do List Is Done",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "speed": 1.05,
+ "pauseMs": 300,
+ "sceneGapMs": 190,
+ "lengthSec": 66,
+ "years": [],
+ "say": {},
+ "cover": {
+  "text": "FINISH YOUR LIST = YOU DIE",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "captionWhy": "Phrasen statt 1-Wort: Lessons-Log #1 (zeit-welt) – Einzelwörter tragen die Handlung nicht; Welt-Regel braucht ganze Halbsätze; die Abbruch-Pointe 'Finish this sent—' liest sich nur als Phrase. Bewährt in Lügen-Stadt (Audit 9).",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow before your list is done.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Nutzerauftrag 21.11.2026). Marktprüfung 21.11. in docs/berichte/markt-2026-11-20.md (Nachtrag). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren (Tod als Sensenmann = Volksfigur).",
+ "format": "In This City + schwarzer Humor (CLAUDE.md 'NÄCHSTE VIDEOS'), Video 1 vom 21.11., Slot 22.11. A",
+ "pointe": "Dennis erledigt alles – letzter Punkt 'Relax' ist für ihn unmöglich; 40 Jahre später teilt er die Couch mit dem Tod. Schluss: Erzähler hat nur noch 'finish this sentence' auf der Liste – Abbruch mitten im Wort, Loop.",
+ "originality": "Eigene Regel (fertige To-do-Liste = Tod); nicht Zeit, Tor, Schwerkraft, Gähnen, Lügen; keine belegte Trend-Regel (Zeit, Erinnerung, Wörter, Zahl über dem Kopf). Ich kann nicht bestätigen, ob andere Kanäle diese Regel schon nutzen.",
+ "music": {
+  "mood": "dark",
+  "bpm": 88,
+  "silenceBefore": {
+   "turn": 0.5,
+   "outro": 0.4
+  },
+  "why": "Schwarzer Humor → 'dark' (düsterer Trap/R&B, Moll) als Kontrast zum trockenen Erzähler, Seed = Episoden-ID; Stille vor 'One item left' und vor der Schlusszeile; Musik bricht mit dem Bild bei 'sent—' ab. Sound-Trends: Ich kann das nicht bestätigen (keine belegten Daten Nov. 2026)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-trocken (deadpan), leicht amüsiert über den Tod, Panik minimal angespannt, Schluss flach und leise",
+  "why": "Schwarzer Humor wirkt durch Ungerührtheit (Ghost-Pepper/Lügen-Stadt bewährt); voicePreset witzig + ironic, tense nur in panic/turn."
+ },
+ "style": {
+  "look": "2d",
+  "why": "2D-Doodle wie luegen.tsx/ghost.tsx: Schauspiel, kräftige Farben, schnelle Renderzeit; Tod als runder Cartoon-Schädel im schwarzen Hoodie bleibt niedlich statt gruselig (kein Horror).",
+  "characters": "DENNIS: Brille, grüner Pullunder, Seitenscheitel, Klemmbrett; DEATH: weißer runder Schädel, schwarzer Hoodie, Sense, gelangweilt; EDNA: Uroma, Dutt, Schaukelstuhl; Hintergründe hell-pastell, Figuren gesättigt."
+ },
+ "narrator": {
+  "max_speed": 1.05,
+  "piece_extra_ms": 40,
+  "scene_gap_ms": 190,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "hookQuestion": {
+  "text": "Will Dennis finish his list – and die?",
+  "shownBy": "Bild 1: letzter Haken → Tod taucht hinter der Couch auf",
+  "answer": "Letzter Punkt 'Relax' – unmöglich für ihn; der Tod zieht bei ihm ein (52–60 s)."
+ },
+ "finalImage": {
+  "image": "Notizblock 'finish this sentence', Knochenhand tippt aufs Papier, harter Schnitt",
+  "plant": "hook (Liste + Tod hinter der Couch), death (Kreuzworträtsel nie fertig)",
+  "payoff": "turn + payoff + outro"
+ },
+ "soundBed": {
+  "why": "leises Raum-Ambient, Basstreffer an den Tod-Auftritten, Klopfen an der Tür, Ausklang über End-Card.",
+  "room": {
+   "db": -42,
+   "rain_db": -60
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "die"
+   },
+   {
+    "scene": "rush",
+    "word": "crossword"
+   },
+   {
+    "scene": "turn",
+    "word": "Knock"
+   },
+   {
+    "scene": "payoff",
+    "word": "Death"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -15
+  },
+  "tailMs": 2000
+ },
+ "version": "v1 (21.11.2026, Video 1 schwarzer Humor)",
+ "note": "167 Skriptwörter (wie Lügen-Stadt 67,9 s), 9 Szenen, Ziel 64–69 s inkl. End-Card 2 s.",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, you die the moment your to-do list is *done*. | So nobody finishes *anything*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s): man on a couch ticks the last box of a list – POOF, Death (skeleton in a black hoodie, scythe) pops up behind the couch and taps his shoulder / SHOT 2 (close): the man panics and scribbles a new line, Death's shoulders drop, he sighs / SHOT 3 (wide street): half-painted house, half-built bridge, a man shaving half his face",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "die",
+     "beat": "reaper"
+    },
+    {
+     "word": "done",
+     "beat": "scribble"
+    },
+    {
+     "word": "nobody",
+     "beat": "street"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "you die the moment",
+    "your to-do list is done.",
+    "So nobody",
+    "finishes anything."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Road work here lasts 90 years. | Grandma Edna is 212, | and she still hasn't done her *taxes*. | On *purpose*. | Productivity coaches live about one *seminar*.",
+   "visual": "SHOT 1 (wide): road site, workers asleep on shovels, cobwebs on the digger / SHOT 2 (medium): ancient Grandma Edna in a rocking chair next to a mountain of tax papers, winks / SHOT 3 (stage): a pumped coach ticks the last bullet of his slide – Death in the front row with popcorn stands up",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Road",
+     "beat": "road"
+    },
+    {
+     "word": "Grandma",
+     "beat": "edna"
+    },
+    {
+     "word": "purpose",
+     "beat": "wink"
+    },
+    {
+     "word": "Productivity",
+     "beat": "coach"
+    }
+   ],
+   "captions": [
+    "Road work here",
+    "lasts 90 years.",
+    "Grandma Edna is 212,",
+    "and she still hasn't",
+    "done her taxes.",
+    "On purpose.",
+    "Productivity coaches",
+    "live about one seminar."
+   ]
+  },
+  {
+   "id": "death",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Death is the most *bored* guy in town. | He does crosswords. | He never finishes those *either*.",
+   "visual": "SHOT 1 (wide park): Death on a bench, cobweb between scythe and bench, yawning / SHOT 2 (close): his crossword – one square left empty, he hovers the pen, sweats, pulls it back",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "crosswords",
+     "beat": "cross"
+    },
+    {
+     "word": "either",
+     "beat": "pull"
+    }
+   ],
+   "captions": [
+    "Death is the most",
+    "bored guy in town.",
+    "He does crosswords.",
+    "He never finishes",
+    "those either."
+   ]
+  },
+  {
+   "id": "dennis",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Then there's Dennis. | Dennis *loves* lists. | He has a list | for his *lists*.",
+   "visual": "SHOT 1 (medium): Dennis (glasses, green sweater vest, neat side part) in a room covered in sticky notes, hugging a clipboard / SHOT 2 (ECU): clipboard titled with a list of lists",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "loves",
+     "beat": "hug"
+    },
+    {
+     "word": "list",
+     "beat": "ecu"
+    }
+   ],
+   "captions": [
+    "Then there's Dennis.",
+    "Dennis loves lists.",
+    "He has a list",
+    "for his lists."
+   ]
+  },
+  {
+   "id": "rush",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "One Tuesday, | Dennis has a *great* morning. | Dishes, done. | Gym, done. | Inbox, *zero*. | Across town, | Death puts down his *crossword*.",
+   "visual": "SHOT 1 (kitchen): sparkling dishes stack, check mark / SHOT 2 (gym): Dennis lifts a barbell, check / SHOT 3 (desk): laptop inbox 0, confetti / SHOT 4 (park): Death drops the crossword, smiles for the first time, cracks his neck",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Dishes",
+     "beat": "dishes"
+    },
+    {
+     "word": "Gym",
+     "beat": "gym"
+    },
+    {
+     "word": "Inbox",
+     "beat": "inbox"
+    },
+    {
+     "word": "Across",
+     "beat": "park"
+    }
+   ],
+   "captions": [
+    "One Tuesday,",
+    "Dennis has a great morning.",
+    "Dishes, done.",
+    "Gym, done.",
+    "Inbox, zero.",
+    "Across town,",
+    "Death puts down",
+    "his crossword."
+   ]
+  },
+  {
+   "id": "panic",
+   "section": "climax",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.62,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": 0.5
+   },
+   "text": "The neighbors *panic*. | They throw dirty laundry at his door. | His mom calls about her *printer*. | He fixes it in 4 *seconds*.",
+   "visual": "SHOT 1 (street): neighbors hurl dirty laundry at Dennis' front door / SHOT 2 (split phone): mom, crying, holds up a smoking printer / SHOT 3 (close): Dennis taps once – printer prints a perfect page, sparkle; mom screams",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "laundry",
+     "beat": "laundry"
+    },
+    {
+     "word": "mom",
+     "beat": "mom"
+    },
+    {
+     "word": "fixes",
+     "beat": "fix"
+    }
+   ],
+   "captions": [
+    "The neighbors panic.",
+    "They throw dirty laundry",
+    "at his door.",
+    "His mom calls",
+    "about her printer.",
+    "He fixes it",
+    "in 4 seconds."
+   ]
+  },
+  {
+   "id": "turn",
+   "section": "twist",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 240,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "One item left. | *Knock knock*. | Dennis reads it out loud: | *Relax*.",
+   "visual": "SHOT 1 (ECU): the list, one unchecked box / SHOT 2 (door): Death knocks, scythe over the shoulder / SHOT 3 (reaction, comic burst): Dennis reads, eye twitching, sweat",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Knock",
+     "beat": "door"
+    },
+    {
+     "word": "Dennis",
+     "beat": "read"
+    },
+    {
+     "word": "Relax",
+     "beat": "relax"
+    }
+   ],
+   "captions": [
+    "One item left.",
+    "Knock knock.",
+    "Dennis reads it",
+    "out loud:",
+    "Relax."
+   ]
+  },
+  {
+   "id": "payoff",
+   "section": "twist",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 220,
+    "comma_ms": 170,
+    "end_db": 8.0,
+    "gain_db": -0.5
+   },
+   "text": "That was 40 years ago. | Dennis is *still* trying to relax. | Death moved in. | They share a *couch*.",
+   "visual": "SHOT 1 (living room, old): grey-haired Dennis rigid on the couch, eye twitching, list in hand / SHOT 2 (wider): Death beside him in slippers with the remote, cup of tea, their framed photo on the wall",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Dennis",
+     "beat": "old"
+    },
+    {
+     "word": "Death",
+     "beat": "couch"
+    }
+   ],
+   "captions": [
+    "That was 40 years ago.",
+    "Dennis is still",
+    "trying to relax.",
+    "Death moved in.",
+    "They share a couch."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "ending",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.45,
+    "cfg": 0.95,
+    "temp": 0.7,
+    "speed": 1.0,
+    "gap_ms": 260,
+    "comma_ms": 200,
+    "end_db": 8.0,
+    "gain_db": -1.5
+   },
+   "text": "Me? I'm totally safe. | I just have one thing left on my list. | Finish this *sent*—",
+   "visual": "SHOT 1 (POV, desk): the narrator's notepad 'finish this sentence', pen hovering at the box – a skeletal hand slides in and taps the paper; HARD CUT to black on 'sent—'",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "thing",
+     "beat": "hand"
+    },
+    {
+     "word": "sent",
+     "beat": "cut"
+    }
+   ],
+   "captions": [
+    "Me? I'm totally safe.",
+    "I just have one thing",
+    "left on my list.",
+    "Finish this sent—"
+   ]
+  }
+ ]
+}
