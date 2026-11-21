@@ -29,11 +29,11 @@ Gag-Takt (Wortzeiten): 1,4 · 2,9 · 3,7 · 5,8 · 8,2 · 11,5 · 14,0 · 15,7 �
 2. Never Finish Your To-Do List in This City
 3. Death Has Been Waiting 40 Years for Dennis to Relax
 
-## Caption + Hashtags
+## Caption + Hashtags (identisch im Dashboard, Dokument `videos/welt-todo-liste-tod`)
 - YouTube-Titel: „In This City, You Die When Your To-Do List Is Done 💀“
-- YouTube-Beschreibung: „Dennis finished everything. Almost. #shorts #animation #darkhumor“
-- TikTok-Caption: „Never finish your to-do list. Ask Dennis. 💀📝“
-- Hashtags (≤ 5): #KnowToon #Animation #DarkHumor #ToDoList #InThisCity
+- YouTube-Beschreibung: „An original animated dark-humor satire: in this city, you die the moment your to-do list is done. So nobody finishes anything – except Dennis, who loves lists. Pure fiction – the city, the rule and all characters are invented. #shorts“
+- TikTok-Caption: „In this city, you die the moment your to-do list is done. Dennis just had a VERY productive morning. 💀📝 (fiction)“
+- Hashtags (≤ 5): #KnowToon #Animation #DarkHumor #ToDoList #InThisCity (Reichweite unbelegt – vor dem Posten gegenprüfen)
 
 ## Regie
 - Stimme `am_michael` (Chatterbox), Preset `witzig`, Szenen `ironic`/`playful`, `tense` in panic/turn; Erzähler zynisch-trocken.

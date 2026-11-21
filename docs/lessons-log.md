@@ -89,3 +89,17 @@ Lessons:
 5. Set-Folge VOR dem Render zählen: erst das Audit fand 5× Club-Tür in Folge (Regel max. 2) → ein Render zu viel.
 6. Präsenz 4–8 kHz zu hell (earshot) → EQ −3,5 dB @ 6 kHz vor dem Limiter 0,66 → −14,4 LUFS / −2,2 dBTP, „launch-grade“.
 7. Proxy sperrt Primärquellen-Hosts (nobelprize.org) → per `update_environment` freigeben; eurekalert.org liefert trotz Freigabe 403 → Zahl weglassen statt Sekundärquelle.
+
+## PREVIOUS VIDEO (fertig 21.11.2026, angefügt)
+Title: In This City, You Die When Your To-Do List Is Done (todo-stadt, In This City + schwarzer Humor, 2D)
+Length / cuts: 64,0 s inkl. End-Card 2 s, 27 Einstellungen + Schwarzbild (Ø 2,3 s), 17 Bildwelten; 168 W, 2,69 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-todo-stadt.md)
+Stats: noch keine (Upload geplant 22.11.2026 Slot A)
+Lessons:
+1. 157 Skriptwörter ergaben nur 56,9 s Sprechzeit (+ 2 s End-Card < 61 s) → für 61–70 s inkl. End-Card ≈ 165–175 Wörter planen; Nachtrag von 3 kurzen Gags kostete nur 5 neue Chatterbox-Stücke (Cache je Satz).
+2. Lessons Lügen #4 präzisiert: `zz-venv-cb.pth` NICHT löschen – ohne sie fehlen earshot numpy/torch (`sfx render` bricht ab, make_sound_bed scheitert). Erst entfernen, wenn wirklich ein torchaudio-Konflikt auftritt.
+3. „Gym, done.“ wurde in 4 Versuchen falsch gesprochen → einsilbiges Wort mit weichem Anlaut vor Komma meiden („Workout, done.“ sofort sauber).
+4. W(word) trifft das ERSTE Vorkommen in der Szene: „His wedding“ traf „for his lists“ → seltenes Wort als Schnittanker wählen (`wedding`).
+5. Figur „steigt hinter der Couch auf“: Figur VOR der Rückenlehne zeichnen und Startlage so wählen, dass Füße hinter der Sitzfront liegen (sonst sitzt sie im Cover sichtbar daneben).
+6. Abbruch-Pointe („Finish this sent—“): Chatterbox spricht „sent“ sauber, Whisper hört „sentence“ – als gewollte Abweichung dokumentieren; Bild 5 Frames nach dem Wort hart auf Schwarz, Untertitel bleibt stehen.
+7. Limiter: EQ −3,5 dB @ 6 kHz + volume +0,7 dB + `alimiter=limit=0.6` → −14,9 LUFS / −2,4 dBTP (0,66 ohne Gain gab −15,1 / −1,0).

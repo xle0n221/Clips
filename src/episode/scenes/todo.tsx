@@ -409,9 +409,9 @@ export const DHook: React.FC = () => {
           <HookCouchSet />
         </Layer>
         <Layer>
-          <CouchBack x={540} y={1480} />
-          <Death x={720} y={lerp(1700, 1240, rise)} s={0.95} mood={rise > 0.9 ? "neutral" : "shock"} look={[-1, 0.4]} armL={lerp(10, 125, ease(lf, 15, 22))} bendL={-35} scythe />
+          <Death x={720} y={lerp(1520, 1240, rise)} s={0.95} mood={rise > 0.9 ? "neutral" : "shock"} look={[-1, 0.4]} armL={lerp(10, 125, ease(lf, 15, 22))} bendL={-35} scythe />
           <Poof x={720} y={1000} t={lf - 8} s={1.1} dark />
+          <CouchBack x={540} y={1480} />
           <Person x={470} y={1420} seated s={1} shirt={P.orange} pants="#2B3A67" hair="spiky" hairColor="#3A2A1A" eyes={rise > 0.6 ? "wide" : "open"} look={rise > 0.6 ? [1, -0.3] : [0.4, 0.6]} brows={rise > 0.6 ? "up" : "neutral"} mouth={rise > 0.6 ? "scream" : "smile"} open={rise > 0.6 ? 0.7 : 0} armL={40} armR={35} bendL={-70} bendR={-60} />
           <ListBoard x={470} y={1190} s={0.55} r={-6} items={HOOK_ITEMS} ticks={[1, 1, tick]} />
           <Pen x={560 + bump(lf, 6, 5) * 10} y={1330} r={25} s={0.7} />
@@ -430,8 +430,8 @@ export const DHook: React.FC = () => {
           <HookCouchSet />
         </Layer>
         <Layer>
-          <CouchBack x={540} y={1480} />
           <Death x={740} y={1240} s={0.95} mood="bored" look={[-1, 0.6]} armL={lerp(110, 10, sag)} bendL={-20} armR={8} nod={lerp(0, 12, sag)} scythe />
+          <CouchBack x={540} y={1480} />
           <Person x={470} y={1420} seated s={1} shirt={P.orange} pants="#2B3A67" hair="spiky" hairColor="#3A2A1A" eyes="wide" look={[0, 0.8]} brows="worried" mouth="frown" armL={40} armR={45} bendL={-70} bendR={-60} gest={6} />
           <Sweat x={560} y={960} o={1} />
           <ListBoard x={470} y={1150} s={0.62} r={-4} items={[...HOOK_ITEMS, "BUY MILK"]} ticks={[1, 1, 1, 0]} write={write} />
