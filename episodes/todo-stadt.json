@@ -94,7 +94,7 @@
   "tailMs": 2000
  },
  "version": "v1 (21.11.2026, Video 1 schwarzer Humor)",
- "note": "167 Skriptwörter (wie Lügen-Stadt 67,9 s), 9 Szenen, Ziel 64–69 s inkl. End-Card 2 s.",
+ "note": "166 Skriptwörter (nach Rohfassung 56,9 s + 2 s End-Card < 61 s: 3 Gags ergänzt), 9 Szenen, Ziel 63–67 s inkl. End-Card 2 s.",
  "scenes": [
   {
    "id": "hook",
@@ -236,8 +236,8 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "Then there's Dennis. | Dennis *loves* lists. | He has a list | for his *lists*.",
-   "visual": "SHOT 1 (medium): Dennis (glasses, green sweater vest, neat side part) in a room covered in sticky notes, hugging a clipboard / SHOT 2 (ECU): clipboard titled with a list of lists",
+   "text": "Then there's Dennis. | Dennis *loves* lists. | He has a list | for his *lists*. | His wedding vows had *bullet points*.",
+   "visual": "SHOT 1 (medium): Dennis (glasses, green sweater vest, neat side part) in a room covered in sticky notes, hugging a clipboard / SHOT 2 (ECU): clipboard titled with a list of lists / SHOT 3 (wedding altar): Dennis reads vows from a clipboard with bullet points, bride rolls her eyes, guest asleep",
    "sources": [
     "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
    ],
@@ -249,13 +249,19 @@
     {
      "word": "list",
      "beat": "ecu"
+    },
+    {
+     "word": "wedding",
+     "beat": "vows"
     }
    ],
    "captions": [
     "Then there's Dennis.",
     "Dennis loves lists.",
     "He has a list",
-    "for his lists."
+    "for his lists.",
+    "His wedding vows",
+    "had bullet points."
    ]
   },
   {
@@ -272,8 +278,8 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "One Tuesday, | Dennis has a *great* morning. | Dishes, done. | Gym, done. | Inbox, *zero*. | Across town, | Death puts down his *crossword*.",
-   "visual": "SHOT 1 (kitchen): sparkling dishes stack, check mark / SHOT 2 (gym): Dennis lifts a barbell, check / SHOT 3 (desk): laptop inbox 0, confetti / SHOT 4 (park): Death drops the crossword, smiles for the first time, cracks his neck",
+   "text": "One Tuesday, | Dennis has a *great* morning. | Dishes, done. | Workout, done. | Inbox, *zero*. | Across town, | Death puts down his *crossword*.",
+   "visual": "SHOT 1 (kitchen): sparkling dishes stack, check mark / SHOT 2 (gym, \"Workout\"): Dennis lifts a barbell, check / SHOT 3 (desk): laptop inbox 0, confetti / SHOT 4 (park): Death drops the crossword, smiles for the first time, cracks his neck",
    "sources": [
     "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
    ],
@@ -283,7 +289,7 @@
      "beat": "dishes"
     },
     {
-     "word": "Gym",
+     "word": "Workout",
      "beat": "gym"
     },
     {
@@ -299,7 +305,7 @@
     "One Tuesday,",
     "Dennis has a great morning.",
     "Dishes, done.",
-    "Gym, done.",
+    "Workout, done.",
     "Inbox, zero.",
     "Across town,",
     "Death puts down",
@@ -320,7 +326,7 @@
     "end_db": 7.0,
     "gain_db": 0.5
    },
-   "text": "The neighbors *panic*. | They throw dirty laundry at his door. | His mom calls about her *printer*. | He fixes it in 4 *seconds*.",
+   "text": "The neighbors *panic*. | They throw dirty laundry at his door. | His mom calls about her *printer*. | He fixes it in 4 *seconds*. | She's *devastated*.",
    "visual": "SHOT 1 (street): neighbors hurl dirty laundry at Dennis' front door / SHOT 2 (split phone): mom, crying, holds up a smoking printer / SHOT 3 (close): Dennis taps once – printer prints a perfect page, sparkle; mom screams",
    "sources": [
     "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
@@ -346,7 +352,8 @@
     "His mom calls",
     "about her printer.",
     "He fixes it",
-    "in 4 seconds."
+    "in 4 seconds.",
+    "She's devastated."
    ]
   },
   {
@@ -404,8 +411,8 @@
     "end_db": 8.0,
     "gain_db": -0.5
    },
-   "text": "That was 40 years ago. | Dennis is *still* trying to relax. | Death moved in. | They share a *couch*.",
-   "visual": "SHOT 1 (living room, old): grey-haired Dennis rigid on the couch, eye twitching, list in hand / SHOT 2 (wider): Death beside him in slippers with the remote, cup of tea, their framed photo on the wall",
+   "text": "That was 40 years ago. | Dennis is *still* trying to relax. | He meditates. | *Competitively*. | Death moved in. | They share a *couch*.",
+   "visual": "SHOT 1 (living room, old): grey-haired Dennis rigid on the couch, eye twitching, list in hand / SHOT 2 (comic burst): Dennis meditating cross-legged, veins popping, stopwatch and a trophy \"1st\" / SHOT 3 (wider): Death beside him in slippers with the remote, cup of tea, their framed photo on the wall",
    "sources": [
     "Fiktion (Welt-Regel-Satire mit schwarzem Humor): Stadt, Regel, Dennis, Edna und der Tod als Figur sind erfunden – keine Tatsachenbehauptung."
    ],
@@ -413,6 +420,10 @@
     {
      "word": "Dennis",
      "beat": "old"
+    },
+    {
+     "word": "meditates",
+     "beat": "zen"
     },
     {
      "word": "Death",
@@ -423,6 +434,8 @@
     "That was 40 years ago.",
     "Dennis is still",
     "trying to relax.",
+    "He meditates.",
+    "Competitively.",
     "Death moved in.",
     "They share a couch."
    ]

@@ -67,12 +67,11 @@ type DeathProps = {
   readonly look?: readonly [number, number];
   readonly open?: number;
   readonly scythe?: boolean;
-  readonly slippers?: boolean;
   readonly nod?: number;
 };
 
 /** Der Tod: runder Cartoon-Schädel, schwarzer Hoodie, optional Sense (rechte Hand, nur bei bendR 0). */
-const Death: React.FC<DeathProps> = ({ x, y, s = 1, seated, armL = 8, armR = 8, bendL = 0, bendR = 0, lean = 0, flip, mood = "bored", look = [0, 0], open = 0, scythe, slippers, nod = 0 }) => {
+const Death: React.FC<DeathProps> = ({ x, y, s = 1, seated, armL = 8, armR = 8, bendL = 0, bendR = 0, lean = 0, flip, mood = "bored", look = [0, 0], open = 0, scythe, nod = 0 }) => {
   const hy = seated ? -336 : -416;
   const fx = flip ? -1 : 1;
   const sh = (seated ? -250 : -330) + 40;
@@ -94,7 +93,6 @@ const Death: React.FC<DeathProps> = ({ x, y, s = 1, seated, armL = 8, armR = 8, 
         <path d={`M ${-r * 1.28} ${r * 0.7} Q ${-r * 1.4} ${-r * 1.5} 0 ${-r * 1.42} Q ${r * 1.4} ${-r * 1.5} ${r * 1.28} ${r * 0.7} Z`} fill={T.hood} stroke={INK} strokeWidth={7} />
       </g>
       <Person x={0} y={0} seated={seated} shirt={T.hood} pants={T.hood} skin={T.bone} hair="none" eyes="closed" brows="none" mouth="flat" armL={armL} armR={armR} bendL={bendL} bendR={bendR} nod={nod} />
-      {slippers && !seated ? null : null}
       <g transform={`translate(0 ${hy}) rotate(${nod})`}>
         {/* Kapuzen-Rand vorn (verdeckt Ohren) */}
         <path d={`M ${-r * 1.12} ${r * 0.62} A ${r * 1.12} ${r * 1.12} 0 1 1 ${r * 1.12} ${r * 0.62}`} fill="none" stroke={T.hood} strokeWidth={30} />
@@ -609,8 +607,8 @@ export const DRules: React.FC = () => {
         {[-60, 180, 900, 1140].map((hx, k) => (
           <circle key={hx} cx={hx} cy={1560 + (k % 2) * 30} r={110} fill="#2B2240" stroke={INK} strokeWidth={6} />
         ))}
-        <Death x={560} y={lerp(1700, 1560, up)} s={0.75} seated={up < 0.5} mood={up > 0.5 ? "happy" : "bored"} look={[-1, -0.6]} armL={lerp(60, 120, up)} bendL={-80} armR={lerp(60, 160, up)} bendR={-30} />
-        <g transform={`translate(${470} ${lerp(1500, 1180, up)})`}>
+        <Death x={560} y={lerp(1640, 1300, up)} s={0.75} seated={up < 0.5} mood={up > 0.5 ? "happy" : "bored"} look={[-1, -0.6]} armL={lerp(60, 120, up)} bendL={-80} armR={lerp(60, 160, up)} bendR={-30} />
+        <g transform={`translate(${450} ${lerp(1500, 1000, up)})`}>
           <path d="M -50 0 L 50 0 L 38 120 L -38 120 Z" fill="#FFFFFF" stroke={INK} strokeWidth={6} />
           {[-36, -12, 12, 36].map((k) => (
             <rect key={k} x={k - 8} y={0} width={14} height={120} fill={P.red} opacity={0.8} />
@@ -690,7 +688,28 @@ const StickyWall: React.FC = () => (
 
 export const DDennis: React.FC = () => {
   const { f, d, W } = useBeats();
-  const { i, lf, len } = useShot([W("He", 0.6) - 3], d, f);
+  const { i, lf, len } = useShot([W("He", 0.5) - 3, W("wedding", 0.8) - 6], d, f);
+  if (i === 2) {
+    // Hochzeit: Gelübde als Stichpunkte auf dem Klemmbrett, Braut verdreht die Augen, Gast schläft
+    return (
+      <Shot cam={camPath(lf, [[0, frameOn(540, 1000, 540, 860, 1.15)], [len, frameOn(540, 980, 540, 860, 1.3)]])}>
+        <Layer depth={0.7}>
+          <Sky id="wed" a="#FFC7E6" b="#FFF4DE" />
+          <rect x={-2000} y={1400} width={5000} height={2500} fill="#E8D6FF" />
+          <path d="M 140 1400 L 140 640 Q 540 260 940 640 L 940 1400" fill="none" stroke="#FFFFFF" strokeWidth={60} />
+          <path d="M 140 1400 L 140 640 Q 540 260 940 640 L 940 1400" fill="none" stroke={INK} strokeWidth={6} />
+          {[200, 360, 720, 880].map((fx) => (
+            <circle key={fx} cx={fx} cy={600 - Math.abs(fx - 540) * 0.2} r={40} fill={P.pink} stroke={INK} strokeWidth={5} />
+          ))}
+        </Layer>
+        <Layer>
+          <Person x={760} y={1460} s={0.95} shirt="#FFFFFF" pants="#FFFFFF" hair="pony" hairColor="#8A5A3C" skin={P.skin2} eyes="rolled" brows="neutral" mouth="flat" armL={20} armR={15} />
+          <Dennis x={330} y={1460} s={0.95} suit eyes="open" look={[0.5, 0.8]} brows="up" mouth="talk" open={0.4 + Math.sin(lf * 0.9) * 0.3} armL={45} armR={45} bendL={-80} bendR={-80} />
+          <ListBoard x={330} y={1150} s={0.42} title="VOWS" items={["LOVE", "HONOR", "Q3 GOALS"]} ticks={[1, 1, 0]} />
+        </Layer>
+      </Shot>
+    );
+  }
   if (i === 0) {
     const hug = ease(lf, W("loves", 0.4) - 4, W("loves", 0.4) + 6);
     return (
@@ -730,12 +749,10 @@ export const DDennis: React.FC = () => {
 
 export const DRush: React.FC = () => {
   const { f, d, W } = useBeats();
-  const off = d;
-  const { i, lf, len } = useShot([W("Gym", 0.4) - 3, W("Inbox", 0.55) - 3, W("Across", 0.75) - 3], d, f);
-  void off;
+  const { i, lf, len } = useShot([W("Workout", 0.4) - 3, W("Inbox", 0.55) - 3, W("Across", 0.75) - 3], d, f);
   if (i === 0) {
     // „great morning“ + Küche: glänzender Geschirrstapel, Haken
-    const doneAt = W("done", 0.3) - (0) + 2;
+    const doneAt = W("done", 0.3) + 2;
     return (
       <Shot cam={camPath(lf, [[0, frameOn(540, 1000, 540, 860, 1.15)], [len, frameOn(540, 980, 540, 860, 1.3)]])}>
         <Layer depth={0.7}>
@@ -905,7 +922,7 @@ export const DPanic: React.FC = () => {
         </Layer>
         <Layer>
           {Array.from({ length: 14 }).map((_, k) => {
-            const t0 = k * 3;
+            const t0 = k * 2.5 - 8;
             const t = clamp01((lf - t0) / 14);
             if (lf < t0) return null;
             const sx = k % 2 ? -200 : 1300;
@@ -922,7 +939,7 @@ export const DPanic: React.FC = () => {
   const out = ease(lf, fixAt + 2, fixAt + 16);
   const sc = ease(lf, W("seconds", 0.85) - (d - len) - 2, W("seconds", 0.85) - (d - len) + 6);
   const phone = (
-    <g transform="translate(430 840) rotate(-10)">
+    <g transform="translate(470 1150) rotate(-10) scale(0.8)">
       <rect x={-60} y={-110} width={120} height={220} rx={20} fill={INK} />
       <rect x={-48} y={-94} width={96} height={180} rx={10} fill="#BFE8FF" />
       <circle cx={0} cy={-20} r={30} fill={P.skin} stroke={INK} strokeWidth={4} />
@@ -942,6 +959,7 @@ export const DPanic: React.FC = () => {
           <Mom x={360} y={1500} s={0.95} eyes="closed" brows="sad" mouth="scream" open={0.5} armL={20} armR={160} bendR={-150} />
           <Tear x={330} y={1040} f={lf} side={-1} />
           <Tear x={400} y={1040} f={lf + 8} side={1} />
+          {phone}
           <Printer x={780} y={1270} smoke={1} out={0} f={lf} />
         </Layer>
       </Shot>
@@ -1056,7 +1074,36 @@ const OldRoom: React.FC = () => (
 
 export const DPayoff: React.FC = () => {
   const { f, d, W } = useBeats();
-  const { i, lf, len } = useShot([W("Death", 0.55) - 3], d, f);
+  const { i, lf, len } = useShot([W("meditates", 0.4) - 3, W("Death", 0.62) - 3], d, f);
+  if (i === 1) {
+    // „Competitively.“ Comic-Fläche: Meditation mit Stoppuhr und Pokal, Adern pochen
+    const comp = ease(lf, W("Competitively", 0.7) - (W("meditates", 0.4) - 3) - 3, W("Competitively", 0.7) - (W("meditates", 0.4) - 3) + 4);
+    return (
+      <Shot cam={{ ...frameOn(540, 1000, 540, 820, 1.3), y: frameOn(540, 1000, 540, 820, 1.3).y + jolt(lf, W("Competitively", 0.7) - (W("meditates", 0.4) - 3), 10) }}>
+        <Layer depth={0}>
+          <ReactBg a={comp > 0.5 ? "#9A6BFF" : "#C9B8FF"} b={comp > 0.5 ? "#B796FF" : "#DCD0FF"} f={lf} cx={540} cy={800} />
+        </Layer>
+        <Layer>
+          <Dennis x={540} y={1450} seated s={1} old eyes={comp > 0.5 ? "squint" : "closed"} brows={comp > 0.5 ? "angry" : "neutral"} mouth={comp > 0.5 ? "grin" : "flat"} armL={110} armR={110} bendL={-40} bendR={-40} />
+          <ellipse cx={540} cy={1460} rx={260} ry={50} fill="#FF8FC7" stroke={INK} strokeWidth={6} />
+          {comp > 0.3 ? <Sweat x={680} y={1000} o={comp} /> : null}
+          <g transform={`translate(830 ${lerp(1500, 980, comp)})`}>
+            <path d="M -60 -90 L 60 -90 Q 60 10 0 20 Q -60 10 -60 -90 Z" fill={P.bus} stroke={INK} strokeWidth={6} />
+            <rect x={-14} y={18} width={28} height={50} fill={P.busDark} stroke={INK} strokeWidth={5} />
+            <rect x={-50} y={66} width={100} height={30} rx={6} fill={INK} />
+            <text x={0} y={-30} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={INK}>
+              1st
+            </text>
+          </g>
+          <g transform={`translate(250 ${lerp(1500, 1000, comp)})`}>
+            <circle r={70} fill="#FFFFFF" stroke={INK} strokeWidth={7} />
+            <rect x={-12} y={-100} width={24} height={30} fill={INK} />
+            <line x1={0} y1={0} x2={Math.sin(lf * 0.4) * 50} y2={-Math.cos(lf * 0.4) * 50} stroke={T.check} strokeWidth={7} strokeLinecap="round" />
+          </g>
+        </Layer>
+      </Shot>
+    );
+  }
   if (i === 0) {
     // 40 Jahre später: grauer Dennis steif auf der Couch, Auge zuckt
     return (
@@ -1202,4 +1249,4 @@ export const TODO_CONFIG: EpisodeConfig = {
 };
 
 /** Einstellungen je Szene (Set-Zählung vor dem Render, Lessons Ghost-Pepper #5). */
-export const TODO_SHOT_COUNT: Record<string, number> = { hook: 3, rules: 4, death: 2, dennis: 2, rush: 4, panic: 4, turn: 3, payoff: 2, outro: 1 };
+export const TODO_SHOT_COUNT: Record<string, number> = { hook: 3, rules: 4, death: 2, dennis: 3, rush: 4, panic: 4, turn: 3, payoff: 3, outro: 1 };
