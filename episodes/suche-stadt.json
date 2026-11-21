@@ -1,0 +1,495 @@
+{
+ "id": "suche-stadt",
+ "title": "In This City, Your Last Search Is Read at Your Funeral",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "speed": 1.05,
+ "pauseMs": 300,
+ "sceneGapMs": 190,
+ "lengthSec": 66,
+ "years": [],
+ "say": {},
+ "cover": {
+  "text": "YOUR LAST SEARCH IS READ AT YOUR FUNERAL",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for the next strange city.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Kurz-Marktanalyse 21.11.2026 in docs/berichte/markt-2026-11-20.md, Nachtrag 21.11.). Keine Tatsachenbehauptung; keine Marken (kein Suchmaschinen-Name), keine fremden Figuren.",
+ "pointe": "Kevin sucht 10 Jahre nur Anständiges, tippt nachts endlich seine peinliche Frage, denkt 'wer stirbt schon an einem Dienstag?', liest die Antwort auf der Straße – Bus. Pfarrer liest vor: 'Why does my [PIEP] smell like popcorn?' – Mama fällt in Ohnmacht, die Nonnen gehen. Nachschlag: Busfahrer-Beerdigung, letzte Suche 'How to drive a bus.' Schluss an den Zuschauer: 'Don't answer. We'll hear it.'",
+ "originality": "Eigene Regel (letzte Suche wird bei der Beerdigung vorgelesen), eigene Figuren. Gemieden: Zeit, Gähnen, Lügen, Schwerkraft, Tor, Erinnerung, Wörter, Zahl über dem Kopf; kein Suchmaschinen-Logo. Ich kann nicht bestätigen, ob die Prämisse schon anderswo genutzt wurde.",
+ "humor": "Schwarzer Humor nach docs/prompts/innenwelt-cartoon.md: Tod beiläufig (Hühnchen, Bär, Bus), zynischer Erzähler, Fluch per Piep, Schock-Pointe + Zuschauer-Ansprache. Tabus geprüft: keine realen Personen, keine Minderjährigen, kein Hass, kein Suizid, keine Ratschläge.",
+ "music": {
+  "mood": "dark",
+  "bpm": 88,
+  "silenceBefore": {
+   "bus": 0.5,
+   "outro": 0.4
+  },
+  "why": "Beerdigungs-Satire → düster-ironisch (Moll-R&B/Trap-Orgel-Anmutung), Seed = Episoden-ID; Stille vor 'Bus' und vor der Schlusszeile. Sound-Trends: Ich kann das nicht bestätigen (keine belegten Daten)."
+ },
+ "narratorMood": {
+  "mood": "zynisch, gelangweilt, leicht sadistisch; trocken über den Tod, Spannung bei der Suche, Schluss leise und bedrohlich-flach",
+  "why": "Schwarzer-Humor-Vorgabe (Nutzer 21.11.) + Machart Lügen-/Gähn-Stadt; voicePreset 'witzig', Satzenden abgesenkt (end_db 7, Fenster 0,7 s)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Gleicher 2D-Cartoon wie Gähn-/Lügen-Stadt (Schauspiel, kräftige Farben, schnelle Renderzeit); Beerdigung als warmes, buntes Kirchen-Set statt düster, damit der Kontrast zum Tod komisch bleibt.",
+  "characters": "KEVIN: grüner Pulli, Brille, Scheitel; PFARRER: schwarzer Talar, weißer Kragen, Glatze; OMA: lila Strickjacke, Dutt; ONKEL RICK: Holzfällerhemd rot; MAMA: pinkes Kleid, Hut; NONNEN: schwarz-weiß; BUSFAHRER: blaue Mütze."
+ },
+ "narrator": {
+  "max_speed": 1.05,
+  "piece_extra_ms": 40,
+  "scene_gap_ms": 190,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "hookQuestion": {
+  "text": "What was Kevin's last search?",
+  "shownBy": "Bild 1: Pfarrer liest vom Handy am Sarg, Trauergäste schrecken zurück; Frage aufgebaut in stakes (~24 s: 'Kevin has a question… He types it. Deletes it.')",
+  "answer": "Bei ~55 s: 'Why does my [Piep] smell like popcorn?'"
+ },
+ "finalImage": {
+  "image": "Pfarrer hält das Handy des Zuschauers hoch, Blick in die Kamera",
+  "plant": "hook (Pfarrer liest vom Handy)",
+  "payoff": "reading + outro"
+ },
+ "version": "v1 (21.11.2026, Video 2, Regeln docs/audit-2026-11-20.md)",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, your last search | gets read at your *funeral*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s): church; a priest at the lectern reads from a huge glowing phone, an open coffin with a grandma, mourners recoil / SHOT 2 (close): mourners' shocked faces, a hat flies off",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "funeral",
+     "beat": "gasp"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "your last search",
+    "gets read",
+    "at your funeral."
+   ]
+  },
+  {
+   "id": "examples",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Grandma's was: | \"How long can chicken sit out?\" | She found out. | Uncle Rick: | \"Can you outrun a *bear*?\" | No. | The mayor: | \"How to delete search history.\" | Too *late*.",
+   "visual": "SHOT 1: kitchen, grandma sniffs a green chicken on the counter, flies circling / SHOT 2: forest, Uncle Rick sprinting, a bear right behind with a napkin bib / SHOT 3: mayor's portrait at the funeral, the priest scrolls, the mayor's widow covers her face",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "chicken",
+     "beat": "chicken"
+    },
+    {
+     "word": "Rick",
+     "beat": "rick"
+    },
+    {
+     "word": "mayor",
+     "beat": "mayor"
+    }
+   ],
+   "captions": [
+    "Grandma's was:",
+    "\"How long can",
+    "chicken sit out?\"",
+    "She found out.",
+    "Uncle Rick:",
+    "\"Can you",
+    "outrun a bear?\"",
+    "No.",
+    "The mayor:",
+    "\"How to delete",
+    "search history.\"",
+    "Too late."
+   ]
+  },
+  {
+   "id": "kevin",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Kevin. | Kevin is *careful*. | For ten years, | Kevin has only searched things like | \"hymns for beginners\" | and \"is broccoli delicious?\"",
+   "visual": "SHOT 1: Kevin (green sweater, glasses) at his desk, polite smile, laptop / SHOT 2: Kevin sings from a hymn book, cat covers its ears / SHOT 3: Kevin forces down broccoli, eye twitch",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Kevin",
+     "beat": "kevin"
+    },
+    {
+     "word": "hymns",
+     "beat": "hymn"
+    },
+    {
+     "word": "broccoli",
+     "beat": "broc"
+    }
+   ],
+   "captions": [
+    "This is Kevin.",
+    "Kevin is careful.",
+    "For ten years,",
+    "Kevin has only",
+    "searched things like",
+    "\"hymns for beginners\"",
+    "and \"is broccoli",
+    "delicious?\""
+   ]
+  },
+  {
+   "id": "incognito",
+   "section": "setup",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.62,
+    "cfg": 1.05,
+    "temp": 0.8,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 160,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "Incognito mode? | Here, | that just means the priest *whispers* it.",
+   "visual": "SHOT 1: priest in sunglasses and a trench coat leans to the coffin, hand by mouth, whispering; mourners lean in to hear",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "whispers",
+     "beat": "whisper"
+    }
+   ],
+   "captions": [
+    "Incognito mode?",
+    "Here,",
+    "that just means",
+    "the priest whispers it."
+   ]
+  },
+  {
+   "id": "stakes",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 6.0,
+    "gain_db": 0.5
+   },
+   "text": "But tonight, | Kevin has a question. | One he has carried for *years*. | He types it. | Deletes it. | Grandma's urn is *watching*.",
+   "visual": "SHOT 1: Kevin at night in bed, phone light on his face, sweat / SHOT 2: thumb types, then deletes (blank search bar) / SHOT 3: grandma's urn on the shelf with her photo, eyes narrow",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "question",
+     "beat": "q"
+    },
+    {
+     "word": "types",
+     "beat": "type"
+    },
+    {
+     "word": "urn",
+     "beat": "urn"
+    }
+   ],
+   "captions": [
+    "But tonight,",
+    "Kevin has a question.",
+    "One he has",
+    "carried for years.",
+    "He types it.",
+    "Deletes it.",
+    "Grandma's urn",
+    "is watching."
+   ]
+  },
+  {
+   "id": "search",
+   "section": "climax",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 6.0,
+    "gain_db": 0.5
+   },
+   "text": "Kevin thinks: | who dies on a *Tuesday*? | He hits search. | He walks outside, | reading the answer.",
+   "visual": "SHOT 1: Kevin shrugs, calm calendar 'TUE' on the wall / SHOT 2: thumb hits the search button, sparkle / SHOT 3: street, Kevin walks reading his phone, grin widening",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Tuesday",
+     "beat": "tue"
+    },
+    {
+     "word": "search",
+     "beat": "hit"
+    },
+    {
+     "word": "walks",
+     "beat": "walk"
+    }
+   ],
+   "captions": [
+    "Kevin thinks:",
+    "who dies",
+    "on a Tuesday?",
+    "He hits search.",
+    "He walks outside,",
+    "reading the answer."
+   ]
+  },
+  {
+   "id": "bus",
+   "section": "twist",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.62,
+    "cfg": 1.05,
+    "temp": 0.8,
+    "speed": 1.0,
+    "gap_ms": 190,
+    "comma_ms": 160,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "*Bus*.",
+   "visual": "SHOT 1: a yellow bus fills the frame, HONK, white flash; phone spins through the air",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Bus",
+     "beat": "bus"
+    }
+   ],
+   "captions": [
+    "Bus."
+   ]
+  },
+  {
+   "id": "reading",
+   "section": "twist",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Friday. | The church is *packed*. | The priest clears his throat. | \"Kevin's last search: | Why does my... | ...smell like popcorn?\"",
+   "visual": "SHOT 1: wide church, packed pews, the priest taps the mic / SHOT 2: ECU priest reading from the phone, speech bubble '#@%&!' on the bleep / SHOT 3: mourners' faces frozen, one drops popcorn",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "packed",
+     "beat": "packed"
+    },
+    {
+     "word": "throat",
+     "beat": "throat"
+    },
+    {
+     "word": "popcorn",
+     "beat": "pop"
+    }
+   ],
+   "captions": [
+    "Friday.",
+    "The church is packed.",
+    "The priest",
+    "clears his throat.",
+    "\"Kevin's last search:",
+    "Why does my...",
+    "...smell like popcorn?\""
+   ]
+  },
+  {
+   "id": "fallout",
+   "section": "twist",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 200,
+    "comma_ms": 170,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Mom faints. | The nuns *leave*. | Same day, | the bus driver's funeral. | His last search: | \"How to drive a *bus*.\"",
+   "visual": "SHOT 1: Kevin's mom faints backwards into the pew / SHOT 2: three nuns stand up in a row and walk out / SHOT 3: second funeral, bus driver's photo with a cap, priest reads, everyone slowly turns to stare",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "faints",
+     "beat": "faint"
+    },
+    {
+     "word": "nuns",
+     "beat": "nuns"
+    },
+    {
+     "word": "driver's",
+     "beat": "driver"
+    }
+   ],
+   "captions": [
+    "Mom faints.",
+    "The nuns leave.",
+    "Same day,",
+    "the bus driver's funeral.",
+    "His last search:",
+    "\"How to drive a bus.\""
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "ending",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 0.95,
+    "temp": 0.7,
+    "speed": 1.0,
+    "gap_ms": 260,
+    "comma_ms": 200,
+    "end_db": 8.0,
+    "gain_db": -1.5
+   },
+   "text": "So... | what was *your* last search? | Don't answer. | We'll *hear* it.",
+   "visual": "SHOT 1: the priest looks straight into the lens, slowly holds up the viewer's phone (blank glowing screen), eyebrow up",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire, schwarzer Humor): Stadt, Regel, Kevin, Oma, Onkel Rick, Bürgermeister, Pfarrer, Busfahrer sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "hear",
+     "beat": "hear"
+    }
+   ],
+   "captions": [
+    "So...",
+    "what was your last search?",
+    "Don't answer.",
+    "We'll hear it."
+   ]
+  }
+ ],
+ "note": "~165 Skriptwörter, 10 Szenen, Ziel 63–68 s inkl. End-Card.",
+ "soundBed": {
+  "why": "Kirchen-Raumklang leise, Basstreffer vor den Enthüllungen, Piep über dem Fluch.",
+  "room": {
+   "db": -42,
+   "rain_db": -60
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "funeral"
+   },
+   {
+    "scene": "bus",
+    "word": "Bus"
+   },
+   {
+    "scene": "reading",
+    "word": "popcorn"
+   },
+   {
+    "scene": "fallout",
+    "word": "bus"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -15
+  },
+  "tailMs": 2000,
+  "bleep": {
+   "scene": "reading",
+   "word": "my",
+   "offsetMs": 90,
+   "ms": 520,
+   "db": -17,
+   "hz": 1000
+  }
+ }
+}

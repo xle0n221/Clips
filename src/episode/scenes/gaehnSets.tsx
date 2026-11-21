@@ -222,12 +222,17 @@ export type PersonProps = Omit<FaceProps, "r"> & {
   readonly stache?: boolean;
   /** Kopf-Vergrößerung (Ghost-Pepper, Innenwelt-Stil „huge round heads“); Standard 1 = unverändert */
   readonly headS?: number;
+  /** Suche-Stadt (21.11.2026): Brille, Sonnenbrille, Priesterkragen, Nonnen-Schleier; Standard aus = altes Aussehen */
+  readonly glasses?: boolean;
+  readonly shades?: boolean;
+  readonly collar?: boolean;
+  readonly veil?: boolean;
   /** Hand der rechten Seite hält etwas (gezeichnet von der Szene) – liefert nichts extra */
 };
 
 /** Ursprung = Mitte zwischen den Füßen (stehend) bzw. Sitzfläche (sitzend). Höhe stehend ≈ 560 px bei s = 1. */
 export const Person: React.FC<PersonProps> = (p) => {
-  const { x, y, s = 1, shirt = P.red, pants = "#3B3F66", hair = "side", hairColor = "#4A2E1E", armL = 8, armR = 8, lean = 0, nod = 0, seated, cap, handMouth, mask = 0, headphones, flip, suit, cardigan, finger, bendL = 0, bendR = 0, gest = 0, chest, stache, headS = 1 } = p;
+  const { x, y, s = 1, shirt = P.red, pants = "#3B3F66", hair = "side", hairColor = "#4A2E1E", armL = 8, armR = 8, lean = 0, nod = 0, seated, cap, handMouth, mask = 0, headphones, flip, suit, cardigan, finger, bendL = 0, bendR = 0, gest = 0, chest, stache, headS = 1, glasses, shades, collar, veil } = p;
   const skin = p.skin ?? P.skin;
   const r = 105;
   // Leben (Audit 20.11.: Squash & Stretch): Atmen je Figur versetzt, Kopf streckt sich beim großen Gähnen/Schreien
@@ -289,8 +294,10 @@ export const Person: React.FC<PersonProps> = (p) => {
         </g>
       ) : null}
       {chest}
+      {collar ? <rect x={-22} y={bodyTop - 4} width={44} height={30} rx={6} fill="#FFFFFF" stroke={INK} strokeWidth={5} /> : null}
       {cap ? <circle cx={-48} cy={bodyTop + 60} r={14} fill={P.bus} stroke={INK} strokeWidth={4} /> : null}
       <g transform={`translate(0 ${headY + breath * 4}) rotate(${nod}) scale(${(1 - stretch * 0.4) * headS} ${(1 + stretch) * headS})`}>
+        {veil ? <path d={`M ${-r * 1.25} ${r * 1.5} Q ${-r * 1.35} ${-r * 1.3} 0 ${-r * 1.25} Q ${r * 1.35} ${-r * 1.3} ${r * 1.25} ${r * 1.5} Z`} fill={INK} /> : null}
         {hair === "bun" ? <circle cx={0} cy={-r * 1.02} r={r * 0.42} fill={hairColor} stroke={INK} strokeWidth={SW} /> : null}
         {hair === "pony" ? <ellipse cx={r * 0.95} cy={-r * 0.2} rx={r * 0.25} ry={r * 0.5} fill={hairColor} stroke={INK} strokeWidth={SW} /> : null}
         <circle cx={0} cy={0} r={r} fill={skin} stroke={INK} strokeWidth={SW} />
@@ -304,6 +311,20 @@ export const Person: React.FC<PersonProps> = (p) => {
         {hair === "baby" ? <path d={`M -10 ${-r} q 20 -40 30 -10`} fill="none" stroke={hairColor} strokeWidth={10} strokeLinecap="round" /> : null}
         <Face {...p} r={r} skin={skin} />
         {stache ? <path d={`M ${-r * 0.42} ${r * 0.4} Q ${-r * 0.2} ${r * 0.18} 0 ${r * 0.3} Q ${r * 0.2} ${r * 0.18} ${r * 0.42} ${r * 0.4} Q ${r * 0.2} ${r * 0.36} 0 ${r * 0.36} Q ${-r * 0.2} ${r * 0.36} ${-r * 0.42} ${r * 0.4} Z`} fill="#4A2E1E" stroke={INK} strokeWidth={5} strokeLinejoin="round" /> : null}
+        {veil ? <path d={`M ${-r * 0.98} ${-r * 0.2} Q 0 ${-r * 1.25} ${r * 0.98} ${-r * 0.2} Q ${r * 0.9} ${-r * 0.75} 0 ${-r * 0.85} Q ${-r * 0.9} ${-r * 0.75} ${-r * 0.98} ${-r * 0.2} Z`} fill="#FFFFFF" stroke={INK} strokeWidth={5} /> : null}
+        {glasses ? (
+          <g fill="none" stroke={INK} strokeWidth={SW * 0.9}>
+            <circle cx={-r * 0.36} cy={-r * 0.12} r={r * 0.32} />
+            <circle cx={r * 0.36} cy={-r * 0.12} r={r * 0.32} />
+            <path d={`M ${-r * 0.06} ${-r * 0.16} Q 0 ${-r * 0.24} ${r * 0.06} ${-r * 0.16}`} />
+          </g>
+        ) : null}
+        {shades ? (
+          <g>
+            <path d={`M ${-r * 0.75} ${-r * 0.3} L ${-r * 0.06} ${-r * 0.3} L ${-r * 0.12} ${r * 0.05} Q ${-r * 0.4} ${r * 0.18} ${-r * 0.7} ${r * 0.02} Z M ${r * 0.75} ${-r * 0.3} L ${r * 0.06} ${-r * 0.3} L ${r * 0.12} ${r * 0.05} Q ${r * 0.4} ${r * 0.18} ${r * 0.7} ${r * 0.02} Z`} fill={INK} stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+            <path d={`M ${-r * 0.55} ${-r * 0.22} L ${-r * 0.35} ${-r * 0.22}`} stroke="#FFFFFF" strokeWidth={6} strokeLinecap="round" />
+          </g>
+        ) : null}
         {mask > 0 ? (
           <g transform={`translate(0 ${lerp(-r * 0.75, -r * 0.12, mask)})`}>
             <rect x={-r * 0.9} y={-r * 0.22} width={r * 1.8} height={r * 0.42} rx={r * 0.2} fill={P.pink} stroke={INK} strokeWidth={SW} />

@@ -18,6 +18,7 @@ import { TOR_CONFIG, TOR_SCENES } from "./tor";
 import { GAEHN_CONFIG, GAEHN_SCENES } from "./gaehn";
 import { LUEGEN_CONFIG, LUEGEN_SCENES } from "./luegen";
 import { GHOST_CONFIG, GHOST_SCENES } from "./ghost";
+import { SUCHE_CONFIG, SUCHE_SCENES } from "./suche";
 import { TODO_CONFIG, TODO_SCENES } from "./todo";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
@@ -58,6 +59,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "gaehn-stadt": GAEHN_SCENES,
   "luegen-stadt": LUEGEN_SCENES,
   "ghost-pepper": GHOST_SCENES,
+  "suche-stadt": SUCHE_SCENES,
   "todo-stadt": TODO_SCENES,
 };
 
@@ -121,6 +123,7 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "gaehn-stadt": GAEHN_CONFIG,
   "luegen-stadt": LUEGEN_CONFIG,
   "ghost-pepper": GHOST_CONFIG,
+  "suche-stadt": SUCHE_CONFIG,
   "todo-stadt": TODO_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

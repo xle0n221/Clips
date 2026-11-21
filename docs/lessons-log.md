@@ -91,6 +91,17 @@ Lessons:
 7. Proxy sperrt Primärquellen-Hosts (nobelprize.org) → per `update_environment` freigeben; eurekalert.org liefert trotz Freigabe 403 → Zahl weglassen statt Sekundärquelle.
 
 ## PREVIOUS VIDEO (fertig 21.11.2026, angefügt)
+Title: In This City, Your Last Search Is Read at Your Funeral (suche-stadt, Welt-Regel-Comedy mit schwarzem Humor, 2D)
+Length / cuts: 62,8 s inkl. End-Card, 27 Einstellungen (Ø 2,3 s), 15 Sets/Flächen; 158 W, 2,57 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 (docs/audit-suche-stadt.md)
+Stats: noch keine (Upload geplant 22.11.2026 Slot B)
+Lessons:
+1. Chatterbox spricht „my... ...smell“ ohne Pause → Piep-Platz und Kunstpausen nachträglich mit `scripts/insert_pauses.py <id> --at <ms>:<dauer>` (Gegenstück zu retime_pauses); danach Wort-Ende des Worts VOR der Pause von Hand zurücksetzen (sonst liegt der Piep auf dem Folgewort), Bett + `add_bleep.py` neu.
+2. Handy/Requisit in der Hand nie auf Kopfhöhe: im ersten Kontaktabzug verdeckte das Handy in 3 Einstellungen das Pfarrer-Gesicht → Requisit seitlich, Brust-/Schulterhöhe.
+3. Dauer jeder Einstellung nach der Vertonung gegen die 4-s-Regel prüfen (Endkontrolle fand 5 s + 4,5 s) – Makro-Einschub (Laptop-Verlauf mit Bildzeichen) ist ein billiger zusätzlicher Gag + Set.
+4. loudnorm (finalize.sh) hebt Spitzen nach einem vorgeschalteten Limiter wieder an (−0,6 dBFS) → Limiter 0,79 NACH finalize (4× überabgetastet): −14,2 LUFS / −1,8 dBFS.
+5. Suchfelder ohne Schrift (Kritzel + Bildzeichen) halten „eine Text-Ebene“ ein, obwohl das Thema Text ist; der Fluch als „#@%&!“-Blase ist der Gag selbst.
+6. Nebenfigur-Design gegen Verwechslung prüfen: grauer Dutt bei einer Trauernden wirkte wie die Oma im Sarg.
 Title: In This City, You Die When Your To-Do List Is Done (todo-stadt, In This City + schwarzer Humor, 2D)
 Length / cuts: 64,0 s inkl. End-Card 2 s, 27 Einstellungen + Schwarzbild (Ø 2,3 s), 17 Bildwelten; 168 W, 2,69 W/s
 Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-todo-stadt.md)
