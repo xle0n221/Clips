@@ -1,0 +1,32 @@
+{
+  "publish": {
+    "youtube": {
+      "title": "In This City, Your Last Search Is Read at Your Funeral",
+      "description": "An original animated dark comedy: in this city, when you die, your last search gets read out loud at your funeral. Kevin has searched nothing but hymns and broccoli for ten years. Tonight he finally types the one question he's been holding in. Pure fiction – the city, the rule and all characters are invented.",
+      "hashtags": ["#KnowToon", "#Animation", "#DarkHumor", "#InThisCity", "#SearchHistory"]
+    },
+    "tiktok": {
+      "caption": "In this city, your last search gets read at your funeral. Kevin was careful. For ten years. 💀 What's YOUR last search? (Don't answer.) (fiction)",
+      "hashtags": ["#KnowToon", "#Animation", "#DarkHumor", "#InThisCity", "#SearchHistory"]
+    },
+    "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „YOUR LAST SEARCH IS READ AT YOUR FUNERAL“, Pfarrer liest vom Handy über dem offenen Sarg, Trauergäste schreien.",
+    "note": "Reine Fiktion (episodes/suche-stadt.json, Feld sources): keine Realfakten, keine Quellen-URLs nötig. Keine Marken (kein Suchmaschinen-Name). Fluch nur als Piep + Zeichen-Blase. #DarkHumor/#SearchHistory als Themen-Tags [HYPOTHESE: Reichweite unbelegt]. Länge 62,8 s inkl. End-Card (Regel 61–70 s).",
+    "upload": {
+      "status": "plan",
+      "type": "Story (Welt-Regel-Comedy, schwarzer Humor)",
+      "lengthSec": 62.8,
+      "tiktok": {
+        "date": "22.11.2026", "timeDe": "22:00", "slot": "B",
+        "local": {"newYork": "16:00", "losAngeles": "13:00", "london": "21:00"},
+        "calc": "22:00 Berlin (UTC+1) = 21:00 UTC → New York UTC-5 = 16:00 · Los Angeles UTC-8 = 13:00 · London UTC+0 = 21:00"
+      },
+      "youtube": {
+        "date": "22.11.2026", "timeDe": "23:00", "slot": "B",
+        "local": {"newYork": "17:00", "losAngeles": "14:00", "london": "22:00"},
+        "calc": "23:00 Berlin (UTC+1) = 22:00 UTC → New York UTC-5 = 17:00 · Los Angeles UTC-8 = 14:00 · London UTC+0 = 22:00"
+      },
+      "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+      "slotNote": "21.11. Slot A/B belegt; 22.11. Slot A = Video 1 vom 21.11. (andere Sitzung), Slot B = dieses Video (Video 2 vom 21.11., laut Orchestrator)."
+    }
+  }
+}

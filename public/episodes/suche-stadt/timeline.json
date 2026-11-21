@@ -1,0 +1,249 @@
+{
+ "id": "suche-stadt",
+ "title": "In This City, Your Last Search Is Read at Your Funeral",
+ "durationMs": 61426,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 3877
+  },
+  {
+   "id": "examples",
+   "startMs": 3877,
+   "endMs": 14311
+  },
+  {
+   "id": "kevin",
+   "startMs": 14311,
+   "endMs": 22805
+  },
+  {
+   "id": "incognito",
+   "startMs": 22805,
+   "endMs": 26754
+  },
+  {
+   "id": "stakes",
+   "startMs": 26754,
+   "endMs": 34095
+  },
+  {
+   "id": "search",
+   "startMs": 34095,
+   "endMs": 40358
+  },
+  {
+   "id": "bus",
+   "startMs": 40358,
+   "endMs": 42059
+  },
+  {
+   "id": "reading",
+   "startMs": 42059,
+   "endMs": 49409
+  },
+  {
+   "id": "fallout",
+   "startMs": 49409,
+   "endMs": 56669
+  },
+  {
+   "id": "outro",
+   "startMs": 56669,
+   "endMs": 60826
+  }
+ ],
+ "cues": [
+  {
+   "beat": "gasp",
+   "scene": "hook",
+   "atMs": 3120
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3120
+  },
+  {
+   "beat": "chicken",
+   "scene": "examples",
+   "atMs": 5620
+  },
+  {
+   "beat": "rick",
+   "scene": "examples",
+   "atMs": 7520
+  },
+  {
+   "beat": "mayor",
+   "scene": "examples",
+   "atMs": 10520
+  },
+  {
+   "emph": true,
+   "scene": "examples",
+   "atMs": 9040
+  },
+  {
+   "emph": true,
+   "scene": "examples",
+   "atMs": 13460
+  },
+  {
+   "beat": "kevin",
+   "scene": "kevin",
+   "atMs": 15080
+  },
+  {
+   "beat": "hymn",
+   "scene": "kevin",
+   "atMs": 19580
+  },
+  {
+   "beat": "broc",
+   "scene": "kevin",
+   "atMs": 21540
+  },
+  {
+   "emph": true,
+   "scene": "kevin",
+   "atMs": 16240
+  },
+  {
+   "beat": "whisper",
+   "scene": "incognito",
+   "atMs": 25800
+  },
+  {
+   "emph": true,
+   "scene": "incognito",
+   "atMs": 25800
+  },
+  {
+   "beat": "q",
+   "scene": "stakes",
+   "atMs": 28180
+  },
+  {
+   "beat": "type",
+   "scene": "stakes",
+   "atMs": 30800
+  },
+  {
+   "beat": "urn",
+   "scene": "stakes",
+   "atMs": 32980
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 29880
+  },
+  {
+   "emph": true,
+   "scene": "stakes",
+   "atMs": 33260
+  },
+  {
+   "beat": "tue",
+   "scene": "search",
+   "atMs": 36200
+  },
+  {
+   "beat": "hit",
+   "scene": "search",
+   "atMs": 37200
+  },
+  {
+   "beat": "walk",
+   "scene": "search",
+   "atMs": 37960
+  },
+  {
+   "emph": true,
+   "scene": "search",
+   "atMs": 36200
+  },
+  {
+   "beat": "bus",
+   "scene": "bus",
+   "atMs": 40830
+  },
+  {
+   "emph": true,
+   "scene": "bus",
+   "atMs": 40830
+  },
+  {
+   "beat": "packed",
+   "scene": "reading",
+   "atMs": 43370
+  },
+  {
+   "beat": "throat",
+   "scene": "reading",
+   "atMs": 44910
+  },
+  {
+   "beat": "pop",
+   "scene": "reading",
+   "atMs": 48530
+  },
+  {
+   "emph": true,
+   "scene": "reading",
+   "atMs": 43370
+  },
+  {
+   "beat": "faint",
+   "scene": "fallout",
+   "atMs": 49790
+  },
+  {
+   "beat": "nuns",
+   "scene": "fallout",
+   "atMs": 50710
+  },
+  {
+   "beat": "driver",
+   "scene": "fallout",
+   "atMs": 53150
+  },
+  {
+   "emph": true,
+   "scene": "fallout",
+   "atMs": 50970
+  },
+  {
+   "emph": true,
+   "scene": "fallout",
+   "atMs": 55970
+  },
+  {
+   "beat": "hear",
+   "scene": "outro",
+   "atMs": 60090
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 57750
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 60090
+  }
+ ],
+ "cover": {
+  "text": "YOUR LAST SEARCH IS READ AT YOUR FUNERAL",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow for the next strange city.",
+  "seconds": 2
+ }
+}
