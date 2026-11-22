@@ -235,6 +235,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, Your Last Search Is Read at Your Funeral“ (KnowToon, schwarzer Humor): 2D (scenes/suche.tsx) */}
+      <Composition
+        id="SucheStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "suche-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „What a Ghost Pepper Does Inside Your Body“ (KnowToon, Innenwelt-Cartoon 30 s): 2D (scenes/ghost.tsx) */}
       <Composition
         id="GhostPepper"
@@ -245,6 +258,19 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={EPISODE_FPS * 30}
         schema={episodeSchema}
         defaultProps={{ episode: "ghost-pepper" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, You Die When Your To-Do List Is Done“ (KnowToon, schwarzer Humor): 2D (scenes/todo.tsx) */}
+      <Composition
+        id="TodoStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "todo-stadt" }}
         calculateMetadata={calculateEpisodeMetadata}
       />
 

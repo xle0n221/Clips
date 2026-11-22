@@ -1,0 +1,324 @@
+{
+ "id": "todo-stadt",
+ "title": "In This City, You Die When Your To-Do List Is Done",
+ "durationMs": 62507,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 5571
+  },
+  {
+   "id": "rules",
+   "startMs": 5571,
+   "endMs": 14776
+  },
+  {
+   "id": "death",
+   "startMs": 14776,
+   "endMs": 20030
+  },
+  {
+   "id": "dennis",
+   "startMs": 20030,
+   "endMs": 26561
+  },
+  {
+   "id": "rush",
+   "startMs": 26561,
+   "endMs": 36194
+  },
+  {
+   "id": "panic",
+   "startMs": 36194,
+   "endMs": 44153
+  },
+  {
+   "id": "turn",
+   "startMs": 44153,
+   "endMs": 48423
+  },
+  {
+   "id": "payoff",
+   "startMs": 48423,
+   "endMs": 56623
+  },
+  {
+   "id": "outro",
+   "startMs": 56623,
+   "endMs": 61907
+  }
+ ],
+ "cues": [
+  {
+   "beat": "reaper",
+   "scene": "hook",
+   "atMs": 1460
+  },
+  {
+   "beat": "scribble",
+   "scene": "hook",
+   "atMs": 2940
+  },
+  {
+   "beat": "street",
+   "scene": "hook",
+   "atMs": 3700
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 2940
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4740
+  },
+  {
+   "beat": "road",
+   "scene": "rules",
+   "atMs": 5780
+  },
+  {
+   "beat": "edna",
+   "scene": "rules",
+   "atMs": 8180
+  },
+  {
+   "beat": "wink",
+   "scene": "rules",
+   "atMs": 11540
+  },
+  {
+   "beat": "coach",
+   "scene": "rules",
+   "atMs": 12420
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 10740
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 11540
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 14020
+  },
+  {
+   "beat": "cross",
+   "scene": "death",
+   "atMs": 17460
+  },
+  {
+   "beat": "pull",
+   "scene": "death",
+   "atMs": 19380
+  },
+  {
+   "emph": true,
+   "scene": "death",
+   "atMs": 15740
+  },
+  {
+   "emph": true,
+   "scene": "death",
+   "atMs": 19380
+  },
+  {
+   "beat": "hug",
+   "scene": "dennis",
+   "atMs": 21360
+  },
+  {
+   "beat": "ecu",
+   "scene": "dennis",
+   "atMs": 23000
+  },
+  {
+   "beat": "vows",
+   "scene": "dennis",
+   "atMs": 24580
+  },
+  {
+   "emph": true,
+   "scene": "dennis",
+   "atMs": 21360
+  },
+  {
+   "emph": true,
+   "scene": "dennis",
+   "atMs": 23840
+  },
+  {
+   "emph": true,
+   "scene": "dennis",
+   "atMs": 25480
+  },
+  {
+   "emph": true,
+   "scene": "dennis",
+   "atMs": 25740
+  },
+  {
+   "beat": "dishes",
+   "scene": "rush",
+   "atMs": 28760
+  },
+  {
+   "beat": "gym",
+   "scene": "rush",
+   "atMs": 30680
+  },
+  {
+   "beat": "inbox",
+   "scene": "rush",
+   "atMs": 31960
+  },
+  {
+   "beat": "park",
+   "scene": "rush",
+   "atMs": 33600
+  },
+  {
+   "emph": true,
+   "scene": "rush",
+   "atMs": 28160
+  },
+  {
+   "emph": true,
+   "scene": "rush",
+   "atMs": 32480
+  },
+  {
+   "emph": true,
+   "scene": "rush",
+   "atMs": 35280
+  },
+  {
+   "beat": "laundry",
+   "scene": "panic",
+   "atMs": 38340
+  },
+  {
+   "beat": "mom",
+   "scene": "panic",
+   "atMs": 39600
+  },
+  {
+   "beat": "fix",
+   "scene": "panic",
+   "atMs": 41160
+  },
+  {
+   "emph": true,
+   "scene": "panic",
+   "atMs": 36620
+  },
+  {
+   "emph": true,
+   "scene": "panic",
+   "atMs": 40440
+  },
+  {
+   "emph": true,
+   "scene": "panic",
+   "atMs": 42040
+  },
+  {
+   "emph": true,
+   "scene": "panic",
+   "atMs": 43020
+  },
+  {
+   "beat": "door",
+   "scene": "turn",
+   "atMs": 45500
+  },
+  {
+   "beat": "read",
+   "scene": "turn",
+   "atMs": 46460
+  },
+  {
+   "beat": "relax",
+   "scene": "turn",
+   "atMs": 47700
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 45500
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 45740
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 47700
+  },
+  {
+   "beat": "old",
+   "scene": "payoff",
+   "atMs": 50140
+  },
+  {
+   "beat": "zen",
+   "scene": "payoff",
+   "atMs": 52140
+  },
+  {
+   "beat": "couch",
+   "scene": "payoff",
+   "atMs": 54440
+  },
+  {
+   "emph": true,
+   "scene": "payoff",
+   "atMs": 50560
+  },
+  {
+   "emph": true,
+   "scene": "payoff",
+   "atMs": 53400
+  },
+  {
+   "emph": true,
+   "scene": "payoff",
+   "atMs": 55900
+  },
+  {
+   "beat": "hand",
+   "scene": "outro",
+   "atMs": 59140
+  },
+  {
+   "beat": "cut",
+   "scene": "outro",
+   "atMs": 61260
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 61260
+  }
+ ],
+ "cover": {
+  "text": "FINISH YOUR LIST = YOU DIE",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow before your list is done.",
+  "seconds": 2
+ }
+}
