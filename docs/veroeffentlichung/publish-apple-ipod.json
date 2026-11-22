@@ -1,0 +1,26 @@
+{
+ "publish": {
+  "note": "Wahre Geschichte (episodes/apple-ipod.json, Quellen docs/quellen-apple-ipod.md: Apple 10-K FY1997/1998/2002/2006, Microsoft-PM 6.8.1997, Slashdot 23.10.2001). Keine Logos/Produktbilder, keine Slogans. Flüche nur teilweise gepiept (Anlaut hörbar, Nutzer 22.11.), Untertitel 'f***' / 'a**'. Hashtag-Reichweite [HYPOTHESE: unbelegt] – vor dem Posten gegenprüfen.",
+  "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover: „APPLE ALMOST DIED. WHO SAVED IT?“, Computer-Patient im Krankenbett, EKG fällt, Geld fliegt.",
+  "tiktok": {
+   "caption": "Apple lost $1 billion in 1997 and its WORST ENEMY paid the rent 💀 The iPod came 4 years later. (true story)",
+   "hashtags": ["#KnowToon", "#Apple", "#TechHistory", "#iPod", "#Animation"]
+  },
+  "youtube": {
+   "title": "Apple Was Almost Dead. Its Enemy Paid the Rent. 💀",
+   "description": "Animated true story: in 1997 Apple lost over a billion dollars. Microsoft invested $150 million, the iMac (1998) got Apple back to profit, and by 2006 the iPod brought in more money than every Mac combined. Sources: Apple 10-K filings (SEC EDGAR, FY1997/1998/2002/2006), Microsoft press release Aug 6 1997, Slashdot Oct 23 2001. Not affiliated with Apple or Microsoft. #shorts",
+   "hashtags": ["#KnowToon", "#Apple", "#TechHistory", "#iPod", "#Animation"]
+  },
+  "upload": {
+   "status": "plan",
+   "type": "Story (wahre Geschichte, Roast-Humor)",
+   "lengthSec": 0,
+   "slotNote": "24.11. Slot A (Nutzerauftrag 22.11.).",
+   "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+   "tiktok": {"date": "24.11.2026", "slot": "A", "timeDe": "17:00", "calc": "17:00 Berlin (UTC+1) = 16:00 UTC → New York UTC-5 = 11:00 · Los Angeles UTC-8 = 08:00 · London UTC+0 = 16:00", "local": {"newYork": "11:00", "losAngeles": "08:00", "london": "16:00"}},
+   "youtube": {"date": "24.11.2026", "slot": "A", "timeDe": "18:00", "calc": "18:00 Berlin (UTC+1) = 17:00 UTC → New York UTC-5 = 12:00 · Los Angeles UTC-8 = 09:00 · London UTC+0 = 17:00", "local": {"newYork": "12:00", "losAngeles": "09:00", "london": "17:00"}}
+  }
+ },
+ "title": "Apple Was Almost Dead. Its Enemy Paid the Rent.",
+ "id": "apple-ipod"
+}

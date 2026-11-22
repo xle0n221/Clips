@@ -274,6 +274,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „Apple Was Almost Dead. Its Enemy Paid the Rent.“ (KnowToon, wahre Geschichte, Roast-Humor): 2D (scenes/apple.tsx) */}
+      <Composition
+        id="AppleIpod"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "apple-ipod" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „In This City, Every Time You Swear, Your Mom Appears“ (KnowToon, schwarzer Humor): 2D (scenes/fluch.tsx) */}
       <Composition
         id="FluchStadt"
