@@ -1,0 +1,199 @@
+{
+ "id": "apple-ipod",
+ "title": "Apple Was Almost Dead. Its Enemy Paid the Rent.",
+ "durationMs": 66090,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 6680
+  },
+  {
+   "id": "question",
+   "startMs": 6680,
+   "endMs": 11050
+  },
+  {
+   "id": "patient",
+   "startMs": 11050,
+   "endMs": 15220
+  },
+  {
+   "id": "jobs",
+   "startMs": 15220,
+   "endMs": 20570
+  },
+  {
+   "id": "cuts",
+   "startMs": 20570,
+   "endMs": 25070
+  },
+  {
+   "id": "enemy",
+   "startMs": 25070,
+   "endMs": 33810
+  },
+  {
+   "id": "imac",
+   "startMs": 33810,
+   "endMs": 40260
+  },
+  {
+   "id": "ipod",
+   "startMs": 40260,
+   "endMs": 48980
+  },
+  {
+   "id": "rich",
+   "startMs": 48980,
+   "endMs": 55180
+  },
+  {
+   "id": "outro",
+   "startMs": 55180,
+   "endMs": 65110
+  }
+ ],
+ "cues": [
+  {
+   "beat": "cooked",
+   "scene": "hook",
+   "atMs": 5560
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 5840
+  },
+  {
+   "beat": "push",
+   "scene": "question",
+   "atMs": 7900
+  },
+  {
+   "beat": "enemy",
+   "scene": "question",
+   "atMs": 9220
+  },
+  {
+   "emph": true,
+   "scene": "question",
+   "atMs": 9760
+  },
+  {
+   "beat": "xray",
+   "scene": "patient",
+   "atMs": 12910
+  },
+  {
+   "beat": "blush",
+   "scene": "patient",
+   "atMs": 14090
+  },
+  {
+   "emph": true,
+   "scene": "patient",
+   "atMs": 14330
+  },
+  {
+   "beat": "door",
+   "scene": "jobs",
+   "atMs": 17080
+  },
+  {
+   "emph": true,
+   "scene": "jobs",
+   "atMs": 19750
+  },
+  {
+   "beat": "grave",
+   "scene": "cuts",
+   "atMs": 23590
+  },
+  {
+   "emph": true,
+   "scene": "cuts",
+   "atMs": 24170
+  },
+  {
+   "beat": "bully",
+   "scene": "enemy",
+   "atMs": 29950
+  },
+  {
+   "beat": "shame",
+   "scene": "enemy",
+   "atMs": 31880
+  },
+  {
+   "emph": true,
+   "scene": "enemy",
+   "atMs": 32900
+  },
+  {
+   "beat": "lick",
+   "scene": "imac",
+   "atMs": 37110
+  },
+  {
+   "beat": "ekg",
+   "scene": "imac",
+   "atMs": 38870
+  },
+  {
+   "emph": true,
+   "scene": "imac",
+   "atMs": 37690
+  },
+  {
+   "beat": "nerd",
+   "scene": "ipod",
+   "atMs": 43210
+  },
+  {
+   "emph": true,
+   "scene": "ipod",
+   "atMs": 48150
+  },
+  {
+   "beat": "jaw",
+   "scene": "rich",
+   "atMs": 53360
+  },
+  {
+   "emph": true,
+   "scene": "rich",
+   "atMs": 54200
+  },
+  {
+   "beat": "gold",
+   "scene": "outro",
+   "atMs": 55270
+  },
+  {
+   "beat": "phone",
+   "scene": "outro",
+   "atMs": 62880
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 61890
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 64500
+  }
+ ],
+ "cover": {
+  "text": "APPLE ALMOST DIED. WHO SAVED IT?",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. It's cheaper than a bailout.",
+  "seconds": 2
+ }
+}
