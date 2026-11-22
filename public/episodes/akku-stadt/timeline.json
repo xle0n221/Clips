@@ -1,0 +1,384 @@
+{
+ "id": "akku-stadt",
+ "title": "In This City, When Your Phone Dies, You Die",
+ "durationMs": 66269,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 3250
+  },
+  {
+   "id": "rules",
+   "startMs": 3250,
+   "endMs": 12190
+  },
+  {
+   "id": "gary",
+   "startMs": 12190,
+   "endMs": 18110
+  },
+  {
+   "id": "lowpower",
+   "startMs": 18110,
+   "endMs": 24200
+  },
+  {
+   "id": "chat",
+   "startMs": 24200,
+   "endMs": 32129
+  },
+  {
+   "id": "stranger",
+   "startMs": 32129,
+   "endMs": 40239
+  },
+  {
+   "id": "sprint",
+   "startMs": 40239,
+   "endMs": 46449
+  },
+  {
+   "id": "home",
+   "startMs": 46449,
+   "endMs": 51059
+  },
+  {
+   "id": "turn",
+   "startMs": 51059,
+   "endMs": 56719
+  },
+  {
+   "id": "funeral",
+   "startMs": 56719,
+   "endMs": 62309
+  },
+  {
+   "id": "outro",
+   "startMs": 62309,
+   "endMs": 65669
+  }
+ ],
+ "cues": [
+  {
+   "beat": "phoneBlink",
+   "scene": "hook",
+   "atMs": 1300
+  },
+  {
+   "beat": "flop",
+   "scene": "hook",
+   "atMs": 1870
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1670
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 1870
+  },
+  {
+   "beat": "goodbye",
+   "scene": "rules",
+   "atMs": 6330
+  },
+  {
+   "beat": "hospital",
+   "scene": "rules",
+   "atMs": 7260
+  },
+  {
+   "beat": "oldMan",
+   "scene": "rules",
+   "atMs": 9130
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 4980
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 6330
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 8010
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 8240
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 10960
+  },
+  {
+   "beat": "nine",
+   "scene": "gary",
+   "atMs": 14120
+  },
+  {
+   "beat": "map",
+   "scene": "gary",
+   "atMs": 15080
+  },
+  {
+   "emph": true,
+   "scene": "gary",
+   "atMs": 14120
+  },
+  {
+   "emph": true,
+   "scene": "gary",
+   "atMs": 17360
+  },
+  {
+   "beat": "dim",
+   "scene": "lowpower",
+   "atMs": 20390
+  },
+  {
+   "beat": "snail",
+   "scene": "lowpower",
+   "atMs": 22100
+  },
+  {
+   "beat": "eyes",
+   "scene": "lowpower",
+   "atMs": 23070
+  },
+  {
+   "emph": true,
+   "scene": "lowpower",
+   "atMs": 18600
+  },
+  {
+   "emph": true,
+   "scene": "lowpower",
+   "atMs": 19140
+  },
+  {
+   "emph": true,
+   "scene": "lowpower",
+   "atMs": 19480
+  },
+  {
+   "emph": true,
+   "scene": "lowpower",
+   "atMs": 22100
+  },
+  {
+   "emph": true,
+   "scene": "lowpower",
+   "atMs": 23070
+  },
+  {
+   "beat": "buzz",
+   "scene": "chat",
+   "atMs": 24660
+  },
+  {
+   "beat": "thumb",
+   "scene": "chat",
+   "atMs": 27480
+  },
+  {
+   "beat": "drain",
+   "scene": "chat",
+   "atMs": 29470
+  },
+  {
+   "emph": true,
+   "scene": "chat",
+   "atMs": 26770
+  },
+  {
+   "emph": true,
+   "scene": "chat",
+   "atMs": 28940
+  },
+  {
+   "beat": "stranger",
+   "scene": "stranger",
+   "atMs": 32870
+  },
+  {
+   "beat": "plug",
+   "scene": "stranger",
+   "atMs": 34000
+  },
+  {
+   "beat": "laugh",
+   "scene": "stranger",
+   "atMs": 35830
+  },
+  {
+   "beat": "curse",
+   "scene": "stranger",
+   "atMs": 37700
+  },
+  {
+   "emph": true,
+   "scene": "stranger",
+   "atMs": 32870
+  },
+  {
+   "emph": true,
+   "scene": "stranger",
+   "atMs": 34000
+  },
+  {
+   "emph": true,
+   "scene": "stranger",
+   "atMs": 37050
+  },
+  {
+   "emph": true,
+   "scene": "stranger",
+   "atMs": 38460
+  },
+  {
+   "beat": "run",
+   "scene": "sprint",
+   "atMs": 41800
+  },
+  {
+   "beat": "gray",
+   "scene": "sprint",
+   "atMs": 42160
+  },
+  {
+   "beat": "momCall",
+   "scene": "sprint",
+   "atMs": 44230
+  },
+  {
+   "beat": "decline",
+   "scene": "sprint",
+   "atMs": 45370
+  },
+  {
+   "emph": true,
+   "scene": "sprint",
+   "atMs": 41800
+  },
+  {
+   "emph": true,
+   "scene": "sprint",
+   "atMs": 43390
+  },
+  {
+   "emph": true,
+   "scene": "sprint",
+   "atMs": 45370
+  },
+  {
+   "beat": "door",
+   "scene": "home",
+   "atMs": 47920
+  },
+  {
+   "beat": "outlet",
+   "scene": "home",
+   "atMs": 48830
+  },
+  {
+   "beat": "plug",
+   "scene": "home",
+   "atMs": 49800
+  },
+  {
+   "emph": true,
+   "scene": "home",
+   "atMs": 47920
+  },
+  {
+   "emph": true,
+   "scene": "home",
+   "atMs": 48830
+  },
+  {
+   "beat": "screen",
+   "scene": "turn",
+   "atMs": 51140
+  },
+  {
+   "beat": "freeze",
+   "scene": "turn",
+   "atMs": 53310
+  },
+  {
+   "beat": "flatline",
+   "scene": "turn",
+   "atMs": 55360
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 52770
+  },
+  {
+   "emph": true,
+   "scene": "turn",
+   "atMs": 55700
+  },
+  {
+   "beat": "grave",
+   "scene": "funeral",
+   "atMs": 56800
+  },
+  {
+   "beat": "chargers",
+   "scene": "funeral",
+   "atMs": 58180
+  },
+  {
+   "beat": "tomb",
+   "scene": "funeral",
+   "atMs": 60170
+  },
+  {
+   "emph": true,
+   "scene": "funeral",
+   "atMs": 57550
+  },
+  {
+   "emph": true,
+   "scene": "funeral",
+   "atMs": 59360
+  },
+  {
+   "emph": true,
+   "scene": "funeral",
+   "atMs": 60560
+  },
+  {
+   "beat": "pov",
+   "scene": "outro",
+   "atMs": 63470
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 64220
+  }
+ ],
+ "cover": {
+  "text": "PHONE DIES = YOU DIE",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow before your battery dies.",
+  "seconds": 2
+ }
+}

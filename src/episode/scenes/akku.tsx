@@ -491,15 +491,15 @@ export const KHook: React.FC = () => {
   // Steif, X-Augen, kippt wie ein Brett von der Bank; kleiner Geist mit totem Handy steigt auf
   const fall = ease(lf, 2, 12, "inOut");
   return (
-    <Shot cam={{ x: 540 + jolt(lf, 12, 16), y: 980, zoom: 1.15 }}>
+    <Shot cam={{ x: 540 + jolt(lf, 12, 16), y: 1180, zoom: 1.15 }}>
       <Layer depth={0.6}>
         <DuskStreet id="hook2" />
         <BusStop x={540} y={1450} />
       </Layer>
       <Layer>
-        <SuitMan x={lerp(520, 640, fall)} y={lerp(1250, 1450, fall)} s={1.05} seated={fall < 0.5} lean={lerp(0, 88, fall)} eyes="xx" brows="none" mouth="o" open={0.3} armL={8} armR={8} />
+        <SuitMan x={lerp(520, 300, fall)} y={lerp(1250, 1450, fall)} s={1.05} seated={fall < 0.5} lean={lerp(0, 88, fall)} eyes="xx" brows="none" mouth="o" open={0.3} armL={8} armR={8} />
         <Phone x={lerp(760, 300, fall)} y={lerp(760, 1420, fall)} s={0.5} r={lerp(-8, 70, fall)} kind="black" f={f} />
-        <Ghost x={620} y={lerp(1000, 520, ease(lf, 10, len))} s={0.9} f={lf} o={clamp01((lf - 9) / 5)} xx />
+        <Ghost x={560} y={lerp(1150, 650, ease(lf, 10, len))} s={0.9} f={lf} o={clamp01((lf - 9) / 5)} xx />
         <Burst x={700} y={1350} r0={140} r1={230} n={10} o={bump(lf, 12, 6)} />
       </Layer>
     </Shot>
@@ -529,13 +529,13 @@ export const KRules: React.FC = () => {
         </Layer>
         <Layer>
           {FAMILY.map((m, k) => (
-            <Person key={k} x={-40 + k * 260} y={1500} s={0.95} {...m} eyes="closed" brows="sad" mouth="frown" armL={k === 1 ? 150 : 20} bendL={-90} armR={20} nod={6} />
+            <Person key={k} x={70 + k * 170} y={1500} s={0.85} {...m} eyes="closed" brows="sad" mouth="frown" armL={k === 1 ? 150 : 20} bendL={-90} armR={20} nod={6} />
           ))}
-          <Bed x={760} y={1500} w={640} />
+          <Bed x={830} y={1500} w={600} />
           <Person x={620} y={1360} s={0.78} seated shirt={P.pink} hair="pony" hairColor="#6B3A1E" skin={P.skin} eyes={lf >= bye ? "half" : "open"} brows="sad" mouth={lf >= bye ? "talk" : "frown"} open={0.3} armR={lerp(40, 110, ease(lf, bye, bye + 8))} bendR={-60} nod={-8} />
           <Phone x={830} y={980} s={0.42} r={10} kind="battery" pct={2} f={f} />
           {[0, 1, 2].map((k) => (
-            <ellipse key={k} cx={-40 + k * 260 + 30} cy={1500 - 420 + ((lf * 6 + k * 30) % 120)} rx={10} ry={16} fill="#7FD6FF" stroke={INK} strokeWidth={3} />
+            <ellipse key={k} cx={70 + k * 170 + 28} cy={1500 - 380 + ((lf * 6 + k * 30) % 120)} rx={10} ry={16} fill="#7FD6FF" stroke={INK} strokeWidth={3} />
           ))}
         </Layer>
       </Shot>
@@ -544,7 +544,7 @@ export const KRules: React.FC = () => {
   if (i === 1) {
     // Krankenhaus: Patienten am Powerbank-Tropf, Schwester tauscht eine Powerbank
     return (
-      <Shot cam={camPath(lf, [[0, frameOn(540, 1150, 540, 860, 0.8)], [len, frameOn(640, 1150, 540, 860, 0.86)]])}>
+      <Shot cam={camPath(lf, [[0, frameOn(380, 1150, 540, 860, 1.1)], [len, frameOn(460, 1150, 540, 860, 1.18)]])}>
         <Layer depth={0.7}>
           <Room wall={A.mint} floor={1500} />
           <path d="M -400 300 L 1600 300" stroke="#FFFFFF" strokeWidth={30} />
@@ -776,11 +776,12 @@ export const KStranger: React.FC = () => {
           <BusStop x={640} y={1450} />
         </Layer>
         <Layer>
-          <circle cx={800} cy={760} r={320} fill={A.glow} opacity={0.45 + 0.1 * Math.sin(lf * 0.3)} />
+          <circle cx={800} cy={1000} r={420} fill={A.glow} opacity={0.22 + 0.08 * Math.sin(lf * 0.3)} />
+          <ellipse cx={800} cy={880} rx={120} ry={30} fill="none" stroke={A.yellow} strokeWidth={16} opacity={0.9} />
           <Stranger x={800} y={1460} s={1.0} eyes="open" mouth="smug" brows="up" armR={160} bendR={-20} armL={10} />
           <Shades x={800} y={1460} s={1.0} />
           <Plug x={1000} y={560} s={0.5} r={10} />
-          <Gary x={300} y={1460} s={1.0} grey={0.8} eyes="wide" look={[1, -0.5]} brows="up" mouth="o" open={0.5} armL={150} bendL={-30} armR={150} bendR={-30} />
+          <Gary x={420} y={1460} s={1.0} grey={0.8} eyes="wide" look={[1, -0.5]} brows="up" mouth="o" open={0.5} armL={150} bendL={-30} armR={150} bendR={-30} />
         </Layer>
       </Shot>
     );
@@ -819,7 +820,7 @@ export const KStranger: React.FC = () => {
             <rect x={6} y={-190} width={12} height={90} fill={A.red} transform="rotate(12)" />
           </g>
           <Battery x={720} y={520} s={0.8} lv={1} />
-          <Gary x={250} y={1500} s={0.9} grey={0.9} eyes="half" look={[1, -0.4]} brows="sad" mouth="frown" armL={10} armR={10} />
+          <Gary x={330} y={1500} s={0.9} grey={0.9} eyes="half" look={[1, -0.4]} brows="sad" mouth="frown" armL={10} armR={10} />
         </Layer>
       </Shot>
     );
@@ -1004,15 +1005,15 @@ export const KTurn: React.FC = () => {
   // Gary wird steif, X-Augen, kippt nach hinten; Flatline
   const fall = ease(lf, 2, 10, "inOut");
   return (
-    <Shot cam={{ x: 540 + jolt(lf, 10, 18), y: 1080, zoom: 1.0 }}>
+    <Shot cam={{ x: 540 + jolt(lf, 10, 18), y: 1280, zoom: 1.0 }}>
       <Layer depth={0.6}>
         <Room wall="#4A4C5A" floor={1500} />
       </Layer>
       <Layer>
         <Outlet x={900} y={1250} s={0.6} />
-        <Gary x={480} y={1500} s={1.0} lean={lerp(0, -88, fall)} grey={1} eyes="xx" brows="none" mouth="o" open={0.3} armL={8} armR={8} />
+        <Gary x={700} y={lerp(1500, 1600, fall)} s={1.0} lean={lerp(0, -88, fall)} grey={1} eyes="xx" brows="none" mouth="o" open={0.3} armL={8} armR={8} />
         <Phone x={760} y={1330} s={0.3} r={80} kind="update" f={f} t={lf} />
-        <Flatline t={lf - 10} y={520} />
+        <Flatline t={lf - 10} y={620} />
       </Layer>
     </Shot>
   );

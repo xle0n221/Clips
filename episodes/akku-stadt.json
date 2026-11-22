@@ -89,10 +89,54 @@
   "bleep": {
    "scene": "stranger",
    "word": "shit",
-   "offsetMs": -420,
-   "ms": 520,
-   "db": -17,
+   "offsetMs": -540,
+   "ms": 580,
+   "db": -16,
    "hz": 1000
+  },
+  "tick": {
+   "sound": "fit/tick/domino",
+   "tock": "knock/wood",
+   "db": -36,
+   "period": 1.0
+  },
+  "tickLouder": [
+   {
+    "scene": "sprint",
+    "db": 6
+   },
+   {
+    "scene": "home",
+    "db": 8
+   }
+  ],
+  "tickOff": [
+   {
+    "scene": "turn"
+   },
+   {
+    "scene": "funeral"
+   },
+   {
+    "scene": "outro"
+   }
+  ],
+  "twist": {
+   "scene": "turn",
+   "word": "update",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -16
+  },
+  "flatline": {
+   "scene": "turn",
+   "word": "off",
+   "offsetMs": 150,
+   "ms": 1700,
+   "db": -21,
+   "hz": 880
   }
  },
  "version": "v1 (22.11.2026, Video 1, Qualitäts-Reset-Regeln docs/audit-2026-11-20.md)",
