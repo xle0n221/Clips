@@ -62,7 +62,7 @@
  },
  "hookQuestion": {
   "text": "Who saved Apple – if not the iPod?",
-  "shownBy": "Bild 1: sterbender Computer-Patient + Minus-Zähler; Frage gesprochen in question (~6 s)",
+  "shownBy": "Bild 1: sterbender Computer-Patient + EKG fällt; Frage gesprochen in question (~6 s)",
   "answer": "Teilweise ab enemy (Microsoft-Geld), komplett erst im outro (iMac + Rivale + iPod)."
  },
  "finalImage": {
@@ -105,17 +105,17 @@
     "scene": "enemy",
     "word": "fuck",
     "at": "start",
-    "offsetMs": 110,
+    "offsetMs": 160,
     "kind": "mute",
-    "ms": 450
+    "ms": 300
    },
    {
     "scene": "enemy",
     "word": "fuck",
     "at": "start",
-    "offsetMs": 110,
+    "offsetMs": 160,
     "kind": "bleep",
-    "ms": 450,
+    "ms": 300,
     "db": -17,
     "hz": 1000
    },
@@ -125,7 +125,7 @@
     "at": "start",
     "offsetMs": 130,
     "kind": "mute",
-    "ms": 380
+    "ms": 340
    },
    {
     "scene": "rich",
@@ -133,7 +133,7 @@
     "at": "start",
     "offsetMs": 130,
     "kind": "bleep",
-    "ms": 380,
+    "ms": 340,
     "db": -17,
     "hz": 1000
    }
@@ -189,14 +189,14 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "And no, the iPod didn't save it. | Not at first. | Its worst *enemy* did.",
+   "text": "And no, the iPod didn't save it. | Its worst *enemy* did.",
    "visual": "SHOT 1: Musikplayer mit Gesicht kommt als Retter angeflogen, wird von einer Hand zurückgeschubst ('not at first') / SHOT 2 ('enemy'): Silhouette eines grinsenden grauen Computer-Turms mit Sonnenbrille im Gegenlicht",
    "sources": [
     "iPod erst Okt. 2001 – Apple 10-K FY2002; Microsoft-Investition Aug. 1997 – Microsoft-Pressemitteilung"
    ],
    "cues": [
     {
-     "word": "Not",
+     "word": "didn't",
      "beat": "push"
     },
     {
@@ -207,7 +207,6 @@
    "captions": [
     "And no,",
     "the iPod didn't save it.",
-    "Not at first.",
     "Its worst enemy did."
    ]
   },
@@ -225,7 +224,7 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "Picture Apple as a patient. | Beige, broke, and lowkey *embarrassing*.",
+   "text": "Picture Apple as a patient: beige, broke, lowkey *embarrassing*.",
    "visual": "SHOT 1: Patient im Bett, Ärztin hält Röntgenbild, auf dem nur Spinnweben und eine Motte sind / SHOT 2 ('embarrassing'): Comic-Fläche – Patient zieht die Bettdecke über den Bildschirm, rot vor Scham",
    "sources": [
     "Wertung/Roast (Meinung), keine Tatsachenbehauptung"
@@ -242,9 +241,9 @@
    ],
    "captions": [
     "Picture Apple",
-    "as a patient.",
-    "Beige, broke,",
-    "and lowkey embarrassing."
+    "as a patient:",
+    "beige, broke,",
+    "lowkey embarrassing."
    ]
   },
   {
@@ -261,27 +260,21 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "First, Apple bought NeXT, for 427 million. | Co-founder Steve Jobs came back as interim boss. | Interim. | Sure, *buddy*.",
+   "text": "Co-founder Steve Jobs came back as interim boss. | Interim. | Sure, *buddy*.",
    "visual": "SHOT 1: schwarzer Würfel mit Preisschild wird in die Klinik geschoben / SHOT 2 ('Jobs'): Würfel klappt auf, Mann mit schwarzem Pulli und runden Brillen steigt heraus wie aus einer Spielzeugbox / SHOT 3 ('Interim'): er klebt ein winziges Schild 'interim' an die Chefbüro-Tür, legt die Füße auf den Tisch; Erzähler: 'Sure, buddy' – Kamera-Zoom auf zufriedenes Gesicht",
    "sources": [
-    "NeXT-Kauf 4.2.1997, Gesamtpreis 427 Mio. $ – Apple 10-K FY1997",
-    "Jobs Mitgründer + interim CEO – 10-K FY1998; Ernennung 16.9.1997 – 10-K FY1997 (8-K-Hinweis)"
+    "Jobs Mitgründer + interim CEO – Apple 10-K FY1998; Ernennung 16.9.1997 – 10-K FY1997 (8-K-Hinweis)"
    ],
    "cues": [
-    {
-     "word": "Steve",
-     "beat": "box"
-    },
     {
      "word": "Interim",
      "beat": "door"
     }
    ],
    "captions": [
-    "First, Apple bought NeXT,",
-    "for 427 million.",
     "Co-founder Steve Jobs",
-    "came back as interim boss.",
+    "came back",
+    "as interim boss.",
     "Interim.",
     "Sure, buddy."
    ]
@@ -332,7 +325,7 @@
     "end_db": 8.0,
     "gain_db": -0.5
    },
-   "text": "August 1997. | Microsoft, the rival, put 150 million into Apple. | That's your bully paying your rent. | Humiliating as *fuck*.",
+   "text": "Then Microsoft, the rival, put 150 million into Apple. | That's your bully paying your rent. | Humiliating as *fuck*.",
    "visual": "SHOT 1: grauer Computer-Turm mit Sonnenbrille (Rivale) übergibt einen Riesen-Scheck an den Patienten / SHOT 2 ('bully'): Schulhof-Rückblende – Turm als Mobber hält den Patienten am Kragen hoch, legt ihm dann Miete-Geld in die Hand / SHOT 3 ('Humiliating'): Patient nimmt den Scheck mit zitternder Hand, Gesicht im Bildschirm glüht rot",
    "sources": [
     "Microsoft-Pressemitteilung 6.8.1997: 'Microsoft will invest $150 million in non-voting Apple stock.'"
@@ -348,8 +341,8 @@
     }
    ],
    "captions": [
-    "August 1997.",
-    "Microsoft, the rival,",
+    "Then Microsoft,",
+    "the rival,",
     "put 150 million",
     "into Apple.",
     "That's your bully",
@@ -371,10 +364,10 @@
     "end_db": 6.0,
     "gain_db": 0.0
    },
-   "text": "In 1998: the iMac. | It looked like candy. | Lowkey *lickable*. | Apple made 309 million in profit. | Bleeding *stopped*.",
+   "text": "Then came the iMac. | It looked like candy. | Lowkey *lickable*. | And Apple made a profit again.",
    "visual": "SHOT 1: bonbonfarbener, durchsichtiger Ei-Computer mit Gesicht rollt herein, Konfetti / SHOT 2 ('lickable'): Kind leckt am Gehäuse, Ärztin zieht es weg / SHOT 3 ('Apple made'): EKG des Patienten geht wieder hoch, Pflaster auf dem Bildschirm",
    "sources": [
-    "iMac angekündigt Mai 1998, eingeführt Aug. 1998; Nettogewinn FY1998 309 Mio. $ – Apple 10-K FY1998",
+    "iMac angekündigt Mai 1998, eingeführt Aug. 1998; Nettogewinn FY1998 309 Mio. $ nach 1.045 Mio. $ Verlust FY1997 – Apple 10-K FY1998",
     "'looked like candy/lickable' = Wertung/Witz"
    ],
    "cues": [
@@ -388,12 +381,11 @@
     }
    ],
    "captions": [
-    "In 1998: the iMac.",
+    "Then came the iMac.",
     "It looked like candy.",
     "Lowkey lickable.",
-    "Apple made 309 million",
-    "in profit.",
-    "Bleeding stopped."
+    "And Apple made",
+    "a profit again."
    ]
   },
   {
@@ -445,7 +437,7 @@
     "end_db": 8.0,
     "gain_db": -0.5
    },
-   "text": "By 2006, the iPod made more cash than every Mac combined. | Lame, my *ass*.",
+   "text": "By 2006, it made more cash than every Mac combined. | Lame, my *ass*.",
    "visual": "SHOT 1: Höhepunkt – Musikplayer sitzt auf Geldberg, Geldregen; daneben stapeln sich alle Computer kleinlaut / SHOT 2 ('Lame'): Nerd vom Slashdot-Shot klappt der Kiefer runter, Energy-Drink fällt",
    "sources": [
     "FY2006: iPod-Nettoumsatz 7.676 Mio. $ > Macintosh gesamt 7.375 Mio. $ (von 19.315 Mio. $) – Apple 10-K FY2006"
@@ -458,7 +450,7 @@
    ],
    "captions": [
     "By 2006,",
-    "the iPod made more cash",
+    "it made more cash",
     "than every Mac combined.",
     "Lame, my a**."
    ]
@@ -477,7 +469,7 @@
     "end_db": 8.0,
     "gain_db": -1.0
    },
-   "text": "Did the iPod save Apple? | Nah. | The iMac stopped the bleeding, the rival paid rent, | and the iPod made it *rich*. | And you can't even save 10 percent *battery*.",
+   "text": "The iPod save Apple? | Nah. | The iMac stopped the bleeding, the rival paid rent, the iPod made it *rich*. | You can't even save 10 percent *battery*.",
    "visual": "SHOT 1: Patient im Bett jetzt in Goldbett mit Sonnenbrille, iMac und Rivale als Pfleger, Musikplayer füttert Geld / SHOT 2 ('Meanwhile'): POV – Zuschauer-Handy mit 10 %-Akku, Akkustrich wird rot und fällt wie das EKG aus Bild 1 (Loop)",
    "sources": [
     "Zusammenfassung der belegten Schritte (s. oben)",
@@ -494,13 +486,13 @@
     }
    ],
    "captions": [
-    "Did the iPod",
+    "The iPod",
     "save Apple?",
     "Nah.",
     "The iMac stopped the bleeding,",
     "the rival paid rent,",
-    "and the iPod made it rich.",
-    "And you can't even",
+    "the iPod made it rich.",
+    "You can't even",
     "save 10 percent battery."
    ]
   }

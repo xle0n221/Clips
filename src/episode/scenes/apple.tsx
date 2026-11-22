@@ -502,9 +502,11 @@ const Cube: React.FC<{ readonly x: number; readonly y: number; readonly s?: numb
     <rect x={-200} y={-400} width={400} height={400} fill={C.cube} stroke={INK} strokeWidth={9} />
     <path d="M -200 -400 L -140 -460 L 260 -460 L 200 -400 Z" fill="#3A3A46" stroke={INK} strokeWidth={8} strokeLinejoin="round" opacity={1 - lid} />
     <path d="M 200 -400 L 260 -460 L 260 -60 L 200 0 Z" fill="#111116" stroke={INK} strokeWidth={8} strokeLinejoin="round" />
-    <g transform={`rotate(${-lid * 120} -200 -400)`}>
-      <rect x={-200} y={-420} width={400} height={20} fill="#3A3A46" stroke={INK} strokeWidth={7} />
-    </g>
+    {lid > 0 ? (
+      <g transform={`rotate(${-lid * 100} -200 -400)`}>
+        <rect x={-200} y={-420} width={400} height={20} fill="#3A3A46" stroke={INK} strokeWidth={7} />
+      </g>
+    ) : null}
     {tag ? (
       <g transform="rotate(-12 180 -320)">
         <path d="M 140 -350 L 300 -350 L 330 -310 L 300 -270 L 140 -270 Z" fill={C.gold} stroke={INK} strokeWidth={6} />
@@ -538,7 +540,7 @@ const Phone: React.FC<{ readonly pct: number; readonly t: number }> = ({ pct, t 
     const ph = (k + t * 0.8) % 14;
     const spike = ph < 1 ? -60 : ph < 2 ? 45 : 0;
     const drop = clamp01((t - 20) / 40) * (k / 40) * 260;
-    pts.push(`${px},${1260 + spike * (1 - clamp01((t - 20) / 40)) + drop}`);
+    pts.push(`${px},${980 + spike * (1 - clamp01((t - 20) / 40)) + drop}`);
   }
   return (
     <g>
@@ -570,13 +572,13 @@ const PatientBed: React.FC<{ readonly f: number; readonly face: FaceP; readonly 
   shades,
 }) => (
   <g>
+    {money ? <FlyingBills x={200} y={1250} t={f} n={12} /> : null}
     <Monitor x={890} y={760} t={f} level={level} s={0.8} gold={gold} />
     <Bed x={470} y={1480} s={0.95} gold={gold} cover={cover}>
       <g transform="translate(-60 -150)">
         <Patient x={0} y={0} s={0.95} legs={false} armL={level < 0.4 ? 150 : 40} armR={level < 0.4 ? 160 : 60} {...face} extra={shades ? <Shades y={-205} w={1.4} /> : timer >= 0 ? <PopTimer x={60} y={-340} up={timer} /> : null} />
       </g>
     </Bed>
-    {money ? <FlyingBills x={360} y={1160} t={f} n={12} /> : null}
   </g>
 );
 
@@ -589,7 +591,7 @@ export const AHook: React.FC = () => {
     // COVER + Bild 1: Patient stürzt ab, EKG fällt, Geld fliegt – in Bewegung ab Bild 0
     const lvl = lerp(1, 0.15, ease(lf, 0, Math.min(len, 50)));
     return (
-      <Shot cam={camPath(lf, [[0, frameOn(500, 1150, 540, 900, 1.12)], [len, frameOn(500, 1150, 540, 880, 1.28)]])}>
+      <Shot cam={camPath(lf, [[0, frameOn(560, 1100, 540, 900, 0.98)], [len, frameOn(520, 1120, 540, 880, 1.12)]])}>
         <Layer depth={0.6}>
           <Clinic f={lf} />
         </Layer>
@@ -636,7 +638,7 @@ export const AHook: React.FC = () => {
 
 export const AQuestion: React.FC = () => {
   const { f, d, W } = useBeats();
-  const not = W("Not", 0.4);
+  const not = W("didn't", 0.4) + 4;
   const its = W("Its", 0.7);
   const { i, lf, len } = useShot([its - 2], d, f);
   if (i === 0) {
@@ -724,7 +726,7 @@ export const APatient: React.FC = () => {
         <ReactBg a="#FF6FAE" b="#FF8FC7" f={lf} cy={900} />
       </Layer>
       <Layer>
-        <Bed x={470} y={1480} s={0.95} cover={hide * 0.9} blanket="#FFD34D">
+        <Bed x={470} y={1480} s={0.95} cover={hide * 0.5} blanket="#FFD34D">
           <g transform="translate(-60 -150)">
             <Patient x={0} y={0} s={0.95} legs={false} armL={170} armR={170} eyes="squint" brows="worried" mouth="frown" blush />
           </g>
@@ -741,26 +743,9 @@ export const APatient: React.FC = () => {
 
 export const AJobs: React.FC = () => {
   const { f, d, W } = useBeats();
-  const st = W("Steve", 0.4);
-  const it2 = W("Interim", 0.75, 2);
-  const { i, lf, len } = useShot([st - 2, it2 - 2], d, f);
+  const it2 = W("Interim", 0.6, 2);
+  const { i, lf, len } = useShot([it2 - 2], d, f);
   if (i === 0) {
-    // Schwarzer Würfel mit Preisschild wird in die Klinik geschoben
-    const slide = ease(lf, 0, 18);
-    return (
-      <Shot cam={camPath(lf, [[0, frameOn(540, 1150, 540, 960, 1.0)], [len, frameOn(540, 1150, 540, 960, 1.12)]])}>
-        <Layer depth={0.6}>
-          <Hallway />
-        </Layer>
-        <Layer>
-          <Cube x={lerp(-300, 470, slide)} y={1500} s={1.1} lid={0} />
-          <Patient x={900} y={1500} s={0.8} armL={60} armR={150} eyes="wide" brows="up" mouth="o" open={0.4} look={[-1, 0]} />
-          <Burst x={470} y={1050} r0={180} r1={260} n={12} o={bump(lf, 20, 8)} color={C.gold} />
-        </Layer>
-      </Shot>
-    );
-  }
-  if (i === 1) {
     // Deckel auf: Gründer springt heraus wie ein Spielzeug
     const up = clamp01((lf - 2) / 8);
     const boing = up * (1 + 0.15 * Math.sin(lf * 0.9) * Math.exp(-lf * 0.08));
@@ -854,9 +839,26 @@ export const ACuts: React.FC = () => {
 
 export const AEnemy: React.FC = () => {
   const { f, d, W } = useBeats();
+  const put = W("put", 0.25);
   const th = W("That's", 0.45);
   const hu = W("Humiliating", 0.8);
-  const { i, lf, len } = useShot([th - 2, hu - 2], d, f);
+  const { i: i0, lf, len } = useShot([put - 2, th - 2, hu - 2], d, f);
+  if (i0 === 0) {
+    // Auftritt: Rivale stolziert mit Sonnenbrille durch den Klinik-Flur
+    const walk = ease(lf, 0, len);
+    const step = Math.sin(lf * 0.5);
+    return (
+      <Shot cam={camPath(lf, [[0, frameOn(540, 1100, 540, 960, 1.0)], [len, frameOn(540, 1050, 540, 960, 1.15)]])}>
+        <Layer depth={0.6}>
+          <Hallway />
+        </Layer>
+        <Layer>
+          <Rival x={lerp(1100, 560, walk)} y={1500 - Math.abs(step) * 12} s={1.15} lean={step * 4} armL={30 + step * 20} armR={30 - step * 20} eyes="squint" brows="neutral" mouth="smug" />
+        </Layer>
+      </Shot>
+    );
+  }
+  const i = i0 - 1;
   if (i === 0) {
     // Rivale überreicht den Riesen-Scheck im Krankenzimmer
     const give = ease(lf, 10, 28);
@@ -974,8 +976,23 @@ export const AImac: React.FC = () => {
 export const AIpod: React.FC = () => {
   const { f, d, W } = useBeats();
   const one = W("One", 0.3);
+  const less = W("Less", 0.65);
   const lame = W("Lame", 0.85);
-  const { i, lf, len } = useShot([one - 2, lame - 3], d, f);
+  const { i: i0, lf, len } = useShot([one - 2, less - 2, lame - 3], d, f);
+  if (i0 === 2) {
+    // Nah: Nerd grinst überlegen ins Bildschirmlicht
+    return (
+      <Shot cam={camPath(lf, [[0, frameOn(330, 1040, 540, 900, 1.6)], [len, frameOn(330, 1040, 540, 900, 1.75)]])}>
+        <Layer depth={0.6}>
+          <NerdRoom f={lf} />
+        </Layer>
+        <Layer>
+          <Nerd x={330} y={1440} s={1.05} seated eyes="half" brows="angry" mouth="smug" armL={60} armR={70} bendR={-40} f={lf} look={[1, 0]} />
+        </Layer>
+      </Shot>
+    );
+  }
+  const i = i0 === 3 ? 2 : i0;
   if (i === 0) {
     // Musikplayer tanzt im Scheinwerfer
     const bob = Math.sin(lf * 0.45);
@@ -1037,8 +1054,26 @@ export const AIpod: React.FC = () => {
 
 export const ARich: React.FC = () => {
   const { f, d, W } = useBeats();
+  const than = W("than", 0.45);
   const lame = W("Lame", 0.75);
-  const { i, lf, len } = useShot([lame - 2], d, f);
+  const { i: i0, lf, len } = useShot([than - 2, lame - 2], d, f);
+  if (i0 === 1) {
+    // „…than every Mac combined“: alle Computer stehen beschämt in der Ecke
+    return (
+      <Shot cam={frameOn(540, 1150, 540, 960, 1.05)}>
+        <Layer depth={0.5}>
+          <ReactBg a="#3C6BE0" b="#4F7DF0" f={lf} />
+        </Layer>
+        <Layer>
+          <Device x={230} y={1480} s={0.75} shape={CRT} armL={10} armR={10} eyes="half" brows="sad" mouth="frown" />
+          <Device x={540} y={1480} s={0.75} shape={eggShape(C.egg)} armL={10} armR={10} eyes="squint" brows="sad" mouth="frown" />
+          <Device x={850} y={1480} s={0.75} shape={eggShape(P.orange)} armL={10} armR={10} eyes="half" brows="worried" mouth="frown" flip />
+          <Sweat x={680} y={980} s={1} />
+        </Layer>
+      </Shot>
+    );
+  }
+  const i = i0 === 2 ? 1 : 0;
   if (i === 0) {
     // Höhepunkt: Musikplayer thront auf dem Geldberg, Computer stehen kleinlaut daneben
     return (
@@ -1047,12 +1082,12 @@ export const ARich: React.FC = () => {
           <ReactBg a="#FFB800" b="#FFD34D" f={lf} cy={800} />
         </Layer>
         <Layer>
+          <MoneyRain t={lf} n={22} />
           <path d="M 80 1520 Q 300 1000 540 960 Q 780 1000 1000 1520 Z" fill={C.money} stroke={INK} strokeWidth={9} />
           {Array.from({ length: 14 }).map((_, k) => <Bill key={k} x={220 + (k % 7) * 105} y={1420 - Math.floor(k / 7) * 150 - Math.abs(3 - (k % 7)) * -30} r={(k * 37) % 40 - 20} s={1.4} />)}
-          <Pod x={540} y={990} s={1.05} armL={150} armR={170} eyes="half" brows="up" mouth="smug" shades extra={<Chain />} />
+          <Pod x={540} y={1000} s={1.35} armL={150} armR={170} eyes="half" brows="up" mouth="smug" shades extra={<g transform="translate(0 175) scale(0.8)"><Chain /></g>} />
           <Device x={120} y={1500} s={0.55} shape={CRT} armL={10} armR={10} eyes="half" brows="sad" mouth="frown" />
           <Device x={960} y={1500} s={0.5} shape={eggShape(C.egg)} armL={10} armR={10} eyes="half" brows="sad" mouth="frown" flip />
-          <MoneyRain t={lf} n={22} />
         </Layer>
       </Shot>
     );
@@ -1079,7 +1114,7 @@ export const ARich: React.FC = () => {
 export const AOutro: React.FC = () => {
   const { f, d, W } = useBeats();
   const im = W("iMac", 0.3);
-  const md = W("made", 0.55);
+  const md = W("made", 0.6);
   const ph = W("can't", 0.75);
   const { i, lf, len } = useShot([im - 2, md - 2, ph - 2], d, f);
   if (i === 0) {
@@ -1120,9 +1155,9 @@ export const AOutro: React.FC = () => {
           <Clinic f={lf} gold />
         </Layer>
         <Layer>
+          <MoneyRain t={lf} n={18} />
           <PatientBed f={lf} level={1} gold shades face={{ eyes: "half", brows: "up", mouth: "smug" }} />
           <Pod x={880} y={1500} s={0.8} armL={150} armR={30} eyes="open" brows="up" mouth="grin" />
-          <MoneyRain t={lf} n={18} />
         </Layer>
       </Shot>
     );
@@ -1176,7 +1211,7 @@ export const APPLE_CONFIG: EpisodeConfig = {
 };
 
 /** Einstellungen je Szene + Set-Folge (vor dem Render gezählt):
- * Klinik, Comic grün, Klinik | Bühne, Gegenlicht | Klinik, Comic pink | Flur, Flur, Büro | Büro, Friedhof |
- * Klinik, Schulhof, Comic rot | Showroom, Comic blau, Klinik | Bühne lila, Nerd-Zimmer, Tastatur-ECU |
- * Comic gold, Nerd-Zimmer | Bühne, Klinik, Gold-Klinik, POV  → nie > 2 gleiche am Stück, 16 Bildwelten. */
-export const APPLE_SHOT_COUNT: Record<string, number> = { hook: 3, question: 2, patient: 2, jobs: 3, cuts: 2, enemy: 3, imac: 3, ipod: 3, rich: 2, outro: 4 };
+ * Klinik, Comic grün, Klinik | Bühne, Gegenlicht | Klinik, Comic pink | Flur, Büro | Büro, Friedhof |
+ * Flur, Klinik, Schulhof, Comic rot | Showroom, Comic blau, Klinik | Bühne lila, Nerd-Zimmer, Nerd-Nah, Tastatur-ECU |
+ * Comic gold, Comic blau, Nerd-Zimmer | Bühne, Klinik, Gold-Klinik, POV  → nie > 2 gleiche am Stück, 18 Bildwelten. */
+export const APPLE_SHOT_COUNT: Record<string, number> = { hook: 3, question: 2, patient: 2, jobs: 2, cuts: 2, enemy: 4, imac: 3, ipod: 4, rich: 3, outro: 4 };

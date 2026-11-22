@@ -141,3 +141,17 @@ Lessons:
 5. Schätz-Zeitachse (0,30 s/Wort + Pausen) + stille WAV-Platzhalter erlauben den ersten Kontaktabzug, während Chatterbox noch installiert (frischer Container: PyTorch/CUDA-Download ~15 Min.) – fand 8 Bildfehler vor der Vertonung.
 6. Kissen/Requisit vor dem Mund: nur Mund/Kinn verdecken, sonst ist der Gag (Ader, Augen) weg.
 7. Mastering wie akku (EQ −3,5 dB @ 6 kHz, +0,7 dB, alimiter 0,6 `level=disabled`, 4× überabgetastet) → −14,6 LUFS / −3,8 dBFS.
+
+## PREVIOUS VIDEO (fertig 22.11.2026, angefügt)
+Title: Apple Was Almost Dead. Its Enemy Paid the Rent. (apple-ipod, wahre Geschichte + Roast/Slang, 2D)
+Length / cuts: 67,2 s inkl. End-Card 2 s, 29 Einstellungen (Ø 2,2 s, max 3,6 s), 18 Bildwelten; 145 W (156 gesprochen), 2,36 W/s gesprochen
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 · Fakten 9 (docs/audit-apple-ipod.md)
+Stats: noch keine (Upload geplant 24.11.2026 Slot A)
+Lessons:
+1. Zahlen/Jahre werden ausgesprochen länger („427 million“ = 5 Wörter, „1997“ = 3): 164 Skriptwörter ergaben 183 gesprochene Wörter und 80,7 s → für Fakten-Videos mit vielen Zahlen ≈ 145 Skriptwörter planen, Zahlen sparsam.
+2. `retime_pauses --cap 480` drückte die Satzpausen auf Median 310 ms (Regel ≥ 450) → Vertonung aus dem Cache neu bauen (0 neue Stücke, 1 Min.) und `--dry` mit mehreren Caps vergleichen; cap 650 ergab Median 455 ms bei 67,1 s.
+3. Teil-Piep (Nutzer 22.11.: Fluch erkennbar lassen): Fluchwort per Spektrum orten (f-Reibelaut 32,82–32,97 s, Vokal ab 32,99 s) und mute+bleep erst ab dem Vokal setzen (`offsetMs` 160 bei „fuck“, 130 bei „ass“) → Whisper hört im Endmix „f**k“/„a**“.
+4. Whisper-Volldurchlauf kann nach dem Kürzen einen ganzen Abschnitt überspringen (82 %) → Abschnitts-Transkription mit numpy-Eingabe statt Neuvertonung; Untertitel „Nah.“ lag 0,5 s daneben, ein 60-ms-Knackser (Rest an einer Schnittstelle) per 10-ms-Rampen stumm.
+5. Einstellungslängen VOR dem Render aus timeline + captions berechnen (Python, gleiche Wortanker wie W()) – fand 3 Einstellungen > 4 s; Render abgebrochen statt doppelt.
+6. Primärquellen-Hosts (sec.gov, news.microsoft.com, slashdot.org) per `update_environment` freigegeben; ein Antrag mit web.archive.org/cnet.com wurde komplett abgelehnt → Hosts einzeln/klein beantragen. Browser-UA-Fälschung gegen 403 ist gesperrt → Quelle weglassen.
+7. Geräte-Figuren (`Device`-Baustein in scenes/apple.tsx: Körper-Form + Bildschirm-Gesicht + Nudelarme) machen Marken-Themen ohne Logos/Produktbilder spielbar.
