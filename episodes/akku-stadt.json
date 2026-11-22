@@ -269,7 +269,7 @@
     "end_db": 6.0,
     "gain_db": 0.0
    },
-   "text": "Then, | the group chat. | Forty-seven *unread*. | Don't open it, Gary. | Gary *opens* it. | Four percent.",
+   "text": "Then, | the group chat. | Forty-seven *unread*. | Don't open it, Gary. | Gary *opens* it. | Four percent. | Worth it.",
    "visual": "SHOT 1 (ECU, phone): phone buzzes like crazy, a red badge, message bubbles pile up / SHOT 2 (close, Gary): Gary's thumb hovers, sweating, he presses / SHOT 3 (ECU phone): the battery bar drains like a sink, 4 %",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
@@ -294,7 +294,8 @@
     "Forty-seven unread.",
     "Don't open it, Gary.",
     "Gary opens it.",
-    "Four percent."
+    "Four percent.",
+    "Worth it."
    ]
   },
   {
@@ -311,7 +312,7 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "A stranger has a *charger*! | Wrong *cable*. | The stranger is at a hundred percent. | And *laughing*. | Gary says, \"Oh, *shit*.\"",
+   "text": "A stranger has a *charger*! | Wrong *cable*. | The stranger is at a hundred percent. | And *laughing*. | Gary says, \"Oh, | *shit*.\"",
    "visual": "SHOT 1 (medium, bus stop): a smug stranger in sunglasses holds up a cable, angelic glow / SHOT 2 (ECU): the plug does not fit Gary's phone – it bends / SHOT 3 (two-shot): the stranger, glowing at full charge, laughs and drinks a smoothie / SHOT 4 (close): Gary screams, mouth covered by a black censor bar + bleep",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
@@ -482,8 +483,8 @@
     "end_db": 8.0,
     "gain_db": -1.0
    },
-   "text": "The funeral was *lovely*. | Everyone brought a *charger*.",
-   "visual": "SHOT 1 (wide, cemetery, rain): mourners in black around a grave, each one holding a phone plugged into a power strip on the coffin / SHOT 2 (close): the tombstone has a battery icon with 0 %, a phone on top finishes '100 %' and the update is done",
+   "text": "The funeral was *lovely*. | Everyone brought a *charger*. | His phone? | A *hundred* percent.",
+   "visual": "SHOT 1 (wide, cemetery, rain): mourners in black around a grave, each holding a phone plugged into a power strip on the coffin / SHOT 2 (close): Gary's phone lies on the tombstone, glowing green, battery full, update finished",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
    ],
@@ -495,11 +496,17 @@
     {
      "word": "Everyone",
      "beat": "chargers"
+    },
+    {
+     "word": "phone",
+     "beat": "tomb"
     }
    ],
    "captions": [
     "The funeral was lovely.",
-    "Everyone brought a charger."
+    "Everyone brought a charger.",
+    "His phone?",
+    "A hundred percent."
    ]
   },
   {

@@ -20,6 +20,7 @@ import { LUEGEN_CONFIG, LUEGEN_SCENES } from "./luegen";
 import { GHOST_CONFIG, GHOST_SCENES } from "./ghost";
 import { SUCHE_CONFIG, SUCHE_SCENES } from "./suche";
 import { TODO_CONFIG, TODO_SCENES } from "./todo";
+import { AKKU_CONFIG, AKKU_SCENES } from "./akku";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -61,6 +62,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "ghost-pepper": GHOST_SCENES,
   "suche-stadt": SUCHE_SCENES,
   "todo-stadt": TODO_SCENES,
+  "akku-stadt": AKKU_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -125,5 +127,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "ghost-pepper": GHOST_CONFIG,
   "suche-stadt": SUCHE_CONFIG,
   "todo-stadt": TODO_CONFIG,
+  "akku-stadt": AKKU_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

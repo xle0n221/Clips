@@ -261,6 +261,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, When Your Phone Dies, You Die“ (KnowToon, schwarzer Humor): 2D (scenes/akku.tsx) */}
+      <Composition
+        id="AkkuStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "akku-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „In This City, You Die When Your To-Do List Is Done“ (KnowToon, schwarzer Humor): 2D (scenes/todo.tsx) */}
       <Composition
         id="TodoStadt"
