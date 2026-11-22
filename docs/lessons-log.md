@@ -114,3 +114,16 @@ Lessons:
 5. Figur „steigt hinter der Couch auf“: Figur VOR der Rückenlehne zeichnen und Startlage so wählen, dass Füße hinter der Sitzfront liegen (sonst sitzt sie im Cover sichtbar daneben).
 6. Abbruch-Pointe („Finish this sent—“): Chatterbox spricht „sent“ sauber, Whisper hört „sentence“ – als gewollte Abweichung dokumentieren; Bild 5 Frames nach dem Wort hart auf Schwarz, Untertitel bleibt stehen.
 7. Limiter: EQ −3,5 dB @ 6 kHz + volume +0,7 dB + `alimiter=limit=0.6` → −14,9 LUFS / −2,4 dBTP (0,66 ohne Gain gab −15,1 / −1,0).
+
+## PREVIOUS VIDEO (fertig 22.11.2026, angefügt)
+Title: In This City, When Your Phone Dies, You Die (akku-stadt, In This City + schwarzer Humor, 2D)
+Length / cuts: 67,8 s inkl. End-Card 2 s, 32 Einstellungen (Ø 2,05 s), > 15 Bildwelten; 155 W, 2,34 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-akku-stadt.md)
+Stats: noch keine (Upload geplant 23.11.2026 Slot A)
+Lessons:
+1. Tempo-Fix todo-stadt: `speed` 1,0 + `narrator.max_speed` 1,0 + `pauseMs` 330 + `sceneGapMs` 230 → 155 Wörter = 65,7 s Sprechzeit, 2,34 W/s (Band 2,3–2,6); für 61–70 s inkl. End-Card also ≈ 150–160 Wörter planen.
+2. Echter Zensur-Piep: Chatterbox spricht das Fluchwort, dann Stimme dort stummschalten (10-ms-Rampen) + Piep ins Bett. Whisper-Wortzeit lag 0,8 s zu früh (Pause vor dem Wort) → Wort per Spektrum finden (Zischlaut: > 60 % Energie über 3 kHz) und captions.json korrigieren.
+3. `alimiter` normalisiert standardmäßig hoch (level=enabled) → −10,6 LUFS / +1,5 dBTP; immer `level=disabled` setzen (dann −14,8 / −1,9).
+4. Gestürzte Figur (`lean ±88`) dreht um die Füße: Startpunkt so wählen, dass der Körper INS Bild kippt, und Kamera-y anheben, sonst liegt sie unter dem Untertitel.
+5. Kontaktabzug direkt nach der Vertonung (33 Bilder, 41 s) + 7 gezielte `--at`-Nachprüfungen fanden alle Bildfehler vor dem einzigen Render.
+6. Satzpausen-Regel (450–800 ms) kollidiert mit 61–70 s bei ~155 Wörtern: Median 305 ms – entweder weniger Wörter (~140) oder bewusst benennen.
