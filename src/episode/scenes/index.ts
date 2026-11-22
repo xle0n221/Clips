@@ -21,6 +21,7 @@ import { GHOST_CONFIG, GHOST_SCENES } from "./ghost";
 import { SUCHE_CONFIG, SUCHE_SCENES } from "./suche";
 import { TODO_CONFIG, TODO_SCENES } from "./todo";
 import { AKKU_CONFIG, AKKU_SCENES } from "./akku";
+import { FLUCH_CONFIG, FLUCH_SCENES } from "./fluch";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -63,6 +64,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "suche-stadt": SUCHE_SCENES,
   "todo-stadt": TODO_SCENES,
   "akku-stadt": AKKU_SCENES,
+  "fluch-stadt": FLUCH_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -128,5 +130,6 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "suche-stadt": SUCHE_CONFIG,
   "todo-stadt": TODO_CONFIG,
   "akku-stadt": AKKU_CONFIG,
+  "fluch-stadt": FLUCH_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

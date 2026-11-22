@@ -50,8 +50,8 @@ const C = {
 
 type Fig = Omit<PersonProps, "shirt" | "hair" | "hairColor">;
 const Kevin: React.FC<Fig> = (p) => <Person pants="#2B3A67" {...p} shirt={C.kevin} hair="side" hairColor="#6B3A1E" skin={P.skin} glasses />;
-const Priest: React.FC<Fig> = (p) => <Person pants={C.priest} {...p} shirt={C.priest} hair="none" hairColor="#000" skin="#F2C7A5" collar />;
-const Mom: React.FC<Fig> = (p) => <Person pants={C.mom} {...p} shirt={C.mom} hair="curly" hairColor="#F2C14E" skin={P.skin} />;
+export const Priest: React.FC<Fig> = (p) => <Person pants={C.priest} {...p} shirt={C.priest} hair="none" hairColor="#000" skin="#F2C7A5" collar />;
+export const Mom: React.FC<Fig> = (p) => <Person pants={C.mom} {...p} shirt={C.mom} hair="curly" hairColor="#F2C14E" skin={P.skin} />;
 const Nun: React.FC<Fig> = (p) => <Person pants={INK} {...p} shirt={INK} hair="none" hairColor="#000" skin={p.skin ?? P.skin} veil />;
 const Check: React.FC = () => (
   <g>
@@ -70,7 +70,7 @@ const Rick: React.FC<Fig> = (p) => <Person pants="#2B3A67" {...p} shirt={C.rick}
 /* ------------------------------------------------------------------ */
 
 /** Kirche innen: warme Wand, bunte Rosettenfenster, Holzboden. */
-const Church: React.FC<{ readonly wall?: string; readonly floor?: number; readonly dim?: number }> = ({ wall = C.church, floor = 1500, dim = 0 }) => (
+export const Church: React.FC<{ readonly wall?: string; readonly floor?: number; readonly dim?: number }> = ({ wall = C.church, floor = 1500, dim = 0 }) => (
   <g>
     <rect x={-2000} y={-2000} width={5000} height={2000 + floor} fill={wall} />
     {[-700, -150, 400, 950, 1500].map((x, k) => (
@@ -89,7 +89,7 @@ const Church: React.FC<{ readonly wall?: string; readonly floor?: number; readon
 );
 
 /** Kirchenbank (Rückenlehne vorn), Oberkante y. */
-const Pew: React.FC<{ readonly y: number; readonly x0?: number; readonly x1?: number }> = ({ y, x0 = -600, x1 = 1680 }) => (
+export const Pew: React.FC<{ readonly y: number; readonly x0?: number; readonly x1?: number }> = ({ y, x0 = -600, x1 = 1680 }) => (
   <g>
     <rect x={x0} y={y} width={x1 - x0} height={70} rx={14} fill={C.wood} stroke={INK} strokeWidth={8} />
     <rect x={x0} y={y + 70} width={x1 - x0} height={260} fill={C.woodDark} stroke={INK} strokeWidth={8} />
@@ -187,7 +187,7 @@ const Icon: React.FC<{ readonly kind: "chicken" | "bear" | "trash" | "q"; readon
 );
 
 /** Comic-Reaktionsfläche (Farbe + Strahlen) gegen Set-Wiederholung. */
-const ReactBg: React.FC<{ readonly a: string; readonly b: string; readonly f: number; readonly cx?: number; readonly cy?: number }> = ({ a, b, f, cx = 540, cy = 900 }) => (
+export const ReactBg: React.FC<{ readonly a: string; readonly b: string; readonly f: number; readonly cx?: number; readonly cy?: number }> = ({ a, b, f, cx = 540, cy = 900 }) => (
   <g>
     <rect x={-2000} y={-2000} width={5000} height={5000} fill={a} />
     {Array.from({ length: 16 }).map((_, k) => {
@@ -477,7 +477,7 @@ const Calendar: React.FC<{ readonly x: number; readonly y: number; readonly s?: 
 );
 
 /** Sprechblase mit Fluch-Zeichen „#@%&!“ (der Gag selbst, Piep). */
-const CurseBubble: React.FC<{ readonly x: number; readonly y: number; readonly o: number; readonly s?: number }> = ({ x, y, o, s = 1 }) =>
+export const CurseBubble: React.FC<{ readonly x: number; readonly y: number; readonly o: number; readonly s?: number }> = ({ x, y, o, s = 1 }) =>
   o <= 0 ? null : (
     <g transform={`translate(${x} ${y}) scale(${s * (0.8 + 0.2 * o)})`} opacity={o}>
       <path d="M -230 -100 Q -240 -190 -120 -190 L 130 -190 Q 240 -190 230 -100 L 230 10 Q 230 80 130 80 L -40 80 L -110 150 L -100 80 L -120 80 Q -230 80 -230 10 Z" fill="#FFFFFF" stroke={INK} strokeWidth={9} strokeLinejoin="round" />

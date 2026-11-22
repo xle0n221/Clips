@@ -154,7 +154,7 @@ const Dennis: React.FC<Fig & { readonly old?: boolean }> = ({ old, ...p }) => (
 /* Requisiten                                                         */
 /* ------------------------------------------------------------------ */
 
-const Poof: React.FC<{ readonly x: number; readonly y: number; readonly t: number; readonly s?: number; readonly dark?: boolean }> = ({ x, y, t, s = 1, dark }) => {
+export const Poof: React.FC<{ readonly x: number; readonly y: number; readonly t: number; readonly s?: number; readonly dark?: boolean }> = ({ x, y, t, s = 1, dark }) => {
   if (t < 0 || t > 22) return null;
   const k = clamp01(t / 22);
   const o = 1 - k * k;

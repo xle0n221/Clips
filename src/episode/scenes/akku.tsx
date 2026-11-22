@@ -248,7 +248,7 @@ const BusStop: React.FC<{ readonly x: number; readonly y: number }> = ({ x, y })
   </g>
 );
 
-const Room: React.FC<{ readonly wall?: string; readonly floor?: number; readonly window?: boolean }> = ({ wall = A.wall, floor = 1500, window }) => (
+export const Room: React.FC<{ readonly wall?: string; readonly floor?: number; readonly window?: boolean }> = ({ wall = A.wall, floor = 1500, window }) => (
   <g>
     <rect x={-2000} y={-2000} width={5000} height={2000 + floor} fill={wall} />
     {Array.from({ length: 12 }).map((_, k) => (
@@ -268,7 +268,7 @@ const Room: React.FC<{ readonly wall?: string; readonly floor?: number; readonly
   </g>
 );
 
-const Bed: React.FC<{ readonly x: number; readonly y: number; readonly w?: number; readonly c?: string }> = ({ x, y, w = 760, c = "#7FA8FF" }) => (
+export const Bed: React.FC<{ readonly x: number; readonly y: number; readonly w?: number; readonly c?: string }> = ({ x, y, w = 760, c = "#7FA8FF" }) => (
   <g>
     <rect x={x - w / 2 - 30} y={y - 380} width={40} height={420} rx={14} fill={A.woodDark} stroke={INK} strokeWidth={7} />
     <rect x={x - w / 2} y={y - 120} width={w} height={130} rx={20} fill="#FFFFFF" stroke={INK} strokeWidth={7} />
@@ -369,7 +369,7 @@ const Fly: React.FC<{ readonly x: number; readonly y: number; readonly s?: numbe
   </g>
 );
 
-const Door: React.FC<{ readonly x: number; readonly y: number; readonly open: number; readonly color?: string }> = ({ x, y, open, color = "#2F8F6B" }) => (
+export const Door: React.FC<{ readonly x: number; readonly y: number; readonly open: number; readonly color?: string }> = ({ x, y, open, color = "#2F8F6B" }) => (
   <g>
     <rect x={x - 200} y={y - 760} width={400} height={760} fill="#1A1430" stroke={INK} strokeWidth={9} />
     <rect x={x - 200} y={y - 760} width={400} height={760} fill="#FFE9A8" opacity={0.85 * open} />

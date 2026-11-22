@@ -127,3 +127,17 @@ Lessons:
 4. Gestürzte Figur (`lean ±88`) dreht um die Füße: Startpunkt so wählen, dass der Körper INS Bild kippt, und Kamera-y anheben, sonst liegt sie unter dem Untertitel.
 5. Kontaktabzug direkt nach der Vertonung (33 Bilder, 41 s) + 7 gezielte `--at`-Nachprüfungen fanden alle Bildfehler vor dem einzigen Render.
 6. Satzpausen-Regel (450–800 ms) kollidiert mit 61–70 s bei ~155 Wörtern: Median 305 ms – entweder weniger Wörter (~140) oder bewusst benennen.
+
+## PREVIOUS VIDEO (fertig 22.11.2026, angefügt)
+Title: In This City, Every Time You Swear, Your Mom Appears (fluch-stadt, In This City + schwarzer Humor, 2D)
+Length / cuts: 67,6 s inkl. End-Card 2 s, 28 Einstellungen (Ø 2,3 s), 18 Bildwelten; 163 W, 2,47 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-fluch-stadt.md)
+Stats: noch keine (Upload geplant 23.11.2026 Slot B)
+Lessons:
+1. Satzpausen-Regel UND 61–70 s UND 2,3–2,6 W/s gleichzeitig: weniger, längere Sätze (27 Sätze für 163 W, Ø 6 W) + `emotion.gap_ms` 480–520, `sceneGapMs` 300 → Median 480 ms, 2,47 W/s, 65,5 s Sprechzeit. Akku-Fragmentstil (50 Sätze) zwingt die Pausen unter 330 ms.
+2. Neues Skript `scripts/fx_events.py` (`soundBed.fx`): Piep, Poof (Rauschen) und Stummschalten wortgebunden in einem Lauf, `nth` für das n-te Vorkommen. Nach make_sound_bed aufrufen; Wiederholung mit `--no-mute`.
+3. W()/Bett-Wörter treffen das ERSTE Vorkommen: „her“ traf „her toe“ statt „Her mom“ (Poof 3 s zu früh) und „His“ in morning traf „his toe“ (Schnitt falsch) → `nth` setzen bzw. seltenes Wort („appears“) als Anker.
+4. Fluchwort per Spektrum bestätigen ging hier schnell: Zischlaut „f“ 50,34–50,58 s (> 85 % Energie über 3 kHz), Whisper-Zeit stimmte (anders als akku).
+5. Schätz-Zeitachse (0,30 s/Wort + Pausen) + stille WAV-Platzhalter erlauben den ersten Kontaktabzug, während Chatterbox noch installiert (frischer Container: PyTorch/CUDA-Download ~15 Min.) – fand 8 Bildfehler vor der Vertonung.
+6. Kissen/Requisit vor dem Mund: nur Mund/Kinn verdecken, sonst ist der Gag (Ader, Augen) weg.
+7. Mastering wie akku (EQ −3,5 dB @ 6 kHz, +0,7 dB, alimiter 0,6 `level=disabled`, 4× überabgetastet) → −14,6 LUFS / −3,8 dBFS.

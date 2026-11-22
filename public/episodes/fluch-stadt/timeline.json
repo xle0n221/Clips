@@ -1,0 +1,234 @@
+{
+ "id": "fluch-stadt",
+ "title": "In This City, Every Time You Swear, Your Mom Appears",
+ "durationMs": 66090,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4020
+  },
+  {
+   "id": "rules",
+   "startMs": 4020,
+   "endMs": 12660
+  },
+  {
+   "id": "orphans",
+   "startMs": 12660,
+   "endMs": 16700
+  },
+  {
+   "id": "dave",
+   "startMs": 16700,
+   "endMs": 25390
+  },
+  {
+   "id": "morning",
+   "startMs": 25390,
+   "endMs": 33020
+  },
+  {
+   "id": "parking",
+   "startMs": 33020,
+   "endMs": 37740
+  },
+  {
+   "id": "ring",
+   "startMs": 37740,
+   "endMs": 43050
+  },
+  {
+   "id": "vows",
+   "startMs": 43050,
+   "endMs": 46930
+  },
+  {
+   "id": "twist",
+   "startMs": 46930,
+   "endMs": 56230
+  },
+  {
+   "id": "chain",
+   "startMs": 56230,
+   "endMs": 61390
+  },
+  {
+   "id": "outro",
+   "startMs": 61390,
+   "endMs": 65490
+  }
+ ],
+ "cues": [
+  {
+   "beat": "poof",
+   "scene": "hook",
+   "atMs": 2800
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3000
+  },
+  {
+   "beat": "mom1",
+   "scene": "rules",
+   "atMs": 5740
+  },
+  {
+   "beat": "ceo",
+   "scene": "rules",
+   "atMs": 7740
+  },
+  {
+   "beat": "ceo2",
+   "scene": "rules",
+   "atMs": 9780
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 11800
+  },
+  {
+   "beat": "ship",
+   "scene": "orphans",
+   "atMs": 15080
+  },
+  {
+   "emph": true,
+   "scene": "orphans",
+   "atMs": 15760
+  },
+  {
+   "beat": "mirror",
+   "scene": "dave",
+   "atMs": 21080
+  },
+  {
+   "beat": "church",
+   "scene": "dave",
+   "atMs": 22960
+  },
+  {
+   "emph": true,
+   "scene": "dave",
+   "atMs": 19300
+  },
+  {
+   "emph": true,
+   "scene": "dave",
+   "atMs": 19550
+  },
+  {
+   "beat": "pillow",
+   "scene": "morning",
+   "atMs": 27880
+  },
+  {
+   "beat": "momchair",
+   "scene": "morning",
+   "atMs": 31460
+  },
+  {
+   "emph": true,
+   "scene": "morning",
+   "atMs": 32200
+  },
+  {
+   "beat": "fudge",
+   "scene": "parking",
+   "atMs": 35040
+  },
+  {
+   "beat": "twitch",
+   "scene": "parking",
+   "atMs": 36760
+  },
+  {
+   "emph": true,
+   "scene": "parking",
+   "atMs": 35640
+  },
+  {
+   "emph": true,
+   "scene": "parking",
+   "atMs": 36760
+  },
+  {
+   "beat": "vein",
+   "scene": "ring",
+   "atMs": 40700
+  },
+  {
+   "emph": true,
+   "scene": "ring",
+   "atMs": 41920
+  },
+  {
+   "beat": "win",
+   "scene": "vows",
+   "atMs": 44060
+  },
+  {
+   "beat": "toe",
+   "scene": "twist",
+   "atMs": 47000
+  },
+  {
+   "beat": "curse",
+   "scene": "twist",
+   "atMs": 48720
+  },
+  {
+   "beat": "mom2",
+   "scene": "twist",
+   "atMs": 48220
+  },
+  {
+   "beat": "granny",
+   "scene": "twist",
+   "atMs": 54700
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 50280
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 54840
+  },
+  {
+   "beat": "corner",
+   "scene": "chain",
+   "atMs": 59180
+  },
+  {
+   "emph": true,
+   "scene": "chain",
+   "atMs": 60260
+  },
+  {
+   "beat": "behind",
+   "scene": "outro",
+   "atMs": 64120
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 62420
+  }
+ ],
+ "cover": {
+  "text": "SWEAR = MOM APPEARS",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Your mom would want you to.",
+  "seconds": 2
+ }
+}
