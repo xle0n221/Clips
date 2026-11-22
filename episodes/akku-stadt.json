@@ -1,0 +1,537 @@
+{
+ "id": "akku-stadt",
+ "title": "In This City, When Your Phone Dies, You Die",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 330,
+ "sceneGapMs": 230,
+ "lengthSec": 65,
+ "cover": {
+  "text": "PHONE DIES = YOU DIE",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow before your battery dies.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 22.11.2026 in docs/audit-akku-stadt.md). Keine Tatsachenbehauptung; keine Marken (kein Handy-/App-Name), keine fremden Figuren.",
+ "pointe": "Gary schafft es mit 1 % nach Hause, steckt ein – das Handy startet ein Update ('Do not turn off') und Gary 'turns off' (stirbt). Beerdigung: alle bringen Ladegeräte. Letzte Zeile an die Zuschauer: 'how much battery do YOU have left?' + POV-Handy mit 1 % (Loop zum Hook).",
+ "originality": "Eigene Regel (Akku leer = Tod), eigene Figuren (Gary, der lachende Fremde, der 140-jährige Klapphandy-Opa). Keine früheren KnowToon-Regeln (Gähnen, Lügen, Zeit, Schwerkraft, Tor, To-do, letzte Suche) und keine 'Zahl über dem Kopf' (Akku nur auf dem Handy).",
+ "music": {
+  "mood": "dark",
+  "bpm": 88,
+  "silenceBefore": {
+   "turn": 0.5,
+   "outro": 0.4
+  },
+  "why": "Schwarzer Humor + Wettlauf gegen die Zeit → 'dark' (düsterer Trap/R&B mit Ticken), Seed = Episoden-ID (anders als Lügen-/Gähn-Stadt 'funny'); Stille vor dem Update-Twist und vor der Zuschauerfrage. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-gelangweilt, leicht sadistisch, ernst über das Absurde; Sprint/Heimkehr angespannt, Twist und Beerdigung flach und trocken",
+  "why": "Auftrag 22.11.: In-This-City mit schwarzem Humor + Prompt 'Erzähler: zynisch, gelangweilt, leicht sadistisch'; voicePreset witzig + ironic/tense; ruhigeres Tempo (speed 1,0, längere Pausen) wegen todo-stadt 2,69 W/s."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (Person-Figur mit Pupillen/Brauen/Mund, Gähn/Lügen/Ghost): Schauspiel, kräftige Farben, schnelles Rendern; Akku-Anzeige und Graustufen-'Low Power' sind in 2D sofort lesbar.",
+  "characters": "GARY: gelber Hoodie, wirre braune Haare; STRANGER: weißer Anzug, Sonnenbrille, Heiligenschein-Glow; OLD MAN: Glatze, weißer Bart, Strickjacke; Hintergründe dunkelblau/abendlich, Akku-Rot als Signalfarbe."
+ },
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 230,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "hookQuestion": {
+  "text": "Can Gary make it home before his phone dies?",
+  "shownBy": "Bild 1: Mann mit blinkendem 1-%-Akku, kippt tot um; Frage gesprochen in gary (~13 s)",
+  "answer": "Ja – aber das Update nach dem Einstecken tötet ihn (≈ 54 s)."
+ },
+ "finalImage": {
+  "image": "POV: das Handy des Zuschauers mit blinkendem 1 %",
+  "plant": "hook (1 % blinkt)",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Abendstadt-Ambiente, Herzschlag-Ticken im Sprint, Flatline-Piep beim Twist, Zensur-Piep über 'shit'.",
+  "room": {
+   "db": -44,
+   "rain_db": -60
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "you"
+   },
+   {
+    "scene": "home",
+    "word": "plugs"
+   },
+   {
+    "scene": "turn",
+    "word": "off"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -15
+  },
+  "tailMs": 1500,
+  "bleep": {
+   "scene": "stranger",
+   "word": "shit",
+   "offsetMs": -420,
+   "ms": 520,
+   "db": -17,
+   "hz": 1000
+  }
+ },
+ "version": "v1 (22.11.2026, Video 1, Qualitäts-Reset-Regeln docs/audit-2026-11-20.md)",
+ "note": "Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s (Ziel 2,4).",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, when your phone *dies*, | *you* die.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s, bus stop at dusk): a man in a suit stares at his phone, screen shows a red battery at 1 % blinking, sweat flying, his face is pale-green / SHOT 2 (close, 'you die'): screen goes black – he goes stiff, X eyes, flops off the bench like a plank, a little ghost with a dead phone floats up",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "phone",
+     "beat": "phoneBlink"
+    },
+    {
+     "word": "you",
+     "beat": "flop"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "when your phone dies,",
+    "you die."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "So nobody here says \"my phone is *dying*.\" | They say *goodbye*. | Power banks are *life support*. | And the old man with the flip phone? | He's *140*.",
+   "visual": "SHOT 1 (medium, living room): a teen in bed, family around her crying, she whispers holding a phone at 2 % / SHOT 2 (wide, hospital): patients in beds, each wired to a huge power bank like an IV drip, a nurse swaps a power bank / SHOT 3 (medium, porch): a super-old man in a rocking chair with a tiny flip phone, giant birthday cake full of candles, everyone else around him is a ghost",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "goodbye",
+     "beat": "goodbye"
+    },
+    {
+     "word": "Power",
+     "beat": "hospital"
+    },
+    {
+     "word": "old",
+     "beat": "oldMan"
+    }
+   ],
+   "captions": [
+    "So nobody here says",
+    "\"my phone is dying.\"",
+    "They say goodbye.",
+    "Power banks",
+    "are life support.",
+    "And the old man",
+    "with the flip phone?",
+    "He's 140."
+   ]
+  },
+  {
+   "id": "gary",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 7.0,
+    "gain_db": -1.0
+   },
+   "text": "This is Gary. | *Nine* percent. | Three miles from his charger. | Can Gary make it *home*?",
+   "visual": "SHOT 1 (medium, office exit at night): Gary (yellow hoodie, messy hair) pushes out of a revolving door, checks phone: 9 % / SHOT 2 (wide, city map style): a long dotted path from Gary to a tiny house with a glowing outlet on the horizon",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Nine",
+     "beat": "nine"
+    },
+    {
+     "word": "Three",
+     "beat": "map"
+    }
+   ],
+   "captions": [
+    "This is Gary.",
+    "Nine percent.",
+    "Three miles",
+    "from his charger.",
+    "Can Gary make it home?"
+   ]
+  },
+  {
+   "id": "lowpower",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "First, | *Low Power Mode*. | Gary dims himself. | He walks *slower*. | He stops *blinking*.",
+   "visual": "SHOT 1 (medium, sidewalk): Gary taps a button, he turns grey and half-transparent / SHOT 2 (wide): Gary walks in slow motion, a snail overtakes him / SHOT 3 (ECU): Gary's wide dry eyes, no blinking, a fly lands on his eyeball",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "dims",
+     "beat": "dim"
+    },
+    {
+     "word": "slower",
+     "beat": "snail"
+    },
+    {
+     "word": "blinking",
+     "beat": "eyes"
+    }
+   ],
+   "captions": [
+    "First,",
+    "Low Power Mode.",
+    "Gary dims himself.",
+    "He walks slower.",
+    "He stops blinking."
+   ]
+  },
+  {
+   "id": "chat",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "Then, | the group chat. | Forty-seven *unread*. | Don't open it, Gary. | Gary *opens* it. | Four percent.",
+   "visual": "SHOT 1 (ECU, phone): phone buzzes like crazy, a red badge, message bubbles pile up / SHOT 2 (close, Gary): Gary's thumb hovers, sweating, he presses / SHOT 3 (ECU phone): the battery bar drains like a sink, 4 %",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "group",
+     "beat": "buzz"
+    },
+    {
+     "word": "Don't",
+     "beat": "thumb"
+    },
+    {
+     "word": "Four",
+     "beat": "drain"
+    }
+   ],
+   "captions": [
+    "Then,",
+    "the group chat.",
+    "Forty-seven unread.",
+    "Don't open it, Gary.",
+    "Gary opens it.",
+    "Four percent."
+   ]
+  },
+  {
+   "id": "stranger",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 230,
+    "comma_ms": 180,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "A stranger has a *charger*! | Wrong *cable*. | The stranger is at a hundred percent. | And *laughing*. | Gary says, \"Oh, *shit*.\"",
+   "visual": "SHOT 1 (medium, bus stop): a smug stranger in sunglasses holds up a cable, angelic glow / SHOT 2 (ECU): the plug does not fit Gary's phone – it bends / SHOT 3 (two-shot): the stranger, glowing at full charge, laughs and drinks a smoothie / SHOT 4 (close): Gary screams, mouth covered by a black censor bar + bleep",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "charger",
+     "beat": "stranger"
+    },
+    {
+     "word": "cable",
+     "beat": "plug"
+    },
+    {
+     "word": "hundred",
+     "beat": "laugh"
+    },
+    {
+     "word": "Gary",
+     "beat": "curse"
+    }
+   ],
+   "captions": [
+    "A stranger has a charger!",
+    "Wrong cable.",
+    "The stranger is at",
+    "a hundred percent.",
+    "And laughing.",
+    "Gary says, \"Oh, s***.\""
+   ]
+  },
+  {
+   "id": "sprint",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 240,
+    "comma_ms": 180,
+    "end_db": 7.0,
+    "gain_db": -1.0
+   },
+   "text": "Two percent. | Gary *runs*. | Everything turns *gray*. | His mom calls. | He *declines*.",
+   "visual": "SHOT 1 (low, street): Gary sprints, arms flailing, the city behind him desaturates / SHOT 2 (wide): the whole world goes grey and blocky around him / SHOT 3 (ECU phone): incoming call 'MOM' with a heart / SHOT 4 (close): Gary swipes decline without looking, cold face",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "runs",
+     "beat": "run"
+    },
+    {
+     "word": "Everything",
+     "beat": "gray"
+    },
+    {
+     "word": "mom",
+     "beat": "momCall"
+    },
+    {
+     "word": "declines",
+     "beat": "decline"
+    }
+   ],
+   "captions": [
+    "Two percent.",
+    "Gary runs.",
+    "Everything turns gray.",
+    "His mom calls.",
+    "He declines."
+   ]
+  },
+  {
+   "id": "home",
+   "section": "climax",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.05,
+    "temp": 0.72,
+    "speed": 1.0,
+    "gap_ms": 280,
+    "comma_ms": 180,
+    "end_db": 7.5,
+    "gain_db": -1.5
+   },
+   "text": "One percent. | The *door*. | The *outlet*. | He plugs in.",
+   "visual": "SHOT 1 (medium, apartment door): Gary crashes through the door / SHOT 2 (ECU): the outlet in the wall glows like a holy relic, light rays / SHOT 3 (close): plug goes in, spark, Gary collapses happily on the floor",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "door",
+     "beat": "door"
+    },
+    {
+     "word": "outlet",
+     "beat": "outlet"
+    },
+    {
+     "word": "plugs",
+     "beat": "plug"
+    }
+   ],
+   "captions": [
+    "One percent.",
+    "The door.",
+    "The outlet.",
+    "He plugs in."
+   ]
+  },
+  {
+   "id": "turn",
+   "section": "twist",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 260,
+    "comma_ms": 180,
+    "end_db": 8.0,
+    "gain_db": -0.5
+   },
+   "text": "The screen lights up. | \"Installing *update*. | Do not turn off.\" | Gary turns *off*.",
+   "visual": "SHOT 1 (ECU phone): screen lights up with a spinning update wheel / SHOT 2 (close): Gary's smile freezes / SHOT 3 (medium): Gary goes stiff, X eyes, falls backwards like a plank, flatline beep",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "screen",
+     "beat": "screen"
+    },
+    {
+     "word": "Do",
+     "beat": "freeze"
+    },
+    {
+     "word": "turns",
+     "beat": "flatline"
+    }
+   ],
+   "captions": [
+    "The screen lights up.",
+    "\"Installing update.",
+    "Do not turn off.\"",
+    "Gary turns off."
+   ]
+  },
+  {
+   "id": "funeral",
+   "section": "twist",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 240,
+    "comma_ms": 180,
+    "end_db": 8.0,
+    "gain_db": -1.0
+   },
+   "text": "The funeral was *lovely*. | Everyone brought a *charger*.",
+   "visual": "SHOT 1 (wide, cemetery, rain): mourners in black around a grave, each one holding a phone plugged into a power strip on the coffin / SHOT 2 (close): the tombstone has a battery icon with 0 %, a phone on top finishes '100 %' and the update is done",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "funeral",
+     "beat": "grave"
+    },
+    {
+     "word": "Everyone",
+     "beat": "chargers"
+    }
+   ],
+   "captions": [
+    "The funeral was lovely.",
+    "Everyone brought a charger."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "outro",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 260,
+    "comma_ms": 180,
+    "end_db": 8.0,
+    "gain_db": -1.0
+   },
+   "text": "So, | how much battery do *you* have left?",
+   "visual": "SHOT 1 (POV, the viewer's own phone): a phone frame fills the screen, the battery icon in the corner blinks red – 1 % – and the screen dims (loop to the hook)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Akku-Regel, Gary und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "battery",
+     "beat": "pov"
+    }
+   ],
+   "captions": [
+    "So,",
+    "how much battery",
+    "do you have left?"
+   ]
+  }
+ ]
+}
