@@ -1,0 +1,239 @@
+{
+ "id": "meckern-stadt",
+ "title": "In This City, Every Time You Complain, You Age One Year",
+ "durationMs": 68640,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 5110
+  },
+  {
+   "id": "rules",
+   "startMs": 5110,
+   "endMs": 13200
+  },
+  {
+   "id": "oldest",
+   "startMs": 13200,
+   "endMs": 17540
+  },
+  {
+   "id": "tyler",
+   "startMs": 17540,
+   "endMs": 25620
+  },
+  {
+   "id": "coffee",
+   "startMs": 25620,
+   "endMs": 35050
+  },
+  {
+   "id": "train",
+   "startMs": 35050,
+   "endMs": 42790
+  },
+  {
+   "id": "boss",
+   "startMs": 42790,
+   "endMs": 48640
+  },
+  {
+   "id": "midnight",
+   "startMs": 48640,
+   "endMs": 52980
+  },
+  {
+   "id": "twist",
+   "startMs": 52980,
+   "endMs": 60440
+  },
+  {
+   "id": "date",
+   "startMs": 60440,
+   "endMs": 64650
+  },
+  {
+   "id": "outro",
+   "startMs": 64650,
+   "endMs": 67780
+  }
+ ],
+ "cues": [
+  {
+   "beat": "age",
+   "scene": "hook",
+   "atMs": 3280
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4240
+  },
+  {
+   "beat": "beard",
+   "scene": "rules",
+   "atMs": 7430
+  },
+  {
+   "beat": "hold",
+   "scene": "rules",
+   "atMs": 9550
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 8190
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 12090
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 12370
+  },
+  {
+   "beat": "laptop",
+   "scene": "oldest",
+   "atMs": 15030
+  },
+  {
+   "emph": true,
+   "scene": "oldest",
+   "atMs": 16670
+  },
+  {
+   "beat": "monday",
+   "scene": "tyler",
+   "atMs": 20820
+  },
+  {
+   "beat": "tape",
+   "scene": "tyler",
+   "atMs": 23580
+  },
+  {
+   "emph": true,
+   "scene": "tyler",
+   "atMs": 24400
+  },
+  {
+   "beat": "smile",
+   "scene": "coffee",
+   "atMs": 28630
+  },
+  {
+   "beat": "hair",
+   "scene": "coffee",
+   "atMs": 31690
+  },
+  {
+   "emph": true,
+   "scene": "coffee",
+   "atMs": 29390
+  },
+  {
+   "beat": "sarcasm",
+   "scene": "train",
+   "atMs": 36480
+  },
+  {
+   "beat": "poof",
+   "scene": "train",
+   "atMs": 40660
+  },
+  {
+   "emph": true,
+   "scene": "train",
+   "atMs": 40660
+  },
+  {
+   "beat": "freeze",
+   "scene": "boss",
+   "atMs": 44580
+  },
+  {
+   "beat": "eye",
+   "scene": "boss",
+   "atMs": 46620
+  },
+  {
+   "emph": true,
+   "scene": "boss",
+   "atMs": 47560
+  },
+  {
+   "emph": true,
+   "scene": "boss",
+   "atMs": 47760
+  },
+  {
+   "emph": true,
+   "scene": "boss",
+   "atMs": 47900
+  },
+  {
+   "beat": "party",
+   "scene": "midnight",
+   "atMs": 49100
+  },
+  {
+   "emph": true,
+   "scene": "midnight",
+   "atMs": 52160
+  },
+  {
+   "beat": "poof",
+   "scene": "twist",
+   "atMs": 54840
+  },
+  {
+   "beat": "old",
+   "scene": "twist",
+   "atMs": 56680
+  },
+  {
+   "beat": "cooked",
+   "scene": "twist",
+   "atMs": 58660
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 54480
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 59540
+  },
+  {
+   "beat": "peek",
+   "scene": "date",
+   "atMs": 61700
+  },
+  {
+   "emph": true,
+   "scene": "date",
+   "atMs": 63100
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 67160
+  }
+ ],
+ "cover": {
+  "text": "COMPLAIN = +1 YEAR",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Complaining is optional.",
+  "seconds": 2
+ }
+}

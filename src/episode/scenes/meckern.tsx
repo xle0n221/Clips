@@ -901,7 +901,7 @@ export const MBoss: React.FC = () => {
 
 export const MMidnight: React.FC = () => {
   const { f, d, W } = useBeats();
-  const { i, lf, len } = useShot([W("He", 0.35) - 2], d, f);
+  const { i, lf, len } = useShot([W("Twenty-eight", 0.4) - 2], d, f);
   if (i === 0) {
     // Wanduhr groß: Zeiger springen auf zwölf, Uhr hüpft
     const t = ease(lf, 0, Math.max(6, len - 10), "inOut");

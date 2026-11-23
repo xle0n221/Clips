@@ -96,17 +96,17 @@
     "scene": "twist",
     "word": "shit",
     "at": "start",
-    "offsetMs": 130,
+    "offsetMs": 80,
     "kind": "mute",
-    "ms": 320
+    "ms": 330
    },
    {
     "scene": "twist",
     "word": "shit",
     "at": "start",
-    "offsetMs": 130,
+    "offsetMs": 80,
     "kind": "bleep",
-    "ms": 320,
+    "ms": 330,
     "db": -17,
     "hz": 1000
    },
