@@ -1,0 +1,527 @@
+{
+ "id": "ghost-stadt",
+ "title": "In This City, If You Ghost Someone, You Turn Invisible",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "lengthSec": 65,
+ "cover": {
+  "text": "GHOST = INVISIBLE",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Or turn invisible.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 23.11.2026 in docs/audit-ghost-stadt.md). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Jake beantwortet bis 23:59 seine Chats (Knie kommen zurück), der letzte Chat ist von ihm selbst vor fünf Jahren ('Please don't become that guy') – und er lässt sich selbst auf 'gelesen'. Eingepflanzt: der verschwommene Chat mit Jung-Jake-Avatar unten im Posteingang. Danach: nichts ändert sich, der Chef hat es nicht bemerkt. Schluss an die Zuschauer: 'you watched all of this and didn't comment. Check your hands.' – Daumen des Zuschauers verblasst (Loop zum Hook-Fade).",
+ "originality": "Eigene Regel (Ghosting = unsichtbar), eigene Figuren (Jake, Mom, Ex, Vermieter, Chef). Konsequenz = Verschwinden/Unsichtbarkeit (weder Tod wie todo/suche/akku noch Peinlichkeit wie fluch noch Altern wie meckern). Kein Thema aus episodes/*.json wiederholt.",
+ "music": {
+  "mood": "dark",
+  "bpm": 82,
+  "silenceBefore": {
+   "twist": 0.5,
+   "outro": 0.4
+  },
+  "why": "Ghosting/Unsichtbarkeit = leicht gespenstisch → 'dark' (düsterer R&B/Trap, Glocken, 808), Seed = Episoden-ID; anders als meckern 'chill' und fluch 'funny'. Stille vor dem Selbst-Twist und vor der Zuschauer-Zeile. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten). Stereo-Breite + Sub-Anhebung (Schwäche meckern) per scripts/stereo_bed.py."
+ },
+ "narratorMood": {
+  "mood": "zynisch-amüsiert, schadenfroh, US-Slang eines 25-Jährigen (bro, lowkey); jake/panic angespannt, Twist ernst und leise, 'Gone.' trocken",
+  "why": "Auftrag 23.11. Video 2: In This City + schwarzer Humor, zynischer Erzähler, Slang; voicePreset witzig; gap_ms 480–500 für Satzpausen ≥ 450 ms, wenige, längere Sätze (fluch-Lesson 1); ≈ 148 Wörter (meckern-Lesson 1)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (gaehnSets-Person); Unsichtbarkeit ist in 2D über Maske (verblassen von den Füßen aufwärts) + schwebende Kleidung/Gegenstände sofort lesbar; schnelles Rendern.",
+  "characters": "JAKE: grüner Hoodie, rote Locken, 26, verschwindet von unten nach oben (zum Schluss nur Augenbrauen + Daumen); MOM: lila Strickjacke; EX: pinkes Top, Dutt; LANDLORD: Hut + Zigarre (schwebend); BOSS: grauer Anzug, Schnurrbart."
+ },
+ "hookQuestion": {
+  "text": "Can he answer them all before midnight erases him?",
+  "shownBy": "Bild 1: Mann wischt Chat weg, verblasst von den Füßen aufwärts, Handy schwebt; Frage gesprochen in jake (~17 s)",
+  "answer": "Fast ja – der letzte Chat ist von ihm selbst, und er ghostet sich (≈ 50 s)."
+ },
+ "finalImage": {
+  "image": "POV: Handy des Zuschauers mit Kommentarfeld; der Daumen verblasst von der Spitze her",
+  "plant": "hook (Verblassen) + jake (verschwommener Chat mit Jung-Jake-Avatar)",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Stadt-/Wohnungsraum leise, gespenstischer Shimmer bei jedem Verschwinden, Pop bei zurückkehrenden Knien, Glocke Mitternacht, Teil-Piep auf 'fuck' (Anlaut 'f' hörbar, Rest gepiept).",
+  "room": {
+   "db": -46,
+   "rain_db": -90
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "invisible"
+   },
+   {
+    "scene": "twist",
+    "word": "himself"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -16
+  },
+  "twist": {
+   "scene": "gone",
+   "word": "Gone",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -17
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 130,
+    "kind": "mute",
+    "ms": 300
+   },
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 130,
+    "kind": "bleep",
+    "ms": 300,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "invisible",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 600,
+    "db": -15
+   },
+   {
+    "scene": "rules",
+    "word": "hoodie",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 400,
+    "db": -16
+   },
+   {
+    "scene": "ex",
+    "word": "vanishes",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 500,
+    "db": -15
+   },
+   {
+    "scene": "twist",
+    "word": "leaves",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 700,
+    "db": -13
+   }
+  ]
+ },
+ "version": "v1 (23.11.2026, Video 2, Regeln docs/audit-2026-11-20.md + CLAUDE.md 22.11. Flüche/Slang) Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen ≥ 450 ms. Upload 25.11.2026 Slot A (TT 17 / YT 18 DE).",
+ "note": "Konsequenz Unsichtbarkeit (Verwandlung/Verlust), schwarzer Humor: Vermieter nur noch Stimme, Ex verschwindet aus Trotz, Jake ghostet sich selbst, Chef merkt nichts; Teil-Piep 'f***'.",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, if you ghost someone, | you turn *invisible*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s, city sidewalk): guy reads an incoming chat bubble, smirks, swipes it away – an eye/seen icon pops / SHOT 2 ('invisible'): he fades from the feet up in a shimmer, only his phone floats in the air",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "invisible",
+     "beat": "fade"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "if you ghost someone,",
+    "you turn invisible."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Leave a text on read? Your hands go first. Ghost a date? | Bro is a floating *hoodie*.",
+   "visual": "SHOT 1 (close, café): woman's phone shows a seen icon, her hands fade, the coffee cup floats / SHOT 2 (wide, restaurant): date waits with roses across from an empty floating hoodie that sips a drink through a straw",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Ghost",
+     "beat": "date"
+    }
+   ],
+   "captions": [
+    "Leave a text on read?",
+    "Your hands go first.",
+    "Ghost a date?",
+    "Bro is a floating hoodie."
+   ]
+  },
+  {
+   "id": "landlord",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "The landlord ghosted his tenants for ten years. | Now he's just a voice that says *rent is due*.",
+   "visual": "SHOT 1 (wide, crumbling apartment block): leaking pipes, tenants with buckets wave phones at a closed door / SHOT 2 (medium, hallway): empty floating hat + cigar, a hand-shaped eviction note slides under a door, tenants scream",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Now",
+     "beat": "voice"
+    }
+   ],
+   "captions": [
+    "The landlord ghosted",
+    "his tenants",
+    "for ten years.",
+    "Now he's just a voice",
+    "that says rent is due."
+   ]
+  },
+  {
+   "id": "jake",
+   "section": "setup",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Jake. Forty-three unread chats. His legs are already *gone*. Can he answer them all | before *midnight* erases him?",
+   "visual": "SHOT 1 (medium, apartment couch): Jake (green hoodie, red curly hair) on couch, legs missing, pants floating empty / SHOT 2 (close, phone screen): inbox – 43 red badges, one blurry chat at the bottom with a younger Jake avatar (PLANT) / SHOT 3 (ECU, wall clock 7 pm + Jake sweating)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Forty-three",
+     "beat": "inbox"
+    },
+    {
+     "word": "Can",
+     "beat": "clock"
+    }
+   ],
+   "captions": [
+    "This is Jake.",
+    "Forty-three unread chats.",
+    "His legs",
+    "are already gone.",
+    "Can he answer them all",
+    "before midnight erases him?"
+   ]
+  },
+  {
+   "id": "mom",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Chat one, his mom. \"Sorry, been busy.\" His knees come *back*.",
+   "visual": "SHOT 1 (close, phone): thumb taps send / SHOT 2 (medium): knees pop back with a sparkle, Jake celebrates / SHOT 3 (insert, mom's kitchen): mom types an endless scroll of wordless lines, phone overflows",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "His",
+     "beat": "knees"
+    }
+   ],
+   "captions": [
+    "Chat one,",
+    "his mom.",
+    "\"Sorry, been busy.\"",
+    "His knees come back."
+   ]
+  },
+  {
+   "id": "ex",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Chat two, his ex. She leaves *him* on read | and vanishes out of pure *spite*.",
+   "visual": "SHOT 1 (medium, split): Jake sends a wave emoji bubble / SHOT 2 (medium, ex's bedroom): ex sees it, eye-roll, seen icon, and she fades out smugly, middle finger last",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "She",
+     "beat": "seen"
+    },
+    {
+     "word": "vanishes",
+     "beat": "spite"
+    }
+   ],
+   "captions": [
+    "Chat two,",
+    "his ex.",
+    "She leaves him on read",
+    "and vanishes",
+    "out of pure spite."
+   ]
+  },
+  {
+   "id": "panic",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Eleven fifty-nine. Bro is down to eyebrows and a thumb. One chat left. | Unknown *sender*.",
+   "visual": "SHOT 1 (ECU, clock 11:59 ticking) / SHOT 2 (medium, couch): only floating eyebrows and a thumb over a phone, sweat drops float / SHOT 3 (close, phone): the blurry chat from earlier (PLANT payoff), question-mark avatar",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Bro",
+     "beat": "brows"
+    },
+    {
+     "word": "One",
+     "beat": "last"
+    }
+   ],
+   "captions": [
+    "Eleven fifty-nine.",
+    "Bro is down",
+    "to eyebrows and a thumb.",
+    "One chat left.",
+    "Unknown sender."
+   ]
+  },
+  {
+   "id": "twist",
+   "section": "turn",
+   "delivery": "serious",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "It's Jake. Five years ago. \"Please don't become that guy.\" | Jake reads it, | and leaves *himself* on read.",
+   "visual": "SHOT 1 (flashback, sepia bedroom): younger Jake (with legs, hopeful) types into phone / SHOT 2 (close): eyebrows above the message, thumb hovers / SHOT 3 (ECU): thumb swipes away – seen icon – the eyebrows fade, the phone drops",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Five",
+     "beat": "past"
+    },
+    {
+     "word": "Jake",
+     "nth": 2,
+     "beat": "reads"
+    },
+    {
+     "word": "leaves",
+     "beat": "swipe"
+    }
+   ],
+   "captions": [
+    "It's Jake.",
+    "Five years ago.",
+    "\"Please don't",
+    "become that guy.\"",
+    "Jake reads it,",
+    "and leaves himself on read."
+   ]
+  },
+  {
+   "id": "gone",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Gone. What the *fuck*, Jake.",
+   "visual": "SHOT 1 (wide, empty couch, phone on the floor, clock strikes 12, confetti of sparkles)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "Gone.",
+    "What the f***, Jake."
+   ]
+  },
+  {
+   "id": "after",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Honestly? Nothing changed. His boss | lowkey *still* hasn't noticed.",
+   "visual": "SHOT 1 (wide, office next morning): boss gives a pep talk to an empty chair with a floating coffee mug / SHOT 2 (close): boss pats the empty air on the shoulder, coworkers shrug",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "His",
+     "beat": "boss"
+    }
+   ],
+   "captions": [
+    "Honestly?",
+    "Nothing changed.",
+    "His boss lowkey",
+    "still hasn't noticed."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Anyway, you watched all of this and didn't comment. | Check your *hands*.",
+   "visual": "SHOT 1 (POV: viewer's phone with this video + comment box) / SHOT 2 ('Check'): the viewer's thumb starts to fade from the tip, shimmer – loop to the hook fade",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Ghosting-macht-unsichtbar-Regel, Jake und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Check",
+     "beat": "hands"
+    }
+   ],
+   "captions": [
+    "Anyway,",
+    "you watched all of this",
+    "and didn't comment.",
+    "Check your hands."
+   ]
+  }
+ ]
+}

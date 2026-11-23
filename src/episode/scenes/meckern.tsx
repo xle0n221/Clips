@@ -185,7 +185,7 @@ const Soup: React.FC<{ readonly x: number; readonly y: number; readonly s?: numb
   </g>
 );
 
-const PhoneS: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly r?: number; readonly glow?: string }> = ({ x, y, s = 1, r = 0, glow = "#7FD6FF" }) => (
+export const PhoneS: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly r?: number; readonly glow?: string }> = ({ x, y, s = 1, r = 0, glow = "#7FD6FF" }) => (
   <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`}>
     <rect x={-38} y={-70} width={76} height={140} rx={14} fill={INK} />
     <rect x={-30} y={-60} width={60} height={118} rx={8} fill={glow} />
@@ -244,7 +244,7 @@ const Ear: React.FC<{ readonly x: number; readonly y: number; readonly s?: numbe
   </g>
 );
 
-const Clock: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly h: number; readonly m: number }> = ({ x, y, s = 1, h, m }) => (
+export const Clock: React.FC<{ readonly x: number; readonly y: number; readonly s?: number; readonly h: number; readonly m: number }> = ({ x, y, s = 1, h, m }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
     <circle r={300} fill="#FFFFFF" stroke={INK} strokeWidth={16} />
     {Array.from({ length: 12 }).map((_, k) => {
@@ -257,7 +257,7 @@ const Clock: React.FC<{ readonly x: number; readonly y: number; readonly s?: num
   </g>
 );
 
-const Confetti: React.FC<{ readonly f: number; readonly o?: number }> = ({ f, o = 1 }) => (
+export const Confetti: React.FC<{ readonly f: number; readonly o?: number }> = ({ f, o = 1 }) => (
   <g opacity={o}>
     {Array.from({ length: 40 }).map((_, k) => {
       const x = ((k * 137) % 1300) - 100 + Math.sin(f * 0.1 + k) * 30;
@@ -276,7 +276,7 @@ const Tape: React.FC<{ readonly x: number; readonly y: number; readonly s?: numb
   );
 
 /** Hand mit Daumen (POV, Ursprung = Daumenspitze). w = Falten 0..1 */
-const PovHand: React.FC<{ readonly x: number; readonly y: number; readonly w: number; readonly skin?: string }> = ({ x, y, w, skin = P.skin }) => {
+export const PovHand: React.FC<{ readonly x: number; readonly y: number; readonly w: number; readonly skin?: string }> = ({ x, y, w, skin = P.skin }) => {
   const c = mix(skin, "#E2C2A8", w);
   return (
     <g transform={`translate(${x} ${y})`}>

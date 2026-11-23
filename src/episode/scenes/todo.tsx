@@ -246,10 +246,10 @@ const Room: React.FC<{ readonly wall?: string; readonly floor?: number; readonly
 );
 
 /** Couch: Rückenlehne (back) und Sitz/Armlehnen (front) getrennt, damit Figuren dazwischen sitzen. */
-const CouchBack: React.FC<{ readonly x: number; readonly y: number; readonly w?: number; readonly color?: string }> = ({ x, y, w = 760, color = T.couch }) => (
+export const CouchBack: React.FC<{ readonly x: number; readonly y: number; readonly w?: number; readonly color?: string }> = ({ x, y, w = 760, color = T.couch }) => (
   <rect x={x - w / 2} y={y - 330} width={w} height={300} rx={60} fill={color} stroke={INK} strokeWidth={8} />
 );
-const CouchFront: React.FC<{ readonly x: number; readonly y: number; readonly w?: number; readonly color?: string; readonly dark?: string }> = ({ x, y, w = 760, color = T.couch, dark = T.couchDark }) => (
+export const CouchFront: React.FC<{ readonly x: number; readonly y: number; readonly w?: number; readonly color?: string; readonly dark?: string }> = ({ x, y, w = 760, color = T.couch, dark = T.couchDark }) => (
   <g>
     <rect x={x - w / 2 + 40} y={y - 60} width={w - 80} height={140} rx={30} fill={color} stroke={INK} strokeWidth={8} />
     <rect x={x - w / 2 - 20} y={y - 190} width={110} height={290} rx={45} fill={dark} stroke={INK} strokeWidth={8} />
@@ -365,7 +365,7 @@ const Check: React.FC<{ readonly x: number; readonly y: number; readonly t: numb
   );
 };
 
-const Sparkle: React.FC<{ readonly x: number; readonly y: number; readonly t: number; readonly s?: number }> = ({ x, y, t, s = 1 }) =>
+export const Sparkle: React.FC<{ readonly x: number; readonly y: number; readonly t: number; readonly s?: number }> = ({ x, y, t, s = 1 }) =>
   t < 0 || t > 30 ? null : (
     <g transform={`translate(${x} ${y}) scale(${s * (0.6 + 0.4 * Math.sin(t * 0.4))}) rotate(${t * 4})`} opacity={clamp01(1 - t / 30)}>
       <path d="M 0 -60 L 14 -14 L 60 0 L 14 14 L 0 60 L -14 14 L -60 0 L -14 -14 Z" fill="#FFF07A" stroke={INK} strokeWidth={5} />
