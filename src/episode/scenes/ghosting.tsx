@@ -2307,7 +2307,7 @@ export const GPanic: React.FC = () => {
     <Shot
       cam={camPath(lf, [
         [0, { x: 540, y: 960, zoom: 1.0 }],
-        [len, { x: 540, y: 1180, zoom: 1.4 }],
+        [len, { x: 540, y: 1160, zoom: 1.45 }],
       ])}
     >
       <Layer depth={0}>
@@ -2315,8 +2315,8 @@ export const GPanic: React.FC = () => {
       </Layer>
       <Layer>
         <BigPhone x={540} y={960} s={1.25}>
-          <g transform="translate(0 -830)">
-            <Inbox rows={9} f={f} done={8} />
+          <g transform="translate(0 40)">
+            <Inbox rows={6} f={f} done={5} />
           </g>
         </BigPhone>
         <Brows x={540} y={240} s={1.2} mood="worried" />

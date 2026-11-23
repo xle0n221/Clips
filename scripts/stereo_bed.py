@@ -7,7 +7,7 @@ Stimme bleibt mono in der Mitte; nur Musik und Bett werden breit gemacht:
 - Spitze danach auf den Ausgangswert zurückgesetzt (Lautheit/Abstände der Kette bleiben gleich).
 Nach duck_music.py / fx_events.py laufen lassen (diese schreiben mono).
 
-    .venv/bin/python scripts/stereo_bed.py <episode-id> [--files music.wav bed.wav] [--width 0.55] [--sub 3] [--split 150] [--delay 11]
+    .venv/bin/python scripts/stereo_bed.py <episode-id> [--files music.wav bed.wav] [--width 0.55] [--sub 3] [--split 150] [--delay 11] [--side-hp 400]
 """
 from __future__ import annotations
 
@@ -35,13 +35,13 @@ def _hp(x, sr, fc, order=2):
     return _fft_filter(x, sr, lambda f: 1 / np.sqrt(1 + (fc / np.maximum(f, 1e-6)) ** (2 * order)))
 
 
-def widen(x: np.ndarray, sr: int, width: float, sub_db: float, split: float, delay_ms: float) -> np.ndarray:
+def widen(x: np.ndarray, sr: int, width: float, sub_db: float, split: float, delay_ms: float, side_hp: float = 400.0) -> np.ndarray:
     lo = _lp(x, sr, split)
     hi = x - lo
     sub = _lp(x, sr, 90, 2)
     lo = lo + sub * (10 ** (sub_db / 20) - 1)
     d = int(sr * delay_ms / 1000)
-    side = np.concatenate([np.zeros(d), _hp(hi, sr, 400)[:-d or None]])
+    side = np.concatenate([np.zeros(d), _hp(hi, sr, side_hp)[:-d or None]])
     left = lo + hi + width * side
     right = lo + hi - width * side
     out = np.stack([left, right], axis=1)
@@ -57,12 +57,13 @@ def main() -> None:
     ap.add_argument("--sub", type=float, default=3.0)
     ap.add_argument("--split", type=float, default=150.0)
     ap.add_argument("--delay", type=float, default=11.0)
+    ap.add_argument("--side-hp", type=float, default=400.0, help="Side-Signal erst ab dieser Frequenz")
     a = ap.parse_args()
     for name in a.files:
         p = ROOT / "public" / "episodes" / a.id / name
         x, sr = sf.read(str(p), dtype="float64", always_2d=True)
         mono = x.mean(axis=1)
-        out = widen(mono, sr, a.width, a.sub, a.split, a.delay)
+        out = widen(mono, sr, a.width, a.sub, a.split, a.delay, a.side_hp)
         sf.write(str(p), out.astype(np.float32), sr, subtype="PCM_16")
         l, r = out[:, 0], out[:, 1]
         corr = float(np.corrcoef(l, r)[0, 1]) if l.std() > 0 else 1.0

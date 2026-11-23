@@ -168,3 +168,17 @@ Lessons:
 4. Schnitt-Anker auf ein kurzes Wort direkt nach einem Einwort-Satz („Midnight. He …“) ergab eine 0,4-s-Einstellung → Anker auf das nächste Inhaltswort („Twenty-eight“). Einstellungslängen-Skript (timeline + captions + gleiche Anker) VOR dem Render fand es.
 5. Teil-Piep „shit“: „sh“-Reibelaut 54,34–54,58 s (> 45 % Energie über 3 kHz), Vokal ab 54,58 → mute+bleep ab Whisper-Wortstart + 80 ms, 330 ms; faster-whisper hört im Endmix „s***“. faster-whisper `transcribe(pfad)` scheitert an der av-Version → numpy-Array übergeben.
 6. Frischer Container: npm ci + .venv + Chatterbox + earshot parallel im Hintergrund, Szenenbau + Schätz-Kontaktabzug derweil – keine Wartezeit; Render 69,9 s ≈ 6 Min. (2D).
+
+## PREVIOUS VIDEO (fertig 23.11.2026, angefügt)
+Title: In This City, If You Ghost Someone, You Turn Invisible (ghost-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 65,4 s inkl. End-Card 2 s, 31 Einstellungen (alle ≤ 4 s, max 3,90 s, Ø 2,05 s), 17 Bildwelten; 150 W, 2,33 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-ghost-stadt.md)
+Stats: noch keine (Upload geplant 25.11.2026 Slot A)
+Lessons:
+1. **Nie `| head`/`| tail -n` hinter Skripte hängen, die Dateien schreiben** (fx_events.py): SIGPIPE beendete den Lauf nach der 2. Ausgabezeile – Stimme ungestummt, kein Piep, keine Poofs; erst Whisper auf dem Endmix („fuck“ unzensiert) + Pegelvergleich gestummt/ungestummt deckte es auf. Ausgabe in eine Log-Datei schreiben und danach lesen.
+2. Stereo/Sub (Schwäche meckern): neues `scripts/stereo_bed.py` (Mid/Side mit verzögertem Side, Bass < split mono, Sub-Anhebung, Spitze erhalten). Musik/Bett allein reichen nicht, weil die Mono-Stimme dominiert: erst eine leichte Stimm-Breite (Side ab 900 Hz, width 0,38 → −15,6 dB) brachte den Mix von −38 auf −16,5 dB; earshot-Referenz beginnt bei −15,5 dB. Bett mit Piep NICHT breiter als 0,7 (bei 2,2 L/R-Korrelation −0,47 = Piep gegenphasig).
+3. Sub-Anteil hängt am Gesamtpegel: Sub-Anhebung in stereo_bed vor der Spitzen-Normierung verliert Wirkung, wenn gleichzeitig die Breite steigt; Musik +7 / Bett +9 dB ergaben −19,1 dB (Ziel ≥ −17,7) – für mehr Sub eigene Sub-Schicht unter den Reveals bauen.
+4. Nur-Ton-Änderung ohne Bild-Neurender: `npx remotion render <Comp> out/x.wav --codec=wav` (≈ 1 Min.) + `ffmpeg -map 0:v -map 1:a -c:v copy` auf das vorhandene Roh-MP4.
+5. Chatterbox-„fuck“: Whisper-Wortstart lag 250 ms vor dem f-Reibelaut (52,56 vs. 52,81 s) → mute/bleep `offsetMs` 330. Vor dem Stummschalten eine Kopie der Stimme sichern (`out/<id>-voice-unmuted.wav`), sonst ist das Orten nachher nur über Neubau aus dem Cache möglich (1 Min., deterministisch).
+6. Unsichtbarkeit als Maske (`Vanish` in scenes/ghosting.tsx: SVG-Maske in Welt-Koordinaten, Level von den Füßen aufwärts, holes = einzelne Körperteile, keep = nur Kleidung sichtbar, fromTop für den POV-Daumen; Rest 8 % als Schimmer) – wiederverwendbar für Verblassen/Geister.
+7. Satzpausen-Feinsteuerung ohne Neuvertonung: `insert_pauses` +100 ms an allen Satzenden (aus captions berechnet), danach `retime_pauses --cap 700` für die zu langen Szenen-Lücken → Median 425 → 460 ms bei 2,33 W/s.
