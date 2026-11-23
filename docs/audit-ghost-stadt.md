@@ -34,3 +34,9 @@ Maßstab: `docs/audit-2026-11-20.md` (nicht milder). Grundlage: Kontaktabzüge `
 2. Satzpausen P10 299 ms (Median erfüllt die Regel).
 3. Erster Gag-Satz endet erst bei 3,1 s (Bild-Gags vorher).
 4. Marktlage „In This City“ Nov. 2026 nicht belegt (Ich kann das nicht bestätigen).
+
+## Endmessung (fertiges MP4 `out/ghost-stadt.mp4`, 23.11.2026)
+- ffprobe: 1080×1920, H.264 yuv420p, 30 fps, AAC 2 Kanäle, 65,40 s, 32,9 MB.
+- ffmpeg ebur128: **−15,1 LUFS**, True Peak **−3,2 dBFS**, LRA 4,5 LU.
+- earshot `critique --fast`: launch-grade 18/20 (94 %), 0 kritisch/0 major; minor Stereo −16,5 dB, Sub −19,1 dB (voller Lauf auf identischem Ton: 20/22, realness 0,97, Musikpräsenz 69 %).
+- Nachprüfung 43,5 s (Ein-Chat-Zeile) im fertigen MP4: sichtbar und mittig.
