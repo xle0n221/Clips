@@ -155,3 +155,16 @@ Lessons:
 5. Einstellungslängen VOR dem Render aus timeline + captions berechnen (Python, gleiche Wortanker wie W()) – fand 3 Einstellungen > 4 s; Render abgebrochen statt doppelt.
 6. Primärquellen-Hosts (sec.gov, news.microsoft.com, slashdot.org) per `update_environment` freigegeben; ein Antrag mit web.archive.org/cnet.com wurde komplett abgelehnt → Hosts einzeln/klein beantragen. Browser-UA-Fälschung gegen 403 ist gesperrt → Quelle weglassen.
 7. Geräte-Figuren (`Device`-Baustein in scenes/apple.tsx: Körper-Form + Bildschirm-Gesicht + Nudelarme) machen Marken-Themen ohne Logos/Produktbilder spielbar.
+
+## PREVIOUS VIDEO (fertig 23.11.2026, angefügt)
+Title: In This City, Every Time You Complain, You Age One Year (meckern-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 69,9 s inkl. End-Card 2 s, 30 Einstellungen (alle ≤ 4 s, max 3,93 s), 22 Bildwelten; 160 W, 2,33 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-meckern-stadt.md)
+Stats: noch keine (Upload geplant 24.11.2026 Slot B)
+Lessons:
+1. 160 Skriptwörter mit 4 ausgeschriebenen Zahlwörtern + `gap_ms` 480–500 ergaben 68,7 s Sprechzeit = 70,7 s inkl. End-Card (zu lang) → für 61–70 s mit langen Satzpausen ≈ 150 Wörter planen; Rettung ohne Neuvertonung: `retime_pauses --cap 560 --tail 280` (−0,9 s, Median-Pause blieb 490 ms).
+2. Altern als Konsequenz: neue Person-Props `wrinkles`/`beard`/`eyeAge` in gaehnSets (Standard aus). Erster Bart-Entwurf (Länge 3,8 r) wirkte als weißer Kegel über dem Körper → max ≈ 1,6 r.
+3. Gesicht-vor-Requisit erneut (Suppe, Laptop, Telefone am Ohr): Telefon an Kopf-Koordinaten (x + 118·s, y − 336·s) statt an der Hand rechnen, sitzende Figur über Tischkante setzen.
+4. Schnitt-Anker auf ein kurzes Wort direkt nach einem Einwort-Satz („Midnight. He …“) ergab eine 0,4-s-Einstellung → Anker auf das nächste Inhaltswort („Twenty-eight“). Einstellungslängen-Skript (timeline + captions + gleiche Anker) VOR dem Render fand es.
+5. Teil-Piep „shit“: „sh“-Reibelaut 54,34–54,58 s (> 45 % Energie über 3 kHz), Vokal ab 54,58 → mute+bleep ab Whisper-Wortstart + 80 ms, 330 ms; faster-whisper hört im Endmix „s***“. faster-whisper `transcribe(pfad)` scheitert an der av-Version → numpy-Array übergeben.
+6. Frischer Container: npm ci + .venv + Chatterbox + earshot parallel im Hintergrund, Szenenbau + Schätz-Kontaktabzug derweil – keine Wartezeit; Render 69,9 s ≈ 6 Min. (2D).
