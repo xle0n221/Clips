@@ -300,6 +300,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, Every Time You Complain, You Age One Year“ (KnowToon, schwarzer Humor): 2D (scenes/meckern.tsx) */}
+      <Composition
+        id="MeckernStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "meckern-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „In This City, You Die When Your To-Do List Is Done“ (KnowToon, schwarzer Humor): 2D (scenes/todo.tsx) */}
       <Composition
         id="TodoStadt"

@@ -23,6 +23,7 @@ import { TODO_CONFIG, TODO_SCENES } from "./todo";
 import { AKKU_CONFIG, AKKU_SCENES } from "./akku";
 import { FLUCH_CONFIG, FLUCH_SCENES } from "./fluch";
 import { APPLE_CONFIG, APPLE_SCENES } from "./apple";
+import { MECKERN_CONFIG, MECKERN_SCENES } from "./meckern";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -66,6 +67,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "todo-stadt": TODO_SCENES,
   "akku-stadt": AKKU_SCENES,
   "fluch-stadt": FLUCH_SCENES,
+  "meckern-stadt": MECKERN_SCENES,
   "apple-ipod": APPLE_SCENES,
 };
 
@@ -133,6 +135,7 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "todo-stadt": TODO_CONFIG,
   "akku-stadt": AKKU_CONFIG,
   "fluch-stadt": FLUCH_CONFIG,
+  "meckern-stadt": MECKERN_CONFIG,
   "apple-ipod": APPLE_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];
