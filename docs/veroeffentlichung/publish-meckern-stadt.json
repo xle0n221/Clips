@@ -1,0 +1,58 @@
+{
+ "publish": {
+  "note": "Reine Fiktion (episodes/meckern-stadt.json, Feld sources): keine Realfakten, keine Marken. Fluch 'shit' nur teilweise gepiept (Anlaut 'sh' hörbar, Nutzer 22.11.), Untertitel 'sh*t'. #DarkHumor/#InThisCity/#MondayMood als Themen-Tags [HYPOTHESE: Reichweite unbelegt] – vor dem Posten gegenprüfen. Länge siehe upload.lengthSec (Regel 61–70 s).",
+  "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „COMPLAIN = +1 YEAR“, Mann im Regen, Schirm klappt um, Meckerwolke.",
+  "tiktok": {
+   "caption": "In this city, every time you complain, you age one year. Go ahead, comment that it was too long. 👴⛈️ (fiction)",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#MondayMood"
+   ]
+  },
+  "upload": {
+   "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+   "lengthSec": 68,
+   "slotNote": "24.11. Slot B = dieses Video (24.11. Slot A = apple-ipod).",
+   "status": "plan",
+   "tiktok": {
+    "calc": "22:00 Berlin (UTC+1) = 21:00 UTC → New York UTC-5 = 16:00 · Los Angeles UTC-8 = 13:00 · London UTC+0 = 21:00",
+    "date": "24.11.2026",
+    "local": {
+     "london": "21:00",
+     "losAngeles": "13:00",
+     "newYork": "16:00"
+    },
+    "slot": "B",
+    "timeDe": "22:00"
+   },
+   "type": "Story (Welt-Regel-Comedy, schwarzer Humor)",
+   "youtube": {
+    "calc": "23:00 Berlin (UTC+1) = 22:00 UTC → New York UTC-5 = 17:00 · Los Angeles UTC-8 = 14:00 · London UTC+0 = 22:00",
+    "date": "24.11.2026",
+    "local": {
+     "london": "22:00",
+     "losAngeles": "14:00",
+     "newYork": "17:00"
+    },
+    "slot": "B",
+    "timeDe": "23:00"
+   }
+  },
+  "youtube": {
+   "title": "In This City, Every Time You Complain, You Age One Year 👴⛈️",
+   "description": "An original animated dark-humor satire: in this city, every time you complain, you age one year. Tyler (25, professional complainer) has to get through his worst Monday without one complaint. Pure fiction – the city, the rule and all characters are invented. #shorts",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#MondayMood"
+   ]
+  }
+ },
+ "title": "In This City, Every Time You Complain, You Age One Year",
+ "id": "meckern-stadt"
+}
