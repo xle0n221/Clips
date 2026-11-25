@@ -300,6 +300,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, 'We Should Hang Out Sometime' Is Legally Binding“ (KnowToon, schwarzer Humor): 2D (scenes/hangout.tsx) */}
+      <Composition
+        id="HangoutStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "hangout-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „In This City, Every Minute You Doomscroll, You Shrink One Inch“ (KnowToon, schwarzer Humor): 2D (scenes/scroll.tsx) */}
       <Composition
         id="ScrollStadt"

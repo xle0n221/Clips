@@ -1,0 +1,524 @@
+{
+ "id": "hangout-stadt",
+ "title": "In This City, \"We Should Hang Out Sometime\" Is Legally Binding",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "lengthSec": 65,
+ "cover": {
+  "text": "FAKE PLANS = LAW",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. We should hang out sometime.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 25.11.2026 in docs/audit-hangout-stadt.md). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Marcus (Ja-Sager, 40 Mal 'we should hang out sometime' gesagt) muss an einem Samstag 40 gerichtlich angeordnete Treffen schaffen. Schlupfloch: eine Riesenparty mit allen 40 = technisch ein Treffen; der Beamte genehmigt – und sagt beim Abschied selbst 'We should hang out sometime'. Zwei Beamte krachen durch die Decke, er ist lebenslang an Marcus gekettet. Schluss: Mitbewohner, Marcus schuldet Miete und sagt 'I'll pay you back sometime' – der Stempel fällt erneut (Loop auf Bild 1). Eingepflanzt: Stempel-Beamte fallen schon im Hook von oben.",
+ "originality": "Eigene Regel (leere Verabredungs-Floskel = Vertrag), eigene Figuren (Marcus, Stadt-Beamter, Zahnarzt, Gym-Typ, Ex + Anwältin). Konsequenz = Bürokratie/Vertragszwang (weder Tod wie todo/suche/akku noch Peinlichkeit wie fluch noch Altern wie meckern noch Unsichtbarkeit wie ghost noch Schrumpfen wie scroll). Kein Thema aus episodes/*.json wiederholt.",
+ "music": {
+  "mood": "funny",
+  "bpm": 100,
+  "silenceBefore": {
+   "clerk2": 0.5,
+   "outro": 0.4
+  },
+  "why": "Bürokratie-Slapstick (Stempel, Kette, Party) → verspielter Trap/R&B 'funny', anderer Seed/Tempo als scroll (Seed = Episoden-ID, 100 BPM). Stille vor dem Beamten-Satz (Twist) und vor der Loop-Zeile. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten). Stereo/Sub wie scroll-stadt (stereo_bed 2. Durchlauf)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-amüsiert, schadenfroh, US-Slang eines 25-Jährigen (bro, lowkey, cooked); clerk angespannt, clerk2 langsam-unheilvoll, 'Oh f***' ehrlich erschrocken",
+  "why": "Auftrag 25.11. Video 2: In This City + schwarzer Humor, zynischer Erzähler, Slang; voicePreset witzig; gap_ms 480–500, wenige längere Sätze; ≈ 150 Wörter (meckern-Lesson 1)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (gaehnSets-Person). Bürokratie wird stumm lesbar über Requisiten: Riesen-Stempel, rotes Siegel (Handschlag-Symbol, keine Schrift), Handschellen-Kette zwischen zwei Figuren.",
+  "characters": "MARCUS: grüner Hoodie, Afro, 25, grinst immer; BEAMTER: grauer Anzug, Schnurrbart, Melone-freie Glatze mit Seitenscheitel, Aktenkoffer, Riesen-Stempel; ZAHNARZT: weißer Kittel, Mundspiegel; GYM-TYP: Tanktop rot; EX: lila, wütend; ANWÄLTIN: Anzug, Dutt, Aktenkoffer."
+ },
+ "hookQuestion": {
+  "text": "Can he survive one Saturday?",
+  "shownBy": "Bild 1: Zwei verabschieden sich auf der Straße, Sprechblase mit Kalender-Symbol – ein Beamter fällt von oben, Stempel KNALL, Handschellen verbinden beide; Frage gesprochen in marcus (~17 s)",
+  "answer": "Schlupfloch Party – und dann erwischt es den Beamten selbst (≈ 45–52 s)."
+ },
+ "finalImage": {
+  "image": "Wohnung: Marcus sagt 'I'll pay you back sometime', Decke reißt, Stempel fällt → harter Schnitt auf Bild 1",
+  "plant": "hook (Beamter fällt von oben)",
+  "payoff": "gone + outro"
+ },
+ "soundBed": {
+  "why": "Straße/Wohnung leise, Stempel-Knall bei jedem Vertrag, Ketten-Klirren, Party, Teil-Piep auf 'fuck' (Anlaut 'f' hörbar, Rest gepiept).",
+  "room": {
+   "db": -46,
+   "rain_db": -90
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "legally"
+   },
+   {
+    "scene": "gone",
+    "word": "ceiling"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -8
+  },
+  "twist": {
+   "scene": "twist",
+   "word": "hangout",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -9
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "mute",
+    "ms": 260
+   },
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "bleep",
+    "ms": 260,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "clerk",
+    "word": "Court-ordered",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 450,
+    "db": -12
+   },
+   {
+    "scene": "cooked",
+    "word": "cooked",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 500,
+    "db": -12
+   },
+   {
+    "scene": "outro",
+    "word": "sometime",
+    "at": "end",
+    "offsetMs": 100,
+    "kind": "poof",
+    "ms": 600,
+    "db": -8
+   }
+  ]
+ },
+ "version": "v1 (25.11.2026, Video 2, Regeln docs/audit-2026-11-20.md + CLAUDE.md 22.11. Flüche/Slang) Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen ≥ 450 ms. Upload 26.11.2026 Slot B (TT 22 / YT 23 DE).",
+ "note": "Konsequenz Bürokratie/Vertragszwang, schwarzer Humor: Brunch-Knast, 'let's stay friends' = lebenslänglich, Beamter fängt sich selbst; Teil-Piep 'f***'.",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, if you say \"we should hang out sometime,\" | it's *legally binding*.",
+   "visual": "SHOT 1 (medium, street, COVER 0–0,5 s): two guys part with a wave, speech bubble with calendar icon pops – at 0,6 s a grey clerk drops from the top with a giant rubber stamp, SLAM between them, handcuff chain snaps around both wrists / SHOT 2 ('legally'): close on the red seal (handshake icon) + chained wrists, both stare",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "legally",
+     "beat": "seal"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "if you say",
+    "\"we should hang out sometime,\"",
+    "it's legally binding."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Skip a brunch you promised? Three to five years. | Of *brunch*.",
+   "visual": "SHOT 1 (courtroom): judge bangs gavel, sweaty defendant / SHOT 2 ('Of'): prison cell is a brunch table, inmates in orange forced to eat pancakes, mimosas, guard nods",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Of",
+     "beat": "brunch"
+    }
+   ],
+   "captions": [
+    "Skip a brunch you promised?",
+    "Three to five years.",
+    "Of brunch."
+   ]
+  },
+  {
+   "id": "exes",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Exes don't say \"let's stay friends\" anymore. | That's a *life sentence*.",
+   "visual": "SHOT 1 (park bench, breakup): she starts to talk, he slaps a hand over her mouth in panic / SHOT 2 ('That's'): same bench, both grey and wrinkly, still chained, glaring",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "That's",
+     "beat": "old"
+    }
+   ],
+   "captions": [
+    "Exes don't say",
+    "\"let's stay friends\"",
+    "anymore.",
+    "That's a life sentence."
+   ]
+  },
+  {
+   "id": "marcus",
+   "section": "setup",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Marcus. Professional people pleaser. Last weekend he said it forty times. | Can he survive *one Saturday*?",
+   "visual": "SHOT 1 (medium): Marcus (green hoodie, afro) grins, double thumbs up / SHOT 2 ('Last'): Marcus waves to a stream of people, tally marks pile up / SHOT 3 ('Can'): close, sweat drop, nervous grin",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Last",
+     "beat": "tally"
+    },
+    {
+     "word": "Can",
+     "beat": "sweat"
+    }
+   ],
+   "captions": [
+    "This is Marcus.",
+    "Professional people pleaser.",
+    "Last weekend",
+    "he said it forty times.",
+    "Can he survive",
+    "one Saturday?"
+   ]
+  },
+  {
+   "id": "clerk",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Saturday, six a.m. The city clerk delivers his schedule. | Forty hangouts. *Court-ordered*.",
+   "visual": "SHOT 1 (dark bedroom): clock at 6, doorbell, Marcus jolts awake / SHOT 2 ('The'): door, clerk unrolls a scroll that rolls endlessly down the stairs / SHOT 3 ('Forty'): Marcus horrified, stamp SLAM on the scroll",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "The",
+     "beat": "door"
+    },
+    {
+     "word": "Forty",
+     "beat": "stamp"
+    }
+   ],
+   "captions": [
+    "Saturday, six a.m.",
+    "The city clerk",
+    "delivers his schedule.",
+    "Forty hangouts.",
+    "Court-ordered."
+   ]
+  },
+  {
+   "id": "rush",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Coffee with his dentist. Gym with a guy he met once. | Karaoke with his ex. Lowkey, her *lawyer* came too.",
+   "visual": "SHOT 1 (cafe): dentist pokes a mirror into Marcus's mouth while he sips / SHOT 2 ('Gym'): bench press, stranger spots, Marcus crushed / SHOT 3 ('Karaoke'): ex screams into mic, lawyer with briefcase sings backup",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Gym",
+     "beat": "gym"
+    },
+    {
+     "word": "Karaoke",
+     "beat": "karaoke"
+    }
+   ],
+   "captions": [
+    "Coffee with his dentist.",
+    "Gym with a guy",
+    "he met once.",
+    "Karaoke with his ex.",
+    "Lowkey,",
+    "her lawyer came too."
+   ]
+  },
+  {
+   "id": "cooked",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "By noon, his social battery is literally smoking. | Bro is *cooked*.",
+   "visual": "SHOT 1 (street): Marcus staggers, battery on his chest blinking red, smoke from his head / SHOT 2 ('Bro'): POOF, he faceplants, the clerk steps over him and ticks the clipboard",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Bro",
+     "beat": "fall"
+    }
+   ],
+   "captions": [
+    "By noon,",
+    "his social battery",
+    "is literally smoking.",
+    "Bro is cooked."
+   ]
+  },
+  {
+   "id": "twist",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Then, a loophole. One giant party. All forty people. | Technically, *one hangout*.",
+   "visual": "SHOT 1 (close): lightbulb over Marcus, evil grin / SHOT 2 ('One'): party room packed with dentist, gym guy, ex, lawyer, disco ball, confetti / SHOT 3 ('Technically'): clerk squints at clipboard, then green check seal",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "One",
+     "beat": "party"
+    },
+    {
+     "word": "Technically",
+     "beat": "check"
+    }
+   ],
+   "captions": [
+    "Then, a loophole.",
+    "One giant party.",
+    "All forty people.",
+    "Technically,",
+    "one hangout."
+   ]
+  },
+  {
+   "id": "clerk2",
+   "section": "payoff",
+   "delivery": "serious",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "The clerk approves it, waves goodbye, and says, | \"We should hang out *sometime*.\"",
+   "visual": "SHOT 1 (doorway): clerk satisfied, tips hand, waves / SHOT 2 ('We'): close on clerk smiling – party freezes, everybody turns, music stops",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "We",
+     "beat": "freeze"
+    }
+   ],
+   "captions": [
+    "The clerk approves it,",
+    "waves goodbye,",
+    "and says,",
+    "\"We should hang out sometime.\""
+   ]
+  },
+  {
+   "id": "gone",
+   "section": "payoff",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Oh *fuck*. Two clerks crash through the ceiling. | Now he's chained to Marcus. *For life*.",
+   "visual": "SHOT 1 ('Oh'): clerk's face drains, eyes huge / SHOT 2 ('Two'): ceiling bursts, two clerks drop, stamp SLAM / SHOT 3 ('Now'): clerk sobbing, chained to a delighted Marcus",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Two",
+     "beat": "ceiling"
+    },
+    {
+     "word": "Now",
+     "beat": "chain"
+    }
+   ],
+   "captions": [
+    "Oh f***.",
+    "Two clerks",
+    "crash through the ceiling.",
+    "Now he's chained to Marcus.",
+    "For life."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "They're roommates now. Marcus owes him rent. He just said, | \"I'll pay you back *sometime*.\"",
+   "visual": "SHOT 1 (apartment couch): chained roommates, clerk holds up a rent bill, Marcus eats chips / SHOT 2 ('He'): Marcus grins and says it / SHOT 3 (end): ceiling cracks, stamp drops → hard cut to frame 1 (loop)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Verabredungs-Vertrags-Regel, Marcus und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "He",
+     "beat": "grin"
+    }
+   ],
+   "captions": [
+    "They're roommates now.",
+    "Marcus owes him rent.",
+    "He just said,",
+    "\"I'll pay you back sometime.\""
+   ]
+  }
+ ]
+}
