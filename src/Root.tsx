@@ -300,6 +300,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, Every Minute You Doomscroll, You Shrink One Inch“ (KnowToon, schwarzer Humor): 2D (scenes/scroll.tsx) */}
+      <Composition
+        id="ScrollStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "scroll-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „In This City, If You Ghost Someone, You Turn Invisible“ (KnowToon, schwarzer Humor): 2D (scenes/ghosting.tsx) */}
       <Composition
         id="GhostStadt"

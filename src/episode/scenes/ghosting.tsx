@@ -767,7 +767,7 @@ const Thumb: React.FC<{
   </g>
 );
 
-const Cat: React.FC<{
+export const Cat: React.FC<{
   readonly x: number;
   readonly y: number;
   readonly f: number;
