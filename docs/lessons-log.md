@@ -195,3 +195,17 @@ Lessons:
 4. W()-Anker auf kurze Wörter: „In“ (Zitat-Beginn) traf zuerst „lives *in* the bag“ → Schnittliste unsortiert, Loop-Shot 2 s zu früh. Der End-Kontaktabzug fand es; `nth` setzen. Einstellungslängen-Skript fand zusätzlich eine 4,2-s-Einstellung (rules) → dritter Schnitt mit szenenbezogener Animationszeit (`f - cut`) statt `lf`.
 5. Schrumpfen als Konsequenz: `steps()` (diskrete Stufen mit Federn) + `ShrinkFx` (rote Pfeile, Ring) + Messlatte mit Kopfhöhen-Markierung – stumm lesbar ab Frame 0; Loop durch die Hook-Szene als Komponente (`HookRoom`) in einem verschachtelten `<svg>` auf dem Handy.
 6. Fluch-Ortung: Whisper-Start („fuck“ 54,83 s) lag 40 ms NACH dem Vokal-Beginn (54,79) – diesmal Piep mit `offsetMs` −40 (bei ghost +330): immer per Spektrum orten, nie Offset übernehmen.
+
+## PREVIOUS VIDEO (fertig 25.11.2026, angefügt)
+Title: In This City, "We Should Hang Out Sometime" Is Legally Binding (hangout-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 67,3 s inkl. End-Card, 28 Einstellungen (alle ≤ 4 s, max 3,62 s, Ø 2,36 s), 18 Bildwelten; 152 W, 2,30 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-hangout-stadt.md)
+Stats: noch keine (Upload geplant 26.11.2026 Slot B)
+Lessons:
+1. 153 Skriptwörter + `gap_ms` 480–500 ergaben 67,6 s Sprechzeit = 2,25 W/s (unter Regel). `retime --cap 700` drückte den Satzpausen-Median 480 → 380 ms (gemessen als längste Stille, nicht Caption-Lücke) → verworfen. Lösung: `--cap 800` + `atempo 1,03` (Zeiten in captions/timeline mit 1/1,03 skalieren) + gezielt `insert_pauses` nur an den 4–7 kürzesten Satzenden (Stille aus dem Pegel gemessen, nicht aus captions – Whisper-Wortgrenzen haben dort oft 0 ms Lücke) → 2,30 W/s UND Median 450. Für die Zukunft ≈ 145 Wörter planen.
+2. `insert_pauses` kann harte Kanten erzeugen (stimm_messung: 2) → 60-ms-Cosinus-Ausblendung vor der Kante, danach 0.
+3. Fluch-Ortung: Whisper-Start „fuck“ (53,23 s) lag 190 ms NACH dem Vokal (53,04), f-Reibelaut 52,92–53,03 → `offsetMs` −190, 290 ms. Wieder anders als ghost (+330) und scroll (−40): immer per Spektrum orten.
+4. finalize.sh allein liefert True Peak −0,7 dBFS; das scroll-Mastering (EQ −3,5 dB @ 6 kHz, +0,7 dB, alimiter 0,6 level=disabled, 4× überabgetastet) danach → −15,2 LUFS / −3,5 dBFS, earshot 23/23.
+5. Stempel-Knall in Bild 1 ohne Wort-Anker: fx am ersten Wort („In“) mit `offsetMs` = Szenenstart + Trefferframe − Wortstart.
+6. Render: `--concurrency` nie über `nproc` (Abbruch bei 8 > 4 Kernen); Render 67 s ≈ 6 Min. mit 4.
+7. Requisit-vor-Gesicht erneut (Tasse, Hantel, Siegel): Hantel HINTER die Figur zeichnen (Schulterhöhe), Requisit-Größe am Kopfradius (105·s) prüfen.
