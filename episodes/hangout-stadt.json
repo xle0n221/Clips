@@ -96,17 +96,17 @@
     "scene": "gone",
     "word": "fuck",
     "at": "start",
-    "offsetMs": 0,
+    "offsetMs": -190,
     "kind": "mute",
-    "ms": 260
+    "ms": 290
    },
    {
     "scene": "gone",
     "word": "fuck",
     "at": "start",
-    "offsetMs": 0,
+    "offsetMs": -190,
     "kind": "bleep",
-    "ms": 260,
+    "ms": 290,
     "db": -17,
     "hz": 1000
    },
@@ -121,9 +121,9 @@
    },
    {
     "scene": "cooked",
-    "word": "cooked",
+    "word": "Bro",
     "at": "start",
-    "offsetMs": -60,
+    "offsetMs": 200,
     "kind": "poof",
     "ms": 500,
     "db": -12
@@ -136,6 +136,15 @@
     "kind": "poof",
     "ms": 600,
     "db": -8
+   },
+   {
+    "scene": "hook",
+    "word": "In",
+    "at": "start",
+    "offsetMs": 400,
+    "kind": "poof",
+    "ms": 500,
+    "db": -7
    }
   ]
  },

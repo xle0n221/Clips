@@ -1054,7 +1054,6 @@ export const HGone: React.FC = () => {
           <Clerk x={300} y={lerp(300, Y, fall)} s={0.95} eyes="half" look={[1, 0]} brows="angry" mouth="flat" armL={160} armR={160} />
           <Clerk x={1010} y={lerp(200, Y, fall)} s={0.95} eyes="half" look={[-1, 0]} brows="angry" mouth="flat" armL={160} armR={160} />
           <Stamp x={700} y={hit >= 0 ? Y - 640 : lerp(300, Y - 640, fall)} s={0.8} />
-          {hit >= 0 ? <Seal x={700} y={Y - 300} s={0.7} /> : null}
           <Burst x={700} y={Y - 640} r0={150} r1={150 + 200 * clamp01(hit / 6)} n={14} o={hit >= 0 && hit < 10 ? 1 - hit / 10 : 0} />
           <Poof x={540} y={Y - 60} t={hit} s={1.4} />
         </Layer>
@@ -1123,7 +1122,7 @@ export const HOutro: React.FC = () => {
     );
   }
   // Decke reißt über dem Sofa, der Schatten wächst, der Stempel kommt – harter Schnitt zurück auf Bild 1 (Loop)
-  const down = eIn(lf, 6, len);
+  const down = eIn(lf, 0, Math.max(4, len - 2));
   return (
     <Shot cam={push(lf, len, 540 + shake(lf - 2, 10), 1000, 0.9, 0.95)}>
       <Layer depth={0.7}>
@@ -1138,7 +1137,7 @@ export const HOutro: React.FC = () => {
         <Marcus x={340} y={1380} s={s} seated eyes="wide" look={[0, -1]} brows="up" mouth="o" open={0.6} armL={160} armR={40} />
         <Chain x1={hand(340, 1380, s, 40, 1, true)[0]} y1={hand(340, 1380, s, 40, 1, true)[1]} x2={hand(740, 1380, s, 170, -1, true)[0]} y2={hand(740, 1380, s, 170, -1, true)[1]} s={0.9} sag={30} />
         <CouchFront x={540} y={1500} w={920} color="#3D6BE0" />
-        <Stamp x={540} y={lerp(-200, 900, down)} s={1.1} />
+        <Stamp x={540} y={lerp(250, 1000, down)} s={1.1} />
       </Layer>
     </Shot>
   );
