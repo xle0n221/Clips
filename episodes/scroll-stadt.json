@@ -20,7 +20,7 @@
   "room_tone_db": -72,
   "end_win_s": 0.7
  },
- "lengthSec": 66,
+ "lengthSec": 63,
  "cover": {
   "text": "SCROLL = SHRINK",
   "frames": 15
@@ -79,7 +79,7 @@
   ],
   "revealSound": {
    "sound": "pro_impact/deep",
-   "db": -16
+   "db": -8
   },
   "twist": {
    "scene": "twist",
@@ -88,10 +88,65 @@
     "mallet/glock",
     "pro_tap/glass"
    ],
-   "db": -17
+   "db": -9
   },
   "tailMs": 1500,
-  "fx": []
+  "fx": [
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": -40,
+    "kind": "mute",
+    "ms": 260
+   },
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": -40,
+    "kind": "bleep",
+    "ms": 260,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "inch",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 500,
+    "db": -15
+   },
+   {
+    "scene": "ex",
+    "word": "bro",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 450,
+    "db": -16
+   },
+   {
+    "scene": "interview",
+    "word": "Cooked",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 600,
+    "db": -8
+   },
+   {
+    "scene": "gone",
+    "word": "vacuums",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "poof",
+    "ms": 1400,
+    "db": -5
+   }
+  ]
  },
  "version": "v1 (25.11.2026, Video 1, Regeln docs/audit-2026-11-20.md + CLAUDE.md 22.11. Flüche/Slang) Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen ≥ 450 ms. Upload 26.11.2026 Slot A (TT 17 / YT 18 DE).",
  "note": "Konsequenz Schrumpfen, schwarzer Humor: Opa mit Klapphandy als arroganter Riese, Taube scrollt auch, Hausmeister saugt die Marketing-Abteilung weg; Teil-Piep 'f***'.",

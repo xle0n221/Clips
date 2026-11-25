@@ -1,0 +1,229 @@
+{
+ "id": "scroll-stadt",
+ "title": "In This City, Every Minute You Doomscroll, You Shrink One Inch",
+ "durationMs": 62150,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4750
+  },
+  {
+   "id": "rules",
+   "startMs": 4750,
+   "endMs": 11990
+  },
+  {
+   "id": "grandpa",
+   "startMs": 11990,
+   "endMs": 17010
+  },
+  {
+   "id": "tyler",
+   "startMs": 17010,
+   "endMs": 22740
+  },
+  {
+   "id": "ex",
+   "startMs": 22740,
+   "endMs": 28480
+  },
+  {
+   "id": "pigeon",
+   "startMs": 28480,
+   "endMs": 32730
+  },
+  {
+   "id": "lobby",
+   "startMs": 32730,
+   "endMs": 37530
+  },
+  {
+   "id": "interview",
+   "startMs": 37530,
+   "endMs": 42220
+  },
+  {
+   "id": "twist",
+   "startMs": 42220,
+   "endMs": 48100
+  },
+  {
+   "id": "gone",
+   "startMs": 48100,
+   "endMs": 55660
+  },
+  {
+   "id": "outro",
+   "startMs": 55660,
+   "endMs": 61210
+  }
+ ],
+ "cues": [
+  {
+   "beat": "tiny",
+   "scene": "hook",
+   "atMs": 4020
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4020
+  },
+  {
+   "beat": "app",
+   "scene": "rules",
+   "atMs": 7840
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 10700
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 11000
+  },
+  {
+   "beat": "giant",
+   "scene": "grandpa",
+   "atMs": 13760
+  },
+  {
+   "emph": true,
+   "scene": "grandpa",
+   "atMs": 15840
+  },
+  {
+   "beat": "clock",
+   "scene": "tyler",
+   "atMs": 19480
+  },
+  {
+   "beat": "phone",
+   "scene": "tyler",
+   "atMs": 20660
+  },
+  {
+   "emph": true,
+   "scene": "tyler",
+   "atMs": 21540
+  },
+  {
+   "beat": "opens",
+   "scene": "ex",
+   "atMs": 25420
+  },
+  {
+   "beat": "cat",
+   "scene": "ex",
+   "atMs": 26880
+  },
+  {
+   "emph": true,
+   "scene": "ex",
+   "atMs": 27240
+  },
+  {
+   "beat": "pigeonphone",
+   "scene": "pigeon",
+   "atMs": 30570
+  },
+  {
+   "emph": true,
+   "scene": "pigeon",
+   "atMs": 31950
+  },
+  {
+   "beat": "button",
+   "scene": "lobby",
+   "atMs": 34190
+  },
+  {
+   "beat": "parkour",
+   "scene": "lobby",
+   "atMs": 36310
+  },
+  {
+   "emph": true,
+   "scene": "lobby",
+   "atMs": 36530
+  },
+  {
+   "beat": "phone",
+   "scene": "interview",
+   "atMs": 39910
+  },
+  {
+   "beat": "shrink",
+   "scene": "interview",
+   "atMs": 41430
+  },
+  {
+   "emph": true,
+   "scene": "interview",
+   "atMs": 41430
+  },
+  {
+   "beat": "reveal",
+   "scene": "twist",
+   "atMs": 44690
+  },
+  {
+   "beat": "hire",
+   "scene": "twist",
+   "atMs": 47050
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 45030
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 47110
+  },
+  {
+   "beat": "janitor",
+   "scene": "gone",
+   "atMs": 50510
+  },
+  {
+   "beat": "vacuum",
+   "scene": "gone",
+   "atMs": 51590
+  },
+  {
+   "beat": "empty",
+   "scene": "gone",
+   "atMs": 54390
+  },
+  {
+   "emph": true,
+   "scene": "gone",
+   "atMs": 53290
+  },
+  {
+   "emph": true,
+   "scene": "gone",
+   "atMs": 54830
+  },
+  {
+   "beat": "screen",
+   "scene": "outro",
+   "atMs": 58570
+  }
+ ],
+ "cover": {
+  "text": "SCROLL = SHRINK",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Then put the phone down.",
+  "seconds": 2
+ }
+}

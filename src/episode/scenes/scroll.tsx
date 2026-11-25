@@ -566,7 +566,8 @@ export const SHook: React.FC = () => {
 export const SRules: React.FC = () => {
   const { f, d, W } = useBeats();
   const scr = W("screen", 0.85);
-  const { i, lf, len } = useShot([W("Dating", 0.38) - 2], d, f);
+  const dating = W("Dating", 0.38) - 2;
+  const { i, lf, len } = useShot([dating, W("They", 0.7) - 2], d, f);
   if (i === 0) {
     // Bus: riesige Sitze, hamstergroße Pendler scrollen; einer springt vergeblich nach dem Halteknopf
     const jump = Math.abs(Math.sin(lf * 0.32)) * 90;
@@ -598,10 +599,11 @@ export const SRules: React.FC = () => {
     );
   }
   // Dating-App: Größen-Zeile (Lineal) wird durchgestrichen, darunter die Bildschirmzeit (Sanduhr + übervoller Balken)
-  const strike = ease(lf, 8, 16);
-  const bar = ease(lf, scr - (d - len) - 4, scr - (d - len) + 14);
+  const lf2 = f - Math.max(1, Math.round(dating));
+  const strike = ease(lf2, 8, 16);
+  const bar = ease(f, scr - 4, scr + 14);
   return (
-    <Shot cam={push(lf, len, 540, 900, 1.0, 1.06)}>
+    <Shot cam={i === 1 ? push(lf, len, 540, 900, 1.0, 1.06) : push(lf, len, 560, 1080, 1.5, 1.6)}>
       <Layer depth={0.5}>
         <ReactBg a={C.date} b="#FF9FCB" f={f} />
       </Layer>
@@ -619,7 +621,7 @@ export const SRules: React.FC = () => {
             <line x1={-60} x2={lerp(-60, 500, strike)} y1={0} y2={0} stroke={P.red} strokeWidth={16} strokeLinecap="round" />
           </g>
           {/* Bildschirmzeit: Sanduhr + Balken läuft über */}
-          <g transform="translate(110 760)" opacity={ease(lf, 14, 20)}>
+          <g transform="translate(110 760)" opacity={ease(lf2, 14, 20)}>
             <path d="M -30 -50 L 70 -50 L 20 0 L 70 50 L -30 50 L 20 0 Z" fill="#FFE66B" stroke={INK} strokeWidth={6} strokeLinejoin="round" />
             <rect x={110} y={-26} width={380} height={52} rx={26} fill="#FFFFFF" stroke={INK} strokeWidth={6} />
             <rect x={110} y={-26} width={lerp(60, 640, bar)} height={52} rx={26} fill={P.red} stroke={INK} strokeWidth={6} />
@@ -985,7 +987,7 @@ export const SInterview: React.FC = () => {
         </Layer>
         <Layer>
           <Tyler suitUp x={540} y={1750} s={2.0} eyes="half" look={[0, 1]} brows="worried" mouth="flat" armR={lerp(20, 150, pull)} bendR={-70} armL={150} bendL={-70} />
-          <Phone x={hand(540, 1750, 2.0, 150, 1)[0] - 140} y={hand(540, 1750, 2.0, 150, 1)[1] + 40} s={2.2 * pull} r={-6} scroll={lf * 0.7} />
+          <Phone x={hand(540, 1750, 2.0, 150, 1)[0] - 140} y={hand(540, 1750, 2.0, 150, 1)[1] + 230} s={2.0 * pull} r={-6} scroll={lf * 0.7} />
           <Sweat x={720} y={720} s={1.3} />
           <Sweat x={350} y={760} s={1.0} />
         </Layer>
@@ -1155,7 +1157,7 @@ export const SGone: React.FC = () => {
 
 export const SOutro: React.FC = () => {
   const { f, d, W } = useBeats();
-  const { i, lf, len } = useShot([W("watching", 0.45) - 2], d, f);
+  const { i, lf, len } = useShot([W("watching", 0.45) - 2, W("In", 0.75, 2) - 2], d, f);
   if (i === 0) {
     // Im Staubsaugerbeutel: Staubflocken-Galaxie, Mini-Belegschaft sitzt auf Wollmäusen und scrollt; Tyler winkt „alles gut“
     return (
@@ -1176,8 +1178,24 @@ export const SOutro: React.FC = () => {
       </Shot>
     );
   }
+  if (i === 1) {
+    // Nah: Tyler grinst selbstzufrieden aufs Handy, Staub rieselt, Kollege schnarcht auf der Wollmaus
+    return (
+      <Shot cam={push(lf, len, 380, 900, 1.0, 1.1)}>
+        <Layer depth={0.6}>
+          <BagInside f={f} />
+        </Layer>
+        <Layer>
+          <DustBunny x={420} y={1350} s={1.6} />
+          <Tyler suitUp x={420} y={1240} s={1.6} seated eyes="half" look={[1, 1]} brows="up" mouth="smug" armR={150} bendR={-70} armL={150} bendL={-70} />
+          <Phone x={hand(420, 1240, 1.6, 150, 1, true)[0] - 40} y={hand(420, 1240, 1.6, 150, 1, true)[1] + 40} s={1.5} r={-10} scroll={f * 0.5} />
+          <circle cx={700} cy={700} r={260} fill={C.screen} opacity={0.15 + 0.05 * Math.sin(lf * 0.4)} />
+        </Layer>
+      </Shot>
+    );
+  }
   // Nah auf Tylers Mini-Handy: darauf läuft Bild 1 dieses Videos – Kamera fährt hinein, bis es das Bild füllt (Loop)
-  const zin = ease(lf, 6, len, "inOut");
+  const zin = ease(lf, 2, len, "inOut");
   const sc = lerp(0.42, 1.0, zin);
   const W0 = 1080 * sc;
   const H0 = 1920 * sc;
@@ -1189,7 +1207,7 @@ export const SOutro: React.FC = () => {
           <rect x={-40 * sc} y={-50 * sc} width={W0 + 80 * sc} height={H0 + 100 * sc} rx={110 * sc} fill={INK} opacity={1 - zin * 0.9} />
           <svg x={0} y={0} width={W0} height={H0} viewBox="0 0 1080 1920" preserveAspectRatio="none">
             <g transform={`translate(${540 - 560 * 1.12} ${900 - 1050 * 1.12}) scale(1.12)`}>
-              <HookRoom lf={Math.min(lf, 4)} end={90} />
+              <HookRoom lf={0} end={90} />
             </g>
           </svg>
         </g>
@@ -1239,7 +1257,7 @@ export const SCROLL_CONFIG: EpisodeConfig = {
  * Tür, Kopfhörer, Düse, leerer Tisch | Beutel, Handy-Loop → nie > 2 gleiche am Stück. */
 export const SCROLL_SHOT_COUNT: Record<string, number> = {
   hook: 2,
-  rules: 2,
+  rules: 3,
   grandpa: 2,
   tyler: 3,
   ex: 3,
@@ -1248,5 +1266,5 @@ export const SCROLL_SHOT_COUNT: Record<string, number> = {
   interview: 3,
   twist: 3,
   gone: 4,
-  outro: 2,
+  outro: 3,
 };

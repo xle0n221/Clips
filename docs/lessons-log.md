@@ -182,3 +182,16 @@ Lessons:
 5. Chatterbox-„fuck“: Whisper-Wortstart lag 250 ms vor dem f-Reibelaut (52,56 vs. 52,81 s) → mute/bleep `offsetMs` 330. Vor dem Stummschalten eine Kopie der Stimme sichern (`out/<id>-voice-unmuted.wav`), sonst ist das Orten nachher nur über Neubau aus dem Cache möglich (1 Min., deterministisch).
 6. Unsichtbarkeit als Maske (`Vanish` in scenes/ghosting.tsx: SVG-Maske in Welt-Koordinaten, Level von den Füßen aufwärts, holes = einzelne Körperteile, keep = nur Kleidung sichtbar, fromTop für den POV-Daumen; Rest 8 % als Schimmer) – wiederverwendbar für Verblassen/Geister.
 7. Satzpausen-Feinsteuerung ohne Neuvertonung: `insert_pauses` +100 ms an allen Satzenden (aus captions berechnet), danach `retime_pauses --cap 700` für die zu langen Szenen-Lücken → Median 425 → 460 ms bei 2,33 W/s.
+
+## PREVIOUS VIDEO (fertig 25.11.2026, angefügt)
+Title: In This City, Every Minute You Doomscroll, You Shrink One Inch (scroll-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 63,3 s inkl. End-Card, 31 Einstellungen (alle ≤ 4 s, max 3,74 s, Ø 1,97 s), 18 Bildwelten; 143 W (Skriptzählung), 2,30 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-scroll-stadt.md)
+Stats: noch keine (Upload geplant 26.11.2026 Slot A)
+Lessons:
+1. **Stereo/Sub gelöst** (Restschwäche ghost): stereo_bed mittelt Stereo-Eingang zu Mid → ein zweiter Durchlauf auf music.wav mit `--width 1.0 --side-hp 200 --sub 0` hebt die Breite ohne doppelten Sub (−21 → −10,5 dB Side/Mid); dazu Musik Sub +10, Bett Sub +12 / width 0,7, Stimme width 0,48 → earshot Stereo −14,1 dB, Sub −11,2 dB, 22/22.
+2. Mehr Sub + Limiter macht den Mix flach: earshot „major: lautester Moment nur 0,6 LU über dem Mittel“ → Basstreffer/Twist/Wusch +7–8 dB lauter; danach ok. Ton-Änderungen nur über `--codec=wav`-Render + Mux (1 Min.).
+3. Pausen-Feinsteuerung: `+100 ms` an allen Satzenden drückt das Tempo unter 2,3 W/s; besser gezielt nur die kurzen Satzlücken verlängern (≤ 640 ms Caption-Lücke +80, kürzeste 16 +40) und lange Lücken mit `retime --cap 700` kappen → 2,30 W/s UND Median 470 ms. `retime --cap 650` kappte dagegen Pausen innerhalb der Sätze (Satzrate 4,1 → 4,9 W/s) – verworfen, aus Kopie zurückgesetzt (vorher `voice/captions/timeline` nach out/ sichern).
+4. W()-Anker auf kurze Wörter: „In“ (Zitat-Beginn) traf zuerst „lives *in* the bag“ → Schnittliste unsortiert, Loop-Shot 2 s zu früh. Der End-Kontaktabzug fand es; `nth` setzen. Einstellungslängen-Skript fand zusätzlich eine 4,2-s-Einstellung (rules) → dritter Schnitt mit szenenbezogener Animationszeit (`f - cut`) statt `lf`.
+5. Schrumpfen als Konsequenz: `steps()` (diskrete Stufen mit Federn) + `ShrinkFx` (rote Pfeile, Ring) + Messlatte mit Kopfhöhen-Markierung – stumm lesbar ab Frame 0; Loop durch die Hook-Szene als Komponente (`HookRoom`) in einem verschachtelten `<svg>` auf dem Handy.
+6. Fluch-Ortung: Whisper-Start („fuck“ 54,83 s) lag 40 ms NACH dem Vokal-Beginn (54,79) – diesmal Piep mit `offsetMs` −40 (bei ghost +330): immer per Spektrum orten, nie Offset übernehmen.
