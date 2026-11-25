@@ -206,7 +206,7 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "This is Tyler. Four feet. Interview at nine. | Will there be anything *left* of him by then?",
+   "text": "This is Tyler. Four feet. Interview at nine. | Will there be anything *left* of him?",
    "visual": "SHOT 1 (medium, bedroom): Tyler (orange hoodie, black curls) in a suit jacket too big, height chart at 4 ft / SHOT 2 (close): alarm clock 7:00, interview calendar icon / SHOT 3 (ECU): his phone buzzing on the nightstand, glowing, tempting",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
@@ -225,8 +225,8 @@
     "This is Tyler.",
     "Four feet.",
     "Interview at nine.",
-    "Will there be anything",
-    "left of him by then?"
+    "Will there be",
+    "anything left of him?"
    ]
   },
   {
@@ -243,14 +243,14 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "Seven a.m. \"Your ex posted.\" He opens it. Thirty minutes later, | bro is *cat-sized*.",
+   "text": "Seven a.m. \"Your ex posted.\" Thirty minutes later, | bro is *cat-sized*.",
    "visual": "SHOT 1 (close, phone): notification pops, thumb opens it / SHOT 2 (medium): Tyler shrinks in steps on the bed while scrolling, sheet swallows him / SHOT 3 (wide): the actual cat sniffs him nose-to-nose, same size",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
    ],
    "cues": [
     {
-     "word": "He",
+     "word": "Thirty",
      "beat": "opens"
     },
     {
@@ -261,7 +261,6 @@
    "captions": [
     "Seven a.m.",
     "\"Your ex posted.\"",
-    "He opens it.",
     "Thirty minutes later,",
     "bro is cat-sized."
    ]
@@ -280,7 +279,7 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "He hitchhikes downtown on a pigeon. | The pigeon is also on its *phone*.",
+   "text": "He rides a pigeon downtown. | The pigeon is also on its *phone*.",
    "visual": "SHOT 1 (wide, sky over city): Tyler rides a pigeon in suit jacket, hair flapping / SHOT 2 (close): the pigeon holds a tiny phone in its wing, scrolling, they drift off course into a lamp post",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
@@ -292,8 +291,7 @@
     }
    ],
    "captions": [
-    "He hitchhikes downtown",
-    "on a pigeon.",
+    "He rides a pigeon downtown.",
     "The pigeon",
     "is also on its phone."
    ]
@@ -384,7 +382,7 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "Two inches tall. He looks around. | The whole *company* is two inches tall. They hire him *instantly*.",
+   "text": "Two inches. He looks around. | The whole *company* is two inches tall. Hired *instantly*.",
    "visual": "SHOT 1 (ECU, desk surface): Tyler two inches tall, looks around / SHOT 2 (reveal, wide desk-level): a whole tiny office on the desktop – tiny cubicles, tiny interviewer in a blazer waves / SHOT 3: tiny handshake, tiny confetti",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
@@ -395,16 +393,16 @@
      "beat": "reveal"
     },
     {
-     "word": "They",
+     "word": "Hired",
      "beat": "hire"
     }
    ],
    "captions": [
-    "Two inches tall.",
+    "Two inches.",
     "He looks around.",
     "The whole company",
     "is two inches tall.",
-    "They hire him instantly."
+    "Hired instantly."
    ]
   },
   {
@@ -421,19 +419,18 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "Day one, the janitor walks in. Six feet. No phone. He vacuums the entire marketing *department*. | Oh *fuck*.",
+   "text": "Day one, the janitor walks in. No phone. He vacuums the entire marketing *department*. | Oh *fuck*.",
    "visual": "SHOT 1 (low angle): giant janitor with headphones enters the office (PLANT payoff) / SHOT 2 (desk level): vacuum nozzle approaches the tiny cubicles, workers scream / SHOT 3: whoosh, desk empty, one tiny tie spins down",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
    ],
    "cues": [
     {
-     "word": "Six",
+     "word": "No",
      "beat": "janitor"
     },
     {
      "word": "He",
-     "nth": 1,
      "beat": "vacuum"
     },
     {
@@ -444,7 +441,7 @@
    "captions": [
     "Day one,",
     "the janitor walks in.",
-    "Six feet. No phone.",
+    "No phone.",
     "He vacuums the entire",
     "marketing department.",
     "Oh f***."
