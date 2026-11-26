@@ -96,17 +96,17 @@
     "scene": "gone",
     "word": "fuck",
     "at": "start",
-    "offsetMs": 0,
+    "offsetMs": 110,
     "kind": "mute",
-    "ms": 280
+    "ms": 300
    },
    {
     "scene": "gone",
     "word": "fuck",
     "at": "start",
-    "offsetMs": 0,
+    "offsetMs": 110,
     "kind": "bleep",
-    "ms": 280,
+    "ms": 300,
     "db": -17,
     "hz": 1000
    },

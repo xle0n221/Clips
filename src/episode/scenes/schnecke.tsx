@@ -507,7 +507,7 @@ const HookBed: React.FC<{ readonly lf: number; readonly f: number }> = ({ lf, f 
       <rect x={-200} y={1330} width={1480} height={240} rx={40} fill="#7FA8FF" stroke={INK} strokeWidth={8} />
       <path d="M 120 1400 q 60 -40 120 0 q 60 40 120 0" fill="none" stroke="#FFFFFF" strokeWidth={8} opacity={0.6} />
       <OmwBubble x={px - 60} y={py - 240} s={1.05} sent={send} checks={send > 0.5} />
-      <Poof x={X - 150} y={Y - 300} t={lf - 14} s={0.9} />
+      <Poof x={X - 230} y={Y - 330} t={lf - 14} s={0.55} />
       <Drips x={X - 260} y={Y - 160} w={200} t={lf - 30} n={3} len={180} />
     </g>
   );
@@ -516,12 +516,13 @@ const HookBed: React.FC<{ readonly lf: number; readonly f: number }> = ({ lf, f 
 export const SHook: React.FC = () => {
   const { f, d, W } = useBeats();
   const snail = W("snail", 0.82);
-  const { i, lf, len } = useShot([snail - 3], d, f);
-  if (i === 0) {
+  const from = W("from", 0.45);
+  const { i, lf, len } = useShot([from - 2, snail - 3], d, f);
+  if (i <= 1) {
     return (
-      <Shot cam={push(lf, len, 520, 1000, 1.22, 1.34, 540, 860)}>
+      <Shot cam={i === 0 ? push(lf, len, 520, 1000, 1.22, 1.3, 540, 860) : push(lf, len, 420, 900, 1.6, 1.72, 540, 820)}>
         <Layer>
-          <HookBed lf={lf} f={f} />
+          <HookBed lf={f} f={f} />
         </Layer>
       </Shot>
     );
@@ -539,7 +540,7 @@ export const SHook: React.FC = () => {
         <SnailMan x={430} y={1350} s={1.05} hair="curly" hairColor="#4A2E1E" skin={P.skin2} eyes="wide" look={[0.6, -0.5]} brows="up" mouth="scream" open={0.7} f={f} shell={C.shell} />
         <rect x={-200 + fly * 900} y={1330 - fly * 900} width={900} height={240} rx={40} fill="#7FA8FF" stroke={INK} strokeWidth={8} transform={`rotate(${fly * 40} ${250 + fly * 900} ${1450 - fly * 900})`} />
         <Phone x={820} y={1290} s={1.2} r={20} />
-        <Poof x={500} y={1050} t={lf} s={1.1} />
+        <Poof x={260} y={1180} t={lf} s={0.6} />
         <Burst x={620} y={990} r0={160} r1={160 + 140 * ease(lf, 0, 8)} n={12} o={1 - ease(lf, 8, 18)} />
       </Layer>
     </Shot>
@@ -592,8 +593,8 @@ export const SRules: React.FC = () => {
         <Seat x={910} y={1460} s={1.9} c="#3D6BE0" />
         <Person x={170} y={1190} s={0.75} seated shirt={P.pink} hair="pony" hairColor="#3A2618" eyes="wide" look={[0.5, 1]} brows="up" mouth="scream" open={0.5} armR={150} armL={160} />
         <Person x={910} y={1190} s={0.75} seated shirt={P.teal} hair="side" hairColor="#2A1B12" skin={P.skin3} eyes="squint" look={[-0.5, 1]} brows="angry" mouth="frown" armR={160} armL={30} flip />
+        <Shell x={sx - 200} y={1560 - 320} R={125} />
         <Person x={sx} y={1560} s={0.9} shirt={P.orange} hair="spiky" hairColor="#2A1B12" eyes="half" look={[1, 0]} brows="neutral" mouth="smug" armR={30} armL={20} lean={-6} />
-        <Shell x={sx - 115} y={1560 - 300} R={130} />
         <FootOver x={sx} y={1560} s={0.9} k={1} />
         <Phone x={hand(sx, 1560, 0.9, 30, 1)[0]} y={hand(sx, 1560, 0.9, 30, 1)[1] - 20} s={1} />
         {/* Warnschild „nasser Boden“ (Symbol) */}
@@ -650,9 +651,9 @@ export const SMayor: React.FC = () => {
             <Web x={-200} y={-60} s={0.6} r={10} />
           </g>
           {/* Bürgermeister-Schnecke weit hinten links */}
-          <Slime x0={-200} x1={lerp(150, 160, ease(lf, 0, len))} y={1440} h={18} f={f} />
-          <SnailMan x={lerp(150, 160, ease(lf, 0, len))} y={1440} s={0.4} skin={P.skin} hair="side" hairColor="#9A9AA8" eyes="squint" look={[1, 0]} brows="worried" mouth="flat" f={f} acc={{ hat: true }} shell="#7C5CD6" shellDark="#4E3A99" />
-          <path d="M 330 1250 L 390 1290 L 320 1310" stroke={P.red} strokeWidth={10} fill="none" strokeLinecap="round" opacity={0.5 + 0.5 * Math.sin(f * 0.3)} />
+          <Slime x0={-300} x1={lerp(60, 70, ease(lf, 0, len))} y={1640} h={22} f={f} />
+          <SnailMan x={lerp(60, 70, ease(lf, 0, len))} y={1640} s={0.48} skin={P.skin} hair="side" hairColor="#9A9AA8" eyes="squint" look={[1, 0]} brows="worried" mouth="flat" f={f} acc={{ hat: true }} shell="#7C5CD6" shellDark="#4E3A99" />
+          <path d="M 230 1420 L 290 1460 L 220 1480" stroke={P.red} strokeWidth={10} fill="none" strokeLinecap="round" opacity={0.5 + 0.5 * Math.sin(f * 0.3)} />
         </Layer>
       </Shot>
     );
@@ -897,10 +898,10 @@ export const SPigeon: React.FC = () => {
         <ReactBg a="#6FD36E" b="#94E293" f={f} cx={540} cy={800} />
       </Layer>
       <Layer>
-        <Pigeon x={760} y={1400} s={1.45} f={f} bib={bib} fork={fork} tilt={-10 + fork * 15} />
-        <SnailMan x={330} y={1500} s={0.85} hair="spiky" hairColor={C.devinHair} eyes="wide" look={[1, -0.8]} brows="up" mouth="scream" open={0.6} f={f} hide={hide} />
-        <Flowers x={560} y={1500} s={0.6} wilt={0.8} />
-        <Shock x={300} y={1150} t={lf} />
+        <Pigeon x={900} y={1400} s={1.45} f={f} bib={bib} fork={fork} tilt={-10 + fork * 15} />
+        <SnailMan x={200} y={1500} s={0.85} hair="spiky" hairColor={C.devinHair} eyes="wide" look={[1, -0.8]} brows="up" mouth="scream" open={0.6} f={f} hide={hide} />
+        <Flowers x={470} y={1500} s={0.6} wilt={0.8} />
+        <Shock x={370} y={1130} t={lf} />
       </Layer>
     </Shot>
   );
@@ -1056,7 +1057,7 @@ export const SGone: React.FC = () => {
   if (i === 0) {
     // Esszimmer: alle Schnecken um den kalten Braten, erstarrt; Kerzenstummel, Spinnweben am Papa
     return (
-      <Shot cam={push(lf, len, 540, 1050, 0.95, 1.02, 540, 900)}>
+      <Shot cam={push(lf, len, 540, 1400, 1.35, 1.45, 540, 860)}>
         <Layer>
           <LivingRoom warm />
           <DiningTable y={1250} />
@@ -1117,9 +1118,9 @@ export const SAfter: React.FC = () => {
         <Pew y={1460} x0={-400} x1={420} />
         <Pew y={1460} x0={660} x1={1500} />
         <rect x={420} y={1450} width={240} height={600} fill={P.red} opacity={0.8} />
-        <SnailMan x={400} y={1440} s={0.42} hair="none" skin="#F2C7A5" eyes="closed" look={[0, 0]} brows="neutral" mouth="flat" f={f} acc={{ collar: true }} shell="#5B4F7A" shellDark="#3A3058" />
-        <SnailMan x={lerp(-200, -120, ease(lf, 0, len))} y={1820} s={0.5} hair="side" hairColor="#3A2618" skin={P.skin2} eyes="half" look={[1, 0]} brows="neutral" mouth="smile" f={f} shell="#55C46A" shellDark="#2E8A44" />
-        <SnailMan x={lerp(1250, 1180, ease(lf, 0, len))} y={1820} s={0.5} flip hair="curly" hairColor="#C98A5E" skin={P.skin} eyes="half" look={[-1, 0]} brows="up" mouth="o" f={f} shell={P.orange} />
+        <SnailMan x={380} y={1440} s={0.6} hair="none" skin="#F2C7A5" eyes="closed" look={[0, 0]} brows="neutral" mouth="flat" f={f} acc={{ collar: true }} shell="#5B4F7A" shellDark="#3A3058" />
+        <SnailMan x={lerp(-60, 40, ease(lf, 0, len))} y={1760} s={0.72} hair="side" hairColor="#3A2618" skin={P.skin2} eyes="half" look={[1, 0]} brows="neutral" mouth="smile" f={f} shell="#55C46A" shellDark="#2E8A44" />
+        <SnailMan x={lerp(1130, 1040, ease(lf, 0, len))} y={1760} s={0.72} flip hair="curly" hairColor="#C98A5E" skin={P.skin} eyes="half" look={[-1, 0]} brows="up" mouth="o" f={f} shell={P.orange} />
         {Array.from({ length: 6 }).map((_, k) => {
           const t = (lf + k * 14) % 80;
           return (
@@ -1208,7 +1209,7 @@ export const SCHNECKE_CONFIG: EpisodeConfig = {
  * Straße, Fuß nah | Park, Taube | Nacht-Straße, Haustür | Tür auf, Sofa, vier Handys | Esszimmer, Gesicht nah | Ring, Kapelle |
  * POV-Handy ×2 → nie > 2 gleiche am Stück. */
 export const SCHNECKE_SHOT_COUNT: Record<string, number> = {
-  hook: 2,
+  hook: 3,
   rules: 3,
   mayor: 2,
   devin: 4,
