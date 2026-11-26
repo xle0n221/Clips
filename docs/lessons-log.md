@@ -209,3 +209,17 @@ Lessons:
 5. Stempel-Knall in Bild 1 ohne Wort-Anker: fx am ersten Wort („In“) mit `offsetMs` = Szenenstart + Trefferframe − Wortstart.
 6. Render: `--concurrency` nie über `nproc` (Abbruch bei 8 > 4 Kernen); Render 67 s ≈ 6 Min. mit 4.
 7. Requisit-vor-Gesicht erneut (Tasse, Hantel, Siegel): Hantel HINTER die Figur zeichnen (Schulterhöhe), Requisit-Größe am Kopfradius (105·s) prüfen.
+
+## PREVIOUS VIDEO (fertig 26.11.2026, angefügt)
+Title: In This City, If You Text "On My Way" From Bed, You Turn Into a Snail (schnecken-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 64,4 s inkl. End-Card, 27 Einstellungen (alle ≤ 4 s, max 3,84 s, Ø 2,33 s), 23 Bildwelten; 151 W, 2,40 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-schnecken-stadt.md)
+Stats: noch keine (Upload geplant 27.11.2026 Slot A)
+Lessons:
+1. **Satzpausen ohne Tempo-Verlust in einem Schritt:** Stille je Satzende aus dem Pegel messen (gleiche Logik wie stimm_messung `longest_quiet`), nur Enden < 490 ms auf 490 auffüllen (`insert_pauses` an der Stillen-Mitte; Planer-Skript im Stil von scratchpad/pauseplan.py) → 12 Einfügungen, +1,8 s, Median 365 → 490 ms, P10 490, 2,47 → 2,40 W/s. Kein retime/atempo nötig. 151 Wörter + gap_ms 480–500 = 60,5 s roh → 64,4 s fertig.
+2. Whisper verschluckt das erste Wort am Dateianfang („In“ fehlte, captions 0–80 ms): mit 1 s Stille davor transkribieren → erkannt; Wortzeiten der ersten Wörter aus dem Pegel setzen (Sprache ab 0,39 s).
+3. Fluch-Ortung: Whisper-Start „fuck“ 52,09 s, f-Reibelaut 52,03–52,20, Vokal ab 52,21 → `offsetMs` +110, 300 ms (ghost +330, scroll −40, hangout −190): immer per Spektrum.
+4. Verwandlung als Konsequenz: neue Bausteine in scenes/schnecke.tsx – `Shell` (Spirale), `Stalks` (Augen wandern vom Gesicht auf Stiele, Haut-Fleck deckt die Gesichtsaugen, Brauen bleiben), `FootOver` (Schneckenfuß über den Beinen), `SnailMan` (ganze Schnecke mit Menschengesicht, Haar, Accessoires), `Slime`/`Drips`, `OmwBubble` (Renn-Männchen statt Schrift).
+5. Requisit-vor-Gesicht erneut: Schneckenhaus NACH der Person gezeichnet lag in der Nahaufnahme über dem Gesicht → immer VOR der Person und seitlich hinter die Schulter (x − 200·s).
+6. Schätz-Kontaktabzug braucht in timeline.json auch `cues`, `cover`, `captionStyle`, `endCard` (sonst Episode-Absturz „reading 'filter'“).
+7. Render 64 s mit `--concurrency=4` lief ohne Abbruch (Dauer nicht gemessen); Endkontrolle per ffmpeg-tile (fps 1/3) statt Remotion-Kontaktabzug – 2 s.
