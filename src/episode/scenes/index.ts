@@ -26,6 +26,7 @@ import { APPLE_CONFIG, APPLE_SCENES } from "./apple";
 import { MECKERN_CONFIG, MECKERN_SCENES } from "./meckern";
 import { GHOSTING_CONFIG, GHOSTING_SCENES } from "./ghosting";
 import { SCROLL_CONFIG, SCROLL_SCENES } from "./scroll";
+import { SCHNECKE_CONFIG, SCHNECKE_SCENES } from "./schnecke";
 import { HANGOUT_CONFIG, HANGOUT_SCENES } from "./hangout";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
@@ -73,6 +74,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "meckern-stadt": MECKERN_SCENES,
   "ghost-stadt": GHOSTING_SCENES,
   "scroll-stadt": SCROLL_SCENES,
+  "schnecken-stadt": SCHNECKE_SCENES,
   "hangout-stadt": HANGOUT_SCENES,
   "apple-ipod": APPLE_SCENES,
 };
@@ -144,6 +146,7 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "meckern-stadt": MECKERN_CONFIG,
   "ghost-stadt": GHOSTING_CONFIG,
   "scroll-stadt": SCROLL_CONFIG,
+  "schnecken-stadt": SCHNECKE_CONFIG,
   "hangout-stadt": HANGOUT_CONFIG,
   "apple-ipod": APPLE_CONFIG,
 };

@@ -313,6 +313,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, If You Text "On My Way" From Bed, You Turn Into a Snail“ (KnowToon, schwarzer Humor): 2D (scenes/schnecke.tsx) */}
+      <Composition
+        id="SchneckenStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "schnecken-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „In This City, Every Minute You Doomscroll, You Shrink One Inch“ (KnowToon, schwarzer Humor): 2D (scenes/scroll.tsx) */}
       <Composition
         id="ScrollStadt"

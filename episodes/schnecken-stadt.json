@@ -374,21 +374,21 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "Eleven. Devin, fully snail, finally slimes up to the door.",
+   "text": "Eleven. Devin, full snail, slimes up to the door.",
    "visual": "SHOT 1 (wide, night porch, house): full snail with Devin's face, flowers wilted, slime trail down the whole street, moon / SHOT 2 (close): antenna presses doorbell",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
    ],
    "cues": [
     {
-     "word": "finally",
+     "word": "slimes",
      "beat": "bell"
     }
    ],
    "captions": [
     "Eleven.",
-    "Devin, fully snail,",
-    "finally slimes up",
+    "Devin, full snail,",
+    "slimes up",
     "to the door."
    ]
   },
@@ -501,7 +501,7 @@
     "end_db": 7.0,
     "gain_db": -0.5
    },
-   "text": "Anyway, you texted \"on my way\" ten minutes ago. | Why's your phone *slimy*?",
+   "text": "You texted \"on my way\" ten minutes ago. | Why's your phone *slimy*?",
    "visual": "SHOT 1 (POV: viewer's hand holding phone showing this video, a running-man bubble 'sent' on top) / SHOT 2 ('slimy'): slime drips down over the screen, a tiny shell pokes into frame from the viewer's sleeve – loop to the hook",
    "sources": [
     "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
@@ -513,8 +513,7 @@
     }
    ],
    "captions": [
-    "Anyway,",
-    "you texted \"on my way\"",
+    "You texted \"on my way\"",
     "ten minutes ago.",
     "Why's your phone slimy?"
    ]
