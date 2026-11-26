@@ -1,6 +1,7 @@
 # Clips – Hinweise für Claude
 
 - Antworten an den Nutzer auf Deutsch; die Videos selbst sind auf Englisch.
+- **STOPP (Nutzer 26.11.2026: „Bitte hör auf damit“):** automatische Produktion angehalten – Abholer trig_01LpDfKfrFJNjXSCf77t13ds abgeschaltet, keine neuen Videos/Sitzungen starten, bis der Nutzer es wieder erlaubt.
 - **Standard: sparsam bei gleicher Qualität** (Vorgabe des Nutzers) – nur so viele Agenten wie nötig, neue
   Sitzung je Video, kurze Aufträge/Antworten, Warten ohne Abfragen; Prüfpaare und Freigaben bleiben.
   Details: `docs/agenten/README.md` → „Sparsam arbeiten“ und „Modellwahl je Aufgabe“ (haiku leicht · sonnet Standard · opus schwer).
