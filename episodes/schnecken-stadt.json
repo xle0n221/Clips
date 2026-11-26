@@ -1,0 +1,523 @@
+{
+ "id": "schnecken-stadt",
+ "title": "In This City, If You Text \"On My Way\" From Bed, You Turn Into a Snail",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "lengthSec": 65,
+ "cover": {
+  "text": "OMW = SNAIL",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Then actually leave.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 26.11.2026 in docs/audit-schnecken-stadt.md). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Devin kommt um 23 Uhr als komplette Schnecke bei den Eltern seiner Freundin an – die Tür geht auf: die Eltern und die Freundin sind auch Schnecken, keiner hat das Haus verlassen, alle haben 'on my way' getippt. Danach: verlobt, Hochzeit 'whenever'. Schluss an die Zuschauer: 'you texted on my way ten minutes ago. Why's your phone slimy?' – Schleim läuft über den Bildschirm des Zuschauers, ein Schneckenhaus schaut aus dem Ärmel (Loop zum Hook-Schneckenhaus). Eingepflanzt: kalter Braten + heruntergebrannte Kerzen schon im Tür-Shot (twist) und der Bürgermeister (mayor) als Beleg, dass niemand je ankommt.",
+ "originality": "Eigene Regel ('on my way' aus dem Bett = Schnecke), eigene Figuren (Devin, Freundin, Eltern, Bürgermeister, Taube). Konsequenz = Verwandlung (weder Tod wie todo/suche/akku noch Peinlichkeit wie fluch noch Altern wie meckern noch Unsichtbarkeit wie ghost noch Schrumpfen wie scroll noch Bürokratie wie hangout). Kein Thema aus episodes/*.json wiederholt.",
+ "music": {
+  "mood": "funny",
+  "bpm": 88,
+  "silenceBefore": {
+   "twist": 0.5,
+   "outro": 0.4
+  },
+  "why": "Verwandlung in eine Schnecke ist Slapstick mit Ekel (Schleim, Taube) → 'funny' (träger, verspielter Trap/R&B, 88 BPM statt 96 wie scroll – Schnecken-Tempo), Seed = Episoden-ID (nie dieselbe Musik); Stille vor dem Tür-Twist und vor der Loop-Zeile. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten). Stereo/Sub wie scroll-stadt (zweiter stereo_bed-Durchlauf auf music.wav)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-gelangweilt, schadenfroh, US-Slang eines 25-Jährigen (bro, lowkey); devin/pigeon/door angespannt, Twist trocken-ungläubig und leise, 'What the f***' ehrlich fassungslos",
+  "why": "Auftrag 26.11. Video 1: In This City + schwarzer Humor, zynischer Erzähler, Slang; voicePreset witzig; gap_ms 480–500 für Satzpausen ≥ 450 ms, wenige längere Sätze; ≈ 145 Wörter (hangout-Lesson 1)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (gaehnSets-Person); Verwandlung in eine Schnecke ist in 2D über aufpoppendes Schneckenhaus, Stielaugen und Schneckenfuß + Schleimspur sofort und stumm lesbar; schnelles Rendern.",
+  "characters": "DEVIN: blauer Hoodie, oranger Buzzcut, 25, verwandelt sich stufenweise (Häuschen → Stielaugen → Fuß → ganze Schnecke mit seinem Gesicht); FREUNDIN (Maya): gelbes Häuschen, Dutt; ELTERN: Strickjacke/Krawatte auf dem Häuschen; BÜRGERMEISTER: Schärpe + Zylinder; TAUBE: grau, Serviette + Gabel."
+ },
+ "hookQuestion": {
+  "text": "Can he get there before he's all shell?",
+  "shownBy": "Bild 1: Mann im Bett tippt 'on my way', sofort poppt ein Schneckenhaus auf seinen Rücken, Stielaugen; Frage gesprochen in devin (~22 s)",
+  "answer": "Nein – er kommt als ganze Schnecke an, aber die Familie ist selbst nie losgegangen (≈ 47 s)."
+ },
+ "finalImage": {
+  "image": "POV: Handy des Zuschauers, Schleim läuft über den Bildschirm, Schneckenhaus schaut aus dem Ärmel",
+  "plant": "hook (Schneckenhaus) + mayor (niemand kommt an)",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Wohnung/Stadt leise, nasses Schmatzen (Poof) bei jeder Verwandlungsstufe, Taubengurren, Türklingel, Teil-Piep auf 'fuck' (Anlaut 'f' hörbar, Rest gepiept).",
+  "room": {
+   "db": -46,
+   "rain_db": -90
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "snail"
+   },
+   {
+    "scene": "twist",
+    "word": "She's"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -8
+  },
+  "twist": {
+   "scene": "twist",
+   "word": "texted",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -9
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "mute",
+    "ms": 280
+   },
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "bleep",
+    "ms": 280,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "snail",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 500,
+    "db": -15
+   },
+   {
+    "scene": "rules",
+    "word": "stalks",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 350,
+    "db": -17
+   },
+   {
+    "scene": "devin",
+    "word": "Can",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 400,
+    "db": -16
+   },
+   {
+    "scene": "traffic",
+    "word": "foot",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 500,
+    "db": -14
+   },
+   {
+    "scene": "door",
+    "word": "door",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "poof",
+    "ms": 300,
+    "db": -18
+   }
+  ]
+ },
+ "version": "v1 (26.11.2026, Video 1, Regeln docs/audit-2026-11-20.md + CLAUDE.md 22.11. Flüche/Slang) Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen ≥ 450 ms. Upload 27.11.2026 Slot A (TT 17 / YT 18 DE).",
+ "note": "Konsequenz Verwandlung (Schnecke), schwarzer Humor: Bürgermeister kriecht seit 2019, Taube will ihn als Brunch, ganze Familie hat gelogen, Hochzeit 'whenever'; Teil-Piep 'f***'.",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, if you text \"on my way\" from bed, | you turn into a *snail*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s, messy bedroom): guy under blanket smirks, thumbs a 'running man' chat bubble – SEND – a shell POPS onto his back at once, slime drips / SHOT 2 ('snail'): his eyes shoot up on stalks, body melts into a snail foot, he screams",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "snail",
+     "beat": "snail"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "if you text \"on my way\"",
+    "from bed,",
+    "you turn into a snail."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Five minutes out? Eye stalks. Almost there? | Bro is leaving *slime* on the bus.",
+   "visual": "SHOT 1 (close, café): woman in bathrobe at home types, her eyes pop onto stalks / SHOT 2 (wide, bus): commuters lift their feet, a half-snail guy slides down the aisle leaving a glossy slime trail, a 'wet floor' cone",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Almost",
+     "beat": "bus"
+    }
+   ],
+   "captions": [
+    "Five minutes out?",
+    "Eye stalks.",
+    "Almost there?",
+    "Bro is leaving slime",
+    "on the bus."
+   ]
+  },
+  {
+   "id": "mayor",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "The mayor said \"on my way\" in 2019. | He's still *crawling* to the ribbon cutting.",
+   "visual": "SHOT 1 (wide, city hall square): crowd with balloons waits at a ribbon, giant scissors; far away a snail in a sash and top hat inches along, cobwebs on the scissors / SHOT 2 (close): mayor snail sweating, sash, 1 cm progress",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "He's",
+     "beat": "crawl"
+    }
+   ],
+   "captions": [
+    "The mayor said",
+    "\"on my way\" in 2019.",
+    "He's still crawling",
+    "to the ribbon cutting."
+   ]
+  },
+  {
+   "id": "devin",
+   "section": "setup",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Devin. Dinner with her parents at seven. It's seven. He's in bed, typing *on my way*. Can he get there | before he's all *shell*?",
+   "visual": "SHOT 1 (medium, Devin's bedroom): Devin (blue hoodie, orange buzz cut) waves from bed, chip crumbs / SHOT 2 (ECU wall clock 7 + phone thumb SEND) / SHOT 3 (medium): tiny shell sprouts on his back, he jumps out of bed in panic, grabs flowers",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "It's",
+     "beat": "clock"
+    },
+    {
+     "word": "Can",
+     "beat": "run"
+    }
+   ],
+   "captions": [
+    "This is Devin.",
+    "Dinner with her parents",
+    "at seven.",
+    "It's seven.",
+    "He's in bed,",
+    "typing on my way.",
+    "Can he get there",
+    "before he's all shell?"
+   ]
+  },
+  {
+   "id": "traffic",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Seven fifteen. \"Stuck in traffic.\" | His legs merge into *one foot*.",
+   "visual": "SHOT 1 (wide, sidewalk, no cars at all): Devin running on an empty street types a lie / SHOT 2 (medium): his legs zip together into one slimy snail foot, shoes pop off, he flops and keeps going",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "His",
+     "beat": "foot"
+    }
+   ],
+   "captions": [
+    "Seven fifteen.",
+    "\"Stuck in traffic.\"",
+    "His legs merge",
+    "into one foot."
+   ]
+  },
+  {
+   "id": "pigeon",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Seven forty. A pigeon looks at him | like he's *brunch*.",
+   "visual": "SHOT 1 (medium, park path): Devin half snail crawling with flowers / SHOT 2 (close, low angle): huge pigeon tilts head, ties a napkin bib, holds fork – Devin screams, hides in shell",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "A",
+     "beat": "pigeon"
+    }
+   ],
+   "captions": [
+    "Seven forty.",
+    "A pigeon looks at him",
+    "like he's brunch."
+   ]
+  },
+  {
+   "id": "door",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Eleven. Devin, fully snail, finally slimes up to the door.",
+   "visual": "SHOT 1 (wide, night porch, house): full snail with Devin's face, flowers wilted, slime trail down the whole street, moon / SHOT 2 (close): antenna presses doorbell",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "finally",
+     "beat": "bell"
+    }
+   ],
+   "captions": [
+    "Eleven.",
+    "Devin, fully snail,",
+    "finally slimes up",
+    "to the door."
+   ]
+  },
+  {
+   "id": "twist",
+   "section": "turn",
+   "delivery": "serious",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "It opens. Her parents are snails. *She's* a snail. Nobody left the house. | They all texted *on my way*.",
+   "visual": "SHOT 1 (medium, doorway, warm light): door creaks – mom and dad snails in cardigan/tie, cold dinner on the table behind / SHOT 2 (close): girlfriend snail on the couch, phone glued to her antenna / SHOT 3 (close, phone screens): four 'running man' bubbles side by side",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "She's",
+     "beat": "gf"
+    },
+    {
+     "word": "They",
+     "beat": "phones"
+    }
+   ],
+   "captions": [
+    "It opens.",
+    "Her parents are snails.",
+    "She's a snail.",
+    "Nobody left the house.",
+    "They all texted",
+    "on my way."
+   ]
+  },
+  {
+   "id": "gone",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Bro, the whole family is shells. What the *fuck*.",
+   "visual": "SHOT 1 (wide, dining room): five snails around a cold roast, all frozen, candles burnt down to stubs, cobweb on the dad",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "Bro,",
+    "the whole family is shells.",
+    "What the f***."
+   ]
+  },
+  {
+   "id": "after",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "They're engaged now. The wedding is lowkey set for | *whenever*.",
+   "visual": "SHOT 1 (close): ring on Devin's eye stalk, girlfriend snail blushes / SHOT 2 (wide, empty wedding chapel): rows of chairs with snails crawling in, priest snail still at the door, calendar pages fly",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "The",
+     "beat": "wedding"
+    }
+   ],
+   "captions": [
+    "They're engaged now.",
+    "The wedding is lowkey",
+    "set for whenever."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Anyway, you texted \"on my way\" ten minutes ago. | Why's your phone *slimy*?",
+   "visual": "SHOT 1 (POV: viewer's hand holding phone showing this video, a running-man bubble 'sent' on top) / SHOT 2 ('slimy'): slime drips down over the screen, a tiny shell pokes into frame from the viewer's sleeve – loop to the hook",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, 'on my way'-aus-dem-Bett-macht-zur-Schnecke-Regel, Devin und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Why's",
+     "beat": "slime"
+    }
+   ],
+   "captions": [
+    "Anyway,",
+    "you texted \"on my way\"",
+    "ten minutes ago.",
+    "Why's your phone slimy?"
+   ]
+  }
+ ]
+}
