@@ -28,6 +28,7 @@ import { GHOSTING_CONFIG, GHOSTING_SCENES } from "./ghosting";
 import { SCROLL_CONFIG, SCROLL_SCENES } from "./scroll";
 import { SCHNECKE_CONFIG, SCHNECKE_SCENES } from "./schnecke";
 import { HANGOUT_CONFIG, HANGOUT_SCENES } from "./hangout";
+import { TAUSCH_CONFIG, TAUSCH_SCENES } from "./tausch";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -76,6 +77,7 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "scroll-stadt": SCROLL_SCENES,
   "schnecken-stadt": SCHNECKE_SCENES,
   "hangout-stadt": HANGOUT_SCENES,
+  "tausch-stadt": TAUSCH_SCENES,
   "apple-ipod": APPLE_SCENES,
 };
 
@@ -148,6 +150,7 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "scroll-stadt": SCROLL_CONFIG,
   "schnecken-stadt": SCHNECKE_CONFIG,
   "hangout-stadt": HANGOUT_CONFIG,
+  "tausch-stadt": TAUSCH_CONFIG,
   "apple-ipod": APPLE_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

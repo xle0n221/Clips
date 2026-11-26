@@ -313,6 +313,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, on Black Friday, You Can Trade In Your Family“ (KnowToon, schwarzer Humor): 2D (scenes/tausch.tsx) */}
+      <Composition
+        id="TauschStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "tausch-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „In This City, If You Text "On My Way" From Bed, You Turn Into a Snail“ (KnowToon, schwarzer Humor): 2D (scenes/schnecke.tsx) */}
       <Composition
         id="SchneckenStadt"

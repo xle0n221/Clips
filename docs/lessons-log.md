@@ -223,3 +223,18 @@ Lessons:
 5. Requisit-vor-Gesicht erneut: Schneckenhaus NACH der Person gezeichnet lag in der Nahaufnahme über dem Gesicht → immer VOR der Person und seitlich hinter die Schulter (x − 200·s).
 6. Schätz-Kontaktabzug braucht in timeline.json auch `cues`, `cover`, `captionStyle`, `endCard` (sonst Episode-Absturz „reading 'filter'“).
 7. Render 64 s mit `--concurrency=4` lief ohne Abbruch (Dauer nicht gemessen); Endkontrolle per ffmpeg-tile (fps 1/3) statt Remotion-Kontaktabzug – 2 s.
+
+## PREVIOUS VIDEO (fertig 26.11.2026, angefügt)
+Title: In This City, on Black Friday, You Can Trade In Your Family (tausch-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 65,2 s inkl. End-Card, 30 Einstellungen (alle ≤ 4 s, max 3,33 s, Ø 2,12 s), > 18 Bildwelten; 152 W, 2,39 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-tausch-stadt.md)
+Stats: noch keine (Upload geplant 27.11.2026 Slot B)
+Lessons:
+1. **Whisper 98,0 % (schnecken 94,8 %)**: keine Eigennamen, keine Uhrzeiten/Zahlen als Ziffern, Slang mit Bindestrich wie Whisper ihn schreibt („low-key“) → nur noch ein Homophon („steal“/„steel“).
+2. **Jeder Schnitt mit Klang**: Schnittzeiten aus timeline + captions mit denselben W()-Ankern berechnen und als `poof`-Einträge (`cutWhoosh: true`, 260 ms, −21/−23 dB, 60 ms vor dem Schnitt) in soundBed.fx schreiben → earshot: 1 von 43 Bild-Ereignissen ohne Klang (schnecken 6/36). Muster: `scripts/tausch_cuts.py` (ANCH-Tabelle = useShot-Anker aus der tsx; `--fx` schreibt die Whooshes); Pausen-Planer `scripts/pauseplan.py <id> 490`.
+3. Satzpausen in einem Schritt (schnecken-Lesson 1 bestätigt): 152 W + gap_ms 480–500 → roh 62,6 s, Median schon 510 ms; nur 5 Enden aufgefüllt (+0,52 s) → 2,39 W/s, P10 490.
+4. Cover (0–0,5 s) verdeckt die Aktion in Bild 1: Pointe des ersten Shots (Laser/Poof) erst ab Frame ≥ 28 legen, sonst sieht man sie nie (erster Kontaktabzug: Onkel schon weg).
+5. `Face` (gaehnSets) zeichnet nur Züge, keinen Kopf → für Nahaufnahmen `Head` (Kreis + Face) benutzen.
+6. Liegende Person (`Lying`, rotate ±90 um die Füße): Kopf zur Bildmitte/zum Requisit drehen, sonst verdeckt der schiebende Arm das Gesicht.
+7. earshot „lautester Moment nur 0,6 LU über dem Mittel“ trotz Basstreffer −8 dB → Basstreffer −1, Twist −2, Haupt-Poofs +6 dB; nur Ton neu (`--codec=wav` + Mux) → 23/23. Für künftige Videos gleich mit diesen Pegeln starten.
+8. Kontaktabzug braucht `CHROME_PATH=/opt/pw-browsers/chromium_headless_shell` (Standardpfad brach mit „Target closed“ ab); Render mit `--browser-executable` auf denselben Pfad, 65 s ≈ 7 Min.

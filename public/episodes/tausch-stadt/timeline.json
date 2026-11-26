@@ -1,0 +1,209 @@
+{
+ "id": "tausch-stadt",
+ "title": "In This City, on Black Friday, You Can Trade In Your Family",
+ "durationMs": 63730,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4220
+  },
+  {
+   "id": "rules",
+   "startMs": 4220,
+   "endMs": 8360
+  },
+  {
+   "id": "guy",
+   "startMs": 8360,
+   "endMs": 13960
+  },
+  {
+   "id": "line",
+   "startMs": 13960,
+   "endMs": 18330
+  },
+  {
+   "id": "scan",
+   "startMs": 18330,
+   "endMs": 21350
+  },
+  {
+   "id": "sister",
+   "startMs": 21350,
+   "endMs": 24870
+  },
+  {
+   "id": "mom",
+   "startMs": 24870,
+   "endMs": 28810
+  },
+  {
+   "id": "print",
+   "startMs": 28810,
+   "endMs": 32910
+  },
+  {
+   "id": "deluxe",
+   "startMs": 32910,
+   "endMs": 37920
+  },
+  {
+   "id": "creepy",
+   "startMs": 37920,
+   "endMs": 42360
+  },
+  {
+   "id": "back",
+   "startMs": 42360,
+   "endMs": 47080
+  },
+  {
+   "id": "twist",
+   "startMs": 47080,
+   "endMs": 52070
+  },
+  {
+   "id": "dog",
+   "startMs": 52070,
+   "endMs": 55710
+  },
+  {
+   "id": "shelf",
+   "startMs": 55710,
+   "endMs": 59310
+  },
+  {
+   "id": "outro",
+   "startMs": 59310,
+   "endMs": 63130
+  }
+ ],
+ "cues": [
+  {
+   "beat": "family",
+   "scene": "hook",
+   "atMs": 3320
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3320
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 6710
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 6970
+  },
+  {
+   "emph": true,
+   "scene": "guy",
+   "atMs": 12650
+  },
+  {
+   "emph": true,
+   "scene": "guy",
+   "atMs": 12970
+  },
+  {
+   "emph": true,
+   "scene": "line",
+   "atMs": 17570
+  },
+  {
+   "emph": true,
+   "scene": "scan",
+   "atMs": 20410
+  },
+  {
+   "emph": true,
+   "scene": "sister",
+   "atMs": 23930
+  },
+  {
+   "emph": true,
+   "scene": "mom",
+   "atMs": 27370
+  },
+  {
+   "emph": true,
+   "scene": "mom",
+   "atMs": 27650
+  },
+  {
+   "emph": true,
+   "scene": "print",
+   "atMs": 32090
+  },
+  {
+   "emph": true,
+   "scene": "deluxe",
+   "atMs": 36880
+  },
+  {
+   "emph": true,
+   "scene": "creepy",
+   "atMs": 41580
+  },
+  {
+   "emph": true,
+   "scene": "back",
+   "atMs": 45960
+  },
+  {
+   "emph": true,
+   "scene": "back",
+   "atMs": 46220
+  },
+  {
+   "beat": "him",
+   "scene": "twist",
+   "atMs": 51320
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 51320
+  },
+  {
+   "emph": true,
+   "scene": "dog",
+   "atMs": 54660
+  },
+  {
+   "emph": true,
+   "scene": "shelf",
+   "atMs": 58100
+  },
+  {
+   "emph": true,
+   "scene": "shelf",
+   "atMs": 58340
+  },
+  {
+   "beat": "photo",
+   "scene": "outro",
+   "atMs": 62240
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 62240
+  }
+ ],
+ "cover": {
+  "text": "TRADE IN YOUR FAMILY",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Before your family trades you.",
+  "seconds": 2
+ }
+}
