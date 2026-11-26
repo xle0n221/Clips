@@ -1,7 +1,7 @@
 # Clips – Hinweise für Claude
 
 - Antworten an den Nutzer auf Deutsch; die Videos selbst sind auf Englisch.
-- **STOPP (Nutzer 26.11.2026: „Bitte hör auf damit“):** automatische Produktion angehalten – Abholer trig_01LpDfKfrFJNjXSCf77t13ds abgeschaltet, keine neuen Videos/Sitzungen starten, bis der Nutzer es wieder erlaubt.
+- **STOPP ALLES (Nutzer 26.11.2026: „Bitte hör auf damit“ + „Für alle Sitzungen produktion stoppen und keine Updates geben bis ich es wieder sage“):** keine Produktion, keine neuen Sitzungen, keine Updates/Berichte in irgendeiner Sitzung, bis der Nutzer es wieder sagt. Abgeschaltet: Abholer trig_01LpDfKfrFJNjXSCf77t13ds, Trend-Analyse trig_01RL4qV9UiaUyitJqmuxtAPN, Hashtag-Update trig_01QwibfNVjsxrTu5VBRJD1yF.
 - **Standard: sparsam bei gleicher Qualität** (Vorgabe des Nutzers) – nur so viele Agenten wie nötig, neue
   Sitzung je Video, kurze Aufträge/Antworten, Warten ohne Abfragen; Prüfpaare und Freigaben bleiben.
   Details: `docs/agenten/README.md` → „Sparsam arbeiten“ und „Modellwahl je Aufgabe“ (haiku leicht · sonnet Standard · opus schwer).
