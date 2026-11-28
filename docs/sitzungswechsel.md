@@ -43,6 +43,7 @@ Nicht mitten in einem laufenden Render oder während Agenten arbeiten – erst s
 | 20.11.2026 abends | session_01UNp77MwDdQvCYQekQ5vs48 (Orchestrator) | session_01UNp77PKkjFzGD2s8mqDXLD („CLIPS – Video 1 (20.11., Hook-Reset)“) | Video 1 des Tages in eigener Sitzung; Abholer bleibt beim Orchestrator |
 | 20.11.2026 nachts | session_01UNp77MwDdQvCYQekQ5vs48 (Orchestrator) | session_01UNp77NwEQnkdwV347oHn4Q („CLIPS – Video 2 (20./21.11., Hook-Reset)“) | Video 1 Gähn-Stadt fertig; Video 2 in eigener Sitzung, Upload 21.11. Slot B |
 | 21.11.2026 nachts | session_01UNp77R5aWAbWZYhvb8vvua (Ghost-Pepper-Beispiel) | session_01UNp77NjnLM6badC17a8k4E („CLIPS – In This City (schwarzer Humor) Video 1 (21.11.)“, Tiefe 5) | Ghost-Pepper fertig; Nutzer 21.11.: „Danach virale 'in this city' Clips … mit schwarzem Humor“; Abholer bleibt beim Orchestrator |
+| 28.11.2026 | session_01UNp77R5aWAbWZYhvb8vvua | session_01UNp77SBSkQVVeFiEhCCFzL („CLIPS – TRX vs Raptor R (3D-Cartoon, 63 s)“, Tiefe 5) | Nutzer: „Mach es als 3D-Cartoon“ + „Wenn es besser ist und sparsamer erstelle eine neue sitzung“ |
 
 ## Grenze: Sitzungs-Tiefe (gelernt 13.11.2026)
 Jede per `create_session` gestartete Sitzung zählt eine Stufe tiefer; ab **Tiefe 8** darf eine Sitzung keine Sitzungen
