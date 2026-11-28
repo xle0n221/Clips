@@ -1,0 +1,225 @@
+{
+ "id": "ghost-stadt",
+ "title": "In This City, If You Ghost Someone, You Turn Invisible",
+ "durationMs": 64260,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 4220
+  },
+  {
+   "id": "rules",
+   "startMs": 4220,
+   "endMs": 11080
+  },
+  {
+   "id": "landlord",
+   "startMs": 11080,
+   "endMs": 17020
+  },
+  {
+   "id": "jake",
+   "startMs": 17020,
+   "endMs": 26010
+  },
+  {
+   "id": "mom",
+   "startMs": 26010,
+   "endMs": 31050
+  },
+  {
+   "id": "ex",
+   "startMs": 31050,
+   "endMs": 36700
+  },
+  {
+   "id": "panic",
+   "startMs": 36700,
+   "endMs": 43590
+  },
+  {
+   "id": "twist",
+   "startMs": 43590,
+   "endMs": 51330
+  },
+  {
+   "id": "gone",
+   "startMs": 51330,
+   "endMs": 53960
+  },
+  {
+   "id": "after",
+   "startMs": 53960,
+   "endMs": 59210
+  },
+  {
+   "id": "outro",
+   "startMs": 59210,
+   "endMs": 63360
+  }
+ ],
+ "cues": [
+  {
+   "beat": "fade",
+   "scene": "hook",
+   "atMs": 3140
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3140
+  },
+  {
+   "beat": "date",
+   "scene": "rules",
+   "atMs": 7660
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 10120
+  },
+  {
+   "beat": "voice",
+   "scene": "landlord",
+   "atMs": 14140
+  },
+  {
+   "emph": true,
+   "scene": "landlord",
+   "atMs": 15620
+  },
+  {
+   "emph": true,
+   "scene": "landlord",
+   "atMs": 15880
+  },
+  {
+   "emph": true,
+   "scene": "landlord",
+   "atMs": 16140
+  },
+  {
+   "beat": "inbox",
+   "scene": "jake",
+   "atMs": 18540
+  },
+  {
+   "beat": "clock",
+   "scene": "jake",
+   "atMs": 22560
+  },
+  {
+   "emph": true,
+   "scene": "jake",
+   "atMs": 21580
+  },
+  {
+   "emph": true,
+   "scene": "jake",
+   "atMs": 24480
+  },
+  {
+   "beat": "knees",
+   "scene": "mom",
+   "atMs": 26880
+  },
+  {
+   "emph": true,
+   "scene": "mom",
+   "atMs": 30300
+  },
+  {
+   "beat": "seen",
+   "scene": "ex",
+   "atMs": 33180
+  },
+  {
+   "beat": "spite",
+   "scene": "ex",
+   "atMs": 35120
+  },
+  {
+   "emph": true,
+   "scene": "ex",
+   "atMs": 33460
+  },
+  {
+   "emph": true,
+   "scene": "ex",
+   "atMs": 36020
+  },
+  {
+   "beat": "brows",
+   "scene": "panic",
+   "atMs": 38400
+  },
+  {
+   "beat": "last",
+   "scene": "panic",
+   "atMs": 40680
+  },
+  {
+   "emph": true,
+   "scene": "panic",
+   "atMs": 42540
+  },
+  {
+   "beat": "past",
+   "scene": "twist",
+   "atMs": 44680
+  },
+  {
+   "nth": 2,
+   "beat": "reads",
+   "scene": "twist",
+   "atMs": 43980
+  },
+  {
+   "beat": "swipe",
+   "scene": "twist",
+   "atMs": 49480
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 49800
+  },
+  {
+   "emph": true,
+   "scene": "gone",
+   "atMs": 52560
+  },
+  {
+   "beat": "boss",
+   "scene": "after",
+   "atMs": 56360
+  },
+  {
+   "emph": true,
+   "scene": "after",
+   "atMs": 57940
+  },
+  {
+   "beat": "hands",
+   "scene": "outro",
+   "atMs": 62420
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 62820
+  }
+ ],
+ "cover": {
+  "text": "GHOST = INVISIBLE",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Or turn invisible.",
+  "seconds": 2
+ }
+}

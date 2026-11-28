@@ -1,0 +1,500 @@
+{
+ "id": "apple-ipod",
+ "title": "Apple Was Almost Dead. Its Enemy Paid the Rent.",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [
+  1997,
+  1998,
+  2001,
+  2006
+ ],
+ "say": {
+  "NeXT": "next",
+  "lowkey": "low-key",
+  "MessagePad": "Message Pad"
+ },
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "lengthSec": 66,
+ "cover": {
+  "text": "APPLE ALMOST DIED. WHO SAVED IT?",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. It's cheaper than a bailout.",
+  "seconds": 2
+ },
+ "sources": "Wahre Geschichte; alle Zahlen/Daten aus Primärquellen (Apple 10-K FY1997/1998/2002/2006 auf SEC EDGAR, Microsoft-Pressemitteilung 6.8.1997, Slashdot 23.10.2001) – docs/quellen-apple-ipod.md. Wertungen (cooked, embarrassing, lickable, brick) sind als Roast gekennzeichnet. Keine Apple-Logos/Produktbilder: alle Geräte als eigene generische Cartoon-Figuren.",
+ "pointe": "Nicht der iPod allein: iMac stoppte die Blutung, der Rivale zahlte die Miete, der iPod machte reich – und der Zuschauer schafft nicht mal 10 % Akku (Akku-Strich fällt wie das EKG aus Bild 1 = Loop).",
+ "originality": "Eigene Inszenierung (Firma als Patient, Rivale als Mobber, Geräte als Figuren); keine fremden Slogans, keine Logos; Fakten-Thema statt Welt-Regel (Nutzerauftrag 22.11.).",
+ "music": {
+  "mood": "funny",
+  "bpm": 98,
+  "silenceBefore": {
+   "enemy": 0.5,
+   "rich": 0.4
+  },
+  "why": "Roast-Comedy mit Aufstiegsgeschichte → verspielter Trap/R&B-Bounce, Seed = Episoden-ID; Stille vor dem Rivalen-Reveal und vor dem Reichtums-Höhepunkt. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten)."
+ },
+ "narratorMood": {
+  "mood": "zynischer 25-jähriger US-Amerikaner 2026, Slang (bro, cooked, lowkey, it was giving, sure buddy), trocken-schadenfroh; Hook angespannt, Rivale/iPod-Pointen flach und trocken",
+  "why": "Nutzer 22.11.: TikTok-Humor, Beleidigungen, umgangssprachliches American English mit Slang wie ein 25-Jähriger 2026; voicePreset witzig + ironic/tense, Satzpausen 480–520 ms."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (Person mit Pupillen/Brauen/Mund) + personifizierte Geräte mit Bildschirm-Gesichtern: Schauspiel, kräftige Farben, schnelles Rendern, keine Markenbilder nötig.",
+  "characters": "PATIENT (Apple): beiger Röhren-Computer, Gesicht im Bildschirm, Krankenhaushemd; RIVALE (Microsoft): grauer Tower mit Sonnenbrille + Goldkette; JOBS: schwarzer Pulli, runde Brille, Bart (generisch, keine Porträtähnlichkeit); MESSAGEPAD: grauer Ziegel mit Antenne; iMAC: bonbonfarbenes durchsichtiges Ei; iPOD: weißer Kasten mit Kopfhörern, Bildschirmgesicht; NERD: Kapuzenpulli, Energy-Drinks."
+ },
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "hookQuestion": {
+  "text": "Who saved Apple – if not the iPod?",
+  "shownBy": "Bild 1: sterbender Computer-Patient + EKG fällt; Frage gesprochen in question (~6 s)",
+  "answer": "Teilweise ab enemy (Microsoft-Geld), komplett erst im outro (iMac + Rivale + iPod)."
+ },
+ "finalImage": {
+  "image": "POV: Zuschauer-Handy mit 10 % Akku, Akku-Strich fällt wie das EKG aus Bild 1",
+  "plant": "hook (EKG fällt)",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Klinik-Raum leise, Herzmonitor-Piepen im Hook, Basstreffer beim Rivalen und beim iPod-Reichtum, Kassen-Klingeln beim Scheck, Tastenklick beim 'Lame', Piep nur über dem Rest des Fluchworts (Anlaut hörbar, Nutzer 22.11.).",
+  "room": {
+   "db": -46,
+   "rain_db": -70
+  },
+  "reveals": [
+   {
+    "scene": "question",
+    "word": "enemy"
+   },
+   {
+    "scene": "rich",
+    "word": "cash"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -16
+  },
+  "twist": {
+   "scene": "enemy",
+   "word": "Microsoft",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -17
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "enemy",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 160,
+    "kind": "mute",
+    "ms": 300
+   },
+   {
+    "scene": "enemy",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 160,
+    "kind": "bleep",
+    "ms": 300,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "rich",
+    "word": "ass",
+    "at": "start",
+    "offsetMs": 130,
+    "kind": "mute",
+    "ms": 340
+   },
+   {
+    "scene": "rich",
+    "word": "ass",
+    "at": "start",
+    "offsetMs": 130,
+    "kind": "bleep",
+    "ms": 340,
+    "db": -17,
+    "hz": 1000
+   }
+  ]
+ },
+ "version": "v1 (22.11.2026, wahre Geschichte, Roast-Humor, Slang; Nutzer: Flüche nur teilweise piepen)",
+ "note": "Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen 450–800 ms; Fluch: Anlaut hörbar, Rest gepiept.",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Apple, 1997. | It lost over a billion dollars in one year. | Bro was *cooked*.",
+   "visual": "SHOT 1 (COVER 0–0,5 s, Klinik): beiger Röhren-Computer mit Gesicht auf dem Bildschirm liegt im Krankenbett, EKG rast nach unten, Geldscheine fliegen aus seiner Brieftasche, Minus-Zähler / SHOT 2 ('cooked'): Nah – Kochmütze/Dampf, Patient schwitzt, Herzmonitor piept",
+   "sources": [
+    "Nettoverlust FY1997 1.045 Mio. $ – Apple 10-K FY1998 (SEC)"
+   ],
+   "cues": [
+    {
+     "word": "Bro",
+     "beat": "cooked"
+    }
+   ],
+   "captions": [
+    "Apple, 1997.",
+    "It lost over",
+    "a billion dollars",
+    "in one year.",
+    "Bro was cooked."
+   ]
+  },
+  {
+   "id": "question",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "And no, the iPod didn't save it. | Its worst *enemy* did.",
+   "visual": "SHOT 1: Musikplayer mit Gesicht kommt als Retter angeflogen, wird von einer Hand zurückgeschubst ('not at first') / SHOT 2 ('enemy'): Silhouette eines grinsenden grauen Computer-Turms mit Sonnenbrille im Gegenlicht",
+   "sources": [
+    "iPod erst Okt. 2001 – Apple 10-K FY2002; Microsoft-Investition Aug. 1997 – Microsoft-Pressemitteilung"
+   ],
+   "cues": [
+    {
+     "word": "didn't",
+     "beat": "push"
+    },
+    {
+     "word": "Its",
+     "beat": "enemy"
+    }
+   ],
+   "captions": [
+    "And no,",
+    "the iPod didn't save it.",
+    "Its worst enemy did."
+   ]
+  },
+  {
+   "id": "patient",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Picture Apple as a patient: beige, broke, lowkey *embarrassing*.",
+   "visual": "SHOT 1: Patient im Bett, Ärztin hält Röntgenbild, auf dem nur Spinnweben und eine Motte sind / SHOT 2 ('embarrassing'): Comic-Fläche – Patient zieht die Bettdecke über den Bildschirm, rot vor Scham",
+   "sources": [
+    "Wertung/Roast (Meinung), keine Tatsachenbehauptung"
+   ],
+   "cues": [
+    {
+     "word": "Beige",
+     "beat": "xray"
+    },
+    {
+     "word": "lowkey",
+     "beat": "blush"
+    }
+   ],
+   "captions": [
+    "Picture Apple",
+    "as a patient:",
+    "beige, broke,",
+    "lowkey embarrassing."
+   ]
+  },
+  {
+   "id": "jobs",
+   "section": "journey",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Co-founder Steve Jobs came back as interim boss. | Interim. | Sure, *buddy*.",
+   "visual": "SHOT 1: schwarzer Würfel mit Preisschild wird in die Klinik geschoben / SHOT 2 ('Jobs'): Würfel klappt auf, Mann mit schwarzem Pulli und runden Brillen steigt heraus wie aus einer Spielzeugbox / SHOT 3 ('Interim'): er klebt ein winziges Schild 'interim' an die Chefbüro-Tür, legt die Füße auf den Tisch; Erzähler: 'Sure, buddy' – Kamera-Zoom auf zufriedenes Gesicht",
+   "sources": [
+    "Jobs Mitgründer + interim CEO – Apple 10-K FY1998; Ernennung 16.9.1997 – 10-K FY1997 (8-K-Hinweis)"
+   ],
+   "cues": [
+    {
+     "word": "Interim",
+     "beat": "door"
+    }
+   ],
+   "captions": [
+    "Co-founder Steve Jobs",
+    "came back",
+    "as interim boss.",
+    "Interim.",
+    "Sure, buddy."
+   ]
+  },
+  {
+   "id": "cuts",
+   "section": "journey",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Apple killed its pocket gadget, the MessagePad. | It was giving *brick*.",
+   "visual": "SHOT 1: Jobs-Figur zieht einem ziegelartigen Taschen-Gerät mit Gesicht (Antenne, Stift) den Stecker, es sackt zusammen / SHOT 2 ('brick'): Friedhof – Grabstein in Ziegelform, ein Ziegelstein liegt daneben und sieht identisch aus",
+   "sources": [
+    "MessagePad + eMate im FY1998 eingestellt – Apple 10-K FY1998"
+   ],
+   "cues": [
+    {
+     "word": "It",
+     "beat": "grave"
+    }
+   ],
+   "captions": [
+    "Apple killed",
+    "its pocket gadget,",
+    "the MessagePad.",
+    "It was giving brick."
+   ]
+  },
+  {
+   "id": "enemy",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 8.0,
+    "gain_db": -0.5
+   },
+   "text": "Then Microsoft, the rival, put 150 million into Apple. | That's your bully paying your rent. | Humiliating as *fuck*.",
+   "visual": "SHOT 1: grauer Computer-Turm mit Sonnenbrille (Rivale) übergibt einen Riesen-Scheck an den Patienten / SHOT 2 ('bully'): Schulhof-Rückblende – Turm als Mobber hält den Patienten am Kragen hoch, legt ihm dann Miete-Geld in die Hand / SHOT 3 ('Humiliating'): Patient nimmt den Scheck mit zitternder Hand, Gesicht im Bildschirm glüht rot",
+   "sources": [
+    "Microsoft-Pressemitteilung 6.8.1997: 'Microsoft will invest $150 million in non-voting Apple stock.'"
+   ],
+   "cues": [
+    {
+     "word": "That's",
+     "beat": "bully"
+    },
+    {
+     "word": "Humiliating",
+     "beat": "shame"
+    }
+   ],
+   "captions": [
+    "Then Microsoft,",
+    "the rival,",
+    "put 150 million",
+    "into Apple.",
+    "That's your bully",
+    "paying your rent.",
+    "Humiliating as f***."
+   ]
+  },
+  {
+   "id": "imac",
+   "section": "journey",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "Then came the iMac. | It looked like candy. | Lowkey *lickable*. | And Apple made a profit again.",
+   "visual": "SHOT 1: bonbonfarbener, durchsichtiger Ei-Computer mit Gesicht rollt herein, Konfetti / SHOT 2 ('lickable'): Kind leckt am Gehäuse, Ärztin zieht es weg / SHOT 3 ('Apple made'): EKG des Patienten geht wieder hoch, Pflaster auf dem Bildschirm",
+   "sources": [
+    "iMac angekündigt Mai 1998, eingeführt Aug. 1998; Nettogewinn FY1998 309 Mio. $ nach 1.045 Mio. $ Verlust FY1997 – Apple 10-K FY1998",
+    "'looked like candy/lickable' = Wertung/Witz"
+   ],
+   "cues": [
+    {
+     "word": "Lowkey",
+     "beat": "lick"
+    },
+    {
+     "word": "Apple",
+     "beat": "ekg"
+    }
+   ],
+   "captions": [
+    "Then came the iMac.",
+    "It looked like candy.",
+    "Lowkey lickable.",
+    "And Apple made",
+    "a profit again."
+   ]
+  },
+  {
+   "id": "ipod",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 520,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "October 2001: the iPod. | One tech site wrote: | No wireless. | Less space than a Nomad. | *Lame*.",
+   "visual": "SHOT 1: weißer Musikplayer mit Gesicht und Kopfhörern tanzt auf einem Podest im Scheinwerfer / SHOT 2 ('tech site'): Nerd im Kapuzenpulli tippt im dunklen Zimmer, Bildschirmlicht, Energy-Drink-Dosen; tippt mit einem Finger 'Lame' (Tastenklick)",
+   "sources": [
+    "iPod eingeführt Okt. 2001, 5 GB – Apple 10-K FY2002",
+    "Slashdot 23.10.2001 (CmdrTaco): 'No wireless. Less space than a nomad. Lame.'"
+   ],
+   "cues": [
+    {
+     "word": "One",
+     "beat": "nerd"
+    }
+   ],
+   "captions": [
+    "October 2001:",
+    "the iPod.",
+    "One tech site wrote:",
+    "No wireless.",
+    "Less space than a Nomad.",
+    "Lame."
+   ]
+  },
+  {
+   "id": "rich",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 8.0,
+    "gain_db": -0.5
+   },
+   "text": "By 2006, it made more cash than every Mac combined. | Lame, my *ass*.",
+   "visual": "SHOT 1: Höhepunkt – Musikplayer sitzt auf Geldberg, Geldregen; daneben stapeln sich alle Computer kleinlaut / SHOT 2 ('Lame'): Nerd vom Slashdot-Shot klappt der Kiefer runter, Energy-Drink fällt",
+   "sources": [
+    "FY2006: iPod-Nettoumsatz 7.676 Mio. $ > Macintosh gesamt 7.375 Mio. $ (von 19.315 Mio. $) – Apple 10-K FY2006"
+   ],
+   "cues": [
+    {
+     "word": "Lame",
+     "beat": "jaw"
+    }
+   ],
+   "captions": [
+    "By 2006,",
+    "it made more cash",
+    "than every Mac combined.",
+    "Lame, my a**."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 520,
+    "comma_ms": 190,
+    "end_db": 8.0,
+    "gain_db": -1.0
+   },
+   "text": "The iPod save Apple? | Nah. | The iMac stopped the bleeding, the rival paid rent, the iPod made it *rich*. | You can't even save 10 percent *battery*.",
+   "visual": "SHOT 1: Patient im Bett jetzt in Goldbett mit Sonnenbrille, iMac und Rivale als Pfleger, Musikplayer füttert Geld / SHOT 2 ('Meanwhile'): POV – Zuschauer-Handy mit 10 %-Akku, Akkustrich wird rot und fällt wie das EKG aus Bild 1 (Loop)",
+   "sources": [
+    "Zusammenfassung der belegten Schritte (s. oben)",
+    "Zuschauer-Roast = Witz"
+   ],
+   "cues": [
+    {
+     "word": "The",
+     "beat": "gold"
+    },
+    {
+     "word": "can't",
+     "beat": "phone"
+    }
+   ],
+   "captions": [
+    "The iPod",
+    "save Apple?",
+    "Nah.",
+    "The iMac stopped the bleeding,",
+    "the rival paid rent,",
+    "the iPod made it rich.",
+    "You can't even",
+    "save 10 percent battery."
+   ]
+  }
+ ]
+}

@@ -18,6 +18,17 @@ import { TOR_CONFIG, TOR_SCENES } from "./tor";
 import { GAEHN_CONFIG, GAEHN_SCENES } from "./gaehn";
 import { LUEGEN_CONFIG, LUEGEN_SCENES } from "./luegen";
 import { GHOST_CONFIG, GHOST_SCENES } from "./ghost";
+import { SUCHE_CONFIG, SUCHE_SCENES } from "./suche";
+import { TODO_CONFIG, TODO_SCENES } from "./todo";
+import { AKKU_CONFIG, AKKU_SCENES } from "./akku";
+import { FLUCH_CONFIG, FLUCH_SCENES } from "./fluch";
+import { APPLE_CONFIG, APPLE_SCENES } from "./apple";
+import { MECKERN_CONFIG, MECKERN_SCENES } from "./meckern";
+import { GHOSTING_CONFIG, GHOSTING_SCENES } from "./ghosting";
+import { SCROLL_CONFIG, SCROLL_SCENES } from "./scroll";
+import { SCHNECKE_CONFIG, SCHNECKE_SCENES } from "./schnecke";
+import { HANGOUT_CONFIG, HANGOUT_SCENES } from "./hangout";
+import { TAUSCH_CONFIG, TAUSCH_SCENES } from "./tausch";
 import type { FilmLookSpec } from "../overlays/FilmLook";
 
 // Szenen-IDs = "id" in episodes/solar-system.json
@@ -57,6 +68,17 @@ export const SCENE_SETS: Record<string, Record<string, React.FC>> = {
   "gaehn-stadt": GAEHN_SCENES,
   "luegen-stadt": LUEGEN_SCENES,
   "ghost-pepper": GHOST_SCENES,
+  "suche-stadt": SUCHE_SCENES,
+  "todo-stadt": TODO_SCENES,
+  "akku-stadt": AKKU_SCENES,
+  "fluch-stadt": FLUCH_SCENES,
+  "meckern-stadt": MECKERN_SCENES,
+  "ghost-stadt": GHOSTING_SCENES,
+  "scroll-stadt": SCROLL_SCENES,
+  "schnecken-stadt": SCHNECKE_SCENES,
+  "hangout-stadt": HANGOUT_SCENES,
+  "tausch-stadt": TAUSCH_SCENES,
+  "apple-ipod": APPLE_SCENES,
 };
 
 export const scenesFor = (episode: string) => SCENE_SETS[episode] ?? SCENES;
@@ -119,5 +141,16 @@ export const EPISODE_CONFIG: Record<string, EpisodeConfig> = {
   "gaehn-stadt": GAEHN_CONFIG,
   "luegen-stadt": LUEGEN_CONFIG,
   "ghost-pepper": GHOST_CONFIG,
+  "suche-stadt": SUCHE_CONFIG,
+  "todo-stadt": TODO_CONFIG,
+  "akku-stadt": AKKU_CONFIG,
+  "fluch-stadt": FLUCH_CONFIG,
+  "meckern-stadt": MECKERN_CONFIG,
+  "ghost-stadt": GHOSTING_CONFIG,
+  "scroll-stadt": SCROLL_CONFIG,
+  "schnecken-stadt": SCHNECKE_CONFIG,
+  "hangout-stadt": HANGOUT_CONFIG,
+  "tausch-stadt": TAUSCH_CONFIG,
+  "apple-ipod": APPLE_CONFIG,
 };
 export const configFor = (episode: string): EpisodeConfig | undefined => EPISODE_CONFIG[episode];

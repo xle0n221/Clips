@@ -1,0 +1,239 @@
+{
+ "id": "hangout-stadt",
+ "title": "In This City, \"We Should Hang Out Sometime\" Is Legally Binding",
+ "durationMs": 66134,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 146,
+   "endMs": 4903
+  },
+  {
+   "id": "rules",
+   "startMs": 4903,
+   "endMs": 10065
+  },
+  {
+   "id": "exes",
+   "startMs": 10065,
+   "endMs": 14550
+  },
+  {
+   "id": "marcus",
+   "startMs": 14550,
+   "endMs": 22081
+  },
+  {
+   "id": "clerk",
+   "startMs": 22081,
+   "endMs": 29223
+  },
+  {
+   "id": "rush",
+   "startMs": 29223,
+   "endMs": 36689
+  },
+  {
+   "id": "cooked",
+   "startMs": 36689,
+   "endMs": 41465
+  },
+  {
+   "id": "twist",
+   "startMs": 41465,
+   "endMs": 47873
+  },
+  {
+   "id": "clerk2",
+   "startMs": 47873,
+   "endMs": 52796
+  },
+  {
+   "id": "gone",
+   "startMs": 52796,
+   "endMs": 59019
+  },
+  {
+   "id": "outro",
+   "startMs": 59019,
+   "endMs": 65241
+  }
+ ],
+ "cues": [
+  {
+   "beat": "seal",
+   "scene": "hook",
+   "atMs": 3689
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 3689
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4000
+  },
+  {
+   "beat": "brunch",
+   "scene": "rules",
+   "atMs": 8155
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 9171
+  },
+  {
+   "beat": "old",
+   "scene": "exes",
+   "atMs": 13036
+  },
+  {
+   "emph": true,
+   "scene": "exes",
+   "atMs": 13482
+  },
+  {
+   "emph": true,
+   "scene": "exes",
+   "atMs": 13637
+  },
+  {
+   "beat": "tally",
+   "scene": "marcus",
+   "atMs": 17741
+  },
+  {
+   "beat": "sweat",
+   "scene": "marcus",
+   "atMs": 20382
+  },
+  {
+   "emph": true,
+   "scene": "marcus",
+   "atMs": 20984
+  },
+  {
+   "emph": true,
+   "scene": "marcus",
+   "atMs": 21256
+  },
+  {
+   "beat": "door",
+   "scene": "clerk",
+   "atMs": 24369
+  },
+  {
+   "beat": "stamp",
+   "scene": "clerk",
+   "atMs": 25961
+  },
+  {
+   "emph": true,
+   "scene": "clerk",
+   "atMs": 28067
+  },
+  {
+   "beat": "gym",
+   "scene": "rush",
+   "atMs": 31019
+  },
+  {
+   "beat": "karaoke",
+   "scene": "rush",
+   "atMs": 33194
+  },
+  {
+   "emph": true,
+   "scene": "rush",
+   "atMs": 35427
+  },
+  {
+   "beat": "fall",
+   "scene": "cooked",
+   "atMs": 40281
+  },
+  {
+   "emph": true,
+   "scene": "cooked",
+   "atMs": 40533
+  },
+  {
+   "beat": "party",
+   "scene": "twist",
+   "atMs": 43058
+  },
+  {
+   "beat": "check",
+   "scene": "twist",
+   "atMs": 45854
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 46592
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 46941
+  },
+  {
+   "beat": "freeze",
+   "scene": "clerk2",
+   "atMs": 51135
+  },
+  {
+   "emph": true,
+   "scene": "clerk2",
+   "atMs": 51834
+  },
+  {
+   "beat": "ceiling",
+   "scene": "gone",
+   "atMs": 53679
+  },
+  {
+   "beat": "chain",
+   "scene": "gone",
+   "atMs": 56048
+  },
+  {
+   "emph": true,
+   "scene": "gone",
+   "atMs": 53232
+  },
+  {
+   "emph": true,
+   "scene": "gone",
+   "atMs": 57970
+  },
+  {
+   "emph": true,
+   "scene": "gone",
+   "atMs": 58203
+  },
+  {
+   "beat": "grin",
+   "scene": "outro",
+   "atMs": 62562
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 64620
+  }
+ ],
+ "cover": {
+  "text": "FAKE PLANS = LAW",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. We should hang out sometime.",
+  "seconds": 2
+ }
+}

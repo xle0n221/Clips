@@ -1,0 +1,58 @@
+{
+ "publish": {
+  "note": "Reine Fiktion (episodes/tausch-stadt.json, Feld sources): keine Realfakten, keine Marken; 'Black Friday' nur als Datum (Upload-Tag 27.11.2026). Fluch 'fuck' nur teilweise gepiept (Anlaut 'f' hörbar, Nutzer 22.11.), Untertitel 'f***'. #DarkHumor/#InThisCity/#BlackFriday als Themen-Tags [HYPOTHESE: Reichweite unbelegt] – vor dem Posten gegenprüfen. Länge siehe upload.lengthSec (Regel 61–70 s).",
+  "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „TRADE IN YOUR FAMILY“, Typ schiebt seinen Onkel aufs Kassenband, roter Scanner-Laser.",
+  "tiktok": {
+   "caption": "In this city, Black Friday deals include your family. Read the fine print, bro. 🛒 (fiction) Who are you trading in?",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#BlackFriday"
+   ]
+  },
+  "youtube": {
+   "title": "In This City, on Black Friday, You Can Trade In Your Family 🛒",
+   "description": "An original animated dark-humor satire: in this city, Black Friday lets you trade in your relatives for store credit. Our guy trades his whole family after Thanksgiving – then he reads the fine print. Pure fiction – the city, the rule and all characters are invented. #shorts",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#BlackFriday"
+   ]
+  },
+  "upload": {
+   "status": "plan",
+   "type": "Story (Welt-Regel-Comedy, schwarzer Humor)",
+   "lengthSec": 65,
+   "slotNote": "27.11. Slot B = dieses Video (Black Friday).",
+   "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+   "tiktok": {
+    "date": "27.11.2026",
+    "slot": "B",
+    "timeDe": "22:00",
+    "calc": "22:00 Berlin (UTC+1) = 21:00 UTC → New York UTC-5 = 16:00 · Los Angeles UTC-8 = 13:00 · London UTC+0 = 21:00",
+    "local": {
+     "newYork": "16:00",
+     "losAngeles": "13:00",
+     "london": "21:00"
+    }
+   },
+   "youtube": {
+    "date": "27.11.2026",
+    "slot": "B",
+    "timeDe": "23:00",
+    "calc": "23:00 Berlin (UTC+1) = 22:00 UTC → New York UTC-5 = 17:00 · Los Angeles UTC-8 = 14:00 · London UTC+0 = 22:00",
+    "local": {
+     "newYork": "17:00",
+     "losAngeles": "14:00",
+     "london": "22:00"
+    }
+   }
+  }
+ },
+ "title": "In This City, on Black Friday, You Can Trade In Your Family",
+ "id": "tausch-stadt"
+}

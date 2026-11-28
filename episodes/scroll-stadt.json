@@ -1,0 +1,538 @@
+{
+ "id": "scroll-stadt",
+ "title": "In This City, Every Minute You Doomscroll, You Shrink One Inch",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "lengthSec": 63,
+ "cover": {
+  "text": "SCROLL = SHRINK",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Then put the phone down.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 25.11.2026 in docs/audit-scroll-stadt.md). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Tyler kommt mit zwei Zoll zum Bewerbungsgespräch – die ganze Firma ist zwei Zoll groß, sie stellen ihn sofort ein. Am ersten Tag saugt der Hausmeister (1,83 m, kein Handy) die komplette Marketing-Abteilung weg. Schluss: Tyler lebt jetzt im Staubsaugerbeutel und schaut ein Video namens 'In this city…' – harter Schnitt auf Bild 1 (Loop). Eingepflanzt: Hausmeister mit Staubsauger läuft schon im Lobby-Shot durchs Bild.",
+ "originality": "Eigene Regel (Doomscrollen = schrumpfen), eigene Figuren (Tyler, Opa mit Klapphandy, Taube, Interviewerin, Hausmeister). Konsequenz = Schrumpfen (weder Tod wie todo/suche/akku noch Peinlichkeit wie fluch noch Altern wie meckern noch Unsichtbarkeit wie ghost). Kein Thema aus episodes/*.json wiederholt.",
+ "music": {
+  "mood": "funny",
+  "bpm": 96,
+  "silenceBefore": {
+   "twist": 0.5,
+   "outro": 0.4
+  },
+  "why": "Schrumpfen ist Slapstick (Taube, Parkour, Staubsauger) → 'funny' (verspielter Trap/R&B mit Pizzicato-/Marimba-Hook, 808), Seed = Episoden-ID; anders als ghost 'dark' und meckern 'chill'. Stille vor dem Firmen-Twist und vor der Loop-Zeile. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten). Stereo-Breite + eigene Sub-Schicht unter den Reveals (Restschwäche ghost-stadt)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-gelangweilt, schadenfroh, US-Slang eines 25-Jährigen (bro, lowkey, cooked); tyler/interview angespannt, Twist trocken-ungläubig, 'Oh f***' ehrlich erschrocken",
+  "why": "Auftrag 25.11. Video 1: In This City + schwarzer Humor, zynischer Erzähler, Slang; voicePreset witzig; gap_ms 480–500 für Satzpausen ≥ 450 ms, wenige längere Sätze; ≈ 150 Wörter (meckern-Lesson 1)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (gaehnSets-Person); Schrumpfen ist in 2D über die Figuren-Skalierung gegen riesige Alltagsdinge (Sofa, Busknopf, Aufzugknopf, Taube) sofort und stumm lesbar; Messlatte an der Wand macht die Regel im ersten Bild klar.",
+  "characters": "TYLER: orangefarbener Hoodie, schwarze Locken, 25, schrumpft Szene für Szene (1,22 m → Katzengröße → 5 cm); OPA: Riese mit Klapphandy, Strickjacke, Glatze; TAUBE: grau, schaut aufs eigene Handy; INTERVIEWERIN: 5 cm, Blazer, Dutt; HAUSMEISTER: 1,83 m, blauer Overall, Staubsauger, Kopfhörer, kein Handy."
+ },
+ "hookQuestion": {
+  "text": "Will there be anything left of him by then?",
+  "shownBy": "Bild 1: Mann scrollt auf dem Sofa und schrumpft sichtbar an der Messlatte, das Sofa wird riesig; Frage gesprochen in tyler (~15 s)",
+  "answer": "Zwei Zoll – und genau deshalb eingestellt (≈ 47 s)."
+ },
+ "finalImage": {
+  "image": "Staubsaugerbeutel von innen: Tyler auf einem Staubkorn mit winzigem Handy, auf dem Bild 1 dieses Videos läuft → harter Schnitt auf Bild 1",
+  "plant": "lobby (Hausmeister mit Staubsauger läuft durchs Bild)",
+  "payoff": "gone + outro"
+ },
+ "soundBed": {
+  "why": "Wohnung/Stadt leise, Schrumpf-'Wuii' (fallender Ton) bei jedem Schrumpfen, Taubenflattern, Staubsauger-Dröhnen, Teil-Piep auf 'fuck' (Anlaut 'f' hörbar, Rest gepiept).",
+  "room": {
+   "db": -46,
+   "rain_db": -90
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "inch"
+   },
+   {
+    "scene": "twist",
+    "word": "company"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -8
+  },
+  "twist": {
+   "scene": "twist",
+   "word": "instantly",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -9
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": -40,
+    "kind": "mute",
+    "ms": 260
+   },
+   {
+    "scene": "gone",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": -40,
+    "kind": "bleep",
+    "ms": 260,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "inch",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 500,
+    "db": -15
+   },
+   {
+    "scene": "ex",
+    "word": "bro",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 450,
+    "db": -16
+   },
+   {
+    "scene": "interview",
+    "word": "Cooked",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 600,
+    "db": -8
+   },
+   {
+    "scene": "gone",
+    "word": "vacuums",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "poof",
+    "ms": 1400,
+    "db": -5
+   }
+  ]
+ },
+ "version": "v1 (25.11.2026, Video 1, Regeln docs/audit-2026-11-20.md + CLAUDE.md 22.11. Flüche/Slang) Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen ≥ 450 ms. Upload 26.11.2026 Slot A (TT 17 / YT 18 DE).",
+ "note": "Konsequenz Schrumpfen, schwarzer Humor: Opa mit Klapphandy als arroganter Riese, Taube scrollt auch, Hausmeister saugt die Marketing-Abteilung weg; Teil-Piep 'f***'.",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, every minute you doomscroll, | you shrink one *inch*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s, living room with height chart on the wall): guy on couch thumb-scrolls, with each swipe he drops a notch on the height chart, couch grows / SHOT 2 ('inch'): he's tiny on a giant cushion, phone now bigger than him, still scrolling",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "inch",
+     "beat": "tiny"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "every minute you doomscroll,",
+    "you shrink one inch."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Morning bus? Hamster-sized adults. Dating apps don't ask your height. | They ask your *screen time*.",
+   "visual": "SHOT 1 (wide, bus interior): giant seats, tiny commuters scrolling, one can't reach the stop button / SHOT 2 (close, phone dating profile): a height bar replaced by an hourglass/phone icon with a huge bar, swipe-left X",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Dating",
+     "beat": "app"
+    }
+   ],
+   "captions": [
+    "Morning bus?",
+    "Hamster-sized adults.",
+    "Dating apps",
+    "don't ask your height.",
+    "They ask your screen time."
+   ]
+  },
+  {
+   "id": "grandpa",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "The tallest man in town? Grandpa. Flip phone. | *Unbearable*.",
+   "visual": "SHOT 1 (low angle, street): huge grandpa towers over rooftops, smug, snaps a flip phone shut / SHOT 2 (close): tiny people below roll eyes, grandpa sips coffee from a mug the size of a car",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Grandpa",
+     "beat": "giant"
+    }
+   ],
+   "captions": [
+    "The tallest man in town?",
+    "Grandpa.",
+    "Flip phone.",
+    "Unbearable."
+   ]
+  },
+  {
+   "id": "tyler",
+   "section": "setup",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Tyler. Four feet. Interview at nine. | Will there be anything *left* of him?",
+   "visual": "SHOT 1 (medium, bedroom): Tyler (orange hoodie, black curls) in a suit jacket too big, height chart at 4 ft / SHOT 2 (close): alarm clock 7:00, interview calendar icon / SHOT 3 (ECU): his phone buzzing on the nightstand, glowing, tempting",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Interview",
+     "beat": "clock"
+    },
+    {
+     "word": "Will",
+     "beat": "phone"
+    }
+   ],
+   "captions": [
+    "This is Tyler.",
+    "Four feet.",
+    "Interview at nine.",
+    "Will there be",
+    "anything left of him?"
+   ]
+  },
+  {
+   "id": "ex",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Seven a.m. \"Your ex posted.\" Thirty minutes later, | bro is *cat-sized*.",
+   "visual": "SHOT 1 (close, phone): notification pops, thumb opens it / SHOT 2 (medium): Tyler shrinks in steps on the bed while scrolling, sheet swallows him / SHOT 3 (wide): the actual cat sniffs him nose-to-nose, same size",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Thirty",
+     "beat": "opens"
+    },
+    {
+     "word": "bro",
+     "beat": "cat"
+    }
+   ],
+   "captions": [
+    "Seven a.m.",
+    "\"Your ex posted.\"",
+    "Thirty minutes later,",
+    "bro is cat-sized."
+   ]
+  },
+  {
+   "id": "pigeon",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "He rides a pigeon downtown. | The pigeon is also on its *phone*.",
+   "visual": "SHOT 1 (wide, sky over city): Tyler rides a pigeon in suit jacket, hair flapping / SHOT 2 (close): the pigeon holds a tiny phone in its wing, scrolling, they drift off course into a lamp post",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "The",
+     "beat": "pigeonphone"
+    }
+   ],
+   "captions": [
+    "He rides a pigeon downtown.",
+    "The pigeon",
+    "is also on its phone."
+   ]
+  },
+  {
+   "id": "lobby",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Eight fifty-nine. The elevator button is a mountain. | Bro does *parkour*.",
+   "visual": "SHOT 1 (wide, office lobby): clock 8:59, janitor with vacuum and headphones crosses in the background (PLANT), Tyler tiny at the elevator / SHOT 2 (low angle): Tyler climbs a potted plant, jumps, slaps the button",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "The",
+     "beat": "button"
+    },
+    {
+     "word": "Bro",
+     "beat": "parkour"
+    }
+   ],
+   "captions": [
+    "Eight fifty-nine.",
+    "The elevator button",
+    "is a mountain.",
+    "Bro does parkour."
+   ]
+  },
+  {
+   "id": "interview",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "\"Where do you see yourself in five years?\" Tyler checks his phone. | *Cooked*.",
+   "visual": "SHOT 1 (medium, interview room): giant chair, tiny Tyler on it, a voice from across the desk / SHOT 2 (close): he pulls out his phone, thumb scrolls / SHOT 3: he shrinks to a speck on the chair seat",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Tyler",
+     "beat": "phone"
+    },
+    {
+     "word": "Cooked",
+     "beat": "shrink"
+    }
+   ],
+   "captions": [
+    "\"Where do you see yourself",
+    "in five years?\"",
+    "Tyler checks his phone.",
+    "Cooked."
+   ]
+  },
+  {
+   "id": "twist",
+   "section": "turn",
+   "delivery": "serious",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Two inches. He looks around. | The whole *company* is two inches tall. Hired *instantly*.",
+   "visual": "SHOT 1 (ECU, desk surface): Tyler two inches tall, looks around / SHOT 2 (reveal, wide desk-level): a whole tiny office on the desktop – tiny cubicles, tiny interviewer in a blazer waves / SHOT 3: tiny handshake, tiny confetti",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "The",
+     "beat": "reveal"
+    },
+    {
+     "word": "Hired",
+     "beat": "hire"
+    }
+   ],
+   "captions": [
+    "Two inches.",
+    "He looks around.",
+    "The whole company",
+    "is two inches tall.",
+    "Hired instantly."
+   ]
+  },
+  {
+   "id": "gone",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Day one, the janitor walks in. No phone. He vacuums the entire marketing *department*. | Oh *fuck*.",
+   "visual": "SHOT 1 (low angle): giant janitor with headphones enters the office (PLANT payoff) / SHOT 2 (desk level): vacuum nozzle approaches the tiny cubicles, workers scream / SHOT 3: whoosh, desk empty, one tiny tie spins down",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "No",
+     "beat": "janitor"
+    },
+    {
+     "word": "He",
+     "beat": "vacuum"
+    },
+    {
+     "word": "Oh",
+     "beat": "empty"
+    }
+   ],
+   "captions": [
+    "Day one,",
+    "the janitor walks in.",
+    "No phone.",
+    "He vacuums the entire",
+    "marketing department.",
+    "Oh f***."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Tyler's fine. He lives in the vacuum bag now, watching a video called | \"In this city...\"",
+   "visual": "SHOT 1 (inside vacuum bag, dusty galaxy): tiny Tyler and coworkers on dust bunnies, scrolling / SHOT 2 (close on Tyler's tiny phone): it plays frame 1 of this video – hard cut to the hook (loop)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Doomscrollen-macht-klein-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "watching",
+     "beat": "screen"
+    }
+   ],
+   "captions": [
+    "Tyler's fine.",
+    "He lives in the vacuum bag now,",
+    "watching a video called",
+    "\"In this city...\""
+   ]
+  }
+ ]
+}

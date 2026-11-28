@@ -1,0 +1,219 @@
+{
+ "id": "schnecken-stadt",
+ "title": "In This City, If You Text \"On My Way\" From Bed, You Turn Into a Snail",
+ "durationMs": 62890,
+ "scenes": [
+  {
+   "id": "hook",
+   "startMs": 150,
+   "endMs": 5390
+  },
+  {
+   "id": "rules",
+   "startMs": 5390,
+   "endMs": 11830
+  },
+  {
+   "id": "mayor",
+   "startMs": 11830,
+   "endMs": 17590
+  },
+  {
+   "id": "devin",
+   "startMs": 17590,
+   "endMs": 28190
+  },
+  {
+   "id": "traffic",
+   "startMs": 28190,
+   "endMs": 33380
+  },
+  {
+   "id": "pigeon",
+   "startMs": 33380,
+   "endMs": 37720
+  },
+  {
+   "id": "door",
+   "startMs": 37720,
+   "endMs": 41590
+  },
+  {
+   "id": "twist",
+   "startMs": 41590,
+   "endMs": 49220
+  },
+  {
+   "id": "gone",
+   "startMs": 49220,
+   "endMs": 53060
+  },
+  {
+   "id": "after",
+   "startMs": 53060,
+   "endMs": 57860
+  },
+  {
+   "id": "outro",
+   "startMs": 57860,
+   "endMs": 62290
+  }
+ ],
+ "cues": [
+  {
+   "beat": "snail",
+   "scene": "hook",
+   "atMs": 4460
+  },
+  {
+   "emph": true,
+   "scene": "hook",
+   "atMs": 4460
+  },
+  {
+   "beat": "bus",
+   "scene": "rules",
+   "atMs": 7300
+  },
+  {
+   "emph": true,
+   "scene": "rules",
+   "atMs": 10110
+  },
+  {
+   "beat": "crawl",
+   "scene": "mayor",
+   "atMs": 14510
+  },
+  {
+   "emph": true,
+   "scene": "mayor",
+   "atMs": 15750
+  },
+  {
+   "beat": "clock",
+   "scene": "devin",
+   "atMs": 21350
+  },
+  {
+   "beat": "run",
+   "scene": "devin",
+   "atMs": 24770
+  },
+  {
+   "emph": true,
+   "scene": "devin",
+   "atMs": 24090
+  },
+  {
+   "emph": true,
+   "scene": "devin",
+   "atMs": 24290
+  },
+  {
+   "emph": true,
+   "scene": "devin",
+   "atMs": 24450
+  },
+  {
+   "emph": true,
+   "scene": "devin",
+   "atMs": 27370
+  },
+  {
+   "beat": "foot",
+   "scene": "traffic",
+   "atMs": 30500
+  },
+  {
+   "emph": true,
+   "scene": "traffic",
+   "atMs": 32340
+  },
+  {
+   "emph": true,
+   "scene": "traffic",
+   "atMs": 32580
+  },
+  {
+   "beat": "pigeon",
+   "scene": "pigeon",
+   "atMs": 34120
+  },
+  {
+   "emph": true,
+   "scene": "pigeon",
+   "atMs": 36890
+  },
+  {
+   "beat": "bell",
+   "scene": "door",
+   "atMs": 39770
+  },
+  {
+   "beat": "gf",
+   "scene": "twist",
+   "atMs": 44020
+  },
+  {
+   "beat": "phones",
+   "scene": "twist",
+   "atMs": 46810
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 44020
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 48110
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 48290
+  },
+  {
+   "emph": true,
+   "scene": "twist",
+   "atMs": 48490
+  },
+  {
+   "emph": true,
+   "scene": "gone",
+   "atMs": 52090
+  },
+  {
+   "beat": "wedding",
+   "scene": "after",
+   "atMs": 54090
+  },
+  {
+   "emph": true,
+   "scene": "after",
+   "atMs": 56340
+  },
+  {
+   "beat": "slime",
+   "scene": "outro",
+   "atMs": 60080
+  },
+  {
+   "emph": true,
+   "scene": "outro",
+   "atMs": 61300
+  }
+ ],
+ "cover": {
+  "text": "OMW = SNAIL",
+  "frames": 15
+ },
+ "captionStyle": "phrase-yellow",
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Then actually leave.",
+  "seconds": 2
+ }
+}

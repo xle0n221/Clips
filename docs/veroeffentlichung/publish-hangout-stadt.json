@@ -1,0 +1,58 @@
+{
+ "publish": {
+  "note": "Reine Fiktion (episodes/hangout-stadt.json, Feld sources): keine Realfakten, keine Marken. Fluch 'fuck' nur teilweise gepiept (Anlaut 'f' hörbar, Nutzer 22.11.), Untertitel 'f***'. #DarkHumor/#InThisCity/#Relatable als Themen-Tags [HYPOTHESE: Reichweite unbelegt] – vor dem Posten gegenprüfen. Länge siehe upload.lengthSec (Regel 61–70 s).",
+  "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „FAKE PLANS = LAW“, zwei verabschieden sich, Beamter mit Riesen-Stempel fällt von oben.",
+  "tiktok": {
+   "caption": "In this city, \"we should hang out sometime\" is legally binding. Tag the friend you owe 40 hangouts. 🤝📜 (fiction)",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#Relatable"
+   ]
+  },
+  "upload": {
+   "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+   "lengthSec": 67,
+   "slotNote": "26.11. Slot B = dieses Video (Slot A = scroll-stadt).",
+   "status": "plan",
+   "tiktok": {
+    "calc": "22:00 Berlin (UTC+1) = 21:00 UTC → New York UTC-5 = 16:00 · Los Angeles UTC-8 = 13:00 · London UTC+0 = 21:00",
+    "date": "26.11.2026",
+    "local": {
+     "london": "21:00",
+     "losAngeles": "13:00",
+     "newYork": "16:00"
+    },
+    "slot": "B",
+    "timeDe": "22:00"
+   },
+   "type": "Story (Welt-Regel-Comedy, schwarzer Humor)",
+   "youtube": {
+    "calc": "23:00 Berlin (UTC+1) = 22:00 UTC → New York UTC-5 = 17:00 · Los Angeles UTC-8 = 14:00 · London UTC+0 = 22:00",
+    "date": "26.11.2026",
+    "local": {
+     "london": "22:00",
+     "losAngeles": "14:00",
+     "newYork": "17:00"
+    },
+    "slot": "B",
+    "timeDe": "23:00"
+   }
+  },
+  "youtube": {
+   "title": "In This City, \"We Should Hang Out Sometime\" Is Legally Binding 🤝",
+   "description": "An original animated dark-humor satire: in this city, saying \"we should hang out sometime\" is legally binding. Marcus said it forty times. Now he has forty court-ordered hangouts in one Saturday. Pure fiction – the city, the rule and all characters are invented. #shorts",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#Relatable"
+   ]
+  }
+ },
+ "title": "In This City, \"We Should Hang Out Sometime\" Is Legally Binding",
+ "id": "hangout-stadt"
+}

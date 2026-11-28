@@ -1,0 +1,545 @@
+{
+ "id": "meckern-stadt",
+ "title": "In This City, Every Time You Complain, You Age One Year",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "lengthSec": 66,
+ "cover": {
+  "text": "COMPLAIN = +1 YEAR",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Complaining is optional.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 23.11.2026 in docs/audit-meckern-stadt.md). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Tyler schafft den Montag ohne ausgesprochene Beschwerde (nur Sarkasmus kostet 2 Jahre) – 'Midnight. He made it.' Dann denkt er 'Today was sh*t': Gedanken zählen, 47 Jahre auf einmal. Die eingepflanzten Rätsel (graues Haar nach dem Kaffee, das allein alternde Auge) werden damit aufgelöst. Danach fragt sein Date, ob sein Enkel da ist. Schluss an die Zuschauer: 'Comment that this was too long.' – Daumen des Zuschauers altert beim Tippen (Loop zum Hook-POOF).",
+ "originality": "Eigene Regel (Meckern = +1 Jahr), eigene Figuren (Tyler, Chef, Date). Konsequenz = Altern (weder Tod wie todo/suche/akku noch Peinlichkeit wie fluch). Kein Thema aus episodes/*.json wiederholt.",
+ "music": {
+  "mood": "chill",
+  "bpm": 88,
+  "silenceBefore": {
+   "twist": 0.5,
+   "outro": 0.4
+  },
+  "why": "Montags-Frust + trockener Sarkasmus → 'chill' (lo-fi R&B/Trap, Rhodes, gedämpfte Drums), Seed = Episoden-ID; anders als fluch 'funny' und akku 'dark'. Stille vor dem Gedanken-Twist und vor der Zuschauer-Zeile. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-gelangweilt, schadenfroh, US-Slang eines 25-Jährigen; coffee/boss angespannt, midnight übertrieben feierlich, Twist flach und trocken",
+  "why": "Auftrag 23.11.: In This City + schwarzer Humor, zynischer Erzähler, Slang (lowkey, it's giving, bro, cooked); voicePreset witzig; gap_ms 480–500 für Satzpausen ≥ 450 ms, wenige, längere Sätze (fluch-Lesson 1)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (Pupillen/Brauen/Mund, Squash & Stretch); Altern (graue Haare, Bart, Falten, Krümmung) ist in 2D über Requisiten sofort lesbar; schnelles Rendern.",
+  "characters": "TYLER: orangener Hoodie, blaue Stachelhaare, 25 → später 75 (Glatze, weißer Bart bis zum Boden, krumm, Gehstock); BOSS: grauer Anzug, Schnurrbart, selbstgefällig; DATE: gelbes Kleid, Blumen."
+ },
+ "hookQuestion": {
+  "text": "Can he get through his worst Monday ever without one complaint?",
+  "shownBy": "Bild 1: Schirm klappt um, Meckerwolke, POOF – Mann wird alt; Frage gesprochen in tyler (~15 s)",
+  "answer": "Scheinbar ja ('Midnight. He made it.', ≈ 45 s) – dann zählt sein Gedanke."
+ },
+ "finalImage": {
+  "image": "POV: Handy des Zuschauers mit Kommentarfeld; der tippende Daumen bekommt Falten, ein graues Haar fällt aufs Display",
+  "plant": "hook (POOF-Altern) + coffee (graues Haar ohne Worte)",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Straßen-/Wohnungsraum leise, Basstreffer bei jedem Altern-POOF, Teil-Piep auf 'shit' (Anlaut 'sh' hörbar, Rest gepiept), Glocken-Akzent bei Mitternacht.",
+  "room": {
+   "db": -46,
+   "rain_db": -62
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "age"
+   },
+   {
+    "scene": "twist",
+    "word": "Forty-seven"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -16
+  },
+  "twist": {
+   "scene": "midnight",
+   "word": "Midnight",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -17
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "twist",
+    "word": "shit",
+    "at": "start",
+    "offsetMs": 80,
+    "kind": "mute",
+    "ms": 330
+   },
+   {
+    "scene": "twist",
+    "word": "shit",
+    "at": "start",
+    "offsetMs": 80,
+    "kind": "bleep",
+    "ms": 330,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "age",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 450,
+    "db": -13
+   },
+   {
+    "scene": "rules",
+    "word": "beard",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 400,
+    "db": -15
+   },
+   {
+    "scene": "train",
+    "word": "Two",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 400,
+    "db": -15
+   },
+   {
+    "scene": "twist",
+    "word": "Turns",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 600,
+    "db": -12
+   }
+  ]
+ },
+ "version": "v1 (23.11.2026, Video 1, Regeln docs/audit-2026-11-20.md + CLAUDE.md 22.11. Flüche/Slang) Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen ≥ 450 ms.",
+ "note": "Upload 24.11.2026 Slot B (TT 22 / YT 23 DE).",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, every time you complain, | you age one *year*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s, rainy street): young guy, umbrella flips inside out, rain soaks him, he groans – storm-cloud grumble bubble / SHOT 2 ('age'): POOF of dust – gray hair, beard, wrinkles, back bends, a cane appears in his hand",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "age",
+     "beat": "age"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "every time you complain,",
+    "you age one year."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "A guy said his soup was cold. | His beard fell *in* the soup. The customer service hold line? Lowkey a *nursing home*.",
+   "visual": "SHOT 1 (medium, diner): man pushes soup away, grumble bubble / SHOT 2 (close): POOF – long white beard drops into the soup / SHOT 3 (wide, waiting room): rows of very old people on hold with phones to their ears, cobwebs, music notes",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "beard",
+     "beat": "beard"
+    },
+    {
+     "word": "customer",
+     "beat": "hold"
+    }
+   ],
+   "captions": [
+    "A guy said",
+    "his soup was cold.",
+    "His beard",
+    "fell in the soup.",
+    "The customer service",
+    "hold line?",
+    "Lowkey a nursing home."
+   ]
+  },
+  {
+   "id": "oldest",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "The oldest man here is thirty-one. | He wrote online *reviews*.",
+   "visual": "SHOT 1 (medium, party): birthday cake with a forest of candles on fire, guests fan the flames, a fire extinguisher / SHOT 2 (medium, dark room): an ancient shriveled man at a glowing laptop, angry one-star icons fly off the screen",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "He",
+     "beat": "laptop"
+    }
+   ],
+   "captions": [
+    "The oldest man here",
+    "is thirty-one.",
+    "He wrote",
+    "online reviews."
+   ]
+  },
+  {
+   "id": "tyler",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "This is Tyler, twenty-five, a professional complainer. Can he get through his worst Monday ever | without *one* complaint?",
+   "visual": "SHOT 1 (medium, apartment couch): Tyler (orange hoodie, blue hair) whines at his phone, three grumble bubbles / SHOT 2 (wide, morning): storm cloud only over his window, alarm clock jumps, black cat crosses / SHOT 3 (close, comic panel): Tyler puts a tape X over his own mouth, thumbs up, sweat",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Can",
+     "beat": "monday"
+    },
+    {
+     "word": "without",
+     "beat": "tape"
+    }
+   ],
+   "captions": [
+    "This is Tyler,",
+    "twenty-five,",
+    "a professional complainer.",
+    "Can he get through",
+    "his worst Monday ever",
+    "without one complaint?"
+   ]
+  },
+  {
+   "id": "coffee",
+   "section": "journey",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Seven a.m., coffee all over his laptop. Tyler *smiles*. It's giving hostage video. Weird, | one gray hair pops out anyway.",
+   "visual": "SHOT 1 (ECU desk): mug tips, coffee floods the laptop, sparks / SHOT 2 (close): Tyler forced smile, eye wide, sweat, a tiny hand-held smile / SHOT 3 (ECU head top, comic panel): one single gray hair boings up out of blue hair",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Tyler",
+     "beat": "smile"
+    },
+    {
+     "word": "Weird",
+     "beat": "hair"
+    }
+   ],
+   "captions": [
+    "Seven a.m.,",
+    "coffee all over",
+    "his laptop.",
+    "Tyler smiles.",
+    "It's giving",
+    "hostage video.",
+    "Weird,",
+    "one gray hair",
+    "pops out anyway."
+   ]
+  },
+  {
+   "id": "train",
+   "section": "journey",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "His train is an hour late. He says, \"Wow, love that for me.\" Sarcasm counts, bro. | *Two* more years.",
+   "visual": "SHOT 1 (wide, station platform): empty tracks, a snail crosses, crowd waits / SHOT 2 (medium): Tyler sarcastic double thumbs up, fake grin / SHOT 3 (medium, comic panel): POOF – crow's feet, gray temples, little paunch",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "He",
+     "beat": "sarcasm"
+    },
+    {
+     "word": "Two",
+     "beat": "poof"
+    }
+   ],
+   "captions": [
+    "His train",
+    "is an hour late.",
+    "He says,",
+    "\"Wow, love that for me.\"",
+    "Sarcasm counts, bro.",
+    "Two more years."
+   ]
+  },
+  {
+   "id": "boss",
+   "section": "journey",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "His boss steals his idea. Tyler says nothing. | His left eye ages *on its own*.",
+   "visual": "SHOT 1 (medium, office meeting): smug boss presents Tyler's lightbulb drawing, everyone claps / SHOT 2 (close): Tyler frozen smile, fist clenched / SHOT 3 (ECU comic panel): only his left eye gets wrinkles, droops, its eyebrow turns gray and bushy",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Tyler",
+     "beat": "freeze"
+    },
+    {
+     "word": "left",
+     "beat": "eye"
+    }
+   ],
+   "captions": [
+    "His boss",
+    "steals his idea.",
+    "Tyler says nothing.",
+    "His left eye",
+    "ages on its own."
+   ]
+  },
+  {
+   "id": "midnight",
+   "section": "turn",
+   "delivery": "triumphant",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Midnight. He made it. Twenty-eight, | looking *great*.",
+   "visual": "SHOT 1 (ECU wall clock): hands snap to twelve, clock bounces / SHOT 2 (medium, bedroom, comic burst): Tyler arms up, confetti, flexes in the mirror",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "He",
+     "beat": "party"
+    }
+   ],
+   "captions": [
+    "Midnight.",
+    "He made it.",
+    "Twenty-eight,",
+    "looking great."
+   ]
+  },
+  {
+   "id": "twist",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Then he thinks, \"Today was *shit*.\" Turns out, thoughts count. Forty-seven years at once. | Bro is *cooked*.",
+   "visual": "SHOT 1 (medium, bed at night): Tyler lies in bed, thought bubble with a storm cloud and a pile of poop / SHOT 2 (medium): huge POOF, dust cloud / SHOT 3 (medium): Tyler now 75 – bald, beard to the floor, bent, hearing aid, bed collapses / SHOT 4 (close comic panel): shocked old face, dentures fall out",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Turns",
+     "beat": "poof"
+    },
+    {
+     "word": "Forty-seven",
+     "beat": "old"
+    },
+    {
+     "word": "Bro",
+     "beat": "cooked"
+    }
+   ],
+   "captions": [
+    "Then he thinks,",
+    "\"Today was sh*t.\"",
+    "Turns out,",
+    "thoughts count.",
+    "Forty-seven years",
+    "at once.",
+    "Bro is cooked."
+   ]
+  },
+  {
+   "id": "date",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "His date showed up anyway. | She asked if his *grandson* was home.",
+   "visual": "SHOT 1 (medium, doorway): pretty date with flowers, old Tyler opens door with walker / SHOT 2 (close): date peeks past him hopefully, old Tyler deadpan, flower petals fall",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "She",
+     "beat": "peek"
+    }
+   ],
+   "captions": [
+    "His date",
+    "showed up anyway.",
+    "She asked",
+    "if his grandson",
+    "was home."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "So go ahead. | Comment that this was too *long*.",
+   "visual": "SHOT 1 (POV): viewer's phone with a comment box, thumb starts typing – the thumb wrinkles, a gray hair falls onto the screen (loop to the hook POOF)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Meckern-altert-Regel, Tyler und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "So go ahead.",
+    "Comment that",
+    "this was too long."
+   ]
+  }
+ ]
+}

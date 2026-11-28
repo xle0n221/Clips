@@ -1,0 +1,627 @@
+{
+ "id": "fluch-stadt",
+ "title": "In This City, Every Time You Swear, Your Mom Appears",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "lengthSec": 65,
+ "cover": {
+  "text": "SWEAR = MOM APPEARS",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Your mom would want you to.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 22.11.2026 in docs/audit-fluch-stadt.md). Keine Tatsachenbehauptung; keine Marken, keine fremden Figuren.",
+ "pointe": "Dave schafft die Hochzeit ohne Fluch ('Not one bad word') – dann flucht die Braut, ihre Mutter erscheint und flucht, deren Mutter erscheint ... beim Dessert 41 Mütter; Dave wird von allen bestraft. Letzte Zeile an die Zuschauer: 'when did YOU last swear? Don't turn around.' + Spiegelung einer Mutter mit Hausschuh im schwarzen Handybildschirm (Loop zum Hook-Poof).",
+ "originality": "Eigene Regel (Fluchen = Mutter erscheint), eigene Figuren (Dave, Braut, Mütter-Kette). Konsequenz = Peinlichkeit/Strafe statt Tod (Abwechslung nach todo/suche/akku). Kein Thema aus episodes/*.json wiederholt.",
+ "music": {
+  "mood": "funny",
+  "bpm": 96,
+  "silenceBefore": {
+   "twist": 0.5,
+   "outro": 0.4
+  },
+  "why": "Peinlichkeits-Comedy mit schwarzem Unterton → 'funny' (verspielter Trap/R&B, Pizzicato-Bounce), Seed = Episoden-ID (anders als akku 'dark'); Stille vor der Braut-Pointe und vor der Zuschauerfrage. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten)."
+ },
+ "narratorMood": {
+  "mood": "zynisch-gelangweilt, leicht schadenfroh; Morgen/Altar angespannt-flüsternd, Twist und Kette flach und trocken",
+  "why": "Auftrag 22.11. Video 2: In-This-City mit schwarzem Humor, zynischer Erzähler; voicePreset witzig + ironic/tense; längere Satzpausen (gap_ms 480–520) gegen akku-Schwäche 305 ms, dafür weniger, längere Sätze."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (Person mit Pupillen/Brauen/Mund): Schauspiel, kräftige Farben, schnelles Rendern; Poof-Erscheinen und Fluch-Blasen sind in 2D sofort lesbar.",
+  "characters": "DAVE: grüner Anzug, rote Krawatte, wirre Haare, 43; MOM: pinke Strickjacke, blonde Locken, Hausschuh; BRAUT: weißes Kleid, Schleier; IHRE MUTTER: Lockenwickler, Bademantel; OMA: winzig, Dutt, riesiger Hausschuh."
+ },
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "hookQuestion": {
+  "text": "Can Dave get married without one bad word?",
+  "shownBy": "Bild 1: Mann flucht (Blase), Mutter erscheint per Poof hinter ihm; Frage gesprochen in dave (~16 s)",
+  "answer": "Ja ('Not one bad word', ≈ 40 s) – aber die Braut flucht."
+ },
+ "finalImage": {
+  "image": "POV: schwarzer Handybildschirm spiegelt eine Mutter mit Hausschuh hinter dem Zuschauer",
+  "plant": "hook (Mutter erscheint hinter dem Mann)",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Wohnungs-/Kirchen-Raum leise, Basstreffer bei den Poofs, Piep über jede Fluch-Blase und über 'fuck' (Stimme dort stumm), Glocken-Akzent beim Braut-Twist.",
+  "room": {
+   "db": -46,
+   "rain_db": -70
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "appears"
+   },
+   {
+    "scene": "twist",
+    "word": "appears"
+   },
+   {
+    "scene": "chain",
+    "word": "forty-one"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -16
+  },
+  "twist": {
+   "scene": "twist",
+   "word": "bride",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -17
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "twist",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 20,
+    "kind": "mute",
+    "ms": 700
+   },
+   {
+    "scene": "twist",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 20,
+    "kind": "bleep",
+    "ms": 700,
+    "db": -16,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "In",
+    "at": "start",
+    "offsetMs": -150,
+    "kind": "bleep",
+    "ms": 260,
+    "db": -21,
+    "hz": 1000
+   },
+   {
+    "scene": "rules",
+    "word": "once",
+    "at": "end",
+    "offsetMs": 40,
+    "kind": "bleep",
+    "ms": 300,
+    "db": -21,
+    "hz": 1000
+   },
+   {
+    "scene": "rules",
+    "word": "meeting",
+    "at": "end",
+    "offsetMs": 40,
+    "kind": "bleep",
+    "ms": 300,
+    "db": -21,
+    "hz": 1000
+   },
+   {
+    "scene": "orphans",
+    "word": "here",
+    "at": "end",
+    "offsetMs": 40,
+    "kind": "bleep",
+    "ms": 260,
+    "db": -22,
+    "hz": 1000
+   },
+   {
+    "scene": "orphans",
+    "word": "sailors",
+    "at": "end",
+    "offsetMs": 60,
+    "kind": "bleep",
+    "ms": 130,
+    "db": -22,
+    "hz": 1000
+   },
+   {
+    "scene": "orphans",
+    "word": "sailors",
+    "at": "end",
+    "offsetMs": 240,
+    "kind": "bleep",
+    "ms": 130,
+    "db": -22,
+    "hz": 1000
+   },
+   {
+    "scene": "orphans",
+    "word": "sailors",
+    "at": "end",
+    "offsetMs": 420,
+    "kind": "bleep",
+    "ms": 160,
+    "db": -22,
+    "hz": 1000
+   },
+   {
+    "scene": "twist",
+    "word": "swears",
+    "at": "end",
+    "offsetMs": 40,
+    "kind": "bleep",
+    "ms": 320,
+    "db": -20,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "mom",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 450,
+    "db": -13
+   },
+   {
+    "scene": "twist",
+    "word": "Her",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 450,
+    "db": -13,
+    "nth": 2
+   },
+   {
+    "scene": "twist",
+    "word": "So",
+    "at": "start",
+    "offsetMs": -60,
+    "kind": "poof",
+    "ms": 450,
+    "db": -13
+   }
+  ]
+ },
+ "version": "v1 (22.11.2026, Video 2, Qualitäts-Reset-Regeln docs/audit-2026-11-20.md)",
+ "note": "Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen 450–800 ms (akku-Schwäche).",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, every time you swear, | your mom *appears*.",
+   "visual": "SHOT 1 (medium, COVER 0–0,5 s, garage): a man hits his thumb with a hammer, thumb swells red and throbs, he screams a #@%&! curse bubble (bleep) / SHOT 2 (medium, 'mom'): POOF – an angry mom in a pink cardigan with a slipper materializes right behind him, he freezes, eyes wide",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "mom",
+     "beat": "poof"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "every time you swear,",
+    "your mom appears."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "A surgeon swore once. His mom finished the surgery. A CEO swore at a meeting. Now his mom runs the company. It's doing *better*.",
+   "visual": "SHOT 1 (medium, operating room): surgeon drops a scalpel, curse bubble / SHOT 2 (medium): mom in a surgical cap operates calmly, the surgeon sits in the corner on a tiny stool, sulking / SHOT 3 (wide, boardroom): CEO slams the table, curse bubble / SHOT 4 (medium): mom at the head of the table with a slipper, the chart behind her shoots up, the CEO sits on a tiny chair",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "His",
+     "beat": "mom1"
+    },
+    {
+     "word": "CEO",
+     "beat": "ceo"
+    },
+    {
+     "word": "Now",
+     "beat": "ceo2"
+    }
+   ],
+   "captions": [
+    "A surgeon swore once.",
+    "His mom",
+    "finished the surgery.",
+    "A CEO swore",
+    "in a meeting.",
+    "Now his mom",
+    "runs the company.",
+    "It's doing better."
+   ]
+  },
+  {
+   "id": "orphans",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Only orphans swear freely here. Most of them became *sailors*.",
+   "visual": "SHOT 1 (medium, comic panel): a lonely guy stubs his toe, swears (bubble), looks around – nobody appears – he grins / SHOT 2 (wide, ship deck at sea): happy sailors swearing, curse bubbles everywhere, seagulls",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Most",
+     "beat": "ship"
+    }
+   ],
+   "captions": [
+    "Only orphans",
+    "swear freely here.",
+    "Most of them",
+    "became sailors."
+   ]
+  },
+  {
+   "id": "dave",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -1.0
+   },
+   "text": "This is Dave, forty-three, grounded *nine hundred* times. Today, he gets married. Can he do it without one bad word?",
+   "visual": "SHOT 1 (medium, kid bedroom): Dave (green suit, red tie, messy hair) sits on a tiny kid bed, wall full of tally marks / SHOT 2 (close): Dave in a wedding suit at the mirror, sweating, practising a smile / SHOT 3 (wide, church outside): bells, the bride waves, Dave zips his lips",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Today",
+     "beat": "mirror"
+    },
+    {
+     "word": "Can",
+     "beat": "church"
+    }
+   ],
+   "captions": [
+    "This is Dave,",
+    "forty-three,",
+    "grounded nine hundred times.",
+    "Today,",
+    "he gets married.",
+    "Can he do it",
+    "without one bad word?"
+   ]
+  },
+  {
+   "id": "morning",
+   "section": "journey",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -1.0
+   },
+   "text": "Six a.m., he stubs his toe. Dave screams into a pillow, in total silence. His mom sits back *down*.",
+   "visual": "SHOT 1 (ECU, bedroom): Dave's bare toe hits the bed leg, burst / SHOT 2 (close): Dave screams into a pillow, veins, no sound / SHOT 3 (medium, mom's living room across town): mom already half out of her armchair with a slipper raised, slowly sits back down, disappointed",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Dave",
+     "beat": "pillow"
+    },
+    {
+     "word": "mom",
+     "beat": "momchair"
+    }
+   ],
+   "captions": [
+    "Six a.m.,",
+    "he stubs his toe.",
+    "Dave screams into a pillow,",
+    "in total silence.",
+    "His mom",
+    "sits back down."
+   ]
+  },
+  {
+   "id": "parking",
+   "section": "journey",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.6,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 6.0,
+    "gain_db": 0.0
+   },
+   "text": "Someone steals his parking spot. Dave says, \"*Fudge*.\" His mom *twitches*.",
+   "visual": "SHOT 1 (wide, parking lot): a red sports car zooms into the last spot right in front of Dave's car / SHOT 2 (close): Dave, smiling with clenched teeth, says fudge / SHOT 3 (ECU, comic panel): mom's eye twitches, slipper trembles in her hand",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Dave",
+     "beat": "fudge"
+    },
+    {
+     "word": "twitches",
+     "beat": "twitch"
+    }
+   ],
+   "captions": [
+    "Someone steals",
+    "his parking spot.",
+    "Dave says,",
+    "\"Fudge.\"",
+    "His mom twitches."
+   ]
+  },
+  {
+   "id": "ring",
+   "section": "journey",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.5,
+    "cfg": 1.05,
+    "temp": 0.75,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -1.0
+   },
+   "text": "At the altar, he drops the ring down a drain. The vein on his forehead says *everything*.",
+   "visual": "SHOT 1 (ECU, church floor): the ring bounces, rolls, plinks into a floor drain / SHOT 2 (ECU, comic panel): Dave's face, lips pressed shut, a giant vein throbs on his forehead",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "vein",
+     "beat": "vein"
+    }
+   ],
+   "captions": [
+    "At the altar,",
+    "he drops the ring",
+    "down a drain.",
+    "The vein on his forehead",
+    "says everything."
+   ]
+  },
+  {
+   "id": "vows",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 520,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "\"I do.\" He did it. Not one bad word.",
+   "visual": "SHOT 1 (medium, altar): Dave and the bride, the priest smiles, Dave says I do / SHOT 2 (medium, comic panel): Dave triumphant, arms up, confetti, proud tear",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "He",
+     "beat": "win"
+    }
+   ],
+   "captions": [
+    "\"I do.\"",
+    "He did it.",
+    "Not one bad word."
+   ]
+  },
+  {
+   "id": "twist",
+   "section": "turn",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 8.0,
+    "gain_db": -0.5
+   },
+   "text": "Then his bride stubs her toe and says, \"Oh, | *fuck*.\" Her mom appears, sees Dave, and swears. So *her* mom appears.",
+   "visual": "SHOT 1 (ECU, altar step): the bride's white shoe hits the step / SHOT 2 (medium, altar): the bride, curse bubble + bleep, guests gasp / SHOT 3 (medium): POOF her mom (curlers, bathrobe) appears, sees Dave, swears at him / SHOT 4 (comic panel): POOF a tiny ancient grandma with an even bigger slipper",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Then",
+     "beat": "toe"
+    },
+    {
+     "word": "says",
+     "beat": "curse"
+    },
+    {
+     "word": "Her",
+     "beat": "mom2"
+    },
+    {
+     "word": "So",
+     "beat": "granny"
+    }
+   ],
+   "captions": [
+    "Then his bride",
+    "stubs her toe",
+    "and says,",
+    "\"Oh, f***.\"",
+    "Her mom appears,",
+    "sees Dave,",
+    "and swears.",
+    "So her mom appears."
+   ]
+  },
+  {
+   "id": "chain",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 8.0,
+    "gain_db": -1.0
+   },
+   "text": "By dessert, there were forty-one moms. Dave got grounded by *all* of them.",
+   "visual": "SHOT 1 (wide, reception hall): forty-one moms of all ages in a crowd, slippers raised, a wedding cake / SHOT 2 (medium): Dave in his wedding suit sits in the corner on a tiny stool, facing the wall, moms wag fingers",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Dave",
+     "beat": "corner"
+    }
+   ],
+   "captions": [
+    "By dessert,",
+    "there were forty-one moms.",
+    "Dave got grounded",
+    "by all of them."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 520,
+    "comma_ms": 190,
+    "end_db": 8.0,
+    "gain_db": -1.0
+   },
+   "text": "So, when did *you* last swear? | Don't turn around.",
+   "visual": "SHOT 1 (POV, the viewer's own phone, screen black): in the black screen reflection a dark room appears, slowly a mom silhouette with a slipper rises behind the viewer (loop to the hook)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Fluch-Regel, Dave und alle Figuren sind erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "Don't",
+     "beat": "behind"
+    }
+   ],
+   "captions": [
+    "So,",
+    "when did you last swear?",
+    "Don't turn around."
+   ]
+  }
+ ]
+}

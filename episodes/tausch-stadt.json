@@ -1,0 +1,919 @@
+{
+ "id": "tausch-stadt",
+ "title": "In This City, on Black Friday, You Can Trade In Your Family",
+ "engine": "chatterbox",
+ "voice": "am_michael",
+ "voicePreset": "witzig",
+ "years": [],
+ "say": {},
+ "captionStyle": "phrase-yellow",
+ "speed": 1.0,
+ "pauseMs": 480,
+ "sceneGapMs": 300,
+ "narrator": {
+  "max_speed": 1.0,
+  "piece_extra_ms": 60,
+  "scene_gap_ms": 300,
+  "qc_tries": 4,
+  "comma_whisper": true,
+  "end_soft_ms": 80,
+  "room_tone_db": -72,
+  "end_win_s": 0.7
+ },
+ "lengthSec": 66,
+ "cover": {
+  "text": "TRADE IN YOUR FAMILY",
+  "frames": 15
+ },
+ "endCard": {
+  "handle": "KnowToon",
+  "cta": "Follow. Before your family trades you.",
+  "seconds": 2
+ },
+ "sources": "Reine Fiktion (Welt-Regel-Satire mit schwarzem Humor, Format 'In this city' + zynischer Erzähler; Viral-Analyse 26.11.2026 in docs/audit-tausch-stadt.md). Black Friday/Thanksgiving nur als Datum; keine Marken, keine fremden Figuren.",
+ "pointe": "Er tauscht Onkel, Schwester und Mutter am Black Friday gegen Gutscheine und eine 'Deluxe-Familie'; die ist unheimlich (Mutter lächelt im Schlaf). Beim Rückgängigmachen zeigt der Verkäufer das Kleingedruckte: Umtausch gilt in beide Richtungen – seine echte Familie war zuerst da und hat IHN eingetauscht, gegen einen Golden Retriever. Jetzt sitzt er im Restposten-Regal, keiner nimmt ihn. Schluss an den Zuschauer: 'Your family's in line right now. With your photo.' – Foto auf dem Band, Scanner-Piep, Loop zur Kasse aus Bild 1. Eingepflanzt: Mann im Restposten-Regal schon im Hook-Hintergrund, Kleingedrucktes in 'print'.",
+ "originality": "Eigene Regel (Familie am Black Friday umtauschen), eigene namenlose Figuren (our guy, Onkel, Schwester, Mutter, Verkäufer, Deluxe-Familie, Hund). Konsequenz = Tausch (weder Tod, Peinlichkeit, Altern, Unsichtbarkeit, Schrumpfen, Bürokratie noch Verwandlung wie schnecken). Kein Thema aus episodes/*.json wiederholt. Eigennamen bewusst vermieden (Whisper-Lesson schnecken).",
+ "music": {
+  "mood": "funny",
+  "bpm": 100,
+  "silenceBefore": {
+   "twist": 0.5,
+   "outro": 0.4
+  },
+  "why": "Kaufhaus-Satire mit Grusel-Wende → 'funny' (verspielter Trap/R&B wie Kaufhaus-Muzak, 100 BPM, Seed = Episoden-ID, nie dieselbe Musik); Stille vor dem Twist und vor der Loop-Zeile. Sound-Trends Nov. 2026: Ich kann das nicht bestätigen (keine belegten Daten). Stereo/Sub wie scroll-stadt."
+ },
+ "narratorMood": {
+  "mood": "zynisch-gelangweilt, schadenfroh, US-Slang eines 25-Jährigen (bro, cooked-Ton, low-key, it's giving); print/creepy/back angespannt, Twist trocken und leise, 'What the f***' empört",
+  "why": "Auftrag 26.11. Video 2: In This City + schwarzer Humor, zynischer Erzähler, Slang; voicePreset witzig; gap_ms 480–500 für Satzpausen ≥ 450 ms; 151 Wörter (Lessons hangout/schnecken)."
+ },
+ "style": {
+  "look": "2d",
+  "why": "Bewährter 2D-Cartoon (gaehnSets-Person); Umtausch an der Kasse (Band, roter Scanner-Laser, Poof → Gutschein) ist stumm in 1 Bild lesbar; schnelles Rendern.",
+  "characters": "OUR GUY: grüner Hoodie, schwarzer Lockenkopf, 25; ONKEL: Glatze, Schnurrbart, Krypto-Handy, oranges Hemd; SCHWESTER: pinker Pullover, Pferdeschwanz; MUTTER: lila Strickjacke, Dutt; VERKÄUFER: rote Weste, tote Augen; DELUXE-FAMILIE: glänzend, zu perfektes Lächeln, in Plastikverpackung; HUND: Golden Retriever im Pullover."
+ },
+ "hookQuestion": {
+  "text": "What's in the fine print?",
+  "shownBy": "Bild 1: Mann schiebt seinen Onkel aufs Kassenband, Laser-Piep, Onkel wird zum Gutschein; 'Nobody reads the fine print' in 'print' (~24 s)",
+  "answer": "Umtausch gilt in beide Richtungen – seine Familie hat ihn zuerst eingetauscht (≈ 46 s)."
+ },
+ "finalImage": {
+  "image": "Foto des Zuschauers auf dem Kassenband, roter Laser piept – Loop zur Kasse aus Bild 1",
+  "plant": "hook (Restposten-Regal im Hintergrund) + print (Kleingedrucktes)",
+  "payoff": "outro"
+ },
+ "soundBed": {
+  "why": "Kaufhaus-Halle leise, Scanner-Piep + Poof bei jedem Umtausch, Glocke am Twist, Teil-Piep 'fuck' (Anlaut hörbar), JEDER Schnitt mit eigenem Whoosh/Foley (Schwäche schnecken).",
+  "room": {
+   "db": -46,
+   "rain_db": -90
+  },
+  "reveals": [
+   {
+    "scene": "hook",
+    "word": "family"
+   },
+   {
+    "scene": "twist",
+    "word": "him"
+   }
+  ],
+  "revealSound": {
+   "sound": "pro_impact/deep",
+   "db": -1
+  },
+  "twist": {
+   "scene": "twist",
+   "word": "traded",
+   "sounds": [
+    "mallet/glock",
+    "pro_tap/glass"
+   ],
+   "db": -2
+  },
+  "tailMs": 1500,
+  "fx": [
+   {
+    "scene": "dog",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 260,
+    "kind": "mute",
+    "ms": 200
+   },
+   {
+    "scene": "dog",
+    "word": "fuck",
+    "at": "start",
+    "offsetMs": 260,
+    "kind": "bleep",
+    "ms": 230,
+    "db": -17,
+    "hz": 1000
+   },
+   {
+    "scene": "hook",
+    "word": "in",
+    "at": "start",
+    "offsetMs": 847,
+    "kind": "bleep",
+    "ms": 110,
+    "db": -22,
+    "hz": 2600
+   },
+   {
+    "scene": "hook",
+    "word": "in",
+    "at": "start",
+    "offsetMs": 1180,
+    "kind": "poof",
+    "ms": 450,
+    "db": -9
+   },
+   {
+    "scene": "scan",
+    "word": "one",
+    "at": "start",
+    "offsetMs": 70,
+    "kind": "bleep",
+    "ms": 110,
+    "db": -22,
+    "hz": 2600
+   },
+   {
+    "scene": "scan",
+    "word": "socks",
+    "at": "start",
+    "offsetMs": -130,
+    "kind": "poof",
+    "ms": 350,
+    "db": -17
+   },
+   {
+    "scene": "sister",
+    "word": "steal",
+    "at": "start",
+    "offsetMs": -130,
+    "kind": "poof",
+    "ms": 300,
+    "db": -19
+   },
+   {
+    "scene": "mom",
+    "word": "store",
+    "at": "start",
+    "offsetMs": -70,
+    "kind": "poof",
+    "ms": 450,
+    "db": -9
+   },
+   {
+    "scene": "rules",
+    "word": "no",
+    "at": "start",
+    "offsetMs": 330,
+    "kind": "poof",
+    "ms": 200,
+    "db": -16
+   },
+   {
+    "scene": "outro",
+    "word": "photo",
+    "at": "start",
+    "offsetMs": 0,
+    "kind": "bleep",
+    "ms": 120,
+    "db": -21,
+    "hz": 2600
+   },
+   {
+    "scene": "hook",
+    "word": "family",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -147,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "rules",
+    "word": "any",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -127,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "rules",
+    "word": "no",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -137,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "guy",
+    "word": "our",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -143,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "guy",
+    "word": "his",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -137,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "line",
+    "word": "at",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -123,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "line",
+    "word": "dragging",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -117,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "scan",
+    "word": "one",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -157,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "sister",
+    "word": "his",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -117,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "sister",
+    "word": "low-key",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -130,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "mom",
+    "word": "mom",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -343,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "mom",
+    "word": "store",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -263,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "print",
+    "word": "the",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -110,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "print",
+    "word": "bro",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -137,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "deluxe",
+    "word": "he",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -250,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "deluxe",
+    "word": "a",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -140,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "creepy",
+    "word": "it's",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -47,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "creepy",
+    "word": "until",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -127,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "back",
+    "word": "sunday",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -213,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "back",
+    "word": "taps",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -160,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "twist",
+    "word": "trade-ins",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -333,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "twist",
+    "word": "his",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -113,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "twist",
+    "word": "they",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -133,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "dog",
+    "word": "for",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -73,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "dog",
+    "word": "what",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -140,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "shelf",
+    "word": "now",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -140,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "shelf",
+    "word": "still",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -113,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "outro",
+    "word": "your",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -260,
+    "kind": "poof",
+    "ms": 260,
+    "db": -21,
+    "cutWhoosh": true
+   },
+   {
+    "scene": "outro",
+    "word": "with",
+    "nth": 1,
+    "at": "start",
+    "offsetMs": -113,
+    "kind": "poof",
+    "ms": 260,
+    "db": -23,
+    "cutWhoosh": true
+   }
+  ]
+ },
+ "version": "v1",
+ "note": "v1 (26.11.2026, Video 2, Regeln docs/audit-2026-11-20.md + CLAUDE.md 22.11. Flüche/Slang) Ziel 61–70 s inkl. End-Card 2 s, Tempo 2,3–2,6 W/s, Satzpausen ≥ 450 ms. Upload 27.11.2026 Slot B (TT 22 / YT 23 DE) = Black Friday. Konsequenz Tausch; schwarzer Humor: Familie gegen Socken-Gutschein, Deluxe-Mutter lächelt im Schlaf, eigene Familie tauscht ihn gegen einen Hund, Restposten ohne Abnehmer; Teil-Piep 'f***'.",
+ "scenes": [
+  {
+   "id": "hook",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "In this city, on Black Friday, | you can trade in your *family*.",
+   "visual": "SHOT 1 (COVER 0–0,5 s, medium, store checkout): guy shoves his grumpy uncle onto the conveyor belt, red scanner laser BEEPS on the uncle's forehead, POOF – uncle becomes a coupon; above the till a sign with icons only: family → arrow → coin; far background: a clearance shelf with a sad man (planted ending) / SHOT 2 ('family'): wide, huge store, a whole queue of people dragging relatives in shopping carts",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "family",
+     "beat": "family"
+    }
+   ],
+   "captions": [
+    "In this city,",
+    "on Black Friday,",
+    "you can trade in",
+    "your family."
+   ]
+  },
+  {
+   "id": "rules",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Any relative. Any condition. | *No questions* asked.",
+   "visual": "SHOT 1 (close, return counter): a woman lifts a screaming baby-faced adult brother in a bubble wrap onto the counter / SHOT 2 ('No'): an old man in a cart, asleep, gets stamped by a clerk, no questions",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "Any relative.",
+    "Any condition.",
+    "No questions asked."
+   ]
+  },
+  {
+   "id": "guy",
+   "section": "setup",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Our guy survived Thanksgiving. His uncle talked crypto | for *four hours*.",
+   "visual": "SHOT 1 (medium, Thanksgiving dinner): our guy (green hoodie) stares dead-eyed at a turkey / SHOT 2 ('His'): uncle with rocket chart on his phone yelling, clock spins, the guy's soul leaves his body",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "Our guy survived Thanksgiving.",
+    "His uncle talked crypto",
+    "for four hours."
+   ]
+  },
+  {
+   "id": "line",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "At six, he's first in line, | dragging his uncle by the *ankle*.",
+   "visual": "SHOT 1 (wide, dark parking lot, store doors): guy alone at the doors, frost / SHOT 2 ('dragging'): side, he drags the sleeping uncle by the ankle over the asphalt",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "At six,",
+    "he's first in line,",
+    "dragging his uncle",
+    "by the ankle."
+   ]
+  },
+  {
+   "id": "scan",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "One uncle. | Worth half off *socks*.",
+   "visual": "SHOT 1 (ECU scanner): red laser on uncle's forehead, beep, register shows a sock icon",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "One uncle.",
+    "Worth half off socks."
+   ]
+  },
+  {
+   "id": "sister",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "His sister ate the last roll. | Low-key a *steal*.",
+   "visual": "SHOT 1 (medium): sister with cheeks full of bread roll rides the belt, crumbs / SHOT 2 ('steal'): clerk gives a gift card, guy fist-pumps",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "His sister",
+    "ate the last roll.",
+    "Low-key a steal."
+   ]
+  },
+  {
+   "id": "mom",
+   "section": "build",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Mom asked about his job. | Mom is *store credit* now.",
+   "visual": "SHOT 1 (close, belt): mom on the belt, still lecturing, finger raised / SHOT 2 ('store'): POOF – mom becomes a glowing store credit card",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "Mom asked about his job.",
+    "Mom is store credit now."
+   ]
+  },
+  {
+   "id": "print",
+   "section": "build",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "The clerk says, read the fine print. | Bro does *not*.",
+   "visual": "SHOT 1 (close): clerk with dead eyes slides over a contract that rolls out to the floor, tiny squiggles / SHOT 2 ('Bro'): guy signs without looking, tosses the pen",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "The clerk says,",
+    "read the fine print.",
+    "Bro does not."
+   ]
+  },
+  {
+   "id": "deluxe",
+   "section": "build",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "He leaves with the deluxe family. A mom who says, | I'm *proud* of you.",
+   "visual": "SHOT 1 (wide, store exit, sparkles): guy pushes a cart with a shiny new family in plastic packaging, bow on top / SHOT 2 ('proud'): new mom, too-perfect smile, hugs him, sparkle",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "He leaves with",
+    "the deluxe family.",
+    "A mom who says,",
+    "I'm proud of you."
+   ]
+  },
+  {
+   "id": "creepy",
+   "section": "turn",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "It's giving perfect. Until the new mom | smiles in her *sleep*.",
+   "visual": "SHOT 1 (medium, living room): perfect family on the couch, all smile at the same time / SHOT 2 ('smiles'): night, bedroom door crack, the new mom sleeps with eyes open and a frozen grin, guy sweats",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "It's giving perfect.",
+    "Until the new mom",
+    "smiles in her sleep."
+   ]
+  },
+  {
+   "id": "back",
+   "section": "turn",
+   "delivery": "tense",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Sunday, he runs back to undo it. The clerk taps the *fine print*.",
+   "visual": "SHOT 1 (wide, street): guy sprints back to the store with the receipt / SHOT 2 ('taps'): ECU magnifying glass on the contract: tiny icon of two arrows in a circle (trade goes both ways)",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "Sunday,",
+    "he runs back to undo it.",
+    "The clerk taps",
+    "the fine print."
+   ]
+  },
+  {
+   "id": "twist",
+   "section": "turn",
+   "delivery": "serious",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Trade-ins go both ways. His family came in first. | They traded *him*.",
+   "visual": "SHOT 1 (medium, security monitor): grainy camera shows his real family at the counter at dawn, pushing HIS photo / SHOT 2 ('him'): his real uncle, sister and mom walk out happily with a golden retriever",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "him",
+     "beat": "him"
+    }
+   ],
+   "captions": [
+    "Trade-ins go both ways.",
+    "His family came in first.",
+    "They traded him."
+   ]
+  },
+  {
+   "id": "dog",
+   "section": "turn",
+   "delivery": "indignant",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 500,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "For a golden retriever. What the *fuck*.",
+   "visual": "SHOT 1 (close): golden retriever in a sweater gets hugged by the mom / SHOT 2 ('What'): guy screams, extreme close-up",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "For a golden retriever.",
+    "What the f***."
+   ]
+  },
+  {
+   "id": "shelf",
+   "section": "payoff",
+   "delivery": "ironic",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Now he's on the clearance shelf. | Still *no takers*.",
+   "visual": "SHOT 1 (wide, clearance aisle): guy sits on a shelf with a big red tag, tumbleweed / SHOT 2 ('takers'): shoppers pick the coupon uncle instead, walk past him",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [],
+   "captions": [
+    "Now he's on",
+    "the clearance shelf.",
+    "Still no takers."
+   ]
+  },
+  {
+   "id": "outro",
+   "section": "payoff",
+   "delivery": "playful",
+   "emotion": {
+    "exag": 0.55,
+    "cfg": 1.0,
+    "temp": 0.78,
+    "speed": 1.0,
+    "gap_ms": 480,
+    "comma_ms": 190,
+    "end_db": 7.0,
+    "gain_db": -0.5
+   },
+   "text": "Your family's in line right now. | With your *photo*.",
+   "visual": "SHOT 1 (POV, store line): viewer's phone screen shows this checkout, a mom silhouette in the queue holds a framed photo / SHOT 2 ('photo'): the photo slaps on the belt, red laser beep on the photo – loop to the hook checkout",
+   "sources": [
+    "Fiktion (Welt-Regel-Satire): Stadt, Familien-Umtausch am Black Friday, alle Figuren erfunden – keine Tatsachenbehauptung."
+   ],
+   "cues": [
+    {
+     "word": "photo",
+     "beat": "photo"
+    }
+   ],
+   "captions": [
+    "Your family's in line",
+    "right now.",
+    "With your photo."
+   ]
+  }
+ ]
+}

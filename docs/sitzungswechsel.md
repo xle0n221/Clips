@@ -56,3 +56,4 @@ Diese Sitzung konnte `trig_01NLm7wDjZkjX4TVWdW1r2uy` nicht ändern (Lineage-Tief
 
 ## Nutzer 18.11.2026: „Bitte ab jetzt immer automatisch in eine neue Sitzung wechseln“
 Dauerregel: nach jedem fertigen Video und sobald der Verlauf lang ist, ohne Rückfrage wechseln (Ablauf oben). Die Sitzung session_01UNp77QHeWKBPJK78ThrGyX hat Tiefe 8 und kann keine Sitzung/keinen Abholer anlegen → erst die nächste vom Nutzer gestartete Sitzung (Tiefe 0) kann den Wechsel automatisch ausführen und den Abholer umziehen.
+- 21.11.2026 Video 2 (session_01UNp77PDyyPk6Bk6BDFgKHu, Slot 22.11. B): Thema belegt = **suche-stadt** „In This City, Your Last Search Is Read at Your Funeral“ (Tod/Beerdigung, Suchverlauf). Andere Sitzungen bitte andere Prämisse.

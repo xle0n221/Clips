@@ -1,0 +1,58 @@
+{
+ "publish": {
+  "note": "Reine Fiktion (episodes/scroll-stadt.json, Feld sources): keine Realfakten, keine Marken. Fluch 'fuck' nur teilweise gepiept (Anlaut 'f' hörbar, Nutzer 22.11.), Untertitel 'f***'. #DarkHumor/#InThisCity/#Doomscrolling als Themen-Tags [HYPOTHESE: Reichweite unbelegt] – vor dem Posten gegenprüfen. Länge siehe upload.lengthSec (Regel 61–70 s).",
+  "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „SCROLL = SHRINK“, Typ auf dem Sofa schrumpft beim Scrollen an der Messlatte.",
+  "tiktok": {
+   "caption": "In this city, every minute you doomscroll, you shrink one inch. You've been scrolling for a while… check your height. 📱📏 (fiction)",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#Doomscrolling"
+   ]
+  },
+  "upload": {
+   "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+   "lengthSec": 63,
+   "slotNote": "26.11. Slot A = dieses Video.",
+   "status": "plan",
+   "tiktok": {
+    "calc": "17:00 Berlin (UTC+1) = 16:00 UTC → New York UTC-5 = 11:00 · Los Angeles UTC-8 = 08:00 · London UTC+0 = 16:00",
+    "date": "26.11.2026",
+    "local": {
+     "london": "16:00",
+     "losAngeles": "08:00",
+     "newYork": "11:00"
+    },
+    "slot": "A",
+    "timeDe": "17:00"
+   },
+   "type": "Story (Welt-Regel-Comedy, schwarzer Humor)",
+   "youtube": {
+    "calc": "18:00 Berlin (UTC+1) = 17:00 UTC → New York UTC-5 = 12:00 · Los Angeles UTC-8 = 09:00 · London UTC+0 = 17:00",
+    "date": "26.11.2026",
+    "local": {
+     "london": "17:00",
+     "losAngeles": "09:00",
+     "newYork": "12:00"
+    },
+    "slot": "A",
+    "timeDe": "18:00"
+   }
+  },
+  "youtube": {
+   "title": "In This City, Every Minute You Doomscroll, You Shrink One Inch 📱",
+   "description": "An original animated dark-humor satire: in this city, every minute you doomscroll, you shrink one inch. Tyler is four feet tall with a job interview at nine. Will there be anything left of him? Pure fiction – the city, the rule and all characters are invented. #shorts",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#Doomscrolling"
+   ]
+  }
+ },
+ "title": "In This City, Every Minute You Doomscroll, You Shrink One Inch",
+ "id": "scroll-stadt"
+}

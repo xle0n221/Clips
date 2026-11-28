@@ -1,0 +1,58 @@
+{
+ "publish": {
+  "note": "Reine Fiktion (episodes/ghost-stadt.json, Feld sources): keine Realfakten, keine Marken. Fluch 'fuck' nur teilweise gepiept (Anlaut 'f' hörbar, Nutzer 22.11.), Untertitel 'f***'. #DarkHumor/#InThisCity/#Ghosting als Themen-Tags [HYPOTHESE: Reichweite unbelegt] – vor dem Posten gegenprüfen. Länge siehe upload.lengthSec (Regel 61–70 s).",
+  "thumbnail": "Bild bei 0:00 (erste 0,5 s) als Cover wählen: „GHOST = INVISIBLE“, Typ auf dem Gehweg wischt einen Chat weg.",
+  "tiktok": {
+   "caption": "In this city, if you ghost someone, you turn invisible. You watched the whole thing and didn't comment. Check your hands. 👻📱 (fiction)",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#Ghosting"
+   ]
+  },
+  "upload": {
+   "dstNote": "USA und Europa stehen beide auf Winterzeit – keine Abweichung.",
+   "lengthSec": 65,
+   "slotNote": "25.11. Slot A = dieses Video.",
+   "status": "plan",
+   "tiktok": {
+    "calc": "17:00 Berlin (UTC+1) = 16:00 UTC → New York UTC-5 = 11:00 · Los Angeles UTC-8 = 08:00 · London UTC+0 = 16:00",
+    "date": "25.11.2026",
+    "local": {
+     "london": "16:00",
+     "losAngeles": "08:00",
+     "newYork": "11:00"
+    },
+    "slot": "A",
+    "timeDe": "17:00"
+   },
+   "type": "Story (Welt-Regel-Comedy, schwarzer Humor)",
+   "youtube": {
+    "calc": "18:00 Berlin (UTC+1) = 17:00 UTC → New York UTC-5 = 12:00 · Los Angeles UTC-8 = 09:00 · London UTC+0 = 17:00",
+    "date": "25.11.2026",
+    "local": {
+     "london": "17:00",
+     "losAngeles": "09:00",
+     "newYork": "12:00"
+    },
+    "slot": "A",
+    "timeDe": "18:00"
+   }
+  },
+  "youtube": {
+   "title": "In This City, If You Ghost Someone, You Turn Invisible 👻",
+   "description": "An original animated dark-humor satire: in this city, if you ghost someone, you turn invisible. Jake (43 unread chats, legs already gone) has until midnight to answer them all. Pure fiction – the city, the rule and all characters are invented. #shorts",
+   "hashtags": [
+    "#KnowToon",
+    "#Animation",
+    "#DarkHumor",
+    "#InThisCity",
+    "#Ghosting"
+   ]
+  }
+ },
+ "title": "In This City, If You Ghost Someone, You Turn Invisible",
+ "id": "ghost-stadt"
+}

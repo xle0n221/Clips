@@ -235,6 +235,19 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateEpisodeMetadata}
       />
 
+      {/* „In This City, Your Last Search Is Read at Your Funeral“ (KnowToon, schwarzer Humor): 2D (scenes/suche.tsx) */}
+      <Composition
+        id="SucheStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "suche-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
       {/* „What a Ghost Pepper Does Inside Your Body“ (KnowToon, Innenwelt-Cartoon 30 s): 2D (scenes/ghost.tsx) */}
       <Composition
         id="GhostPepper"
@@ -245,6 +258,136 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={EPISODE_FPS * 30}
         schema={episodeSchema}
         defaultProps={{ episode: "ghost-pepper" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, When Your Phone Dies, You Die“ (KnowToon, schwarzer Humor): 2D (scenes/akku.tsx) */}
+      <Composition
+        id="AkkuStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "akku-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „Apple Was Almost Dead. Its Enemy Paid the Rent.“ (KnowToon, wahre Geschichte, Roast-Humor): 2D (scenes/apple.tsx) */}
+      <Composition
+        id="AppleIpod"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "apple-ipod" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, Every Time You Swear, Your Mom Appears“ (KnowToon, schwarzer Humor): 2D (scenes/fluch.tsx) */}
+      <Composition
+        id="FluchStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "fluch-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, 'We Should Hang Out Sometime' Is Legally Binding“ (KnowToon, schwarzer Humor): 2D (scenes/hangout.tsx) */}
+      <Composition
+        id="HangoutStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "hangout-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, on Black Friday, You Can Trade In Your Family“ (KnowToon, schwarzer Humor): 2D (scenes/tausch.tsx) */}
+      <Composition
+        id="TauschStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "tausch-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, If You Text "On My Way" From Bed, You Turn Into a Snail“ (KnowToon, schwarzer Humor): 2D (scenes/schnecke.tsx) */}
+      <Composition
+        id="SchneckenStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "schnecken-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, Every Minute You Doomscroll, You Shrink One Inch“ (KnowToon, schwarzer Humor): 2D (scenes/scroll.tsx) */}
+      <Composition
+        id="ScrollStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "scroll-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, If You Ghost Someone, You Turn Invisible“ (KnowToon, schwarzer Humor): 2D (scenes/ghosting.tsx) */}
+      <Composition
+        id="GhostStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "ghost-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, Every Time You Complain, You Age One Year“ (KnowToon, schwarzer Humor): 2D (scenes/meckern.tsx) */}
+      <Composition
+        id="MeckernStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "meckern-stadt" }}
+        calculateMetadata={calculateEpisodeMetadata}
+      />
+
+      {/* „In This City, You Die When Your To-Do List Is Done“ (KnowToon, schwarzer Humor): 2D (scenes/todo.tsx) */}
+      <Composition
+        id="TodoStadt"
+        component={Episode}
+        width={1080}
+        height={1920}
+        fps={EPISODE_FPS}
+        durationInFrames={EPISODE_FPS * 70}
+        schema={episodeSchema}
+        defaultProps={{ episode: "todo-stadt" }}
         calculateMetadata={calculateEpisodeMetadata}
       />
 

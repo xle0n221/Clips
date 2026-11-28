@@ -89,3 +89,152 @@ Lessons:
 5. Set-Folge VOR dem Render zählen: erst das Audit fand 5× Club-Tür in Folge (Regel max. 2) → ein Render zu viel.
 6. Präsenz 4–8 kHz zu hell (earshot) → EQ −3,5 dB @ 6 kHz vor dem Limiter 0,66 → −14,4 LUFS / −2,2 dBTP, „launch-grade“.
 7. Proxy sperrt Primärquellen-Hosts (nobelprize.org) → per `update_environment` freigeben; eurekalert.org liefert trotz Freigabe 403 → Zahl weglassen statt Sekundärquelle.
+
+## PREVIOUS VIDEO (fertig 21.11.2026, angefügt)
+Title: In This City, Your Last Search Is Read at Your Funeral (suche-stadt, Welt-Regel-Comedy mit schwarzem Humor, 2D)
+Length / cuts: 62,8 s inkl. End-Card, 27 Einstellungen (Ø 2,3 s), 15 Sets/Flächen; 158 W, 2,57 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 (docs/audit-suche-stadt.md)
+Stats: noch keine (Upload geplant 22.11.2026 Slot B)
+Lessons:
+1. Chatterbox spricht „my... ...smell“ ohne Pause → Piep-Platz und Kunstpausen nachträglich mit `scripts/insert_pauses.py <id> --at <ms>:<dauer>` (Gegenstück zu retime_pauses); danach Wort-Ende des Worts VOR der Pause von Hand zurücksetzen (sonst liegt der Piep auf dem Folgewort), Bett + `add_bleep.py` neu.
+2. Handy/Requisit in der Hand nie auf Kopfhöhe: im ersten Kontaktabzug verdeckte das Handy in 3 Einstellungen das Pfarrer-Gesicht → Requisit seitlich, Brust-/Schulterhöhe.
+3. Dauer jeder Einstellung nach der Vertonung gegen die 4-s-Regel prüfen (Endkontrolle fand 5 s + 4,5 s) – Makro-Einschub (Laptop-Verlauf mit Bildzeichen) ist ein billiger zusätzlicher Gag + Set.
+4. loudnorm (finalize.sh) hebt Spitzen nach einem vorgeschalteten Limiter wieder an (−0,6 dBFS) → Limiter 0,79 NACH finalize (4× überabgetastet): −14,2 LUFS / −1,8 dBFS.
+5. Suchfelder ohne Schrift (Kritzel + Bildzeichen) halten „eine Text-Ebene“ ein, obwohl das Thema Text ist; der Fluch als „#@%&!“-Blase ist der Gag selbst.
+6. Nebenfigur-Design gegen Verwechslung prüfen: grauer Dutt bei einer Trauernden wirkte wie die Oma im Sarg.
+Title: In This City, You Die When Your To-Do List Is Done (todo-stadt, In This City + schwarzer Humor, 2D)
+Length / cuts: 64,0 s inkl. End-Card 2 s, 27 Einstellungen + Schwarzbild (Ø 2,3 s), 17 Bildwelten; 168 W, 2,69 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-todo-stadt.md)
+Stats: noch keine (Upload geplant 22.11.2026 Slot A)
+Lessons:
+1. 157 Skriptwörter ergaben nur 56,9 s Sprechzeit (+ 2 s End-Card < 61 s) → für 61–70 s inkl. End-Card ≈ 165–175 Wörter planen; Nachtrag von 3 kurzen Gags kostete nur 5 neue Chatterbox-Stücke (Cache je Satz).
+2. Lessons Lügen #4 präzisiert: `zz-venv-cb.pth` NICHT löschen – ohne sie fehlen earshot numpy/torch (`sfx render` bricht ab, make_sound_bed scheitert). Erst entfernen, wenn wirklich ein torchaudio-Konflikt auftritt.
+3. „Gym, done.“ wurde in 4 Versuchen falsch gesprochen → einsilbiges Wort mit weichem Anlaut vor Komma meiden („Workout, done.“ sofort sauber).
+4. W(word) trifft das ERSTE Vorkommen in der Szene: „His wedding“ traf „for his lists“ → seltenes Wort als Schnittanker wählen (`wedding`).
+5. Figur „steigt hinter der Couch auf“: Figur VOR der Rückenlehne zeichnen und Startlage so wählen, dass Füße hinter der Sitzfront liegen (sonst sitzt sie im Cover sichtbar daneben).
+6. Abbruch-Pointe („Finish this sent—“): Chatterbox spricht „sent“ sauber, Whisper hört „sentence“ – als gewollte Abweichung dokumentieren; Bild 5 Frames nach dem Wort hart auf Schwarz, Untertitel bleibt stehen.
+7. Limiter: EQ −3,5 dB @ 6 kHz + volume +0,7 dB + `alimiter=limit=0.6` → −14,9 LUFS / −2,4 dBTP (0,66 ohne Gain gab −15,1 / −1,0).
+
+## PREVIOUS VIDEO (fertig 22.11.2026, angefügt)
+Title: In This City, When Your Phone Dies, You Die (akku-stadt, In This City + schwarzer Humor, 2D)
+Length / cuts: 67,8 s inkl. End-Card 2 s, 32 Einstellungen (Ø 2,05 s), > 15 Bildwelten; 155 W, 2,34 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-akku-stadt.md)
+Stats: noch keine (Upload geplant 23.11.2026 Slot A)
+Lessons:
+1. Tempo-Fix todo-stadt: `speed` 1,0 + `narrator.max_speed` 1,0 + `pauseMs` 330 + `sceneGapMs` 230 → 155 Wörter = 65,7 s Sprechzeit, 2,34 W/s (Band 2,3–2,6); für 61–70 s inkl. End-Card also ≈ 150–160 Wörter planen.
+2. Echter Zensur-Piep: Chatterbox spricht das Fluchwort, dann Stimme dort stummschalten (10-ms-Rampen) + Piep ins Bett. Whisper-Wortzeit lag 0,8 s zu früh (Pause vor dem Wort) → Wort per Spektrum finden (Zischlaut: > 60 % Energie über 3 kHz) und captions.json korrigieren.
+3. `alimiter` normalisiert standardmäßig hoch (level=enabled) → −10,6 LUFS / +1,5 dBTP; immer `level=disabled` setzen (dann −14,8 / −1,9).
+4. Gestürzte Figur (`lean ±88`) dreht um die Füße: Startpunkt so wählen, dass der Körper INS Bild kippt, und Kamera-y anheben, sonst liegt sie unter dem Untertitel.
+5. Kontaktabzug direkt nach der Vertonung (33 Bilder, 41 s) + 7 gezielte `--at`-Nachprüfungen fanden alle Bildfehler vor dem einzigen Render.
+6. Satzpausen-Regel (450–800 ms) kollidiert mit 61–70 s bei ~155 Wörtern: Median 305 ms – entweder weniger Wörter (~140) oder bewusst benennen.
+
+## PREVIOUS VIDEO (fertig 22.11.2026, angefügt)
+Title: In This City, Every Time You Swear, Your Mom Appears (fluch-stadt, In This City + schwarzer Humor, 2D)
+Length / cuts: 67,6 s inkl. End-Card 2 s, 28 Einstellungen (Ø 2,3 s), 18 Bildwelten; 163 W, 2,47 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-fluch-stadt.md)
+Stats: noch keine (Upload geplant 23.11.2026 Slot B)
+Lessons:
+1. Satzpausen-Regel UND 61–70 s UND 2,3–2,6 W/s gleichzeitig: weniger, längere Sätze (27 Sätze für 163 W, Ø 6 W) + `emotion.gap_ms` 480–520, `sceneGapMs` 300 → Median 480 ms, 2,47 W/s, 65,5 s Sprechzeit. Akku-Fragmentstil (50 Sätze) zwingt die Pausen unter 330 ms.
+2. Neues Skript `scripts/fx_events.py` (`soundBed.fx`): Piep, Poof (Rauschen) und Stummschalten wortgebunden in einem Lauf, `nth` für das n-te Vorkommen. Nach make_sound_bed aufrufen; Wiederholung mit `--no-mute`.
+3. W()/Bett-Wörter treffen das ERSTE Vorkommen: „her“ traf „her toe“ statt „Her mom“ (Poof 3 s zu früh) und „His“ in morning traf „his toe“ (Schnitt falsch) → `nth` setzen bzw. seltenes Wort („appears“) als Anker.
+4. Fluchwort per Spektrum bestätigen ging hier schnell: Zischlaut „f“ 50,34–50,58 s (> 85 % Energie über 3 kHz), Whisper-Zeit stimmte (anders als akku).
+5. Schätz-Zeitachse (0,30 s/Wort + Pausen) + stille WAV-Platzhalter erlauben den ersten Kontaktabzug, während Chatterbox noch installiert (frischer Container: PyTorch/CUDA-Download ~15 Min.) – fand 8 Bildfehler vor der Vertonung.
+6. Kissen/Requisit vor dem Mund: nur Mund/Kinn verdecken, sonst ist der Gag (Ader, Augen) weg.
+7. Mastering wie akku (EQ −3,5 dB @ 6 kHz, +0,7 dB, alimiter 0,6 `level=disabled`, 4× überabgetastet) → −14,6 LUFS / −3,8 dBFS.
+
+## PREVIOUS VIDEO (fertig 22.11.2026, angefügt)
+Title: Apple Was Almost Dead. Its Enemy Paid the Rent. (apple-ipod, wahre Geschichte + Roast/Slang, 2D)
+Length / cuts: 67,2 s inkl. End-Card 2 s, 29 Einstellungen (Ø 2,2 s, max 3,6 s), 18 Bildwelten; 145 W (156 gesprochen), 2,36 W/s gesprochen
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 · Fakten 9 (docs/audit-apple-ipod.md)
+Stats: noch keine (Upload geplant 24.11.2026 Slot A)
+Lessons:
+1. Zahlen/Jahre werden ausgesprochen länger („427 million“ = 5 Wörter, „1997“ = 3): 164 Skriptwörter ergaben 183 gesprochene Wörter und 80,7 s → für Fakten-Videos mit vielen Zahlen ≈ 145 Skriptwörter planen, Zahlen sparsam.
+2. `retime_pauses --cap 480` drückte die Satzpausen auf Median 310 ms (Regel ≥ 450) → Vertonung aus dem Cache neu bauen (0 neue Stücke, 1 Min.) und `--dry` mit mehreren Caps vergleichen; cap 650 ergab Median 455 ms bei 67,1 s.
+3. Teil-Piep (Nutzer 22.11.: Fluch erkennbar lassen): Fluchwort per Spektrum orten (f-Reibelaut 32,82–32,97 s, Vokal ab 32,99 s) und mute+bleep erst ab dem Vokal setzen (`offsetMs` 160 bei „fuck“, 130 bei „ass“) → Whisper hört im Endmix „f**k“/„a**“.
+4. Whisper-Volldurchlauf kann nach dem Kürzen einen ganzen Abschnitt überspringen (82 %) → Abschnitts-Transkription mit numpy-Eingabe statt Neuvertonung; Untertitel „Nah.“ lag 0,5 s daneben, ein 60-ms-Knackser (Rest an einer Schnittstelle) per 10-ms-Rampen stumm.
+5. Einstellungslängen VOR dem Render aus timeline + captions berechnen (Python, gleiche Wortanker wie W()) – fand 3 Einstellungen > 4 s; Render abgebrochen statt doppelt.
+6. Primärquellen-Hosts (sec.gov, news.microsoft.com, slashdot.org) per `update_environment` freigegeben; ein Antrag mit web.archive.org/cnet.com wurde komplett abgelehnt → Hosts einzeln/klein beantragen. Browser-UA-Fälschung gegen 403 ist gesperrt → Quelle weglassen.
+7. Geräte-Figuren (`Device`-Baustein in scenes/apple.tsx: Körper-Form + Bildschirm-Gesicht + Nudelarme) machen Marken-Themen ohne Logos/Produktbilder spielbar.
+
+## PREVIOUS VIDEO (fertig 23.11.2026, angefügt)
+Title: In This City, Every Time You Complain, You Age One Year (meckern-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 69,9 s inkl. End-Card 2 s, 30 Einstellungen (alle ≤ 4 s, max 3,93 s), 22 Bildwelten; 160 W, 2,33 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-meckern-stadt.md)
+Stats: noch keine (Upload geplant 24.11.2026 Slot B)
+Lessons:
+1. 160 Skriptwörter mit 4 ausgeschriebenen Zahlwörtern + `gap_ms` 480–500 ergaben 68,7 s Sprechzeit = 70,7 s inkl. End-Card (zu lang) → für 61–70 s mit langen Satzpausen ≈ 150 Wörter planen; Rettung ohne Neuvertonung: `retime_pauses --cap 560 --tail 280` (−0,9 s, Median-Pause blieb 490 ms).
+2. Altern als Konsequenz: neue Person-Props `wrinkles`/`beard`/`eyeAge` in gaehnSets (Standard aus). Erster Bart-Entwurf (Länge 3,8 r) wirkte als weißer Kegel über dem Körper → max ≈ 1,6 r.
+3. Gesicht-vor-Requisit erneut (Suppe, Laptop, Telefone am Ohr): Telefon an Kopf-Koordinaten (x + 118·s, y − 336·s) statt an der Hand rechnen, sitzende Figur über Tischkante setzen.
+4. Schnitt-Anker auf ein kurzes Wort direkt nach einem Einwort-Satz („Midnight. He …“) ergab eine 0,4-s-Einstellung → Anker auf das nächste Inhaltswort („Twenty-eight“). Einstellungslängen-Skript (timeline + captions + gleiche Anker) VOR dem Render fand es.
+5. Teil-Piep „shit“: „sh“-Reibelaut 54,34–54,58 s (> 45 % Energie über 3 kHz), Vokal ab 54,58 → mute+bleep ab Whisper-Wortstart + 80 ms, 330 ms; faster-whisper hört im Endmix „s***“. faster-whisper `transcribe(pfad)` scheitert an der av-Version → numpy-Array übergeben.
+6. Frischer Container: npm ci + .venv + Chatterbox + earshot parallel im Hintergrund, Szenenbau + Schätz-Kontaktabzug derweil – keine Wartezeit; Render 69,9 s ≈ 6 Min. (2D).
+
+## PREVIOUS VIDEO (fertig 23.11.2026, angefügt)
+Title: In This City, If You Ghost Someone, You Turn Invisible (ghost-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 65,4 s inkl. End-Card 2 s, 31 Einstellungen (alle ≤ 4 s, max 3,90 s, Ø 2,05 s), 17 Bildwelten; 150 W, 2,33 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-ghost-stadt.md)
+Stats: noch keine (Upload geplant 25.11.2026 Slot A)
+Lessons:
+1. **Nie `| head`/`| tail -n` hinter Skripte hängen, die Dateien schreiben** (fx_events.py): SIGPIPE beendete den Lauf nach der 2. Ausgabezeile – Stimme ungestummt, kein Piep, keine Poofs; erst Whisper auf dem Endmix („fuck“ unzensiert) + Pegelvergleich gestummt/ungestummt deckte es auf. Ausgabe in eine Log-Datei schreiben und danach lesen.
+2. Stereo/Sub (Schwäche meckern): neues `scripts/stereo_bed.py` (Mid/Side mit verzögertem Side, Bass < split mono, Sub-Anhebung, Spitze erhalten). Musik/Bett allein reichen nicht, weil die Mono-Stimme dominiert: erst eine leichte Stimm-Breite (Side ab 900 Hz, width 0,38 → −15,6 dB) brachte den Mix von −38 auf −16,5 dB; earshot-Referenz beginnt bei −15,5 dB. Bett mit Piep NICHT breiter als 0,7 (bei 2,2 L/R-Korrelation −0,47 = Piep gegenphasig).
+3. Sub-Anteil hängt am Gesamtpegel: Sub-Anhebung in stereo_bed vor der Spitzen-Normierung verliert Wirkung, wenn gleichzeitig die Breite steigt; Musik +7 / Bett +9 dB ergaben −19,1 dB (Ziel ≥ −17,7) – für mehr Sub eigene Sub-Schicht unter den Reveals bauen.
+4. Nur-Ton-Änderung ohne Bild-Neurender: `npx remotion render <Comp> out/x.wav --codec=wav` (≈ 1 Min.) + `ffmpeg -map 0:v -map 1:a -c:v copy` auf das vorhandene Roh-MP4.
+5. Chatterbox-„fuck“: Whisper-Wortstart lag 250 ms vor dem f-Reibelaut (52,56 vs. 52,81 s) → mute/bleep `offsetMs` 330. Vor dem Stummschalten eine Kopie der Stimme sichern (`out/<id>-voice-unmuted.wav`), sonst ist das Orten nachher nur über Neubau aus dem Cache möglich (1 Min., deterministisch).
+6. Unsichtbarkeit als Maske (`Vanish` in scenes/ghosting.tsx: SVG-Maske in Welt-Koordinaten, Level von den Füßen aufwärts, holes = einzelne Körperteile, keep = nur Kleidung sichtbar, fromTop für den POV-Daumen; Rest 8 % als Schimmer) – wiederverwendbar für Verblassen/Geister.
+7. Satzpausen-Feinsteuerung ohne Neuvertonung: `insert_pauses` +100 ms an allen Satzenden (aus captions berechnet), danach `retime_pauses --cap 700` für die zu langen Szenen-Lücken → Median 425 → 460 ms bei 2,33 W/s.
+
+## PREVIOUS VIDEO (fertig 25.11.2026, angefügt)
+Title: In This City, Every Minute You Doomscroll, You Shrink One Inch (scroll-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 63,3 s inkl. End-Card, 31 Einstellungen (alle ≤ 4 s, max 3,74 s, Ø 1,97 s), 18 Bildwelten; 143 W (Skriptzählung), 2,30 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-scroll-stadt.md)
+Stats: noch keine (Upload geplant 26.11.2026 Slot A)
+Lessons:
+1. **Stereo/Sub gelöst** (Restschwäche ghost): stereo_bed mittelt Stereo-Eingang zu Mid → ein zweiter Durchlauf auf music.wav mit `--width 1.0 --side-hp 200 --sub 0` hebt die Breite ohne doppelten Sub (−21 → −10,5 dB Side/Mid); dazu Musik Sub +10, Bett Sub +12 / width 0,7, Stimme width 0,48 → earshot Stereo −14,1 dB, Sub −11,2 dB, 22/22.
+2. Mehr Sub + Limiter macht den Mix flach: earshot „major: lautester Moment nur 0,6 LU über dem Mittel“ → Basstreffer/Twist/Wusch +7–8 dB lauter; danach ok. Ton-Änderungen nur über `--codec=wav`-Render + Mux (1 Min.).
+3. Pausen-Feinsteuerung: `+100 ms` an allen Satzenden drückt das Tempo unter 2,3 W/s; besser gezielt nur die kurzen Satzlücken verlängern (≤ 640 ms Caption-Lücke +80, kürzeste 16 +40) und lange Lücken mit `retime --cap 700` kappen → 2,30 W/s UND Median 470 ms. `retime --cap 650` kappte dagegen Pausen innerhalb der Sätze (Satzrate 4,1 → 4,9 W/s) – verworfen, aus Kopie zurückgesetzt (vorher `voice/captions/timeline` nach out/ sichern).
+4. W()-Anker auf kurze Wörter: „In“ (Zitat-Beginn) traf zuerst „lives *in* the bag“ → Schnittliste unsortiert, Loop-Shot 2 s zu früh. Der End-Kontaktabzug fand es; `nth` setzen. Einstellungslängen-Skript fand zusätzlich eine 4,2-s-Einstellung (rules) → dritter Schnitt mit szenenbezogener Animationszeit (`f - cut`) statt `lf`.
+5. Schrumpfen als Konsequenz: `steps()` (diskrete Stufen mit Federn) + `ShrinkFx` (rote Pfeile, Ring) + Messlatte mit Kopfhöhen-Markierung – stumm lesbar ab Frame 0; Loop durch die Hook-Szene als Komponente (`HookRoom`) in einem verschachtelten `<svg>` auf dem Handy.
+6. Fluch-Ortung: Whisper-Start („fuck“ 54,83 s) lag 40 ms NACH dem Vokal-Beginn (54,79) – diesmal Piep mit `offsetMs` −40 (bei ghost +330): immer per Spektrum orten, nie Offset übernehmen.
+
+## PREVIOUS VIDEO (fertig 25.11.2026, angefügt)
+Title: In This City, "We Should Hang Out Sometime" Is Legally Binding (hangout-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 67,3 s inkl. End-Card, 28 Einstellungen (alle ≤ 4 s, max 3,62 s, Ø 2,36 s), 18 Bildwelten; 152 W, 2,30 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-hangout-stadt.md)
+Stats: noch keine (Upload geplant 26.11.2026 Slot B)
+Lessons:
+1. 153 Skriptwörter + `gap_ms` 480–500 ergaben 67,6 s Sprechzeit = 2,25 W/s (unter Regel). `retime --cap 700` drückte den Satzpausen-Median 480 → 380 ms (gemessen als längste Stille, nicht Caption-Lücke) → verworfen. Lösung: `--cap 800` + `atempo 1,03` (Zeiten in captions/timeline mit 1/1,03 skalieren) + gezielt `insert_pauses` nur an den 4–7 kürzesten Satzenden (Stille aus dem Pegel gemessen, nicht aus captions – Whisper-Wortgrenzen haben dort oft 0 ms Lücke) → 2,30 W/s UND Median 450. Für die Zukunft ≈ 145 Wörter planen.
+2. `insert_pauses` kann harte Kanten erzeugen (stimm_messung: 2) → 60-ms-Cosinus-Ausblendung vor der Kante, danach 0.
+3. Fluch-Ortung: Whisper-Start „fuck“ (53,23 s) lag 190 ms NACH dem Vokal (53,04), f-Reibelaut 52,92–53,03 → `offsetMs` −190, 290 ms. Wieder anders als ghost (+330) und scroll (−40): immer per Spektrum orten.
+4. finalize.sh allein liefert True Peak −0,7 dBFS; das scroll-Mastering (EQ −3,5 dB @ 6 kHz, +0,7 dB, alimiter 0,6 level=disabled, 4× überabgetastet) danach → −15,2 LUFS / −3,5 dBFS, earshot 23/23.
+5. Stempel-Knall in Bild 1 ohne Wort-Anker: fx am ersten Wort („In“) mit `offsetMs` = Szenenstart + Trefferframe − Wortstart.
+6. Render: `--concurrency` nie über `nproc` (Abbruch bei 8 > 4 Kernen); Render 67 s ≈ 6 Min. mit 4.
+7. Requisit-vor-Gesicht erneut (Tasse, Hantel, Siegel): Hantel HINTER die Figur zeichnen (Schulterhöhe), Requisit-Größe am Kopfradius (105·s) prüfen.
+
+## PREVIOUS VIDEO (fertig 26.11.2026, angefügt)
+Title: In This City, If You Text "On My Way" From Bed, You Turn Into a Snail (schnecken-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 64,4 s inkl. End-Card, 27 Einstellungen (alle ≤ 4 s, max 3,84 s, Ø 2,33 s), 23 Bildwelten; 151 W, 2,40 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-schnecken-stadt.md)
+Stats: noch keine (Upload geplant 27.11.2026 Slot A)
+Lessons:
+1. **Satzpausen ohne Tempo-Verlust in einem Schritt:** Stille je Satzende aus dem Pegel messen (gleiche Logik wie stimm_messung `longest_quiet`), nur Enden < 490 ms auf 490 auffüllen (`insert_pauses` an der Stillen-Mitte; Planer-Skript im Stil von scratchpad/pauseplan.py) → 12 Einfügungen, +1,8 s, Median 365 → 490 ms, P10 490, 2,47 → 2,40 W/s. Kein retime/atempo nötig. 151 Wörter + gap_ms 480–500 = 60,5 s roh → 64,4 s fertig.
+2. Whisper verschluckt das erste Wort am Dateianfang („In“ fehlte, captions 0–80 ms): mit 1 s Stille davor transkribieren → erkannt; Wortzeiten der ersten Wörter aus dem Pegel setzen (Sprache ab 0,39 s).
+3. Fluch-Ortung: Whisper-Start „fuck“ 52,09 s, f-Reibelaut 52,03–52,20, Vokal ab 52,21 → `offsetMs` +110, 300 ms (ghost +330, scroll −40, hangout −190): immer per Spektrum.
+4. Verwandlung als Konsequenz: neue Bausteine in scenes/schnecke.tsx – `Shell` (Spirale), `Stalks` (Augen wandern vom Gesicht auf Stiele, Haut-Fleck deckt die Gesichtsaugen, Brauen bleiben), `FootOver` (Schneckenfuß über den Beinen), `SnailMan` (ganze Schnecke mit Menschengesicht, Haar, Accessoires), `Slime`/`Drips`, `OmwBubble` (Renn-Männchen statt Schrift).
+5. Requisit-vor-Gesicht erneut: Schneckenhaus NACH der Person gezeichnet lag in der Nahaufnahme über dem Gesicht → immer VOR der Person und seitlich hinter die Schulter (x − 200·s).
+6. Schätz-Kontaktabzug braucht in timeline.json auch `cues`, `cover`, `captionStyle`, `endCard` (sonst Episode-Absturz „reading 'filter'“).
+7. Render 64 s mit `--concurrency=4` lief ohne Abbruch (Dauer nicht gemessen); Endkontrolle per ffmpeg-tile (fps 1/3) statt Remotion-Kontaktabzug – 2 s.
+
+## PREVIOUS VIDEO (fertig 26.11.2026, angefügt)
+Title: In This City, on Black Friday, You Can Trade In Your Family (tausch-stadt, In This City + schwarzer Humor + Slang, 2D)
+Length / cuts: 65,2 s inkl. End-Card, 30 Einstellungen (alle ≤ 4 s, max 3,33 s, Ø 2,12 s), > 18 Bildwelten; 152 W, 2,39 W/s
+Audit: Hook 9 · Bildvielfalt 9 · Schauspiel 9 · Lesbarkeit 9 · Konzept 9 · Humor 9 · Farbe 9 · Länge 9 (docs/audit-tausch-stadt.md)
+Stats: noch keine (Upload geplant 27.11.2026 Slot B)
+Lessons:
+1. **Whisper 98,0 % (schnecken 94,8 %)**: keine Eigennamen, keine Uhrzeiten/Zahlen als Ziffern, Slang mit Bindestrich wie Whisper ihn schreibt („low-key“) → nur noch ein Homophon („steal“/„steel“).
+2. **Jeder Schnitt mit Klang**: Schnittzeiten aus timeline + captions mit denselben W()-Ankern berechnen und als `poof`-Einträge (`cutWhoosh: true`, 260 ms, −21/−23 dB, 60 ms vor dem Schnitt) in soundBed.fx schreiben → earshot: 1 von 43 Bild-Ereignissen ohne Klang (schnecken 6/36). Muster: `scripts/tausch_cuts.py` (ANCH-Tabelle = useShot-Anker aus der tsx; `--fx` schreibt die Whooshes); Pausen-Planer `scripts/pauseplan.py <id> 490`.
+3. Satzpausen in einem Schritt (schnecken-Lesson 1 bestätigt): 152 W + gap_ms 480–500 → roh 62,6 s, Median schon 510 ms; nur 5 Enden aufgefüllt (+0,52 s) → 2,39 W/s, P10 490.
+4. Cover (0–0,5 s) verdeckt die Aktion in Bild 1: Pointe des ersten Shots (Laser/Poof) erst ab Frame ≥ 28 legen, sonst sieht man sie nie (erster Kontaktabzug: Onkel schon weg).
+5. `Face` (gaehnSets) zeichnet nur Züge, keinen Kopf → für Nahaufnahmen `Head` (Kreis + Face) benutzen.
+6. Liegende Person (`Lying`, rotate ±90 um die Füße): Kopf zur Bildmitte/zum Requisit drehen, sonst verdeckt der schiebende Arm das Gesicht.
+7. earshot „lautester Moment nur 0,6 LU über dem Mittel“ trotz Basstreffer −8 dB → Basstreffer −1, Twist −2, Haupt-Poofs +6 dB; nur Ton neu (`--codec=wav` + Mux) → 23/23. Für künftige Videos gleich mit diesen Pegeln starten.
+8. Kontaktabzug braucht `CHROME_PATH=/opt/pw-browsers/chromium_headless_shell` (Standardpfad brach mit „Target closed“ ab); Render mit `--browser-executable` auf denselben Pfad, 65 s ≈ 7 Min.

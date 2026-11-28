@@ -1,0 +1,1143 @@
+[
+ {
+  "text": "In",
+  "startMs": 220,
+  "endMs": 340,
+  "timestampMs": 280,
+  "confidence": null
+ },
+ {
+  "text": " this",
+  "startMs": 340,
+  "endMs": 560,
+  "timestampMs": 450,
+  "confidence": null
+ },
+ {
+  "text": " city,",
+  "startMs": 560,
+  "endMs": 820,
+  "timestampMs": 690,
+  "confidence": null
+ },
+ {
+  "text": " every",
+  "startMs": 1140,
+  "endMs": 1280,
+  "timestampMs": 1210,
+  "confidence": null
+ },
+ {
+  "text": " time",
+  "startMs": 1280,
+  "endMs": 1540,
+  "timestampMs": 1410,
+  "confidence": null
+ },
+ {
+  "text": " you",
+  "startMs": 1540,
+  "endMs": 1720,
+  "timestampMs": 1630,
+  "confidence": null
+ },
+ {
+  "text": " swear,",
+  "startMs": 1720,
+  "endMs": 2080,
+  "timestampMs": 1900,
+  "confidence": null
+ },
+ {
+  "text": " your",
+  "startMs": 2640,
+  "endMs": 2800,
+  "timestampMs": 2720,
+  "confidence": null
+ },
+ {
+  "text": " mom",
+  "startMs": 2800,
+  "endMs": 3000,
+  "timestampMs": 2900,
+  "confidence": null
+ },
+ {
+  "text": " appears.",
+  "startMs": 3000,
+  "endMs": 3380,
+  "timestampMs": 3190,
+  "confidence": null
+ },
+ {
+  "text": " A",
+  "startMs": 4080,
+  "endMs": 4200,
+  "timestampMs": 4140,
+  "confidence": null
+ },
+ {
+  "text": " surgeon",
+  "startMs": 4200,
+  "endMs": 4480,
+  "timestampMs": 4340,
+  "confidence": null
+ },
+ {
+  "text": " swore",
+  "startMs": 4480,
+  "endMs": 4860,
+  "timestampMs": 4670,
+  "confidence": null
+ },
+ {
+  "text": " once.",
+  "startMs": 4860,
+  "endMs": 5160,
+  "timestampMs": 5010,
+  "confidence": null
+ },
+ {
+  "text": " His",
+  "startMs": 5740,
+  "endMs": 5920,
+  "timestampMs": 5830,
+  "confidence": null
+ },
+ {
+  "text": " mom",
+  "startMs": 5920,
+  "endMs": 6160,
+  "timestampMs": 6040,
+  "confidence": null
+ },
+ {
+  "text": " finished",
+  "startMs": 6160,
+  "endMs": 6500,
+  "timestampMs": 6330,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 6500,
+  "endMs": 6700,
+  "timestampMs": 6600,
+  "confidence": null
+ },
+ {
+  "text": " surgery.",
+  "startMs": 6700,
+  "endMs": 7080,
+  "timestampMs": 6890,
+  "confidence": null
+ },
+ {
+  "text": " A",
+  "startMs": 7620,
+  "endMs": 7740,
+  "timestampMs": 7680,
+  "confidence": null
+ },
+ {
+  "text": " CEO",
+  "startMs": 7740,
+  "endMs": 8000,
+  "timestampMs": 7870,
+  "confidence": null
+ },
+ {
+  "text": " swore",
+  "startMs": 8000,
+  "endMs": 8640,
+  "timestampMs": 8320,
+  "confidence": null
+ },
+ {
+  "text": " at",
+  "startMs": 8640,
+  "endMs": 8860,
+  "timestampMs": 8750,
+  "confidence": null
+ },
+ {
+  "text": " a",
+  "startMs": 8860,
+  "endMs": 8960,
+  "timestampMs": 8910,
+  "confidence": null
+ },
+ {
+  "text": " meeting.",
+  "startMs": 8960,
+  "endMs": 9200,
+  "timestampMs": 9080,
+  "confidence": null
+ },
+ {
+  "text": " Now",
+  "startMs": 9780,
+  "endMs": 9920,
+  "timestampMs": 9850,
+  "confidence": null
+ },
+ {
+  "text": " his",
+  "startMs": 9920,
+  "endMs": 10120,
+  "timestampMs": 10020,
+  "confidence": null
+ },
+ {
+  "text": " mom",
+  "startMs": 10120,
+  "endMs": 10360,
+  "timestampMs": 10240,
+  "confidence": null
+ },
+ {
+  "text": " runs",
+  "startMs": 10360,
+  "endMs": 10600,
+  "timestampMs": 10480,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 10600,
+  "endMs": 10780,
+  "timestampMs": 10690,
+  "confidence": null
+ },
+ {
+  "text": " company.",
+  "startMs": 10780,
+  "endMs": 11060,
+  "timestampMs": 10920,
+  "confidence": null
+ },
+ {
+  "text": " It's",
+  "startMs": 11520,
+  "endMs": 11660,
+  "timestampMs": 11590,
+  "confidence": null
+ },
+ {
+  "text": " doing",
+  "startMs": 11660,
+  "endMs": 11800,
+  "timestampMs": 11730,
+  "confidence": null
+ },
+ {
+  "text": " better.",
+  "startMs": 11800,
+  "endMs": 12120,
+  "timestampMs": 11960,
+  "confidence": null
+ },
+ {
+  "text": " Only",
+  "startMs": 12760,
+  "endMs": 13140,
+  "timestampMs": 12950,
+  "confidence": null
+ },
+ {
+  "text": " orphans",
+  "startMs": 13140,
+  "endMs": 13540,
+  "timestampMs": 13340,
+  "confidence": null
+ },
+ {
+  "text": " swear",
+  "startMs": 13540,
+  "endMs": 13920,
+  "timestampMs": 13730,
+  "confidence": null
+ },
+ {
+  "text": " freely",
+  "startMs": 13920,
+  "endMs": 14200,
+  "timestampMs": 14060,
+  "confidence": null
+ },
+ {
+  "text": " here.",
+  "startMs": 14200,
+  "endMs": 14580,
+  "timestampMs": 14390,
+  "confidence": null
+ },
+ {
+  "text": " Most",
+  "startMs": 15080,
+  "endMs": 15200,
+  "timestampMs": 15140,
+  "confidence": null
+ },
+ {
+  "text": " of",
+  "startMs": 15200,
+  "endMs": 15360,
+  "timestampMs": 15280,
+  "confidence": null
+ },
+ {
+  "text": " them",
+  "startMs": 15360,
+  "endMs": 15480,
+  "timestampMs": 15420,
+  "confidence": null
+ },
+ {
+  "text": " became",
+  "startMs": 15480,
+  "endMs": 15760,
+  "timestampMs": 15620,
+  "confidence": null
+ },
+ {
+  "text": " sailors.",
+  "startMs": 15760,
+  "endMs": 16100,
+  "timestampMs": 15930,
+  "confidence": null
+ },
+ {
+  "text": " This",
+  "startMs": 17020,
+  "endMs": 17220,
+  "timestampMs": 17120,
+  "confidence": null
+ },
+ {
+  "text": " is",
+  "startMs": 17220,
+  "endMs": 17460,
+  "timestampMs": 17340,
+  "confidence": null
+ },
+ {
+  "text": " Dave,",
+  "startMs": 17460,
+  "endMs": 17700,
+  "timestampMs": 17580,
+  "confidence": null
+ },
+ {
+  "text": " forty-three,",
+  "startMs": 18220,
+  "endMs": 18540,
+  "timestampMs": 18380,
+  "confidence": null
+ },
+ {
+  "text": " grounded",
+  "startMs": 19180,
+  "endMs": 19300,
+  "timestampMs": 19240,
+  "confidence": null
+ },
+ {
+  "text": " nine",
+  "startMs": 19300,
+  "endMs": 19550,
+  "timestampMs": 19425,
+  "confidence": null
+ },
+ {
+  "text": " hundred",
+  "startMs": 19550,
+  "endMs": 19800,
+  "timestampMs": 19675,
+  "confidence": null
+ },
+ {
+  "text": " times.",
+  "startMs": 19800,
+  "endMs": 20400,
+  "timestampMs": 20100,
+  "confidence": null
+ },
+ {
+  "text": " Today,",
+  "startMs": 21080,
+  "endMs": 21400,
+  "timestampMs": 21240,
+  "confidence": null
+ },
+ {
+  "text": " he",
+  "startMs": 21580,
+  "endMs": 21900,
+  "timestampMs": 21740,
+  "confidence": null
+ },
+ {
+  "text": " gets",
+  "startMs": 21900,
+  "endMs": 22060,
+  "timestampMs": 21980,
+  "confidence": null
+ },
+ {
+  "text": " married.",
+  "startMs": 22060,
+  "endMs": 22440,
+  "timestampMs": 22250,
+  "confidence": null
+ },
+ {
+  "text": " Can",
+  "startMs": 22960,
+  "endMs": 23100,
+  "timestampMs": 23030,
+  "confidence": null
+ },
+ {
+  "text": " he",
+  "startMs": 23100,
+  "endMs": 23260,
+  "timestampMs": 23180,
+  "confidence": null
+ },
+ {
+  "text": " do",
+  "startMs": 23260,
+  "endMs": 23460,
+  "timestampMs": 23360,
+  "confidence": null
+ },
+ {
+  "text": " it",
+  "startMs": 23460,
+  "endMs": 23600,
+  "timestampMs": 23530,
+  "confidence": null
+ },
+ {
+  "text": " without",
+  "startMs": 23600,
+  "endMs": 23840,
+  "timestampMs": 23720,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 23840,
+  "endMs": 24200,
+  "timestampMs": 24020,
+  "confidence": null
+ },
+ {
+  "text": " bad",
+  "startMs": 24200,
+  "endMs": 24480,
+  "timestampMs": 24340,
+  "confidence": null
+ },
+ {
+  "text": " word?",
+  "startMs": 24480,
+  "endMs": 24820,
+  "timestampMs": 24650,
+  "confidence": null
+ },
+ {
+  "text": " Six",
+  "startMs": 25420,
+  "endMs": 25880,
+  "timestampMs": 25650,
+  "confidence": null
+ },
+ {
+  "text": " a.m.,",
+  "startMs": 25880,
+  "endMs": 26340,
+  "timestampMs": 26110,
+  "confidence": null
+ },
+ {
+  "text": " he",
+  "startMs": 26340,
+  "endMs": 26560,
+  "timestampMs": 26450,
+  "confidence": null
+ },
+ {
+  "text": " stubs",
+  "startMs": 26560,
+  "endMs": 26920,
+  "timestampMs": 26740,
+  "confidence": null
+ },
+ {
+  "text": " his",
+  "startMs": 26920,
+  "endMs": 27040,
+  "timestampMs": 26980,
+  "confidence": null
+ },
+ {
+  "text": " toe.",
+  "startMs": 27040,
+  "endMs": 27320,
+  "timestampMs": 27180,
+  "confidence": null
+ },
+ {
+  "text": " Dave",
+  "startMs": 27880,
+  "endMs": 28160,
+  "timestampMs": 28020,
+  "confidence": null
+ },
+ {
+  "text": " screams",
+  "startMs": 28160,
+  "endMs": 28600,
+  "timestampMs": 28380,
+  "confidence": null
+ },
+ {
+  "text": " into",
+  "startMs": 28600,
+  "endMs": 28980,
+  "timestampMs": 28790,
+  "confidence": null
+ },
+ {
+  "text": " a",
+  "startMs": 28980,
+  "endMs": 29120,
+  "timestampMs": 29050,
+  "confidence": null
+ },
+ {
+  "text": " pillow,",
+  "startMs": 29120,
+  "endMs": 29360,
+  "timestampMs": 29240,
+  "confidence": null
+ },
+ {
+  "text": " in",
+  "startMs": 29360,
+  "endMs": 29920,
+  "timestampMs": 29640,
+  "confidence": null
+ },
+ {
+  "text": " total",
+  "startMs": 29920,
+  "endMs": 30300,
+  "timestampMs": 30110,
+  "confidence": null
+ },
+ {
+  "text": " silence.",
+  "startMs": 30300,
+  "endMs": 30800,
+  "timestampMs": 30550,
+  "confidence": null
+ },
+ {
+  "text": " His",
+  "startMs": 31380,
+  "endMs": 31460,
+  "timestampMs": 31420,
+  "confidence": null
+ },
+ {
+  "text": " mom",
+  "startMs": 31460,
+  "endMs": 31720,
+  "timestampMs": 31590,
+  "confidence": null
+ },
+ {
+  "text": " sits",
+  "startMs": 31720,
+  "endMs": 31940,
+  "timestampMs": 31830,
+  "confidence": null
+ },
+ {
+  "text": " back",
+  "startMs": 31940,
+  "endMs": 32200,
+  "timestampMs": 32070,
+  "confidence": null
+ },
+ {
+  "text": " down.",
+  "startMs": 32200,
+  "endMs": 32600,
+  "timestampMs": 32400,
+  "confidence": null
+ },
+ {
+  "text": " Someone",
+  "startMs": 33200,
+  "endMs": 33380,
+  "timestampMs": 33290,
+  "confidence": null
+ },
+ {
+  "text": " steals",
+  "startMs": 33380,
+  "endMs": 33700,
+  "timestampMs": 33540,
+  "confidence": null
+ },
+ {
+  "text": " his",
+  "startMs": 33700,
+  "endMs": 33900,
+  "timestampMs": 33800,
+  "confidence": null
+ },
+ {
+  "text": " parking",
+  "startMs": 33900,
+  "endMs": 34120,
+  "timestampMs": 34010,
+  "confidence": null
+ },
+ {
+  "text": " spot.",
+  "startMs": 34120,
+  "endMs": 34460,
+  "timestampMs": 34290,
+  "confidence": null
+ },
+ {
+  "text": " Dave",
+  "startMs": 35040,
+  "endMs": 35140,
+  "timestampMs": 35090,
+  "confidence": null
+ },
+ {
+  "text": " says,",
+  "startMs": 35140,
+  "endMs": 35420,
+  "timestampMs": 35280,
+  "confidence": null
+ },
+ {
+  "text": " \"Fudge.\"",
+  "startMs": 35640,
+  "endMs": 35980,
+  "timestampMs": 35810,
+  "confidence": null
+ },
+ {
+  "text": " His",
+  "startMs": 36420,
+  "endMs": 36520,
+  "timestampMs": 36470,
+  "confidence": null
+ },
+ {
+  "text": " mom",
+  "startMs": 36520,
+  "endMs": 36760,
+  "timestampMs": 36640,
+  "confidence": null
+ },
+ {
+  "text": " twitches.",
+  "startMs": 36760,
+  "endMs": 37100,
+  "timestampMs": 36930,
+  "confidence": null
+ },
+ {
+  "text": " At",
+  "startMs": 37840,
+  "endMs": 37940,
+  "timestampMs": 37890,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 37940,
+  "endMs": 38060,
+  "timestampMs": 38000,
+  "confidence": null
+ },
+ {
+  "text": " altar,",
+  "startMs": 38060,
+  "endMs": 38320,
+  "timestampMs": 38190,
+  "confidence": null
+ },
+ {
+  "text": " he",
+  "startMs": 38540,
+  "endMs": 38680,
+  "timestampMs": 38610,
+  "confidence": null
+ },
+ {
+  "text": " drops",
+  "startMs": 38680,
+  "endMs": 38940,
+  "timestampMs": 38810,
+  "confidence": null
+ },
+ {
+  "text": " the",
+  "startMs": 38940,
+  "endMs": 39140,
+  "timestampMs": 39040,
+  "confidence": null
+ },
+ {
+  "text": " ring",
+  "startMs": 39140,
+  "endMs": 39300,
+  "timestampMs": 39220,
+  "confidence": null
+ },
+ {
+  "text": " down",
+  "startMs": 39300,
+  "endMs": 39520,
+  "timestampMs": 39410,
+  "confidence": null
+ },
+ {
+  "text": " a",
+  "startMs": 39520,
+  "endMs": 39660,
+  "timestampMs": 39590,
+  "confidence": null
+ },
+ {
+  "text": " drain.",
+  "startMs": 39660,
+  "endMs": 39920,
+  "timestampMs": 39790,
+  "confidence": null
+ },
+ {
+  "text": " The",
+  "startMs": 40560,
+  "endMs": 40700,
+  "timestampMs": 40630,
+  "confidence": null
+ },
+ {
+  "text": " vein",
+  "startMs": 40700,
+  "endMs": 40940,
+  "timestampMs": 40820,
+  "confidence": null
+ },
+ {
+  "text": " on",
+  "startMs": 40940,
+  "endMs": 41140,
+  "timestampMs": 41040,
+  "confidence": null
+ },
+ {
+  "text": " his",
+  "startMs": 41140,
+  "endMs": 41280,
+  "timestampMs": 41210,
+  "confidence": null
+ },
+ {
+  "text": " forehead",
+  "startMs": 41280,
+  "endMs": 41660,
+  "timestampMs": 41470,
+  "confidence": null
+ },
+ {
+  "text": " says",
+  "startMs": 41660,
+  "endMs": 41920,
+  "timestampMs": 41790,
+  "confidence": null
+ },
+ {
+  "text": " everything.",
+  "startMs": 41920,
+  "endMs": 42340,
+  "timestampMs": 42130,
+  "confidence": null
+ },
+ {
+  "text": " \"I",
+  "startMs": 43140,
+  "endMs": 43340,
+  "timestampMs": 43240,
+  "confidence": null
+ },
+ {
+  "text": " do.\"",
+  "startMs": 43340,
+  "endMs": 43720,
+  "timestampMs": 43530,
+  "confidence": null
+ },
+ {
+  "text": " He",
+  "startMs": 44060,
+  "endMs": 44220,
+  "timestampMs": 44140,
+  "confidence": null
+ },
+ {
+  "text": " did",
+  "startMs": 44220,
+  "endMs": 44540,
+  "timestampMs": 44380,
+  "confidence": null
+ },
+ {
+  "text": " it.",
+  "startMs": 44540,
+  "endMs": 44840,
+  "timestampMs": 44690,
+  "confidence": null
+ },
+ {
+  "text": " Not",
+  "startMs": 45260,
+  "endMs": 45540,
+  "timestampMs": 45400,
+  "confidence": null
+ },
+ {
+  "text": " one",
+  "startMs": 45540,
+  "endMs": 45820,
+  "timestampMs": 45680,
+  "confidence": null
+ },
+ {
+  "text": " bad",
+  "startMs": 45820,
+  "endMs": 46040,
+  "timestampMs": 45930,
+  "confidence": null
+ },
+ {
+  "text": " word.",
+  "startMs": 46040,
+  "endMs": 46340,
+  "timestampMs": 46190,
+  "confidence": null
+ },
+ {
+  "text": " Then",
+  "startMs": 47000,
+  "endMs": 47240,
+  "timestampMs": 47120,
+  "confidence": null
+ },
+ {
+  "text": " his",
+  "startMs": 47240,
+  "endMs": 47480,
+  "timestampMs": 47360,
+  "confidence": null
+ },
+ {
+  "text": " bride",
+  "startMs": 47480,
+  "endMs": 47820,
+  "timestampMs": 47650,
+  "confidence": null
+ },
+ {
+  "text": " stubs",
+  "startMs": 47820,
+  "endMs": 48220,
+  "timestampMs": 48020,
+  "confidence": null
+ },
+ {
+  "text": " her",
+  "startMs": 48220,
+  "endMs": 48340,
+  "timestampMs": 48280,
+  "confidence": null
+ },
+ {
+  "text": " toe",
+  "startMs": 48340,
+  "endMs": 48540,
+  "timestampMs": 48440,
+  "confidence": null
+ },
+ {
+  "text": " and",
+  "startMs": 48540,
+  "endMs": 48720,
+  "timestampMs": 48630,
+  "confidence": null
+ },
+ {
+  "text": " says,",
+  "startMs": 48720,
+  "endMs": 48960,
+  "timestampMs": 48840,
+  "confidence": null
+ },
+ {
+  "text": " \"Oh,",
+  "startMs": 49760,
+  "endMs": 49760,
+  "timestampMs": 49760,
+  "confidence": null
+ },
+ {
+  "text": " fuck.\"",
+  "startMs": 50280,
+  "endMs": 50800,
+  "timestampMs": 50540,
+  "confidence": null
+ },
+ {
+  "text": " Her",
+  "startMs": 51340,
+  "endMs": 51420,
+  "timestampMs": 51380,
+  "confidence": null
+ },
+ {
+  "text": " mom",
+  "startMs": 51420,
+  "endMs": 51600,
+  "timestampMs": 51510,
+  "confidence": null
+ },
+ {
+  "text": " appears,",
+  "startMs": 51600,
+  "endMs": 52020,
+  "timestampMs": 51810,
+  "confidence": null
+ },
+ {
+  "text": " sees",
+  "startMs": 52280,
+  "endMs": 52740,
+  "timestampMs": 52510,
+  "confidence": null
+ },
+ {
+  "text": " Dave,",
+  "startMs": 52740,
+  "endMs": 53160,
+  "timestampMs": 52950,
+  "confidence": null
+ },
+ {
+  "text": " and",
+  "startMs": 53560,
+  "endMs": 53640,
+  "timestampMs": 53600,
+  "confidence": null
+ },
+ {
+  "text": " swears.",
+  "startMs": 53640,
+  "endMs": 54040,
+  "timestampMs": 53840,
+  "confidence": null
+ },
+ {
+  "text": " So",
+  "startMs": 54700,
+  "endMs": 54840,
+  "timestampMs": 54770,
+  "confidence": null
+ },
+ {
+  "text": " her",
+  "startMs": 54840,
+  "endMs": 54980,
+  "timestampMs": 54910,
+  "confidence": null
+ },
+ {
+  "text": " mom",
+  "startMs": 54980,
+  "endMs": 55200,
+  "timestampMs": 55090,
+  "confidence": null
+ },
+ {
+  "text": " appears.",
+  "startMs": 55200,
+  "endMs": 55620,
+  "timestampMs": 55410,
+  "confidence": null
+ },
+ {
+  "text": " By",
+  "startMs": 56290,
+  "endMs": 56400,
+  "timestampMs": 56345,
+  "confidence": null
+ },
+ {
+  "text": " dessert,",
+  "startMs": 56400,
+  "endMs": 56760,
+  "timestampMs": 56580,
+  "confidence": null
+ },
+ {
+  "text": " there",
+  "startMs": 57180,
+  "endMs": 57240,
+  "timestampMs": 57210,
+  "confidence": null
+ },
+ {
+  "text": " were",
+  "startMs": 57240,
+  "endMs": 57420,
+  "timestampMs": 57330,
+  "confidence": null
+ },
+ {
+  "text": " forty-one",
+  "startMs": 57420,
+  "endMs": 57920,
+  "timestampMs": 57670,
+  "confidence": null
+ },
+ {
+  "text": " moms.",
+  "startMs": 57920,
+  "endMs": 58300,
+  "timestampMs": 58110,
+  "confidence": null
+ },
+ {
+  "text": " Dave",
+  "startMs": 59180,
+  "endMs": 59300,
+  "timestampMs": 59240,
+  "confidence": null
+ },
+ {
+  "text": " got",
+  "startMs": 59300,
+  "endMs": 59600,
+  "timestampMs": 59450,
+  "confidence": null
+ },
+ {
+  "text": " grounded",
+  "startMs": 59600,
+  "endMs": 60000,
+  "timestampMs": 59800,
+  "confidence": null
+ },
+ {
+  "text": " by",
+  "startMs": 60000,
+  "endMs": 60260,
+  "timestampMs": 60130,
+  "confidence": null
+ },
+ {
+  "text": " all",
+  "startMs": 60260,
+  "endMs": 60580,
+  "timestampMs": 60420,
+  "confidence": null
+ },
+ {
+  "text": " of",
+  "startMs": 60580,
+  "endMs": 60720,
+  "timestampMs": 60650,
+  "confidence": null
+ },
+ {
+  "text": " them.",
+  "startMs": 60720,
+  "endMs": 60940,
+  "timestampMs": 60830,
+  "confidence": null
+ },
+ {
+  "text": " So,",
+  "startMs": 61620,
+  "endMs": 61740,
+  "timestampMs": 61680,
+  "confidence": null
+ },
+ {
+  "text": " when",
+  "startMs": 61740,
+  "endMs": 62240,
+  "timestampMs": 61990,
+  "confidence": null
+ },
+ {
+  "text": " did",
+  "startMs": 62240,
+  "endMs": 62420,
+  "timestampMs": 62330,
+  "confidence": null
+ },
+ {
+  "text": " you",
+  "startMs": 62420,
+  "endMs": 62600,
+  "timestampMs": 62510,
+  "confidence": null
+ },
+ {
+  "text": " last",
+  "startMs": 62600,
+  "endMs": 62860,
+  "timestampMs": 62730,
+  "confidence": null
+ },
+ {
+  "text": " swear?",
+  "startMs": 62860,
+  "endMs": 63220,
+  "timestampMs": 63040,
+  "confidence": null
+ },
+ {
+  "text": " Don't",
+  "startMs": 64120,
+  "endMs": 64440,
+  "timestampMs": 64280,
+  "confidence": null
+ },
+ {
+  "text": " turn",
+  "startMs": 64440,
+  "endMs": 64600,
+  "timestampMs": 64520,
+  "confidence": null
+ },
+ {
+  "text": " around.",
+  "startMs": 64600,
+  "endMs": 64920,
+  "timestampMs": 64760,
+  "confidence": null
+ }
+]

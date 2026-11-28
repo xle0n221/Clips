@@ -1,0 +1,35 @@
+# Selbst-Audit „In This City, "We Should Hang Out Sometime" Is Legally Binding“ (`hangout-stadt`, 25.11.2026) – Rolle: Comic-/Cartoon-Designer + Publikum
+
+Maßstab: `docs/audit-2026-11-20.md` (nicht milder). Grundlage: Kontaktabzüge `out/hangout-cs0.jpg` (Schätz-Zeitachse, 35 Bilder), `out/hangout-cs1.jpg` (echte Zeitachse, 34 Bilder alle 2 s), `out/hangout-cs2.jpg` / `cs3.jpg` (gezielte Nachprüfungen), `out/hangout-final-cs.jpg` (fertiges MP4 alle 3 s), Messwerte unten.
+
+## Viral-Analyse (25.11.2026, 2 Suchen – dünn)
+- Suche „viral TikTok trend late November 2026 Gen Z humor“: kein belegtes Ranking für Nov. 2026. Funde sind älter oder undatiert: „Oops, wrong way“ (Gelato, https://www.gelato.com/se/blog/tiktok-trends-right-now), Gen-Z-Format „we let our Gen Z intern edit the video“ (https://contentgrip.com/tiktok-trends-gen-z-marketing-guide), „delulu era is over“ (YPulse, 15.01.2026, https://www.ypulse.com/newsfeed/2026/01/15/tiktok-is-calling-it-the-delulu-era-is-over/). Ich kann einen aktuellen Trend nicht bestätigen.
+- Suche „"in this city" animated shorts viral dark humor“: kein Treffer zum Format; nächster Fund: 60-s-Comedy-Short „Shitty City 4“ (Cartoon Brew, https://www.cartoonbrew.com/shorts/aggelos-papantoniou-shitty-city-short-pick-223336.html) – Viralität dort nicht belegt.
+- Themenwahl „leere Verabredungs-Floskel = Vertrag“ ist eine **begründete Annahme** (Alltagsfloskel, die die Zielgruppe kennt; Kommentar-Köder „tag the friend you owe a hangout“), **kein belegter Trend**.
+- Abwechslung (Auftrag): Konsequenz = **Bürokratie/Vertragszwang** – weder Tod (todo/suche/akku) noch Peinlichkeit (fluch) noch Altern (meckern; das Alt-Bild in „exes“ ist Zeitsprung, nicht Regel-Folge) noch Unsichtbarkeit (ghost) noch Schrumpfen (scroll).
+
+## Noten (ehrlich, 1–10)
+| Kriterium | Note | Beleg |
+|---|---|---|
+| **Hook** (Bild 1 + erste 2 s) | 9 | Bild 1 in Bewegung ab Frame 0: zwei winken sich zu (Cover „FAKE PLANS = LAW“ 0–0,5 s), bei 0,47 s fällt ein Beamter mit Riesen-Stempel von oben – KNALL (Poof + Sound 0,61 s), Handschellen-Kette verbindet beide, beide schreien. Konflikt + absurde Behauptung in < 1 s, Regel stumm lesbar (Stempel + Siegel + Kette). Basstreffer bei „legally“ 3,6 s mit Nahaufnahme Vertrag/Siegel. Offene Frage „Can he survive one Saturday?“ (≈ 21 s) wird erst bei ≈ 46–58 s aufgelöst (Schlupfloch klappt – dann erwischt es den Beamten selbst). Schwäche: Kalender-Sprechblase im Hook liegt in den ersten 0,5 s unter dem Cover-Titel. |
+| Bildvielfalt | 9 | 28 Einstellungen in 67,3 s, alle ≤ 4 s (aus timeline + captions mit denselben Wortankern wie W(): max 3,62 s, Ø 2,36 s), 18 Bildwelten (Straße, Siegel nah, Gericht, Brunch-Knast, Park, Herbst-Park, Marcus-Strahlen, Straße/Strichliste, Nah rot, Schlafzimmer nachts, Haustür, Stempel nah, Café, Gym, Karaoke-Bühne, Straße/Akku, Party, Klemmbrett, Party-Tür, Decke, Wohnung) – nie > 2 gleiche am Stück. |
+| Figuren/Schauspiel | 9 | Marcus: Daumen-hoch-Grinsen, Dauerwinken, Schweiß-Grinsen, Hochschrecken im Bett, Schrei beim Stempel, Mundspiegel-Schrei, Zittern unter der Hantel, Sabber-Torkeln mit rauchendem Kopf, xx-Augen-Faceplant, fieses Glühbirnen-Grinsen, Strahlen neben dem schluchzenden Beamten. Beamter: grimmig-selbstzufrieden, Augen-Zukneifen am Klemmbrett, Abschiedswinken, Gesicht wird grün, Tränen. Nebenfiguren: Richter schlägt, Ex schreit ins Mikro, Anwältin singt Backing, Bank-Paar giftet sich alt an. Schwäche: Party-Totale mit vielen kleinen Figuren (Mimik klein). |
+| Lesbarkeit/Ordnung | 9 | Eine Text-Ebene (gelbe Phrasen); Requisiten nur Symbole (Siegel mit Handschlag/Häkchen, Kalender, Strichliste, Münze auf der Rechnung, Akku); Uhr ohne Ziffern. Nach Kontaktabzügen behoben: Tasse vor Marcus' Gesicht (Café), Hantel vor dem Gesicht (Gym), Hand-vor-Mund unsichtbar (Park), Decke außerhalb des Bildes, Siegel über dem Gesicht des Beamten, Loop-Stempel zu spät sichtbar, Hook-Figuren gedrängt. |
+| Konzept sofort sichtbar | 9 | Floskel → Stempel → Kette: stumm in < 1 s klar. Jede Wiederholung zeigt dieselbe Mechanik (Stempel auf der Liste, Häkchen-Siegel, Decke + Stempel beim Beamten, Stempel im Loop). |
+| Humor | 9 | Reiz spätestens alle ≈ 3,6 s (28 Schnitte + Stempel-Knall, Basstreffer, Poofs, Glocke, Piep – Liste `docs/paket-hangout-stadt.md`), dazu Bewegungs-Gags (endlos rollende Liste, Mundspiegel beim Kaffee, Akku blinkt, Faceplant, Party friert grau ein). Zynischer Erzähler mit US-Slang (lowkey, bro, cooked); schwarzer Unterton (Brunch-Knast „Three to five years. Of brunch.“, „let's stay friends“ = lebenslänglich, Beamter fängt sich mit der eigenen Regel, lebenslang an Marcus gekettet, Mietschulden + Loop „I'll pay you back sometime“). Fluch „f***“ nur teilweise gepiept (f-Reibelaut 52,92–53,03 s hörbar, ab Vokal 53,04 s 290 ms Piep; Whisper hört im Endmix „Oh f**k“). Tabus eingehalten (keine realen Personen/Marken, keine Minderjährigen, keine Gruppe herabgesetzt, kein Tod). |
+| Farbe/Kontrast | 9 | Marcus grün vor gelb/rot/blau/lila/türkis; Beamter grau vor Türkis/Gelb; jede Bildwelt eigene Grundfarbe (Stadt bunt, Gericht blau, Knast grau, Park grün/Herbst-orange, Nacht dunkelblau, Café orange, Gym pink, Bühne lila, Party türkis, Wohnung gelb). |
+| Länge/Format | 9 | 67,3 s inkl. End-Card (Vorgabe 61–70 s), 1080×1920, H.264 yuv420p, 30 fps, AAC stereo. |
+| **Gesamt Publikum** | **9** | |
+
+## Messwerte
+- Stimme (`scripts/stimm_messung.py hangout-stadt`, nach `retime_pauses --cap 800 --tail 280`, `atempo 1,03` mit skalierten Zeiten, `insert_pauses` (+220 ms an 4 Satzenden, +150 an 2, +100 an 1), 60-ms-Ausblendung an 2 harten Kanten): 152 W, **2,30 W/s** (Regel 2,3–2,6 ✓, unterer Rand), Satzrate 3,93 W/s; **Satzpausen Median 450 ms** (Regel ≥ 450 ✓, genau am Rand), P10–P90 320–560 ms; Komma 190 ms; Szenen 535 ms; Satzende 78 % leiser, Tonhöhe −2,9 HT; 0 harte Kanten; Whisper 98,0 % der gesprochenen Wörter (Abweichungen nur Schreibweise/Hören: „lowkey“ → „low key“, „gym“ → „jim“, „a guy“ → „the guy“, „crash“ → „crashed“).
+- Mix (ffmpeg ebur128, fertiges MP4): **−15,2 LUFS**, True Peak **−3,5 dBFS**, LRA 2,7 LU (Mastering wie scroll: finalize.sh, dann EQ −3,5 dB @ 6 kHz, +0,7 dB, `alimiter=limit=0.6:level=disabled` 4× überabgetastet).
+- earshot `critique` (voll) auf dem fertigen MP4: **launch-grade, 23 von 23 im Bereich (100 %)**, 0 kritisch/0 major; realness p_real 0,95; Musikpräsenz 100 %; Stereo −13,9 dB ✓; Sub −11,0 dB ✓; lautester 3-s-Moment bei 0,55 (im Ref.-Bereich).
+- Musik-Abstand (duck_music): Median 14,4 dB, P10 −18,1 dB.
+
+## Bekannte Schwächen (nicht verschwiegen)
+1. Tempo (2,30 W/s) und Satzpausen-Median (450 ms) liegen beide genau am Rand; dafür leichte globale Beschleunigung atempo 1,03 (Regel „atempo ≈ 1,0“ – kaum, aber nicht null).
+2. Kalender-Sprechblase im Hook die ersten 0,5 s unter dem Cover-Titel.
+3. Party-Totale und Decken-Shot mit kleinen Figuren.
+4. Stop-downs 25,9/min (Referenz 0–9,1, nicht bewertet) – Folge der langen Satzpausen.
+5. Marktlage „In This City“ Nov. 2026 nicht belegt (Ich kann das nicht bestätigen).
